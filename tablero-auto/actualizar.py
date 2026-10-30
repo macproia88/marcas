@@ -108,6 +108,7 @@ def armar_html(V):
     h = h.replace('max="2026-10-29"', f'max="{fmax}"')
     h = h.replace("const FMAX = '2026-10-29';", f"const FMAX = '{fmax}';")
     h = h.replace("ult7:['2026-10-23','2026-10-29']", f"ult7:['{u7}','{fmax}']")
+    h = h.replace("anio:['2026-01-02','2026-10-29']", f"anio:['2026-01-02','{fmax}']")
     if fmax[:7] == '2026-10':
         h = h.replace("oct_s5:['2026-10-26','2026-10-29']", f"oct_s5:['2026-10-26','{fmax}']")
         h = h.replace('Oct semana 5 (26 al 29)', f'Oct semana 5 (26 al {d.day})')

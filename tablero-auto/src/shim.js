@@ -3,7 +3,7 @@
   let P = {};
   const data = (id) => {
     if (RAW[id]) return {status: 'ok', data: RAW[id]};
-    if (CALC[id]) { if (!CACHE[id]) CACHE[id] = CALC[id].fn(...CALC[id].inputs.map((i) => data(i).data)); return {status: 'ok', data: CACHE[id]}; }
+    if (CALC[id]) { const key = id + (CALC[id].porFiltro ? JSON.stringify(P) : ''); if (!CACHE[key]) CACHE[key] = CALC[id].fn(...CALC[id].inputs.map((i) => data(i).data)); return {status: 'ok', data: CACHE[key]}; }
     return {status: 'empty', data: []};
   };
   const fire = () => CBS.forEach((f) => { try { f(); } catch (e) { console.error(e); } });

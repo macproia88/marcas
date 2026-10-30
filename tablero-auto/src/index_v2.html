@@ -58,6 +58,15 @@
         <option value="custom">Elegido a mano</option>
         <option value="oct">Octubre (1 al 25)</option>
         <option value="sep">Septiembre completo</option>
+        <option value="anio">Año 2026 hasta hoy</option>
+        <option value="ago">Agosto</option>
+        <option value="jul">Julio</option>
+        <option value="jun">Junio</option>
+        <option value="may">Mayo</option>
+        <option value="abr">Abril</option>
+        <option value="mar">Marzo</option>
+        <option value="feb">Febrero</option>
+        <option value="ene">Enero</option>
         <option value="sep118">Septiembre 1 al 25</option>
         <option value="ult7">Últimos 7 días cargados</option>
         <option value="oct_s1">Oct semana 1 (1 al 4)</option>
@@ -73,10 +82,10 @@
       </select>
     </label>
     <label>Desde
-      <input type="date" id="f-desde" min="2026-09-01" max="2026-10-29" value="2026-10-01">
+      <input type="date" id="f-desde" min="2026-01-02" max="2026-10-29" value="2026-10-01">
     </label>
     <label>Hasta
-      <input type="date" id="f-hasta" min="2026-09-01" max="2026-10-29" value="2026-10-25">
+      <input type="date" id="f-hasta" min="2026-01-02" max="2026-10-29" value="2026-10-25">
     </label>
     <label>Local
       <select id="f-local" aria-label="Local">
@@ -237,6 +246,7 @@
 <script>
 const INF = 0.334;
 const PER = {
+  anio:['2026-01-02','2026-10-29'], ene:['2026-01-02','2026-01-31'], feb:['2026-02-01','2026-02-28'], mar:['2026-03-01','2026-03-31'], abr:['2026-04-01','2026-04-30'], may:['2026-05-01','2026-05-31'], jun:['2026-06-01','2026-06-30'], jul:['2026-07-01','2026-07-31'], ago:['2026-08-01','2026-08-31'],
   oct:['2026-10-01','2026-10-25'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-23','2026-10-29'],
   oct_s1:['2026-10-01','2026-10-04'], oct_s2:['2026-10-05','2026-10-11'], oct_s3:['2026-10-12','2026-10-18'], oct_s4:['2026-10-19','2026-10-25'], oct_s5:['2026-10-26','2026-10-29'],
   sep_s1:['2026-09-01','2026-09-06'], sep_s2:['2026-09-07','2026-09-13'], sep_s3:['2026-09-14','2026-09-20'], sep_s4:['2026-09-21','2026-09-27'], sep_s5:['2026-09-28','2026-09-30']
@@ -244,35 +254,25 @@ const PER = {
 window.LP_PER = PER;
 dash.calc('kpi_periodo', {
   title: 'Ventas por rango de fechas y local',
-  description: 'Para cada rango posible de fechas (desde/hasta) suma las ventas diarias por local y para los 3 locales, y calcula variaciones contra el mismo día de la semana de 2025 (real = nominal menos 33,4 puntos).',
+  description: 'Para el rango de fechas elegido suma las ventas diarias por local y para los 3 locales, y calcula variaciones contra el mismo día de la semana de 2025 (real = nominal menos 33,4 puntos).',
   inputs: ['ventas_diarias'],
+  porFiltro: true,
   fn: (ventas_diarias) => {
     const K = ['venta', 'venta_2025', 'tickets_mostrador', 'tickets_mostrador_2025', 'venta_mostrador', 'venta_mostrador_2025', 'venta_app', 'pedidos_app'];
-    const fechas = [...new Set(ventas_diarias.map((d) => d.fecha))].sort();
+    const {desde, hasta} = window.LP_prm ? window.LP_prm() : {desde: '2026-10-01', hasta: '2026-10-25'};
     const out = [];
     for (const loc of ['Todos', 'Florida', 'Beccar', 'Paz']) {
-      // por día: sumas y si el dato está completo
-      const dia = fechas.map((f) => {
-        const r = ventas_diarias.filter((d) => d.fecha === f && (loc === 'Todos' || d.local === loc));
-        const o = {};
-        for (const k of K) { o[k] = r.reduce((t, d) => t + (Number(d[k]) || 0), 0); o[k + '_ok'] = r.length > 0 && r.every((d) => d[k] != null && d[k] !== ''); }
-        return o;
-      });
-      for (let i = 0; i < fechas.length; i++) {
-        const acc = {}; for (const k of K) { acc[k] = 0; acc[k + '_ok'] = true; }
-        for (let j = i; j < fechas.length; j++) {
-          for (const k of K) { acc[k] += dia[j][k]; acc[k + '_ok'] = acc[k + '_ok'] && dia[j][k + '_ok']; }
-          const g = (k) => acc[k + '_ok'] ? acc[k] : null;
-          const venta = acc.venta, v25 = g('venta_2025'), tk = acc.tickets_mostrador, tk25 = g('tickets_mostrador_2025');
-          const vm = acc.venta_mostrador, vm25 = g('venta_mostrador_2025'), va = acc.venta_app, ped = g('pedidos_app');
-          const tp = tk ? vm / tk : null, tp25 = tk25 && vm25 ? vm25 / tk25 : null, dias = j - i + 1;
-          out.push({desde: fechas[i], hasta: fechas[j], local: loc, dias, venta, venta_2025: v25,
-            var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: venta / dias,
-            venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tk25 ? tk / tk25 - 1 : null,
-            ticket_prom: tp, var_ticket_real_pp: tp && tp25 ? (tp / tp25 - 1 - 0.334) * 100 : null,
-            pedidos_app: ped, ticket_app: ped ? va / ped : null});
-        }
-      }
+      const r = ventas_diarias.filter((d) => d.fecha >= desde && d.fecha <= hasta && (loc === 'Todos' || d.local === loc));
+      const acc = {}; for (const k of K) { acc[k] = r.reduce((t, d) => t + (Number(d[k]) || 0), 0); acc[k + '_ok'] = r.length > 0 && r.every((d) => d[k] != null && d[k] !== ''); }
+      const g = (k) => acc[k + '_ok'] ? acc[k] : null;
+      const venta = acc.venta, v25 = g('venta_2025'), tk = acc.tickets_mostrador, tk25 = g('tickets_mostrador_2025');
+      const vm = acc.venta_mostrador, vm25 = g('venta_mostrador_2025'), va = acc.venta_app, ped = g('pedidos_app');
+      const tp = tk ? vm / tk : null, tp25 = tk25 && vm25 ? vm25 / tk25 : null, dias = new Set(r.map((d) => d.fecha)).size || 1;
+      out.push({desde, hasta, local: loc, dias, venta, venta_2025: v25,
+        var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: venta / dias,
+        venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tk25 ? tk / tk25 - 1 : null,
+        ticket_prom: tp, var_ticket_real_pp: tp && tp25 ? (tp / tp25 - 1 - 0.334) * 100 : null,
+        pedidos_app: ped, ticket_app: ped ? va / ped : null});
     }
     return out;
   }
@@ -349,7 +349,7 @@ window.LP = {fM, fN, fP, fPP, cls};
 const fd = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
 const rangoTxt = (d, h) => d === h ? `el ${fd(d)}` : `del ${fd(d)} al ${fd(h)}`;
 const LNAME = {Todos: 'los 3 locales vendieron', Florida: 'Florida vendió', Beccar: 'Beccar vendió', Paz: 'Paz vendió'};
-const FMIN = '2026-09-01', FMAX = '2026-10-29';
+const FMIN = '2026-01-02', FMAX = '2026-10-29';
 const clampF = (f, def) => (/^\d{4}-\d{2}-\d{2}$/.test(f || '') ? (f < FMIN ? FMIN : f > FMAX ? FMAX : f) : def);
 const prm = () => { const p = dash.params(); let desde = clampF(p.desde, '2026-10-01'), hasta = clampF(p.hasta, FMAX);
   if (desde > hasta) [desde, hasta] = [hasta, desde]; return {desde, hasta, local: p.local || 'Todos'}; };

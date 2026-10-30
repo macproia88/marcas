@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablero del Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap">
+<style>
+:root{--font-anthropic-sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;--font-anthropic-serif:"Fraunces",Georgia,serif;
+--color-bg:#f7f5f2;--color-panel:#ffffff;--color-fg:#26211e;--color-fg-muted:#6f6660;--color-border-line:#e6e0da;
+--color-ok:#2f7d4f;--color-warn:#b7791f;--color-bad:#b5452f;
+--cds-chart-muted:#d6cdc5;--cds-chart-grid:#ece6e0;--cds-chart-axis:#cfc6be;--cds-surface-popover:#ffffff;--cds-border:#e0d8d0;--cds-shadow-popover:0 4px 16px rgba(40,30,20,.12);--cds-text-secondary:#7a7069;
+--c0:#b5502f;--c1:#4f6f8f;--c2:#7a9a5a;
+--cds-radius:8px;--cds-gap-xs:4px;--cds-gap-sm:8px;--cds-gap-md:14px;--cds-gap-lg:20px;--cds-gap-xl:32px;--cds-pad-xs:4px;--cds-pad-sm:8px;--cds-pad-md:12px;--cds-pad-lg:18px;
+--cds-font-size-caption:.8rem;--cds-font-size-body:1rem;--cds-font-size-heading:1.08rem;--cds-font-size-title:1.9rem;--cds-font-weight-medium:500;--cds-dur-slow:.3s;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--color-bg:#1b1816;--color-panel:#24201d;--color-fg:#f1ebe6;--color-fg-muted:#aaa098;--color-border-line:#3a332e;--color-ok:#6fbf8a;--color-warn:#e0a84a;--color-bad:#e37b62;--cds-chart-muted:#4d4540;--cds-chart-grid:#332d29;--cds-chart-axis:#4a423d;--cds-surface-popover:#2c2724;--cds-border:#453d37;--cds-shadow-popover:0 4px 16px rgba(0,0,0,.4);--cds-text-secondary:#b3a9a1;--c0:#e2805c;--c1:#86a7c7;--c2:#a3c283;color-scheme:dark}}
+html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-anthropic-sans)}
+#dash-root{max-width:1180px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+</style>
+<style>
+#dash-root .cl { display: flex; flex-direction: column; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); font-variant-numeric: tabular-nums; }
+#dash-root .cl-head { display: flex; flex-direction: column; gap: var(--cds-gap-sm); }
+#dash-root .cl-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+#dash-root .cl-take { margin: 0; color: var(--color-fg); font-size: var(--cds-font-size-body); max-width: 70ch; line-height: 1.5; }
+#dash-root .cl-take b { font-weight: 600; }
+#dash-root .cl-sub { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+#dash-root .cl-filter { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+#dash-root .cl-filter button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-md); border-radius: 999px; border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); cursor: pointer; }
+#dash-root .cl-filter button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+#dash-root .cl-filter button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+#dash-root .cl-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .cl-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+#dash-root .cl-tile .lab { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+#dash-root .cl-tile .num { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.1; }
+#dash-root .cl-tile .note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+#dash-root .cl-sec { display: flex; flex-direction: column; gap: var(--cds-gap-md); }
+#dash-root .cl-sec > h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+#dash-root .cl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .cl-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-sm); min-width: 0; }
+#dash-root .cl-card h3 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+#dash-root .cl-card p.n { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.45; }
+#dash-root .cl-chart { position: relative; min-height: 220px; }
+#dash-root .cl-tbl { overflow-x: auto; }
+#dash-root .cl-tbl table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); }
+#dash-root .cl-tbl th, #dash-root .cl-tbl td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); text-align: right; vertical-align: top; }
+#dash-root .cl-tbl th { color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); white-space: nowrap; }
+#dash-root .cl-tbl th:first-child, #dash-root .cl-tbl td:first-child { text-align: left; }
+#dash-root .cl-tbl td.txt { text-align: left; min-width: 14rem; color: var(--color-fg-muted); }
+#dash-root .cl-tbl td.seg { font-weight: 600; white-space: nowrap; }
+#dash-root .cl-tbl td { white-space: nowrap; }
+#dash-root .cl-tbl td.txt { white-space: normal; }
+#dash-root .cl-tbl .bar { display: inline-block; height: 8px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+#dash-root .cl-split { display: flex; height: 28px; border-radius: var(--cds-radius); overflow: hidden; }
+#dash-root .cl-split span { display: block; height: 100%; }
+#dash-root .cl-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+#dash-root .cl-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+#dash-root .cl-rows { display: grid; grid-template-columns: auto 1fr auto; gap: var(--cds-gap-xs) var(--cds-gap-md); font-size: var(--cds-font-size-caption); align-items: baseline; }
+#dash-root .cl-rows .v { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-heading); }
+#dash-root .tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 5; }
+#dash-root .tip .h { color: var(--cds-text-secondary); }
+#dash-root [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+#dash-root .cl-foot { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); line-height: 1.5; max-width: 80ch; display: flex; flex-direction: column; gap: var(--cds-gap-xs); }
+#dash-root .cl-foot p { margin: 0; }
+</style></head><body><div id="dash-root">
+
+<div class="cl">
+  <header class="cl-head" id="resumen">
+    <h1 class="cl-title">Tablero del Club</h1>
+    <p class="cl-take">En <b data-draw="loc-name">—</b>, el <b data-draw="kpi" data-f="retencion_sep_oct" data-fmt="pct">—</b> de los socios que compraron en septiembre volvió a comprar en octubre, y el club ya registra el <b data-draw="kpi" data-f="pct_tickets_club" data-fmt="pct">—</b> de los tickets del mostrador. El desafío es la segunda compra: hay <b data-draw="seg-n" data-seg="Nuevos">—</b> socios nuevos con una sola compra.</p>
+    <p class="cl-sub">Datos de ALAX (ventas con DNI y cupones) del 1/7 al 29/10/2026. Participación en el local: tickets de mostrador de Maxi Rest del 1/10 al 19/10, sin apps de delivery.</p>
+    <div class="cl-filter" role="group" aria-label="Local">
+      <button type="button" data-local="Total" aria-pressed="true">Los tres locales</button>
+      <button type="button" data-local="Beccar" aria-pressed="false">Beccar</button>
+      <button type="button" data-local="Florida" aria-pressed="false">Florida</button>
+      <button type="button" data-local="Paz" aria-pressed="false">Paz</button>
+    </div>
+  </header>
+
+  <section class="cl-sec" id="kpis">
+    <h2>Octubre, del 1 al 29</h2>
+    <div class="cl-tiles">
+      <div class="cl-tile"><span class="lab">Compras con DNI</span><span class="num" data-draw="kpi" data-f="compras" data-fmt="int">—</span><span class="note">Septiembre completo: <span data-draw="kpi" data-f="compras_sep" data-fmt="int">—</span></span></div>
+      <div class="cl-tile"><span class="lab">Socios que compraron</span><span class="num" data-draw="kpi" data-f="socios" data-fmt="int">—</span><span class="note">De ellos, <span data-draw="kpi" data-f="socios_nuevos" data-fmt="int">—</span> compraron por primera vez</span></div>
+      <div class="cl-tile"><span class="lab">Retención septiembre → octubre</span><span class="num" data-draw="kpi" data-f="retencion_sep_oct" data-fmt="pct">—</span><span class="note">Socios de septiembre que volvieron</span></div>
+      <div class="cl-tile"><span class="lab">Tickets del local que pasan por el club</span><span class="num" data-draw="kpi" data-f="pct_tickets_club" data-fmt="pct">—</span><span class="note">Mostrador, 1 al 19/10</span></div>
+      <div class="cl-tile"><span class="lab">Venta del local que pasa por el club</span><span class="num" data-draw="kpi" data-f="pct_venta_club" data-fmt="pct">—</span><span class="note">Mostrador, 1 al 19/10</span></div>
+      <div class="cl-tile"><span class="lab">Ticket promedio del socio</span><span class="num" data-draw="kpi" data-f="ticket" data-fmt="money">—</span><span class="note">Venta con DNI: <span data-draw="kpi" data-f="venta" data-fmt="moneyc">—</span></span></div>
+    </div>
+  </section>
+
+  <section class="cl-sec" id="segmentos">
+    <h2>Nuestros socios por segmento</h2>
+    <div class="cl-card">
+      <h3>Dónde está cada socio hoy y qué hacer con él</h3>
+      <p class="n">Cada socio que compró alguna vez, ubicado según sus compras de los últimos 30 días (al 29/10). Cada socio cuenta en el local donde más compra. El objetivo es que cada mes más socios suban de segmento.</p>
+      <div class="cl-tbl">
+        <table data-source="segmentos" data-row-key="local,segmento">
+          <thead><tr><th data-field="segmento">Segmento</th><th data-field="socios">Socios</th><th data-field="pct_socios">% socios</th><th data-field="pct_venta_30d">% venta 30 días</th><th data-field="ticket">Ticket</th><th data-field="pct_compras_con_cupon">% con cupón</th><th data-field="definicion">Quiénes son</th><th data-field="accion">Acción</th></tr></thead>
+          <tbody data-draw="seg-table"></tbody>
+        </table>
+      </div>
+      <p class="n">Además hay <b data-draw="reg" data-club="La Presumida" data-f="registrados_sin_compra">—</b> socios registrados en La Presumida y <b data-draw="reg" data-club="Paz" data-f="registrados_sin_compra">—</b> en Paz que todavía no compraron nunca con su DNI.</p>
+    </div>
+  </section>
+
+  <section class="cl-sec" id="cupon">
+    <h2>Con cupón y sin cupón</h2>
+    <div class="cl-grid">
+      <div class="cl-card" id="card-cupon">
+        <h3>Compras de octubre según el cupón</h3>
+        <p class="n">Una compra lleva cupón si ALAX registró un cupón usado por ese DNI dentro de los 20 minutos del ticket.</p>
+        <div class="cl-split" data-draw="split" data-source="locales"></div>
+        <div class="cl-legend"><span><i style="background: var(--cds-chart-muted)"></i>Solo bienvenida</span><span><i data-draw="sw0"></i>Otros cupones</span><span><i data-draw="sw1"></i>Sin cupón</span></div>
+        <div class="cl-rows">
+          <span>Con cupón</span><span class="v" data-draw="kpi" data-f="compras_con_cupon" data-fmt="int">—</span><span>ticket <b data-draw="kpi" data-f="ticket_con_cupon" data-fmt="money">—</b></span>
+          <span>de ellas, solo bienvenida</span><span class="v" data-draw="kpi" data-f="compras_solo_bienvenida" data-fmt="int">—</span><span></span>
+          <span>Sin cupón</span><span class="v" data-draw="kpi" data-f="compras_sin_cupon" data-fmt="int">—</span><span>ticket <b data-draw="kpi" data-f="ticket_sin_cupon" data-fmt="money">—</b></span>
+        </div>
+      </div>
+      <div class="cl-card" id="card-frec">
+        <h3>Cuántas veces compró cada socio en octubre</h3>
+        <p class="n">Barras: socios. Debajo de cada grupo, primero el % de la venta que hacen y después el % de sus compras con cupón. Los que más vienen casi no usan cupón.</p>
+        <div class="cl-chart" data-draw="frec" data-source="frecuencia"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cl-sec" id="retencion">
+    <h2>Retención y frecuencia</h2>
+    <div class="cl-grid">
+      <div class="cl-card" id="card-semanal">
+        <h3>Compras con DNI por semana</h3>
+        <p class="n">Primeras compras contra compras de socios que vuelven. La primera y la última semana están incompletas.</p>
+        <div class="cl-chart" data-draw="semanal" data-source="semanal"></div>
+        <div class="cl-legend"><span><i data-draw="sw0"></i>Socios que vuelven</span><span><i style="background: var(--cds-chart-muted)"></i>Primera compra</span></div>
+      </div>
+      <div class="cl-card" id="card-cohortes">
+        <h3>Socios nuevos que vuelven dentro de los 7 días</h3>
+        <p class="n">Por semana de su primera compra. Las semanas que todavía no cumplieron 7 días no se muestran.</p>
+        <div class="cl-chart" data-draw="cohortes" data-source="cohortes"></div>
+      </div>
+      <div class="cl-card" id="card-mensual">
+        <h3>Retención mes a mes</h3>
+        <p class="n">Socios que compraron un mes y volvieron el siguiente, Debajo del mes: compras por mes de cada socio que ya venía de antes. Cada mes se mide del 1 al 29.</p>
+        <div class="cl-chart" data-draw="mensual" data-source="retencion"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cl-sec" id="cupones">
+    <h2>Efectividad de los cupones de octubre</h2>
+    <div class="cl-card">
+      <p class="n">De los cupones que el socio activó en octubre, cuántos canjeó. ALAX no muestra los cupones que nadie activó.</p>
+      <div class="cl-tbl">
+        <table data-source="cupones" data-row-key="local,cupon">
+          <thead><tr><th data-field="cupon">Cupón</th><th data-field="activados">Activados</th><th data-field="canjeados">Canjeados</th><th data-field="efectividad">Efectividad</th></tr></thead>
+          <tbody data-draw="cup-table"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="cl-foot" id="notas">
+    <p>Cómo se cuenta. Compras: tickets de ALAX con DNI, sin duplicados por venta_id y sin los tickets de $1 (premios sin compra). Socio que vuelve: compra en un día posterior a su primera compra. Retención: socios que compraron en un mes y también en el siguiente, del 1 al 29 de cada mes.</p>
+    <p>Participación en el local: tickets con DNI de ALAX divididos por los tickets de mostrador de Maxi Rest del mismo local, del 1 al 19 de octubre (los archivos detallados llegan completos hasta esa fecha); se dejan afuera PedidosYa, Rappi y delivery.</p>
+    <p>Para actualizar: con los reportes nuevos de ALAX y el detallado de Maxi Rest se recalculan todos los números.</p>
+  </footer>
+</div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+window.DATA={"locales": [{"local": "Total", "compras": 4861, "socios": 2746, "venta": 128761686, "ticket": 26489, "compras_con_cupon": 2541, "compras_sin_cupon": 2320, "compras_solo_bienvenida": 1615, "ticket_con_cupon": 27959, "ticket_sin_cupon": 24878, "socios_nuevos": 2160, "compras_de_socios_que_vuelven": 2631, "retencion_sep_oct": 0.711, "compras_sep": 1357, "tickets_mostrador_1_19": 9158, "tickets_club_1_19": 2919, "venta_mostrador_1_19": 213274493, "venta_club_1_19": 79736692, "pct_tickets_club": 0.319, "pct_venta_club": 0.374}, {"local": "Beccar", "compras": 1857, "socios": 1098, "venta": 48481800, "ticket": 26108, "compras_con_cupon": 1004, "compras_sin_cupon": 853, "compras_solo_bienvenida": 820, "ticket_con_cupon": 26613, "ticket_sin_cupon": 25512, "socios_nuevos": 968, "compras_de_socios_que_vuelven": 864, "retencion_sep_oct": 0.74, "compras_sep": 237, "tickets_mostrador_1_19": 2929, "tickets_club_1_19": 1137, "venta_mostrador_1_19": 65407794, "venta_club_1_19": 30011216, "pct_tickets_club": 0.388, "pct_venta_club": 0.459}, {"local": "Florida", "compras": 1908, "socios": 977, "venta": 48290703, "ticket": 25310, "compras_con_cupon": 854, "compras_sin_cupon": 1054, "compras_solo_bienvenida": 413, "ticket_con_cupon": 28521, "ticket_sin_cupon": 22707, "socios_nuevos": 622, "compras_de_socios_que_vuelven": 1254, "retencion_sep_oct": 0.724, "compras_sep": 930, "tickets_mostrador_1_19": 3148, "tickets_club_1_19": 1066, "venta_mostrador_1_19": 70814512, "venta_club_1_19": 27625639, "pct_tickets_club": 0.339, "pct_venta_club": 0.39}, {"local": "Paz", "compras": 1096, "socios": 676, "venta": 31989184, "ticket": 29187, "compras_con_cupon": 683, "compras_sin_cupon": 413, "compras_solo_bienvenida": 382, "ticket_con_cupon": 29235, "ticket_sin_cupon": 29109, "socios_nuevos": 570, "compras_de_socios_que_vuelven": 513, "retencion_sep_oct": 0.617, "compras_sep": 190, "tickets_mostrador_1_19": 3081, "tickets_club_1_19": 716, "venta_mostrador_1_19": 77052187, "venta_club_1_19": 22099837, "pct_tickets_club": 0.232, "pct_venta_club": 0.287}], "registros": [{"club": "Paz", "registrados": 1252, "registrados_octubre": 722, "registrados_sin_compra": 467}, {"club": "La Presumida", "registrados": 3205, "registrados_octubre": 1786, "registrados_sin_compra": 886}], "segmentos": [{"local": "Total", "segmento": "Frecuentes", "orden": 1, "definicion": "4 o más compras en los últimos 30 días", "socios": 250, "pct_socios": 0.081, "compras_30d": 1413, "venta_30d": 31609654, "pct_venta_30d": 0.243, "ticket": 22995, "pct_compras_con_cupon": 0.223, "accion": "Cuidarlos: reconocimiento y beneficio exclusivo, sin descuentos masivos"}, {"local": "Total", "segmento": "Recurrentes", "orden": 2, "definicion": "2 o 3 compras en los últimos 30 días", "socios": 770, "pct_socios": 0.248, "compras_30d": 1778, "venta_30d": 47412956, "pct_venta_30d": 0.364, "ticket": 27579, "pct_compras_con_cupon": 0.389, "accion": "Llevarlos a 4 compras: contador de 6 compras y cupón de mitad de semana"}, {"local": "Total", "segmento": "Nuevos", "orden": 3, "definicion": "1 compra en 30 días y es su primera", "socios": 1523, "pct_socios": 0.491, "compras_30d": 1523, "venta_30d": 44648002, "pct_venta_30d": 0.343, "ticket": 29316, "pct_compras_con_cupon": 0.873, "accion": "Segunda compra: cupón válido 15 días desde el registro"}, {"local": "Total", "segmento": "Ocasionales", "orden": 4, "definicion": "1 compra en 30 días, ya había comprado antes", "socios": 211, "pct_socios": 0.068, "compras_30d": 211, "venta_30d": 6541795, "pct_venta_30d": 0.05, "ticket": 29746, "pct_compras_con_cupon": 0.352, "accion": "Volver en el mes: recordatorio por mail con producto de temporada"}, {"local": "Total", "segmento": "En riesgo", "orden": 5, "definicion": "Última compra hace 31 a 60 días", "socios": 196, "pct_socios": 0.063, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 31728, "pct_compras_con_cupon": 0.497, "accion": "Rescate: mail personal con regalo chico si vuelven esta semana"}, {"local": "Total", "segmento": "Dormidos", "orden": 6, "definicion": "Última compra hace más de 60 días", "socios": 151, "pct_socios": 0.049, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 30898, "pct_compras_con_cupon": 0.545, "accion": "Reactivación: campaña de vuelta con cupón fuerte; medir respuesta"}, {"local": "Beccar", "segmento": "Frecuentes", "orden": 1, "definicion": "4 o más compras en los últimos 30 días", "socios": 92, "pct_socios": 0.08, "compras_30d": 508, "venta_30d": 12616643, "pct_venta_30d": 0.259, "ticket": 24953, "pct_compras_con_cupon": 0.262, "accion": "Cuidarlos: reconocimiento y beneficio exclusivo, sin descuentos masivos"}, {"local": "Beccar", "segmento": "Recurrentes", "orden": 2, "definicion": "2 o 3 compras en los últimos 30 días", "socios": 279, "pct_socios": 0.242, "compras_30d": 637, "venta_30d": 15960117, "pct_venta_30d": 0.327, "ticket": 25991, "pct_compras_con_cupon": 0.446, "accion": "Llevarlos a 4 compras: contador de 6 compras y cupón de mitad de semana"}, {"local": "Beccar", "segmento": "Nuevos", "orden": 3, "definicion": "1 compra en 30 días y es su primera", "socios": 683, "pct_socios": 0.591, "compras_30d": 683, "venta_30d": 18619538, "pct_venta_30d": 0.382, "ticket": 27261, "pct_compras_con_cupon": 0.878, "accion": "Segunda compra: cupón válido 15 días desde el registro"}, {"local": "Beccar", "segmento": "Ocasionales", "orden": 4, "definicion": "1 compra en 30 días, ya había comprado antes", "socios": 44, "pct_socios": 0.038, "compras_30d": 44, "venta_30d": 1589317, "pct_venta_30d": 0.033, "ticket": 36064, "pct_compras_con_cupon": 0.437, "accion": "Volver en el mes: recordatorio por mail con producto de temporada"}, {"local": "Beccar", "segmento": "En riesgo", "orden": 5, "definicion": "Última compra hace 31 a 60 días", "socios": 36, "pct_socios": 0.031, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 31287, "pct_compras_con_cupon": 0.731, "accion": "Rescate: mail personal con regalo chico si vuelven esta semana"}, {"local": "Beccar", "segmento": "Dormidos", "orden": 6, "definicion": "Última compra hace más de 60 días", "socios": 21, "pct_socios": 0.018, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 30188, "pct_compras_con_cupon": 0.864, "accion": "Reactivación: campaña de vuelta con cupón fuerte; medir respuesta"}, {"local": "Florida", "segmento": "Frecuentes", "orden": 1, "definicion": "4 o más compras en los últimos 30 días", "socios": 112, "pct_socios": 0.096, "compras_30d": 660, "venta_30d": 13787436, "pct_venta_30d": 0.281, "ticket": 21483, "pct_compras_con_cupon": 0.175, "accion": "Cuidarlos: reconocimiento y beneficio exclusivo, sin descuentos masivos"}, {"local": "Florida", "segmento": "Recurrentes", "orden": 2, "definicion": "2 o 3 compras en los últimos 30 días", "socios": 315, "pct_socios": 0.271, "compras_30d": 734, "venta_30d": 18768860, "pct_venta_30d": 0.382, "ticket": 26720, "pct_compras_con_cupon": 0.327, "accion": "Llevarlos a 4 compras: contador de 6 compras y cupón de mitad de semana"}, {"local": "Florida", "segmento": "Nuevos", "orden": 3, "definicion": "1 compra en 30 días y es su primera", "socios": 427, "pct_socios": 0.367, "compras_30d": 427, "venta_30d": 12915795, "pct_venta_30d": 0.263, "ticket": 30248, "pct_compras_con_cupon": 0.834, "accion": "Segunda compra: cupón válido 15 días desde el registro"}, {"local": "Florida", "segmento": "Ocasionales", "orden": 4, "definicion": "1 compra en 30 días, ya había comprado antes", "socios": 127, "pct_socios": 0.109, "compras_30d": 127, "venta_30d": 3668598, "pct_venta_30d": 0.075, "ticket": 27638, "pct_compras_con_cupon": 0.299, "accion": "Volver en el mes: recordatorio por mail con producto de temporada"}, {"local": "Florida", "segmento": "En riesgo", "orden": 5, "definicion": "Última compra hace 31 a 60 días", "socios": 119, "pct_socios": 0.102, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 31033, "pct_compras_con_cupon": 0.409, "accion": "Rescate: mail personal con regalo chico si vuelven esta semana"}, {"local": "Florida", "segmento": "Dormidos", "orden": 6, "definicion": "Última compra hace más de 60 días", "socios": 63, "pct_socios": 0.054, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 32846, "pct_compras_con_cupon": 0.356, "accion": "Reactivación: campaña de vuelta con cupón fuerte; medir respuesta"}, {"local": "Paz", "segmento": "Frecuentes", "orden": 1, "definicion": "4 o más compras en los últimos 30 días", "socios": 46, "pct_socios": 0.059, "compras_30d": 245, "venta_30d": 5205574, "pct_venta_30d": 0.161, "ticket": 24974, "pct_compras_con_cupon": 0.332, "accion": "Cuidarlos: reconocimiento y beneficio exclusivo, sin descuentos masivos"}, {"local": "Paz", "segmento": "Recurrentes", "orden": 2, "definicion": "2 o 3 compras en los últimos 30 días", "socios": 176, "pct_socios": 0.225, "compras_30d": 407, "venta_30d": 12683980, "pct_venta_30d": 0.393, "ticket": 32033, "pct_compras_con_cupon": 0.465, "accion": "Llevarlos a 4 compras: contador de 6 compras y cupón de mitad de semana"}, {"local": "Paz", "segmento": "Nuevos", "orden": 3, "definicion": "1 compra en 30 días y es su primera", "socios": 413, "pct_socios": 0.527, "compras_30d": 413, "venta_30d": 13112670, "pct_venta_30d": 0.406, "ticket": 31750, "pct_compras_con_cupon": 0.906, "accion": "Segunda compra: cupón válido 15 días desde el registro"}, {"local": "Paz", "segmento": "Ocasionales", "orden": 4, "definicion": "1 compra en 30 días, ya había comprado antes", "socios": 40, "pct_socios": 0.051, "compras_30d": 40, "venta_30d": 1283880, "pct_venta_30d": 0.04, "ticket": 32246, "pct_compras_con_cupon": 0.49, "accion": "Volver en el mes: recordatorio por mail con producto de temporada"}, {"local": "Paz", "segmento": "En riesgo", "orden": 5, "definicion": "Última compra hace 31 a 60 días", "socios": 41, "pct_socios": 0.052, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 34604, "pct_compras_con_cupon": 0.625, "accion": "Rescate: mail personal con regalo chico si vuelven esta semana"}, {"local": "Paz", "segmento": "Dormidos", "orden": 6, "definicion": "Última compra hace más de 60 días", "socios": 67, "pct_socios": 0.086, "compras_30d": 0, "venta_30d": 0, "pct_venta_30d": 0.0, "ticket": 29030, "pct_compras_con_cupon": 0.67, "accion": "Reactivación: campaña de vuelta con cupón fuerte; medir respuesta"}], "frecuencia": [{"local": "Total", "compras_en_octubre": "1", "orden": 0, "socios": 1734, "compras": 1734, "venta": 51294677, "pct_venta": 0.398, "ticket": 29582, "pct_con_cupon": 0.811}, {"local": "Total", "compras_en_octubre": "2", "orden": 1, "socios": 532, "compras": 1064, "venta": 29781836, "pct_venta": 0.231, "ticket": 27990, "pct_con_cupon": 0.491}, {"local": "Total", "compras_en_octubre": "3", "orden": 2, "socios": 242, "compras": 726, "venta": 17771202, "pct_venta": 0.138, "ticket": 24478, "pct_con_cupon": 0.357}, {"local": "Total", "compras_en_octubre": "4-5", "orden": 3, "socios": 156, "compras": 684, "venta": 16392628, "pct_venta": 0.127, "ticket": 23966, "pct_con_cupon": 0.316}, {"local": "Total", "compras_en_octubre": "6+", "orden": 4, "socios": 82, "compras": 653, "venta": 13521344, "pct_venta": 0.105, "ticket": 20706, "pct_con_cupon": 0.21}, {"local": "Beccar", "compras_en_octubre": "1", "orden": 0, "socios": 729, "compras": 729, "venta": 20398394, "pct_venta": 0.421, "ticket": 27981, "pct_con_cupon": 0.844}, {"local": "Beccar", "compras_en_octubre": "2", "orden": 1, "socios": 200, "compras": 400, "venta": 10425056, "pct_venta": 0.215, "ticket": 26063, "pct_con_cupon": 0.482}, {"local": "Beccar", "compras_en_octubre": "3", "orden": 2, "socios": 77, "compras": 231, "venta": 5250162, "pct_venta": 0.108, "ticket": 22728, "pct_con_cupon": 0.372}, {"local": "Beccar", "compras_en_octubre": "4-5", "orden": 3, "socios": 63, "compras": 276, "venta": 7473300, "pct_venta": 0.154, "ticket": 27077, "pct_con_cupon": 0.254}, {"local": "Beccar", "compras_en_octubre": "6+", "orden": 4, "socios": 29, "compras": 221, "venta": 4934888, "pct_venta": 0.102, "ticket": 22330, "pct_con_cupon": 0.181}, {"local": "Florida", "compras_en_octubre": "1", "orden": 0, "socios": 555, "compras": 555, "venta": 16679943, "pct_venta": 0.345, "ticket": 30054, "pct_con_cupon": 0.728}, {"local": "Florida", "compras_en_octubre": "2", "orden": 1, "socios": 212, "compras": 424, "venta": 11600530, "pct_venta": 0.24, "ticket": 27360, "pct_con_cupon": 0.472}, {"local": "Florida", "compras_en_octubre": "3", "orden": 2, "socios": 108, "compras": 324, "venta": 7427926, "pct_venta": 0.154, "ticket": 22926, "pct_con_cupon": 0.296}, {"local": "Florida", "compras_en_octubre": "4-5", "orden": 3, "socios": 64, "compras": 280, "venta": 6374216, "pct_venta": 0.132, "ticket": 22765, "pct_con_cupon": 0.357}, {"local": "Florida", "compras_en_octubre": "6+", "orden": 4, "socios": 38, "compras": 325, "venta": 6208088, "pct_venta": 0.129, "ticket": 19102, "pct_con_cupon": 0.166}, {"local": "Paz", "compras_en_octubre": "1", "orden": 0, "socios": 455, "compras": 455, "venta": 14474350, "pct_venta": 0.452, "ticket": 31812, "pct_con_cupon": 0.862}, {"local": "Paz", "compras_en_octubre": "2", "orden": 1, "socios": 121, "compras": 242, "venta": 7795800, "pct_venta": 0.244, "ticket": 32214, "pct_con_cupon": 0.541}, {"local": "Paz", "compras_en_octubre": "3", "orden": 2, "socios": 56, "compras": 168, "venta": 4851074, "pct_venta": 0.152, "ticket": 28875, "pct_con_cupon": 0.446}, {"local": "Paz", "compras_en_octubre": "4-5", "orden": 3, "socios": 30, "compras": 132, "venta": 2566352, "pct_venta": 0.08, "ticket": 19442, "pct_con_cupon": 0.364}, {"local": "Paz", "compras_en_octubre": "6+", "orden": 4, "socios": 14, "compras": 99, "venta": 2301607, "pct_venta": 0.072, "ticket": 23249, "pct_con_cupon": 0.374}], "retencion": [{"local": "Total", "mes": "2026-07", "socios_activos": 263, "compras": 442, "frecuencia": 1.68, "retencion": null, "frecuencia_socios_previos": null}, {"local": "Total", "mes": "2026-08", "socios_activos": 409, "compras": 761, "frecuencia": 1.86, "retencion": 0.517, "frecuencia_socios_previos": 2.68}, {"local": "Total", "mes": "2026-09", "socios_activos": 651, "compras": 1293, "frecuencia": 1.99, "retencion": 0.609, "frecuencia_socios_previos": 2.6}, {"local": "Total", "mes": "2026-10", "socios_activos": 2746, "compras": 4861, "frecuencia": 1.77, "retencion": 0.71, "frecuencia_socios_previos": 2.65}, {"local": "Beccar", "mes": "2026-07", "socios_activos": 29, "compras": 46, "frecuencia": 1.59, "retencion": null, "frecuencia_socios_previos": null}, {"local": "Beccar", "mes": "2026-08", "socios_activos": 52, "compras": 78, "frecuencia": 1.5, "retencion": 0.31, "frecuencia_socios_previos": 2.33}, {"local": "Beccar", "mes": "2026-09", "socios_activos": 142, "compras": 224, "frecuencia": 1.58, "retencion": 0.5, "frecuencia_socios_previos": 2.38}, {"local": "Beccar", "mes": "2026-10", "socios_activos": 1098, "compras": 1857, "frecuencia": 1.69, "retencion": 0.739, "frecuencia_socios_previos": 2.85}, {"local": "Florida", "mes": "2026-07", "socios_activos": 151, "compras": 285, "frecuencia": 1.89, "retencion": null, "frecuencia_socios_previos": null}, {"local": "Florida", "mes": "2026-08", "socios_activos": 274, "compras": 555, "frecuencia": 2.03, "retencion": 0.695, "frecuencia_socios_previos": 2.87}, {"local": "Florida", "mes": "2026-09", "socios_activos": 407, "compras": 890, "frecuencia": 2.19, "retencion": 0.69, "frecuencia_socios_previos": 2.69}, {"local": "Florida", "mes": "2026-10", "socios_activos": 977, "compras": 1908, "frecuencia": 1.95, "retencion": 0.725, "frecuencia_socios_previos": 2.63}, {"local": "Paz", "mes": "2026-07", "socios_activos": 86, "compras": 111, "frecuencia": 1.29, "retencion": null, "frecuencia_socios_previos": null}, {"local": "Paz", "mes": "2026-08", "socios_activos": 84, "compras": 128, "frecuencia": 1.52, "retencion": 0.267, "frecuencia_socios_previos": 1.83}, {"local": "Paz", "mes": "2026-09", "socios_activos": 104, "compras": 179, "frecuencia": 1.72, "retencion": 0.417, "frecuencia_socios_previos": 2.24}, {"local": "Paz", "mes": "2026-10", "socios_activos": 676, "compras": 1096, "frecuencia": 1.62, "retencion": 0.606, "frecuencia_socios_previos": 2.46}], "semanal": [{"local": "Total", "semana": "2026-08-31", "dias": 6, "compras": 198, "primeras_compras": 60, "compras_que_vuelven": 138, "con_cupon": 55, "sin_cupon": 143, "venta": 5361907}, {"local": "Total", "semana": "2026-09-07", "dias": 7, "compras": 273, "primeras_compras": 69, "compras_que_vuelven": 204, "con_cupon": 56, "sin_cupon": 217, "venta": 7105104}, {"local": "Total", "semana": "2026-09-14", "dias": 7, "compras": 305, "primeras_compras": 84, "compras_que_vuelven": 221, "con_cupon": 84, "sin_cupon": 221, "venta": 8654665}, {"local": "Total", "semana": "2026-09-21", "dias": 7, "compras": 372, "primeras_compras": 115, "compras_que_vuelven": 257, "con_cupon": 113, "sin_cupon": 259, "venta": 10557734}, {"local": "Total", "semana": "2026-09-28", "dias": 7, "compras": 706, "primeras_compras": 352, "compras_que_vuelven": 354, "con_cupon": 352, "sin_cupon": 354, "venta": 19211919}, {"local": "Total", "semana": "2026-10-05", "dias": 7, "compras": 1059, "primeras_compras": 583, "compras_que_vuelven": 476, "con_cupon": 627, "sin_cupon": 432, "venta": 29456014}, {"local": "Total", "semana": "2026-10-12", "dias": 7, "compras": 1204, "primeras_compras": 592, "compras_que_vuelven": 612, "con_cupon": 653, "sin_cupon": 551, "venta": 32169879}, {"local": "Total", "semana": "2026-10-19", "dias": 7, "compras": 1291, "primeras_compras": 528, "compras_que_vuelven": 763, "con_cupon": 650, "sin_cupon": 641, "venta": 32995498}, {"local": "Total", "semana": "2026-10-26", "dias": 4, "compras": 810, "primeras_compras": 233, "compras_que_vuelven": 577, "con_cupon": 326, "sin_cupon": 484, "venta": 19779820}, {"local": "Beccar", "semana": "2026-08-31", "dias": 4, "compras": 13, "primeras_compras": 3, "compras_que_vuelven": 10, "con_cupon": 6, "sin_cupon": 7, "venta": 398915}, {"local": "Beccar", "semana": "2026-09-07", "dias": 7, "compras": 17, "primeras_compras": 6, "compras_que_vuelven": 11, "con_cupon": 9, "sin_cupon": 8, "venta": 524575}, {"local": "Beccar", "semana": "2026-09-14", "dias": 7, "compras": 57, "primeras_compras": 32, "compras_que_vuelven": 25, "con_cupon": 21, "sin_cupon": 36, "venta": 1653263}, {"local": "Beccar", "semana": "2026-09-21", "dias": 7, "compras": 104, "primeras_compras": 59, "compras_que_vuelven": 45, "con_cupon": 50, "sin_cupon": 54, "venta": 2893126}, {"local": "Beccar", "semana": "2026-09-28", "dias": 7, "compras": 243, "primeras_compras": 160, "compras_que_vuelven": 83, "con_cupon": 148, "sin_cupon": 95, "venta": 6691372}, {"local": "Beccar", "semana": "2026-10-05", "dias": 7, "compras": 426, "primeras_compras": 285, "compras_que_vuelven": 141, "con_cupon": 292, "sin_cupon": 134, "venta": 11221750}, {"local": "Beccar", "semana": "2026-10-12", "dias": 7, "compras": 469, "primeras_compras": 267, "compras_que_vuelven": 202, "con_cupon": 251, "sin_cupon": 218, "venta": 12229177}, {"local": "Beccar", "semana": "2026-10-19", "dias": 7, "compras": 457, "primeras_compras": 202, "compras_que_vuelven": 255, "con_cupon": 207, "sin_cupon": 250, "venta": 11499317}, {"local": "Beccar", "semana": "2026-10-26", "dias": 4, "compras": 308, "primeras_compras": 92, "compras_que_vuelven": 216, "con_cupon": 118, "sin_cupon": 190, "venta": 7909098}, {"local": "Florida", "semana": "2026-08-31", "dias": 6, "compras": 155, "primeras_compras": 41, "compras_que_vuelven": 114, "con_cupon": 35, "sin_cupon": 120, "venta": 3654637}, {"local": "Florida", "semana": "2026-09-07", "dias": 7, "compras": 213, "primeras_compras": 52, "compras_que_vuelven": 161, "con_cupon": 36, "sin_cupon": 177, "venta": 5139101}, {"local": "Florida", "semana": "2026-09-14", "dias": 7, "compras": 211, "primeras_compras": 45, "compras_que_vuelven": 166, "con_cupon": 52, "sin_cupon": 159, "venta": 5900442}, {"local": "Florida", "semana": "2026-09-21", "dias": 7, "compras": 216, "primeras_compras": 38, "compras_que_vuelven": 178, "con_cupon": 44, "sin_cupon": 172, "venta": 5737638}, {"local": "Florida", "semana": "2026-09-28", "dias": 7, "compras": 302, "primeras_compras": 93, "compras_que_vuelven": 209, "con_cupon": 106, "sin_cupon": 196, "venta": 7377967}, {"local": "Florida", "semana": "2026-10-05", "dias": 7, "compras": 342, "primeras_compras": 108, "compras_que_vuelven": 234, "con_cupon": 138, "sin_cupon": 204, "venta": 9000799}, {"local": "Florida", "semana": "2026-10-12", "dias": 7, "compras": 478, "primeras_compras": 179, "compras_que_vuelven": 299, "con_cupon": 231, "sin_cupon": 247, "venta": 12528605}, {"local": "Florida", "semana": "2026-10-19", "dias": 7, "compras": 570, "primeras_compras": 213, "compras_que_vuelven": 357, "con_cupon": 292, "sin_cupon": 278, "venta": 14496639}, {"local": "Florida", "semana": "2026-10-26", "dias": 4, "compras": 351, "primeras_compras": 96, "compras_que_vuelven": 255, "con_cupon": 132, "sin_cupon": 219, "venta": 7988993}, {"local": "Paz", "semana": "2026-08-31", "dias": 6, "compras": 30, "primeras_compras": 16, "compras_que_vuelven": 14, "con_cupon": 14, "sin_cupon": 16, "venta": 1308355}, {"local": "Paz", "semana": "2026-09-07", "dias": 7, "compras": 43, "primeras_compras": 11, "compras_que_vuelven": 32, "con_cupon": 11, "sin_cupon": 32, "venta": 1441428}, {"local": "Paz", "semana": "2026-09-14", "dias": 7, "compras": 37, "primeras_compras": 7, "compras_que_vuelven": 30, "con_cupon": 11, "sin_cupon": 26, "venta": 1100960}, {"local": "Paz", "semana": "2026-09-21", "dias": 7, "compras": 52, "primeras_compras": 18, "compras_que_vuelven": 34, "con_cupon": 19, "sin_cupon": 33, "venta": 1926970}, {"local": "Paz", "semana": "2026-09-28", "dias": 7, "compras": 161, "primeras_compras": 99, "compras_que_vuelven": 62, "con_cupon": 98, "sin_cupon": 63, "venta": 5142580}, {"local": "Paz", "semana": "2026-10-05", "dias": 7, "compras": 291, "primeras_compras": 190, "compras_que_vuelven": 101, "con_cupon": 197, "sin_cupon": 94, "venta": 9233465}, {"local": "Paz", "semana": "2026-10-12", "dias": 7, "compras": 257, "primeras_compras": 146, "compras_que_vuelven": 111, "con_cupon": 171, "sin_cupon": 86, "venta": 7412097}, {"local": "Paz", "semana": "2026-10-19", "dias": 7, "compras": 264, "primeras_compras": 113, "compras_que_vuelven": 151, "con_cupon": 151, "sin_cupon": 113, "venta": 6999542}, {"local": "Paz", "semana": "2026-10-26", "dias": 4, "compras": 151, "primeras_compras": 45, "compras_que_vuelven": 106, "con_cupon": 76, "sin_cupon": 75, "venta": 3881730}], "cohortes": [{"local": "Total", "semana": "2026-08-31", "nuevos": 73, "volvieron_7d": 0.274, "volvieron_14d": 0.384, "ya_volvieron": 0.74}, {"local": "Total", "semana": "2026-09-07", "nuevos": 65, "volvieron_7d": 0.231, "volvieron_14d": 0.369, "ya_volvieron": 0.646}, {"local": "Total", "semana": "2026-09-14", "nuevos": 81, "volvieron_7d": 0.21, "volvieron_14d": 0.395, "ya_volvieron": 0.716}, {"local": "Total", "semana": "2026-09-21", "nuevos": 113, "volvieron_7d": 0.301, "volvieron_14d": 0.469, "ya_volvieron": 0.681}, {"local": "Total", "semana": "2026-09-28", "nuevos": 346, "volvieron_7d": 0.182, "volvieron_14d": 0.298, "ya_volvieron": 0.439}, {"local": "Total", "semana": "2026-10-05", "nuevos": 572, "volvieron_7d": 0.168, "volvieron_14d": 0.28, "ya_volvieron": 0.374}, {"local": "Total", "semana": "2026-10-12", "nuevos": 568, "volvieron_7d": 0.146, "volvieron_14d": null, "ya_volvieron": 0.303}, {"local": "Total", "semana": "2026-10-19", "nuevos": 504, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.177}, {"local": "Total", "semana": "2026-10-26", "nuevos": 226, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.049}, {"local": "Beccar", "semana": "2026-08-31", "nuevos": 4, "volvieron_7d": 0.0, "volvieron_14d": 0.0, "ya_volvieron": 1.0}, {"local": "Beccar", "semana": "2026-09-07", "nuevos": 6, "volvieron_7d": 0.167, "volvieron_14d": 0.167, "ya_volvieron": 0.667}, {"local": "Beccar", "semana": "2026-09-14", "nuevos": 32, "volvieron_7d": 0.094, "volvieron_14d": 0.375, "ya_volvieron": 0.75}, {"local": "Beccar", "semana": "2026-09-21", "nuevos": 58, "volvieron_7d": 0.345, "volvieron_14d": 0.517, "ya_volvieron": 0.724}, {"local": "Beccar", "semana": "2026-09-28", "nuevos": 159, "volvieron_7d": 0.176, "volvieron_14d": 0.308, "ya_volvieron": 0.459}, {"local": "Beccar", "semana": "2026-10-05", "nuevos": 279, "volvieron_7d": 0.161, "volvieron_14d": 0.265, "ya_volvieron": 0.38}, {"local": "Beccar", "semana": "2026-10-12", "nuevos": 253, "volvieron_7d": 0.123, "volvieron_14d": null, "ya_volvieron": 0.292}, {"local": "Beccar", "semana": "2026-10-19", "nuevos": 197, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.152}, {"local": "Beccar", "semana": "2026-10-26", "nuevos": 92, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.054}, {"local": "Florida", "semana": "2026-08-31", "nuevos": 51, "volvieron_7d": 0.314, "volvieron_14d": 0.471, "ya_volvieron": 0.706}, {"local": "Florida", "semana": "2026-09-07", "nuevos": 49, "volvieron_7d": 0.265, "volvieron_14d": 0.429, "ya_volvieron": 0.694}, {"local": "Florida", "semana": "2026-09-14", "nuevos": 42, "volvieron_7d": 0.286, "volvieron_14d": 0.429, "ya_volvieron": 0.738}, {"local": "Florida", "semana": "2026-09-21", "nuevos": 38, "volvieron_7d": 0.316, "volvieron_14d": 0.447, "ya_volvieron": 0.711}, {"local": "Florida", "semana": "2026-09-28", "nuevos": 89, "volvieron_7d": 0.213, "volvieron_14d": 0.337, "ya_volvieron": 0.539}, {"local": "Florida", "semana": "2026-10-05", "nuevos": 106, "volvieron_7d": 0.208, "volvieron_14d": 0.358, "ya_volvieron": 0.481}, {"local": "Florida", "semana": "2026-10-12", "nuevos": 170, "volvieron_7d": 0.182, "volvieron_14d": null, "ya_volvieron": 0.324}, {"local": "Florida", "semana": "2026-10-19", "nuevos": 201, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.194}, {"local": "Florida", "semana": "2026-10-26", "nuevos": 90, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.044}, {"local": "Paz", "semana": "2026-08-31", "nuevos": 18, "volvieron_7d": 0.222, "volvieron_14d": 0.222, "ya_volvieron": 0.778}, {"local": "Paz", "semana": "2026-09-07", "nuevos": 10, "volvieron_7d": 0.1, "volvieron_14d": 0.2, "ya_volvieron": 0.4}, {"local": "Paz", "semana": "2026-09-14", "nuevos": 7, "volvieron_7d": 0.286, "volvieron_14d": 0.286, "ya_volvieron": 0.429}, {"local": "Paz", "semana": "2026-09-21", "nuevos": 17, "volvieron_7d": 0.118, "volvieron_14d": 0.353, "ya_volvieron": 0.471}, {"local": "Paz", "semana": "2026-09-28", "nuevos": 98, "volvieron_7d": 0.163, "volvieron_14d": 0.245, "ya_volvieron": 0.316}, {"local": "Paz", "semana": "2026-10-05", "nuevos": 187, "volvieron_7d": 0.155, "volvieron_14d": 0.257, "ya_volvieron": 0.305}, {"local": "Paz", "semana": "2026-10-12", "nuevos": 145, "volvieron_7d": 0.145, "volvieron_14d": null, "ya_volvieron": 0.297}, {"local": "Paz", "semana": "2026-10-19", "nuevos": 106, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.189}, {"local": "Paz", "semana": "2026-10-26", "nuevos": 44, "volvieron_7d": null, "volvieron_14d": null, "ya_volvieron": 0.045}], "cupones": [{"local": "Total", "cupon": "1 kg con 4 cajas", "activados": 23, "canjeados": 13, "efectividad": 0.565}, {"local": "Total", "cupon": "1 kg con 6 compras", "activados": 82, "canjeados": 16, "efectividad": 0.195}, {"local": "Total", "cupon": "5x4 ravioles", "activados": 284, "canjeados": 218, "efectividad": 0.768}, {"local": "Total", "cupon": "Bienvenida 1 kg", "activados": 1787, "canjeados": 1604, "efectividad": 0.898}, {"local": "Total", "cupon": "Ensaladas 50%", "activados": 540, "canjeados": 416, "efectividad": 0.77}, {"local": "Total", "cupon": "Flanes de regalo", "activados": 184, "canjeados": 89, "efectividad": 0.484}, {"local": "Total", "cupon": "Regalo por compra grande", "activados": 158, "canjeados": 69, "efectividad": 0.437}, {"local": "Total", "cupon": "Salsa de regalo", "activados": 249, "canjeados": 93, "efectividad": 0.373}, {"local": "Total", "cupon": "Sorteo", "activados": 12, "canjeados": 11, "efectividad": 0.917}, {"local": "Beccar", "cupon": "1 kg con 4 cajas", "activados": 1, "canjeados": 1, "efectividad": 1.0}, {"local": "Beccar", "cupon": "1 kg con 6 compras", "activados": 26, "canjeados": 4, "efectividad": 0.154}, {"local": "Beccar", "cupon": "5x4 ravioles", "activados": 53, "canjeados": 30, "efectividad": 0.566}, {"local": "Beccar", "cupon": "Bienvenida 1 kg", "activados": 874, "canjeados": 813, "efectividad": 0.93}, {"local": "Beccar", "cupon": "Ensaladas 50%", "activados": 112, "canjeados": 93, "efectividad": 0.83}, {"local": "Beccar", "cupon": "Flanes de regalo", "activados": 33, "canjeados": 16, "efectividad": 0.485}, {"local": "Beccar", "cupon": "Regalo por compra grande", "activados": 35, "canjeados": 17, "efectividad": 0.486}, {"local": "Beccar", "cupon": "Salsa de regalo", "activados": 51, "canjeados": 21, "efectividad": 0.412}, {"local": "Florida", "cupon": "1 kg con 4 cajas", "activados": 16, "canjeados": 11, "efectividad": 0.688}, {"local": "Florida", "cupon": "1 kg con 6 compras", "activados": 48, "canjeados": 8, "efectividad": 0.167}, {"local": "Florida", "cupon": "5x4 ravioles", "activados": 117, "canjeados": 95, "efectividad": 0.812}, {"local": "Florida", "cupon": "Bienvenida 1 kg", "activados": 474, "canjeados": 409, "efectividad": 0.863}, {"local": "Florida", "cupon": "Ensaladas 50%", "activados": 252, "canjeados": 185, "efectividad": 0.734}, {"local": "Florida", "cupon": "Flanes de regalo", "activados": 93, "canjeados": 43, "efectividad": 0.462}, {"local": "Florida", "cupon": "Regalo por compra grande", "activados": 97, "canjeados": 44, "efectividad": 0.454}, {"local": "Florida", "cupon": "Salsa de regalo", "activados": 142, "canjeados": 49, "efectividad": 0.345}, {"local": "Florida", "cupon": "Sorteo", "activados": 7, "canjeados": 7, "efectividad": 1.0}, {"local": "Paz", "cupon": "1 kg con 4 cajas", "activados": 6, "canjeados": 1, "efectividad": 0.167}, {"local": "Paz", "cupon": "1 kg con 6 compras", "activados": 8, "canjeados": 4, "efectividad": 0.5}, {"local": "Paz", "cupon": "5x4 ravioles", "activados": 114, "canjeados": 93, "efectividad": 0.816}, {"local": "Paz", "cupon": "Bienvenida 1 kg", "activados": 439, "canjeados": 382, "efectividad": 0.87}, {"local": "Paz", "cupon": "Ensaladas 50%", "activados": 176, "canjeados": 138, "efectividad": 0.784}, {"local": "Paz", "cupon": "Flanes de regalo", "activados": 58, "canjeados": 30, "efectividad": 0.517}, {"local": "Paz", "cupon": "Regalo por compra grande", "activados": 26, "canjeados": 8, "efectividad": 0.308}, {"local": "Paz", "cupon": "Salsa de regalo", "activados": 56, "canjeados": 23, "efectividad": 0.411}, {"local": "Paz", "cupon": "Sorteo", "activados": 5, "canjeados": 4, "efectividad": 0.8}]};
+(function(){const p={local:'Total'};const draws={};const ons=[];
+const cs=()=>{const s=getComputedStyle(document.documentElement);return ['--c0','--c1','--c2'].map(v=>s.getPropertyValue(v).trim());};
+window.dash={colors:cs(),data:(id)=>({status:'ok',data:(DATA[id]||[]).map(r=>Object.assign({},r))}),params:()=>Object.assign({},p),
+setParams:(o)=>{Object.assign(p,o);dash.run();},resetParams:()=>{p.local='Total';dash.run();},onData:(f)=>{ons.push(f);},draw:(n,f)=>{draws[n]=f;},setLink:()=>{},
+run:()=>{dash.colors=cs();ons.forEach(f=>f());Object.keys(draws).forEach(n=>document.querySelectorAll('[data-draw="'+n+'"]').forEach(el=>draws[n](el)));}};
+let t;window.addEventListener('resize',()=>{clearTimeout(t);t=setTimeout(dash.run,150);});
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>dash.run());})();
+</script>
+<script>
+(() => {
+  const L = () => dash.params().local || 'Total';
+  const es = d3.formatLocale({decimal: ',', thousands: '.', grouping: [3], currency: ['$', ''], percent: '%'});
+  const fmt = {
+    int: es.format(',d'),
+    pct: es.format('.0%'),
+    money: (x) => '$' + es.format(',.0f')(x),
+    moneyc: (x) => '$' + new Intl.NumberFormat('es-AR', {notation: 'compact', maximumFractionDigits: 1}).format(x),
+    dec: es.format('.1f'),
+  };
+  const enc = (s) => encodeURIComponent(s);
+  const rowsOf = (id) => { const g = dash.data(id); return g.status === 'ok' ? g.data.filter((r) => r.local === L()) : null; };
+  const css = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+  window.clTip = (box) => {
+    let t = box.querySelector('.tip');
+    if (!t) { t = document.createElement('div'); t.className = 'tip'; t.hidden = true; box.appendChild(t); }
+    return {
+      show(ev, lines) {
+        t.replaceChildren(...lines.map((l, i) => { const d = document.createElement('div'); if (i === 0) d.className = 'h'; d.textContent = l; return d; }));
+        t.hidden = false;
+        const r = box.getBoundingClientRect(); const w = t.offsetWidth, h = t.offsetHeight;
+        let x = ev.clientX - r.left + 12, y = ev.clientY - r.top - h - 8;
+        if (x + w > r.width) x = ev.clientX - r.left - w - 12;
+        if (x < 0) x = 0; if (y < 0) y = ev.clientY - r.top + 12;
+        t.style.left = x + 'px'; t.style.top = y + 'px';
+      },
+      hide() { t.hidden = true; },
+    };
+  };
+
+  document.querySelectorAll('.cl-filter button').forEach((b) => b.addEventListener('click', () => dash.setParams({local: b.dataset.local})));
+  dash.onData(() => {
+    document.querySelectorAll('.cl-filter button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.local === L())));
+  });
+
+  dash.draw('loc-name', (el) => { el.textContent = L() === 'Total' ? 'los tres locales' : L(); });
+
+  dash.draw('kpi', (el) => {
+    const rows = rowsOf('locales'); const f = el.dataset.f;
+    if (!rows || !rows.length || rows[0][f] == null) { el.textContent = '—'; return; }
+    const s = document.createElement('span');
+    s.dataset.source = 'locales'; s.dataset.field = f; s.dataset.where = 'local=' + enc(L());
+    s.textContent = fmt[el.dataset.fmt](rows[0][f]);
+    el.replaceChildren(s);
+  });
+
+  dash.draw('reg', (el) => {
+    const g = dash.data('registros');
+    const r = g.status === 'ok' ? g.data.find((x) => x.club === el.dataset.club) : null;
+    if (!r) { el.textContent = '—'; return; }
+    const s = document.createElement('span');
+    s.dataset.source = 'registros'; s.dataset.field = el.dataset.f; s.dataset.where = 'club=' + enc(el.dataset.club);
+    s.textContent = fmt.int(r[el.dataset.f]);
+    el.replaceChildren(s);
+  });
+
+  dash.draw('seg-n', (el) => {
+    const rows = rowsOf('segmentos'); const r = rows && rows.find((x) => x.segmento === el.dataset.seg);
+    if (!r) { el.textContent = '—'; return; }
+    const s = document.createElement('span');
+    s.dataset.source = 'segmentos'; s.dataset.field = 'socios'; s.dataset.where = 'local=' + enc(L()) + '&segmento=' + enc(el.dataset.seg);
+    s.textContent = fmt.int(r.socios);
+    el.replaceChildren(s);
+  });
+
+  dash.draw('sw0', (el) => { el.style.background = dash.colors[0]; });
+  dash.draw('sw1', (el) => { el.style.background = dash.colors[1]; });
+
+  const segColor = {Frecuentes: 0, Recurrentes: 0, Nuevos: 1, Ocasionales: 1, 'En riesgo': 2, Dormidos: 2};
+  dash.draw('seg-table', (tb) => {
+    const rows = rowsOf('segmentos');
+    tb.replaceChildren();
+    if (!rows) return;
+    const max = d3.max(rows, (r) => r.pct_socios) || 1;
+    rows.sort((a, b) => a.orden - b.orden).forEach((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = enc(r.local) + ',' + enc(r.segmento);
+      const td = (txt, cls) => { const c = document.createElement('td'); if (cls) c.className = cls; c.textContent = txt; tr.appendChild(c); return c; };
+      td(r.segmento, 'seg');
+      td(fmt.int(r.socios));
+      const c = td(''); const bar = document.createElement('span'); bar.className = 'bar';
+      bar.style.width = Math.max(2, 60 * r.pct_socios / max) + 'px';
+      bar.style.background = ['var(--color-ok)', dash.colors[0], 'var(--color-bad)'][segColor[r.segmento]];
+      c.append(bar, document.createTextNode(fmt.pct(r.pct_socios)));
+      td(fmt.pct(r.pct_venta_30d));
+      td(r.ticket == null ? '—' : fmt.money(r.ticket));
+      td(r.pct_compras_con_cupon == null ? '—' : fmt.pct(r.pct_compras_con_cupon));
+      td(r.definicion, 'txt');
+      td(r.accion, 'txt');
+      tb.appendChild(tr);
+    });
+  });
+
+  dash.draw('split', (el) => {
+    const rows = rowsOf('locales'); el.replaceChildren();
+    if (!rows || !rows.length) { el.textContent = '—'; return; }
+    const r = rows[0]; const tot = r.compras;
+    [[r.compras_solo_bienvenida, 'var(--cds-chart-muted)', 'Solo bienvenida'], [r.compras_con_cupon - r.compras_solo_bienvenida, dash.colors[0], 'Otros cupones'], [r.compras_sin_cupon, dash.colors[1], 'Sin cupón']].forEach(([n, col, lab]) => {
+      const s = document.createElement('span'); s.style.width = (100 * n / tot) + '%'; s.style.background = col;
+      s.setAttribute('aria-label', lab + ': ' + fmt.int(n) + ' (' + fmt.pct(n / tot) + ')');
+      s.setAttribute('title', '');
+      el.appendChild(s);
+    });
+  });
+
+  const axisClean = (g) => { g.attr('font-size', null).attr('font-family', null); g.selectAll('.domain').attr('stroke', 'var(--cds-chart-axis)'); g.selectAll('line').attr('stroke', 'var(--cds-chart-grid)'); g.selectAll('text').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)'); };
+
+  dash.draw('frec', (el) => {
+    const rows = rowsOf('frecuencia'); el.replaceChildren();
+    if (!rows) return;
+    rows.sort((a, b) => a.orden - b.orden);
+    const W = el.clientWidth || 360, H = 220, m = {t: 18, r: 8, b: 62, l: 8};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const x = d3.scaleBand(rows.map((r) => r.compras_en_octubre), [m.l, W - m.r]).padding(0.25);
+    const y = d3.scaleLinear([0, d3.max(rows, (r) => r.socios) || 1], [H - m.b, m.t]);
+    const tip = clTip(el);
+    svg.selectAll('rect').data(rows).join('rect').attr('x', (d) => x(d.compras_en_octubre)).attr('width', x.bandwidth()).attr('y', (d) => y(d.socios)).attr('height', (d) => y(0) - y(d.socios)).attr('rx', 3)
+      .attr('fill', (d, i) => i === rows.length - 1 ? dash.colors[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (ev, d) => tip.show(ev, [d.compras_en_octubre + (d.compras_en_octubre === '1' ? ' compra' : ' compras'), fmt.int(d.socios) + ' socios', fmt.pct(d.pct_venta) + ' de la venta', 'Ticket ' + fmt.money(d.ticket), fmt.pct(d.pct_con_cupon) + ' con cupón']))
+      .on('mouseleave', () => tip.hide());
+    const lab = svg.append('g').attr('fill', 'var(--color-fg)').style('font-size', 'var(--cds-font-size-caption)').attr('text-anchor', 'middle');
+    rows.forEach((d) => {
+      const cx = x(d.compras_en_octubre) + x.bandwidth() / 2;
+      lab.append('text').attr('x', cx).attr('y', y(d.socios) - 4).text(fmt.int(d.socios));
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 16).attr('font-weight', 600).text(d.compras_en_octubre === '1' ? '1 compra' : d.compras_en_octubre);
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 32).attr('fill', 'var(--color-fg-muted)').text(fmt.pct(d.pct_venta));
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 48).attr('fill', 'var(--color-fg-muted)').text(fmt.pct(d.pct_con_cupon));
+    });
+  });
+
+  dash.draw('semanal', (el) => {
+    const rows = rowsOf('semanal'); el.replaceChildren();
+    if (!rows) return;
+    rows.sort((a, b) => a.semana.localeCompare(b.semana));
+    const W = el.clientWidth || 360, H = 220, m = {t: 10, r: 8, b: 24, l: 40};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const x = d3.scaleBand(rows.map((r) => r.semana), [m.l, W - m.r]).padding(0.2);
+    const y = d3.scaleLinear([0, d3.max(rows, (r) => r.compras) || 1], [H - m.b, m.t]).nice();
+    svg.append('g').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(4).tickSize(-(W - m.l - m.r)).tickFormat(es.format(',d'))).call(axisClean).call((g) => g.select('.domain').remove());
+    const df = (s) => { const [yy, mm, dd] = s.split('-'); return +dd + '/' + +mm; };
+    const every = Math.ceil(rows.length / Math.max(2, Math.floor((W - m.l) / 46)));
+    svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickSize(0).tickPadding(6).tickFormat((d, i) => i % every === 0 ? df(d) : '')).call(axisClean);
+    const tip = clTip(el);
+    const g = svg.append('g').selectAll('g').data(rows).join('g').attr('opacity', (d) => d.dias < 7 ? 0.5 : 1);
+    g.append('rect').attr('x', (d) => x(d.semana)).attr('width', x.bandwidth()).attr('y', (d) => y(d.compras_que_vuelven)).attr('height', (d) => y(0) - y(d.compras_que_vuelven)).attr('fill', dash.colors[0]);
+    g.append('rect').attr('x', (d) => x(d.semana)).attr('width', x.bandwidth()).attr('y', (d) => y(d.compras)).attr('height', (d) => y(d.compras_que_vuelven) - y(d.compras)).attr('fill', 'var(--cds-chart-muted)').attr('rx', 2);
+    g.on('mousemove', (ev, d) => tip.show(ev, ['Semana del ' + df(d.semana) + (d.dias < 7 ? ' (' + d.dias + ' días)' : ''), fmt.int(d.compras) + ' compras', fmt.int(d.compras_que_vuelven) + ' de socios que vuelven (' + fmt.pct(d.compras_que_vuelven / d.compras) + ')', fmt.int(d.primeras_compras) + ' primeras compras', fmt.int(d.con_cupon) + ' con cupón'])).on('mouseleave', () => tip.hide());
+  });
+
+  dash.draw('cohortes', (el) => {
+    const all = rowsOf('cohortes'); el.replaceChildren();
+    if (!all) return;
+    const rows = all.filter((r) => r.volvieron_7d != null && r.nuevos >= 5).sort((a, b) => a.semana.localeCompare(b.semana));
+    const W = el.clientWidth || 360, H = 220, m = {t: 18, r: 8, b: 24, l: 8};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const x = d3.scaleBand(rows.map((r) => r.semana), [m.l, W - m.r]).padding(0.25);
+    const y = d3.scaleLinear([0, Math.max(0.35, d3.max(rows, (r) => r.volvieron_7d) || 0)], [H - m.b, m.t]);
+    const df = (s) => { const [yy, mm, dd] = s.split('-'); return +dd + '/' + +mm; };
+    const tip = clTip(el);
+    svg.selectAll('rect').data(rows).join('rect').attr('x', (d) => x(d.semana)).attr('width', x.bandwidth()).attr('y', (d) => y(d.volvieron_7d)).attr('height', (d) => y(0) - y(d.volvieron_7d)).attr('rx', 3)
+      .attr('fill', (d) => d.semana >= '2026-09-28' ? dash.colors[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (ev, d) => tip.show(ev, ['Primera compra la semana del ' + df(d.semana), fmt.int(d.nuevos) + ' socios nuevos', fmt.pct(d.volvieron_7d) + ' volvió en 7 días', d.volvieron_14d == null ? 'Aún no cumplió 14 días' : fmt.pct(d.volvieron_14d) + ' volvió en 14 días', fmt.pct(d.ya_volvieron) + ' ya volvió alguna vez']))
+      .on('mouseleave', () => tip.hide());
+    const lab = svg.append('g').style('font-size', 'var(--cds-font-size-caption)').attr('text-anchor', 'middle');
+    rows.forEach((d) => {
+      const cx = x(d.semana) + x.bandwidth() / 2;
+      lab.append('text').attr('x', cx).attr('y', y(d.volvieron_7d) - 4).attr('fill', 'var(--color-fg)').text(fmt.pct(d.volvieron_7d));
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 16).attr('fill', 'var(--color-fg-muted)').text(df(d.semana));
+    });
+  });
+
+  dash.draw('mensual', (el) => {
+    const all = rowsOf('retencion'); el.replaceChildren();
+    if (!all) return;
+    const rows = all.filter((r) => r.retencion != null).sort((a, b) => a.mes.localeCompare(b.mes));
+    const mesN = {'2026-07': 'jul', '2026-08': 'ago', '2026-09': 'sep', '2026-10': 'oct'};
+    const W = el.clientWidth || 360, H = 220, m = {t: 18, r: 8, b: 44, l: 8};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const x = d3.scaleBand(rows.map((r) => r.mes), [m.l, W - m.r]).padding(0.35);
+    const y = d3.scaleLinear([0, 1], [H - m.b, m.t]);
+    const tip = clTip(el);
+    svg.selectAll('rect').data(rows).join('rect').attr('x', (d) => x(d.mes)).attr('width', x.bandwidth()).attr('y', (d) => y(d.retencion)).attr('height', (d) => y(0) - y(d.retencion)).attr('rx', 3)
+      .attr('fill', (d, i) => i === rows.length - 1 ? dash.colors[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (ev, d) => tip.show(ev, [mesN[d.mes], fmt.pct(d.retencion) + ' volvió del mes anterior', fmt.int(d.socios_activos) + ' socios activos', fmt.dec(d.frecuencia_socios_previos) + ' compras por socio que ya venía']))
+      .on('mouseleave', () => tip.hide());
+    const lab = svg.append('g').style('font-size', 'var(--cds-font-size-caption)').attr('text-anchor', 'middle');
+    rows.forEach((d) => {
+      const cx = x(d.mes) + x.bandwidth() / 2;
+      lab.append('text').attr('x', cx).attr('y', y(d.retencion) - 4).attr('fill', 'var(--color-fg)').text(fmt.pct(d.retencion));
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 16).attr('fill', 'var(--color-fg)').attr('font-weight', 600).text(mesN[d.mes]);
+      lab.append('text').attr('x', cx).attr('y', H - m.b + 32).attr('fill', 'var(--color-fg-muted)').text(fmt.dec(d.frecuencia_socios_previos));
+    });
+  });
+
+  dash.draw('cup-table', (tb) => {
+    const rows = rowsOf('cupones'); tb.replaceChildren();
+    if (!rows) return;
+    rows.sort((a, b) => b.activados - a.activados).forEach((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = enc(r.local) + ',' + enc(r.cupon);
+      const td = (txt) => { const c = document.createElement('td'); c.textContent = txt; tr.appendChild(c); return c; };
+      td(r.cupon); td(fmt.int(r.activados)); td(fmt.int(r.canjeados));
+      const c = td(''); const bar = document.createElement('span'); bar.className = 'bar';
+      bar.style.width = Math.max(2, 60 * r.efectividad) + 'px';
+      bar.style.background = r.efectividad >= 0.7 ? 'var(--color-ok)' : r.efectividad >= 0.4 ? dash.colors[0] : 'var(--color-warn)';
+      c.append(bar, document.createTextNode(fmt.pct(r.efectividad)));
+      tb.appendChild(tr);
+    });
+  });
+})();
+</script>
+<script>dash.run();</script>
+</body></html>

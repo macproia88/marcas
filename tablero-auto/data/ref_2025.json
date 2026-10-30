@@ -1,0 +1,746 @@
+[
+{
+"fecha": "2026-10-01",
+"local": "Florida",
+"venta_2025": 3661802.9,
+"tickets_mostrador_2025": 170,
+"venta_mostrador_2025": 2660487.9,
+"venta_app_2025": 1001315
+},
+{
+"fecha": "2026-10-02",
+"local": "Florida",
+"venta_2025": 4431937.9,
+"tickets_mostrador_2025": 213,
+"venta_mostrador_2025": 3513144.9,
+"venta_app_2025": 918793
+},
+{
+"fecha": "2026-10-03",
+"local": "Florida",
+"venta_2025": 3726397.3,
+"tickets_mostrador_2025": 165,
+"venta_mostrador_2025": 2988584.3,
+"venta_app_2025": 737813
+},
+{
+"fecha": "2026-10-04",
+"local": "Florida",
+"venta_2025": 5187856.6,
+"tickets_mostrador_2025": 148,
+"venta_mostrador_2025": 3314146.6,
+"venta_app_2025": 1873710
+},
+{
+"fecha": "2026-10-05",
+"local": "Florida",
+"venta_2025": 4263777.2,
+"tickets_mostrador_2025": 174,
+"venta_mostrador_2025": 2748565.2,
+"venta_app_2025": 1515212
+},
+{
+"fecha": "2026-10-06",
+"local": "Florida",
+"venta_2025": 4307724.1,
+"tickets_mostrador_2025": 187,
+"venta_mostrador_2025": 3233602.3,
+"venta_app_2025": 1074121.8
+},
+{
+"fecha": "2026-10-07",
+"local": "Florida",
+"venta_2025": 3846590.2,
+"tickets_mostrador_2025": 187,
+"venta_mostrador_2025": 2873224.2,
+"venta_app_2025": 973366
+},
+{
+"fecha": "2026-10-08",
+"local": "Florida",
+"venta_2025": 3352956.8,
+"tickets_mostrador_2025": 175,
+"venta_mostrador_2025": 2562677.8,
+"venta_app_2025": 790279
+},
+{
+"fecha": "2026-10-09",
+"local": "Florida",
+"venta_2025": 2235591.2,
+"tickets_mostrador_2025": 112,
+"venta_mostrador_2025": 1909097.2,
+"venta_app_2025": 326494
+},
+{
+"fecha": "2026-10-10",
+"local": "Florida",
+"venta_2025": 4281266.4,
+"tickets_mostrador_2025": 171,
+"venta_mostrador_2025": 3421805.4,
+"venta_app_2025": 859461
+},
+{
+"fecha": "2026-10-11",
+"local": "Florida",
+"venta_2025": 6135773.9,
+"tickets_mostrador_2025": 165,
+"venta_mostrador_2025": 3673239.9,
+"venta_app_2025": 2462534
+},
+{
+"fecha": "2026-10-12",
+"local": "Florida",
+"venta_2025": 3645259.1,
+"tickets_mostrador_2025": 153,
+"venta_mostrador_2025": 2498659.1,
+"venta_app_2025": 1146600
+},
+{
+"fecha": "2026-10-13",
+"local": "Florida",
+"venta_2025": 3828501.1,
+"tickets_mostrador_2025": 179,
+"venta_mostrador_2025": 2727020.1,
+"venta_app_2025": 1101481
+},
+{
+"fecha": "2026-10-14",
+"local": "Florida",
+"venta_2025": 3862383.8,
+"tickets_mostrador_2025": 181,
+"venta_mostrador_2025": 2945982.8,
+"venta_app_2025": 916401
+},
+{
+"fecha": "2026-10-15",
+"local": "Florida",
+"venta_2025": 4121258.7,
+"tickets_mostrador_2025": 187,
+"venta_mostrador_2025": 3115897.7,
+"venta_app_2025": 1005361
+},
+{
+"fecha": "2026-10-16",
+"local": "Florida",
+"venta_2025": 4221826.4,
+"tickets_mostrador_2025": 206,
+"venta_mostrador_2025": 3313925.4,
+"venta_app_2025": 907901
+},
+{
+"fecha": "2026-10-17",
+"local": "Florida",
+"venta_2025": 5129588.9,
+"tickets_mostrador_2025": 204,
+"venta_mostrador_2025": 4252425.9,
+"venta_app_2025": 877163
+},
+{
+"fecha": "2026-10-18",
+"local": "Florida",
+"venta_2025": 4014276.2,
+"tickets_mostrador_2025": 129,
+"venta_mostrador_2025": 3211238.2,
+"venta_app_2025": 803038
+},
+{
+"fecha": "2026-10-19",
+"local": "Florida",
+"venta_2025": 3979664.8,
+"tickets_mostrador_2025": 172,
+"venta_mostrador_2025": 2806058.8,
+"venta_app_2025": 1173606
+},
+{
+"fecha": "2026-10-20",
+"local": "Florida",
+"venta_2025": 3459684.7,
+"tickets_mostrador_2025": 159,
+"venta_mostrador_2025": 2370503.7,
+"venta_app_2025": 1089181
+},
+{
+"fecha": "2026-10-21",
+"local": "Florida",
+"venta_2025": 3961085.6,
+"tickets_mostrador_2025": 185,
+"venta_mostrador_2025": 2874460.6,
+"venta_app_2025": 1086625
+},
+{
+"fecha": "2026-10-22",
+"local": "Florida",
+"venta_2025": 3346310.7,
+"tickets_mostrador_2025": 150,
+"venta_mostrador_2025": 2485121.7,
+"venta_app_2025": 861189
+},
+{
+"fecha": "2026-10-23",
+"local": "Florida",
+"venta_2025": 4320169.4,
+"tickets_mostrador_2025": 153,
+"venta_mostrador_2025": 2583107.4,
+"venta_app_2025": 1737062
+},
+{
+"fecha": "2026-10-24",
+"local": "Florida",
+"venta_2025": 6081444.4,
+"tickets_mostrador_2025": 208,
+"venta_mostrador_2025": 4550193.4,
+"venta_app_2025": 1531251
+},
+{
+"fecha": "2026-10-25",
+"local": "Florida",
+"venta_2025": 5152178.5,
+"tickets_mostrador_2025": 171,
+"venta_mostrador_2025": 3951686.5,
+"venta_app_2025": 1200492
+},
+{
+"fecha": "2026-10-26",
+"local": "Florida",
+"venta_2025": 4562119,
+"tickets_mostrador_2025": 193,
+"venta_mostrador_2025": 3163357,
+"venta_app_2025": 1398762
+},
+{
+"fecha": "2026-10-27",
+"local": "Florida",
+"venta_2025": 4742897.4,
+"tickets_mostrador_2025": 212,
+"venta_mostrador_2025": 3348939.4,
+"venta_app_2025": 1393958
+},
+{
+"fecha": "2026-10-28",
+"local": "Florida",
+"venta_2025": 4135787.4,
+"tickets_mostrador_2025": 188,
+"venta_mostrador_2025": 3097064.4,
+"venta_app_2025": 1038723
+},
+{
+"fecha": "2026-10-29",
+"local": "Florida",
+"venta_2025": 4519409.09,
+"tickets_mostrador_2025": 209,
+"venta_mostrador_2025": 3148369.09,
+"venta_app_2025": 1371040
+},
+{
+"fecha": "2026-10-30",
+"local": "Florida",
+"venta_2025": 4004107.4,
+"tickets_mostrador_2025": 187,
+"venta_mostrador_2025": 3006732.4,
+"venta_app_2025": 997375
+},
+{
+"fecha": "2026-10-31",
+"local": "Florida",
+"venta_2025": 6081444.4,
+"tickets_mostrador_2025": 208,
+"venta_mostrador_2025": 4550193.4,
+"venta_app_2025": 1531251
+},
+{
+"fecha": "2026-10-01",
+"local": "Beccar",
+"venta_2025": 2826401.32,
+"tickets_mostrador_2025": 164,
+"venta_mostrador_2025": 2433391.32,
+"venta_app_2025": 393010
+},
+{
+"fecha": "2026-10-02",
+"local": "Beccar",
+"venta_2025": 2981955.9,
+"tickets_mostrador_2025": 183,
+"venta_mostrador_2025": 2645128.6,
+"venta_app_2025": 336827.3
+},
+{
+"fecha": "2026-10-03",
+"local": "Beccar",
+"venta_2025": 2677196.25,
+"tickets_mostrador_2025": 128,
+"venta_mostrador_2025": 2356306.25,
+"venta_app_2025": 320890
+},
+{
+"fecha": "2026-10-04",
+"local": "Beccar",
+"venta_2025": 4774047.85,
+"tickets_mostrador_2025": 185,
+"venta_mostrador_2025": 3813835.85,
+"venta_app_2025": 960212
+},
+{
+"fecha": "2026-10-05",
+"local": "Beccar",
+"venta_2025": 2962376.85,
+"tickets_mostrador_2025": 149,
+"venta_mostrador_2025": 2218663.85,
+"venta_app_2025": 743713
+},
+{
+"fecha": "2026-10-06",
+"local": "Beccar",
+"venta_2025": 2466635.95,
+"tickets_mostrador_2025": 142,
+"venta_mostrador_2025": 2067642.95,
+"venta_app_2025": 398993
+},
+{
+"fecha": "2026-10-07",
+"local": "Beccar",
+"venta_2025": 3149800.35,
+"tickets_mostrador_2025": 149,
+"venta_mostrador_2025": 2810711.35,
+"venta_app_2025": 339089
+},
+{
+"fecha": "2026-10-08",
+"local": "Beccar",
+"venta_2025": 2104394.91,
+"tickets_mostrador_2025": 146,
+"venta_mostrador_2025": 1796309.91,
+"venta_app_2025": 308085
+},
+{
+"fecha": "2026-10-09",
+"local": "Beccar",
+"venta_2025": 1734115.75,
+"tickets_mostrador_2025": 86,
+"venta_mostrador_2025": 1521419.75,
+"venta_app_2025": 212696
+},
+{
+"fecha": "2026-10-10",
+"local": "Beccar",
+"venta_2025": 2549991.05,
+"tickets_mostrador_2025": 132,
+"venta_mostrador_2025": 2339095.05,
+"venta_app_2025": 210896
+},
+{
+"fecha": "2026-10-11",
+"local": "Beccar",
+"venta_2025": 5433628.6,
+"tickets_mostrador_2025": 210,
+"venta_mostrador_2025": 4188770.6,
+"venta_app_2025": 1244858
+},
+{
+"fecha": "2026-10-12",
+"local": "Beccar",
+"venta_2025": 3267098.05,
+"tickets_mostrador_2025": 156,
+"venta_mostrador_2025": 2642631.05,
+"venta_app_2025": 624467
+},
+{
+"fecha": "2026-10-13",
+"local": "Beccar",
+"venta_2025": 2474522.9,
+"tickets_mostrador_2025": 155,
+"venta_mostrador_2025": 2076071.9,
+"venta_app_2025": 398451
+},
+{
+"fecha": "2026-10-14",
+"local": "Beccar",
+"venta_2025": 3024717.5,
+"tickets_mostrador_2025": 151,
+"venta_mostrador_2025": 2530432.5,
+"venta_app_2025": 494285
+},
+{
+"fecha": "2026-10-15",
+"local": "Beccar",
+"venta_2025": 2619519.4,
+"tickets_mostrador_2025": 138,
+"venta_mostrador_2025": 2181030.4,
+"venta_app_2025": 438489
+},
+{
+"fecha": "2026-10-16",
+"local": "Beccar",
+"venta_2025": 3410987.65,
+"tickets_mostrador_2025": 167,
+"venta_mostrador_2025": 2705697.65,
+"venta_app_2025": 705290
+},
+{
+"fecha": "2026-10-17",
+"local": "Beccar",
+"venta_2025": 3792474.25,
+"tickets_mostrador_2025": 176,
+"venta_mostrador_2025": 3243882.25,
+"venta_app_2025": 548592
+},
+{
+"fecha": "2026-10-18",
+"local": "Beccar",
+"venta_2025": 3126441.3,
+"tickets_mostrador_2025": 125,
+"venta_mostrador_2025": 2677349.3,
+"venta_app_2025": 449092
+},
+{
+"fecha": "2026-10-19",
+"local": "Beccar",
+"venta_2025": 2548337,
+"tickets_mostrador_2025": 135,
+"venta_mostrador_2025": 2017143,
+"venta_app_2025": 531194
+},
+{
+"fecha": "2026-10-20",
+"local": "Beccar",
+"venta_2025": 2056956.55,
+"tickets_mostrador_2025": 133,
+"venta_mostrador_2025": 1770458.55,
+"venta_app_2025": 286498
+},
+{
+"fecha": "2026-10-21",
+"local": "Beccar",
+"venta_2025": 2463170.1,
+"tickets_mostrador_2025": 139,
+"venta_mostrador_2025": 2255180.1,
+"venta_app_2025": 207990
+},
+{
+"fecha": "2026-10-22",
+"local": "Beccar",
+"venta_2025": 2353847.15,
+"tickets_mostrador_2025": 138,
+"venta_mostrador_2025": 2002936.15,
+"venta_app_2025": 350911
+},
+{
+"fecha": "2026-10-23",
+"local": "Beccar",
+"venta_2025": 3270555,
+"tickets_mostrador_2025": 154,
+"venta_mostrador_2025": 2458553,
+"venta_app_2025": 812002
+},
+{
+"fecha": "2026-10-24",
+"local": "Beccar",
+"venta_2025": 3996256.1,
+"tickets_mostrador_2025": 184,
+"venta_mostrador_2025": 3270427.1,
+"venta_app_2025": 725829
+},
+{
+"fecha": "2026-10-25",
+"local": "Beccar",
+"venta_2025": 4614721.8,
+"tickets_mostrador_2025": 190,
+"venta_mostrador_2025": 3755966.8,
+"venta_app_2025": 858755
+},
+{
+"fecha": "2026-10-26",
+"local": "Beccar",
+"venta_2025": 3693210.7,
+"tickets_mostrador_2025": 193,
+"venta_mostrador_2025": 2920061.7,
+"venta_app_2025": 773149
+},
+{
+"fecha": "2026-10-27",
+"local": "Beccar",
+"venta_2025": 2902801.4,
+"tickets_mostrador_2025": 170,
+"venta_mostrador_2025": 2341830.4,
+"venta_app_2025": 560971
+},
+{
+"fecha": "2026-10-28",
+"local": "Beccar",
+"venta_2025": 3798008.85,
+"tickets_mostrador_2025": 178,
+"venta_mostrador_2025": 3257342.85,
+"venta_app_2025": 540666
+},
+{
+"fecha": "2026-10-29",
+"local": "Beccar",
+"venta_2025": 2657794.34,
+"tickets_mostrador_2025": 151,
+"venta_mostrador_2025": 2250664.35,
+"venta_app_2025": 407129.99
+},
+{
+"fecha": "2026-10-30",
+"local": "Beccar",
+"venta_2025": 2799071.75,
+"tickets_mostrador_2025": 148,
+"venta_mostrador_2025": 2352767.75,
+"venta_app_2025": 446304
+},
+{
+"fecha": "2026-10-31",
+"local": "Beccar",
+"venta_2025": 3996256.1,
+"tickets_mostrador_2025": 184,
+"venta_mostrador_2025": 3270427.1,
+"venta_app_2025": 725829
+},
+{
+"fecha": "2026-10-01",
+"local": "Paz",
+"venta_2025": 2497320.33,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-02",
+"local": "Paz",
+"venta_2025": 2882011.66666667,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-03",
+"local": "Paz",
+"venta_2025": 5181468.225,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-04",
+"local": "Paz",
+"venta_2025": 4949627.3,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-05",
+"local": "Paz",
+"venta_2025": 2148173.9,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-06",
+"local": "Paz",
+"venta_2025": 2894069.93333333,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-07",
+"local": "Paz",
+"venta_2025": 3308730.13333333,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-08",
+"local": "Paz",
+"venta_2025": 2497320.33,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-09",
+"local": "Paz",
+"venta_2025": 2882011.66666667,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-10",
+"local": "Paz",
+"venta_2025": 5181468.225,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-11",
+"local": "Paz",
+"venta_2025": 4949627.3,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-12",
+"local": "Paz",
+"venta_2025": 1622348.4,
+"tickets_mostrador_2025": 112,
+"venta_mostrador_2025": 1469548.4,
+"venta_app_2025": 152800
+},
+{
+"fecha": "2026-10-13",
+"local": "Paz",
+"venta_2025": 2704073,
+"tickets_mostrador_2025": 150,
+"venta_mostrador_2025": 2470799,
+"venta_app_2025": 233274
+},
+{
+"fecha": "2026-10-14",
+"local": "Paz",
+"venta_2025": 3308730.13333333,
+"tickets_mostrador_2025": null,
+"venta_mostrador_2025": null,
+"venta_app_2025": null
+},
+{
+"fecha": "2026-10-15",
+"local": "Paz",
+"venta_2025": 2428176.49,
+"tickets_mostrador_2025": 123.59,
+"venta_mostrador_2025": 1941420.55,
+"venta_app_2025": 486755.94
+},
+{
+"fecha": "2026-10-16",
+"local": "Paz",
+"venta_2025": 3143451.1,
+"tickets_mostrador_2025": 178,
+"venta_mostrador_2025": 3076103.1,
+"venta_app_2025": 67348
+},
+{
+"fecha": "2026-10-17",
+"local": "Paz",
+"venta_2025": 4846873.25,
+"tickets_mostrador_2025": 175,
+"venta_mostrador_2025": 4403924.25,
+"venta_app_2025": 442949
+},
+{
+"fecha": "2026-10-18",
+"local": "Paz",
+"venta_2025": 4161879.6,
+"tickets_mostrador_2025": 127,
+"venta_mostrador_2025": 4113679.6,
+"venta_app_2025": 48200
+},
+{
+"fecha": "2026-10-19",
+"local": "Paz",
+"venta_2025": 2199393.35,
+"tickets_mostrador_2025": 124,
+"venta_mostrador_2025": 2033293.35,
+"venta_app_2025": 166100
+},
+{
+"fecha": "2026-10-20",
+"local": "Paz",
+"venta_2025": 2541094.3,
+"tickets_mostrador_2025": 151,
+"venta_mostrador_2025": 2326396.3,
+"venta_app_2025": 214698
+},
+{
+"fecha": "2026-10-21",
+"local": "Paz",
+"venta_2025": 2512652.75,
+"tickets_mostrador_2025": 118,
+"venta_mostrador_2025": 2245869.74,
+"venta_app_2025": 266783.01
+},
+{
+"fecha": "2026-10-22",
+"local": "Paz",
+"venta_2025": 2248782.55,
+"tickets_mostrador_2025": 136,
+"venta_mostrador_2025": 2195272.55,
+"venta_app_2025": 53510
+},
+{
+"fecha": "2026-10-23",
+"local": "Paz",
+"venta_2025": 2754728.05,
+"tickets_mostrador_2025": 143,
+"venta_mostrador_2025": 2443911.05,
+"venta_app_2025": 310817
+},
+{
+"fecha": "2026-10-24",
+"local": "Paz",
+"venta_2025": 5516063.2,
+"tickets_mostrador_2025": 192,
+"venta_mostrador_2025": 5387964.2,
+"venta_app_2025": 128099
+},
+{
+"fecha": "2026-10-25",
+"local": "Paz",
+"venta_2025": 5737375,
+"tickets_mostrador_2025": 215,
+"venta_mostrador_2025": 5263375,
+"venta_app_2025": 474000
+},
+{
+"fecha": "2026-10-26",
+"local": "Paz",
+"venta_2025": 2622779.95,
+"tickets_mostrador_2025": 150,
+"venta_mostrador_2025": 2159781.95,
+"venta_app_2025": 462998
+},
+{
+"fecha": "2026-10-27",
+"local": "Paz",
+"venta_2025": 3437042.5,
+"tickets_mostrador_2025": 200,
+"venta_mostrador_2025": 3310144.5,
+"venta_app_2025": 126898
+},
+{
+"fecha": "2026-10-28",
+"local": "Paz",
+"venta_2025": 2989183.85,
+"tickets_mostrador_2025": 162,
+"venta_mostrador_2025": 2820783.85,
+"venta_app_2025": 168400
+},
+{
+"fecha": "2026-10-29",
+"local": "Paz",
+"venta_2025": 2815001.95,
+"tickets_mostrador_2025": 177,
+"venta_mostrador_2025": 2691304.95,
+"venta_app_2025": 123697
+},
+{
+"fecha": "2026-10-30",
+"local": "Paz",
+"venta_2025": 2747855.85,
+"tickets_mostrador_2025": 161,
+"venta_mostrador_2025": 2648458.85,
+"venta_app_2025": 99397
+},
+{
+"fecha": "2026-10-31",
+"local": "Paz",
+"venta_2025": 5516063.2,
+"tickets_mostrador_2025": 192,
+"venta_mostrador_2025": 5387964.2,
+"venta_app_2025": 128099
+}
+]

@@ -1,0 +1,821 @@
+<style>
+.lp{font-family:var(--font-anthropic-sans);display:flex;flex-direction:column;gap:var(--cds-gap-lg);font-variant-numeric:tabular-nums}
+.lp h1{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0;text-wrap:balance}
+.lp .take{color:var(--color-fg-muted);margin:4px 0 0;max-width:70ch}
+.lp .bar{display:flex;flex-wrap:wrap;gap:var(--cds-gap-sm);align-items:center}
+.lp .bar label{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);display:flex;flex-direction:column;gap:2px}
+.lp select,.lp input[type=date]{font:inherit;padding:6px 8px;border:1px solid var(--color-border-line);border-radius:var(--cds-radius);background:var(--color-panel);color:var(--color-fg)}
+.lp .tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--color-border-line)}
+.lp .tabs button{font:inherit;border:0;background:none;color:var(--color-fg-muted);padding:8px 12px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.lp .tabs button[aria-selected=true]{color:var(--color-fg);border-bottom-color:var(--color-fg);font-weight:500}
+.lp .tabs button:focus-visible{outline:2px solid var(--color-fg);outline-offset:2px}
+.lp .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:var(--cds-gap-md)}
+.lp .tile,.lp .card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}
+.lp .tile .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.lp .tile .v{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin-top:4px;line-height:1.15}
+.lp .tile .d{font-size:var(--cds-font-size-caption);margin-top:4px;color:var(--color-fg-muted)}
+.lp .good{color:var(--color-ok)}.lp .bad{color:var(--color-bad)}.lp .warn{color:var(--color-warn)}
+.lp .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));gap:var(--cds-gap-md)}
+.lp .card h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
+.lp .card .note{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:4px 0 var(--cds-gap-sm)}
+.lp .chart{position:relative;min-height:240px}
+.lp .tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);border-radius:var(--cds-radius);box-shadow:var(--cds-shadow-popover);padding:var(--cds-pad-xs) var(--cds-pad-sm);font-size:var(--cds-font-size-caption);white-space:nowrap;z-index:2}
+.lp .tip .h{color:var(--cds-text-secondary)}
+.lp .tw{overflow-x:auto;max-height:520px;overflow-y:auto}
+.lp table{border-collapse:collapse;width:100%;font-size:var(--cds-font-size-caption)}
+.lp th,.lp td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--color-border-line);white-space:nowrap}
+.lp th:first-child,.lp td:first-child{text-align:left}
+.lp th{position:sticky;top:0;background:var(--color-panel);color:var(--color-fg-muted);font-weight:500}
+.lp th button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+@media (max-width:640px){.lp #tb-topm td.l,.lp #tb-topp td.l{white-space:normal;min-width:8rem}.lp #tb-topm th,.lp #tb-topp th{white-space:normal;vertical-align:bottom}.lp #tb-topm td,.lp #tb-topm th,.lp #tb-topp td,.lp #tb-topp th{padding:6px 4px}}
+.lp td.l,.lp #tb-topm th:nth-child(2),.lp #tb-topp th:nth-child(2){text-align:left}
+.lp .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:var(--cds-font-size-caption);border:1px solid var(--color-border-line)}
+.lp .pend{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.lp [data-dash-source-state=empty]{color:transparent}
+.lp [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
+.lp .page{display:flex;flex-direction:column;gap:var(--cds-gap-md)}
+.lp .page[hidden]{display:none}
+@media (max-width:640px){.lp .tiles{grid-template-columns:1fr 1fr}.lp .tile{padding:12px}.lp .tile .v{font-size:22px}}
+.lp svg text{fill:var(--color-fg-muted);font-size:11px}
+@media (max-width:640px){.lp th{white-space:normal;vertical-align:bottom;font-size:12px;line-height:1.25}.lp th,.lp td{padding:6px 4px}.lp td{font-size:13px}
+.lp #tb-vprod th:nth-child(3),.lp #tb-vprod td:nth-child(3),.lp #tb-vprod th:nth-child(8),.lp #tb-vprod td:nth-child(8),.lp #tb-vprod th:nth-child(5),.lp #tb-vprod td:nth-child(5),.lp #tb-fichv th:nth-child(2),.lp #tb-fichv td:nth-child(2),.lp #tb-fichv th:nth-child(3),.lp #tb-fichv td:nth-child(3),.lp #tb-fichv th:nth-child(5),.lp #tb-fichv td:nth-child(5),.lp #tb-fich th:nth-child(2),.lp #tb-fich td:nth-child(2),.lp #tb-fich th:nth-child(4),.lp #tb-fich td:nth-child(4){display:none}}
+.lp .sem .tile{border-left:4px solid var(--color-border-line)}.lp .sem .tile.ok{border-left-color:var(--color-ok)}.lp .sem .tile.bad{border-left-color:var(--color-bad)}.lp .sem .tile.warn{border-left-color:var(--color-warn)}
+.lp .alertas{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}.lp .alertas li{padding-left:14px;border-left:3px solid var(--color-bad)}.lp .alertas b{display:block;font-weight:500}.lp .alertas span{color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)}
+.lp #tb-res tr.tot td{font-weight:600}.lp #tb-avance tr:last-child td{font-weight:600}.lp td .mut{color:var(--color-fg-muted);font-size:12px}
+@media (max-width:640px){.lp #tb-vend2 th:nth-child(2),.lp #tb-vend2 td:nth-child(2),.lp #tb-vend2 th:nth-child(4),.lp #tb-vend2 td:nth-child(4),.lp #tb-vend2 th:nth-child(7),.lp #tb-vend2 td:nth-child(7),.lp #tb-avance th:nth-child(2),.lp #tb-avance td:nth-child(2),.lp #tb-avance th:nth-child(3),.lp #tb-avance td:nth-child(3){display:none}}
+.lp table.cvh td:nth-child(2){text-align:right}.lp table.cvh th:nth-child(2){text-align:right}
+</style>
+
+<div class="lp">
+  <header>
+    <h1 id="titulo">Tablero La Presumida</h1>
+    <p class="take" id="takeaway" data-source="kpi_periodo">—</p>
+  </header>
+
+  <div class="bar">
+    <label>Atajo
+      <select id="f-periodo" aria-label="Atajo de período">
+        <option value="custom">Elegido a mano</option>
+        <option value="oct">Octubre (1 al 25)</option>
+        <option value="sep">Septiembre completo</option>
+        <option value="sep118">Septiembre 1 al 25</option>
+        <option value="ult7">Últimos 7 días cargados</option>
+        <option value="oct_s1">Oct semana 1 (1 al 4)</option>
+        <option value="oct_s2">Oct semana 2 (5 al 11)</option>
+        <option value="oct_s3">Oct semana 3 (12 al 18)</option>
+        <option value="oct_s4">Oct semana 4 (19 al 25)</option>
+        <option value="oct_s5">Oct semana 5 (26 al 29)</option>
+        <option value="sep_s1">Sep semana 1 (1 al 6)</option>
+        <option value="sep_s2">Sep semana 2 (7 al 13)</option>
+        <option value="sep_s3">Sep semana 3 (14 al 20)</option>
+        <option value="sep_s4">Sep semana 4 (21 al 27)</option>
+        <option value="sep_s5">Sep semana 5 (28 al 30)</option>
+      </select>
+    </label>
+    <label>Desde
+      <input type="date" id="f-desde" min="2026-09-01" max="2026-10-29" value="2026-10-01">
+    </label>
+    <label>Hasta
+      <input type="date" id="f-hasta" min="2026-09-01" max="2026-10-29" value="2026-10-25">
+    </label>
+    <label>Local
+      <select id="f-local" aria-label="Local">
+        <option value="Todos">Los 3 locales</option>
+        <option value="Florida">Florida</option>
+        <option value="Beccar">Beccar</option>
+        <option value="Paz">Paz (Olivos)</option>
+      </select>
+    </label>
+  </div>
+
+  <nav class="tabs" role="tablist" aria-label="Áreas">
+    <button role="tab" id="t-resumen" data-tab="resumen" aria-selected="true">Resumen</button>
+    <button role="tab" id="t-ventas" data-tab="ventas" aria-selected="false">Ventas</button>
+    <button role="tab" id="t-clientes" data-tab="clientes" aria-selected="false">Clientes y club</button>
+    <button role="tab" id="t-productos" data-tab="productos" aria-selected="false">Productos y margen</button>
+    <button role="tab" id="t-equipo" data-tab="equipo" aria-selected="false">Equipo</button>
+    <button role="tab" id="t-compras" data-tab="compras" aria-selected="false">Compras</button>
+    <button role="tab" id="t-costos" data-tab="costos" aria-selected="false">Costos</button>
+  </nav>
+
+  <!-- RESUMEN -->
+  <section class="page" id="resumen">
+    <div class="tiles sem" id="r-tiles"></div>
+    <div class="card" id="c-alertas"><h2>Para mirar esta semana</h2><ul class="alertas" id="r-alertas"></ul></div>
+    <div class="card" id="c-avance"><h2>Avance contra el plan de octubre</h2><p class="note">Venta del 1 al 25 de octubre contra lo que el plan esperaba para esos días. Proyección = si el resto del mes sigue al mismo ritmo contra el plan. Muestra siempre los 3 locales.</p>
+      <div class="tw"><table id="tb-avance"><thead><tr><th>Local</th><th>Meta del mes</th><th>Plan al 25/10</th><th>Real al 25/10</th><th>Avance</th><th>Proyección al cierre</th><th>vs meta</th></tr></thead><tbody></tbody></table></div></div>
+    <p class="note" style="font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0">Datos al día: venta hasta el 25/10 · compras hasta el 17/10 · fichadas 05/10 al 18/10 · PedidosYa liquidado hasta el 18/10 · resultado del negocio (estado de resultados) hasta septiembre.</p>
+  </section>
+
+  <!-- VENTAS -->
+  <section class="page" id="ventas" hidden>
+    <div class="tiles">
+      <div class="tile"><div class="k">Venta total</div><div class="v" id="k-venta" data-source="kpi_periodo" data-field="venta">—</div><div class="d" id="k-venta-d" data-source="kpi_periodo" data-field="var_real_pp">—</div></div>
+      <div class="tile"><div class="k">Tickets de mostrador</div><div class="v" id="k-tk" data-source="kpi_periodo" data-field="tickets_mostrador">—</div><div class="d" id="k-tk-d" data-source="kpi_periodo" data-field="var_tickets">—</div></div>
+      <div class="tile"><div class="k">Ticket promedio mostrador</div><div class="v" id="k-tp" data-source="kpi_periodo" data-field="ticket_prom">—</div><div class="d" id="k-tp-d" data-source="kpi_periodo" data-field="var_ticket_real_pp">—</div></div>
+      <div class="tile"><div class="k">Pedidos de apps</div><div class="v" id="k-ped" data-source="kpi_periodo" data-field="pedidos_app">—</div><div class="d" id="k-ped-d" data-source="kpi_periodo" data-field="ticket_app">—</div></div>
+      <div class="tile"><div class="k">Apps sobre la venta</div><div class="v" id="k-app" data-source="kpi_periodo" data-field="pct_app">—</div><div class="d" id="k-app-d" data-source="kpi_periodo" data-field="venta_app">—</div></div>
+    </div>
+    <div class="grid">
+      <div class="card" id="c-diaria"><h2>Venta por día contra 2025</h2><p class="note">Barras: 2026. Línea: mismo día de la semana de 2025. Paz 1 al 12/10/2025 es estimado.</p><div class="chart" id="ch-diaria" data-source="ventas_diarias"></div></div>
+      <div class="card" id="c-clientes"><h2>Clientes por día</h2><p class="note">Abajo: tickets de mostrador. Arriba: pedidos de apps (PedidosYa + Rappi).</p><div class="chart" id="ch-clientes" data-source="ventas_diarias"></div></div>
+    </div>
+    <div class="card" id="c-ticket"><h2>Ticket promedio de mostrador por día</h2><p class="note">Naranja: 2026. Gris: mismo día de la semana de 2025. Punteada: 2025 + 33,4% de inflación. Si el naranja está arriba de la punteada, el ticket le gana a la inflación. Con los 3 locales juntos, 2025 aparece desde el 12/10 (Paz no tiene tickets de 2025 antes del 13/10).</p><div class="chart" id="ch-ticket" data-source="ventas_diarias"></div></div>
+    <div class="card" id="c-locales"><h2>Los tres locales en el período</h2><p class="note">Real = variación nominal menos 33,4 puntos de inflación (INDEC, septiembre 2026).</p>
+      <div class="tw"><table id="tb-locales" data-source="kpi_periodo" data-row-key="desde,hasta,local">
+        <thead><tr><th data-field="local">Local</th><th data-field="venta">Venta</th><th data-field="var_real_pp">Real vs 2025</th><th data-field="venta_dia">Venta por día</th><th data-field="tickets_mostrador">Tickets mostrador</th><th data-field="var_tickets">vs 2025</th><th data-field="ticket_prom">Ticket prom.</th><th data-field="pedidos_app">Pedidos apps</th><th data-field="pct_app">% apps</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="page" id="clientes" hidden>
+    <div class="card" id="c-hora"><h2>Clientes por hora y día de la semana</h2><p class="note">Clientes promedio en un día, 1 al 22 de octubre, mostrador más apps. Tocá un cuadro para ver el detalle.</p>
+      <div class="chart" id="ch-hora" data-source="clientes_hora" style="min-height:280px"></div></div>
+    <div class="card" id="c-club"><h2>Club de clientes en el mostrador</h2><p class="note">1 al 22 de octubre. Compras de ALAX cruzadas con los tickets de Maxi Rest (96% encontradas).</p>
+      <div class="tw"><table id="tb-club" data-source="club_kpi" data-row-key="local">
+        <thead><tr><th data-field="local">Local</th><th data-field="tickets_club">Tickets del club</th><th data-field="pct_tickets">% de tickets</th><th data-field="pct_venta">% de la venta</th><th data-field="ticket_socio">Ticket socio</th><th data-field="ticket_no_socio">Ticket no socio</th><th data-field="dif">Diferencia</th><th data-field="altas">Altas en mostrador</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-clubpago"><h2>Cómo paga y a qué hora compra el socio</h2><p class="note">1 al 22 de octubre, tickets de mostrador. De cada 100 tickets de socios y de no socios, cuántos son de cada tipo. Sigue el filtro de local, no el de fechas.</p>
+      <div class="tw"><table id="tb-clubpago"><thead><tr><th>Concepto</th><th>Socio</th><th>No socio</th><th>Diferencia</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-clubfrec"><h2>Cuántas veces compró cada socio en el mes</h2><p class="note">1 al 22 de octubre. Muchos de los que compraron una vez se registraron este mes. Sigue el filtro de local, no el de fechas.</p>
+      <div class="tw"><table id="tb-clubfrec"><thead><tr><th>Compró</th><th>Socios</th><th>Venta</th><th>% de la venta del club</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-clubind"><h2>¿El club trae clientes? Los 3 locales comparados</h2><p class="note">1 al 22 de octubre. En verde, el mejor de los tres en cada fila. "Vuelven" = socios anotados del 1 al 11 de octubre que ya compraron otra vez. Muestra siempre los 3 locales.</p>
+      <div class="tw"><table id="tb-clubind"><thead><tr><th>Indicador</th><th>Florida</th><th>Beccar</th><th>Paz</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-clubsem"><h2>Semana a semana: de dónde salen los clientes</h2><p class="note">Promedio por día de cada semana, tickets de mostrador. Si sube el club y bajan "sin club" en la misma cantidad, son los mismos clientes que ahora dan el DNI; lo que sube de más son clientes nuevos. Sigue el filtro de local.</p>
+      <div class="tw"><table id="tb-clubsem"><thead><tr><th>Semana</th><th>Local</th><th>Clientes por día</th><th>vs 2025</th><th>Con club</th><th>· primera compra</th><th>· vuelve (socio de octubre)</th><th>· vuelve (socio de antes)</th><th>Sin club</th><th>% club</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="page" id="productos" hidden>
+    <div class="tiles">
+      <div class="tile"><div class="k">Venta de productos con receta</div><div class="v" id="k-r-venta">—</div><div class="d" id="k-r-venta-d">—</div></div>
+      <div class="tile"><div class="k">Costo de la mercadería (CMV)</div><div class="v" id="k-r-cmv">—</div><div class="d" id="k-r-cmv-d">—</div></div>
+      <div class="tile"><div class="k">Margen bruto</div><div class="v" id="k-r-margen">—</div><div class="d" id="k-r-margen-d">—</div></div>
+      <div class="tile"><div class="k">Productos con receta</div><div class="v" id="k-r-n">—</div><div class="d" id="k-r-n-d">—</div></div>
+    </div>
+    <div class="card" id="c-rgrupo"><h2>Cuánto deja cada grupo de productos</h2><p class="note">1 al 22 de octubre, mostrador. Venta sin IVA de Maxi Rest; costo = unidades vendidas × costo de la receta (sistema de compras, último precio de compra, con mermas, sin mano de obra). Sigue el filtro de local.</p>
+      <div class="tw"><table id="tb-rgrupo"><thead><tr><th>Grupo</th><th>Venta sin IVA</th><th>CMV</th><th>CMV %</th><th>Margen bruto</th><th>% del margen total</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="card" id="c-rprod"><h2>Margen por producto</h2><p class="note">Precio = precio promedio cobrado (venta sin IVA ÷ unidades), ya con los descuentos del club. Confianza del costo: Seguro = receta y precios de factura; Casi seguro = algún dato a confirmar; A confirmar = costo todavía no validado (no se suma arriba). Tocá un encabezado para ordenar.</p>
+      <div class="tw"><table id="tb-rprod"><thead><tr><th><button data-rs="producto">Producto</button></th><th><button data-rs="grupo">Grupo</button></th><th><button data-rs="unidades">Unidades</button></th><th><button data-rs="precio">Precio s/IVA</button></th><th><button data-rs="costo_unit">Costo receta</button></th><th><button data-rs="cmvp">CMV %</button></th><th><button data-rs="venta">Venta s/IVA</button></th><th><button data-rs="margen">Margen bruto</button></th><th><button data-rs="confianza">Confianza</button></th></tr></thead><tbody></tbody></table></div></div>
+    <div class="bar"><label>Ordenar por
+      <select id="f-orden" aria-label="Ordenar ranking"><option value="venta">Venta en pesos</option><option value="cantidad">Cantidad</option></select></label></div>
+    <div class="grid" style="grid-template-columns:1fr">
+      <div class="card" id="c-topm"><h2>Top 20 de mostrador</h2><p class="note">1 al 22 de octubre, venta por rubro de Maxi Rest. Pesos a precio de lista, antes del descuento del club. Cantidad en unidades o kg según el producto. Este ranking no cambia con las fechas.</p>
+        <div class="tw" style="max-height:none"><table id="tb-topm"><thead><tr><th>#</th><th>Artículo</th><th>Cantidad</th><th>Venta</th><th>% mostrador</th><th>Cant. por día vs 2025</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="card" id="c-topp"><h2>Top 20 de PedidosYa</h2><p class="note" id="n-topp">Pedidos entregados, según los artículos de cada pedido. Sigue el filtro de fechas (hay datos desde el 1/10). Rappi no informa los artículos.</p>
+        <div class="tw" style="max-height:none"><table id="tb-topp"><thead><tr><th>#</th><th>Artículo</th><th>Unidades</th><th>Pedidos que lo llevan</th></tr></thead><tbody></tbody></table></div></div>
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section class="page" id="equipo" hidden>
+    <div class="card" id="c-sug"><h2>Venta sugestiva en unidades</h2><p class="note">1 al 25 de octubre, mostrador. Sugestiva = salsas, quesos, postres, Freddo y bebidas. % = de cada 100 unidades vendidas, cuántas son sugestivas. Fuente: venta por empleado de Maxi Rest, sin apps (202) ni descuento del club (4000). En verde, el mejor.</p>
+      <div class="tw"><table><thead><tr><th>Local</th><th>% sugestiva</th><th>Unidades sugestivas</th><th>Por día</th><th>Salsas</th><th>Quesos</th><th>Postres</th><th>Freddo y bebidas</th></tr></thead><tbody><tr><td>Beccar</td><td style="color:var(--color-ok);font-weight:700">17,4%</td><td >2.274</td><td>91</td><td>1.190</td><td>691</td><td>243</td><td>149</td></tr><tr><td>Florida</td><td >17,2%</td><td >2.224</td><td>89</td><td>1.025</td><td>475</td><td>482</td><td>242</td></tr><tr><td>Paz/Olivos</td><td >15,6%</td><td style="color:var(--color-ok);font-weight:700">2.289</td><td>92</td><td>914</td><td>688</td><td>535</td><td>151</td></tr></tbody></table></div>
+      <p class="note">Si cada local vende 20 unidades sugestivas más por día (de 90 a 110), son unos $3,2M más por mes por local y $9,6M entre los tres, sin clientes nuevos.</p>
+      <div class="tw"><table><thead><tr><th>#</th><th>Vendedora</th><th>Local</th><th>% sugestiva</th><th>Unidades sugestivas</th><th>Salsas</th><th>Quesos</th><th>Postres</th></tr></thead><tbody><tr><td>1</td><td class="l">Melisa</td><td>Florida</td><td style="color:var(--color-ok);font-weight:700">20,7%</td><td>293</td><td>136</td><td>61</td><td>64</td></tr><tr><td>2</td><td class="l">Viviana</td><td>Beccar</td><td >18,5%</td><td>577</td><td>308</td><td>162</td><td>75</td></tr><tr><td>3</td><td class="l">Yesica</td><td>Florida</td><td >18,5%</td><td>534</td><td>247</td><td>132</td><td>119</td></tr><tr><td>4</td><td class="l">Paula Vanesa *</td><td>Paz/Olivos</td><td >18,1%</td><td>169</td><td>60</td><td>59</td><td>40</td></tr><tr><td>5</td><td class="l">Ana</td><td>Beccar</td><td >18,0%</td><td>743</td><td>366</td><td>236</td><td>81</td></tr><tr><td>6</td><td class="l">Valeria</td><td>Florida</td><td >17,9%</td><td>199</td><td>104</td><td>37</td><td>27</td></tr><tr><td>7</td><td class="l">Lucila</td><td>Florida</td><td >17,8%</td><td>177</td><td>83</td><td>42</td><td>35</td></tr><tr><td>8</td><td class="l">Pamela</td><td>Paz/Olivos</td><td >17,5%</td><td>249</td><td>96</td><td>72</td><td>72</td></tr><tr><td>9</td><td class="l">Ojeda</td><td>Florida</td><td >16,6%</td><td>145</td><td>69</td><td>33</td><td>36</td></tr><tr><td>10</td><td class="l">Luana</td><td>Florida</td><td >16,3%</td><td>235</td><td>95</td><td>36</td><td>65</td></tr><tr><td>11</td><td class="l">Valeria</td><td>Beccar</td><td >16,0%</td><td>433</td><td>225</td><td>140</td><td>45</td></tr><tr><td>12</td><td class="l">Agustina</td><td>Paz/Olivos</td><td >15,9%</td><td>214</td><td>91</td><td>50</td><td>56</td></tr><tr><td>13</td><td class="l">Karina</td><td>Beccar</td><td >15,6%</td><td>238</td><td>136</td><td>68</td><td>18</td></tr><tr><td>14</td><td class="l">Paula</td><td>Paz/Olivos</td><td >15,5%</td><td>505</td><td>194</td><td>155</td><td>119</td></tr><tr><td>15</td><td class="l">Yanina</td><td>Paz/Olivos</td><td >15,1%</td><td>337</td><td>143</td><td>96</td><td>78</td></tr><tr><td>16</td><td class="l">Silvina</td><td>Paz/Olivos</td><td >15,1%</td><td>357</td><td>143</td><td>106</td><td>80</td></tr><tr><td>17</td><td class="l">Cristina</td><td>Paz/Olivos</td><td >14,7%</td><td>448</td><td>184</td><td>150</td><td>90</td></tr><tr><td>18</td><td class="l">Miriam</td><td>Florida</td><td >14,1%</td><td>287</td><td>108</td><td>63</td><td>74</td></tr><tr><td>19</td><td class="l">Analía</td><td>Florida</td><td >13,3%</td><td>109</td><td>50</td><td>22</td><td>25</td></tr></tbody></table></div>
+      <p class="note">* Paula Vanesa: usuario nuevo en Paz desde el 19/10 (código 64), falta confirmar si es Paula.</p>
+    </div>
+    <div class="card" id="c-vend2"><h2>Vendedoras</h2><p class="note">Ventas del 1 al 22 de octubre por código de vendedora en Maxi Rest. Por hora = del 5 al 18 de octubre, cruzado con el reloj (Beccar no tiene reloj). Cada 100 tickets permite comparar a quien trabaja menos horas. En verde, la mejor de cada local. Tocá un encabezado para ordenar.</p>
+      <div class="tw"><table id="tb-vend2"><thead><tr><th><button data-v2="vendedora">Vendedora</button></th><th><button data-v2="local">Local</button></th><th><button data-v2="tickets">Tickets</button></th><th><button data-v2="ticket_promedio">Ticket prom.</button></th><th><button data-v2="pct_club">% club</button></th><th><button data-v2="altas_100">Altas club c/100</button></th><th><button data-v2="adic_100">Adicionales c/100</button></th><th><button data-v2="tk_hora">Tickets por hora</button></th><th><button data-v2="venta_hora">Venta por hora</button></th></tr></thead><tbody></tbody></table></div>
+      <p class="note" id="n-vend2"></p>
+    </div>
+    <div class="card" id="c-fich"><h2>Horas fichadas de todo el equipo</h2><p class="note" id="n-fich">Reloj de Florida y de Paz (Beccar todavía no tiene reloj). Horas = última fichada − primera fichada del día; en doble turno incluye el corte. "A revisar" = días con una sola fichada, que no suman horas.</p>
+      <div class="tw"><table id="tb-fich"><thead><tr><th>Persona</th><th>Local</th><th>Tarea</th><th>Días</th><th>Horas</th><th>Horas por día</th><th>A revisar</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-fichv"><h2>Venta por hora trabajada</h2><p class="note">En los días del período que tienen fichadas. Venta = total del local (mostrador + apps). Clientes de mostrador por hora de atención = tickets de mostrador ÷ horas fichadas del personal de atención. En Paz, Yanina, Agustina y Pamela venden pero no fichan: sus horas faltan y el número de Paz queda más alto de lo real.</p>
+      <div class="tw"><table id="tb-fichv"><thead><tr><th>Local</th><th>Días</th><th>Horas de todo el equipo</th><th>Horas de atención</th><th>Venta</th><th>Venta por hora (todo el equipo)</th><th>Clientes de mostrador por hora de atención</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card" id="c-fichh"><h2>Clientes contra vendedoras, por hora</h2><p class="note">Vendedoras = promedio de vendedoras fichadas en esa hora (5 al 18/10; sin pasteros ni cocina). Clientes = tickets de mostrador y pedidos de apps (PedidosYa + Rappi) por hora, promedio de octubre. Clientes por vendedora = mostrador + apps ÷ vendedoras. En rojo, las horas más cargadas.</p>
+      <div class="tw"><table id="tb-fichh"><thead><tr><th>Hora</th><th>Vende&shy;doras</th><th>Mostrador</th><th>Apps</th><th>Clientes por vendedora</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <!-- COMPRAS -->
+  <section class="page" id="compras" hidden>
+    <div class="tiles">
+      <div class="tile"><div class="k">Compras septiembre</div><div class="v" id="k-c-sep">—</div><div class="d" id="k-c-sep-d">—</div></div>
+      <div class="tile"><div class="k">Compras octubre (facturas al 17/10)</div><div class="v" id="k-c-oct">—</div><div class="d" id="k-c-oct-d">—</div></div>
+      <div class="tile"><div class="k">Compras sobre la venta, octubre</div><div class="v" id="k-c-pct">—</div><div class="d" id="k-c-pct-d">—</div></div>
+      <div class="tile"><div class="k">Insumos que subieron en octubre</div><div class="v" id="k-c-suba">—</div><div class="d" id="k-c-suba-d">—</div></div>
+    </div>
+    <div>
+      <div class="card" id="c-cv"><h2>Compras sobre la venta</h2><p class="note">Todas las facturas cargadas en el sistema de compras (con IVA, incluye descartables y packaging) ÷ toda la venta del mes. Octubre acumulado: facturas cargadas hasta el 17/10 ÷ venta hasta el 22/10, así que va a subir cuando se carguen las facturas que faltan.</p>
+        <div class="tw"><table id="tb-cv" data-source="compras_venta" data-row-key="mes,local">
+          <thead><tr><th data-field="mes">Mes</th><th data-field="local">Local</th><th data-field="compras">Compras</th><th data-field="venta">Venta</th><th data-field="pct">Compras / venta</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="card" id="c-rubro"><h2>Compras por rubro</h2><p class="note">Facturas cargadas en el sistema de compras, con IVA. Para comparar meses de distinto largo se muestra el promedio por día: septiembre 30 días, octubre 17 días (facturas cargadas hasta el 17/10).</p>
+        <div class="tw"><table id="tb-rubro"><thead><tr><th>Rubro</th><th>Septiembre</th><th>Octubre (al 17/10)</th><th>Por día sept.</th><th>Por día oct.</th><th>Variación por día</th><th>% de las compras de oct.</th></tr></thead><tbody></tbody></table></div></div>
+    </div>
+    <div class="card" id="c-precios"><h2>Precios que cambiaron en octubre</h2><p class="note">Última compra de octubre contra la compra anterior del mismo insumo, proveedor y local, sin IVA por unidad. Solo cambios de 3% o más. Rojo = subió, verde = bajó. Sigue el filtro de local.</p>
+      <div class="tw"><table id="tb-precios"><thead><tr><th>Insumo</th><th>Proveedor</th><th>Local</th><th>Fecha</th><th>Antes</th><th>Ahora</th><th>Variación</th></tr></thead><tbody></tbody></table></div></div>
+    <div>
+      <div class="card" id="c-prov"><h2>Gasto por proveedor</h2><p class="note">Top 20, los tres locales, con IVA. Octubre: facturas cargadas hasta el 17/10.</p>
+        <div class="tw"><table id="tb-prov" data-source="compras_proveedor" data-row-key="proveedor">
+          <thead><tr><th data-field="proveedor">Proveedor</th><th data-field="septiembre">Septiembre</th><th data-field="octubre">Octubre (al 17/10)</th></tr></thead><tbody></tbody></table></div></div>
+    </div>
+  </section>
+
+
+  <!-- COSTOS -->
+  <section class="page" id="costos" hidden>
+    <div class="card" id="c-res"><h2>Resultado del negocio por mes</h2><p class="note">Del estado de resultados. Venta neta = venta sin IVA. Mercadería, sueldos (con cargas sociales), apps, alquiler y otros gastos del local; impuestos = ingresos brutos y tasas. El % es sobre la venta neta. Junio no está cerrado. Sigue el filtro de local.</p>
+      <div class="tw"><table id="tb-res"><thead><tr><th>Concepto</th></tr></thead><tbody></tbody></table></div></div>
+    <div class="card" id="c-apps"><h2>Resultado de las apps (según las liquidaciones)</h2><p class="note">Solo datos de las liquidaciones de PedidosYa y Rappi, sin supuestos. Venta = lo que pagó el cliente (con IVA). Se queda la app = comisión, cargos y publicidad menos reintegros (sin IVA); el % es sobre la venta sin IVA. Impuestos = IVA de la comisión, percepciones y retenciones. Depositado = lo que llegó al banco. Agosto y septiembre de PedidosYa son 4 semanas (03/08–30/08 y 31/08–27/09); octubre son 3 semanas (28/09–18/10). Rappi: mes calendario; octubre todavía no tiene liquidación.</p>
+      <div class="tw"><table id="tb-apps" data-source="apps_liq">
+        <thead><tr><th>Período</th><th>App</th><th>Pedidos</th><th>Venta</th><th>Se queda la app</th><th>% de la venta</th><th>Impuestos</th><th>Depositado</th><th>Depositado por pedido</th><th>% que llega al banco</th></tr></thead><tbody></tbody></table></div></div>
+  </section>
+</div>
+
+<script>
+const INF = 0.334;
+const PER = {
+  oct:['2026-10-01','2026-10-25'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-23','2026-10-29'],
+  oct_s1:['2026-10-01','2026-10-04'], oct_s2:['2026-10-05','2026-10-11'], oct_s3:['2026-10-12','2026-10-18'], oct_s4:['2026-10-19','2026-10-25'], oct_s5:['2026-10-26','2026-10-29'],
+  sep_s1:['2026-09-01','2026-09-06'], sep_s2:['2026-09-07','2026-09-13'], sep_s3:['2026-09-14','2026-09-20'], sep_s4:['2026-09-21','2026-09-27'], sep_s5:['2026-09-28','2026-09-30']
+};
+window.LP_PER = PER;
+dash.calc('kpi_periodo', {
+  title: 'Ventas por rango de fechas y local',
+  description: 'Para cada rango posible de fechas (desde/hasta) suma las ventas diarias por local y para los 3 locales, y calcula variaciones contra el mismo día de la semana de 2025 (real = nominal menos 33,4 puntos).',
+  inputs: ['ventas_diarias'],
+  fn: (ventas_diarias) => {
+    const K = ['venta', 'venta_2025', 'tickets_mostrador', 'tickets_mostrador_2025', 'venta_mostrador', 'venta_mostrador_2025', 'venta_app', 'pedidos_app'];
+    const fechas = [...new Set(ventas_diarias.map((d) => d.fecha))].sort();
+    const out = [];
+    for (const loc of ['Todos', 'Florida', 'Beccar', 'Paz']) {
+      // por día: sumas y si el dato está completo
+      const dia = fechas.map((f) => {
+        const r = ventas_diarias.filter((d) => d.fecha === f && (loc === 'Todos' || d.local === loc));
+        const o = {};
+        for (const k of K) { o[k] = r.reduce((t, d) => t + (Number(d[k]) || 0), 0); o[k + '_ok'] = r.length > 0 && r.every((d) => d[k] != null && d[k] !== ''); }
+        return o;
+      });
+      for (let i = 0; i < fechas.length; i++) {
+        const acc = {}; for (const k of K) { acc[k] = 0; acc[k + '_ok'] = true; }
+        for (let j = i; j < fechas.length; j++) {
+          for (const k of K) { acc[k] += dia[j][k]; acc[k + '_ok'] = acc[k + '_ok'] && dia[j][k + '_ok']; }
+          const g = (k) => acc[k + '_ok'] ? acc[k] : null;
+          const venta = acc.venta, v25 = g('venta_2025'), tk = acc.tickets_mostrador, tk25 = g('tickets_mostrador_2025');
+          const vm = acc.venta_mostrador, vm25 = g('venta_mostrador_2025'), va = acc.venta_app, ped = g('pedidos_app');
+          const tp = tk ? vm / tk : null, tp25 = tk25 && vm25 ? vm25 / tk25 : null, dias = j - i + 1;
+          out.push({desde: fechas[i], hasta: fechas[j], local: loc, dias, venta, venta_2025: v25,
+            var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: venta / dias,
+            venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tk25 ? tk / tk25 - 1 : null,
+            ticket_prom: tp, var_ticket_real_pp: tp && tp25 ? (tp / tp25 - 1 - 0.334) * 100 : null,
+            pedidos_app: ped, ticket_app: ped ? va / ped : null});
+        }
+      }
+    }
+    return out;
+  }
+});
+dash.calc('club_kpi', {
+  title: 'Club por local', description: 'Porcentaje de tickets y de venta del club, y diferencia de ticket socio contra no socio.',
+  inputs: ['club_local'],
+  fn: (club_local) => club_local.map((c) => ({local: c.local, tickets_club: c.tickets_club, pct_tickets: c.tickets_club / c.tickets,
+    pct_venta: c.venta_club / c.venta_mostrador, ticket_socio: c.ticket_socio, ticket_no_socio: c.ticket_no_socio, dif: c.ticket_socio / c.ticket_no_socio - 1, altas: c.altas}))
+});
+dash.calc('vend_kpi', {
+  title: 'Indicadores por vendedora', description: 'Altas al club y adicionales cada 100 tickets, y % de tickets del club.',
+  inputs: ['vendedoras'],
+  fn: (vendedoras) => vendedoras.map((v) => ({...v, pct_club: v.tickets_club / v.tickets, altas_100: v.altas_club / v.tickets * 100,
+    adic_100: v.adicionales == null ? null : v.adicionales / v.tickets * 100}))
+});
+dash.calc('compras_venta', {
+  title: 'Compras sobre la venta', description: 'Compras acumuladas del mes divididas por toda la venta del mes, por local y total.',
+  inputs: ['compras_mes', 'ventas_diarias'],
+  fn: (compras_mes, ventas_diarias) => {
+    const out = [];
+    for (const mes of ['2026-09', '2026-10']) {
+      let tc = 0, tv = 0;
+      for (const loc of ['Florida', 'Beccar', 'Paz']) {
+        const c = compras_mes.filter((r) => r.mes === mes && r.local === loc).reduce((t, r) => t + r.compras, 0);
+        const v = ventas_diarias.filter((r) => r.mes === mes && r.local === loc).reduce((t, r) => t + r.venta, 0);
+        tc += c; tv += v; out.push({mes, local: loc, compras: c, venta: v, pct: c / v});
+      }
+      out.push({mes, local: 'Todos', compras: tc, venta: tv, pct: tc / tv});
+    }
+    return out;
+  }
+});
+dash.calc('canasta_cmp', {
+  title: 'Canasta septiembre vs octubre', description: 'Precio promedio de septiembre y de octubre por insumo y local, y su variación.',
+  inputs: ['canasta'],
+  fn: (canasta) => {
+    const m = new Map();
+    for (const r of canasta) {
+      const k = r.insumo + '|' + r.local;
+      if (!m.has(k)) m.set(k, {insumo: r.insumo, local: r.local, unidad: r.unidad, septiembre: null, octubre: null});
+      m.get(k)[r.mes === '2026-09' ? 'septiembre' : 'octubre'] = r.precio;
+    }
+    return [...m.values()].map((r) => ({...r, var: r.septiembre && r.octubre ? r.octubre / r.septiembre - 1 : null}));
+  }
+});
+dash.calc('apps_kpi', {
+  title: 'Resultado de apps por local y mes', description: 'Pedidos, costo de la app, lo que deja cada pedido y en el mes.',
+  inputs: ['apps_resultado'],
+  fn: (apps_resultado) => {
+    const m = new Map();
+    for (const r of apps_resultado) {
+      const k = r.local + '|' + r.mes;
+      if (!m.has(k)) m.set(k, {local: r.local, mes: r.mes});
+      const o = m.get(k);
+      if (r.concepto === 'Pedidos') o.pedidos = r.valor;
+      if (r.concepto === 'Costo app % venta neta') o.costo_app = r.valor;
+      if (r.concepto === 'Por pedido') o.por_pedido = r.valor;
+      if (r.concepto === 'Lo que dejan las apps') o.deja = r.valor;
+    }
+    return [...m.values()];
+  }
+});
+</script>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const fM = (v) => v == null ? '—' : '$' + (Math.abs(v) >= 1e6 ? (v / 1e6).toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + ' M' : Math.round(v).toLocaleString('es-AR'));
+const fN = (v, d = 0) => v == null ? '—' : Number(v).toLocaleString('es-AR', {maximumFractionDigits: d, minimumFractionDigits: d});
+const fP = (v, d = 1, s = false) => v == null ? '—' : (s && v > 0 ? '+' : '') + (v * 100).toLocaleString('es-AR', {maximumFractionDigits: d, minimumFractionDigits: d}) + '%';
+const fPP = (v) => v == null ? '—' : (v > 0 ? '+' : '') + v.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + ' p.p.';
+const cls = (el, v, good = true) => { el.classList.remove('good', 'bad'); if (v == null) return; el.classList.add((v >= 0) === good ? 'good' : 'bad'); };
+window.LP = {fM, fN, fP, fPP, cls};
+const fd = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
+const rangoTxt = (d, h) => d === h ? `el ${fd(d)}` : `del ${fd(d)} al ${fd(h)}`;
+const LNAME = {Todos: 'los 3 locales vendieron', Florida: 'Florida vendió', Beccar: 'Beccar vendió', Paz: 'Paz vendió'};
+const FMIN = '2026-09-01', FMAX = '2026-10-29';
+const clampF = (f, def) => (/^\d{4}-\d{2}-\d{2}$/.test(f || '') ? (f < FMIN ? FMIN : f > FMAX ? FMAX : f) : def);
+const prm = () => { const p = dash.params(); let desde = clampF(p.desde, '2026-10-01'), hasta = clampF(p.hasta, FMAX);
+  if (desde > hasta) [desde, hasta] = [hasta, desde]; return {desde, hasta, local: p.local || 'Todos'}; };
+window.LP_prm = prm;
+
+// filtros
+const fp = $('#f-periodo'), fl = $('#f-local');
+const fdesde = $('#f-desde'), fhasta = $('#f-hasta');
+fp.addEventListener('change', () => { const r = window.LP_PER[fp.value]; if (r) dash.setParams({desde: r[0], hasta: r[1]}); });
+const setRango = () => { if (fdesde.value && fhasta.value) dash.setParams({desde: fdesde.value, hasta: fhasta.value}); };
+fdesde.addEventListener('change', setRango); fhasta.addEventListener('change', setRango);
+fl.addEventListener('change', () => dash.setParams({local: fl.value}));
+
+// pestañas
+const tabs = [...document.querySelectorAll('.tabs button')];
+let current = 'resumen';
+const show = (t) => {
+  current = t;
+  tabs.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
+  document.querySelectorAll('.page').forEach((p) => { p.hidden = p.id !== t; });
+  dash.setLink(t);
+  window.dispatchEvent(new Event('lp-tab'));
+};
+tabs.forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+const h0 = location.hash.slice(1);
+if (['resumen', 'ventas', 'clientes', 'productos', 'equipo', 'compras', 'costos'].includes(h0)) show(h0);
+window.LP_current = () => current;
+
+const setMark = (el, src, where) => { el.setAttribute('data-source', src); if (where) el.setAttribute('data-where', where); };
+
+dash.onData(() => {
+  const {desde, hasta, local} = prm();
+  fdesde.value = desde; fhasta.value = hasta; fl.value = local;
+  fp.value = Object.keys(window.LP_PER).find((k) => window.LP_PER[k][0] === desde && window.LP_PER[k][1] === hasta) || 'custom';
+  const k = dash.data('kpi_periodo');
+  const ids = ['#k-venta', '#k-venta-d', '#k-tk', '#k-tk-d', '#k-tp', '#k-tp-d', '#k-ped', '#k-ped-d', '#k-app', '#k-app-d'];
+  if (k.status !== 'ok') { ids.forEach((i) => { $(i).textContent = '—'; }); $('#takeaway').textContent = '—'; return; }
+  const w = `desde=${desde}&hasta=${hasta}&local=${local}`;
+  ids.forEach((i) => $(i).setAttribute('data-where', w));
+  $('#takeaway').setAttribute('data-where', w); $('#takeaway').setAttribute('data-field', 'var_real_pp');
+  const r = k.data.find((d) => d.desde === desde && d.hasta === hasta && d.local === local);
+  if (!r) return;
+  $('#k-venta').textContent = fM(r.venta);
+  const vd = $('#k-venta-d'); vd.textContent = r.var_real_pp == null ? 'sin 2025 completo' : fPP(r.var_real_pp) + ' real vs 2025'; cls(vd, r.var_real_pp);
+  $('#k-tk').textContent = fN(r.tickets_mostrador);
+  const td = $('#k-tk-d'); td.textContent = r.var_tickets == null ? 'sin 2025 completo' : fP(r.var_tickets, 1, true) + ' vs 2025'; cls(td, r.var_tickets);
+  $('#k-tp').textContent = fM(r.ticket_prom);
+  const tpd = $('#k-tp-d'); tpd.textContent = r.var_ticket_real_pp == null ? 'sin 2025 completo' : fPP(r.var_ticket_real_pp) + ' real vs 2025'; cls(tpd, r.var_ticket_real_pp);
+  $('#k-ped').textContent = r.pedidos_app == null ? '—' : fN(r.pedidos_app);
+  $('#k-ped-d').textContent = r.ticket_app == null ? '' : 'ticket ' + fM(r.ticket_app);
+  $('#k-app').textContent = fP(r.pct_app, 0);
+  $('#k-app-d').textContent = fM(r.venta_app) + ' en apps';
+  $('#takeaway').textContent = r.var_real_pp == null
+    ? `${rangoTxt(desde, hasta).replace(/^./, (c) => c.toUpperCase())}, ${LNAME[local]} ${fM(r.venta)} (${fM(r.venta_dia)} por día).`
+    : `${rangoTxt(desde, hasta).replace(/^./, (c) => c.toUpperCase())}, ${LNAME[local]} ${fM(r.venta)}: ${fPP(r.var_real_pp)} por ${r.var_real_pp >= 0 ? 'encima' : 'debajo'} de la inflación contra 2025, con ${r.var_tickets == null ? 'tickets de mostrador sin comparación' : fP(r.var_tickets, 1, true) + ' de tickets de mostrador'}.`;
+  // tabla locales
+  const tb = $('#tb-locales tbody'); tb.replaceChildren();
+  for (const loc of ['Florida', 'Beccar', 'Paz', 'Todos']) {
+    const x = k.data.find((d) => d.desde === desde && d.hasta === hasta && d.local === loc); if (!x) continue;
+    const tr = document.createElement('tr'); tr.dataset.key = `${desde},${hasta},${loc}`;
+    const cells = [loc, fM(x.venta), fPP(x.var_real_pp), fM(x.venta_dia), fN(x.tickets_mostrador), fP(x.var_tickets, 1, true), fM(x.ticket_prom), fN(x.pedidos_app), fP(x.pct_app, 0)];
+    cells.forEach((c, i) => { const td = document.createElement('td'); td.textContent = c; if (i === 2) cls(td, x.var_real_pp); if (i === 5) cls(td, x.var_tickets); if (loc === 'Todos') td.style.fontWeight = '600'; tr.append(td); });
+    tr.firstChild.textContent = loc;
+    tb.append(tr);
+  }
+});
+</script>
+
+<script>
+// gráficos de ventas
+const tipEl = (box) => { let t = box.querySelector('.tip'); if (!t) { t = document.createElement('div'); t.className = 'tip'; t.hidden = true; box.append(t); } return t; };
+const drawDaily = () => {
+  const box = document.getElementById('ch-diaria'), box2 = document.getElementById('ch-clientes'), box3 = document.getElementById('ch-ticket');
+  const v = dash.data('ventas_diarias');
+  [box, box2, box3].forEach((b) => b.querySelectorAll('svg').forEach((s) => s.remove()));
+  if (v.status !== 'ok' || document.getElementById('ventas').hidden) return;
+  const {desde: a, hasta: b, local} = window.LP_prm();
+  const rows = v.data.filter((d) => d.fecha >= a && d.fecha <= b && (local === 'Todos' || d.local === local));
+  const days = [...new Set(rows.map((d) => d.fecha))].sort();
+  const agg = days.map((f) => { const r = rows.filter((d) => d.fecha === f); const s = (k) => r.reduce((t, d) => t + (Number(d[k]) || 0), 0);
+    return {fecha: f, venta: s('venta'), v25: r.every((d) => d.venta_2025 != null) ? s('venta_2025') : null, tk: s('tickets_mostrador'), vm: s('venta_mostrador'), vm25: r.every((d) => d.venta_mostrador_2025) ? s('venta_mostrador_2025') : null, tk25: r.every((d) => d.tickets_mostrador_2025) ? s('tickets_mostrador_2025') : null, ped: s('pedidos_app'), c25: r.length && r.every((d) => d.clientes_2025 != null) ? s('clientes_2025') : null}; });
+  const fmtD = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
+  const draw = (el, series, isMoney) => {
+    const W = el.clientWidth || 400, H = 240, m = {t: 10, r: 8, b: 26, l: 8};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const max = d3.max(agg, (d) => Math.max(...series.map((s) => s.stack ? series.filter((z) => z.stack).reduce((t, z) => t + (d[z.k] || 0), 0) : (d[s.k] || 0)))) || 1;
+    const y = d3.scaleLinear([0, max * 1.08], [H - m.b, m.t]).nice();
+    const fy = (t) => isMoney ? (t / 1e6).toLocaleString('es-AR') + ' M' : t.toLocaleString('es-AR');
+    const tmp = svg.append('text').text(fy(y.domain()[1])); m.l = tmp.node().getComputedTextLength() + 10; tmp.remove();
+    const x = d3.scaleBand(agg.map((d) => d.fecha), [m.l, W - m.r]).padding(0.25);
+    svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
+    svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (t) => y(t) + 4).attr('text-anchor', 'end').text(fy);
+    const step = Math.ceil(agg.length / Math.max(1, Math.floor((W - m.l) / 46)));
+    svg.append('g').selectAll('text').data(agg.filter((d, i) => i % step === 0)).join('text').attr('x', (d) => x(d.fecha) + x.bandwidth() / 2).attr('y', H - 8).attr('text-anchor', 'middle').text((d) => fmtD(d.fecha));
+    const stacks = series.filter((s) => s.stack);
+    agg.forEach((d) => { let base = 0; stacks.forEach((s, i) => { const v0 = d[s.k] || 0;
+      svg.append('rect').attr('x', x(d.fecha)).attr('width', x.bandwidth()).attr('y', y(base + v0)).attr('height', Math.max(0, y(base) - y(base + v0))).attr('fill', dash.colors[i]).attr('rx', i === stacks.length - 1 ? 3 : 0);
+      base += v0; }); });
+    series.filter((s) => !s.stack).forEach((s) => {
+      const pts = agg.filter((d) => d[s.k] != null);
+      svg.append('path').datum(pts).attr('fill', 'none').attr('stroke', 'var(--color-fg-muted)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+        .attr('d', d3.line().x((d) => x(d.fecha) + x.bandwidth() / 2).y((d) => y(d[s.k])));
+    });
+    const tip = tipEl(el);
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', (ev) => { const [px] = d3.pointer(ev); const i = Math.max(0, Math.min(agg.length - 1, Math.floor((px - m.l) / x.step()))); const d = agg[i];
+        tip.hidden = false; tip.replaceChildren();
+        const h = document.createElement('div'); h.className = 'h'; h.textContent = fmtD(d.fecha); tip.append(h);
+        series.forEach((s) => { const l = document.createElement('div'); l.textContent = `${s.n}: ${d[s.k] == null ? '—' : isMoney ? window.LP.fM(d[s.k]) : window.LP.fN(d[s.k])}`; tip.append(l); });
+        const left = Math.min(x(d.fecha) + x.bandwidth() + 8, W - tip.offsetWidth - 4); tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '8px'; })
+      .on('mouseleave', () => { tip.hidden = true; });
+  };
+  draw(box, [{k: 'venta', n: 'Venta 2026', stack: true}, {k: 'v25', n: 'Venta 2025'}], true);
+  draw(box2, [{k: 'tk', n: 'Tickets mostrador', stack: true}, {k: 'ped', n: 'Pedidos apps', stack: true}, {k: 'c25', n: 'Clientes 2025'}], false);
+  agg.forEach((d) => { d.tp = d.tk ? d.vm / d.tk : null; d.tp25 = d.vm25 && d.tk25 ? d.vm25 / d.tk25 : null; d.tpi = d.tp25 ? d.tp25 * 1.334 : null; });
+  (() => {
+    const el = box3, W = el.clientWidth || 400, H = 240, m = {t: 12, r: 10, b: 26, l: 8};
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+    const vals = agg.flatMap((d) => [d.tp, d.tp25, d.tpi]).filter((v) => v != null);
+    if (!vals.length) return;
+    const y = d3.scaleLinear([d3.min(vals) * 0.92, d3.max(vals) * 1.04], [H - m.b, m.t]).nice();
+    const fy = (t) => '$' + Math.round(t / 1000).toLocaleString('es-AR') + ' mil';
+    const tmp = svg.append('text').text(fy(y.domain()[1])); m.l = tmp.node().getComputedTextLength() + 10; tmp.remove();
+    const x = d3.scalePoint(agg.map((d) => d.fecha), [m.l + 6, W - m.r - 6]);
+    svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
+    svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (t) => y(t) + 4).attr('text-anchor', 'end').text(fy);
+    const step = Math.ceil(agg.length / Math.max(1, Math.floor((W - m.l) / 46)));
+    svg.append('g').selectAll('text').data(agg.filter((d, i) => i % step === 0)).join('text').attr('x', (d) => x(d.fecha)).attr('y', H - 8).attr('text-anchor', 'middle').text((d) => fmtD(d.fecha));
+    const line = (k, col, w, dash) => { const pts = agg.filter((d) => d[k] != null); svg.append('path').datum(pts).attr('fill', 'none').attr('stroke', col).attr('stroke-width', w).attr('stroke-dasharray', dash || null).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('d', d3.line().x((d) => x(d.fecha)).y((d) => y(d[k]))); return pts; };
+    line('tpi', 'var(--color-fg-muted)', 1.5, '4 4'); line('tp25', 'var(--color-fg-muted)', 2);
+    const p = line('tp', dash.colors[0], 2.5);
+    svg.append('g').selectAll('circle').data(p).join('circle').attr('cx', (d) => x(d.fecha)).attr('cy', (d) => y(d.tp)).attr('r', 2.5).attr('fill', dash.colors[0]);
+    const tip = tipEl(el);
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+      .on('mousemove', (ev) => { const [px] = d3.pointer(ev); const d = agg.reduce((b, c) => Math.abs(x(c.fecha) - px) < Math.abs(x(b.fecha) - px) ? c : b, agg[0]);
+        tip.hidden = false; tip.replaceChildren();
+        const hd = document.createElement('div'); hd.className = 'h'; hd.textContent = fmtD(d.fecha); tip.append(hd);
+        [['2026', d.tp], ['2025', d.tp25], ['2025 + inflación', d.tpi]].forEach(([n, v]) => { const l = document.createElement('div'); l.textContent = `${n}: ${v == null ? '—' : window.LP.fM(v)}`; tip.append(l); });
+        if (d.tp && d.tp25) { const l = document.createElement('div'); const r = (d.tp / d.tp25 - 1 - 0.334) * 100; l.textContent = `Real: ${r > 0 ? '+' : ''}${r.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1})} p.p.`; l.style.color = r >= 0 ? 'var(--color-ok)' : 'var(--color-bad)'; tip.append(l); }
+        const left = Math.min(x(d.fecha) + 10, W - tip.offsetWidth - 4); tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '8px'; })
+      .on('mouseleave', () => { tip.hidden = true; });
+  })();
+};
+dash.onData(drawDaily);
+window.addEventListener('lp-tab', drawDaily);
+</script>
+
+<script>
+// clientes: mapa de calor y club
+const drawHeat = () => {
+  const el = document.getElementById('ch-hora'); el.querySelectorAll('svg').forEach((s) => s.remove());
+  const c = dash.data('clientes_hora');
+  if (c.status !== 'ok' || document.getElementById('clientes').hidden) return;
+  const {local} = window.LP_prm();
+  const DI = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+  const hrs = d3.range(9, 23);
+  const cell = new Map();
+  c.data.filter((d) => local === 'Todos' || d.local === local).forEach((d) => { const k = d.dia + '|' + d.hora; const o = cell.get(k) || {m: 0, a: 0}; o.m += d.mostrador; o.a += d.app; cell.set(k, o); });
+  const W = el.clientWidth || 400;
+  // en pantallas angostas (celular): horas en filas, días en columnas
+  const vert = W < 640;
+  const cols = vert ? DI : hrs, rows = vert ? hrs : DI;
+  const colLbl = vert ? (d) => d.slice(0, 3) : (h) => h + 'h', rowLbl = vert ? (h) => h + ':00' : (d) => d.slice(0, 3);
+  const m = {t: 22, r: 4, b: 4, l: vert ? 46 : 52}, rowH = vert ? 30 : 36, H = m.t + rows.length * rowH + m.b;
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+  const x = d3.scaleBand(cols, [m.l, W - m.r]).padding(0.06), y = d3.scaleBand(rows, [m.t, H - m.b]).padding(0.08);
+  const max = d3.max([...cell.values()], (o) => o.m + o.a) || 1;
+  const c0 = getComputedStyle(el).getPropertyValue('--color-panel').trim() || '#fff';
+  const col = d3.interpolateRgb(c0, getComputedStyle(document.documentElement).getPropertyValue('--color-bad').trim() || '#b85042');
+  svg.append('g').selectAll('text').data(cols).join('text').attr('x', (k) => x(k) + x.bandwidth() / 2).attr('y', 14).attr('text-anchor', 'middle').text(colLbl);
+  svg.append('g').selectAll('text').data(rows).join('text').attr('x', m.l - 6).attr('y', (k) => y(k) + y.bandwidth() / 2 + 4).attr('text-anchor', 'end').text(rowLbl);
+  const tip = el.querySelector('.tip') || Object.assign(el.appendChild(document.createElement('div')), {className: 'tip', hidden: true});
+  DI.forEach((d) => hrs.forEach((h) => { const o = cell.get(d + '|' + h); const t = o ? o.m + o.a : 0;
+    const cx = vert ? d : h, ry = vert ? h : d;
+    const g = svg.append('g');
+    g.append('rect').attr('x', x(cx)).attr('y', y(ry)).attr('width', x.bandwidth()).attr('height', y.bandwidth()).attr('rx', 3).attr('fill', t ? col(0.12 + 0.88 * t / max) : 'var(--color-panel)').attr('stroke', 'var(--color-border-line)');
+    if (t >= 1 && x.bandwidth() > 24) g.append('text').attr('x', x(cx) + x.bandwidth() / 2).attr('y', y(ry) + y.bandwidth() / 2 + 4).attr('text-anchor', 'middle').style('fill', t / max > 0.55 ? 'var(--color-bg)' : 'var(--color-fg)').text(Math.round(t));
+    const showTip = (ev) => { tip.hidden = false; tip.replaceChildren();
+      const hd = document.createElement('div'); hd.className = 'h'; hd.textContent = `${d} ${h}:00`; tip.append(hd);
+      [['Mostrador', o ? o.m : 0], ['Apps', o ? o.a : 0], ['Total', t]].forEach(([n, v]) => { const l = document.createElement('div'); l.textContent = `${n}: ${window.LP.fN(v, 1)}`; tip.append(l); });
+      const [px, py] = d3.pointer(ev, el); tip.style.left = Math.max(0, Math.min(px + 12, W - tip.offsetWidth - 4)) + 'px'; tip.style.top = (py + 12) + 'px'; };
+    g.on('mousemove', showTip).on('click', showTip).on('mouseleave', () => { tip.hidden = true; });
+  }));
+};
+let heatW = 0;
+new ResizeObserver(() => { const w = document.getElementById('ch-hora').clientWidth; if (w && Math.abs(w - heatW) > 20) { heatW = w; drawHeat(); } }).observe(document.getElementById('ch-hora'));
+dash.onData(drawHeat);
+window.addEventListener('lp-tab', drawHeat);
+
+dash.onData(() => {
+  const c = dash.data('club_kpi'); const tb = document.querySelector('#tb-club tbody'); tb.replaceChildren();
+  if (c.status !== 'ok') return;
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm();
+  c.data.filter((r) => local === 'Todos' || r.local === local).forEach((r) => {
+    const tr = document.createElement('tr'); tr.dataset.key = r.local;
+    [r.local, fN(r.tickets_club), fP(r.pct_tickets, 0), fP(r.pct_venta, 0), fM(r.ticket_socio), fM(r.ticket_no_socio), fP(r.dif, 0, true), fN(r.altas)]
+      .forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.append(td); });
+    tb.append(tr);
+  });
+});
+
+dash.onData(() => {
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm(); const L = local || 'Todos';
+  const a = dash.data('club_compra'), b = dash.data('club_frec');
+  const t1 = document.querySelector('#tb-clubpago tbody'); t1.replaceChildren();
+  if (a.status === 'ok') { let g0 = null;
+    a.data.filter((r) => r.local === L).sort((x, y) => (x.grupo > y.grupo ? 1 : x.grupo < y.grupo ? -1 : x.orden - y.orden)).forEach((r) => {
+      if (r.grupo !== g0) { g0 = r.grupo; const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = 4; td.textContent = r.grupo; td.style.fontWeight = '600'; td.style.paddingTop = '10px'; tr.append(td); t1.append(tr); }
+      const tr = document.createElement('tr'); const d = r.socio - r.no_socio;
+      [r.concepto, fP(r.socio, 0), fP(r.no_socio, 0), (d > 0 ? '+' : '') + Math.round(d * 100) + ' p.p.'].forEach((v, i) => { const td = document.createElement('td'); td.textContent = v; if (i === 3) td.style.color = Math.abs(d) >= 0.03 ? (d > 0 ? '#15803d' : '#b91c1c') : ''; tr.append(td); });
+      t1.append(tr); }); }
+  const t2 = document.querySelector('#tb-clubfrec tbody'); t2.replaceChildren();
+  if (b.status === 'ok') b.data.filter((r) => r.local === L).sort((x, y) => x.orden - y.orden).forEach((r) => {
+    const tr = document.createElement('tr'); [r.veces, fN(r.socios), fM(r.venta), fP(r.pct_venta, 0)].forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.append(td); }); t2.append(tr); });
+});
+</script>
+
+<script>
+// club: indicadores y semanas
+dash.onData(() => {
+  const {fN, fP} = window.LP; const {local} = window.LP_prm();
+  const a = dash.data('club_ind'), b = dash.data('club_sem');
+  const t1 = document.querySelector('#tb-clubind tbody'), t2 = document.querySelector('#tb-clubsem tbody');
+  t1.replaceChildren(); t2.replaceChildren();
+  if (a.status === 'ok') {
+    const by = Object.fromEntries(a.data.map((r) => [r.local, r]));
+    const rows = [['Socios nuevos en octubre', 'socios_nuevos', (v) => fN(v), 1], ['% de compras con club', 'pct_club', (v) => fP(v, 1), 1],
+      ['Cuánto más gasta el socio', 'gasta_mas', (v) => fP(v, 0, true), 1], ['Socios nuevos que ya volvieron', 'vuelven', (v) => fP(v, 0), 1],
+      ['Días hasta que vuelven (mediana)', 'dias_vuelta', (v) => fN(v), -1], ['Clientes vs 2025 en la semana 1', 'clientes_s1', (v) => v == null ? 'sin dato' : fP(v, 1, true), 0],
+      ['Clientes vs 2025 en la semana 4', 'clientes_s4', (v) => fP(v, 1, true), 0]];
+    rows.forEach(([lab, k, f, dir]) => {
+      const tr = document.createElement('tr'); const td0 = document.createElement('td'); td0.textContent = lab; td0.className = 'l'; tr.append(td0);
+      const vals = ['Florida', 'Beccar', 'Paz'].map((l) => by[l] ? by[l][k] : null);
+      const ok = vals.filter((v) => v != null); const best = dir === 0 ? null : (dir > 0 ? Math.max(...ok) : Math.min(...ok));
+      vals.forEach((v) => { const td = document.createElement('td'); td.textContent = f(v); if (best != null && v === best) td.classList.add('good'); tr.append(td); });
+      t1.append(tr);
+    });
+  }
+  if (b.status === 'ok') b.data.filter((r) => local === 'Todos' || r.local === local).sort((x, y) => ['Florida', 'Beccar', 'Paz'].indexOf(x.local) - ['Florida', 'Beccar', 'Paz'].indexOf(y.local) || x.orden - y.orden).forEach((r) => {
+    const tr = document.createElement('tr');
+    [r.semana, r.local, fN(r.clientes_dia, 1), r.var_2025 == null ? 'sin dato' : fP(r.var_2025, 1, true), fN(r.club_dia, 1), fN(r.primera_dia, 1), fN(r.vuelve_nuevo_dia, 1), fN(r.vuelve_antes_dia, 1), fN(r.sin_club_dia, 1), fP(r.pct_club, 0)]
+      .forEach((v, i) => { const td = document.createElement('td'); td.textContent = v; if (i < 2) td.className = 'l'; if (i === 3 && r.var_2025 != null) td.classList.add(r.var_2025 >= 0 ? 'good' : 'bad'); tr.append(td); });
+    t2.append(tr);
+  });
+});
+</script>
+
+<script>
+// resumen
+dash.onData(() => {
+  const {fM, fP} = window.LP;
+  const k = dash.data('resumen_kpis'), a = dash.data('resumen_alertas'), av = dash.data('resumen_avance');
+  if (k.status === 'ok') { const t = document.getElementById('r-tiles'); t.replaceChildren();
+    k.data.forEach((r) => { const d = document.createElement('div'); d.className = 'tile ' + r.s;
+      d.innerHTML = '<div class="k"></div><div class="v"></div><div class="d"></div>';
+      d.children[0].textContent = r.k; d.children[1].textContent = r.v; d.children[1].classList.add(r.s === 'ok' ? 'good' : r.s); d.children[2].textContent = r.d; t.append(d); }); }
+  if (a.status === 'ok') { const u = document.getElementById('r-alertas'); u.replaceChildren();
+    a.data.forEach((r) => { const li = document.createElement('li'); const b = document.createElement('b'); b.textContent = r.t; const s = document.createElement('span'); s.textContent = r.d; li.append(b, s); u.append(li); }); }
+  if (av.status === 'ok') { const tb = document.querySelector('#tb-avance tbody'); tb.replaceChildren();
+    av.data.forEach((r) => { const tr = document.createElement('tr');
+      [[r.local], [fM(r.meta)], [fM(r.plan_25)], [fM(r.real_25)], [fP(r.avance, 1), r.avance >= 1 ? 'good' : 'bad'], [fM(r.proyeccion)], [fP(r.pct_meta - 1, 1, true), r.pct_meta >= 1 ? 'good' : 'bad']]
+        .forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i === 0) td.className = 'l'; if (c) td.classList.add(c); tr.append(td); }); tb.append(tr); }); }
+});
+</script>
+
+<script>
+// equipo: una tabla por vendedora
+let v2s = {k: 'tk_hora', dir: -1};
+document.querySelectorAll('#tb-vend2 th button').forEach((b) => b.addEventListener('click', () => {
+  v2s = {k: b.dataset.v2, dir: v2s.k === b.dataset.v2 ? -v2s.dir : (['vendedora', 'local'].includes(b.dataset.v2) ? 1 : -1)}; drawV2(); }));
+const drawV2 = () => {
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm(); const d = dash.data('vend_v2');
+  const tb = document.querySelector('#tb-vend2 tbody'); tb.replaceChildren();
+  if (d.status !== 'ok') return;
+  const rows = d.data.filter((r) => local === 'Todos' || r.local === local).slice()
+    .sort((a, b) => { const x = a[v2s.k], y = b[v2s.k]; if (x == null && y == null) return 0; if (x == null) return 1; if (y == null) return -1; return (typeof x === 'string' ? x.localeCompare(y) : x - y) * v2s.dir; });
+  const best = {}; ['ticket_promedio', 'pct_club', 'altas_100', 'adic_100', 'tk_hora', 'venta_hora'].forEach((k) => { best[k] = {}; d.data.forEach((r) => { if (r[k] != null && (best[k][r.local] == null || r[k] > best[k][r.local])) best[k][r.local] = r[k]; }); });
+  const FT = {'Beccar sin reloj': 'sin reloj', 'no ficha': 'no ficha', '¿es Paula?': 'a confirmar'};
+  rows.forEach((r) => { const tr = document.createElement('tr');
+    const sinH = r.tk_hora == null ? (FT[r.ficha] || '—') : null;
+    [[r.vendedora], [r.local], [fN(r.tickets)], [fM(r.ticket_promedio), 'ticket_promedio'], [fP(r.pct_club, 0), 'pct_club'], [r.altas_100 == null ? '—' : fN(r.altas_100, 1), 'altas_100'], [r.adic_100 == null ? '—' : fN(r.adic_100, 1), 'adic_100'], [sinH ?? fN(r.tk_hora, 1), 'tk_hora', sinH], [sinH ?? fM(r.venta_hora), 'venta_hora', sinH]]
+      .forEach(([t, k, mut], i) => { const td = document.createElement('td');
+        if (mut) { const s = document.createElement('span'); s.className = 'mut'; s.textContent = t; td.append(s); } else td.textContent = t;
+        if (i < 2) td.className = 'l'; if (k && r[k] != null && r[k] === best[k][r.local]) td.classList.add('good'); tr.append(td); });
+    tb.append(tr); });
+  const n = [];
+  if (rows.some((r) => r.vendedora.endsWith('*'))) n.push('* Elizabeth figura en Maxi Rest como "Ojeda".');
+  if (rows.some((r) => r.ficha === 'no ficha')) n.push('"No ficha" = vende pero no tiene fichadas en el reloj; no se puede medir por hora.');
+  if (local !== 'Paz' && local !== 'Beccar') n.push('En Florida 306 tickets se cargaron como "Mozo", sin vendedora.');
+  document.getElementById('n-vend2').textContent = n.join(' ');
+};
+dash.onData(drawV2);
+
+// resultado del negocio
+dash.onData(() => {
+  const {fM, fP} = window.LP; const {local} = window.LP_prm(); const d = dash.data('eerr_res'); if (d.status !== 'ok') return;
+  const meses = [...new Set(d.data.map((r) => r.mes))].sort().reverse();
+  const nom = Object.fromEntries(d.data.map((r) => [r.mes, r.mes_n]));
+  const sum = (m, k) => d.data.filter((r) => r.mes === m && (local === 'Todos' || r.local === local)).reduce((s, r) => s + r[k], 0);
+  const th = document.querySelector('#tb-res thead tr'); th.replaceChildren();
+  ['Concepto', ...meses.map((m) => nom[m])].forEach((t) => { const e = document.createElement('th'); e.textContent = t; th.append(e); });
+  const tb = document.querySelector('#tb-res tbody'); tb.replaceChildren();
+  const F = [['venta_neta', 'Venta neta'], ['mercaderia', 'Mercadería'], ['sueldos', 'Sueldos y cargas'], ['apps', 'Apps (PedidosYa y Rappi)'], ['alquiler', 'Alquiler'], ['otros', 'Otros gastos del local'], ['impuestos', 'Impuestos'], ['resultado', 'Resultado']];
+  F.forEach(([k, n]) => { const tr = document.createElement('tr'); if (k === 'resultado' || k === 'venta_neta') tr.className = 'tot';
+    const a = document.createElement('td'); a.className = 'l'; a.textContent = n; tr.append(a);
+    meses.forEach((m) => { const v = sum(m, k), vn = sum(m, 'venta_neta'); const td = document.createElement('td');
+      td.textContent = fM(v); if (k !== 'venta_neta') { const s = document.createElement('span'); s.className = 'mut'; s.textContent = ' ' + fP(v / vn, 1); td.append(s); }
+      if (k === 'resultado') td.classList.add(v >= 0 ? 'good' : 'bad'); tr.append(td); });
+    tb.append(tr); });
+});
+</script>
+
+
+<script>
+// fichadas
+const drawFich = () => {
+  const {fM, fN} = window.LP; const {desde, hasta, local} = window.LP_prm();
+  const f = dash.data('fichadas'), v = dash.data('ventas_diarias'), fh = dash.data('fich_hora');
+  const t1 = document.querySelector('#tb-fich tbody'), t2 = document.querySelector('#tb-fichv tbody'), t3 = document.querySelector('#tb-fichh tbody');
+  [t1, t2, t3].forEach((t) => t.replaceChildren());
+  if (f.status !== 'ok') return;
+  const row = (tb, vals, cl) => { const tr = document.createElement('tr'); vals.forEach((x, i) => { const td = document.createElement('td'); td.textContent = x; if (i < 2) td.className = 'l'; if (cl && cl[i]) td.classList.add(cl[i]); tr.append(td); }); tb.append(tr); };
+  const msg = (tb, n, t) => { const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = n; td.textContent = t; td.className = 'l'; tr.append(td); tb.append(tr); };
+  const R = f.data.filter((r) => r.fecha >= desde && r.fecha <= hasta && (local === 'Todos' || r.local === local));
+  const hh = (x) => { const t = Math.round(x * 60); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+  if (local === 'Beccar') { msg(t1, 7, 'Beccar todavía no tiene reloj de fichadas.'); msg(t2, 7, 'Beccar todavía no tiene reloj de fichadas.'); }
+  else if (!R.length) { msg(t1, 7, 'Sin fichadas en el período elegido. Hay fichadas del 05/10 al 18/10.'); msg(t2, 7, 'Sin fichadas en el período elegido.'); }
+  else {
+    const RO = {'Atención': 0, 'Pastero': 1, 'Cocina': 2};
+    const P = d3.rollups(R, (g) => ({rol: g[0].rol, dias: g.length, horas: d3.sum(g, (x) => x.horas || 0), con: g.filter((x) => x.horas != null).length, rev: d3.sum(g, (x) => x.revisar)}), (x) => x.local + '|' + x.persona)
+      .map(([k, o]) => ({local: k.split('|')[0], persona: k.split('|')[1], ...o})).sort((a, b) => a.local.localeCompare(b.local) || RO[a.rol] - RO[b.rol] || b.horas - a.horas);
+    P.forEach((p) => row(t1, [p.persona, p.local, p.rol, fN(p.dias), hh(p.horas), p.con ? hh(p.horas / p.con) : '—', p.rev ? fN(p.rev) : '—'], [null, null, null, null, null, p.con && p.horas / p.con > 10 ? 'bad' : null, p.rev ? 'bad' : null]));
+    const L = d3.rollups(R, (g) => ({fechas: new Set(g.map((x) => x.fecha)), horas: d3.sum(g, (x) => x.horas || 0), ha: d3.sum(g.filter((x) => x.rol === 'Atención'), (x) => x.horas || 0)}), (x) => x.local);
+    L.forEach(([loc, o]) => {
+      const vv = v.status === 'ok' ? v.data.filter((r) => r.local === loc && o.fechas.has(r.fecha)) : [];
+      const venta = d3.sum(vv, (r) => r.venta), cli = d3.sum(vv, (r) => r.tickets_mostrador || 0);
+      row(t2, [loc, fN(o.fechas.size), hh(o.horas), hh(o.ha), fM(venta), o.horas ? fM(venta / o.horas) : '—', o.ha ? fN(cli / o.ha, 1) : '—']);
+    });
+  }
+  if (fh.status === 'ok') {
+    const H = fh.data.filter((r) => local === 'Todos' ? true : r.local === local);
+    if (!H.length) msg(t3, 5, 'Beccar todavía no tiene reloj de fichadas.');
+    t3.closest('table').classList.add('cvh');
+    H.forEach((r) => { r.app = Math.max(0, r.clientes - r.mostrador); r.cv = r.atencion >= 0.5 ? r.clientes / r.atencion : null; });
+    const top = d3.quantile(H.map((r) => r.cv).filter((x) => x != null).sort(d3.ascending), 0.8);
+    let l0 = null;
+    H.filter((r) => r.clientes >= 0.5).forEach((r) => {
+      if (r.local !== l0) { l0 = r.local; const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = 5; td.className = 'l'; td.textContent = r.local; td.style.fontWeight = '600'; td.style.paddingTop = '10px'; tr.append(td); t3.append(tr); }
+      row(t3, [r.hora + '-' + (r.hora + 1) + ' h', fN(r.atencion, 1), fN(r.mostrador, 0), fN(r.app, 0), r.cv == null ? '—' : fN(r.cv, 1)], [null, null, null, null, r.cv != null && r.cv >= top ? 'bad' : null]);
+    });
+  }
+};
+dash.onData(drawFich);
+</script>
+
+<script>
+// compras: tiles, rubros, precios · recetas y margen
+let rsort = {k: 'margen', dir: -1};
+document.querySelectorAll('#tb-rprod th button').forEach((b) => b.addEventListener('click', () => { const k = b.dataset.rs; rsort = {k, dir: rsort.k === k ? -rsort.dir : (['producto', 'grupo', 'confianza'].includes(k) ? 1 : -1)}; drawRec(); }));
+const CONFL = {'Seguro': 'Seguro', 'Casi seguro': 'Casi seguro', 'Fuera por ahora': 'A confirmar'};
+const setT = (id, t, cls) => { const e = document.getElementById(id); e.textContent = t; e.classList.remove('good', 'bad'); if (cls) e.classList.add(cls); };
+const drawCompras = () => {
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm(); const inL = (r) => local === 'Todos' || r.local === local;
+  const cr = dash.data('compras_rubro'), cv = dash.data('compras_venta'), pv = dash.data('precios_var');
+  if (cr.status === 'ok') {
+    const rows = cr.data.filter(inL); const s = (m) => d3.sum(rows.filter((r) => r.mes === m), (r) => r.compras);
+    const sep = s('2026-09'), oct = s('2026-10'); const dv = (oct / 17) / (sep / 30) - 1;
+    setT('k-c-sep', fM(sep)); setT('k-c-sep-d', fM(sep / 30) + ' por día');
+    setT('k-c-oct', fM(oct)); setT('k-c-oct-d', fM(oct / 17) + ' por día (' + fP(dv, 0, true) + ')', dv > 0.02 ? 'bad' : dv < -0.02 ? 'good' : null);
+    const tb = document.querySelector('#tb-rubro tbody'); tb.replaceChildren();
+    const R = d3.rollups(rows, (g) => ({sep: d3.sum(g.filter((r) => r.mes === '2026-09'), (r) => r.compras), oct: d3.sum(g.filter((r) => r.mes === '2026-10'), (r) => r.compras)}), (r) => r.rubro).sort((a, b) => b[1].oct - a[1].oct);
+    R.concat([['Total', {sep, oct}]]).forEach(([rb, o]) => { const tr = document.createElement('tr'); if (rb === 'Total') tr.style.fontWeight = '600'; const v = o.sep ? (o.oct / 17) / (o.sep / 30) - 1 : null;
+      [[rb], [fM(o.sep)], [fM(o.oct)], [fM(o.sep / 30)], [fM(o.oct / 17)], [v == null ? '—' : fP(v, 0, true), v == null ? '' : v > 0.05 ? 'bad' : v < -0.05 ? 'good' : ''], [fP(oct ? o.oct / oct : null, 0)]].forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i === 0) td.className = 'l'; if (c) td.classList.add(c); tr.append(td); }); tb.append(tr); });
+  }
+  if (cv.status === 'ok') { const o = cv.data.filter((r) => r.mes === '2026-10' && (local === 'Todos' ? r.local === 'Todos' : r.local === local))[0]; const sp = cv.data.filter((r) => r.mes === '2026-09' && (local === 'Todos' ? r.local === 'Todos' : r.local === local))[0];
+    setT('k-c-pct', o ? fP(o.pct, 1) : '—'); setT('k-c-pct-d', sp ? 'Septiembre: ' + fP(sp.pct, 1) : '—'); }
+  if (pv.status === 'ok') { const P = pv.data.filter(inL).sort((a, b) => b.var - a.var); const up = P.filter((r) => r.var > 0);
+    setT('k-c-suba', fN(up.length)); setT('k-c-suba-d', up.length ? 'La mayor: ' + up[0].insumo.split(' ').slice(0, 3).join(' ') + ' ' + fP(up[0].var, 0, true) : 'sin subas', up.length ? 'bad' : null);
+    const tb = document.querySelector('#tb-precios tbody'); tb.replaceChildren();
+    P.forEach((r) => { const tr = document.createElement('tr'); [[r.insumo], [r.proveedor], [r.local], [r.fecha], [fM(r.anterior)], [fM(r.ultimo)], [fP(r.var, 0, true), r.var > 0 ? 'bad' : 'good']].forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i < 3) td.className = 'l'; if (c) td.classList.add(c); tr.append(td); }); tb.append(tr); }); }
+};
+const drawRec = () => {
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm(); const inL = (r) => local === 'Todos' || r.local === local;
+  const d = dash.data('recetas'), cb = dash.data('recetas_cob'); if (d.status !== 'ok') return;
+  const all = d.data.filter(inL); const ok = all.filter((r) => r.confianza !== 'Fuera por ahora');
+  const V = d3.sum(ok, (r) => r.venta), C = d3.sum(ok, (r) => r.cmv), M = V - C;
+  const vm = cb.status === 'ok' ? d3.sum(cb.data.filter(inL), (r) => r.venta_mostrador) : null;
+  setT('k-r-venta', fM(V)); setT('k-r-venta-d', vm ? fP(V / vm, 0) + ' de la venta de mostrador' : '—');
+  setT('k-r-cmv', fM(C)); setT('k-r-cmv-d', 'CMV ' + fP(C / V, 1) + ' de la venta sin IVA');
+  setT('k-r-margen', fM(M)); setT('k-r-margen-d', fP(M / V, 1) + ' de la venta sin IVA', 'good');
+  const nprod = new Set(ok.map((r) => r.codigo)).size, nfuera = new Set(all.filter((r) => r.confianza === 'Fuera por ahora').map((r) => r.codigo)).size;
+  setT('k-r-n', fN(nprod)); setT('k-r-n-d', nfuera + ' más con costo a confirmar');
+  const tg = document.querySelector('#tb-rgrupo tbody'); tg.replaceChildren();
+  d3.rollups(ok, (g) => ({v: d3.sum(g, (r) => r.venta), c: d3.sum(g, (r) => r.cmv)}), (r) => r.grupo).sort((a, b) => (b[1].v - b[1].c) - (a[1].v - a[1].c))
+    .concat([['Total', {v: V, c: C}]]).forEach(([g, o]) => { const tr = document.createElement('tr'); if (g === 'Total') tr.style.fontWeight = '600';
+      [g, fM(o.v), fM(o.c), fP(o.c / o.v, 1), fM(o.v - o.c), fP((o.v - o.c) / M, 0)].forEach((t, i) => { const td = document.createElement('td'); td.textContent = t; if (i === 0) td.className = 'l'; tr.append(td); }); tg.append(tr); });
+  const P = d3.rollups(all, (g) => { const u = d3.sum(g, (r) => r.unidades), v = d3.sum(g, (r) => r.venta), c = d3.sum(g, (r) => r.cmv);
+      return {producto: g[0].producto, grupo: g[0].grupo, confianza: g[0].confianza, nota: g[0].nota, unidades: u, venta: v, cmv: c, margen: v - c, precio: v / u, costo_unit: g[0].costo_unit, cmvp: c / v}; }, (r) => r.codigo).map((x) => x[1])
+    .sort((a, b) => { const x = a[rsort.k], y = b[rsort.k]; return (typeof x === 'string' ? x.localeCompare(y) : x - y) * rsort.dir; });
+  document.querySelectorAll('#tb-rprod th').forEach((th) => { const b = th.querySelector('button'); th.setAttribute('aria-sort', b && b.dataset.rs === rsort.k ? (rsort.dir > 0 ? 'ascending' : 'descending') : 'none'); });
+  const tp = document.querySelector('#tb-rprod tbody'); tp.replaceChildren();
+  P.forEach((r) => { const tr = document.createElement('tr'); if (r.confianza === 'Fuera por ahora') tr.style.opacity = '0.6';
+    [[r.producto], [r.grupo], [fN(r.unidades, r.unidades % 1 ? 1 : 0)], [fM(r.precio)], [fM(r.costo_unit)], [fP(r.cmvp, 0), r.cmvp > 0.35 ? 'bad' : r.cmvp < 0.2 ? 'good' : ''], [fM(r.venta)], [fM(r.margen)], [CONFL[r.confianza] || r.confianza]]
+      .forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i < 2 || i === 8) td.className = 'l'; if (c) td.classList.add(c); if (i === 0 && r.nota) td.title = r.nota; tr.append(td); }); tp.append(tr); });
+};
+dash.onData(() => { drawCompras(); drawRec(); });
+</script>
+
+
+<script>
+// compras y costos
+const fillTable = (sel, id, filterFn, cols) => {
+  const d = dash.data(id); const tb = document.querySelector(sel + ' tbody'); tb.replaceChildren();
+  if (d.status !== 'ok') return;
+  d.data.filter(filterFn).forEach((r) => {
+    const tr = document.createElement('tr');
+    cols.forEach((c, i) => { const td = document.createElement('td'); const out = c(r); td.textContent = out.t ?? out; if (out.c) td.classList.add(out.c); if (i === 0) td.className = (td.className + ' l').trim(); tr.append(td); });
+    tb.append(tr);
+  });
+};
+const MES = {'2026-08': 'Agosto', '2026-09': 'Septiembre', '2026-10': 'Octubre', '2026-10 (proy.)': 'Octubre (proy.)'};
+dash.onData(() => {
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm();
+  const byLoc = (r) => local === 'Todos' || r.local === local || (r.local === 'Todos' && false);
+  fillTable('#tb-cv', 'compras_venta', (r) => local === 'Todos' || r.local === local, [(r) => MES[r.mes], (r) => r.local === 'Todos' ? '3 locales' : r.local, (r) => fM(r.compras), (r) => fM(r.venta), (r) => fP(r.pct, 1)]);
+  document.querySelectorAll('#tb-cv tbody tr').forEach((tr, i) => { const d = dash.data('compras_venta').data.filter((r) => local === 'Todos' || r.local === local)[i]; if (d) tr.dataset.key = `${d.mes},${d.local}`; });
+  fillTable('#tb-prov', 'compras_proveedor', () => true, [(r) => r.proveedor, (r) => fM(r.septiembre), (r) => fM(r.octubre)]);
+  document.querySelectorAll('#tb-prov tbody tr').forEach((tr) => { tr.dataset.key = tr.firstChild.textContent; });
+  { const d = dash.data('apps_liq'); const tb = document.querySelector('#tb-apps tbody'); tb.replaceChildren();
+    if (d.status === 'ok') { const L = local === 'Todos' ? '3 locales' : local; let p0 = null;
+      d.data.filter((r) => r.local === L).forEach((r) => {
+        if (r.periodo !== p0) { p0 = r.periodo; const tr = document.createElement('tr'); const td = document.createElement('td'); td.colSpan = 10; td.className = 'l'; td.textContent = r.periodo + (L === '3 locales' ? ' · 3 locales' : ' · ' + L); td.style.fontWeight = '600'; td.style.paddingTop = '10px'; tr.append(td); tb.append(tr); }
+        const tr = document.createElement('tr'); if (r.app === 'Total') tr.style.fontWeight = '600';
+        ['', r.app, fN(r.pedidos), fM(r.venta), fM(r.costo_app), fP(r.pct_costo, 1), fM(r.impuestos), fM(r.deposito), fM(r.deposito_pedido), fP(r.pct_deposito, 0)].forEach((v, k) => { const td = document.createElement('td'); td.textContent = v; if (k < 2) td.className = 'l'; tr.append(td); });
+        tb.append(tr); }); } }
+});
+</script>
+
+<script>
+// productos
+const drawTop = () => {
+  const {fM, fN, fP} = window.LP; const {desde, hasta, local} = window.LP_prm();
+  const orden = document.getElementById('f-orden').value;
+  const td = (t, c) => { const e = document.createElement('td'); e.textContent = t; if (c) e.className = c; return e; };
+  // mostrador
+  const tm = dash.data('top_mostrador'); const bm = document.querySelector('#tb-topm tbody'); bm.replaceChildren();
+  if (tm.status === 'ok') {
+    const g = new Map();
+    tm.data.filter((r) => local === 'Todos' || r.local === local).forEach((r) => {
+      const k = r.codigo; const o = g.get(k) || {articulo: r.articulo, cantidad: 0, venta: 0, c25: 0, d25: true}; o.cantidad += r.cantidad; o.venta += r.venta;
+      if (r.cantidad_2025 == null) o.d25 = false; else o.c25 += r.cantidad_2025; g.set(k, o); });
+    const tot = [...g.values()].reduce((t, o) => t + o.venta, 0);
+    [...g.values()].sort((a, b) => b[orden] - a[orden]).slice(0, 20).forEach((o, i) => {
+      const tr = document.createElement('tr');
+      const v = o.d25 && o.c25 > 0 ? (o.cantidad / 18) / (o.c25 / 19) - 1 : null;
+      const dec = Math.abs(o.cantidad - Math.round(o.cantidad)) > 0.001 ? 1 : 0;
+      tr.append(td(i + 1), td(o.articulo, 'l'), td(fN(o.cantidad, dec)), td(fM(o.venta)), td(fP(o.venta / tot, 1)), td(v == null ? 'nuevo' : fP(v, 0, true), v == null ? '' : v >= 0 ? 'good' : 'bad'));
+      bm.append(tr); });
+  }
+  // pedidosya
+  const tp = dash.data('py_articulos'); const bp = document.querySelector('#tb-topp tbody'); bp.replaceChildren();
+  if (tp.status === 'ok') {
+    const g = new Map();
+    tp.data.filter((r) => r.fecha >= desde && r.fecha <= hasta && (local === 'Todos' || r.local === local)).forEach((r) => {
+      const o = g.get(r.articulo) || {articulo: r.articulo, unidades: 0, pedidos: 0}; o.unidades += r.unidades; o.pedidos += r.pedidos; g.set(r.articulo, o); });
+    const k = orden === 'venta' ? 'pedidos' : 'unidades';
+    const list = [...g.values()].sort((a, b) => b[k] - a[k] || b.unidades - a.unidades).slice(0, 20);
+    if (!list.length) { const tr = document.createElement('tr'); const c = td('Sin datos de PedidosYa para estas fechas (hay desde el 1/10).', 'l'); c.colSpan = 4; tr.append(c); bp.append(tr); }
+    list.forEach((o, i) => { const tr = document.createElement('tr'); tr.append(td(i + 1), td(o.articulo, 'l'), td(fN(o.unidades)), td(fN(o.pedidos))); bp.append(tr); });
+  }
+};
+document.getElementById('f-orden').addEventListener('change', drawTop);
+dash.onData(drawTop);
+</script>

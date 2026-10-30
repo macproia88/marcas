@@ -17,8 +17,8 @@ SALIDA = AQUI.parent / 'tablero-presumida-v2.html'
 SUCURSALES = {'fpastas': 'Florida', 'beccar': 'Beccar', 'paz': 'Paz', 'pastas paz': 'Paz', 'olivos': 'Paz'}
 APPS = re.compile(r'^(PEDIDOS YA|RAPPI|MP DELIVERY|PAGO ONLINE)', re.I)
 DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
-# Ticket promedio de apps del 1 al 25/10 (venta de apps / pedidos reales) para estimar pedidos desde la venta del código 202
-TICKET_APP = {'Florida': 24269.09, 'Beccar': 21425.81, 'Paz': 27296.82}
+# Venta del código 202 en los cierres ÷ pedidos reales (PedidosYa + Rappi), 26 al 29/10: para estimar pedidos hasta que llegan los archivos de las apps
+TICKET_APP = {'Florida': 20675.0, 'Beccar': 18620.0, 'Paz': 18057.0}
 # Ticket promedio de apps oct-2025, para clientes 2025 (mismo criterio que el tablero)
 TK25 = {'Florida': 18142, 'Beccar': 16025}
 
@@ -31,6 +31,11 @@ def actualizar_ventas():
     V = cargar('ventas_diarias.json')
     C = cargar('cierres.json')
     ref = {(r['fecha'], r['local']): r for r in cargar('ref_2025.json')}
+    # pedidos reales de apps (archivos de PedidosYa + Rappi), si existen, en lugar del estimado
+    try:
+        reales = cargar('pedidos_reales.json')
+    except FileNotFoundError:
+        reales = {}
     dias = {}
     avisos = []
     for c in C:
@@ -56,7 +61,7 @@ def actualizar_ventas():
                  venta_mostrador=round(a['total'] - va, 2), venta_app=va,
                  tickets_mostrador=float(a['tickets'] - a['app_cant']),
                  venta_2025=None, tickets_mostrador_2025=None, venta_mostrador_2025=None, venta_app_2025=None,
-                 pedidos_app=round(va / TICKET_APP[L]), clientes_2025=None, fuente='cierre')
+                 pedidos_app=reales.get(f'{f}|{L}', round(va / TICKET_APP[L])), clientes_2025=None, fuente='cierre')
         r = ref.get((f, L))
         if r:
             x.update(venta_2025=r['venta_2025'], tickets_mostrador_2025=r['tickets_mostrador_2025'],

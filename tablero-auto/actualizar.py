@@ -112,6 +112,17 @@ def armar_html(V):
     d = dt.date.fromisoformat(fmax)
     u7 = (d - dt.timedelta(days=6)).isoformat()
     h = (SRC / 'index_v2.html').read_text(encoding='utf-8')
+    ahora = dt.datetime.now(dt.timezone(dt.timedelta(hours=-3)))
+    orden = {'Mañana': 1, 'Intermedio': 2, 'Noche': 3}
+    try:
+        C = cargar('cierres.json')
+        u = max(C, key=lambda c: (c['fecha'], orden.get(c.get('turno'), 0)))
+        ult = f" · último cierre de caja: {u['fecha'][8:10]}/{u['fecha'][5:7]}, turno {u['turno'].lower()}"
+    except Exception:
+        ult = ''
+    sello = (f'<p class="upd" style="margin:2px 0 0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)">'
+             f'Actualizado el {ahora:%d/%m/%Y} a las {ahora:%H:%M} (hora Argentina){ult}</p>')
+    h = h.replace('<h1 id="titulo">Tablero La Presumida</h1>', '<h1 id="titulo">Tablero La Presumida</h1>' + sello, 1)
     h = h.replace('max="2026-10-29"', f'max="{fmax}"')
     h = h.replace("const FMAX = '2026-10-29';", f"const FMAX = '{fmax}';")
     h = h.replace("ult7:['2026-10-23','2026-10-29']", f"ult7:['{u7}','{fmax}']")

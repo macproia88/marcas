@@ -34,7 +34,7 @@
 .lp [data-dash-source-state=empty]{color:transparent}
 .lp [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 .lp .page{display:flex;flex-direction:column;gap:var(--cds-gap-md)}
-.lp .ygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:var(--cds-gap-md)}.lp .ycard{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}.lp .ycard .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}.lp .ycard .v{font-family:var(--font-anthropic-serif);font-size:var(--cds-font-size-title);line-height:1.15;margin-top:4px}.lp .ycard .d{font-size:var(--cds-font-size-caption);margin-top:2px;color:var(--color-fg-muted)}.lp .ych{position:relative;min-height:170px;margin-top:8px}.lp .ych svg text.val{font-size:10px;fill:var(--color-fg)}
+.lp .ygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:var(--cds-gap-md)}.lp .ycard{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);min-width:0}.lp .ycard .k{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}.lp .ycard .v{font-family:var(--font-anthropic-serif);font-size:var(--cds-font-size-title);line-height:1.15;margin-top:4px}.lp .ycard .d{font-size:var(--cds-font-size-caption);margin-top:2px;color:var(--color-fg-muted)}.lp .ych{position:relative;min-height:170px;margin-top:8px}.lp .ych{min-height:180px}.lp .ych svg text.val{font-size:10.5px;fill:var(--color-fg);font-variant-numeric:tabular-nums}.lp .ych svg text.val.proj{fill:var(--color-fg-muted)}.lp .ych svg text.halo{paint-order:stroke;stroke:var(--color-panel);stroke-width:3px;stroke-linejoin:round}.lp .ycard .u{font-size:11px;opacity:.85}@media (max-width:440px){.lp .ych svg text.val{font-size:9px}}
 .lp .sec h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:6px 0 0}.lp .sec .note{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:2px 0 0}
 .lp .page[hidden]{display:none}
 @media (max-width:640px){.lp .tiles{grid-template-columns:1fr 1fr}.lp .tile{padding:12px}.lp .tile .v{font-size:22px}}
@@ -121,11 +121,11 @@
     </div>
     <div class="sec"><h2>El año mes a mes</h2><p class="note">Enero a hoy. Sigue el filtro de local, no el de fechas. El último mes está incompleto: la barra clara es la proyección al mes completo con la venta por día que lleva.</p></div>
     <div class="ygrid" id="r-year">
-      <div class="ycard"><div class="k">Venta total</div><div class="v" id="ry-venta-v" data-source="venta_mensual">—</div><div class="d" id="ry-venta-d">—</div><div class="ych" id="ry-venta" data-source="venta_mensual"></div></div>
-      <div class="ycard"><div class="k">Venta de mostrador</div><div class="v" id="ry-most-v" data-source="venta_mensual">—</div><div class="d" id="ry-most-d">—</div><div class="ych" id="ry-most" data-source="venta_mensual"></div></div>
-      <div class="ycard"><div class="k">Venta de apps</div><div class="v" id="ry-app-v" data-source="venta_mensual">—</div><div class="d" id="ry-app-d">—</div><div class="ych" id="ry-app" data-source="venta_mensual"></div></div>
-      <div class="ycard"><div class="k">Tickets de mostrador</div><div class="v" id="ry-tk-v" data-source="venta_mensual">—</div><div class="d" id="ry-tk-d">—</div><div class="ych" id="ry-tk" data-source="venta_mensual"></div></div>
-      <div class="ycard"><div class="k">Ticket promedio de mostrador</div><div class="v" id="ry-tp-v" data-source="venta_mensual">—</div><div class="d" id="ry-tp-d">—</div><div class="ych" id="ry-tp" data-source="venta_mensual"></div></div>
+      <div class="ycard"><div class="k">Venta total <span class="u">· barras en millones</span></div><div class="v" id="ry-venta-v" data-source="venta_mensual">—</div><div class="d" id="ry-venta-d">—</div><div class="ych" id="ry-venta" data-source="venta_mensual"></div></div>
+      <div class="ycard"><div class="k">Venta de mostrador <span class="u">· barras en millones</span></div><div class="v" id="ry-most-v" data-source="venta_mensual">—</div><div class="d" id="ry-most-d">—</div><div class="ych" id="ry-most" data-source="venta_mensual"></div></div>
+      <div class="ycard"><div class="k">Venta de apps <span class="u">· barras en millones</span></div><div class="v" id="ry-app-v" data-source="venta_mensual">—</div><div class="d" id="ry-app-d">—</div><div class="ych" id="ry-app" data-source="venta_mensual"></div></div>
+      <div class="ycard"><div class="k">Tickets de mostrador <span class="u">· barras en miles</span></div><div class="v" id="ry-tk-v" data-source="venta_mensual">—</div><div class="d" id="ry-tk-d">—</div><div class="ych" id="ry-tk" data-source="venta_mensual"></div></div>
+      <div class="ycard"><div class="k">Ticket promedio de mostrador <span class="u">· en miles de $</span></div><div class="v" id="ry-tp-v" data-source="venta_mensual">—</div><div class="d" id="ry-tp-d">—</div><div class="ych" id="ry-tp" data-source="venta_mensual"></div></div>
       <div class="ycard"><div class="k">Apps sobre la venta</div><div class="v" id="ry-pct-v" data-source="venta_mensual">—</div><div class="d" id="ry-pct-d">—</div><div class="ych" id="ry-pct" data-source="venta_mensual"></div></div>
     </div>
     <div class="sec"><h2>Foto de octubre al 25/10</h2><p class="note">Estos indicadores y las alertas son fijos: no cambian con los filtros.</p></div>
@@ -596,9 +596,9 @@ const drawYear = () => {
       venta: s('venta'), most: s('venta_mostrador'), app: s('venta_app'), tk: s('tickets_mostrador'),
       ventaP: proj('venta'), mostP: proj('venta_mostrador'), appP: proj('venta_app'), tkP: proj('tickets_mostrador')};
     o.tp = o.tk ? o.most / o.tk : null; o.pct = o.venta ? o.app / o.venta : null; o.tpP = o.tp; o.pctP = o.pct; return o; });
-  const fMM = (x) => (x / 1e6).toLocaleString('es-AR', {maximumFractionDigits: 0}) + ' M';
-  const fK = (x) => '$' + (x / 1000).toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + ' mil';
-  const cfg = {venta: ['venta', fM, fMM, 0], most: ['most', fM, fMM, 0], app: ['app', fM, fMM, 1], tk: ['tk', (x) => fN(x), (x) => (x / 1000).toLocaleString('es-AR', {maximumFractionDigits: 1}) + ' mil', 2], tp: ['tp', fM, fK, 0, true], pct: ['pct', (x) => fP(x, 0), (x) => fP(x, 0), 1, true]};
+  const fMM = (x) => (x / 1e6).toLocaleString('es-AR', {maximumFractionDigits: x < 1e7 ? 1 : 0});
+  const fK = (x) => (x / 1000).toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1});
+  const cfg = {venta: ['venta', fM, fMM, 0], most: ['most', fM, fMM, 0], app: ['app', fM, fMM, 1], tk: ['tk', (x) => fN(x), fK, 2], tp: ['tp', fM, fK, 0, true], pct: ['pct', (x) => fP(x, 0), (x) => fP(x, 0), 1, true]};
   const full = A.filter((d) => !d.parcial); const last = full[full.length - 1], first = A[0];
   for (const id of ids) {
     const [k, fmt, fshort, ci, isLine] = cfg[id];
@@ -607,11 +607,11 @@ const drawYear = () => {
     vEl.textContent = fmt(last[k]);
     const ch = first[k] ? last[k] / first[k] - 1 : null;
     dEl.textContent = `${MS[Number(last.mes.slice(5, 7)) - 1].toLowerCase()} · ${ch == null ? '' : (id === 'pct' ? `en enero ${fP(first[k], 0)}` : `${ch > 0 ? '+' : ''}${(ch * 100).toLocaleString('es-AR', {maximumFractionDigits: 0})}% desde enero`)}`;
-    const el = document.getElementById('ry-' + id); const W = el.clientWidth || 300, H = 170, m = {t: 16, r: 4, b: 20, l: 4};
+    const el = document.getElementById('ry-' + id); const W = el.clientWidth || 300, H = 180, m = {t: 18, r: 4, b: 20, l: 4};
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
     const vals = A.flatMap((d) => [d[k], d[k + 'P']]).filter((x) => x != null);
     const lo = isLine ? d3.min(vals) * 0.85 : 0;
-    const y = d3.scaleLinear([lo, d3.max(vals) * 1.12], [H - m.b, m.t]);
+    const y = d3.scaleLinear([lo, d3.max(vals) * (isLine ? 1.08 : 1.1)], [H - m.b, m.t]);
     const x = d3.scaleBand(A.map((d) => d.mes), [m.l, W - m.r]).padding(0.22);
     svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', H - m.b).attr('y2', H - m.b).attr('stroke', 'var(--cds-chart-axis)');
     svg.append('g').selectAll('text').data(A).join('text').attr('x', (d) => x(d.mes) + x.bandwidth() / 2).attr('y', H - 5).attr('text-anchor', 'middle').text((d) => d.lab + (d.parcial ? '*' : ''));
@@ -621,13 +621,15 @@ const drawYear = () => {
         if (d.parcial) svg.append('rect').attr('x', x(d.mes)).attr('width', x.bandwidth()).attr('y', y(d[k + 'P'])).attr('height', Math.max(0, y(lo) - y(d[k + 'P']))).attr('fill', col).attr('opacity', 0.25).attr('rx', 3);
         svg.append('rect').attr('x', x(d.mes)).attr('width', x.bandwidth()).attr('y', y(d[k])).attr('height', Math.max(0, y(lo) - y(d[k]))).attr('fill', col).attr('rx', 3).attr('opacity', d.parcial ? 0.7 : 1);
       });
-      const showV = (d, i) => i === 0 || i === A.length - 1 || d[k] === d3.max(full, (z) => z[k]);
-      svg.append('g').selectAll('text').data(A.filter(showV)).join('text').attr('class', 'val').attr('x', (d) => d === A[A.length - 1] ? x(d.mes) + x.bandwidth() : d === A[0] ? x(d.mes) : x(d.mes) + x.bandwidth() / 2).attr('y', (d) => y(d.parcial ? d[k + 'P'] : d[k]) - 4).attr('text-anchor', (d) => d === A[A.length - 1] ? 'end' : d === A[0] ? 'start' : 'middle').text((d) => (d.parcial ? 'proy. ' : '') + fshort(d.parcial ? d[k + 'P'] : d[k]));
+      svg.append('g').selectAll('text').data(A).join('text').attr('class', (d) => 'val' + (d.parcial ? ' proj' : '')).attr('x', (d) => x(d.mes) + x.bandwidth() / 2).attr('y', (d) => y(d.parcial ? d[k + 'P'] : d[k]) - 4).attr('text-anchor', 'middle').text((d) => fshort(d.parcial ? d[k + 'P'] : d[k]));
     } else {
       const pts = A.filter((d) => d[k] != null); const cx = (d) => x(d.mes) + x.bandwidth() / 2;
       svg.append('path').datum(pts).attr('fill', 'none').attr('stroke', col).attr('stroke-width', 2.5).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round').attr('d', d3.line().x(cx).y((d) => y(d[k])));
       svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', cx).attr('cy', (d) => y(d[k])).attr('r', 3).attr('fill', col);
-      svg.append('g').selectAll('text').data(pts.filter((d, i) => i === 0 || i === pts.length - 1 || i === Math.floor(pts.length / 2))).join('text').attr('class', 'val').attr('x', (d) => d === pts[0] ? cx(d) - 4 : d === pts[pts.length - 1] ? cx(d) + 4 : cx(d)).attr('y', (d) => y(d[k]) - 10).attr('text-anchor', (d) => d === pts[0] ? 'start' : d === pts[pts.length - 1] ? 'end' : 'middle').text((d) => fshort(d[k]));
+      const lab = pts.map((d, i) => { const prev = pts[i - 1], next = pts[i + 1];
+        // arriba si el punto es pico o la línea viene bajando hacia él; abajo si es un valle
+        const up = !(prev && next && d[k] < prev[k] && d[k] < next[k]); return {d, up}; });
+      svg.append('g').selectAll('text').data(lab).join('text').attr('class', 'val halo').attr('x', (o) => cx(o.d)).attr('y', (o) => o.up ? y(o.d[k]) - 9 : y(o.d[k]) + 16).attr('text-anchor', 'middle').text((o) => fshort(o.d[k]));
     }
     const tip = tipEl(el);
     svg.append('rect').attr('x', m.l).attr('y', 0).attr('width', W - m.l - m.r).attr('height', H - m.b).attr('fill', 'transparent')

@@ -35,9 +35,9 @@ def parse_bloque(pre, b):
     o = dict(sucursal=suc, fecha=fecha, turno=t.group(1), total=float(tot.group(1)), tickets=int(tot.group(2)))
     for k, pat in [('neto21', r'TOTAL Neto 21\.00% ' + NUM), ('iva21', r'TOTAL Iva 21\.00% ' + NUM),
                    ('neto105', r'TOTAL Neto 10\.50% ' + NUM), ('iva105', r'TOTAL Iva 10\.50% ' + NUM)]:
-        m = re.search(pat, b)
+        m = re.search(pat, b) or re.search(pat.replace('TOTAL Neto', 'Neto ACF').replace('TOTAL Iva', 'Iva ACF'), b)
         o[k] = float(m.group(1)) if m else 0.0
-    fc = re.search(r'VENTAS POR FORMA DE COBRO.*?Forma de cobro Total Cant\s*\n~+\n(.*?)\n=+', b, re.S)
+    fc = re.search(r'VENTAS POR FORMA DE COBRO.*?Forma de cobro Total Cant\s*\n~+\n(.*?)\n[ \t]*=+', b, re.S)
     o['formas'] = {}
     if fc:
         for line in fc.group(1).splitlines():

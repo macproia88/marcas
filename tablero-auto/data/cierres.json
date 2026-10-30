@@ -1270,5 +1270,151 @@
   "thread": "1a18ee168e814520",
   "subject": "MaxiREST - Fin de turno - 2026-10-24 Intermedio",
   "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-10-30",
+  "turno": "Mañana",
+  "total": 1873752.5,
+  "tickets": 82,
+  "neto21": 1548555.79,
+  "iva21": 325196.71,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    298349.5,
+    23
+   ],
+   "CABAL": [
+    21360.0,
+    1
+   ],
+   "VISA DEBITO": [
+    337092.0,
+    21
+   ],
+   "MASTER": [
+    22000.0,
+    1
+   ],
+   "RAPPI TARJETA": [
+    52735.0,
+    1
+   ],
+   "VISA": [
+    95930.0,
+    4
+   ],
+   "PEDIDOS YA ONLINE": [
+    451700.0,
+    1
+   ],
+   "Mercado Pago": [
+    498086.0,
+    27
+   ],
+   "MODO": [
+    42300.0,
+    3
+   ],
+   "MP DELIVERY": [
+    54200.0,
+    1
+   ]
+  },
+  "cod202_unid": 3.0,
+  "cod202_importe": 558635.0,
+  "thread": "1a18dc6221d17d95",
+  "subject": "MaxiREST - Fin de turno - 30/10/2026 Mañana",
+  "sender": "deliverylapresumida@gmail.com"
+ },
+ {
+  "sucursal": "Beccar",
+  "fecha": "2026-10-30",
+  "turno": "Mañana",
+  "total": 2478640.5,
+  "tickets": 102,
+  "neto21": 2048463.22,
+  "iva21": 430177.28,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    825052.0,
+    40
+   ],
+   "VISA DEBITO": [
+    692878.0,
+    30
+   ],
+   "RAPPI TARJETA": [
+    68300.0,
+    1
+   ],
+   "PEDIDOS YA TARJ": [
+    380740.0,
+    1
+   ],
+   "Mercado Pago": [
+    492870.5,
+    29
+   ],
+   "MP delivery": [
+    18800.0,
+    1
+   ]
+  },
+  "cod202_unid": 3.0,
+  "cod202_importe": 467840.0,
+  "thread": "1a18dc4b485cea81",
+  "subject": "MaxiREST - Fin de turno - 30/10/2026 Mañana",
+  "sender": "lapresumidapastas@gmail.com"
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-10-30",
+  "turno": "Intermedio",
+  "total": 1222234.0,
+  "tickets": 55,
+  "neto21": 1010110.74,
+  "iva21": 212123.26,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    170845.0,
+    12
+   ],
+   "VISA DEBITO": [
+    356428.0,
+    17
+   ],
+   "RAPPI TARJETA": [
+    65060.0,
+    1
+   ],
+   "VISA": [
+    26290.0,
+    2
+   ],
+   "PEDIDOS YA ONLINE": [
+    232730.0,
+    2
+   ],
+   "Mercado Pago": [
+    295421.0,
+    17
+   ],
+   "MODO": [
+    75460.0,
+    4
+   ]
+  },
+  "cod202_unid": 3.0,
+  "cod202_importe": 297790.0,
+  "thread": "1a18ebb75d220f11",
+  "subject": "MaxiREST - Fin de turno - 30/10/2026 Intermedio",
+  "sender": "deliverylapresumida@gmail.com"
  }
 ]

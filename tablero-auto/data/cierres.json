@@ -842,5 +842,433 @@
   },
   "cod202_unid": 4.0,
   "cod202_importe": 1793129.0
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-29",
+  "turno": "Intermedio",
+  "total": 4102377.25,
+  "tickets": 183,
+  "neto21": 3390394.42,
+  "iva21": 711982.83,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    691562.25,
+    41
+   ],
+   "VISA DEBITO": [
+    2127365.0,
+    88
+   ],
+   "PEDIDOS YA TARJ": [
+    294010.0,
+    1
+   ],
+   "Mercado Pago": [
+    881140.0,
+    54
+   ],
+   "Pago Online": [
+    108300.0,
+    1
+   ]
+  },
+  "cod202_unid": 4.0,
+  "cod202_importe": 402312.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-29 Intermedio",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-30",
+  "turno": "Mañana",
+  "total": 1692260.0,
+  "tickets": 79,
+  "neto21": 0.0,
+  "iva21": 0.0,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    358450.0,
+    20
+   ],
+   "VISA DEBITO": [
+    675357.0,
+    30
+   ],
+   "PEDIDOS YA TARJ": [
+    178300.0,
+    1
+   ],
+   "Mercado Pago": [
+    480153.0,
+    29
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 178300.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-30 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-28",
+  "turno": "Intermedio",
+  "total": 2721646.75,
+  "tickets": 114,
+  "neto21": 2249294.83,
+  "iva21": 472351.92,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    741593.25,
+    35
+   ],
+   "VISA DEBITO": [
+    1373851.0,
+    46
+   ],
+   "PEDIDOS YA TARJ": [
+    45300.0,
+    1
+   ],
+   "Mercado Pago": [
+    560902.5,
+    32
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 45300.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-28 Intermedio",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-29",
+  "turno": "Mañana",
+  "total": 1866871.0,
+  "tickets": 77,
+  "neto21": 0.0,
+  "iva21": 0.0,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    354482.5,
+    13
+   ],
+   "VISA DEBITO": [
+    853471.5,
+    34
+   ],
+   "PEDIDOS YA TARJ": [
+    170600.0,
+    1
+   ],
+   "Mercado Pago": [
+    476877.0,
+    28
+   ],
+   "Pago Online": [
+    11440.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 182040.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-29 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-28",
+  "turno": "Mañana",
+  "total": 1687918.5,
+  "tickets": 78,
+  "neto21": 0.0,
+  "iva21": 0.0,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    458157.5,
+    27
+   ],
+   "VISA DEBITO": [
+    683605.0,
+    27
+   ],
+   "PEDIDOS YA TARJ": [
+    199500.0,
+    1
+   ],
+   "Mercado Pago": [
+    346656.0,
+    23
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 199500.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-28 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-27",
+  "turno": "Mañana",
+  "total": 1539893.5,
+  "tickets": 85,
+  "neto21": 1272639.26,
+  "iva21": 267254.24,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    481456.0,
+    24
+   ],
+   "VISA DEBITO": [
+    524195.0,
+    31
+   ],
+   "PEDIDOS YA TARJ": [
+    149970.0,
+    1
+   ],
+   "Mercado Pago": [
+    350142.5,
+    29
+   ],
+   "Pago Online": [
+    34130.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 184100.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-27 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-27",
+  "turno": "Intermedio",
+  "total": 2031718.75,
+  "tickets": 83,
+  "neto21": 0.0,
+  "iva21": 0.0,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    688756.75,
+    26
+   ],
+   "VISA DEBITO": [
+    830357.0,
+    33
+   ],
+   "PEDIDOS YA TARJ": [
+    35600.0,
+    1
+   ],
+   "Mercado Pago": [
+    477005.0,
+    23
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 35600.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-27 Intermedio",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-26",
+  "turno": "Intermedio",
+  "total": 1689109.0,
+  "tickets": 59,
+  "neto21": 1395957.85,
+  "iva21": 293151.15,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    612229.0,
+    21
+   ],
+   "VISA DEBITO": [
+    706535.0,
+    25
+   ],
+   "PEDIDOS YA TARJ": [
+    14300.0,
+    1
+   ],
+   "Mercado Pago": [
+    356045.0,
+    12
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 14300.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-26 Intermedio",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-26",
+  "turno": "Mañana",
+  "total": 2244353.5,
+  "tickets": 101,
+  "neto21": 1854837.6,
+  "iva21": 389515.9,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    585085.0,
+    28
+   ],
+   "VISA DEBITO": [
+    830761.0,
+    37
+   ],
+   "PEDIDOS YA TARJ": [
+    325285.0,
+    1
+   ],
+   "Mercado Pago": [
+    503222.5,
+    35
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 325285.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-26 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-25",
+  "turno": "Mañana",
+  "total": 5757479.9,
+  "tickets": 165,
+  "neto21": 4758247.85,
+  "iva21": 999232.05,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    1267582.9,
+    47
+   ],
+   "VISA DEBITO": [
+    2506476.0,
+    85
+   ],
+   "PEDIDOS YA TARJ": [
+    1034750.0,
+    1
+   ],
+   "Mercado Pago": [
+    929621.0,
+    33
+   ],
+   "Pago Online": [
+    19050.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 1053800.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-25 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-24",
+  "turno": "Mañana",
+  "total": 3360732.25,
+  "tickets": 108,
+  "neto21": 2777464.67,
+  "iva21": 583267.58,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    681254.75,
+    31
+   ],
+   "VISA DEBITO": [
+    1293567.5,
+    40
+   ],
+   "PEDIDOS YA TARJ": [
+    377300.0,
+    1
+   ],
+   "Mercado Pago": [
+    901340.0,
+    38
+   ],
+   "Pago Online": [
+    107270.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 484570.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-24 Mañana",
+  "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-24",
+  "turno": "Intermedio",
+  "total": 1849300.5,
+  "tickets": 68,
+  "neto21": 1528347.52,
+  "iva21": 320952.98,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    413291.5,
+    19
+   ],
+   "VISA DEBITO": [
+    904472.5,
+    30
+   ],
+   "PEDIDOS YA TARJ": [
+    28925.0,
+    1
+   ],
+   "Mercado Pago": [
+    502611.5,
+    18
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 28925.0,
+  "thread": "1a18ee168e814520",
+  "subject": "MaxiREST - Fin de turno - 2026-10-24 Intermedio",
+  "sender": "cielitomioolivos@gmail.com"
  }
 ]

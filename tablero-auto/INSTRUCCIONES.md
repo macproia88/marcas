@@ -4,7 +4,11 @@ El tablero publicado es `tablero-presumida-v2.html`, en la raíz del repo. Se ar
 
 ## Qué hace cada corrida
 
-1. **Traer los cierres nuevos de Gmail.** Buscar con `subject:"Fin de turno" newer_than:3d`. Un mail cuenta como nuevo si su thread id no está en `tablero-auto/data/cierres.json`.
+1. **Traer los cierres nuevos de Gmail.** Hay dos búsquedas:
+   - Florida y Beccar: `subject:"Fin de turno" newer_than:3d`.
+   - Pastas Paz: `from:cielitomioolivos@gmail.com newer_than:3d`. Paz reenvía los cierres en un solo mail, con varios cierres pegados en el cuerpo, y el asunto es el texto del cierre.
+
+   La forma más segura de cargarlos es `python3 tablero-auto/parse_cierres.py <archivo> <thread_id>`, donde `<archivo>` es el texto o el JSON del mail. Si `get_thread` devuelve un resultado demasiado largo, el sistema lo guarda en un archivo: se le pasa ese archivo al script. El script separa los cierres, controla que las formas de cobro sumen el total y no duplica: la clave es sucursal + fecha + turno.
 2. **Leer cada mail nuevo** con `get_thread` en formato `PLAIN_TEXT` y agregar a `cierres.json` un objeto con este formato:
 
 ```json

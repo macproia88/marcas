@@ -18,7 +18,7 @@ SUCURSALES = {'fpastas': 'Florida', 'beccar': 'Beccar', 'paz': 'Paz', 'pastas pa
 APPS = re.compile(r'^(PEDIDOS YA|RAPPI|MP DELIVERY|PAGO ONLINE)', re.I)
 DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 # Ticket promedio de apps del 1 al 25/10 (venta de apps / pedidos reales) para estimar pedidos desde la venta del código 202
-TICKET_APP = {'Florida': 24269.09, 'Beccar': 21425.81, 'Paz': 21000.0}
+TICKET_APP = {'Florida': 24269.09, 'Beccar': 21425.81, 'Paz': 27296.82}
 # Ticket promedio de apps oct-2025, para clientes 2025 (mismo criterio que el tablero)
 TK25 = {'Florida': 18142, 'Beccar': 16025}
 
@@ -63,6 +63,8 @@ def actualizar_ventas():
                      venta_mostrador_2025=r['venta_mostrador_2025'], venta_app_2025=r['venta_app_2025'])
             if r['tickets_mostrador_2025'] and L in TK25:
                 x['clientes_2025'] = round(r['tickets_mostrador_2025'] + (r['venta_app_2025'] or 0) / TK25[L])
+            elif r['tickets_mostrador_2025'] and L == 'Paz':
+                x['clientes_2025'] = round(r['tickets_mostrador_2025'] + 285 / 31)  # Paz: ~285 pedidos de apps en oct-2025
         else:
             avisos.append(f"Sin referencia 2025 para {L} {f}")
         nuevos.append(x)

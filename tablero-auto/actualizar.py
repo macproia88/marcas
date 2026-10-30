@@ -75,6 +75,29 @@ def actualizar_ventas():
     return V
 
 
+def venta_mensual(V):
+    """Enero-agosto de la venta detallada (data/venta_mensual_hist.json); desde septiembre, suma de ventas_diarias."""
+    H = cargar('venta_mensual_hist.json')
+    meses_hist = {r['mes'] for r in H}
+    acc = {}
+    for x in V:
+        if x['mes'] in meses_hist:
+            continue
+        a = acc.setdefault((x['mes'], x['local']), dict(mes=x['mes'], local=x['local'], venta=0.0, venta_app=0.0, venta_mostrador=0.0,
+                                                         tickets_mostrador=0, dias=0, hasta=x['fecha']))
+        a['venta'] += x['venta'] or 0
+        a['venta_app'] += x['venta_app'] or 0
+        a['venta_mostrador'] += x['venta_mostrador'] or 0
+        a['tickets_mostrador'] += int(x['tickets_mostrador'] or 0)
+        a['dias'] += 1
+        a['hasta'] = max(a['hasta'], x['fecha'])
+    R = H + [dict(v, venta=round(v['venta'], 2), venta_app=round(v['venta_app'], 2), venta_mostrador=round(v['venta_mostrador'], 2))
+             for v in acc.values()]
+    R.sort(key=lambda r: (r['mes'], r['local']))
+    (DATA / 'venta_mensual.json').write_text(json.dumps(R, ensure_ascii=False), encoding='utf-8')
+    return R
+
+
 def armar_html(V):
     fmax = max(x['fecha'] for x in V)
     flor = max(x['fecha'] for x in V if x['local'] == 'Florida')
@@ -98,7 +121,7 @@ def armar_html(V):
     for k in ['ventas_diarias', 'clientes_hora', 'club_local', 'vendedoras', 'compras_mes', 'compras_proveedor', 'arca', 'canasta',
               'apps_resultado', 'top_mostrador', 'py_articulos', 'club_compra', 'club_frec', 'fichadas', 'fich_hora', 'club_ind',
               'club_sem', 'apps_liq', 'recetas', 'recetas_cob', 'compras_rubro', 'precios_var', 'eerr_res', 'vend_v2',
-              'resumen_kpis', 'resumen_avance', 'resumen_alertas']:
+              'resumen_kpis', 'resumen_avance', 'resumen_alertas', 'venta_mensual']:
         rows = cargar(k + '.json')
         keys = [c for c in rows[0].keys() if c != 'fuente']
         D[k] = [keys, [[round(x.get(c), 2) if isinstance(x.get(c), float) else x.get(c) for c in keys] for x in rows]]
@@ -126,4 +149,6 @@ def armar_html(V):
 
 
 if __name__ == '__main__':
-    armar_html(actualizar_ventas())
+    V = actualizar_ventas()
+    venta_mensual(V)
+    armar_html(V)

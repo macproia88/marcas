@@ -125,6 +125,11 @@
       <div class="tw"><table id="tb-locales" data-source="kpi_periodo" data-row-key="desde,hasta,local">
         <thead><tr><th data-field="local">Local</th><th data-field="venta">Venta</th><th data-field="var_real_pp">Real vs 2025</th><th data-field="venta_dia">Venta por día</th><th data-field="tickets_mostrador">Tickets mostrador</th><th data-field="var_tickets">vs 2025</th><th data-field="ticket_prom">Ticket prom.</th><th data-field="pedidos_app">Pedidos apps</th><th data-field="pct_app">% apps</th></tr></thead><tbody></tbody></table></div>
     </div>
+    <div class="card" id="c-mes"><h2>El año mes a mes</h2><p class="note">Venta de enero a hoy. Naranja: mostrador. Gris: apps. Enero a agosto: venta detallada de Maxi Rest (todas las formas de cobro; apps = cobros de PedidosYa, Rappi, MP delivery y pago online). Desde septiembre: la misma venta diaria del tablero. El último mes está incompleto: para compararlo, mirá la venta por día. Sigue el filtro de local, no el de fechas.</p>
+      <div class="chart" id="ch-mes" data-source="venta_mensual"></div>
+      <div class="tw"><table id="tb-mes" data-source="venta_mensual" data-row-key="mes,local">
+        <thead><tr><th data-field="mes">Mes</th><th data-field="venta">Venta</th><th data-field="venta_mostrador">Mostrador</th><th data-field="venta_app">Apps</th><th>% apps</th><th data-field="dias">Días</th><th>Venta por día</th><th>vs mes anterior</th><th data-field="tickets_mostrador">Tickets mostrador</th><th>Ticket prom.</th></tr></thead><tbody></tbody></table></div>
+    </div>
   </section>
 
   <!-- CLIENTES -->
@@ -490,6 +495,56 @@ const drawDaily = () => {
 };
 dash.onData(drawDaily);
 window.addEventListener('lp-tab', drawDaily);
+</script>
+
+<script>
+// el año mes a mes
+const MESN = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const drawMes = () => {
+  const el = document.getElementById('ch-mes'); el.querySelectorAll('svg').forEach((x) => x.remove());
+  const tb = document.querySelector('#tb-mes tbody'); tb.replaceChildren();
+  const v = dash.data('venta_mensual');
+  if (v.status !== 'ok' || document.getElementById('ventas').hidden) return;
+  const {fM, fN, fP} = window.LP; const {local} = window.LP_prm();
+  const rows = v.data.filter((r) => local === 'Todos' || r.local === local);
+  const meses = [...new Set(rows.map((r) => r.mes))].sort();
+  const agg = meses.map((m) => { const r = rows.filter((d) => d.mes === m); const s = (k) => r.reduce((t, d) => t + (Number(d[k]) || 0), 0);
+    const dias = Math.max(...r.map((d) => d.dias)); const hasta = r.map((d) => d.hasta).sort();
+    const fin = new Date(Number(m.slice(0, 4)), Number(m.slice(5, 7)), 0).getDate();
+    return {mes: m, venta: s('venta'), vm: s('venta_mostrador'), va: s('venta_app'), tk: s('tickets_mostrador'), dias, ventaDia: r.reduce((t, d) => t + (Number(d.venta) || 0) / (d.dias || 1), 0),
+      parcial: hasta[0].slice(8, 10) < String(fin).padStart(2, '0') && !(m === '2026-01'), hastaTxt: hasta[0] === hasta[hasta.length - 1] ? hasta[0] : hasta[0] + ' / ' + hasta[hasta.length - 1]}; });
+  const lab = (d) => MESN[Number(d.mes.slice(5, 7)) - 1].slice(0, 3) + (d.parcial ? '*' : '');
+  const W = el.clientWidth || 400, H = 240, m = {t: 10, r: 8, b: 26, l: 8};
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
+  const y = d3.scaleLinear([0, (d3.max(agg, (d) => d.venta) || 1) * 1.08], [H - m.b, m.t]).nice();
+  const fy = (t) => (t / 1e6).toLocaleString('es-AR') + ' M';
+  const tmp = svg.append('text').text(fy(y.domain()[1])); m.l = tmp.node().getComputedTextLength() + 10; tmp.remove();
+  const x = d3.scaleBand(agg.map((d) => d.mes), [m.l, W - m.r]).padding(0.3);
+  svg.append('g').selectAll('line').data(y.ticks(4)).join('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y).attr('y2', y).attr('stroke', 'var(--cds-chart-grid)');
+  svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (t) => y(t) + 4).attr('text-anchor', 'end').text(fy);
+  svg.append('g').selectAll('text').data(agg).join('text').attr('x', (d) => x(d.mes) + x.bandwidth() / 2).attr('y', H - 8).attr('text-anchor', 'middle').text(lab);
+  agg.forEach((d) => {
+    svg.append('rect').attr('x', x(d.mes)).attr('width', x.bandwidth()).attr('y', y(d.vm)).attr('height', Math.max(0, y(0) - y(d.vm))).attr('fill', dash.colors[0]).attr('opacity', d.parcial ? 0.55 : 1);
+    svg.append('rect').attr('x', x(d.mes)).attr('width', x.bandwidth()).attr('y', y(d.vm + d.va)).attr('height', Math.max(0, y(d.vm) - y(d.vm + d.va))).attr('fill', dash.colors[1]).attr('rx', 3).attr('opacity', d.parcial ? 0.55 : 1);
+  });
+  const tip = tipEl(el);
+  svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', W - m.l - m.r).attr('height', H - m.t - m.b).attr('fill', 'transparent')
+    .on('mousemove', (ev) => { const [px] = d3.pointer(ev); const i = Math.max(0, Math.min(agg.length - 1, Math.floor((px - m.l) / x.step()))); const d = agg[i];
+      tip.hidden = false; tip.replaceChildren();
+      const h = document.createElement('div'); h.className = 'h'; h.textContent = MESN[Number(d.mes.slice(5, 7)) - 1] + (d.parcial ? ` (hasta ${d.hastaTxt.split(' / ').map((f) => f.slice(8, 10) + '/' + f.slice(5, 7)).join(' y ')})` : ''); tip.append(h);
+      [['Venta', fM(d.venta)], ['Mostrador', fM(d.vm)], ['Apps', fM(d.va)], ['Por día', fM(d.ventaDia)]].forEach(([n, t]) => { const l = document.createElement('div'); l.textContent = `${n}: ${t}`; tip.append(l); });
+      const left = Math.min(x(d.mes) + x.bandwidth() + 8, W - tip.offsetWidth - 4); tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '8px'; })
+    .on('mouseleave', () => { tip.hidden = true; });
+  agg.forEach((d, i) => {
+    const prev = agg[i - 1]; const vs = prev ? d.ventaDia / prev.ventaDia - 1 : null;
+    const tr = document.createElement('tr'); tr.dataset.key = `${d.mes},${local}`;
+    [MESN[Number(d.mes.slice(5, 7)) - 1] + (d.parcial ? ' *' : ''), fM(d.venta), fM(d.vm), fM(d.va), fP(d.va / d.venta, 0), fN(d.dias), fM(d.ventaDia), fP(vs, 1, true), fN(d.tk), fM(d.tk ? d.vm / d.tk : null)]
+      .forEach((t, k) => { const td = document.createElement('td'); td.textContent = t; if (k === 7 && vs != null) window.LP.cls(td, vs); tr.append(td); });
+    tb.append(tr);
+  });
+};
+dash.onData(drawMes);
+window.addEventListener('lp-tab', drawMes);
 </script>
 
 <script>

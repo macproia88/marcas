@@ -34,6 +34,7 @@
 .lp [data-dash-source-state=empty]{color:transparent}
 .lp [data-dash-source-state=refreshing]{opacity:.5;transition:opacity var(--cds-dur-slow)}
 .lp .page{display:flex;flex-direction:column;gap:var(--cds-gap-md)}
+.lp .sec h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:6px 0 0}.lp .sec .note{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:2px 0 0}
 .lp .page[hidden]{display:none}
 @media (max-width:640px){.lp .tiles{grid-template-columns:1fr 1fr}.lp .tile{padding:12px}.lp .tile .v{font-size:22px}}
 .lp svg text{fill:var(--color-fg-muted);font-size:11px}
@@ -109,6 +110,15 @@
 
   <!-- RESUMEN -->
   <section class="page" id="resumen">
+    <div class="sec"><h2>Período elegido</h2><p class="note" id="r-per-n">Sigue los filtros de fechas y local. La comparación es contra los días inmediatamente anteriores, misma cantidad de días, por venta promedio por día.</p></div>
+    <div class="tiles" id="r-per">
+      <div class="tile"><div class="k">Venta</div><div class="v" id="rp-venta" data-source="kpi_periodo" data-field="venta">—</div><div class="d" id="rp-venta-d" data-source="kpi_periodo" data-field="var_ant">—</div></div>
+      <div class="tile"><div class="k">Venta por día</div><div class="v" id="rp-dia" data-source="kpi_periodo" data-field="venta_dia">—</div><div class="d" id="rp-dia-d" data-source="kpi_periodo" data-field="dias">—</div></div>
+      <div class="tile"><div class="k">Tickets de mostrador</div><div class="v" id="rp-tk" data-source="kpi_periodo" data-field="tickets_mostrador">—</div><div class="d" id="rp-tk-d" data-source="kpi_periodo" data-field="var_tk_ant">—</div></div>
+      <div class="tile"><div class="k">Ticket promedio mostrador</div><div class="v" id="rp-tp" data-source="kpi_periodo" data-field="ticket_prom">—</div><div class="d" id="rp-tp-d" data-source="kpi_periodo" data-field="var_tp_ant">—</div></div>
+      <div class="tile"><div class="k">Apps sobre la venta</div><div class="v" id="rp-app" data-source="kpi_periodo" data-field="pct_app">—</div><div class="d" id="rp-app-d" data-source="kpi_periodo" data-field="venta_app">—</div></div>
+    </div>
+    <div class="sec"><h2>Foto de octubre al 25/10</h2><p class="note">Estos indicadores y las alertas son fijos: no cambian con los filtros.</p></div>
     <div class="tiles sem" id="r-tiles"></div>
     <div class="card" id="c-alertas"><h2>Para mirar esta semana</h2><ul class="alertas" id="r-alertas"></ul></div>
     <div class="card" id="c-avance"><h2>Avance contra el plan de octubre</h2><p class="note">Venta del 1 al 25 de octubre contra lo que el plan esperaba para esos días. Proyección = si el resto del mes sigue al mismo ritmo contra el plan. Muestra siempre los 3 locales.</p>
@@ -268,8 +278,17 @@ dash.calc('kpi_periodo', {
       const venta = acc.venta, v25 = g('venta_2025'), tk = acc.tickets_mostrador, tk25 = g('tickets_mostrador_2025');
       const vm = acc.venta_mostrador, vm25 = g('venta_mostrador_2025'), va = acc.venta_app, ped = g('pedidos_app');
       const tp = tk ? vm / tk : null, tp25 = tk25 && vm25 ? vm25 / tk25 : null, dias = new Set(r.map((d) => d.fecha)).size || 1;
+      const fs = [...new Set(ventas_diarias.map((d) => d.fecha))].sort(); const i0 = fs.indexOf(r.length ? r[0].fecha : desde);
+      const nd = new Set(r.map((d) => d.fecha)).size; const prevF = i0 >= nd ? new Set(fs.slice(i0 - nd, i0)) : null;
+      const rp = prevF ? ventas_diarias.filter((d) => prevF.has(d.fecha) && (loc === 'Todos' || d.local === loc)) : [];
+      const sp = (k) => rp.reduce((t, d) => t + (Number(d[k]) || 0), 0); const ndp = new Set(rp.map((d) => d.fecha)).size;
+      const pd = (rows, k) => { const L = {}; rows.forEach((d) => { const o = L[d.local] || (L[d.local] = {s: 0, f: new Set()}); o.s += Number(d[k]) || 0; o.f.add(d.fecha); }); const v = Object.values(L); return v.length ? v.reduce((t, o) => t + o.s / o.f.size, 0) : null; };
+      const vAnt = ndp ? pd(rp, 'venta') : null, tkAnt = ndp ? pd(rp, 'tickets_mostrador') : null, tpAnt = sp('tickets_mostrador') ? sp('venta_mostrador') / sp('tickets_mostrador') : null;
+      const vHoy = pd(r, 'venta'), tkHoy = pd(r, 'tickets_mostrador');
       out.push({desde, hasta, local: loc, dias, venta, venta_2025: v25,
-        var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: venta / dias,
+        var_ant: vAnt ? vHoy / vAnt - 1 : null, var_tk_ant: tkAnt ? tkHoy / tkAnt - 1 : null, var_tp_ant: tpAnt && tp ? tp / tpAnt - 1 : null,
+        ant_desde: prevF ? [...prevF][0] : null, ant_hasta: prevF ? [...prevF][prevF.size - 1] : null,
+        var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: pd(r, 'venta') ?? venta / dias,
         venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tk25 ? tk / tk25 - 1 : null,
         ticket_prom: tp, var_ticket_real_pp: tp && tp25 ? (tp / tp25 - 1 - 0.334) * 100 : null,
         pedidos_app: ped, ticket_app: ped ? va / ped : null});
@@ -651,6 +670,18 @@ dash.onData(() => {
 // resumen
 dash.onData(() => {
   const {fM, fP} = window.LP;
+  { const {desde, hasta, local} = window.LP_prm(); const kp = dash.data('kpi_periodo');
+    const ids = ['#rp-venta', '#rp-venta-d', '#rp-dia', '#rp-dia-d', '#rp-tk', '#rp-tk-d', '#rp-tp', '#rp-tp-d', '#rp-app', '#rp-app-d'];
+    const r = kp.status === 'ok' ? kp.data.find((d) => d.desde === desde && d.hasta === hasta && d.local === local) : null;
+    ids.forEach((i) => { const e = document.querySelector(i); e.setAttribute('data-where', `desde=${desde}&hasta=${hasta}&local=${local}`); if (!r) e.textContent = '—'; });
+    if (r) { const fd2 = (f) => f ? f.slice(8, 10) + '/' + f.slice(5, 7) : '';
+      const ant = r.ant_desde ? ` vs ${fd2(r.ant_desde)}–${fd2(r.ant_hasta)}` : '';
+      const setD = (id, v, txt) => { const e = document.querySelector(id); e.textContent = v == null ? 'sin período anterior' : fP(v, 1, true) + txt; window.LP.cls(e, v); };
+      document.querySelector('#rp-venta').textContent = fM(r.venta); setD('#rp-venta-d', r.var_ant, ' por día' + ant);
+      document.querySelector('#rp-dia').textContent = fM(r.venta_dia); document.querySelector('#rp-dia-d').textContent = `${r.dias} días con venta`;
+      document.querySelector('#rp-tk').textContent = window.LP.fN(r.tickets_mostrador); setD('#rp-tk-d', r.var_tk_ant, ' por día' + ant);
+      document.querySelector('#rp-tp').textContent = fM(r.ticket_prom); setD('#rp-tp-d', r.var_tp_ant, ant);
+      document.querySelector('#rp-app').textContent = fP(r.pct_app, 0); document.querySelector('#rp-app-d').textContent = fM(r.venta_app) + ' en apps'; } }
   const k = dash.data('resumen_kpis'), a = dash.data('resumen_alertas'), av = dash.data('resumen_avance');
   if (k.status === 'ok') { const t = document.getElementById('r-tiles'); t.replaceChildren();
     k.data.forEach((r) => { const d = document.createElement('div'); d.className = 'tile ' + r.s;

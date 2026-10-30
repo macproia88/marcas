@@ -1416,5 +1416,77 @@
   "thread": "1a18ebb75d220f11",
   "subject": "MaxiREST - Fin de turno - 30/10/2026 Intermedio",
   "sender": "deliverylapresumida@gmail.com"
+ },
+ {
+  "sucursal": "Beccar",
+  "fecha": "2026-10-30",
+  "turno": "Noche",
+  "total": 1951254.0,
+  "tickets": 80,
+  "neto21": 1612606.61,
+  "iva21": 338647.39,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    420840.5,
+    27
+   ],
+   "VISA DEBITO": [
+    503823.0,
+    26
+   ],
+   "RAPPI TARJETA": [
+    22880.0,
+    1
+   ],
+   "PEDIDOS YA TARJ": [
+    328100.0,
+    1
+   ],
+   "Mercado Pago": [
+    675610.5,
+    27
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 350980.0,
+  "thread": "1a18f238bec65f7e",
+  "subject": "MaxiREST - Fin de turno - 2026-10-30 Noche",
+  "sender": ""
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-30",
+  "turno": "Intermedio",
+  "total": 1713858.5,
+  "tickets": 79,
+  "neto21": 1416411.98,
+  "iva21": 297446.52,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    292083.0,
+    21
+   ],
+   "VISA DEBITO": [
+    792897.5,
+    34
+   ],
+   "PEDIDOS YA TARJ": [
+    148725.0,
+    1
+   ],
+   "Mercado Pago": [
+    480153.0,
+    23
+   ]
+  },
+  "cod202_unid": 1.0,
+  "cod202_importe": 148725.0,
+  "thread": "1a18f3dd9e07675c",
+  "subject": "MaxiREST - Fin de turno - 2026-10-30 Intermedio",
+  "sender": ""
  }
 ]

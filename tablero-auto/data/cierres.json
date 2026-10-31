@@ -1618,5 +1618,59 @@
   "thread": "1a192fda20763fd6",
   "subject": "MaxiREST - Fin de turno - 2026-10-31 Mañana",
   "sender": ""
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-10-31",
+  "turno": "Mañana",
+  "total": 4097644.5,
+  "tickets": 120,
+  "neto21": 3386483.06,
+  "iva21": 711161.44,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    930171.5,
+    38
+   ],
+   "CABAL": [
+    55486.0,
+    1
+   ],
+   "VISA DEBITO": [
+    782054.0,
+    29
+   ],
+   "RAPPI TARJETA": [
+    216480.0,
+    1
+   ],
+   "VISA": [
+    755120.0,
+    14
+   ],
+   "PEDIDOS YA ONLINE": [
+    539960.0,
+    1
+   ],
+   "Mercado Pago": [
+    543633.0,
+    28
+   ],
+   "MODO": [
+    166440.0,
+    8
+   ],
+   "MP DELIVERY": [
+    108300.0,
+    1
+   ]
+  },
+  "cod202_unid": 4.0,
+  "cod202_importe": 864740.0,
+  "thread": "1a1935d1f9af49e2",
+  "subject": "MaxiREST - Fin de turno - 31/10/2026 Mañana",
+  "sender": "deliverylapresumida@gmail.com"
  }
 ]

@@ -1488,5 +1488,59 @@
   "thread": "1a18f3dd9e07675c",
   "subject": "MaxiREST - Fin de turno - 2026-10-30 Intermedio",
   "sender": ""
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-10-30",
+  "turno": "Noche",
+  "total": 1937334.0,
+  "tickets": 55,
+  "neto21": 1601102.48,
+  "iva21": 336231.52,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    306441.0,
+    13
+   ],
+   "AMEX": [
+    42620.0,
+    1
+   ],
+   "VISA DEBITO": [
+    214148.0,
+    12
+   ],
+   "MASTER": [
+    92994.0,
+    2
+   ],
+   "RAPPI TARJETA": [
+    129870.0,
+    1
+   ],
+   "VISA": [
+    323985.0,
+    10
+   ],
+   "PEDIDOS YA ONLINE": [
+    412830.0,
+    1
+   ],
+   "Mercado Pago": [
+    347446.0,
+    15
+   ],
+   "MP DELIVERY": [
+    67000.0,
+    1
+   ]
+  },
+  "cod202_unid": 3.0,
+  "cod202_importe": 609700.0,
+  "thread": "1a18f87a41733004",
+  "subject": "MaxiREST - Fin de turno - 2026-10-30 Noche",
+  "sender": ""
  }
 ]

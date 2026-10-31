@@ -1580,5 +1580,43 @@
   "thread": "1a192de92fec62e1",
   "subject": "MaxiREST - Fin de turno - 2026-10-31 Mañana",
   "sender": ""
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-31",
+  "turno": "Mañana",
+  "total": 1926857.5,
+  "tickets": 63,
+  "neto21": 1592444.21,
+  "iva21": 334413.29,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    619885.0,
+    20
+   ],
+   "CABAL": [
+    1.0,
+    1
+   ],
+   "VISA DEBITO": [
+    859701.5,
+    30
+   ],
+   "PEDIDOS YA TARJ": [
+    120100.0,
+    1
+   ],
+   "Mercado Pago": [
+    327170.0,
+    11
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 120101.0,
+  "thread": "1a192fda20763fd6",
+  "subject": "MaxiREST - Fin de turno - 2026-10-31 Mañana",
+  "sender": ""
  }
 ]

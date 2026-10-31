@@ -1542,5 +1542,43 @@
   "thread": "1a18f87a41733004",
   "subject": "MaxiREST - Fin de turno - 2026-10-30 Noche",
   "sender": ""
+ },
+ {
+  "sucursal": "Beccar",
+  "fecha": "2026-10-31",
+  "turno": "Mañana",
+  "total": 2233390.25,
+  "tickets": 80,
+  "neto21": 1845777.07,
+  "iva21": 387613.18,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    524545.25,
+    23
+   ],
+   "VISA DEBITO": [
+    660324.5,
+    30
+   ],
+   "PEDIDOS YA TARJ": [
+    214680.0,
+    1
+   ],
+   "Mercado Pago": [
+    818640.5,
+    25
+   ],
+   "MP delivery": [
+    15200.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 229880.0,
+  "thread": "1a192de92fec62e1",
+  "subject": "MaxiREST - Fin de turno - 2026-10-31 Mañana",
+  "sender": ""
  }
 ]

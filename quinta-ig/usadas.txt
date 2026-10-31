@@ -1,0 +1,2 @@
+# Archivos de la carpeta de Drive "Quinta El Florido - Fotos para Instagram" ya publicados/programados.
+# Formato: fecha_programada | id_drive | nombre_archivo | quinta | tipo_posteo

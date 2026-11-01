@@ -1,0 +1,44 @@
+[
+{
+"local": "Beccar",
+"crec_venta": 0.4703,
+"crec_tickets": 0.0356,
+"sugestiva": 0.1744,
+"altas_club_100": 17.2,
+"reclamos_100": 2.1,
+"resenas_google": 193,
+"nota_google": 4.93,
+"calidad_1000": 2.9,
+"pedidos_py": 1382,
+"reclamos_py": 29,
+"reclamos_calidad": 4
+},
+{
+"local": "Florida",
+"crec_venta": 0.4346,
+"crec_tickets": 0.0108,
+"sugestiva": 0.1724,
+"altas_club_100": 8.2,
+"reclamos_100": 2.91,
+"resenas_google": 10,
+"nota_google": 4.56,
+"calidad_1000": 6.2,
+"pedidos_py": 2438,
+"reclamos_py": 71,
+"reclamos_calidad": 15
+},
+{
+"local": "Paz",
+"crec_venta": 0.4135,
+"crec_tickets": 0.041,
+"sugestiva": 0.1562,
+"altas_club_100": 7.8,
+"reclamos_100": 1.87,
+"resenas_google": 66,
+"nota_google": 4.72,
+"calidad_1000": 3.4,
+"pedidos_py": 587,
+"reclamos_py": 11,
+"reclamos_calidad": 2
+}
+]

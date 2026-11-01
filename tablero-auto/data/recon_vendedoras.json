@@ -1,0 +1,121 @@
+[
+{
+"local": "Beccar",
+"vendedora": "Viviana",
+"tickets": 746,
+"sugestiva": 0.1855,
+"altas_club_100": 15.5
+},
+{
+"local": "Beccar",
+"vendedora": "Valeria",
+"tickets": 685,
+"sugestiva": 0.1597,
+"altas_club_100": 17.4
+},
+{
+"local": "Beccar",
+"vendedora": "Ana",
+"tickets": 1063,
+"sugestiva": 0.1803,
+"altas_club_100": 18.3
+},
+{
+"local": "Beccar",
+"vendedora": "Karina",
+"tickets": 423,
+"sugestiva": 0.1556,
+"altas_club_100": 19.6
+},
+{
+"local": "Florida",
+"vendedora": "Elizabeth Ojeda",
+"tickets": 277,
+"sugestiva": 0.1662,
+"altas_club_100": 13.0
+},
+{
+"local": "Florida",
+"vendedora": "Melisa",
+"tickets": 365,
+"sugestiva": 0.2065,
+"altas_club_100": 9.0
+},
+{
+"local": "Florida",
+"vendedora": "Valeria",
+"tickets": 293,
+"sugestiva": 0.1793,
+"altas_club_100": 9.6
+},
+{
+"local": "Florida",
+"vendedora": "Yesica Silva",
+"tickets": 801,
+"sugestiva": 0.1849,
+"altas_club_100": 6.4
+},
+{
+"local": "Florida",
+"vendedora": "Luana",
+"tickets": 425,
+"sugestiva": 0.1627,
+"altas_club_100": 10.6
+},
+{
+"local": "Florida",
+"vendedora": "Lucila",
+"tickets": 201,
+"sugestiva": 0.1784,
+"altas_club_100": 15.9
+},
+{
+"local": "Florida",
+"vendedora": "Analia Ponce",
+"tickets": 298,
+"sugestiva": 0.1326,
+"altas_club_100": 10.7
+},
+{
+"local": "Paz",
+"vendedora": "Pamela",
+"tickets": 329,
+"sugestiva": 0.1747,
+"altas_club_100": 8.5
+},
+{
+"local": "Paz",
+"vendedora": "Agustina",
+"tickets": 374,
+"sugestiva": 0.1593,
+"altas_club_100": 5.9
+},
+{
+"local": "Paz",
+"vendedora": "Silvina",
+"tickets": 542,
+"sugestiva": 0.1506,
+"altas_club_100": 12.5
+},
+{
+"local": "Paz",
+"vendedora": "Cristina",
+"tickets": 754,
+"sugestiva": 0.1471,
+"altas_club_100": 10.5
+},
+{
+"local": "Paz",
+"vendedora": "Paula",
+"tickets": 863,
+"sugestiva": 0.1546,
+"altas_club_100": 15.2
+},
+{
+"local": "Paz",
+"vendedora": "Yanina",
+"tickets": 573,
+"sugestiva": 0.1507,
+"altas_club_100": 5.4
+}
+]

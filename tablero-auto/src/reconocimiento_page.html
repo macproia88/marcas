@@ -1,0 +1,286 @@
+<meta name="dash-one-writer">
+<style>
+#dash-root .rc { font-family: var(--font-anthropic-sans); display: flex; flex-direction: column; gap: var(--cds-gap-xl); }
+#dash-root .rc h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+#dash-root .rc h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
+#dash-root .rc .lead { color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 0; max-width: 70ch; }
+#dash-root .rc .note { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin: var(--cds-gap-xs) 0 var(--cds-gap-md); max-width: 75ch; }
+#dash-root .rc .prizes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .rc .prize { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: flex; flex-direction: column; gap: var(--cds-gap-xs); min-width: 0; }
+#dash-root .rc .prize .tag { font-size: var(--cds-font-size-caption); letter-spacing: .06em; text-transform: uppercase; color: var(--color-fg-muted); }
+#dash-root .rc .prize .win { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.15; }
+#dash-root .rc .prize .sub { font-size: var(--cds-font-size-body); }
+#dash-root .rc .prize .kpis { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); margin-top: var(--cds-gap-sm); }
+#dash-root .rc .card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-width: 0; }
+#dash-root .rc .scroll { overflow-x: auto; }
+#dash-root .rc table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: var(--cds-font-size-body); }
+#dash-root .rc th { text-align: right; font-weight: var(--cds-font-weight-medium); color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: bottom; }
+#dash-root .rc td { text-align: right; padding: var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+#dash-root .rc th:first-child, #dash-root .rc td:first-child { text-align: left; }
+#dash-root .rc td.best { color: var(--color-ok); font-weight: var(--cds-font-weight-medium); }
+#dash-root .rc td.worst { color: var(--color-bad); }
+#dash-root .rc tr.top td { font-weight: var(--cds-font-weight-medium); }
+#dash-root .rc .bar { display: inline-block; height: .5rem; border-radius: var(--cds-radius); background: var(--cds-chart-muted); vertical-align: middle; margin-right: var(--cds-gap-xs); }
+#dash-root .rc tr.top .bar { background: var(--color-ok); }
+#dash-root .rc .filters { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); margin-bottom: var(--cds-gap-md); }
+#dash-root .rc .filters button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-md); border-radius: 999px; border: 1px solid var(--color-border-line); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
+#dash-root .rc .filters button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
+#dash-root .rc .filters button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+#dash-root .rc .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .rc .how h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+#dash-root .rc .how ul { margin: 0; padding-left: 1.1rem; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); display: flex; flex-direction: column; gap: 2px; }
+#dash-root .rc [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<div class="rc">
+  <header>
+    <h1>Reconocimiento Octubre</h1>
+    <p class="lead">Local del mes: <b data-draw="w-local" data-source="premios" data-where="premio=local" data-field="ganador">—</b>. Mejor vendedora de los 3 locales: <b data-draw="w-ventas" data-source="premios" data-where="premio=ventas" data-field="ganador">—</b>. Cierre de octubre: venta, club, reclamos y reseñas con el mes completo; sugestiva y ranking de vendedoras siguen al 25/10.</p>
+  </header>
+
+  <section class="prizes" id="premios">
+    <div class="prize">
+      <span class="tag">Local del mes</span>
+      <span class="win" data-draw="p-local" data-source="premios" data-where="premio=local" data-field="ganador">—</span>
+      <span class="sub"><span data-draw="pt-local" data-source="premios" data-where="premio=local" data-field="puntos">—</span> puntos de 21 posibles</span>
+      <span class="kpis">Suma los 7 indicadores del local: venta, tickets, sugestiva, club, reclamos, reseñas y calidad.</span>
+    </div>
+    <div class="prize">
+      <span class="tag">Encargado del mes</span>
+      <span class="win" data-draw="p-enc" data-source="premios" data-where="premio=encargado" data-field="ganador">—</span>
+      <span class="sub"><span data-draw="pt-enc" data-source="premios" data-where="premio=encargado" data-field="puntos">—</span> puntos de 12 posibles</span>
+      <span class="kpis">Cómo maneja el equipo: venta sugestiva, altas al club, reclamos en apps y reseñas de Google.</span>
+    </div>
+    <div class="prize">
+      <span class="tag">Ventas del mes</span>
+      <span class="win" data-draw="p-ven" data-source="premios" data-where="premio=ventas" data-field="ganador">—</span>
+      <span class="sub"><span data-draw="l-ven" data-source="premios" data-where="premio=ventas" data-field="local">—</span> · puntaje <span data-draw="pt-ven" data-source="premios" data-where="premio=ventas" data-field="puntos">—</span> de 100</span>
+      <span class="kpis">% de venta sugestiva en unidades, altas al club cada 100 tickets y tickets atendidos.</span>
+    </div>
+    <div class="prize">
+      <span class="tag">Producción del mes</span>
+      <span class="win" data-draw="p-pro" data-source="premios" data-where="premio=produccion" data-field="ganador">—</span>
+      <span class="sub"><span data-draw="pt-pro" data-source="premios" data-where="premio=produccion" data-field="puntos">—</span> reclamos de calidad cada 1.000 pedidos</span>
+      <span class="kpis">Equipo de cocina y pastas del local. Provisorio: hoy solo medimos la calidad que reclama el cliente en PedidosYa.</span>
+    </div>
+  </section>
+
+  <section class="card" id="locales">
+    <h2>Los 3 locales, indicador por indicador</h2>
+    <p class="note">En verde el mejor de cada columna, en rojo el último. Venta y tickets: del 12 al 30/10 contra los mismos días de 2025 (los días con dato real de los 3 locales). Club: kilos de bienvenida cada 100 tickets de mostrador, octubre completo. Sugestiva: mostrador, 1 al 25/10. Reclamos y calidad: PedidosYa, octubre completo. Reseñas: Google, nuevas desde el inicio de la campaña, al 1/11.</p>
+    <div class="scroll">
+      <table data-source="locales" data-row-key="local">
+        <thead><tr>
+          <th data-field="local">Local</th>
+          <th data-field="crec_venta">Venta vs 2025</th>
+          <th data-field="crec_tickets">Tickets vs 2025</th>
+          <th data-field="sugestiva">% sugestiva</th>
+          <th data-field="altas_club_100">Altas club c/100 tickets</th>
+          <th data-field="reclamos_100">Reclamos c/100 pedidos</th>
+          <th data-field="resenas_google">Reseñas Google</th>
+          <th data-field="nota_google">Nota Google</th>
+          <th data-field="calidad_1000">Reclamos calidad c/1.000</th>
+        </tr></thead>
+        <tbody data-draw="t-loc"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="puntos">
+    <h2>Puntos por local</h2>
+    <p class="note">En cada indicador el mejor local suma 3 puntos, el segundo 2 y el último 1.</p>
+    <div class="scroll">
+      <table data-source="puntos" data-row-key="local">
+        <thead><tr>
+          <th data-field="local">Local</th>
+          <th data-field="local_total">Local del mes (de 21)</th>
+          <th data-field="encargado_total">Encargado (de 12)</th>
+          <th data-field="produccion_total">Producción (de 3)</th>
+        </tr></thead>
+        <tbody data-draw="t-pts"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="vendedoras">
+    <h2>Ranking de vendedoras</h2>
+    <p class="note">Puntaje de 0 a 100: en cada indicador se compara contra la mejor de los 3 locales (la mejor saca 100) y se promedian los tres. Solo personas con 200 tickets o más. La encargada no compite acá, tiene su premio aparte. Tickets y club: 1 al 22/10. Sugestiva: 1 al 25/10, en unidades.</p>
+    <div class="filters" role="group" aria-label="Filtrar por local">
+      <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
+      <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
+      <button type="button" data-loc="Beccar" aria-pressed="false">Beccar</button>
+      <button type="button" data-loc="Paz" aria-pressed="false">Paz</button>
+    </div>
+    <div class="scroll">
+      <table data-source="ranking" data-row-key="local,vendedora">
+        <thead><tr>
+          <th data-field="posicion">#</th>
+          <th data-field="vendedora">Vendedora</th>
+          <th data-field="local">Local</th>
+          <th data-field="sugestiva">% sugestiva</th>
+          <th data-field="altas_club_100">Altas club c/100</th>
+          <th data-field="tickets">Tickets</th>
+          <th data-field="puntaje">Puntaje</th>
+        </tr></thead>
+        <tbody data-draw="t-ven"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="como">
+    <h2>Cómo se mide cada premio</h2>
+    <p class="note">Una sola regla para todos, así nadie discute el resultado.</p>
+    <div class="how">
+      <div><h3>Local del mes</h3><ul><li>Crecimiento de la venta contra 2025</li><li>Crecimiento de tickets de mostrador contra 2025</li><li>% de venta sugestiva (salsas, quesos, postres, Freddo, bebidas) sobre unidades</li><li>Altas al club cada 100 tickets</li><li>Reclamos en PedidosYa cada 100 pedidos (menos es mejor)</li><li>Reseñas nuevas en Google</li><li>Reclamos de calidad cada 1.000 pedidos (menos es mejor)</li></ul></div>
+      <div><h3>Encargado del mes</h3><ul><li>% de venta sugestiva del equipo</li><li>Altas al club del equipo</li><li>Reclamos en apps (armado y faltantes)</li><li>Reseñas nuevas en Google</li></ul></div>
+      <div><h3>Ventas del mes</h3><ul><li>% de venta sugestiva en unidades, sin pesos</li><li>Altas al club cada 100 tickets</li><li>Tickets atendidos</li></ul></div>
+      <div><h3>Producción del mes (a completar)</h3><ul><li>Hoy: reclamos por calidad de la comida en PedidosYa</li><li>Para premiar a una persona hace falta la planilla de producción con kilos producidos, mermas y faltantes por pastero y cocinera</li><li>Sumar asistencia y puntualidad cuando Beccar tenga reloj</li></ul></div>
+    </div>
+  </section>
+</div>
+
+<script>
+dash.calc('puntos', {
+  title: 'Puntos por local',
+  description: 'En cada indicador: 3 puntos al mejor local, 2 al segundo, 1 al último.',
+  inputs: ['locales'],
+  fn: (locales) => {
+    const kpis = { venta: ['crec_venta', 1], tickets: ['crec_tickets', 1], sug: ['sugestiva', 1], club: ['altas_club_100', 1], rec: ['reclamos_100', -1], res: ['resenas_google', 1], cal: ['calidad_1000', -1] };
+    const n = locales.length;
+    const out = locales.map((r) => ({ local: r.local }));
+    for (const [k, [col, dir]] of Object.entries(kpis)) {
+      const sorted = [...locales].sort((a, b) => dir * (Number(b[col]) - Number(a[col])));
+      sorted.forEach((r, i) => { out.find((o) => o.local === r.local)['p_' + k] = n - i; });
+    }
+    out.forEach((o) => {
+      o.local_total = o.p_venta + o.p_tickets + o.p_sug + o.p_club + o.p_rec + o.p_res + o.p_cal;
+      o.encargado_total = o.p_sug + o.p_club + o.p_rec + o.p_res;
+      o.produccion_total = o.p_cal;
+    });
+    return out.sort((a, b) => b.local_total - a.local_total);
+  }
+});
+
+dash.calc('ranking', {
+  title: 'Ranking de vendedoras',
+  description: 'Cada indicador dividido por el mejor valor de todas, por 100; el puntaje es el promedio de los tres.',
+  inputs: ['vendedoras'],
+  fn: (vendedoras) => {
+    const cols = ['sugestiva', 'altas_club_100', 'tickets'];
+    const max = Object.fromEntries(cols.map((c) => [c, Math.max(...vendedoras.map((v) => Number(v[c])))]));
+    return vendedoras
+      .map((v) => ({ ...v, puntaje: Math.round(cols.reduce((s, c) => s + Number(v[c]) / max[c] * 100, 0) / cols.length) }))
+      .sort((a, b) => b.puntaje - a.puntaje)
+      .map((v, i) => ({ posicion: i + 1, ...v }));
+  }
+});
+
+dash.calc('premios', {
+  title: 'Ganadores',
+  description: 'El local con más puntos en cada premio y la vendedora con mayor puntaje.',
+  inputs: ['puntos', 'ranking', 'locales'],
+  fn: (puntos, ranking, locales) => {
+    const best = (col) => [...puntos].sort((a, b) => b[col] - a[col])[0];
+    const pro = best('produccion_total');
+    const cal = locales.find((l) => l.local === pro.local);
+    return [
+      { premio: 'local', ganador: best('local_total').local, local: best('local_total').local, puntos: best('local_total').local_total },
+      { premio: 'encargado', ganador: best('encargado_total').local, local: best('encargado_total').local, puntos: best('encargado_total').encargado_total },
+      { premio: 'ventas', ganador: ranking[0].vendedora, local: ranking[0].local, puntos: ranking[0].puntaje },
+      { premio: 'produccion', ganador: pro.local, local: pro.local, puntos: Number(cal.calidad_1000) }
+    ];
+  }
+});
+
+(() => {
+  const pct = d3.format('.1%');
+  const sgn = (x) => (x >= 0 ? '+' : '') + d3.format('.1%')(x);
+  const num = d3.format(',');
+  const one = (x) => d3.format('.1f')(x).replace('.', ',');
+  const es = (s) => s.replace('.', ',');
+  const prem = (premio, field, f) => (el) => {
+    const d = dash.data('premios');
+    if (d.status !== 'ok') { el.textContent = '—'; return; }
+    const r = d.data.find((x) => x.premio === premio);
+    el.textContent = r ? (f ? f(r[field]) : String(r[field])) : '—';
+  };
+  dash.draw('w-local', prem('local', 'ganador'));
+  dash.draw('w-ventas', prem('ventas', 'ganador'));
+  dash.draw('p-local', prem('local', 'ganador'));
+  dash.draw('pt-local', prem('local', 'puntos'));
+  dash.draw('p-enc', prem('encargado', 'ganador'));
+  dash.draw('pt-enc', prem('encargado', 'puntos'));
+  dash.draw('p-ven', prem('ventas', 'ganador'));
+  dash.draw('l-ven', prem('ventas', 'local'));
+  dash.draw('pt-ven', prem('ventas', 'puntos'));
+  dash.draw('p-pro', prem('produccion', 'ganador'));
+  dash.draw('pt-pro', prem('produccion', 'puntos', one));
+
+  const locCols = [
+    ['local', (v) => v, 0], ['crec_venta', (v) => es(sgn(v)), 1], ['crec_tickets', (v) => es(sgn(v)), 1],
+    ['sugestiva', (v) => es(pct(v)), 1], ['altas_club_100', one, 1], ['reclamos_100', one, -1],
+    ['resenas_google', num, 1], ['nota_google', (v) => d3.format('.2f')(v).replace('.', ','), 1], ['calidad_1000', one, -1]
+  ];
+  dash.draw('t-loc', (tb) => {
+    tb.replaceChildren();
+    const d = dash.data('locales');
+    if (d.status !== 'ok') return;
+    const rows = d.data;
+    rows.forEach((r) => {
+      const tr = document.createElement('tr');
+      locCols.forEach(([c, f, dir]) => {
+        const td = document.createElement('td');
+        td.textContent = f(Number.isNaN(Number(r[c])) ? r[c] : (c === 'local' ? r[c] : Number(r[c])));
+        if (dir) {
+          const vals = rows.map((x) => dir * Number(x[c]));
+          const me = dir * Number(r[c]);
+          if (me === Math.max(...vals)) td.className = 'best';
+          else if (me === Math.min(...vals)) td.className = 'worst';
+        }
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  });
+
+  dash.draw('t-pts', (tb) => {
+    tb.replaceChildren();
+    const d = dash.data('puntos');
+    if (d.status !== 'ok') return;
+    d.data.forEach((r, i) => {
+      const tr = document.createElement('tr');
+      if (i === 0) tr.className = 'top';
+      ['local', 'local_total', 'encargado_total', 'produccion_total'].forEach((c) => {
+        const td = document.createElement('td'); td.textContent = String(r[c]); tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  });
+
+  let filtro = '';
+  document.querySelectorAll('#dash-root .rc .filters button').forEach((b) => {
+    b.addEventListener('click', () => {
+      filtro = b.dataset.loc;
+      document.querySelectorAll('#dash-root .rc .filters button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      dash.draw('t-ven');
+    });
+  });
+  dash.draw('t-ven', (tb) => {
+    tb.replaceChildren();
+    const d = dash.data('ranking');
+    if (d.status !== 'ok') return;
+    const rows = d.data.filter((r) => !filtro || r.local === filtro);
+    rows.forEach((r, i) => {
+      const tr = document.createElement('tr');
+      if (i === 0) tr.className = 'top';
+      const cells = [String(r.posicion), r.vendedora, r.local, es(pct(Number(r.sugestiva))), one(Number(r.altas_club_100)), num(Number(r.tickets))];
+      cells.forEach((t) => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
+      const td = document.createElement('td');
+      const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (r.puntaje * 0.6) + 'px';
+      const t = document.createElement('span'); t.textContent = String(r.puntaje);
+      td.append(bar, t); tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+  });
+})();
+</script>

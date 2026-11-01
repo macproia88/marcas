@@ -39,3 +39,7 @@ El tablero publicado es `tablero-presumida-v2.html`, en la raíz del repo. Se ar
 - **Comparación con 2025:** sale de `data/ref_2025.json`, que hoy cubre octubre. Para noviembre hay que cargar la referencia del plan de noviembre.
 - **Pastas Paz:** sus cierres van a otra casilla. Cuando lleguen a este Gmail, agregar su código de sucursal en `SUCURSALES` dentro de `actualizar.py`.
 - **Resumen de arriba del tablero** (avance contra el plan, KPIs y alertas): no se actualiza solo.
+
+## Regla para todas las páginas de la web
+
+Toda página que se publique en este repo lleva la línea "Última actualización: dd/mm/aaaa a las HH:MM (hora Argentina)" arriba. Después de cambiar una página, correr `python3 tablero-auto/sello.py <archivo.html>`. El tablero principal la pone solo (`actualizar.py`). La Agenda de reconocimiento se arma con `python3 tablero-auto/reconocimiento.py` y después `sello.py reconocimiento.html`.

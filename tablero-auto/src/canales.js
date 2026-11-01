@@ -276,6 +276,14 @@ function paginaMostrador() {
       hbars(c, Object.entries(tp2).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: tk[k] ? `${nf(tu[k])} kg · $${nf(v / tu[k])} el kg` : `${nf(tu[k])} u · $${nf(v / tu[k])} c/u`, ts: tk[k] ? `· $${nf(v / tu[k])} el kg` : `· $${nf(v / tu[k])} c/u` })), mf);
       const rb = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { rb[r.rubro] = (rb[r.rubro] || 0) + r.venta; });
       hbars(cr, Object.entries(rb).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf, COL.Beccar);
+      // Ranking por cantidad: lo que se vende por unidad (en unidades) y lo que se vende por peso (en kilos), cada uno por su lado
+      const g3 = el('div', { class: 'grid2' }); S.appendChild(g3);
+      const cu = card('c-topu', 'Lo que más unidades vende', `Top 15 de productos que se venden por unidad, ${per}. Al lado: cuántas cada 100 clientes.`);
+      const ck = card('c-topk', 'Lo que más kilos vende', `Top 15 de productos que se venden por peso, ${per}, en kilos. Al lado: kilos cada 100 clientes.`); g3.append(cu, ck);
+      const tkm = sum(sel(delMes(D.dias)).filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1]), 'tickets');
+      const qu = {}, qk = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { const m = r.kg ? qk : qu; m[r.articulo] = (m[r.articulo] || 0) + r.cantidad; });
+      hbars(cu, Object.entries(qu).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: `${nf(v / tkm * 100, 1)} cada 100`, ts: `· ${nf(v / tkm * 100, 1)}` })), (v) => nf(v) + ' u', COL.Paz);
+      hbars(ck, Object.entries(qk).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: `${nf(v / tkm * 100, 1)} kg cada 100`, ts: `· ${nf(v / tkm * 100, 1)}` })), (v) => nf(v) + ' kg', COL.Florida);
     }
     anio(S, 'tickets', 'venta_mostrador', 'Clientes');
     document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest hasta agosto y del 1 al 25/10; desde el 26/10, cierres de caja), venta por artículo de Maxi Rest (informe de unidades y, día a día, los cierres de caja) y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';

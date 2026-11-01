@@ -124,7 +124,7 @@ def armar_html(V):
              f'Actualizado el {ahora:%d/%m/%Y} a las {ahora:%H:%M} (hora Argentina){ult}</p>')
     h = h.replace('<h1 id="titulo">Tablero La Presumida</h1>', '<h1 id="titulo">Tablero La Presumida</h1>' + sello, 1)
     h = h.replace('max="2026-10-29"', f'max="{fmax}"')
-    h = h.replace("const FMAX = '2026-10-29';", f"const FMAX = '{fmax}';")
+    h = h.replace("FMAX = '2026-10-29'", f"FMAX = '{fmax}'")
     h = h.replace("ult7:['2026-10-23','2026-10-29']", f"ult7:['{u7}','{fmax}']")
     h = h.replace("anio:['2026-01-02','2026-10-29']", f"anio:['2026-01-02','{fmax}']")
     if fmax[:7] == '2026-10':

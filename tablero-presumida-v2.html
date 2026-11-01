@@ -92,7 +92,7 @@
 
 <div class="lp">
   <header>
-    <h1 id="titulo">Tablero La Presumida</h1><p class="upd" style="margin:2px 0 0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)">Actualizado el 01/11/2026 a las 15:21 (hora Argentina) · último cierre de caja: 01/11, turno mañana</p>
+    <h1 id="titulo">Tablero La Presumida</h1><p class="upd" style="margin:2px 0 0;font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)">Actualizado el 01/11/2026 a las 15:47 (hora Argentina) · último cierre de caja: 01/11, turno mañana</p>
     <p class="take" id="takeaway" data-source="kpi_periodo">—</p>
   </header>
 
@@ -100,7 +100,7 @@
     <label>Atajo
       <select id="f-periodo" aria-label="Atajo de período">
         <option value="custom">Elegido a mano</option>
-        <option value="oct">Octubre (1 al 25)</option>
+        <option value="oct">Octubre completo</option>
         <option value="sep">Septiembre completo</option>
         <option value="anio">Año 2026 hasta hoy</option>
         <option value="ago">Agosto</option>
@@ -129,7 +129,7 @@
       <input type="date" id="f-desde" min="2026-01-02" max="2026-11-01" value="2026-10-01">
     </label>
     <label>Hasta
-      <input type="date" id="f-hasta" min="2026-01-02" max="2026-11-01" value="2026-10-25">
+      <input type="date" id="f-hasta" min="2026-01-02" max="2026-11-01" value="2026-10-31">
     </label>
     <label>Local
       <select id="f-local" aria-label="Local">
@@ -309,7 +309,7 @@
 const INF = 0.334;
 const PER = {
   anio:['2026-01-02','2026-11-01'], ene:['2026-01-02','2026-01-31'], feb:['2026-02-01','2026-02-28'], mar:['2026-03-01','2026-03-31'], abr:['2026-04-01','2026-04-30'], may:['2026-05-01','2026-05-31'], jun:['2026-06-01','2026-06-30'], jul:['2026-07-01','2026-07-31'], ago:['2026-08-01','2026-08-31'],
-  oct:['2026-10-01','2026-10-25'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-26','2026-11-01'],
+  oct:['2026-10-01','2026-10-31'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-26','2026-11-01'],
   oct_s1:['2026-10-01','2026-10-04'], oct_s2:['2026-10-05','2026-10-11'], oct_s3:['2026-10-12','2026-10-18'], oct_s4:['2026-10-19','2026-10-25'], oct_s5:['2026-10-26','2026-10-31'],
   sep_s1:['2026-09-01','2026-09-06'], sep_s2:['2026-09-07','2026-09-13'], sep_s3:['2026-09-14','2026-09-20'], sep_s4:['2026-09-21','2026-09-27'], sep_s5:['2026-09-28','2026-09-30']
 };
@@ -420,7 +420,7 @@ window.LP = {fM, fN, fP, fPP, cls};
 const fd = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
 const rangoTxt = (d, h) => d === h ? `el ${fd(d)}` : `del ${fd(d)} al ${fd(h)}`;
 const LNAME = {Todos: 'los 3 locales vendieron', Florida: 'Florida vendió', Beccar: 'Beccar vendió', Paz: 'Paz vendió'};
-const FMIN = '2026-01-02', FMAX = '2026-10-29';
+const FMIN = '2026-01-02', FMAX = '2026-11-01';
 const clampF = (f, def) => (/^\d{4}-\d{2}-\d{2}$/.test(f || '') ? (f < FMIN ? FMIN : f > FMAX ? FMAX : f) : def);
 const prm = () => { const p = dash.params(); let desde = clampF(p.desde, '2026-10-01'), hasta = clampF(p.hasta, FMAX);
   if (desde > hasta) [desde, hasta] = [hasta, desde]; return {desde, hasta, local: p.local || 'Todos'}; };

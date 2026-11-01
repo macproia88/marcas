@@ -58,7 +58,7 @@
     <label>Atajo
       <select id="f-periodo" aria-label="Atajo de período">
         <option value="custom">Elegido a mano</option>
-        <option value="oct">Octubre (1 al 25)</option>
+        <option value="oct">Octubre completo</option>
         <option value="sep">Septiembre completo</option>
         <option value="anio">Año 2026 hasta hoy</option>
         <option value="ago">Agosto</option>
@@ -75,7 +75,7 @@
         <option value="oct_s2">Oct semana 2 (5 al 11)</option>
         <option value="oct_s3">Oct semana 3 (12 al 18)</option>
         <option value="oct_s4">Oct semana 4 (19 al 25)</option>
-        <option value="oct_s5">Oct semana 5 (26 al 29)</option>
+        <option value="oct_s5">Oct semana 5 (26 al 31)</option>
         <option value="sep_s1">Sep semana 1 (1 al 6)</option>
         <option value="sep_s2">Sep semana 2 (7 al 13)</option>
         <option value="sep_s3">Sep semana 3 (14 al 20)</option>
@@ -87,7 +87,7 @@
       <input type="date" id="f-desde" min="2026-01-02" max="2026-10-29" value="2026-10-01">
     </label>
     <label>Hasta
-      <input type="date" id="f-hasta" min="2026-01-02" max="2026-10-29" value="2026-10-25">
+      <input type="date" id="f-hasta" min="2026-01-02" max="2026-10-29" value="2026-10-31">
     </label>
     <label>Local
       <select id="f-local" aria-label="Local">
@@ -267,8 +267,8 @@
 const INF = 0.334;
 const PER = {
   anio:['2026-01-02','2026-10-29'], ene:['2026-01-02','2026-01-31'], feb:['2026-02-01','2026-02-28'], mar:['2026-03-01','2026-03-31'], abr:['2026-04-01','2026-04-30'], may:['2026-05-01','2026-05-31'], jun:['2026-06-01','2026-06-30'], jul:['2026-07-01','2026-07-31'], ago:['2026-08-01','2026-08-31'],
-  oct:['2026-10-01','2026-10-25'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-23','2026-10-29'],
-  oct_s1:['2026-10-01','2026-10-04'], oct_s2:['2026-10-05','2026-10-11'], oct_s3:['2026-10-12','2026-10-18'], oct_s4:['2026-10-19','2026-10-25'], oct_s5:['2026-10-26','2026-10-29'],
+  oct:['2026-10-01','2026-10-31'], sep:['2026-09-01','2026-09-30'], sep118:['2026-09-01','2026-09-25'], ult7:['2026-10-23','2026-10-29'],
+  oct_s1:['2026-10-01','2026-10-04'], oct_s2:['2026-10-05','2026-10-11'], oct_s3:['2026-10-12','2026-10-18'], oct_s4:['2026-10-19','2026-10-25'], oct_s5:['2026-10-26','2026-10-31'],
   sep_s1:['2026-09-01','2026-09-06'], sep_s2:['2026-09-07','2026-09-13'], sep_s3:['2026-09-14','2026-09-20'], sep_s4:['2026-09-21','2026-09-27'], sep_s5:['2026-09-28','2026-09-30']
 };
 window.LP_PER = PER;

@@ -133,7 +133,7 @@
     <div class="card" id="c-alertas"><h2>Para mirar esta semana</h2><ul class="alertas" id="r-alertas"></ul></div>
     <div class="card" id="c-avance"><h2>Avance contra el plan de octubre</h2><p class="note">Venta del 1 al 25 de octubre contra lo que el plan esperaba para esos días. Proyección = si el resto del mes sigue al mismo ritmo contra el plan. Muestra siempre los 3 locales.</p>
       <div class="tw"><table id="tb-avance"><thead><tr><th>Local</th><th>Meta del mes</th><th>Plan al 25/10</th><th>Real al 25/10</th><th>Avance</th><th>Proyección al cierre</th><th>vs meta</th></tr></thead><tbody></tbody></table></div></div>
-    <p class="note" style="font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0">Datos al día: venta hasta el 25/10 · compras hasta el 17/10 · fichadas 05/10 al 18/10 · PedidosYa liquidado hasta el 18/10 · resultado del negocio (estado de resultados) hasta septiembre.</p>
+    <p class="note" style="font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0">Datos al día: venta con los cierres de caja (se actualiza sola) · club y cupones al 31/10 · compras hasta el 17/10 · fichadas 05/10 al 18/10 · PedidosYa liquidado hasta el 18/10 · resultado del negocio (estado de resultados) hasta septiembre.</p>
   </section>
 
   <!-- VENTAS -->
@@ -165,17 +165,17 @@
   <section class="page" id="clientes" hidden>
     <div class="card" id="c-hora"><h2>Clientes por hora y día de la semana</h2><p class="note">Clientes promedio en un día, 1 al 22 de octubre, mostrador más apps. Tocá un cuadro para ver el detalle.</p>
       <div class="chart" id="ch-hora" data-source="clientes_hora" style="min-height:280px"></div></div>
-    <div class="card" id="c-club"><h2>Club de clientes en el mostrador</h2><p class="note">1 al 22 de octubre. Compras de ALAX cruzadas con los tickets de Maxi Rest (96% encontradas).</p>
+    <div class="card" id="c-club"><h2>Club de clientes en el mostrador</h2><p class="note">Octubre completo. Compras con DNI del reporte de ventas de ALAX contra los tickets de mostrador de Maxi Rest. Ticket del socio = importe de ALAX ÷ compras; altas = kilos de bienvenida entregados.</p>
       <div class="tw"><table id="tb-club" data-source="club_kpi" data-row-key="local">
         <thead><tr><th data-field="local">Local</th><th data-field="tickets_club">Tickets del club</th><th data-field="pct_tickets">% de tickets</th><th data-field="pct_venta">% de la venta</th><th data-field="ticket_socio">Ticket socio</th><th data-field="ticket_no_socio">Ticket no socio</th><th data-field="dif">Diferencia</th><th data-field="altas">Altas en mostrador</th></tr></thead><tbody></tbody></table></div>
     </div>
     <div class="card" id="c-clubpago"><h2>Cómo paga y a qué hora compra el socio</h2><p class="note">1 al 22 de octubre, tickets de mostrador. De cada 100 tickets de socios y de no socios, cuántos son de cada tipo. Sigue el filtro de local, no el de fechas.</p>
       <div class="tw"><table id="tb-clubpago"><thead><tr><th>Concepto</th><th>Socio</th><th>No socio</th><th>Diferencia</th></tr></thead><tbody></tbody></table></div>
     </div>
-    <div class="card" id="c-clubfrec"><h2>Cuántas veces compró cada socio en el mes</h2><p class="note">1 al 22 de octubre. Muchos de los que compraron una vez se registraron este mes. Sigue el filtro de local, no el de fechas.</p>
+    <div class="card" id="c-clubfrec"><h2>Cuántas veces compró cada socio en el mes</h2><p class="note">Octubre completo. Muchos de los que compraron una vez se registraron este mes. Sigue el filtro de local, no el de fechas.</p>
       <div class="tw"><table id="tb-clubfrec"><thead><tr><th>Compró</th><th>Socios</th><th>Venta</th><th>% de la venta del club</th></tr></thead><tbody></tbody></table></div>
     </div>
-    <div class="card" id="c-clubind"><h2>¿El club trae clientes? Los 3 locales comparados</h2><p class="note">1 al 22 de octubre. En verde, el mejor de los tres en cada fila. "Vuelven" = socios anotados del 1 al 11 de octubre que ya compraron otra vez. Muestra siempre los 3 locales.</p>
+    <div class="card" id="c-clubind"><h2>¿El club trae clientes? Los 3 locales comparados</h2><p class="note">Octubre completo. En verde, el mejor de los tres en cada fila. "Vuelven" = socios anotados del 1 al 11 de octubre que ya compraron otra vez. Muestra siempre los 3 locales.</p>
       <div class="tw"><table id="tb-clubind"><thead><tr><th>Indicador</th><th>Florida</th><th>Beccar</th><th>Paz</th></tr></thead><tbody></tbody></table></div>
     </div>
     <div class="card" id="c-clubsem"><h2>Semana a semana: de dónde salen los clientes</h2><p class="note">Promedio por día de cada semana, tickets de mostrador. Si sube el club y bajan "sin club" en la misma cantidad, son los mismos clientes que ahora dan el DNI; lo que sube de más son clientes nuevos. Sigue el filtro de local.</p>
@@ -728,7 +728,7 @@ dash.onData(() => {
     const rows = [['Socios nuevos en octubre', 'socios_nuevos', (v) => fN(v), 1], ['% de compras con club', 'pct_club', (v) => fP(v, 1), 1],
       ['Cuánto más gasta el socio', 'gasta_mas', (v) => fP(v, 0, true), 1], ['Socios nuevos que ya volvieron', 'vuelven', (v) => fP(v, 0), 1],
       ['Días hasta que vuelven (mediana)', 'dias_vuelta', (v) => fN(v), -1], ['Clientes vs 2025 en la semana 1', 'clientes_s1', (v) => v == null ? 'sin dato' : fP(v, 1, true), 0],
-      ['Clientes vs 2025 en la semana 4', 'clientes_s4', (v) => fP(v, 1, true), 0]];
+      ['Clientes vs 2025 en la semana 5', 'clientes_s4', (v) => fP(v, 1, true), 0]];
     rows.forEach(([lab, k, f, dir]) => {
       const tr = document.createElement('tr'); const td0 = document.createElement('td'); td0.textContent = lab; td0.className = 'l'; tr.append(td0);
       const vals = ['Florida', 'Beccar', 'Paz'].map((l) => by[l] ? by[l][k] : null);

@@ -1760,5 +1760,43 @@
   "thread": "1a194acc705099c9",
   "subject": "MaxiREST - Fin de turno - 31/10/2026 Intermedio",
   "sender": "deliverylapresumida@gmail.com"
+ },
+ {
+  "sucursal": "Pastas Paz",
+  "fecha": "2026-10-31",
+  "turno": "Intermedio",
+  "total": 2512123.95,
+  "tickets": 80,
+  "neto21": 2076135.5,
+  "iva21": 435988.45,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    461758.45,
+    20
+   ],
+   "VISA DEBITO": [
+    1410375.5,
+    41
+   ],
+   "PEDIDOS YA TARJ": [
+    95300.0,
+    1
+   ],
+   "Mercado Pago": [
+    414390.0,
+    18
+   ],
+   "Pago Online": [
+    130300.0,
+    1
+   ]
+  },
+  "cod202_unid": 2.0,
+  "cod202_importe": 225600.0,
+  "thread": "1a19704326daa857",
+  "subject": "MaxiREST - Fin de turno - 2026-10-31 Intermedio",
+  "sender": ""
  }
 ]

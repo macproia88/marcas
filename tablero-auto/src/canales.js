@@ -163,10 +163,11 @@ function paginaApps() {
     const pv = sel(D.dias.filter((r) => r.fecha.slice(0, 7) === prevMes())), ndp = new Set(D.dias.filter((r) => r.fecha.slice(0, 7) === prevMes()).map((r) => r.fecha)).size;
     const vs = ndp && sum(pv, 'pedidos') ? (ped / nd) / (sum(pv, 'pedidos') / ndp) - 1 : null;
     const K = [['Pedidos de ' + MESN[+MES.slice(5) - 1], nf(ped), nf(ped / nd) + ' por día' + (vs != null ? ' · ' + (vs >= 0 ? '+' : '') + pf(vs) + ' vs mes anterior' : '')],
-      ['Venta en apps', mf(vap), 'cargada en Maxi Rest (código 202)'], ['Ticket promedio', '$' + nf(vap / ped), 'venta ÷ pedidos']];
+      ['Venta en apps', mf(vap), 'cargada en Maxi Rest (código 202)'], ['Ticket promedio', '$' + nf(vap / ped), 'venta en Maxi Rest ÷ pedidos']];
     if (A) {
       const py = sel(A.plata).filter((r) => r.app === 'PedidosYa'), rec = sel(A.reclamos), tiempos = sel(A.tiempos), vpy = sum(py, 'venta');
-      K.push(['Vuelve al local (PedidosYa)', pf(sum(py, 'neto') / vpy), mf(sum(py, 'neto')) + ' de ' + mf(vpy)],
+      const pago = vpy - sum(py, 'descuentos');
+      K.push(['Llega al banco (PedidosYa)', pf(sum(py, 'neto') / pago), 'de lo que pagó el cliente · ' + pf(sum(py, 'neto') / vpy) + ' del precio de lista'],
         ['Reclamos', (sum(rec, 'reclamos') / sum(rec, 'pedidos') * 100).toLocaleString('es-AR', { maximumFractionDigits: 1 }) + ' cada 100', nf(sum(rec, 'reclamos')) + ' reclamos en PedidosYa'],
         ['Preparación (mediana)', (LOCAL === 'Todos' ? d3.median(tiempos, (t) => t.preparacion) : tiempos[0].preparacion) + ' min', 'de aceptado a listo para retirar']);
     }
@@ -189,14 +190,20 @@ function paginaApps() {
       const ag = {}; sel(A.agregados).forEach((r) => { ag[r.agregado] = (ag[r.agregado] || 0) + r.unidades; });
       hbars(ca, Object.entries(ag).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k, v]) => ({ k, v })), nf, COL.Paz);
       const g2 = el('div', { class: 'grid2' }); S.appendChild(g2);
-      c = card('c-bandas', 'Cuánto gasta cada pedido', 'PedidosYa: pedidos según el total del pedido. Al lado: % de los pedidos · % de la plata del mes.'); const cp = card('c-plata', 'Lo que queda en el bolsillo (PedidosYa)', 'De la venta del mes: comisión de PedidosYa, descuentos y vales que paga el local, otros cargos y lo que deposita la app (ingreso estimado del reporte).'); g2.append(c, cp);
+      c = card('c-bandas', 'Cuánto gasta cada pedido', 'PedidosYa: pedidos según su total a precio de lista. Al lado: % de los pedidos · % de la plata del mes.'); const cp = card('c-plata', 'Lo que queda en el bolsillo (PedidosYa)', 'Del precio de lista a lo que llega al banco, paso a paso (detalle de pedidos del mes).'); g2.append(c, cp);
       const bd = {}; sel(A.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.pedidos; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
       hbars(c, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los pedidos · ${pf(bd[k].venta / tv)} de la plata`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Beccar);
       const can = sel(A.canasta), up = LOCAL === 'Todos' ? d3.mean(can, (r) => r.unidades_pedido) : can[0].unidades_pedido;
       c.appendChild(el('p', { class: 'note', text: `En promedio cada pedido lleva ${up.toLocaleString('es-AR', { maximumFractionDigits: 1 })} productos (sin contar los agregados).` }));
       const py = sel(A.plata).filter((r) => r.app === 'PedidosYa'), pl = ['venta', 'comision', 'descuentos', 'publicidad', 'otros', 'neto'].map((f) => sum(py, f));
-      table(cp, ['Concepto', 'Pesos', '% de la venta'], [['Venta', mf(pl[0]), '100%'], ['Comisión', mf(pl[1]), pf(pl[1] / pl[0])], ['Descuentos que paga el local', mf(pl[2]), pf(pl[2] / pl[0])], ['Publicidad', mf(pl[3]), pf(pl[3] / pl[0])], ['Otros cargos', mf(pl[4]), pf(pl[4] / pl[0])], [{ t: 'Vuelve al local', cls: 'good' }, { t: mf(pl[5]), cls: 'good' }, { t: pf(pl[5] / pl[0]), cls: 'good' }]]);
+      const pc = pl[0] - pl[2], P2 = (v) => pf(v / pl[0]), P3 = (v) => pf(v / pc);
+      table(cp, ['Concepto', 'Pesos', '% precio de lista', '% de lo que pagó el cliente'], [
+        ['Precio de lista (menú de la app)', mf(pl[0]), '100%', '—'], ['− Descuentos que pone el local', mf(pl[2]), P2(pl[2]), '—'],
+        ['= Pagó el cliente', mf(pc), P2(pc), '100%'],
+        ['− Comisión', mf(pl[1]), P2(pl[1]), P3(pl[1])], ['− Publicidad', mf(pl[3]), P2(pl[3]), P3(pl[3])], ['− Otros cargos e impuestos', mf(pl[4]), P2(pl[4]), P3(pl[4])],
+        [{ t: '= Llega al banco', cls: 'good' }, { t: mf(pl[5]), cls: 'good' }, { t: P2(pl[5]), cls: 'good' }, { t: P3(pl[5]), cls: 'good' }]]);
+      cp.appendChild(el('p', { class: 'note', text: 'Los dos porcentajes miden lo mismo con distinta base: sobre lo que pagó el cliente (como la liquidación de la app y el cierre de arriba) o sobre el precio de lista (contando como costo los descuentos que pone el local).' }));
       c = card('c-rec', 'Reclamos y servicio', 'PedidosYa. Reclamos por motivo, cancelados y tiempos. Menos es mejor.'); S.appendChild(c);
       table(c, ['Local', 'Pedidos', 'Reclamos c/100', 'Faltante', 'Incorrecto', 'Orden equivocada', 'Calidad', 'Cancelados', 'Preparación', 'Tardan +20 min', 'Pedido a entrega'], (LOCAL === 'Todos' ? LOCS : [LOCAL]).map((L) => { const r = A.reclamos.find((x) => x.local === L), t = A.tiempos.find((x) => x.local === L), k = A.cancelados.find((x) => x.local === L);
         return [L, nf(r.pedidos), (r.reclamos / r.pedidos * 100).toLocaleString('es-AR', { maximumFractionDigits: 1 }), nf(r['Producto faltante'] || 0), nf(r['Producto incorrecto'] || 0), nf(r['Orden equivocada'] || 0), nf(r['Calidad de la comida'] || 0), nf(k.cancelados), t.preparacion + ' min', pf(t.prep_mas_20), t.total + ' min']; }));

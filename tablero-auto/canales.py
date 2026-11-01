@@ -76,10 +76,12 @@ def textos_apps(A, MEN, mes):
         ban = [r for r in A['bandas'] if sel(r)]
         alto = sum(r['pedidos'] for r in ban if r['orden'] >= 3); alto_v = sum(r['venta'] for r in ban if r['orden'] >= 3)
         tp = sum(r['pedidos'] for r in ban); tv = sum(r['venta'] for r in ban)
-        if tp: t.append(f"Ticket promedio de PedidosYa {('$' + N(vta / ped_py)) if ped_py else '—'}. Los pedidos de más de $40.000 son {P(alto/tp)} de los pedidos pero {P(alto_v/tv)} de la plata.")
+        dsc0 = sum(r['descuentos'] for r in py)
+        if tp: t.append(f"Ticket promedio de PedidosYa: ${N((vta - dsc0) / ped_py) if ped_py else '—'} lo que pagó el cliente (${N(vta / ped_py) if ped_py else '—'} a precio de lista). Los pedidos de más de $40.000 son {P(alto/tp)} de los pedidos pero {P(alto_v/tv)} de la plata.")
         q = sum(r['unidades'] for r in A['agregados'] if sel(r) and r['agregado'].lower() == 'queso rallado')
         if ped_py: t.append(f"Queso rallado: se agregan {q/ped_py*100:.0f} quesos cada 100 pedidos de PedidosYa. Es la venta sugestiva de la app y ya funciona.")
-        if vta: t.append(f"De cada $100 que se venden en PedidosYa vuelven ${neto/vta*100:.0f} al local; el resto es comisión, descuentos que paga el local y otros cargos.")
+        dsc = sum(r['descuentos'] for r in py)
+        if vta: t.append(f"PedidosYa: de cada $100 que paga el cliente llegan ${neto/(vta-dsc)*100:.0f} al banco. Si se cuentan también los descuentos que pone el local, de cada $100 de precio de lista llegan ${neto/vta*100:.0f}.")
         rec = [r for r in A['reclamos'] if sel(r)]
         nr = sum(r['reclamos'] for r in rec); arm = sum(r.get('Producto faltante', 0) + r.get('Producto incorrecto', 0) + r.get('Orden equivocada', 0) for r in rec)
         if nr: t.append(f"Reclamos: {nr/sum(r['pedidos'] for r in rec)*100:.1f} cada 100 pedidos.".replace('.', ',', 1) + f" {P(arm/nr)} son de armado (faltante, incorrecto u orden equivocada): se arreglan controlando el pedido antes de entregarlo.")

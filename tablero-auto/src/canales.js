@@ -1,6 +1,6 @@
 let LOCAL = 'Todos';
 const LOCS = ['Florida', 'Beccar', 'Paz'];
-const COL = { Florida: '#b85042', Beccar: '#3b2e2a', Paz: '#8c6b3f', PedidosYa: '#b85042', Rappi: '#8c6b3f', y25: '#9a928b' };
+const COL = { Florida: '#b85042', Beccar: '#3b2e2a', Paz: '#8c6b3f', PedidosYa: '#b85042', Rappi: '#8c6b3f', y25: '#9a928b', ok: '#2f6b4f', bad: '#c4655a' };
 const DS = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'];
 const MESC = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 const nf = (x) => Math.round(x).toLocaleString('es-AR');
@@ -17,13 +17,13 @@ function width(c) { return Math.max(300, c.clientWidth - 32); }
 
 function hbars(c, items, fmt, color) {
   const W = width(c), lw = Math.min(260, W * 0.42), bh = 24, H = items.length * bh + 6;
-  const x = d3.scaleLinear().domain([0, d3.max(items, (d) => d.v) || 1]).range([0, W - lw - (items.some((d) => d.t) ? 190 : 70)]);
+  const x = d3.scaleLinear().domain([0, d3.max(items, (d) => d.v) || 1]).range([0, W - lw - (items.some((d) => d.t) ? (W < 520 ? 120 : 200) : 70)]);
   const s = d3.select(c).append('svg').attr('viewBox', `0 0 ${W} ${H}`);
   const g = s.selectAll('g').data(items).join('g').attr('transform', (d, i) => `translate(0,${i * bh})`);
-  g.append('text').attr('x', lw - 8).attr('y', 16).attr('text-anchor', 'end').text((d) => d.k.length > 38 ? d.k.slice(0, 37) + '…' : d.k);
+  const mx = Math.max(10, Math.floor(lw / 6.6)); g.append('text').attr('x', lw - 8).attr('y', 16).attr('text-anchor', 'end').text((d) => d.k.length > mx ? d.k.slice(0, mx - 1) + '…' : d.k);
   g.append('rect').attr('x', lw).attr('y', 4).attr('height', bh - 8).attr('rx', 3).attr('width', (d) => x(d.v)).attr('fill', (d) => d.c || color || COL.Florida)
     .on('mousemove', (ev, d) => showTip(ev, d.k + ': ' + fmt(d.v) + (d.t ? ' · ' + d.t : ''))).on('mouseleave', hideTip);
-  g.append('text').attr('x', (d) => lw + x(d.v) + 6).attr('y', 16).text((d) => fmt(d.v) + (d.t ? '  ' + d.t : ''));
+  const angosto = W < 520; g.append('text').attr('x', (d) => lw + x(d.v) + 6).attr('y', 16).text((d) => fmt(d.v) + (d.t ? '  ' + (angosto && d.ts ? d.ts : d.t) : ''));
 }
 
 function vbars(c, cats, series, fmt, opts = {}) {
@@ -45,7 +45,9 @@ function vbars(c, cats, series, fmt, opts = {}) {
       .on('mousemove', (ev, v) => { const i = se.values.indexOf(v); showTip(ev, `${String(cats[i]).replace('\n', ' ')} · ${se.name}: ${fmt(v)}`); }).on('mouseleave', hideTip)
       .each((v, i) => { base[i] += v || 0; });
   });
-  if (opts.labels !== false && cats.length <= 14) s.append('g').selectAll('text').data(tot).join('text').attr('x', (_, i) => x(i) + x.bandwidth() / 2).attr('y', (v) => y(v) - 4).attr('text-anchor', 'middle').attr('font-size', 11).text((v) => fmt(v));
+  const angosto = x.bandwidth() < 34;
+  const corto = (v) => fmt === mf ? '$' + Math.round(v / 1e6) + 'M' : (v >= 10000 ? (v / 1000).toLocaleString('es-AR', { maximumFractionDigits: 1 }) + 'k' : fmt(v));
+  if (opts.labels !== false && cats.length <= 14) s.append('g').selectAll('text').data(tot).join('text').attr('x', (_, i) => x(i) + x.bandwidth() / 2).attr('y', (v) => y(v) - 4).attr('text-anchor', 'middle').style('font-size', angosto ? '8.5px' : '11px').text((v) => angosto ? corto(v) : fmt(v));
   if (opts.line) {
     const ln = d3.line().defined((v) => v != null).x((_, i) => x(i) + x.bandwidth() / 2).y((v) => y(v));
     s.append('path').attr('d', ln(opts.line.values)).attr('fill', 'none').attr('stroke', opts.line.color).attr('stroke-width', 2).attr('stroke-dasharray', '4 3');
@@ -55,23 +57,24 @@ function vbars(c, cats, series, fmt, opts = {}) {
   c.appendChild(leg);
 }
 
-function heat(c, rows, campo, fmt) {
+function heat(c0, rows, campo, fmt) {
+  const c = el('div', { class: 'hscroll' }); c0.appendChild(c); c.style.width = '100%';
   const hs = [...new Set(rows.map((r) => r.hora))].sort((a, b) => a - b);
   if (!hs.length) return;
   const hmin = d3.min(hs), hmax = d3.max(hs), H0 = d3.range(hmin, hmax + 1);
   const val = {}; rows.forEach((r) => { const k = r.dia + '-' + r.hora; val[k] = (val[k] || 0) + r[campo]; });
-  const W = width(c), cw = (W - 30) / H0.length, ch = 26, H = ch * 7 + 22;
+  const W = Math.max(width(c0), 30 + H0.length * 34), cw = (W - 30) / H0.length, ch = 26, H = ch * 7 + 22;
   const mx = d3.max(Object.values(val)) || 1;
   const col = d3.scaleSequential([0, mx], d3.interpolateRgb('#f6e3de', '#a33a2c'));
-  const s = d3.select(c).append('svg').attr('viewBox', `0 0 ${W} ${H}`);
-  H0.forEach((h, j) => s.append('text').attr('x', 30 + j * cw + cw / 2).attr('y', 12).attr('text-anchor', 'middle').attr('font-size', 10).attr('fill', 'currentColor').text(h + 'h'));
+  const s = d3.select(c).append('svg').attr('viewBox', `0 0 ${W} ${H}`).style('min-width', W + 'px');
+  H0.forEach((h, j) => s.append('text').attr('x', 30 + j * cw + cw / 2).attr('y', 12).attr('text-anchor', 'middle').style('font-size', '10px').attr('fill', 'currentColor').text(h + 'h'));
   for (let d = 0; d < 7; d++) {
-    s.append('text').attr('x', 0).attr('y', 22 + d * ch + 17).attr('font-size', 11).text(DS[d]);
+    s.append('text').attr('x', 0).attr('y', 22 + d * ch + 17).style('font-size', '11px').text(DS[d]);
     H0.forEach((h, j) => {
       const v = val[d + '-' + h] || 0;
       s.append('rect').attr('x', 30 + j * cw + 1).attr('y', 22 + d * ch + 1).attr('width', cw - 2).attr('height', ch - 2).attr('rx', 3).attr('fill', v ? col(v) : 'transparent').attr('stroke', 'var(--line)')
         .on('mousemove', (ev) => showTip(ev, `${DS[d]} ${h} a ${h + 1} h: ${fmt(v)}`)).on('mouseleave', hideTip);
-      if (v && cw > 22) s.append('text').attr('x', 30 + j * cw + cw / 2).attr('y', 22 + d * ch + 17).attr('text-anchor', 'middle').attr('font-size', 10).attr('fill', v > mx * 0.55 ? '#fff' : '#3b2e2a').text(fmt(v));
+      if (v && cw > 22) s.append('text').attr('x', 30 + j * cw + cw / 2).attr('y', 22 + d * ch + 17).attr('text-anchor', 'middle').style('font-size', '10px').attr('fill', v > mx * 0.55 ? '#fff' : '#3b2e2a').text(fmt(v));
     });
   }
 }
@@ -121,6 +124,37 @@ function arrancar(dibujar) {
   dibujar();
 }
 
+function cierreApps(S) {
+  const L0 = sel(D.liq);
+  sec(S, 'Cierre de las apps');
+  const c = card('c-cierre', 'Lo facturado y lo que llega al banco · ' + MESN[+MES.slice(5) - 1], 'Facturado = lo que pagó el cliente (sin los descuentos que pone el local). Se queda la app = comisión, cargos, publicidad e impuestos (IVA de la comisión, percepciones y retenciones). Depositado = lo que llega al banco.');
+  S.appendChild(c);
+  const R = L0.filter((r) => r.mes === MES);
+  if (!R.length) c.appendChild(el('p', { class: 'vacio', text: 'Sin liquidaciones cargadas para este mes. Hoy hay agosto, septiembre y octubre.' }));
+  else {
+    const fila = (n, rs) => { const v = sum(rs, 'venta'), q = rs.every((r) => r.se_queda != null) ? sum(rs, 'se_queda') : null, d = rs.every((r) => r.deposito != null) ? sum(rs, 'deposito') : null, p = sum(rs, 'pedidos');
+      return [n, nf(p), mf(v), q == null ? 'pendiente' : mf(q), q == null ? '—' : pf(q / v), d == null ? 'pendiente' : { t: mf(d), cls: 'good' }, d == null ? '—' : { t: pf(d / v), cls: 'good' }, d == null ? '—' : '$' + nf(d / p)]; };
+    const filas = ['PedidosYa', 'Rappi'].map((a) => R.filter((r) => r.app === a)).filter((rs) => rs.length).map((rs) => fila(rs[0].app, rs));
+    if (filas.length > 1) filas.push(fila('Las dos apps', R));
+    if (window.innerWidth < 640) table(c, ['App', 'Facturado', 'Se queda', 'Depositado', 'Llega'], filas.map((f) => [f[0], f[2], f[3], f[5], f[6]]));
+    else table(c, ['App', 'Pedidos', 'Facturado', 'Se queda la app', '%', 'Depositado', '% que llega', 'Por pedido'], filas);
+    const f = [...new Set(R.map((r) => r.fuente))];
+    c.appendChild(el('p', { class: 'note', text: 'Fuente: ' + f.join(' y ') + (f.includes('detalle de pedidos') ? ' (PedidosYa: venta e ingreso estimado del detalle de pedidos, hasta que llegue la liquidación del mes)' : '') + '.' }));
+  }
+  const ms = [...new Set(L0.map((r) => r.mes))].sort();
+  if (ms.length) {
+    const g = el('div', { class: 'grid2' }); S.appendChild(g);
+    ['PedidosYa', 'Rappi'].forEach((a) => {
+      const cc = card('c-mm-' + a, a + ' mes a mes', 'Facturado de cada mes: la parte verde llega al banco, la roja se la queda la app.'); g.appendChild(cc);
+      const rs = (m) => L0.filter((r) => r.mes === m && r.app === a);
+      const okm = ms.filter((m) => rs(m).length && rs(m).every((r) => r.deposito != null));
+      if (!okm.length) { cc.appendChild(el('p', { class: 'vacio', text: 'Sin datos.' })); return; }
+      vbars(cc, okm.map((m) => MESC[+m.slice(5) - 1]), [{ name: 'Llega al banco', color: COL.ok, values: okm.map((m) => sum(rs(m), 'deposito')) }, { name: 'Se queda la app', color: COL.bad, values: okm.map((m) => sum(rs(m), 'se_queda')) }], mf);
+      table(cc, ['Mes', 'Facturado', 'Depositado', '% que llega'], okm.map((m) => [MESC[+m.slice(5) - 1], mf(sum(rs(m), 'venta')), mf(sum(rs(m), 'deposito')), pf(sum(rs(m), 'deposito') / sum(rs(m), 'venta'))]));
+    });
+  }
+}
+
 function paginaApps() {
   arrancar(() => {
     textos();
@@ -143,6 +177,7 @@ function paginaApps() {
     let c = card('c-dias', 'Pedidos día por día', 'PedidosYa + Rappi. Pasá el mouse por una barra para ver el número.'); S.appendChild(c);
     if (A) vbars(c, fechas.map(diaLabel), [{ name: 'PedidosYa', color: COL.PedidosYa, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'pedidosya')) }, { name: 'Rappi', color: COL.Rappi, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'rappi')) }], nf, { labels: false });
     else vbars(c, fechas.map(diaLabel), (LOCAL === 'Todos' ? LOCS : [LOCAL]).map((L) => ({ name: L, color: COL[L], values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f && r.local === L), 'pedidos')) })), nf, { labels: false });
+    cierreApps(S);
     if (!A) { sinDetalle(S, 'Horarios, productos, agregados, tamaño del pedido, plata y reclamos salen del detalle de pedidos de PedidosYa y el reporte de Rappi del mes. Hoy está cargado solo octubre: con los archivos de este mes se completa.'); }
     else {
       c = card('c-hora', 'A qué hora y qué día piden', 'Pedidos del mes en cada franja de una hora (PedidosYa + Rappi). Más oscuro = más pedidos.'); S.appendChild(c);
@@ -154,10 +189,10 @@ function paginaApps() {
       const ag = {}; sel(A.agregados).forEach((r) => { ag[r.agregado] = (ag[r.agregado] || 0) + r.unidades; });
       hbars(ca, Object.entries(ag).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k, v]) => ({ k, v })), nf, COL.Paz);
       const g2 = el('div', { class: 'grid2' }); S.appendChild(g2);
-      c = card('c-bandas', 'Cuánto gasta cada pedido', 'PedidosYa: pedidos según el total del pedido. Al lado, qué parte de la plata del mes aportan.'); const cp = card('c-plata', 'Lo que queda en el bolsillo (PedidosYa)', 'De la venta del mes: comisión de PedidosYa, descuentos y vales que paga el local, otros cargos y lo que deposita la app (ingreso estimado del reporte).'); g2.append(c, cp);
+      c = card('c-bandas', 'Cuánto gasta cada pedido', 'PedidosYa: pedidos según el total del pedido. Al lado: % de los pedidos · % de la plata del mes.'); const cp = card('c-plata', 'Lo que queda en el bolsillo (PedidosYa)', 'De la venta del mes: comisión de PedidosYa, descuentos y vales que paga el local, otros cargos y lo que deposita la app (ingreso estimado del reporte).'); g2.append(c, cp);
       const bd = {}; sel(A.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.pedidos; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
-      hbars(c, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los pedidos · ${pf(bd[k].venta / tv)} de la plata` })), nf, COL.Beccar);
+      hbars(c, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los pedidos · ${pf(bd[k].venta / tv)} de la plata`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Beccar);
       const can = sel(A.canasta), up = LOCAL === 'Todos' ? d3.mean(can, (r) => r.unidades_pedido) : can[0].unidades_pedido;
       c.appendChild(el('p', { class: 'note', text: `En promedio cada pedido lleva ${up.toLocaleString('es-AR', { maximumFractionDigits: 1 })} productos (sin contar los agregados).` }));
       const py = sel(A.plata).filter((r) => r.app === 'PedidosYa'), pl = ['venta', 'comision', 'descuentos', 'publicidad', 'otros', 'neto'].map((f) => sum(py, f));
@@ -193,12 +228,12 @@ function paginaMostrador() {
       c = card('c-hora', 'A qué hora y qué día vienen', `Clientes promedio en un día, por franja de una hora (venta detallada de Maxi Rest hasta el ${hasta.slice(8)}/${hasta.slice(5, 7)}).`); S.appendChild(c);
       heat(c, sel(Mo.horas), 'tickets', (v) => nf(v));
       const g = el('div', { class: 'grid2' }); S.appendChild(g);
-      c = card('c-cobro', 'Cómo paga', 'De cada 100 tickets de mostrador.'); const cb = card('c-bandas', 'Cuánto gasta cada cliente', 'Tickets según el total. Al lado, qué parte de la venta aportan.'); g.append(c, cb);
+      c = card('c-cobro', 'Cómo paga', 'De cada 100 tickets de mostrador.'); const cb = card('c-bandas', 'Cuánto gasta cada cliente', 'Tickets según el total. Al lado: % de los clientes · % de la venta.'); g.append(c, cb);
       const co = {}; sel(Mo.cobro).forEach((r) => { co[r.forma] = (co[r.forma] || 0) + r.tickets; }); const tco = Object.values(co).reduce((a, b) => a + b, 0);
       hbars(c, Object.entries(co).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ k, v: v / tco })), (v) => pf(v), COL.Beccar);
       const bd = {}; sel(Mo.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.tickets; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
-      hbars(cb, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)} de la venta` })), nf, COL.Paz);
+      hbars(cb, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los clientes · ${pf(bd[k].venta / tv)} de la venta`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Paz);
       if (TOP) {
         const g2 = el('div', { class: 'grid2' }); S.appendChild(g2);
         c = card('c-top', 'Qué es lo que más se vende', 'Top 15 de mostrador por venta en pesos (1 al 22, venta por rubro de Maxi Rest, a precio de lista). Fideos incluye el kilo de regalo de la bienvenida del club.'); const cr = card('c-rubro', 'Por rubro', 'Venta de mostrador por rubro (1 al 22).'); g2.append(c, cr);
@@ -209,7 +244,9 @@ function paginaMostrador() {
       }
       if (CL) {
         c = card('c-club', 'Socio contra no socio', 'Mes completo. Compras con DNI del reporte de ALAX contra los tickets de mostrador.'); S.appendChild(c);
-        table(c, ['Local', 'Tickets', 'Tickets del club', '% de la venta', 'Ticket socio', 'Ticket no socio', 'Diferencia'], sel(CL).map((r) => [r.local, nf(r.tickets), nf(r.tickets_club), pf(r.venta_club / r.venta_mostrador), '$' + nf(r.ticket_socio), '$' + nf(r.ticket_no_socio), { t: '+' + pf(r.ticket_socio / r.ticket_no_socio - 1), cls: 'good' }]));
+        const fs = sel(CL).map((r) => [r.local, nf(r.tickets), nf(r.tickets_club), pf(r.venta_club / r.venta_mostrador), '$' + nf(r.ticket_socio), '$' + nf(r.ticket_no_socio), { t: '+' + pf(r.ticket_socio / r.ticket_no_socio - 1), cls: 'good' }]);
+        if (window.innerWidth < 640) table(c, ['Local', '% venta', 'Socio', 'No socio', 'Dif.'], fs.map((f) => [f[0], f[3], f[4], f[5], f[6]]));
+        else table(c, ['Local', 'Tickets', 'Tickets del club', '% de la venta', 'Ticket socio', 'Ticket no socio', 'Diferencia'], fs);
       }
     }
     anio(S, 'tickets', 'venta_mostrador', 'Clientes');

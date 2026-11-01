@@ -130,9 +130,9 @@ def armar(nombre, titulo, sub, datos, js):
 <body>
 <div id="lp-upd" style="font:12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#6b6b6b;text-align:right;padding:6px 16px">Última actualización: {ahora:%d/%m/%Y} a las {ahora:%H:%M} (hora Argentina)</div>
 <main class="wrap">
-<header><h1>{titulo}</h1><p class="sub">{sub}</p>
-<div class="ctl"><label>Mes <select id="mes"></select></label></div>
-<nav class="loc" id="loc"><button data-l="Todos" aria-pressed="true">Los 3 locales</button><button data-l="Florida">Florida</button><button data-l="Beccar">Beccar</button><button data-l="Paz">Paz</button></nav></header>
+<h1>{titulo}</h1><p class="sub">{sub}</p>
+<header class="top"><div class="ctlrow"><div class="ctl"><label>Mes <select id="mes"></select></label></div>
+<nav class="loc" id="loc"><button data-l="Todos" aria-pressed="true">Los 3</button><button data-l="Florida">Florida</button><button data-l="Beccar">Beccar</button><button data-l="Paz">Paz</button></nav></div></header>
 <section class="card"><h2>Lo que dicen los números</h2><ul id="txt" class="txt"></ul></section>
 <section class="kpis" id="kpis"></section>
 <div id="secs"></div>
@@ -165,6 +165,36 @@ def textos_base(MEN, mes, canal):
     return out
 
 
+PER = {'Enero': '01', 'Febrero': '02', 'Marzo': '03', 'Abril': '04', 'Mayo': '05', 'Junio': '06', 'Julio': '07', 'Agosto': '08',
+       'Septiembre': '09', 'Octubre': '10', 'Noviembre': '11', 'Diciembre': '12'}
+
+
+def cierres_apps(DA):
+    """Cierre de cada app por mes: liquidaciones (apps_liq.json, solo meses completos) y, para los meses sin liquidación completa,
+    el detalle de pedidos de PedidosYa (venta del pedido e ingreso estimado). Rappi sin liquidación queda pendiente."""
+    out = []
+    if (DATA / 'apps_cierres.json').exists():
+        for r in cargar('apps_cierres.json'):
+            out.append(dict(mes=r['mes'], local=r['local'], app=r['app'], pedidos=r.get('pedidos') or 0, venta=r.get('facturado'), se_queda=r.get('se_queda'),
+                            deposito=r.get('depositado'), fuente=r.get('fuente', 'liquidación') + ('' if r.get('completo', True) else ' (mes incompleto)')))
+    for r in ([] if out else cargar('apps_liq.json')):
+        if r['app'] == 'Total' or r['local'] == '3 locales' or r['periodo'] not in PER: continue
+        out.append(dict(mes=f"2026-{PER[r['periodo']]}", local=r['local'], app=r['app'], pedidos=r['pedidos'], venta=r['venta'],
+                        se_queda=r['costo_app'] + r['impuestos'], deposito=r['deposito'], fuente='liquidación'))
+    hay = {(r['mes'], r['local'], r['app']) for r in out}
+    for mes, A in DA.items():
+        for p in A['plata']:
+            if (mes, p['local'], p['app']) in hay or not p['pedidos']: continue
+            if p['app'] == 'PedidosYa':
+                v = p['venta'] - p['descuentos']  # mismo criterio que la liquidación: lo que pagó el cliente, sin los descuentos que pone el local
+                out.append(dict(mes=mes, local=p['local'], app='PedidosYa', pedidos=p['pedidos'], venta=v, se_queda=v - p['neto'],
+                                deposito=p['neto'], fuente='detalle de pedidos'))
+            else:
+                out.append(dict(mes=mes, local=p['local'], app='Rappi', pedidos=p['pedidos'], venta=p['venta'], se_queda=None, deposito=None,
+                                fuente='pendiente de liquidación'))
+    return sorted(out, key=lambda r: (r['mes'], r['local'], r['app']))
+
+
 def main():
     V = cargar('ventas_diarias.json')
     ult = max(x['fecha'] for x in V); mes_max = ult[:7]
@@ -185,7 +215,7 @@ def main():
         tm[m] = {L: bm.get(L, []) + dm.get(L, []) for L in ['Todos'] + LOC}
     top = {'2026-10': [dict(local=r['local'], articulo=r['articulo'].strip(), rubro=r['rubro'], venta=r['venta'], cantidad=r['cantidad']) for r in TOP]}
     armar('apps.html', 'Tablero de apps', 'PedidosYa y Rappi · los 3 locales',
-          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DA, textos=ta), 'paginaApps();')
+          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DA, textos=ta, liq=cierres_apps(DA)), 'paginaApps();')
     armar('mostrador.html', 'Tablero de mostrador', 'Clientes que compran en el local · los 3 locales',
           dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
 

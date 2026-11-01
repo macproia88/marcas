@@ -227,18 +227,19 @@ function paginaMostrador() {
     const RG = (D.top_rango || {})[MES] || [];
     const UXL = (L) => { const ar = (TOP || []).filter((r) => r.venta > 0 && (L === 'Todos' || r.local === L)), dd = delMes(D.dias).filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1] && (L === 'Todos' || r.local === L));
       const un = ar.filter((r) => !r.kg), kg = ar.filter((r) => r.kg);
-      return { u: sum(un, 'cantidad'), vu: sum(un, 'venta'), k: sum(kg, 'cantidad'), vk: sum(kg, 'venta'), t: sum(dd, 'tickets') }; };
+      const SG = ['Salsas', 'Quesos', 'Postre', 'Freddo', 'Bebidas'];
+      return { u: sum(un, 'cantidad'), vu: sum(un, 'venta'), k: sum(kg, 'cantidad'), vk: sum(kg, 'venta'), t: sum(dd, 'tickets'), sg: sum(un.filter((r) => SG.includes(r.rubro)), 'cantidad') }; };
     const ux = TOP && RG.length ? UXL(LOCAL) : null;
-    if (ux && ux.t) K.push(['Por ticket', nf(ux.u / ux.t, 1) + ' u + ' + nf(ux.k / ux.t, 2) + ' kg', 'unidades y kilos que lleva cada cliente'], ['Precio promedio', '$' + nf(ux.vu / ux.u) + ' c/u', '$' + nf(ux.vk / ux.k) + ' el kilo']);
+    if (ux && ux.t) K.push(['Cada 100 clientes', nf(ux.u / ux.t * 100) + ' u + ' + nf(ux.k / ux.t * 100) + ' kg', nf(ux.sg / ux.t * 100) + ' de esas unidades son sugestivas'], ['Precio promedio', '$' + nf(ux.vu / ux.u) + ' c/u', '$' + nf(ux.vk / ux.k) + ' el kilo']);
     kpis(K);
     const S = document.getElementById('secs'); S.replaceChildren();
     sec(S, 'Cómo vino ' + MESN[+MES.slice(5) - 1]);
     if (ux && ux.t) {
-      const c0 = card('c-ux', 'Cómo se arma el ticket', 'Lo que se lleva por unidad (ravioles, menús, empanadas, salsas en pote) y lo que se lleva por peso (fideos, ñoquis, sorrentinos, comidas al peso). Los de peso se cuentan en kilos: 400 g de fideos = 0,4 kg, a su precio por kilo, así no se mezcla con el precio por unidad. Venta por artículo de Maxi Rest, sin apps ni descuento del club, a precio de lista: la diferencia con el ticket promedio de arriba es el descuento del club.'); S.appendChild(c0);
+      const c0 = card('c-ux', 'Qué le vendemos cada 100 clientes', 'Unidades y kilos van separados, no se suman. Por unidad: ravioles, menús, empanadas, salsas, quesos, postres, bebidas. Por peso: fideos, ñoquis, sorrentinos, comidas al peso (400 g = 0,4 kg). Sugestivas = salsas, quesos, postres, Freddo y bebidas (todas se venden por unidad: son parte de las unidades). Ticket = lo de unidades + lo de kilos, a precio de lista: la diferencia con el ticket promedio de arriba es el descuento del club. Venta por artículo de Maxi Rest, sin apps.'); S.appendChild(c0);
       const filas = (LOCAL === 'Todos' ? ['Florida', 'Beccar', 'Paz', 'Todos'] : [LOCAL]).map((L) => { const x = UXL(L);
-        return [L === 'Todos' ? 'Los 3' : L, nf(x.u / x.t, 2), '$' + nf(x.vu / x.u), nf(x.k / x.t, 2), '$' + nf(x.vk / x.k), '$' + nf((x.vu + x.vk) / x.t), nf(x.u), nf(x.k), nf(x.t)]; });
-      if (window.innerWidth < 640) table(c0, ['Local', 'Unid. por ticket', '$ c/u', 'Kg por ticket', '$ el kg', 'Ticket'], filas.map((f) => f.slice(0, 6)));
-      else table(c0, ['Local', 'Unidades por ticket', 'Precio por unidad', 'Kilos por ticket', 'Precio por kilo', 'Ticket (precio de lista)', 'Unidades', 'Kilos', 'Tickets'], filas);
+        return [L === 'Todos' ? 'Los 3' : L, nf(x.u / x.t * 100), nf(x.sg / x.t * 100), '$' + nf(x.vu / x.u), nf(x.k / x.t * 100, 1) + ' kg', '$' + nf(x.vk / x.k), '$' + nf((x.vu + x.vk) / x.t), nf(x.t)]; });
+      if (window.innerWidth < 640) table(c0, ['Local', 'Unidades', 'Sugest.', 'Kilos', 'Ticket'], filas.map((f) => [f[0], f[1], f[2], f[4], f[6]]));
+      else table(c0, ['Local', 'Unidades cada 100 clientes', 'de esas, sugestivas', 'Precio por unidad', 'Kilos cada 100 clientes', 'Precio por kilo', 'Ticket (precio de lista)', 'Clientes'], filas);
     }
     const fechas = [...new Set(delMes(D.dias).map((r) => r.fecha))].sort();
     let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Línea: mismo día de la semana de 2025.' : '')); S.appendChild(c);

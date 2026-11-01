@@ -10,7 +10,7 @@ Rubro de cada artículo: el que trae el mail de cierre ("Rubro: 29 - Ravioles");
 el del informe de venta por rubro (top_mostrador.json); si no, "Otros".
 Control: para cada local, la suma de la base sin el 202 tiene que dar la venta de mostrador de esos días (ventas_diarias.json).
 """
-import collections, json, pathlib, sys
+import collections, json, pathlib, re, sys
 
 DATA = pathlib.Path(__file__).resolve().parent / 'data'
 LOCAL = {'fpastas': 'Florida', 'florida': 'Florida', 'beccar': 'Beccar', 'pastas paz': 'Paz', 'olivos': 'Paz', 'paz': 'Paz'}
@@ -75,22 +75,25 @@ def armar():
 
 
 def por_kilo(B, C):
-    """Productos que se venden por peso: los que alguna vez aparecen con cantidad con decimales (400 g = 0,4)."""
-    k = set()
-    for m in B.values():
-        for L, cod, nom, u, imp in m['filas']:
-            if abs(u - round(u)) > 1e-6: k.add(cod)
+    """Productos que se venden por peso (Maxi Rest los carga en kilos: 400 g = 0,4).
+    Regla: en los cierres de turno, al menos 1 de cada 5 veces que aparece trae cantidad con decimales.
+    Así un frasco de salsa o un queso rallado que alguna vez se cargó con decimales por error sigue siendo "por unidad".
+    Si el producto no aparece en ningún cierre, se mira el informe de unidades: con decimales = por peso.
+    Fideos y ñoquis con decimales, y todo lo que en el nombre dice "x kilo", "por peso", etc., también van por peso."""
+    n, f = {}, {}
     for c in C:
         for cod, nom, rb, u, imp in c.get('articulos') or []:
-            if abs(u - round(u)) > 1e-6: k.add(cod)
+            if u <= 0: continue
+            n[cod] = n.get(cod, 0) + 1
+            if abs(u - round(u)) > 1e-6: f[cod] = f.get(cod, 0) + 1
+    k = {cod for cod in n if f.get(cod, 0) / n[cod] >= 0.2}
+    rub = {}
+    for c in C:
+        for cod, nom, rb, u, imp in c.get('articulos') or []: rub[cod] = rb
+    for m in B.values():
+        for L, cod, nom, u, imp in m['filas']:
+            dec = abs(u - round(u)) > 1e-6
+            if dec and (cod not in n or rub.get(cod) in ('Fideos', 'Ñoquis')): k.add(cod)
+            # el nombre lo dice: "x Kilo", "x KG", "por Peso", "por ki(lo)"
+            if re.search(r'(x|por)\s*(kg|kilo|ki\b|peso)|al peso', nom, re.I): k.add(cod)
     return k
-
-
-if __name__ == '__main__':
-    if len(sys.argv) >= 5 and sys.argv[1] == 'base':
-        base(sys.argv[2], sys.argv[3], sys.argv[4])
-    else:
-        for mes, d in sorted(armar().items()):
-            s = collections.Counter()
-            for f in d['filas']: s[f['local']] += f['venta']
-            print(mes, d['desde'], d['hasta'], {k: round(v) for k, v in s.items()})

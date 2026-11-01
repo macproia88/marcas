@@ -47,5 +47,5 @@ Toda página que se publique en este repo lleva la línea "Última actualizació
 ## Tableros por canal (apps.html y mostrador.html)
 
 1. Apps del mes: `python3 tablero-auto/apps_agregar.py <orderDetails.csv de PedidosYa> <orders.xlsx de Rappi> <AAAA-MM>`.
-2. Mostrador del mes: `python3 tablero-auto/mostrador_agregar.py <AAAA-MM> Florida=<detallada> Beccar=<detallada> Paz=<detallada>` (venta detallada de Maxi Rest).
-3. Armar las dos páginas: `python3 tablero-auto/canales.py <AAAA-MM>`. Ya llevan la fecha y hora de actualización.
+2. Mostrador: `python3 tablero-auto/mostrador_agregar.py Florida=<detallada> Beccar=<detallada> Paz=<detallada>` (venta detallada de Maxi Rest; separa sola por mes).
+3. Armar las dos páginas: `python3 tablero-auto/canales.py`. `actualizar.py` ya lo corre en cada cierre, así que los días y meses se actualizan solos; el detalle de un mes aparece cuando se cargan sus archivos (pasos 1 y 2). Ya llevan la fecha y hora de actualización.

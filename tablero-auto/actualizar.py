@@ -171,3 +171,7 @@ if __name__ == '__main__':
     V = actualizar_ventas()
     venta_mensual(V)
     armar_html(V)
+    try:  # tableros por canal (apps.html y mostrador.html): días y meses se actualizan con cada cierre
+        import canales; canales.main()
+    except Exception as e:
+        print('AVISO: no se armaron los tableros por canal:', e)

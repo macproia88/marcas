@@ -177,8 +177,12 @@ def cierres_apps(DA):
     out = []
     if (DATA / 'apps_cierres.json').exists():
         for r in cargar('apps_cierres.json'):
+            # PedidosYa de un mes con detalle de pedidos completo: manda el detalle (cubre el mes entero; la liquidación llega con una semana de atraso)
+            if r['app'] == 'PedidosYa' and r['mes'] in DA and not r.get('completo', True): continue
+            dep = r.get('depositado')
+            if dep is not None: dep += r.get('efectivo') or 0  # ene-abr: pedidos de PedidosYa cobrados en efectivo por el local (no pasan por el banco)
             out.append(dict(mes=r['mes'], local=r['local'], app=r['app'], pedidos=r.get('pedidos') or 0, venta=r.get('facturado'), se_queda=r.get('se_queda'),
-                            deposito=r.get('depositado'), fuente=r.get('fuente', 'liquidación') + ('' if r.get('completo', True) else ' (mes incompleto)')))
+                            deposito=dep, fuente='liquidación' + ('' if r.get('completo', True) else ' (incompleta o estimada)')))
     for r in ([] if out else cargar('apps_liq.json')):
         if r['app'] == 'Total' or r['local'] == '3 locales' or r['periodo'] not in PER: continue
         out.append(dict(mes=f"2026-{PER[r['periodo']]}", local=r['local'], app=r['app'], pedidos=r['pedidos'], venta=r['venta'],

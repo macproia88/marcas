@@ -127,7 +127,7 @@ function arrancar(dibujar) {
 function cierreApps(S) {
   const L0 = sel(D.liq);
   sec(S, 'Cierre de las apps');
-  const c = card('c-cierre', 'Lo facturado y lo que llega al banco · ' + MESN[+MES.slice(5) - 1], 'Facturado = lo que pagó el cliente (sin los descuentos que pone el local). Se queda la app = comisión, cargos, publicidad e impuestos (IVA de la comisión, percepciones y retenciones). Depositado = lo que llega al banco.');
+  const c = card('c-cierre', 'Lo facturado y lo que llega al banco · ' + MESN[+MES.slice(5) - 1], 'Facturado = lo que pagó el cliente (sin los descuentos que pone el local). Se queda la app = comisión, cargos, publicidad e impuestos (IVA de la comisión, percepciones y retenciones). Depositado = lo que llega al local: transferencia al banco más, de enero a abril, los pedidos de PedidosYa que el local cobró en efectivo.');
   S.appendChild(c);
   const R = L0.filter((r) => r.mes === MES);
   if (!R.length) c.appendChild(el('p', { class: 'vacio', text: 'Sin liquidaciones cargadas para este mes. Hoy hay agosto, septiembre y octubre.' }));
@@ -145,11 +145,11 @@ function cierreApps(S) {
   if (ms.length) {
     const g = el('div', { class: 'grid2' }); S.appendChild(g);
     ['PedidosYa', 'Rappi'].forEach((a) => {
-      const cc = card('c-mm-' + a, a + ' mes a mes', 'Facturado de cada mes: la parte verde llega al banco, la roja se la queda la app.'); g.appendChild(cc);
+      const cc = card('c-mm-' + a, a + ' mes a mes', 'Facturado de cada mes: la parte verde llega al local, la roja se la queda la app. Octubre de Rappi es estimado hasta que llegue su liquidación.'); g.appendChild(cc);
       const rs = (m) => L0.filter((r) => r.mes === m && r.app === a);
       const okm = ms.filter((m) => rs(m).length && rs(m).every((r) => r.deposito != null));
       if (!okm.length) { cc.appendChild(el('p', { class: 'vacio', text: 'Sin datos.' })); return; }
-      vbars(cc, okm.map((m) => MESC[+m.slice(5) - 1]), [{ name: 'Llega al banco', color: COL.ok, values: okm.map((m) => sum(rs(m), 'deposito')) }, { name: 'Se queda la app', color: COL.bad, values: okm.map((m) => sum(rs(m), 'se_queda')) }], mf);
+      vbars(cc, okm.map((m) => MESC[+m.slice(5) - 1]), [{ name: 'Llega al local', color: COL.ok, values: okm.map((m) => sum(rs(m), 'deposito')) }, { name: 'Se queda la app', color: COL.bad, values: okm.map((m) => sum(rs(m), 'se_queda')) }], mf);
       table(cc, ['Mes', 'Facturado', 'Depositado', '% que llega'], okm.map((m) => [MESC[+m.slice(5) - 1], mf(sum(rs(m), 'venta')), mf(sum(rs(m), 'deposito')), pf(sum(rs(m), 'deposito') / sum(rs(m), 'venta'))]));
     });
   }

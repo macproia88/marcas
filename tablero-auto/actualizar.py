@@ -143,7 +143,7 @@ def armar_html(V):
               'resumen_kpis', 'resumen_avance', 'resumen_alertas', 'venta_mensual']:
         rows = cargar(k + '.json')
         keys = [c for c in rows[0].keys() if c != 'fuente']
-        D[k] = [keys, [[round(x.get(c), 2) if isinstance(x.get(c), float) else x.get(c) for c in keys] for x in rows]]
+        D[k] = [keys, [[round(x.get(c), 4 if abs(x.get(c)) < 10 else 2) if isinstance(x.get(c), float) else x.get(c) for c in keys] for x in rows]]
     D['vend_prod'] = [['personas', 'sin_fichada', 'resumen'], [list(cargar('vend_prod.json').values())]]
     d3 = (SRC / 'd3.min.js').read_text(encoding='utf-8')
     css = (SRC / 'standalone.css').read_text(encoding='utf-8')

@@ -60,12 +60,7 @@ def textos_apps(A, MEN, mes):
     prev = (dt.date.fromisoformat(mes + '-01') - dt.timedelta(days=1)).strftime('%Y-%m')
     for L in ['Todos'] + LOC:
         sel = (lambda r: True) if L == 'Todos' else (lambda r, L=L: r['local'] == L)
-        ped = sum(r['pedidos'] for r in A['dias'] if sel(r)); nd = len({r['fecha'] for r in A['dias']})
-        m0 = next(r for r in MEN if r['mes'] == mes and r['local'] == L); m1 = next((r for r in MEN if r['mes'] == prev and r['local'] == L), None)
         t = []
-        if m1 and m1['pedidos']:
-            v = (ped / nd) / (m1['pedidos'] / m1['dias']) - 1
-            t.append(f"{N(ped)} pedidos en el mes, {ped/nd:.0f} por día: {PS(v)} por día contra {['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][int(prev[5:])-1]}.")
         prods = collections.Counter()
         for r in A['productos']:
             if sel(r): prods[r['producto']] += r['unidades']
@@ -96,8 +91,7 @@ def textos_mostrador(Mo, MEN, TOP, CL, mes):
     out = {}
     for L in ['Todos'] + LOC:
         sel = (lambda r: True) if L == 'Todos' else (lambda r, L=L: r['local'] == L)
-        m0 = next(r for r in MEN if r['mes'] == mes and r['local'] == L)
-        t = [f"{N(m0['tickets'])} tickets de mostrador en el mes, {m0['tickets']/m0['dias']:.0f} por día, con ticket promedio de ${N(m0['venta_mostrador']/m0['tickets'])}."]
+        t = []
         pk = picos(Mo['horas'], 'tickets', L)
         t.append(f"Horas pico: {rango_horas(pk)}. El mediodía concentra la mayor parte de los clientes.")
         co = collections.Counter(); tt = 0
@@ -123,7 +117,6 @@ def textos_mostrador(Mo, MEN, TOP, CL, mes):
     return out
 
 
-PAGINA = open(SRC / 'canales_page.html', encoding='utf-8').read() if (SRC / 'canales_page.html').exists() else None
 
 
 def armar(nombre, titulo, sub, datos, js):
@@ -138,6 +131,7 @@ def armar(nombre, titulo, sub, datos, js):
 <div id="lp-upd" style="font:12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#6b6b6b;text-align:right;padding:6px 16px">Última actualización: {ahora:%d/%m/%Y} a las {ahora:%H:%M} (hora Argentina)</div>
 <main class="wrap">
 <header><h1>{titulo}</h1><p class="sub">{sub}</p>
+<div class="ctl"><label>Mes <select id="mes"></select></label></div>
 <nav class="loc" id="loc"><button data-l="Todos" aria-pressed="true">Los 3 locales</button><button data-l="Florida">Florida</button><button data-l="Beccar">Beccar</button><button data-l="Paz">Paz</button></nav></header>
 <section class="card"><h2>Lo que dicen los números</h2><ul id="txt" class="txt"></ul></section>
 <section class="kpis" id="kpis"></section>
@@ -152,19 +146,49 @@ def armar(nombre, titulo, sub, datos, js):
     print('armado', nombre)
 
 
-def main(mes):
-    V = cargar('ventas_diarias.json'); MEN = mensual(V, mes)
-    A = cargar(f'apps_mes_{mes}.json'); Mo = cargar(f'mostrador_mes_{mes}.json')
+MESN = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+
+
+def textos_base(MEN, mes, canal):
+    prev = (dt.date.fromisoformat(mes + '-01') - dt.timedelta(days=1)).strftime('%Y-%m')
+    out = {}
+    for L in ['Todos'] + LOC:
+        m0 = next((r for r in MEN if r['mes'] == mes and r['local'] == L), None); m1 = next((r for r in MEN if r['mes'] == prev and r['local'] == L), None)
+        if not m0 or not m0['dias']: out[L] = []; continue
+        cant, vta = (m0['pedidos'], m0['venta_app']) if canal == 'apps' else (m0['tickets'], m0['venta_mostrador'])
+        nom = 'pedidos' if canal == 'apps' else 'clientes'
+        t = f"{N(cant)} {nom} en {MESN[int(mes[5:])-1]}" + (f" ({m0['dias']} días cargados)" if m0['dias'] < 28 else '') + f", {cant/m0['dias']:.0f} por día, con ticket promedio de ${N(vta/cant) if cant else 0}"
+        if m1 and m1['dias']:
+            c1, v1 = (m1['pedidos'], m1['venta_app']) if canal == 'apps' else (m1['tickets'], m1['venta_mostrador'])
+            if c1: t += f". Contra {MESN[int(prev[5:])-1]}: {PS((cant/m0['dias'])/(c1/m1['dias'])-1)} {nom} por día y {PS((vta/cant)/(v1/c1)-1)} en el ticket"
+        out[L] = [t + '.']
+    return out
+
+
+def main():
+    V = cargar('ventas_diarias.json')
+    ult = max(x['fecha'] for x in V); mes_max = ult[:7]
+    MEN = mensual(V, mes_max)
+    meses = sorted({r['mes'] for r in MEN if r['mes'] >= '2026-01'})
+    dias_mes = {r['local']: r['dias'] for r in MEN if r['mes'] == mes_max}
+    defecto = mes_max if min(dias_mes.values() or [0]) >= 7 else meses[-2]
+    DA = cargar('apps_det.json'); DM = cargar('mostrador_det.json')
     TOP = cargar('top_mostrador.json'); CL = cargar('club_local.json')
-    dias_mes = [dict(fecha=x['fecha'], local=x['local'], tickets=x['tickets_mostrador'], tickets_2025=x.get('tickets_mostrador_2025'),
-                     venta=x['venta_mostrador'], pedidos=x.get('pedidos_app'), venta_app=x['venta_app']) for x in V if x['mes'] == mes]
-    nombre_mes = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'][int(mes[5:]) - 1]
-    armar('apps.html', 'Tablero de apps', f'PedidosYa y Rappi · {nombre_mes} {mes[:4]} · los 3 locales',
-          dict(mes=mes, apps=A, men=MEN, textos=textos_apps(A, MEN, mes)), 'paginaApps();')
-    armar('mostrador.html', 'Tablero de mostrador', f'Clientes que compran en el local · {nombre_mes} {mes[:4]} · los 3 locales',
-          dict(mes=mes, mo=Mo, men=MEN, dias=dias_mes, top=[dict(local=r['local'], articulo=r['articulo'].strip(), rubro=r['rubro'], venta=r['venta'], cantidad=r['cantidad']) for r in TOP],
-               club=CL, textos=textos_mostrador(Mo, MEN, TOP, CL, mes)), 'paginaMostrador();')
+    dias = [dict(fecha=x['fecha'], local=x['local'], tickets=x['tickets_mostrador'], tickets_2025=x.get('tickets_mostrador_2025'),
+                 venta=x['venta_mostrador'], pedidos=x.get('pedidos_app'), venta_app=x['venta_app']) for x in V if x['fecha'] >= '2026-01-01']
+    ta, tm = {}, {}
+    for m in meses:
+        ba, bm = textos_base(MEN, m, 'apps'), textos_base(MEN, m, 'mostrador')
+        da = textos_apps(DA[m], MEN, m) if m in DA else {}
+        dm = textos_mostrador(DM[m], MEN, TOP, CL, m) if m in DM else {}
+        ta[m] = {L: ba.get(L, []) + da.get(L, []) for L in ['Todos'] + LOC}
+        tm[m] = {L: bm.get(L, []) + dm.get(L, []) for L in ['Todos'] + LOC}
+    top = {'2026-10': [dict(local=r['local'], articulo=r['articulo'].strip(), rubro=r['rubro'], venta=r['venta'], cantidad=r['cantidad']) for r in TOP]}
+    armar('apps.html', 'Tablero de apps', 'PedidosYa y Rappi · los 3 locales',
+          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DA, textos=ta), 'paginaApps();')
+    armar('mostrador.html', 'Tablero de mostrador', 'Clientes que compran en el local · los 3 locales',
+          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
 
 
 if __name__ == '__main__':
-    main(sys.argv[1] if len(sys.argv) > 1 else '2026-10')
+    main()

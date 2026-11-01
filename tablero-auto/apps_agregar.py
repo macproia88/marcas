@@ -1,4 +1,4 @@
-"""Resume un mes de pedidos de apps (PedidosYa orderDetails .csv + Rappi orders .xlsx) en data/apps_mes_<AAAA-MM>.json.
+"""Resume un mes de pedidos de apps (PedidosYa orderDetails .csv + Rappi orders .xlsx) en data/apps_det.json (un bloque por mes).
 Uso: python3 tablero-auto/apps_agregar.py <orderDetails.csv> <rappi.xlsx> <AAAA-MM>
 No guarda datos de clientes: solo totales por local, día, hora, motivo y producto.
 """
@@ -119,8 +119,10 @@ def main(py_csv, rappi_xlsx, mes):
         out.setdefault('canasta', []).append(dict(local=L, unidades_pedido=round(sum(u) / len(u), 2) if u else 0, ticket=round(x.mean()) if len(x) else 0))
     for L in LOC:
         out['resumen'].append(dict(local=L, pedidosya=int((e.L == L).sum()), rappi=int((rt.L == L).sum())))
-    p = AQUI / 'data' / f'apps_mes_{mes}.json'
-    p.write_text(json.dumps(out, ensure_ascii=False), encoding='utf-8')
+    p = AQUI / 'data' / 'apps_det.json'
+    todo = json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+    todo[mes] = out
+    p.write_text(json.dumps(todo, ensure_ascii=False), encoding='utf-8')
     print('ok', p.name, {k: len(v) for k, v in out.items() if isinstance(v, list)})
 
 

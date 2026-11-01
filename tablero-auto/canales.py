@@ -139,7 +139,6 @@ def armar(nombre, titulo, sub, datos, js):
 <section class="kpis" id="kpis"></section>
 <div id="secs"></div>
 <p class="pie" id="pie"></p>
-<p class="pie"><a href="tablero-presumida-v2.html">Tablero La Presumida</a> · <a href="apps.html">Tablero de apps</a> · <a href="mostrador.html">Tablero de mostrador</a></p>
 </main>
 <script>{(SRC / 'canales.js').read_text(encoding='utf-8')}</script>
 <script>{js}</script>

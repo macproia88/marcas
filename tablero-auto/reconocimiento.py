@@ -44,6 +44,7 @@ def main():
 </div></div></body></html>"""
     SALIDA.write_text(out, encoding='utf-8')
     print('armado', SALIDA.name)
+    import nav; nav.main()
 
 if __name__ == '__main__':
     main()

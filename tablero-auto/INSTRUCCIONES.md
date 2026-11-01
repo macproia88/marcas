@@ -57,3 +57,7 @@ Toda página que se publique en este repo lleva la línea "Última actualizació
 - Base del mes, si hay: informe de unidades por artículo de Maxi Rest (solo mostrador más el 202 de apps, que se descarta). Carga: `python3 tablero-auto/articulos.py base <archivo.xlsx> <AAAA-MM> <último día que cubre>`. Imprime el control contra la venta de mostrador.
 - Los días siguientes se suman solos con el campo `articulos` de cada cierre (sin el 202). No hace falta ningún paso extra: `canales.py` lo lee en cada corrida.
 - El código 4000 (Descuento Alax) es el descuento del club: queda aparte, no entra en el top ni en los rubros.
+
+## Links entre páginas
+
+Abajo de cada página del negocio va la lista de links a las otras (`tablero-auto/nav.py`). `actualizar.py` y `reconocimiento.py` la ponen solos. Si se suma una página nueva del negocio, agregarla a `PAGINAS` en `nav.py`.

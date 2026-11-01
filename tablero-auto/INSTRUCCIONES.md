@@ -43,3 +43,9 @@ El tablero publicado es `tablero-presumida-v2.html`, en la raíz del repo. Se ar
 ## Regla para todas las páginas de la web
 
 Toda página que se publique en este repo lleva la línea "Última actualización: dd/mm/aaaa a las HH:MM (hora Argentina)" arriba. Después de cambiar una página, correr `python3 tablero-auto/sello.py <archivo.html>`. El tablero principal la pone solo (`actualizar.py`). La Agenda de reconocimiento se arma con `python3 tablero-auto/reconocimiento.py` y después `sello.py reconocimiento.html`.
+
+## Tableros por canal (apps.html y mostrador.html)
+
+1. Apps del mes: `python3 tablero-auto/apps_agregar.py <orderDetails.csv de PedidosYa> <orders.xlsx de Rappi> <AAAA-MM>`.
+2. Mostrador del mes: `python3 tablero-auto/mostrador_agregar.py <AAAA-MM> Florida=<detallada> Beccar=<detallada> Paz=<detallada>` (venta detallada de Maxi Rest).
+3. Armar las dos páginas: `python3 tablero-auto/canales.py <AAAA-MM>`. Ya llevan la fecha y hora de actualización.

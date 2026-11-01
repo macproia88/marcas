@@ -77,15 +77,46 @@ def main(py_csv, rappi_xlsx, mes):
         g = x.groupby([x.f.dt.dayofweek, x.f.dt.hour]).size()
         for (dw, h), n in g.items():
             out['horas'].append(dict(local=L, dia=int(dw), hora=int(h), pedidos=int(n)))
-    # productos (PedidosYa)
-    cnt = collections.Counter()
+    # productos (PedidosYa): producto principal y agregados (lo que va entre corchetes: salsa, queso, guarnición)
+    def partes(txt):
+        res, prof, cur = [], 0, ''
+        for ch in txt:
+            if ch == '[': prof += 1
+            if ch == ']': prof -= 1
+            if ch == ',' and prof == 0: res.append(cur.strip()); cur = ''
+            else: cur += ch
+        if cur.strip(): res.append(cur.strip())
+        out_ = []
+        for r_ in res:  # '1,5 lt' no es un producto nuevo: se une al anterior
+            if out_ and (not re.match(r'\d+\s+\D', r_) or re.search(r'\d$', out_[-1])): out_[-1] += ',' + r_
+            else: out_.append(r_)
+        return out_
+    cnt = collections.Counter(); ext = collections.Counter(); unid = []
     for L, s in zip(e.L, e['Artículos del pedido'].fillna('')):
-        for it in re.split(r',\s(?=\d+\s)', s):
-            m = re.match(r'\s*(\d+)\s+(.*)', it)
-            if m: cnt[(L, m.group(2).strip())] += int(m.group(1))
+        n_ped = 0
+        for it in partes(s):
+            m = re.match(r'(\d+)\s+([^\[]*)(\[(.*)\])?', it)
+            if not m: continue
+            q = int(m.group(1)); n_ped += q
+            cnt[(L, m.group(2).strip().rstrip(']').strip())] += q
+            for sub in (m.group(4) or '').split(','):
+                mm = re.match(r'\s*(\d+)\s+(.*)', sub)
+                if mm: ext[(L, mm.group(2).strip())] += int(mm.group(1)) * q
+        unid.append((L, n_ped))
     for L in LOC:
-        top = sorted([(k[1], v) for k, v in cnt.items() if k[0] == L], key=lambda t: -t[1])[:20]
+        top = sorted([(k[1], v) for k, v in cnt.items() if k[0] == L], key=lambda t: -t[1])[:25]
         out['productos'] += [dict(local=L, producto=p, unidades=u) for p, u in top]
+        tope = sorted([(k[1], v) for k, v in ext.items() if k[0] == L], key=lambda t: -t[1])[:12]
+        out.setdefault('agregados', []).extend(dict(local=L, agregado=p, unidades=u) for p, u in tope)
+    # canasta: tamaño del pedido (pesos) y unidades por pedido
+    BANDAS = [(0, 15000, 'Hasta $15.000'), (15000, 25000, '$15.000 a $25.000'), (25000, 40000, '$25.000 a $40.000'), (40000, 60000, '$40.000 a $60.000'), (60000, 1e12, 'Más de $60.000')]
+    for L in LOC:
+        x = e[e.L == L]['Total parcial']
+        for i, (a_, b_, n_) in enumerate(BANDAS):
+            sel = x[(x >= a_) & (x < b_)]
+            out.setdefault('bandas', []).append(dict(local=L, orden=i, banda=n_, pedidos=int(len(sel)), venta=round(sel.sum())))
+        u = [n for l_, n in unid if l_ == L]
+        out.setdefault('canasta', []).append(dict(local=L, unidades_pedido=round(sum(u) / len(u), 2) if u else 0, ticket=round(x.mean()) if len(x) else 0))
     for L in LOC:
         out['resumen'].append(dict(local=L, pedidosya=int((e.L == L).sum()), rappi=int((rt.L == L).sum())))
     p = AQUI / 'data' / f'apps_mes_{mes}.json'

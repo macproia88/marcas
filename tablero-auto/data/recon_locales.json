@@ -12,7 +12,12 @@
   "reclamos_py": 29,
   "reclamos_calidad": 4,
   "sug_100": 57.0,
-  "unidades_100": 275.3
+  "unidades_100": 275.3,
+  "tickets_mostrador": 4916,
+  "ticket_promedio": 21887,
+  "unidades": 13534,
+  "dias_dni_primero": 12.5,
+  "clientes_dni": 1972
  },
  {
   "local": "Florida",
@@ -27,7 +32,12 @@
   "reclamos_py": 71,
   "reclamos_calidad": 15,
   "sug_100": 49.1,
-  "unidades_100": 253.5
+  "unidades_100": 253.5,
+  "tickets_mostrador": 5384,
+  "ticket_promedio": 22023,
+  "unidades": 13647,
+  "dias_dni_primero": 17.5,
+  "clientes_dni": 2075
  },
  {
   "local": "Paz",
@@ -42,6 +52,11 @@
   "reclamos_py": 11,
   "reclamos_calidad": 2,
   "sug_100": 53.8,
-  "unidades_100": 304.6
+  "unidades_100": 304.6,
+  "tickets_mostrador": 5122,
+  "ticket_promedio": 24157,
+  "unidades": 15602,
+  "dias_dni_primero": 1,
+  "clientes_dni": 1201
  }
 ]

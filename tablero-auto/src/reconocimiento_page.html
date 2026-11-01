@@ -42,8 +42,8 @@
     <div class="prize">
       <span class="tag">Local del mes</span>
       <span class="win" data-draw="p-local" data-source="premios" data-where="premio=local" data-field="ganador">—</span>
-      <span class="sub"><span data-draw="pt-local" data-source="premios" data-where="premio=local" data-field="puntos">—</span> puntos de 24 posibles</span>
-      <span class="kpis">Suma los 8 indicadores del local: venta, tickets, sugestiva, unidades por cliente, club, reclamos, reseñas y calidad.</span>
+      <span class="sub"><span data-draw="pt-local" data-source="premios" data-where="premio=local" data-field="puntos">—</span> puntos de 36 posibles</span>
+      <span class="kpis">Suma los 12 indicadores del local: venta y tickets contra 2025, tickets de mostrador, ticket promedio, unidades vendidas, sugestiva y unidades por cliente, clientes con DNI, club, reclamos, reseñas y calidad.</span>
     </div>
     <div class="prize">
       <span class="tag">Encargado del mes</span>
@@ -67,7 +67,7 @@
 
   <section class="card" id="locales">
     <h2>Los 3 locales, indicador por indicador</h2>
-    <p class="note">En verde el mejor de cada columna, en rojo el último. Venta y tickets: del 12 al 30/10 contra los mismos días de 2025 (los días con dato real de los 3 locales). Club: kilos de bienvenida cada 100 tickets de mostrador, octubre completo. Sugestivas y unidades cada 100 clientes: mostrador, octubre completo (venta por artículo de Maxi Rest; sin productos por peso). Reclamos y calidad: PedidosYa, octubre completo. Reseñas: Google, nuevas desde el inicio de la campaña, al 1/11.</p>
+    <p class="note">En verde el mejor de cada columna, en rojo el último. Venta y tickets: del 12 al 30/10 contra los mismos días de 2025 (los días con dato real de los 3 locales). Club: kilos de bienvenida cada 100 tickets de mostrador, octubre completo. Sugestivas y unidades cada 100 clientes: mostrador, octubre completo (venta por artículo de Maxi Rest; sin productos por peso). Reclamos y calidad: PedidosYa, octubre completo. Reseñas: Google, nuevas desde el inicio de la campaña, al 1/11. Tickets de mostrador y ticket promedio: cierres de caja y venta de Maxi Rest, octubre completo, sin apps. Unidades vendidas: venta por artículo, sin productos por peso. Clientes con DNI: compras con DNI del reporte de ventas de ALAX, día por día.</p>
     <div class="scroll">
       <table data-source="locales" data-row-key="local">
         <thead><tr>
@@ -76,6 +76,10 @@
           <th data-field="crec_tickets">Tickets vs 2025</th>
           <th data-field="sug_100">Sugestivas c/100 clientes</th>
           <th data-field="unidades_100">Unidades c/100 clientes</th>
+          <th data-field="tickets_mostrador">Tickets de mostrador</th>
+          <th data-field="ticket_promedio">Ticket promedio</th>
+          <th data-field="unidades">Unidades vendidas</th>
+          <th data-field="dias_dni_primero">Días 1° en clientes con DNI</th>
           <th data-field="altas_club_100">Altas club c/100 tickets</th>
           <th data-field="reclamos_100">Reclamos c/100 pedidos</th>
           <th data-field="resenas_google">Reseñas Google</th>
@@ -94,7 +98,7 @@
       <table data-source="puntos" data-row-key="local">
         <thead><tr>
           <th data-field="local">Local</th>
-          <th data-field="local_total">Local del mes (de 24)</th>
+          <th data-field="local_total">Local del mes (de 36)</th>
           <th data-field="encargado_total">Encargado (de 15)</th>
           <th data-field="produccion_total">Producción (de 3)</th>
         </tr></thead>
@@ -132,7 +136,7 @@
     <h2>Cómo se mide cada premio</h2>
     <p class="note">Una sola regla para todos, así nadie discute el resultado.</p>
     <div class="how">
-      <div><h3>Local del mes</h3><ul><li>Crecimiento de la venta contra 2025</li><li>Crecimiento de tickets de mostrador contra 2025</li><li>Sugestivas cada 100 clientes (salsas, quesos, postres, Freddo, bebidas; son productos por unidad)</li><li>Unidades cada 100 clientes (sin productos por peso: los kilos no se suman con las unidades)</li><li>Altas al club cada 100 tickets</li><li>Reclamos en PedidosYa cada 100 pedidos (menos es mejor)</li><li>Reseñas nuevas en Google</li><li>Reclamos de calidad cada 1.000 pedidos (menos es mejor)</li></ul></div>
+      <div><h3>Local del mes</h3><ul><li>Crecimiento de la venta contra 2025</li><li>Crecimiento de tickets de mostrador contra 2025</li><li>Sugestivas cada 100 clientes (salsas, quesos, postres, Freddo, bebidas; son productos por unidad)</li><li>Unidades cada 100 clientes (sin productos por peso: los kilos no se suman con las unidades)</li><li>Tickets de mostrador del mes (más clientes atendidos)</li><li>Ticket promedio de mostrador</li><li>Unidades vendidas en el mes (sin productos por peso)</li><li>Días del mes en que fue el local con más clientes con DNI en caja (empate: medio día a cada uno)</li><li>Altas al club cada 100 tickets</li><li>Reclamos en PedidosYa cada 100 pedidos (menos es mejor)</li><li>Reseñas nuevas en Google</li><li>Reclamos de calidad cada 1.000 pedidos (menos es mejor)</li></ul></div>
       <div><h3>Encargado del mes</h3><ul><li>Sugestivas cada 100 clientes del equipo</li><li>Unidades cada 100 clientes</li><li>Altas al club del equipo</li><li>Reclamos en apps (armado y faltantes)</li><li>Reseñas nuevas en Google</li></ul></div>
       <div><h3>Ventas del mes</h3><ul><li>Sugestivas cada 100 clientes que atendió</li><li>Altas al club cada 100 tickets</li><li>Tickets atendidos</li></ul></div>
       <div><h3>Producción del mes (a completar)</h3><ul><li>Hoy: reclamos por calidad de la comida en PedidosYa</li><li>Para premiar a una persona hace falta la planilla de producción con kilos producidos, mermas y faltantes por pastero y cocinera</li><li>Sumar asistencia y puntualidad cuando Beccar tenga reloj</li></ul></div>
@@ -146,7 +150,7 @@ dash.calc('puntos', {
   description: 'En cada indicador: 3 puntos al mejor local, 2 al segundo, 1 al último.',
   inputs: ['locales'],
   fn: (locales) => {
-    const kpis = { venta: ['crec_venta', 1], tickets: ['crec_tickets', 1], sug: ['sug_100', 1], uni: ['unidades_100', 1], club: ['altas_club_100', 1], rec: ['reclamos_100', -1], res: ['resenas_google', 1], cal: ['calidad_1000', -1] };
+    const kpis = { venta: ['crec_venta', 1], tickets: ['crec_tickets', 1], sug: ['sug_100', 1], uni: ['unidades_100', 1], tkm: ['tickets_mostrador', 1], tp: ['ticket_promedio', 1], un: ['unidades', 1], dni: ['dias_dni_primero', 1], club: ['altas_club_100', 1], rec: ['reclamos_100', -1], res: ['resenas_google', 1], cal: ['calidad_1000', -1] };
     const n = locales.length;
     const out = locales.map((r) => ({ local: r.local }));
     for (const [k, [col, dir]] of Object.entries(kpis)) {
@@ -154,7 +158,7 @@ dash.calc('puntos', {
       sorted.forEach((r, i) => { out.find((o) => o.local === r.local)['p_' + k] = n - i; });
     }
     out.forEach((o) => {
-      o.local_total = o.p_venta + o.p_tickets + o.p_sug + o.p_uni + o.p_club + o.p_rec + o.p_res + o.p_cal;
+      o.local_total = o.p_venta + o.p_tickets + o.p_sug + o.p_uni + o.p_tkm + o.p_tp + o.p_un + o.p_dni + o.p_club + o.p_rec + o.p_res + o.p_cal;
       o.encargado_total = o.p_sug + o.p_uni + o.p_club + o.p_rec + o.p_res;
       o.produccion_total = o.p_cal;
     });
@@ -184,9 +188,12 @@ dash.calc('premios', {
     const best = (col) => [...puntos].sort((a, b) => b[col] - a[col])[0];
     const pro = best('produccion_total');
     const cal = locales.find((l) => l.local === pro.local);
+    // Si hay empate en el primer puesto, se muestran los dos (o tres) como ganadores empatados
+    const top = (col) => { const m = Math.max(...puntos.map((p) => p[col])); const w = puntos.filter((p) => p[col] === m).map((p) => p.local);
+      return { ganador: w.length > 1 ? w.join(' y ') + ' (empate)' : w[0], local: w.join(' y '), puntos: m }; };
     return [
-      { premio: 'local', ganador: best('local_total').local, local: best('local_total').local, puntos: best('local_total').local_total },
-      { premio: 'encargado', ganador: best('encargado_total').local, local: best('encargado_total').local, puntos: best('encargado_total').encargado_total },
+      { premio: 'local', ...top('local_total') },
+      { premio: 'encargado', ...top('encargado_total') },
       { premio: 'ventas', ganador: ranking[0].vendedora, local: ranking[0].local, puntos: ranking[0].puntaje },
       { premio: 'produccion', ganador: pro.local, local: pro.local, puntos: Number(cal.calidad_1000) }
     ];
@@ -219,7 +226,7 @@ dash.calc('premios', {
 
   const locCols = [
     ['local', (v) => v, 0], ['crec_venta', (v) => es(sgn(v)), 1], ['crec_tickets', (v) => es(sgn(v)), 1],
-    ['sug_100', one, 1], ['unidades_100', one, 1], ['altas_club_100', one, 1], ['reclamos_100', one, -1],
+    ['sug_100', one, 1], ['unidades_100', one, 1], ['tickets_mostrador', num, 1], ['ticket_promedio', (v) => '$' + num(v), 1], ['unidades', num, 1], ['dias_dni_primero', (v) => es(String(v)), 1], ['altas_club_100', one, 1], ['reclamos_100', one, -1],
     ['resenas_google', num, 1], ['nota_google', (v) => d3.format('.2f')(v).replace('.', ','), 1], ['calidad_1000', one, -1]
   ];
   dash.draw('t-loc', (tb) => {

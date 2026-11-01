@@ -66,12 +66,24 @@ def armar():
         for cod, nom, rb, u, imp in c['articulos']:
             if cod in FUERA: continue
             a = acc[mes][(L, cod)]; a[0] += u; a[1] += imp
-    out = {}
+    out = {}; porkilo = por_kilo(B, C)
     for mes, d in acc.items():
         out[mes] = dict(desde=rango[mes][0], hasta=rango[mes][1],
                         filas=[dict(local=L, codigo=cod, articulo=nombre.get(cod, str(cod)), rubro=('Descuentos del club' if cod == 4000 else rubro.get(cod, 'Otros')),
-                                    cantidad=round(u, 2), venta=round(v, 2)) for (L, cod), (u, v) in d.items()])
+                                    cantidad=round(u, 2), venta=round(v, 2), kg=cod in porkilo) for (L, cod), (u, v) in d.items()])
     return out
+
+
+def por_kilo(B, C):
+    """Productos que se venden por peso: los que alguna vez aparecen con cantidad con decimales (400 g = 0,4)."""
+    k = set()
+    for m in B.values():
+        for L, cod, nom, u, imp in m['filas']:
+            if abs(u - round(u)) > 1e-6: k.add(cod)
+    for c in C:
+        for cod, nom, rb, u, imp in c.get('articulos') or []:
+            if abs(u - round(u)) > 1e-6: k.add(cod)
+    return k
 
 
 if __name__ == '__main__':

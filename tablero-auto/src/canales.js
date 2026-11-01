@@ -171,26 +171,9 @@ function paginaApps() {
         ['Reclamos', (sum(rec, 'reclamos') / sum(rec, 'pedidos') * 100).toLocaleString('es-AR', { maximumFractionDigits: 1 }) + ' cada 100', nf(sum(rec, 'reclamos')) + ' reclamos en PedidosYa'],
         ['Preparación (mediana)', (LOCAL === 'Todos' ? d3.median(tiempos, (t) => t.preparacion) : tiempos[0].preparacion) + ' min', 'de aceptado a listo para retirar']);
     }
-    // Unidades: venta por artículo del mes (sin apps ni descuento del club); tickets de los mismos días
-    const RG = (D.top_rango || {})[MES] || [], AR = TOP ? sel(TOP).filter((r) => r.venta > 0) : [];
-        let ux = null;
-    if (AR.length && RG.length) {
-      const dd = dias.filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1]); const u = sum(AR, 'cantidad'), va = sum(AR, 'venta'), t = sum(dd, 'tickets');
-      ux = { u, va, t }; const per = `del ${+RG[0].slice(8)} al ${+RG[1].slice(8)}`;
-      K.push(['Unidades vendidas', nf(u), per], ['Unidades por ticket', nf(u / t, 1), 'en promedio'], ['Precio promedio', '$' + nf(va / u), 'por unidad vendida']);
-    }
     kpis(K);
     const S = document.getElementById('secs'); S.replaceChildren();
     sec(S, 'Cómo vino ' + MESN[+MES.slice(5) - 1]);
-    if (ux) {
-      const c0 = card('c-ux', 'Cómo se arma el ticket', 'Ticket = unidades por ticket × precio promedio por unidad. Unidades de la venta por artículo de Maxi Rest (los productos por kilo cuentan sus kilos), sin apps ni descuento del club. Precios de lista: la diferencia con el ticket promedio de arriba es el descuento del club.'); S.appendChild(c0);
-      const filas = (LOCAL === 'Todos' ? ['Florida', 'Beccar', 'Paz', 'Todos'] : [LOCAL]).map((L) => {
-        const ar = TOP.filter((r) => r.venta > 0 && (L === 'Todos' || r.local === L)), dd = delMes(D.dias).filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1] && (L === 'Todos' || r.local === L));
-        const u = sum(ar, 'cantidad'), va = sum(ar, 'venta'), tk = sum(dd, 'tickets');
-        return [L === 'Todos' ? 'Los 3' : L, nf(u), nf(tk), nf(u / tk, 2), '$' + nf(va / u), '$' + nf(va / tk)]; });
-      if (window.innerWidth < 640) table(c0, ['Local', 'Unid./ticket', 'Precio prom.', 'Ticket'], filas.map((f) => [f[0], f[3], f[4], f[5]]));
-      else table(c0, ['Local', 'Unidades', 'Tickets', 'Unidades por ticket', 'Precio promedio', 'Ticket (precio de lista)'], filas);
-    }
     const fechas = [...new Set(delMes(D.dias).map((r) => r.fecha))].sort();
     let c = card('c-dias', 'Pedidos día por día', 'PedidosYa + Rappi. Pasá el mouse por una barra para ver el número.'); S.appendChild(c);
     if (A) vbars(c, fechas.map(diaLabel), [{ name: 'PedidosYa', color: COL.PedidosYa, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'pedidosya')) }, { name: 'Rappi', color: COL.Rappi, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'rappi')) }], nf, { labels: false });
@@ -239,25 +222,23 @@ function paginaMostrador() {
     const K = [['Clientes de ' + MESN[+MES.slice(5) - 1], nf(tk), nf(tk / nd) + ' por día'], ['Venta de mostrador', mf(vm), 'sin apps'], ['Ticket promedio', '$' + nf(vm / tk), 'mostrador']];
     if (t25) K.push(['Clientes vs 2025', (t26 / t25 - 1 >= 0 ? '+' : '') + pf(t26 / t25 - 1, 1), 'mismos días de la semana']);
     if (CL) { const cl = sel(CL), vc = sum(cl, 'venta_club'), vcm = sum(cl, 'venta_mostrador'), nc = sum(cl, 'tickets_club'), tkc = sum(cl, 'tickets'); K.push(['Venta del club', pf(vc / vcm), 'el socio gasta ' + pf((vc / nc) / ((vcm - vc) / (tkc - nc)) - 1) + ' más']); }
-    // Unidades: venta por artículo del mes (sin apps ni descuento del club); tickets de los mismos días
-    const RG = (D.top_rango || {})[MES] || [], AR = TOP ? sel(TOP).filter((r) => r.venta > 0) : [];
-        let ux = null;
-    if (AR.length && RG.length) {
-      const dd = dias.filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1]); const u = sum(AR, 'cantidad'), va = sum(AR, 'venta'), t = sum(dd, 'tickets');
-      ux = { u, va, t }; const per = `del ${+RG[0].slice(8)} al ${+RG[1].slice(8)}`;
-      K.push(['Unidades vendidas', nf(u), per], ['Unidades por ticket', nf(u / t, 1), 'en promedio'], ['Precio promedio', '$' + nf(va / u), 'por unidad vendida']);
-    }
+    // Unidades y kilos: venta por artículo del mes (sin apps ni descuento del club); tickets de los mismos días.
+    // Los productos por peso se cuentan en kilos (400 g = 0,4 kg) y van aparte de los que se venden por unidad.
+    const RG = (D.top_rango || {})[MES] || [];
+    const UXL = (L) => { const ar = (TOP || []).filter((r) => r.venta > 0 && (L === 'Todos' || r.local === L)), dd = delMes(D.dias).filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1] && (L === 'Todos' || r.local === L));
+      const un = ar.filter((r) => !r.kg), kg = ar.filter((r) => r.kg);
+      return { u: sum(un, 'cantidad'), vu: sum(un, 'venta'), k: sum(kg, 'cantidad'), vk: sum(kg, 'venta'), t: sum(dd, 'tickets') }; };
+    const ux = TOP && RG.length ? UXL(LOCAL) : null;
+    if (ux && ux.t) K.push(['Por ticket', nf(ux.u / ux.t, 1) + ' u + ' + nf(ux.k / ux.t, 2) + ' kg', 'unidades y kilos que lleva cada cliente'], ['Precio promedio', '$' + nf(ux.vu / ux.u) + ' c/u', '$' + nf(ux.vk / ux.k) + ' el kilo']);
     kpis(K);
     const S = document.getElementById('secs'); S.replaceChildren();
     sec(S, 'Cómo vino ' + MESN[+MES.slice(5) - 1]);
-    if (ux) {
-      const c0 = card('c-ux', 'Cómo se arma el ticket', 'Ticket = unidades por ticket × precio promedio por unidad. Unidades de la venta por artículo de Maxi Rest (los productos por kilo cuentan sus kilos), sin apps ni descuento del club. Precios de lista: la diferencia con el ticket promedio de arriba es el descuento del club.'); S.appendChild(c0);
-      const filas = (LOCAL === 'Todos' ? ['Florida', 'Beccar', 'Paz', 'Todos'] : [LOCAL]).map((L) => {
-        const ar = TOP.filter((r) => r.venta > 0 && (L === 'Todos' || r.local === L)), dd = delMes(D.dias).filter((r) => r.fecha >= RG[0] && r.fecha <= RG[1] && (L === 'Todos' || r.local === L));
-        const u = sum(ar, 'cantidad'), va = sum(ar, 'venta'), tk = sum(dd, 'tickets');
-        return [L === 'Todos' ? 'Los 3' : L, nf(u), nf(tk), nf(u / tk, 2), '$' + nf(va / u), '$' + nf(va / tk)]; });
-      if (window.innerWidth < 640) table(c0, ['Local', 'Unid./ticket', 'Precio prom.', 'Ticket'], filas.map((f) => [f[0], f[3], f[4], f[5]]));
-      else table(c0, ['Local', 'Unidades', 'Tickets', 'Unidades por ticket', 'Precio promedio', 'Ticket (precio de lista)'], filas);
+    if (ux && ux.t) {
+      const c0 = card('c-ux', 'Cómo se arma el ticket', 'Lo que se lleva por unidad (ravioles, menús, empanadas, salsas en pote) y lo que se lleva por peso (fideos, ñoquis, sorrentinos, comidas al peso). Los de peso se cuentan en kilos: 400 g de fideos = 0,4 kg, a su precio por kilo, así no se mezcla con el precio por unidad. Venta por artículo de Maxi Rest, sin apps ni descuento del club, a precio de lista: la diferencia con el ticket promedio de arriba es el descuento del club.'); S.appendChild(c0);
+      const filas = (LOCAL === 'Todos' ? ['Florida', 'Beccar', 'Paz', 'Todos'] : [LOCAL]).map((L) => { const x = UXL(L);
+        return [L === 'Todos' ? 'Los 3' : L, nf(x.u / x.t, 2), '$' + nf(x.vu / x.u), nf(x.k / x.t, 2), '$' + nf(x.vk / x.k), '$' + nf((x.vu + x.vk) / x.t), nf(x.u), nf(x.k), nf(x.t)]; });
+      if (window.innerWidth < 640) table(c0, ['Local', 'Unid. por ticket', '$ c/u', 'Kg por ticket', '$ el kg', 'Ticket'], filas.map((f) => f.slice(0, 6)));
+      else table(c0, ['Local', 'Unidades por ticket', 'Precio por unidad', 'Kilos por ticket', 'Precio por kilo', 'Ticket (precio de lista)', 'Unidades', 'Kilos', 'Tickets'], filas);
     }
     const fechas = [...new Set(delMes(D.dias).map((r) => r.fecha))].sort();
     let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Línea: mismo día de la semana de 2025.' : '')); S.appendChild(c);
@@ -287,11 +268,11 @@ function paginaMostrador() {
       const rg = (D.top_rango || {})[MES] || [], d1 = +(rg[0] || '').slice(8), d2 = +(rg[1] || '').slice(8);
       const per = d1 && d2 ? `del ${d1} al ${d2}` : '';
       const dsc = sel(TOP).filter((r) => r.venta < 0).reduce((s, r) => s - r.venta, 0);
-      c = card('c-top', 'Qué es lo que más se vende', `Top 15 de mostrador por venta en pesos, ${per}, a precio de lista. Al lado: unidades vendidas y precio promedio por unidad (en el celular, solo el precio) (venta por artículo de Maxi Rest y cierres de caja, sin el código 202 de apps). Fideos incluye el kilo de regalo de la bienvenida del club.`);
+      c = card('c-top', 'Qué es lo que más se vende', `Top 15 de mostrador por venta en pesos, ${per}, a precio de lista. Al lado: unidades o kilos vendidos y precio promedio por unidad o por kilo (en el celular, solo el precio) (venta por artículo de Maxi Rest y cierres de caja, sin el código 202 de apps). Fideos incluye el kilo de regalo de la bienvenida del club.`);
       const cr = card('c-rubro', 'Por rubro', `Venta de mostrador por rubro, ${per}.` + (dsc ? ` Los descuentos del club (ALAX, ${mf(dsc)}) se restan aparte y no figuran acá.` : '')); g2.append(c, cr);
       const tp2 = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { tp2[r.articulo] = (tp2[r.articulo] || 0) + r.venta; });
-      const tu = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { tu[r.articulo] = (tu[r.articulo] || 0) + r.cantidad; });
-      hbars(c, Object.entries(tp2).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: `${nf(tu[k])} u · $${nf(v / tu[k])} c/u`, ts: `· $${nf(v / tu[k])} c/u` })), mf);
+      const tu = {}, tk = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { tu[r.articulo] = (tu[r.articulo] || 0) + r.cantidad; if (r.kg) tk[r.articulo] = true; });
+      hbars(c, Object.entries(tp2).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: tk[k] ? `${nf(tu[k])} kg · $${nf(v / tu[k])} el kg` : `${nf(tu[k])} u · $${nf(v / tu[k])} c/u`, ts: tk[k] ? `· $${nf(v / tu[k])} el kg` : `· $${nf(v / tu[k])} c/u` })), mf);
       const rb = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { rb[r.rubro] = (rb[r.rubro] || 0) + r.venta; });
       hbars(cr, Object.entries(rb).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf, COL.Beccar);
     }

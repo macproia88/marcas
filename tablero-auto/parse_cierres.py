@@ -3,7 +3,8 @@
 Uso:  python3 tablero-auto/parse_cierres.py <archivo> [thread_id]
 <archivo> puede ser el texto plano del mail o el JSON que devuelve get_thread (se toma plaintextBody de cada mensaje).
 Un mismo mail puede traer varios cierres pegados (así llegan los de Pastas Paz): se separan por "TOTALES DEL DIA:".
-No duplica: la clave de cada cierre es sucursal + fecha + turno.
+No duplica: la clave de cada cierre es sucursal + fecha + turno. Guarda también VENTAS POR ARTICULO (campo articulos),
+que usa el tablero de mostrador para la venta por producto y rubro (sin el código 202, que es la venta de apps).
 """
 import json, re, sys, pathlib
 
@@ -46,7 +47,26 @@ def parse_bloque(pre, b):
                 o['formas'][m.group(1).strip()] = [float(m.group(2)), int(m.group(3))]
     m = re.search(r'\n\s*202 Generico\s*' + NUM + r'\s+' + NUM, b)
     o['cod202_unid'], o['cod202_importe'] = (float(m.group(1)), float(m.group(2))) if m else (0.0, 0.0)
+    o['articulos'] = articulos(b)
     return o
+
+
+def articulos(b):
+    """VENTAS POR ARTICULO: una fila [codigo, nombre (Maxi lo corta a 17 letras), rubro, unidades, importe] por artículo."""
+    i = b.find('VENTAS POR ARTICULO')
+    if i < 0:
+        return []
+    out, rubro = [], ''
+    for line in b[i:].splitlines()[1:]:
+        r = re.match(r'\s*Rubro:\s*\d+\s*-\s*(.+?)\s*$', line)
+        if r:
+            rubro = r.group(1); continue
+        # El nombre ocupa 17 letras: si es largo queda pegado a las unidades ("Empanada de Carne28.0 78400.00")
+        m = (re.match(r'\s*(\d+) (.{17})' + NUM + r'\s+' + NUM + r'\s*$', line)
+             or re.match(r'\s*(\d+)\s+(.+?)\s+' + NUM + r'\s+' + NUM + r'\s*$', line))
+        if m and not line.strip().startswith('TOTAL'):
+            out.append([int(m.group(1)), m.group(2).strip(), rubro, float(m.group(3)), float(m.group(4))])
+    return out
 
 
 def main(path, thread=''):
@@ -65,7 +85,12 @@ def main(path, thread=''):
             k = (o['sucursal'].lower(), o['fecha'], o['turno'])
             print(f"{o['sucursal']} {o['fecha']} {o['turno']}: total {o['total']:,.2f} tickets {o['tickets']} "
                   f"formas {suma:,.2f} {'OK' if ok else 'NO CIERRA'}{' (ya estaba)' if k in claves else ''}")
-            if k in claves or not ok:
+            if k in claves:  # ya estaba: solo se le agregan los artículos si no los tenía
+                for c in C:
+                    if (c['sucursal'].lower(), c['fecha'], c['turno']) == k and not c.get('articulos'):
+                        c['articulos'] = o['articulos']
+                continue
+            if not ok:
                 continue
             claves.add(k)
             nuevos.append(o)

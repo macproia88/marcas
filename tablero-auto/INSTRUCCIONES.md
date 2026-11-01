@@ -27,6 +27,7 @@ El tablero publicado es `tablero-presumida-v2.html`, en la raíz del repo. Se ar
    - `neto21`, `iva21`, `neto105` e `iva105`: las líneas `TOTAL Neto/Iva`. Si no están, se usan las de `Neto ACF/Iva ACF`. Si no hay ninguna, va 0.
    - `formas`: todas las líneas de VENTAS POR FORMA DE COBRO, salvo la del TOTAL.
    - `cod202_unid` y `cod202_importe`: la línea del código 202 en VENTAS POR ARTICULO. Si no está, va 0.
+   - `articulos`: todas las líneas de VENTAS POR ARTICULO como `[codigo, nombre, rubro, unidades, importe]`. Las arma solo `parse_cierres.py` (el nombre viene cortado a 17 letras y a veces pegado a las unidades). La suma de los importes tiene que dar el `total`.
 
    Los números se copian tal cual vienen en el mail.
 3. **Armar el tablero:** `python3 tablero-auto/actualizar.py`. El script suma los turnos de cada día y local. Si un turno todavía no cerró, el día queda parcial y se completa en la corrida siguiente.
@@ -49,3 +50,10 @@ Toda página que se publique en este repo lleva la línea "Última actualizació
 1. Apps del mes: `python3 tablero-auto/apps_agregar.py <orderDetails.csv de PedidosYa> <orders.xlsx de Rappi> <AAAA-MM>`.
 2. Mostrador: `python3 tablero-auto/mostrador_agregar.py Florida=<detallada> Beccar=<detallada> Paz=<detallada>` (venta detallada de Maxi Rest; separa sola por mes).
 3. Armar las dos páginas: `python3 tablero-auto/canales.py`. `actualizar.py` ya lo corre en cada cierre, así que los días y meses se actualizan solos; el detalle de un mes aparece cuando se cargan sus archivos (pasos 1 y 2). Ya llevan la fecha y hora de actualización.
+
+## Venta de mostrador por artículo y rubro
+
+`tablero-auto/articulos.py` arma el top de productos y la venta por rubro de `mostrador.html`, mes a mes:
+- Base del mes, si hay: informe de unidades por artículo de Maxi Rest (solo mostrador más el 202 de apps, que se descarta). Carga: `python3 tablero-auto/articulos.py base <archivo.xlsx> <AAAA-MM> <último día que cubre>`. Imprime el control contra la venta de mostrador.
+- Los días siguientes se suman solos con el campo `articulos` de cada cierre (sin el 202). No hace falta ningún paso extra: `canales.py` lo lee en cada corrida.
+- El código 4000 (Descuento Alax) es el descuento del club: queda aparte, no entra en el top ni en los rubros.

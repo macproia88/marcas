@@ -229,7 +229,7 @@ function paginaMostrador() {
     let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Línea: mismo día de la semana de 2025.' : '')); S.appendChild(c);
     vbars(c, fechas.map(diaLabel), [{ name: '2026', color: COL.Florida, values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f), 'tickets')) }], nf,
       { labels: false, line: t25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.tickets_2025 == null) ? null : sum(r, 'tickets_2025'); }) } : null });
-    if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, productos y club salen de la venta detallada y la venta por rubro de Maxi Rest y de ALAX. Hoy están cargados para octubre: con los archivos de este mes se completa.');
+    if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, y club salen de la venta detallada de Maxi Rest y de ALAX: aparecen cuando se cargan los archivos del mes.');
     else {
       const hasta = Mo.resumen.map((r) => r.hasta).sort()[0];
       c = card('c-hora', 'A qué hora y qué día vienen', `Clientes promedio en un día, por franja de una hora (venta detallada de Maxi Rest hasta el ${hasta.slice(8)}/${hasta.slice(5, 7)}).`); S.appendChild(c);
@@ -241,14 +241,6 @@ function paginaMostrador() {
       const bd = {}; sel(Mo.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.tickets; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
       hbars(cb, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los clientes · ${pf(bd[k].venta / tv)} de la venta`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Paz);
-      if (TOP) {
-        const g2 = el('div', { class: 'grid2' }); S.appendChild(g2);
-        c = card('c-top', 'Qué es lo que más se vende', 'Top 15 de mostrador por venta en pesos (1 al 22, venta por rubro de Maxi Rest, a precio de lista). Fideos incluye el kilo de regalo de la bienvenida del club.'); const cr = card('c-rubro', 'Por rubro', 'Venta de mostrador por rubro (1 al 22).'); g2.append(c, cr);
-        const tp2 = {}; sel(TOP).forEach((r) => { tp2[r.articulo] = (tp2[r.articulo] || 0) + r.venta; });
-        hbars(c, Object.entries(tp2).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf);
-        const rb = {}; sel(TOP).forEach((r) => { rb[r.rubro] = (rb[r.rubro] || 0) + r.venta; });
-        hbars(cr, Object.entries(rb).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf, COL.Beccar);
-      }
       if (CL) {
         c = card('c-club', 'Socio contra no socio', 'Mes completo. Compras con DNI del reporte de ALAX contra los tickets de mostrador.'); S.appendChild(c);
         const fs = sel(CL).map((r) => [r.local, nf(r.tickets), nf(r.tickets_club), pf(r.venta_club / r.venta_mostrador), '$' + nf(r.ticket_socio), '$' + nf(r.ticket_no_socio), { t: '+' + pf(r.ticket_socio / r.ticket_no_socio - 1), cls: 'good' }]);
@@ -256,7 +248,19 @@ function paginaMostrador() {
         else table(c, ['Local', 'Tickets', 'Tickets del club', '% de la venta', 'Ticket socio', 'Ticket no socio', 'Diferencia'], fs);
       }
     }
+    if (TOP) {
+      const g2 = el('div', { class: 'grid2' }); S.appendChild(g2);
+      const rg = (D.top_rango || {})[MES] || [], d1 = +(rg[0] || '').slice(8), d2 = +(rg[1] || '').slice(8);
+      const per = d1 && d2 ? `del ${d1} al ${d2}` : '';
+      const dsc = sel(TOP).filter((r) => r.venta < 0).reduce((s, r) => s - r.venta, 0);
+      c = card('c-top', 'Qué es lo que más se vende', `Top 15 de mostrador por venta en pesos, ${per}, a precio de lista (venta por artículo de Maxi Rest y cierres de caja, sin el código 202 de apps). Fideos incluye el kilo de regalo de la bienvenida del club.`);
+      const cr = card('c-rubro', 'Por rubro', `Venta de mostrador por rubro, ${per}.` + (dsc ? ` Los descuentos del club (ALAX, ${mf(dsc)}) se restan aparte y no figuran acá.` : '')); g2.append(c, cr);
+      const tp2 = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { tp2[r.articulo] = (tp2[r.articulo] || 0) + r.venta; });
+      hbars(c, Object.entries(tp2).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf);
+      const rb = {}; sel(TOP).filter((r) => r.venta > 0).forEach((r) => { rb[r.rubro] = (rb[r.rubro] || 0) + r.venta; });
+      hbars(cr, Object.entries(rb).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v })), mf, COL.Beccar);
+    }
     anio(S, 'tickets', 'venta_mostrador', 'Clientes');
-    document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest hasta agosto y del 1 al 25/10; desde el 26/10, cierres de caja), venta por rubro de Maxi Rest y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';
+    document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest hasta agosto y del 1 al 25/10; desde el 26/10, cierres de caja), venta por artículo de Maxi Rest (informe de unidades y, día a día, los cierres de caja) y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';
   });
 }

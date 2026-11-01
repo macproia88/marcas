@@ -107,7 +107,7 @@ def textos_mostrador(Mo, MEN, TOP, CL, mes):
         t.append(f"Los tickets de más de $30.000 son {P(sum(r['tickets'] for r in alto)/tp)} de los clientes pero {P(sum(r['venta'] for r in alto)/tv)} de la venta. Los de hasta $10.000 son {P(sum(r['tickets'] for r in chico)/tp)}: ahí está la venta sugestiva.")
         top = collections.Counter()
         for r in TOP:
-            if sel(r): top[r['articulo'].strip()] += r['venta']
+            if sel(r) and r['venta'] > 0: top[r['articulo'].strip()] += r['venta']
         t.append('Lo que más se vende en pesos: ' + ', '.join(p.lower() for p, _ in top.most_common(4)) + ' (fideos incluye el kilo de regalo del club).')
         cl = [r for r in CL if sel(r)]
         if cl:
@@ -209,21 +209,23 @@ def main():
     dias_mes = {r['local']: r['dias'] for r in MEN if r['mes'] == mes_max}
     defecto = mes_max if min(dias_mes.values() or [0]) >= 7 else meses[-2]
     DA = cargar('apps_det.json'); DM = cargar('mostrador_det.json')
-    TOP = cargar('top_mostrador.json'); CL = cargar('club_local.json')
+    import articulos
+    ART = articulos.armar(); CL = cargar('club_local.json')
     dias = [dict(fecha=x['fecha'], local=x['local'], tickets=x['tickets_mostrador'], tickets_2025=x.get('tickets_mostrador_2025'),
                  venta=x['venta_mostrador'], pedidos=x.get('pedidos_app'), venta_app=x['venta_app']) for x in V if x['fecha'] >= '2026-01-01']
     ta, tm = {}, {}
     for m in meses:
         ba, bm = textos_base(MEN, m, 'apps'), textos_base(MEN, m, 'mostrador')
         da = textos_apps(DA[m], MEN, m) if m in DA else {}
-        dm = textos_mostrador(DM[m], MEN, TOP, CL, m) if m in DM else {}
+        dm = textos_mostrador(DM[m], MEN, ART.get(m, {}).get('filas', []), CL, m) if m in DM else {}
         ta[m] = {L: ba.get(L, []) + da.get(L, []) for L in ['Todos'] + LOC}
         tm[m] = {L: bm.get(L, []) + dm.get(L, []) for L in ['Todos'] + LOC}
-    top = {'2026-10': [dict(local=r['local'], articulo=r['articulo'].strip(), rubro=r['rubro'], venta=r['venta'], cantidad=r['cantidad']) for r in TOP]}
+    top = {m: d['filas'] for m, d in ART.items()}
+    top_rango = {m: [d['desde'], d['hasta']] for m, d in ART.items()}
     armar('apps.html', 'Tablero de apps', 'PedidosYa y Rappi · los 3 locales',
           dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DA, textos=ta, liq=cierres_apps(DA)), 'paginaApps();')
     armar('mostrador.html', 'Tablero de mostrador', 'Clientes que compran en el local · los 3 locales',
-          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
+          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, top_rango=top_rango, club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
 
 
 if __name__ == '__main__':

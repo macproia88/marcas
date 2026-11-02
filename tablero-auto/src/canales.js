@@ -258,6 +258,20 @@ function paginaMostrador() {
       const bd = {}; sel(Mo.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.tickets; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
       hbars(cb, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los clientes · ${pf(bd[k].venta / tv)} de la venta`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Paz);
+      const Mp = D.det[(+MES.slice(0, 4) - 1) + MES.slice(4)];
+      if (Mp) {
+        c = card('c-vs25', 'Contra el mismo mes del año pasado', `Venta detallada de Maxi Rest de ${mesNom(MES)} y del mismo mes de ${+MES.slice(0, 4) - 1}, solo mostrador. El ticket en pesos no descuenta la inflación. Efectivo: de cada 100 tickets, cuántos se pagaron solo en efectivo.`); S.appendChild(c);
+        const fs = sel(Mo.resumen).map((r) => { const d1 = +r.desde.slice(8), d2 = +r.hasta.slice(8);
+          const ds = (Mp.dias || []).filter((x) => x.local === r.local && x.dia >= d1 && x.dia <= d2);
+          const e1t = Mo.cobro.filter((x) => x.local === r.local), e1 = e1t.filter((x) => x.forma === 'Efectivo').reduce((s, x) => s + x.tickets, 0) / e1t.reduce((s, x) => s + x.tickets, 0);
+          if (!ds.length) return [r.local, 'sin dato', nf(r.tickets / (d2 - d1 + 1)), '', '', '$' + nf(r.ticket), '', '', pf(e1)];
+          const t0 = ds.reduce((s, x) => s + x.tickets, 0), v0 = ds.reduce((s, x) => s + x.venta, 0), n0 = ds.length, n1 = d2 - d1 + 1;
+          const c0 = t0 / n0, c1 = r.tickets / n1, k0 = v0 / t0, dt = c1 / c0 - 1, dk = r.ticket / k0 - 1, e0 = ds.reduce((s, x) => s + x.efectivo, 0) / t0;
+          return [r.local, nf(c0), nf(c1), { t: (dt >= 0 ? '+' : '') + pf(dt), cls: dt >= 0 ? 'good' : 'bad' }, '$' + nf(k0), '$' + nf(r.ticket), { t: (dk >= 0 ? '+' : '') + pf(dk), cls: dk >= 0 ? 'good' : 'bad' }, pf(e0), pf(e1)]; });
+        if (window.innerWidth < 640) table(c, ['Local', 'Clientes/día', 'Var.', 'Ticket', 'Var.'], fs.map((f) => [f[0], f[2], f[3], f[5], f[6]]));
+        else table(c, ['Local', 'Clientes por día año pasado', 'Clientes por día', 'Variación', 'Ticket año pasado', 'Ticket', 'Variación', 'Efectivo año pasado', 'Efectivo'], fs);
+        const r0 = sel(Mo.resumen)[0]; if (r0) c.appendChild(el('p', { class: 'note', text: `Mismos días del calendario: del ${+r0.desde.slice(8)} al ${+r0.hasta.slice(8)} de cada año. Clientes por día = tickets de esos días dividido los días con venta. El tablero principal compara contra el mismo día de la semana del año pasado, por eso los porcentajes pueden diferir un poco.` }));
+      }
       if (CL) {
         c = card('c-club', 'Socio contra no socio', 'Mes completo. Compras con DNI del reporte de ALAX contra los tickets de mostrador.'); S.appendChild(c);
         const fs = sel(CL).map((r) => [r.local, nf(r.tickets), nf(r.tickets_club), pf(r.venta_club / r.venta_mostrador), '$' + nf(r.ticket_socio), '$' + nf(r.ticket_no_socio), { t: '+' + pf(r.ticket_socio / r.ticket_no_socio - 1), cls: 'good' }]);

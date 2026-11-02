@@ -176,16 +176,16 @@ def datos_mostrador():
                 if dd:
                     un = [f for f in F if not f['kg']]
                     put('sug100', mes, L, sum(f['cantidad'] for f in un if f['rubro'] in ('Salsas', 'Quesos', 'Postre', 'Freddo', 'Bebidas')) / dd * 100)
-                    put('uni100', mes, L, sum(f['cantidad'] for f in un) / dd * 100)
-                    put('kg100', mes, L, sum(f['cantidad'] for f in F if f['kg']) / dd * 100)
+                    put('uni100', mes, L, sum(f['cantidad'] for f in un) / dd); put('unidades', mes, L, sum(f['cantidad'] for f in un)); put('kilos', mes, L, sum(f['cantidad'] for f in F if f['kg']))
+                    put('kg100', mes, L, sum(f['cantidad'] for f in F if f['kg']) / dd)
                     put('precio_u', mes, L, sum(f['venta'] for f in un) / sum(f['cantidad'] for f in un))
             elif mes in UNID and L in UNID[mes]:  # meses con informe de unidades por artículo (solo cantidades)
                 dd = r['tickets']; filas = [f for f in UNID[mes][L] if f[0] not in (202, 4000, 1, 22) and f[2] > 0]
                 kgs = lambda cod, u: cod in PK or (cod not in RUB and abs(u - round(u)) > 1e-6)
                 un = [f for f in filas if not kgs(f[0], f[2])]
                 put('sug100', mes, L, sum(f[2] for f in un if RUB.get(f[0], f[3]) in ('Salsas', 'Quesos', 'Postre', 'Freddo', 'Bebidas')) / dd * 100)
-                put('uni100', mes, L, sum(f[2] for f in un) / dd * 100)
-                put('kg100', mes, L, sum(f[2] for f in filas if kgs(f[0], f[2])) / dd * 100)
+                put('uni100', mes, L, sum(f[2] for f in un) / dd); put('unidades', mes, L, sum(f[2] for f in un)); put('kilos', mes, L, sum(f[2] for f in filas if kgs(f[0], f[2])))
+                put('kg100', mes, L, sum(f[2] for f in filas if kgs(f[0], f[2])) / dd)
             for c in CM:  # club: compras con DNI y venta de socios (reporte de ventas de ALAX), desde julio
                 if c['mes'] == mes and c['local'] == L:
                     put('club', mes, L, c['pct_venta']); put('dni100', mes, L, c['pct_clientes'] * 100)
@@ -206,8 +206,10 @@ KPIS_M = [
     ('grandes', 'Tickets de más de $30.000', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada 100 tickets, cuántos son de más de $30.000.'),
     ('chicos', 'Tickets de hasta $10.000 (menos es mejor)', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada 100 tickets, cuántos son de hasta $10.000: ahí está la venta sugestiva que falta. Gana el que tiene menos.'),
     ('sug100', 'Sugestivas cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Salsas, quesos, postres, Freddo y bebidas vendidos cada 100 tickets (son productos por unidad).'),
-    ('uni100', 'Unidades cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Productos por unidad vendidos cada 100 tickets (sin los de peso).'),
-    ('kg100', 'Kilos cada 100 clientes', lambda v: nfmt(v, 1) + ' kg', 'gestión', 'Kilos de productos por peso (fideos, ñoquis, sorrentinos, comida al peso) cada 100 tickets.'),
+    ('unidades', 'Unidades vendidas', lambda v: nfmt(v), 'tamaño', 'Total de productos por unidad vendidos en el mes en mostrador (sin los de peso, que van en kilos).'),
+    ('uni100', 'Unidades por ticket', lambda v: nfmt(v, 2), 'gestión', 'Productos por unidad que se lleva cada cliente en promedio (unidades ÷ tickets).'),
+    ('kilos', 'Kilos vendidos', lambda v: nfmt(v) + ' kg', 'tamaño', 'Total de kilos de productos por peso (fideos, ñoquis, sorrentinos, comida al peso) vendidos en el mes en mostrador.'),
+    ('kg100', 'Kilos por ticket', lambda v: nfmt(v, 2) + ' kg', 'gestión', 'Kilos de productos por peso que se lleva cada cliente en promedio (kilos ÷ tickets).'),
     ('club', 'Venta del club', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada $100 de venta de mostrador, cuántos son de socios (compras con DNI en el reporte de ventas de ALAX). Desde julio, cuando arrancó el club.'),
     ('dni100', 'Clientes del club', lambda v: nfmt(v, 1) + '%', 'gestión', 'De cada 100 clientes de mostrador, cuántos compraron con DNI (socios del club, reporte de ventas de ALAX). Desde julio.'),
     ('altas100', 'Altas al club cada 100 tickets', lambda v: nfmt(v, 1), 'gestión', 'Kilos de bienvenida entregados (socios nuevos) cada 100 tickets de mostrador.'),

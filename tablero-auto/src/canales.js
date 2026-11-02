@@ -253,6 +253,17 @@ function paginaMostrador() {
     let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Barra de color: 2026. Barra gris al lado: mismo día de la semana de 2025.' : '')); S.appendChild(c);
     vbars(c, fechas.map(diaLabel), [{ name: '2026', color: COL.Florida, values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f), 'tickets')) }], nf,
       { labels: false, prev: t25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.tickets_2025 == null) ? null : sum(r, 'tickets_2025'); }) } : null });
+    {
+      const todos = sel(D.dias).filter((r) => r.fecha.slice(0, 7) <= MES), meses = [...new Set(todos.map((r) => r.fecha.slice(0, 7)))].sort();
+      const conPaz = LOCAL === 'Todos' || LOCAL === 'Paz';
+      const m26 = meses.map((m) => { const r = todos.filter((x) => x.fecha.slice(0, 7) === m && x.tickets_2025 != null && (LOCAL !== 'Todos' || x.local !== 'Paz')); return r.length ? sum(r, 'tickets') : null; });
+      const m25 = meses.map((m) => { const r = todos.filter((x) => x.fecha.slice(0, 7) === m && x.tickets_2025 != null && (LOCAL !== 'Todos' || x.local !== 'Paz')); return r.length ? sum(r, 'tickets_2025') : null; });
+      if (m25.some((v) => v)) {
+        const cm = card('c-mm25', 'Clientes de mostrador mes a mes contra 2025', 'Tickets de mostrador de cada mes (color) y del mismo día de la semana de 2025 (gris), solo los días que tienen dato de los dos años.' + (LOCAL === 'Todos' ? ' Los 3 sin Paz: Paz no tiene 2025 antes del 7/10/2025 (elegí Paz para ver octubre).' : '') + ' Al pie, la variación.'); S.appendChild(cm);
+        const cats = meses.map((m, i) => MESN[+m.slice(5) - 1].slice(0, 3) + '\n' + (m25[i] ? ((m26[i] / m25[i] - 1 >= 0 ? '+' : '') + pf(m26[i] / m25[i] - 1, 1)) : ''));
+        vbars(cm, cats, [{ name: '2026', color: COL[LOCAL] || COL.Florida, values: m26.map((v) => v || 0) }], nf, { labels: false, h: 280, prev: { name: '2025', color: COL.y25, values: m25 } });
+      }
+    }
     if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, y club salen de la venta detallada de Maxi Rest y de ALAX: aparecen cuando se cargan los archivos del mes.');
     else {
       const hasta = Mo.resumen.map((r) => r.hasta_det === undefined ? r.hasta : r.hasta_det).filter(Boolean).sort()[0], hastaC = Mo.resumen.map((r) => r.hasta).sort()[0];

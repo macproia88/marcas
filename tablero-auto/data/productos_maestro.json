@@ -1,0 +1,2212 @@
+{
+"2": {
+"nombre": "Fideos Caseros al Huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"4": {
+"nombre": "Fuciles al Huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"5": {
+"nombre": "Macarrones",
+"kg": true,
+"rubro": "Fideos"
+},
+"7": {
+"nombre": "Ravioles Ricota",
+"kg": false,
+"rubro": "Ravioles"
+},
+"8": {
+"nombre": "Ravioles Ricota y Verdura",
+"kg": false,
+"rubro": "Ravioles"
+},
+"9": {
+"nombre": "Ravioles Ricota Jamon y Nuez",
+"kg": false,
+"rubro": "Ravioles"
+},
+"10": {
+"nombre": "Ravioles Pollo y Verdura",
+"kg": false,
+"rubro": "Ravioles"
+},
+"11": {
+"nombre": "Ravioles Pavita Jamon y Provol",
+"kg": false,
+"rubro": "Ravioles"
+},
+"12": {
+"nombre": "Raviolon Capresse",
+"kg": false,
+"rubro": "Raviolones"
+},
+"13": {
+"nombre": "Ravioles de Ricota SIN SAL",
+"kg": false,
+"rubro": "Ravioles"
+},
+"14": {
+"nombre": "Ravioles de Masa Verde",
+"kg": false,
+"rubro": "Ravioles"
+},
+"15": {
+"nombre": "Raviolon Cuatro Quesos",
+"kg": false,
+"rubro": "Raviolones"
+},
+"16": {
+"nombre": "Raviolon Pollo y Verdura",
+"kg": false,
+"rubro": "Raviolones"
+},
+"17": {
+"nombre": "Raviolon Calabaza y Muzzarella",
+"kg": false,
+"rubro": "Raviolones"
+},
+"18": {
+"nombre": "Raviolon Ricota y Albahaca",
+"kg": false,
+"rubro": "Raviolones"
+},
+"19": {
+"nombre": "Raviolon de Salmon",
+"kg": false,
+"rubro": "Raviolones"
+},
+"20": {
+"nombre": "Panqueques Docena",
+"kg": false,
+"rubro": "Canelones"
+},
+"21": {
+"nombre": "Canelones de Ricota",
+"kg": false,
+"rubro": "Canelones"
+},
+"23": {
+"nombre": "Ñoquis de Papa",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"24": {
+"nombre": "Ñoquis Romanos",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"25": {
+"nombre": "Ñoquis Romanos Jamon y Queso",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"26": {
+"nombre": "Lasagna Ricota",
+"kg": false,
+"rubro": "Lasagna"
+},
+"29": {
+"nombre": "Sorrentinos Jamon y Queso",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"30": {
+"nombre": "Tortelletis",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"32": {
+"nombre": "Panzotis Espinaca y Port Salud",
+"kg": false,
+"rubro": "Sorrentinos"
+},
+"34": {
+"nombre": "Porcion Ravioles",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"36": {
+"nombre": "Porcion Canelones",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"39": {
+"nombre": "Porcion Sorrentinos",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"50": {
+"nombre": "Salsa Fileto Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"51": {
+"nombre": "Salsa Bolognesa Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"54": {
+"nombre": "Salsa Pomarola Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"56": {
+"nombre": "Salsa Pesto",
+"kg": false,
+"rubro": "Salsas"
+},
+"57": {
+"nombre": "Crema Sancor 200 cc",
+"kg": false,
+"rubro": "Lacteo"
+},
+"59": {
+"nombre": "Manteca 200grs",
+"kg": false,
+"rubro": "Lacteo"
+},
+"60": {
+"nombre": "Pan",
+"kg": true,
+"rubro": "Pan F"
+},
+"63": {
+"nombre": "Figaza de Manteca",
+"kg": true,
+"rubro": "Panaderia"
+},
+"69": {
+"nombre": "Galletas de Queso",
+"kg": false,
+"rubro": "Panaderia"
+},
+"77": {
+"nombre": "Bizcochos de Grasa",
+"kg": false,
+"rubro": "Panaderia"
+},
+"79": {
+"nombre": "Milanesa de Bondiola x kg",
+"kg": true,
+"rubro": "Comida"
+},
+"81": {
+"nombre": "Pastelitos",
+"kg": false,
+"rubro": "Reventa"
+},
+"83": {
+"nombre": "Pan Multicereal",
+"kg": false,
+"rubro": "Pan F"
+},
+"86": {
+"nombre": "Pebetes C Jamyques",
+"kg": false,
+"rubro": "Comida"
+},
+"87": {
+"nombre": "Sand De Pastron",
+"kg": false,
+"rubro": "Comida"
+},
+"90": {
+"nombre": "Prepizza de Tomate",
+"kg": false,
+"rubro": "Pan F"
+},
+"94": {
+"nombre": "Pizza Muzzarella",
+"kg": false,
+"rubro": "Pizzas"
+},
+"95": {
+"nombre": "Pizza Jamon y Morron",
+"kg": false,
+"rubro": "Pizzas"
+},
+"96": {
+"nombre": "Arrollado De Atun",
+"kg": true,
+"rubro": "Comida"
+},
+"97": {
+"nombre": "Lengua",
+"kg": true,
+"rubro": "Carnes"
+},
+"98": {
+"nombre": "Queso rallado Chico",
+"kg": false,
+"rubro": "Quesos"
+},
+"99": {
+"nombre": "Queso Rallado Grande",
+"kg": false,
+"rubro": "Quesos"
+},
+"100": {
+"nombre": "Tortilla de Acelga por Peso",
+"kg": true,
+"rubro": "Tartas"
+},
+"101": {
+"nombre": "Tortilla de Papa por Peso",
+"kg": true,
+"rubro": "Tartas"
+},
+"102": {
+"nombre": "Tortilla de zanahoria",
+"kg": true,
+"rubro": "Tartas"
+},
+"103": {
+"nombre": "Sandwich Milanesa grande",
+"kg": false,
+"rubro": "Carnes"
+},
+"105": {
+"nombre": "Suprema x Kilo",
+"kg": true,
+"rubro": "Pollo"
+},
+"106": {
+"nombre": "Matambre Relleno",
+"kg": true,
+"rubro": "Carnes"
+},
+"107": {
+"nombre": "Pollo Al Horno",
+"kg": false,
+"rubro": "Pollo"
+},
+"109": {
+"nombre": "Arroz Yamani Con Verduras",
+"kg": true,
+"rubro": "Comida"
+},
+"110": {
+"nombre": "Arrollado Primavera",
+"kg": true,
+"rubro": "Comida"
+},
+"111": {
+"nombre": "Sandwich Triple Comun",
+"kg": false,
+"rubro": "Lunch"
+},
+"113": {
+"nombre": "Pastel De Papas",
+"kg": true,
+"rubro": "Comida"
+},
+"115": {
+"nombre": "Bomba de Papa",
+"kg": true,
+"rubro": "Comida"
+},
+"116": {
+"nombre": "Pure de Tomate x 530gr La Camp",
+"kg": false,
+"rubro": "Arcor"
+},
+"119": {
+"nombre": "Extracto Tomate La Campagnola",
+"kg": false,
+"rubro": "Arcor"
+},
+"121": {
+"nombre": "Tarta de Berenjena",
+"kg": false,
+"rubro": "Tartas"
+},
+"123": {
+"nombre": "Tapas Empanadas",
+"kg": false,
+"rubro": "Tartas"
+},
+"124": {
+"nombre": "Empanada de Carne",
+"kg": false,
+"rubro": "Pizzas"
+},
+"125": {
+"nombre": "Empanada de Pollo",
+"kg": false,
+"rubro": "Pizzas"
+},
+"126": {
+"nombre": "Empanada Jamon y Queso",
+"kg": false,
+"rubro": "Pizzas"
+},
+"127": {
+"nombre": "Empanada Cebolla",
+"kg": false,
+"rubro": "Pizzas"
+},
+"128": {
+"nombre": "Vitel Tone",
+"kg": true,
+"rubro": "Carnes"
+},
+"129": {
+"nombre": "Empanada de Espinaca",
+"kg": false,
+"rubro": "Pizzas"
+},
+"130": {
+"nombre": "Tarta de Calabaza",
+"kg": false,
+"rubro": "Tartas"
+},
+"131": {
+"nombre": "Tarta de Verdura",
+"kg": false,
+"rubro": "Tartas"
+},
+"132": {
+"nombre": "Tarta Mixta",
+"kg": false,
+"rubro": "Tartas"
+},
+"133": {
+"nombre": "Tarta de Puerro",
+"kg": false,
+"rubro": "Tartas"
+},
+"134": {
+"nombre": "Tarta D Jamon. Queso",
+"kg": false,
+"rubro": "Tartas"
+},
+"135": {
+"nombre": "Tarta de Zapallito",
+"kg": false,
+"rubro": "Tartas"
+},
+"136": {
+"nombre": "Tarta de Pollo",
+"kg": false,
+"rubro": "Tartas"
+},
+"137": {
+"nombre": "Ensalada Rusa",
+"kg": true,
+"rubro": "Verduras"
+},
+"138": {
+"nombre": "Tortilla de Zapallito por Peso",
+"kg": true,
+"rubro": "Tartas"
+},
+"139": {
+"nombre": "Tarta Grande de Atun x KG",
+"kg": true,
+"rubro": "Tartas"
+},
+"140": {
+"nombre": "Tarta Grande Jamon y Queso x K",
+"kg": true,
+"rubro": "Tartas"
+},
+"158": {
+"nombre": "Porcion Balcarce/frutal",
+"kg": false,
+"rubro": "Panaderia"
+},
+"166": {
+"nombre": "Berenjena Rellena",
+"kg": true,
+"rubro": "Comida"
+},
+"167": {
+"nombre": "Amarettis",
+"kg": false,
+"rubro": "Santa"
+},
+"172": {
+"nombre": "Terrinas",
+"kg": false,
+"rubro": "Tartas"
+},
+"177": {
+"nombre": "Menu Risotto",
+"kg": false,
+"rubro": "Menu"
+},
+"178": {
+"nombre": "Verduras al Peso",
+"kg": true,
+"rubro": "Verduras"
+},
+"180": {
+"nombre": "COCA COLA ORIGINAL 500 ml",
+"kg": false,
+"rubro": "Bebidas"
+},
+"181": {
+"nombre": "COCA COLA 1.75 l",
+"kg": false,
+"rubro": "Bebidas"
+},
+"182": {
+"nombre": "Aquarius 600",
+"kg": false,
+"rubro": "Bebidas"
+},
+"183": {
+"nombre": "Agua 500",
+"kg": false,
+"rubro": "Bebidas"
+},
+"186": {
+"nombre": "Berenjenas al Escabeche por ki",
+"kg": true,
+"rubro": "Comida"
+},
+"187": {
+"nombre": "Papas y Batatas al Horno",
+"kg": true,
+"rubro": "Verduras"
+},
+"193": {
+"nombre": "Menu Bond/escal/bife",
+"kg": false,
+"rubro": "Menu"
+},
+"203": {
+"nombre": "Flan",
+"kg": false,
+"rubro": "Postre"
+},
+"205": {
+"nombre": "Pechuga a la Crema",
+"kg": true,
+"rubro": "Pollo"
+},
+"210": {
+"nombre": "Wraps Muzzarella Capresse",
+"kg": false,
+"rubro": "Comida"
+},
+"211": {
+"nombre": "Bunuelo De Acelga",
+"kg": true,
+"rubro": "Comida"
+},
+"213": {
+"nombre": "El Aljibe Alfajor chocolate",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"217": {
+"nombre": "Cuarto de Pollo",
+"kg": false,
+"rubro": "Pollo"
+},
+"218": {
+"nombre": "Muzzarella",
+"kg": true,
+"rubro": "Quesos"
+},
+"219": {
+"nombre": "Queso Brie",
+"kg": true,
+"rubro": "Quesos"
+},
+"221": {
+"nombre": "Queso Azul",
+"kg": true,
+"rubro": "Quesos"
+},
+"222": {
+"nombre": "Empanada de Humita",
+"kg": false,
+"rubro": "Pizzas"
+},
+"225": {
+"nombre": "Cookie con chip chocolate",
+"kg": false,
+"rubro": "Pan F"
+},
+"226": {
+"nombre": "Pan fresh pepas",
+"kg": false,
+"rubro": "Pan F"
+},
+"229": {
+"nombre": "Budin de pan",
+"kg": true,
+"rubro": "Postre"
+},
+"232": {
+"nombre": "Zapallito Relleno",
+"kg": true,
+"rubro": "Comida"
+},
+"233": {
+"nombre": "Milanesa De Berenjena",
+"kg": true,
+"rubro": "Comida"
+},
+"234": {
+"nombre": "Palmeritas",
+"kg": false,
+"rubro": "Pan F"
+},
+"236": {
+"nombre": "Queso Pategras",
+"kg": true,
+"rubro": "Quesos"
+},
+"238": {
+"nombre": "Albondigas con Tuco",
+"kg": true,
+"rubro": "Carnes"
+},
+"254": {
+"nombre": "Salsa Blanca Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"255": {
+"nombre": "Salsa Fileto Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"256": {
+"nombre": "Estofado de Carne Media",
+"kg": false,
+"rubro": "Salsas"
+},
+"258": {
+"nombre": "Estofado de Pollo Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"259": {
+"nombre": "Salsa de Champinones Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"262": {
+"nombre": "Salsa 4 Quesos Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"263": {
+"nombre": "Salsa Rosa Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"264": {
+"nombre": "Salsa Pomarola Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"270": {
+"nombre": "Cubanitos",
+"kg": false,
+"rubro": "Santa"
+},
+"276": {
+"nombre": "Salsa Blanca Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"277": {
+"nombre": "Estofado de Carne Chico",
+"kg": false,
+"rubro": "Salsas"
+},
+"278": {
+"nombre": "Estofado de Pollo Chico",
+"kg": false,
+"rubro": "Salsas"
+},
+"279": {
+"nombre": "Salsa Chamipgnon Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"280": {
+"nombre": "Salsa 4 Quesos Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"286": {
+"nombre": "Canelones de Pollo y Verdura",
+"kg": false,
+"rubro": "Canelones"
+},
+"287": {
+"nombre": "Canelones de Espinaca y Queso",
+"kg": false,
+"rubro": "Canelones"
+},
+"288": {
+"nombre": "Canelones de Pavita Jamon y Pr",
+"kg": false,
+"rubro": "Canelones"
+},
+"292": {
+"nombre": "Guiso De Lentejas",
+"kg": true,
+"rubro": "Carnes"
+},
+"294": {
+"nombre": "Suprema Napolitana",
+"kg": true,
+"rubro": "Pollo"
+},
+"295": {
+"nombre": "Muzzarellitas Milanesa",
+"kg": true,
+"rubro": "Comida"
+},
+"302": {
+"nombre": "Wrap de Pollo",
+"kg": false,
+"rubro": "Pollo"
+},
+"311": {
+"nombre": "Bondiola De Cerdo",
+"kg": true,
+"rubro": "Carnes"
+},
+"333": {
+"nombre": "Ensalada de Rucula",
+"kg": false,
+"rubro": "Verduras"
+},
+"334": {
+"nombre": "Ensalada Caesar",
+"kg": false,
+"rubro": "Verduras"
+},
+"335": {
+"nombre": "Ensalada Choclo Chica",
+"kg": false,
+"rubro": "Verduras"
+},
+"336": {
+"nombre": "Ensalada Completa",
+"kg": false,
+"rubro": "Verduras"
+},
+"337": {
+"nombre": "Menu Economico",
+"kg": false,
+"rubro": "Menu"
+},
+"346": {
+"nombre": "Queso Sbrintz x kg",
+"kg": true,
+"rubro": "Quesos"
+},
+"350": {
+"nombre": "Bastones de Pollo",
+"kg": true,
+"rubro": "Pollo"
+},
+"363": {
+"nombre": "Salsa Bolognesa Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"370": {
+"nombre": "Mousses Postres Male",
+"kg": false,
+"rubro": "Pasteleria"
+},
+"371": {
+"nombre": "Tortilla Brocoli",
+"kg": true,
+"rubro": "Verduras"
+},
+"376": {
+"nombre": "Menu Mix de Ravioles",
+"kg": false,
+"rubro": "Menu"
+},
+"379": {
+"nombre": "Salsa Mixta o Rosa Chica",
+"kg": false,
+"rubro": "Salsas"
+},
+"393": {
+"nombre": "Ensalada Verdura",
+"kg": false,
+"rubro": "Verduras"
+},
+"394": {
+"nombre": "Matambre a La Pizza",
+"kg": true,
+"rubro": "Carnes"
+},
+"395": {
+"nombre": "Arrollado de Pollo",
+"kg": true,
+"rubro": "Pollo"
+},
+"396": {
+"nombre": "Tarta Grande de Verdura x KG",
+"kg": true,
+"rubro": "Tartas"
+},
+"402": {
+"nombre": "Milanesas De Peceto",
+"kg": true,
+"rubro": "Carnes"
+},
+"405": {
+"nombre": "Queso Crema paulina",
+"kg": false,
+"rubro": "Lacteo"
+},
+"422": {
+"nombre": "Tarta Queso y Cebolla",
+"kg": false,
+"rubro": "Tartas"
+},
+"423": {
+"nombre": "Marquise de Chocolate Pan Fres",
+"kg": false,
+"rubro": "Pan F"
+},
+"426": {
+"nombre": "Budines Manzana",
+"kg": false,
+"rubro": "Pan F"
+},
+"430": {
+"nombre": "Grisines Finitos",
+"kg": false,
+"rubro": "Santa"
+},
+"437": {
+"nombre": "Menu Pastas",
+"kg": false,
+"rubro": "Menu"
+},
+"439": {
+"nombre": "Cuadrado Coco",
+"kg": false,
+"rubro": "Pasteleria"
+},
+"470": {
+"nombre": "Tarta Grande de Pollo x KG",
+"kg": true,
+"rubro": "Tartas"
+},
+"476": {
+"nombre": "Strudel",
+"kg": false,
+"rubro": "Pasteleria"
+},
+"666": {
+"nombre": "Freddo Tableta x unidad Americ",
+"kg": false,
+"rubro": "Freddo"
+},
+"1001": {
+"nombre": "Barquillos",
+"kg": false,
+"rubro": "Santa"
+},
+"1007": {
+"nombre": "Muecas barrita Banana y Dulce",
+"kg": false,
+"rubro": "Isla"
+},
+"1027": {
+"nombre": "El Aljibe Alfajor Santafecino",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"1028": {
+"nombre": "Dibble Pepas",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"1031": {
+"nombre": "Dibble Lenguitas",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"1032": {
+"nombre": "COCA COLA LIGHT 500ML",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1049": {
+"nombre": "Aquarius pera 1,5lts",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1050": {
+"nombre": "Aquarius pomelo 1,5 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1057": {
+"nombre": "Arcor Salsa Lista Portuguesa x",
+"kg": false,
+"rubro": "Arcor"
+},
+"1084": {
+"nombre": "Muecas barrita cacao y avellan",
+"kg": false,
+"rubro": "Isla"
+},
+"1092": {
+"nombre": "Freddo Tableta x unidad Pistac",
+"kg": false,
+"rubro": "Freddo"
+},
+"1133": {
+"nombre": "Muecas barrita Manzana y Arand",
+"kg": false,
+"rubro": "Isla"
+},
+"1136": {
+"nombre": "Nescafe Dolca Suave Doy Pack x",
+"kg": false,
+"rubro": "Nestle"
+},
+"1158": {
+"nombre": "Dec Almendras tostadas 220gr",
+"kg": false,
+"rubro": "Isla"
+},
+"1166": {
+"nombre": "Dulce de Membrillo La Campagno",
+"kg": false,
+"rubro": "Arcor"
+},
+"1167": {
+"nombre": "Crema de Leche doble crema Tre",
+"kg": false,
+"rubro": "Lacteo"
+},
+"1181": {
+"nombre": "Crema La Serenisima para Cocin",
+"kg": false,
+"rubro": "Lacteo"
+},
+"1184": {
+"nombre": "Crema de Leche doble crema Tre",
+"kg": false,
+"rubro": "Lacteo"
+},
+"1190": {
+"nombre": "Chips masa madre Almadre Origi",
+"kg": false,
+"rubro": "Dankon"
+},
+"1196": {
+"nombre": "Pan Fresh Alfajorcitos Maicena",
+"kg": false,
+"rubro": "Pan F"
+},
+"2202": {
+"nombre": "Fideos Finitos al huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"2203": {
+"nombre": "Fideos Cordon al huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"2204": {
+"nombre": "Fideos Media Cinta al huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"2205": {
+"nombre": "Fideos Cinta Ancha al huevo",
+"kg": true,
+"rubro": "Fideos"
+},
+"2213": {
+"nombre": "Fideos Finitos espinaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"2215": {
+"nombre": "Fideos Media Cinta de espinaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"2216": {
+"nombre": "Fuciles Espinaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"2217": {
+"nombre": "Fuciles tricolor",
+"kg": true,
+"rubro": "Fideos"
+},
+"2324": {
+"nombre": "Canelones Con Salsa base x Kg",
+"kg": true,
+"rubro": "Canelones"
+},
+"2403": {
+"nombre": "Ñoquis de Espinaca",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2404": {
+"nombre": "Ñoquis de Calabaza",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2409": {
+"nombre": "Ñoquis Romanos de Espinaca",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2414": {
+"nombre": "Ñoquis tricolor",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2704": {
+"nombre": "Sin TACC  Sorrentinos",
+"kg": false,
+"rubro": "SIN TACC"
+},
+"2706": {
+"nombre": "Sin TACC Ñoquis",
+"kg": false,
+"rubro": "SIN TACC"
+},
+"2756": {
+"nombre": "Ravioles Pollo y verdura sin s",
+"kg": false,
+"rubro": "Ravioles"
+},
+"3106": {
+"nombre": "Toscanitos bañados en Chocolat",
+"kg": false,
+"rubro": "Santa"
+},
+"4000": {
+"nombre": "Descuento Alax",
+"kg": false,
+"rubro": "Otros"
+},
+"4006": {
+"nombre": "Fideos Caseros Espinaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"4007": {
+"nombre": "Fideos Caseros Albahaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"4009": {
+"nombre": "Dibble Cookie por unidad",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"4020": {
+"nombre": "Queso rallado 50gr",
+"kg": false,
+"rubro": "Quesos"
+},
+"4060": {
+"nombre": "Alcaparras Alcapampa 120gr",
+"kg": false,
+"rubro": "Otros"
+},
+"3": {
+"nombre": "Papardelle",
+"kg": true,
+"rubro": "Fideos"
+},
+"6": {
+"nombre": "Mostacholes",
+"kg": true,
+"rubro": "Fideos"
+},
+"27": {
+"nombre": "Lasagna con Salsa por Unidad",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"33": {
+"nombre": "Porcion Fideos Calientes",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"35": {
+"nombre": "Porcion Raviolon",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"42": {
+"nombre": "Porcion Noquis",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"68": {
+"nombre": "Galletas Semola Marineras",
+"kg": false,
+"rubro": "Panaderia"
+},
+"85": {
+"nombre": "Alfajores Pier",
+"kg": false,
+"rubro": "Reventa"
+},
+"114": {
+"nombre": "Sandwich Triple Jamon Crudo",
+"kg": false,
+"rubro": "Lunch"
+},
+"118": {
+"nombre": "Tomate Cubeteado x 400gr La Ca",
+"kg": false,
+"rubro": "Arcor"
+},
+"122": {
+"nombre": "Pan Rallado Kilo",
+"kg": true,
+"rubro": "Reventa"
+},
+"154": {
+"nombre": "Ensalada Pollo y Lechuga Zanah",
+"kg": false,
+"rubro": "Verduras"
+},
+"163": {
+"nombre": "Dulce de Leche x 400 Gr Sancor",
+"kg": false,
+"rubro": "Lacteo"
+},
+"168": {
+"nombre": "Tostaditas ClÃ¡sicas Santa Cla",
+"kg": false,
+"rubro": "Santa"
+},
+"173": {
+"nombre": "Aderezo Caesar/ranch/pampa 250",
+"kg": false,
+"rubro": "Dankon"
+},
+"184": {
+"nombre": "Agua x 1.5",
+"kg": false,
+"rubro": "Bebidas"
+},
+"215": {
+"nombre": "Rosquitas Espanolas",
+"kg": false,
+"rubro": "Pan F"
+},
+"230": {
+"nombre": "Arabe C/ Jamon Y Ques",
+"kg": false,
+"rubro": "Comida"
+},
+"241": {
+"nombre": "Tapa Pascualina Familiar",
+"kg": false,
+"rubro": "Tartas"
+},
+"242": {
+"nombre": "Molinillo Peperosa Indo Deli",
+"kg": false,
+"rubro": "Dankon"
+},
+"247": {
+"nombre": "Porcion de Pizza",
+"kg": false,
+"rubro": "Pizzas"
+},
+"275": {
+"nombre": "Lasagna Muzzarella",
+"kg": false,
+"rubro": "Lasagna"
+},
+"289": {
+"nombre": "Canelones de Ricota Jamon y Nu",
+"kg": false,
+"rubro": "Canelones"
+},
+"306": {
+"nombre": "Figacitas Arabes",
+"kg": false,
+"rubro": "Pan F"
+},
+"310": {
+"nombre": "Manteca 100gr",
+"kg": false,
+"rubro": "Lacteo"
+},
+"339": {
+"nombre": "Hamburguesa De Lenteja",
+"kg": true,
+"rubro": "Comida"
+},
+"340": {
+"nombre": "Medallon Yamani",
+"kg": true,
+"rubro": "Comida"
+},
+"341": {
+"nombre": "Leche Larga Vida 1 litro Veron",
+"kg": false,
+"rubro": "Lacteo"
+},
+"380": {
+"nombre": "Raviolon de Cordero",
+"kg": false,
+"rubro": "Raviolones"
+},
+"384": {
+"nombre": "Tarteletas Saladas",
+"kg": false,
+"rubro": "Santa"
+},
+"419": {
+"nombre": "Tostaditas Saborizadas x Kg",
+"kg": true,
+"rubro": "Presumida"
+},
+"427": {
+"nombre": "Pasta Frola Batata Pan Fresh",
+"kg": false,
+"rubro": "Pan F"
+},
+"428": {
+"nombre": "Cubanito Dulce de Leche Arbani",
+"kg": false,
+"rubro": "Isla"
+},
+"514": {
+"nombre": "Alcauciles  grsillados x 300 g",
+"kg": false,
+"rubro": "Dankon"
+},
+"516": {
+"nombre": "Berenjena Escabeche Cristo de",
+"kg": false,
+"rubro": "Otros"
+},
+"519": {
+"nombre": "Esparragos Verdes 300 grs Cris",
+"kg": false,
+"rubro": "Dankon"
+},
+"530": {
+"nombre": "Pure de Berenjena 320 grs Cris",
+"kg": false,
+"rubro": "Dankon"
+},
+"580": {
+"nombre": "Santa Clara Galletitas sabor q",
+"kg": false,
+"rubro": "Santa"
+},
+"582": {
+"nombre": "Arcor Chocolate Aguila 80% cac",
+"kg": false,
+"rubro": "Otros"
+},
+"650": {
+"nombre": "Freddo Pinta Dulce de Leche 32",
+"kg": false,
+"rubro": "Freddo"
+},
+"667": {
+"nombre": "Freddo Tableta x 6 Unidades Am",
+"kg": false,
+"rubro": "Freddo"
+},
+"718": {
+"nombre": "Passata de pomodoro Mazza Alim",
+"kg": false,
+"rubro": "Dankon"
+},
+"1019": {
+"nombre": "Arcor Salsa Lista Rosa x 340gr",
+"kg": false,
+"rubro": "Arcor"
+},
+"1024": {
+"nombre": "Molinillo Mix de Pimientas Ind",
+"kg": false,
+"rubro": "Dankon"
+},
+"1117": {
+"nombre": "Pepinos Agridulces HERR KUKUMB",
+"kg": false,
+"rubro": "Dankon"
+},
+"1147": {
+"nombre": "Arcor Jalea Membrillo La Campa",
+"kg": false,
+"rubro": "Arcor"
+},
+"1163": {
+"nombre": "Capeletinis 4 Quesos por kilo",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"1164": {
+"nombre": "Capeletinis Pollo y Verdura",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"1168": {
+"nombre": "Tomate Triturado en botella Ge",
+"kg": false,
+"rubro": "Reventa"
+},
+"1182": {
+"nombre": "Crema La Serenisima para Batir",
+"kg": false,
+"rubro": "Lacteo"
+},
+"1191": {
+"nombre": "Chips de Papas Rurales Alwa 10",
+"kg": false,
+"rubro": "Dankon"
+},
+"1192": {
+"nombre": "Chips de Batatas Rusticas Alwa",
+"kg": false,
+"rubro": "Dankon"
+},
+"1195": {
+"nombre": "Pan Fresh Alfajorcito Chocolat",
+"kg": false,
+"rubro": "Pan F"
+},
+"2218": {
+"nombre": "Fuciles morron",
+"kg": true,
+"rubro": "Fideos"
+},
+"2318": {
+"nombre": "Lasagna con Salsas base por ki",
+"kg": true,
+"rubro": "Lasagna"
+},
+"2319": {
+"nombre": "Lasagna con Salsas Especiales",
+"kg": true,
+"rubro": "Lasagna"
+},
+"2410": {
+"nombre": "Ñoquis Romanos Calabaza",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2654": {
+"nombre": "Tarta Caprese",
+"kg": false,
+"rubro": "Tartas"
+},
+"3107": {
+"nombre": "Dulce de Leche La Serenisima C",
+"kg": false,
+"rubro": "Lacteo"
+},
+"4002": {
+"nombre": "Crema La Serenisima para Cocin",
+"kg": false,
+"rubro": "Lacteo"
+},
+"4018": {
+"nombre": "Sandwich Milanesa chico",
+"kg": false,
+"rubro": "Carnes"
+},
+"4027": {
+"nombre": "Cookies chocolate con rocklets",
+"kg": false,
+"rubro": "Pan F"
+},
+"4038": {
+"nombre": "Porcion de Capelletinis",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"4069": {
+"nombre": "Alfajor Maicena grande",
+"kg": false,
+"rubro": "Pan F"
+},
+"160": {
+"nombre": "Galletas de Leche Santa Clara",
+"kg": false,
+"rubro": "Santa"
+},
+"185": {
+"nombre": "Aquarius x 1.5",
+"kg": false,
+"rubro": "Bebidas"
+},
+"283": {
+"nombre": "Sandwuich pan d Semillas",
+"kg": false,
+"rubro": "Comida"
+},
+"291": {
+"nombre": "Canelones Ricota y Verdura",
+"kg": false,
+"rubro": "Canelones"
+},
+"297": {
+"nombre": "Arroz Con Pollo",
+"kg": true,
+"rubro": "Pollo"
+},
+"389": {
+"nombre": "Ricota Suelta x Kg",
+"kg": true,
+"rubro": "Reventa"
+},
+"417": {
+"nombre": "Dibble alfajor chocolate por 3",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"468": {
+"nombre": "Tarta Grande Coco y DDL",
+"kg": false,
+"rubro": "Pan F"
+},
+"469": {
+"nombre": "Barbacoa La Campagnola Doy Pac",
+"kg": false,
+"rubro": "Sin rubro"
+},
+"521": {
+"nombre": "Pasta de Aceituna Verde x 200",
+"kg": false,
+"rubro": "Dankon"
+},
+"1042": {
+"nombre": "Fanta 500 ml",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1127": {
+"nombre": "Arytza Mostaza Tipo Dijon x 36",
+"kg": false,
+"rubro": "Dankon"
+},
+"1180": {
+"nombre": "Crema La Serenisima para Cocin",
+"kg": false,
+"rubro": "Lacteo"
+},
+"4022": {
+"nombre": "Budin Naranja con chips",
+"kg": false,
+"rubro": "Otros"
+},
+"4026": {
+"nombre": "Cookies chocolate con chips ch",
+"kg": false,
+"rubro": "Pan F"
+},
+"4039": {
+"nombre": "Cubanito Arbait pistacho",
+"kg": false,
+"rubro": "Isla"
+},
+"72": {
+"nombre": "Membrillitos",
+"kg": false,
+"rubro": "Panaderia"
+},
+"164": {
+"nombre": "Copitos Tarta Grande",
+"kg": false,
+"rubro": "Pan F"
+},
+"373": {
+"nombre": "Dec Mani C/miel x 220grs Chico",
+"kg": false,
+"rubro": "Isla"
+},
+"412": {
+"nombre": "Cookie Integral",
+"kg": false,
+"rubro": "Isla"
+},
+"432": {
+"nombre": "Arcor Chocolate Aguila Fliar x",
+"kg": false,
+"rubro": "Otros"
+},
+"518": {
+"nombre": "Chucrut x 310 grs Cristo de lo",
+"kg": false,
+"rubro": "Dankon"
+},
+"569": {
+"nombre": "Dec mix Frutos Secos C/miel",
+"kg": false,
+"rubro": "Isla"
+},
+"1006": {
+"nombre": "Muecas barrita Pasas y Arandan",
+"kg": false,
+"rubro": "Isla"
+},
+"1056": {
+"nombre": "Arcor Salsa Lista Pizza x 340g",
+"kg": false,
+"rubro": "Arcor"
+},
+"1159": {
+"nombre": "Tomate perita Cubeteado x 400g",
+"kg": false,
+"rubro": "Arcor"
+},
+"2325": {
+"nombre": "Canelones con Salsas Especiale",
+"kg": true,
+"rubro": "Canelones"
+},
+"381": {
+"nombre": "Pasta Frola Membrillo Pan Fres",
+"kg": false,
+"rubro": "Pan F"
+},
+"467": {
+"nombre": "Cubanito Arba Veggie",
+"kg": false,
+"rubro": "Isla"
+},
+"579": {
+"nombre": "Santa Clara Galletitas sabor c",
+"kg": false,
+"rubro": "Santa"
+},
+"665": {
+"nombre": "Freddo Bombones Americana 500m",
+"kg": false,
+"rubro": "Freddo"
+},
+"1005": {
+"nombre": "Muecas barrita Pasas y Almendr",
+"kg": false,
+"rubro": "Isla"
+},
+"1029": {
+"nombre": "Dibble Alfajores Rellenos Dulc",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"1030": {
+"nombre": "Dibble Pasta Frola Membrillo y",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"1045": {
+"nombre": "SPRITE 1,75 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1047": {
+"nombre": "SPRITE ZERO 500ml",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1052": {
+"nombre": "Aquarius Manzana 1,5",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1058": {
+"nombre": "Arcor Salsa Lista Filetto x 34",
+"kg": false,
+"rubro": "Arcor"
+},
+"1087": {
+"nombre": "Arcor Mermelada BC Frutos Rojo",
+"kg": true,
+"rubro": "Otros"
+},
+"1152": {
+"nombre": "Leche Larga Vida Entera Tregar",
+"kg": false,
+"rubro": "Lacteo"
+},
+"1169": {
+"nombre": "Tomate Triturado en botella Ge",
+"kg": false,
+"rubro": "Reventa"
+},
+"3111": {
+"nombre": "El Aljibe Brownie con nuez",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"3112": {
+"nombre": "El Aljibe Cuadrado Frola Membr",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"4021": {
+"nombre": "Budin Carrot Cake",
+"kg": false,
+"rubro": "Pan F"
+},
+"4050": {
+"nombre": "Pepas Panaderia",
+"kg": false,
+"rubro": "Panaderia"
+},
+"44": {
+"nombre": "Porcion Caliente Raviolon Salm",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"1025": {
+"nombre": "El Aljibe Allfajor Maicena",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"1043": {
+"nombre": "Fanta 1,75 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1048": {
+"nombre": "SPRITE ZERO 1,75 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1140": {
+"nombre": "Freddo Tableta x unidad Dulce",
+"kg": false,
+"rubro": "Freddo"
+},
+"1183": {
+"nombre": "Manteca La Serenisima 200gr",
+"kg": false,
+"rubro": "Lacteo"
+},
+"2201": {
+"nombre": "Fideos secos al huevo x paquet",
+"kg": false,
+"rubro": "Fideos"
+},
+"3108": {
+"nombre": "Dulce de Leche La Serenisima C",
+"kg": false,
+"rubro": "Lacteo"
+},
+"4053": {
+"nombre": "Muecas SPORT CLUB",
+"kg": false,
+"rubro": "Isla"
+},
+"43": {
+"nombre": "Porcion Noquis Romanos",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"239": {
+"nombre": "Chips Jamon y Queso",
+"kg": true,
+"rubro": "Otros"
+},
+"403": {
+"nombre": "Cuadrado de Manzana",
+"kg": false,
+"rubro": "Pasteleria"
+},
+"526": {
+"nombre": "Pickles Mixtos x 350 grs Crist",
+"kg": false,
+"rubro": "Dankon"
+},
+"1039": {
+"nombre": "COCA COLA ZERO 1,75 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1097": {
+"nombre": "Arcor Salsa Lista Tipo Bologne",
+"kg": false,
+"rubro": "Arcor"
+},
+"1101": {
+"nombre": "Pan Fresh Pebete x 2 unidades",
+"kg": false,
+"rubro": "Pan F"
+},
+"1126": {
+"nombre": "Arytza Mostaza a la Antigua  x",
+"kg": false,
+"rubro": "Dankon"
+},
+"1185": {
+"nombre": "Salsa Frutos Rojos vino Malbec",
+"kg": false,
+"rubro": "Otros"
+},
+"2701": {
+"nombre": "Sin TACC fideos al huevo",
+"kg": false,
+"rubro": "SIN TACC"
+},
+"4014": {
+"nombre": "Pepino Rolnik x 720grs",
+"kg": false,
+"rubro": "Otros"
+},
+"4023": {
+"nombre": "Budin Vainilla con frutas seca",
+"kg": false,
+"rubro": "Pan F"
+},
+"4033": {
+"nombre": "Arytza Mostaza Alemana x 360gr",
+"kg": false,
+"rubro": "Dankon"
+},
+"4051": {
+"nombre": "Palmeritas Panadería",
+"kg": false,
+"rubro": "Panaderia"
+},
+"4055": {
+"nombre": "Aceto Balsamico Reduccion San",
+"kg": false,
+"rubro": "Otros"
+},
+"28": {
+"nombre": "Sorrentinos Light de calabaza",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"61": {
+"nombre": "Pan de Salvado/mold",
+"kg": false,
+"rubro": "Pan F"
+},
+"112": {
+"nombre": "Sandwich Triplee Especial",
+"kg": false,
+"rubro": "Lunch"
+},
+"117": {
+"nombre": "Pure de Tomate X 520gr Arcor",
+"kg": false,
+"rubro": "Arcor"
+},
+"175": {
+"nombre": "Arcor Dulce de Leche Poncho Ne",
+"kg": false,
+"rubro": "Arcor"
+},
+"313": {
+"nombre": "Empanada Caprese",
+"kg": false,
+"rubro": "Pizzas"
+},
+"1033": {
+"nombre": "COCA COLA ZERO 500 ML",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1046": {
+"nombre": "SPRITE 500 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1102": {
+"nombre": "Ensalada Caesar con Pollo Cris",
+"kg": false,
+"rubro": "Verduras"
+},
+"1162": {
+"nombre": "Fideos Rellenos Ricota y Jamon",
+"kg": true,
+"rubro": "Fideos"
+},
+"2101": {
+"nombre": "Ravioles Pollo, Jamon, Carne y",
+"kg": false,
+"rubro": "Ravioles"
+},
+"2105": {
+"nombre": "Ravioles Ricota y Nuez",
+"kg": false,
+"rubro": "Ravioles"
+},
+"2107": {
+"nombre": "Ravioles Paz Calabaza",
+"kg": false,
+"rubro": "Ravioles"
+},
+"2151": {
+"nombre": "PP Caseros verdura y ricota",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2152": {
+"nombre": "PP Caseros ricota y jamon",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2153": {
+"nombre": "PP Caseros Pavita",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2154": {
+"nombre": "PP Caseros berenjena y muzzare",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2155": {
+"nombre": "PP Caseros boniato y queso azu",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2156": {
+"nombre": "PP Caseros cheddar y bondiola",
+"kg": false,
+"rubro": "Raviolones"
+},
+"2212": {
+"nombre": "Vermichelis",
+"kg": true,
+"rubro": "Fideos"
+},
+"2315": {
+"nombre": "Lasagna jamon/ricota/verdura c",
+"kg": false,
+"rubro": "Lasagna"
+},
+"2316": {
+"nombre": "Lasagna Pavita/Jamon/Champ con",
+"kg": false,
+"rubro": "Lasagna"
+},
+"2326": {
+"nombre": "PP Crepes Espinaca y muzzarela",
+"kg": false,
+"rubro": "Canelones"
+},
+"2327": {
+"nombre": "PP Crepes Jamon y muzzarella",
+"kg": true,
+"rubro": "Canelones"
+},
+"2405": {
+"nombre": "Ñoquis Precocidos de Papa",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2406": {
+"nombre": "Ñoquis Muzzarella y Ricota",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"2606": {
+"nombre": "Empanada Roquefort y Muzzarell",
+"kg": false,
+"rubro": "Pizzas"
+},
+"2651": {
+"nombre": "Tarta de Brocoli",
+"kg": false,
+"rubro": "Tartas"
+},
+"2652": {
+"nombre": "Tarta de Champignon",
+"kg": false,
+"rubro": "Tartas"
+},
+"4005": {
+"nombre": "Crema La Serenisima para Batir",
+"kg": false,
+"rubro": "Lacteo"
+},
+"4012": {
+"nombre": "Panzoti Calabaza Muzzarella y",
+"kg": false,
+"rubro": "Sorrentinos"
+},
+"4028": {
+"nombre": "Tomate Perita Entero La Campag",
+"kg": false,
+"rubro": "Arcor"
+},
+"4064": {
+"nombre": "Sorrentinos",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"4070": {
+"nombre": "Sandwich Triangular miga",
+"kg": false,
+"rubro": "Panaderia"
+},
+"274": {
+"nombre": "Dececco Penne Rigatti x 500grs",
+"kg": false,
+"rubro": "Dankon"
+},
+"332": {
+"nombre": "Medio Wrap de Pollo",
+"kg": false,
+"rubro": "Pollo"
+},
+"1161": {
+"nombre": "Fideos Rellenos Verdura y Rico",
+"kg": true,
+"rubro": "Fideos"
+},
+"2207": {
+"nombre": "Fideos Caseros con Crema",
+"kg": true,
+"rubro": "Fideos"
+},
+"2214": {
+"nombre": "Fideos Cordon de espinaca",
+"kg": true,
+"rubro": "Fideos"
+},
+"2309": {
+"nombre": "Sorrentinos Espinaca",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"3006": {
+"nombre": "Queso Provolone x kilo",
+"kg": true,
+"rubro": "Quesos"
+},
+"4054": {
+"nombre": "Wrap Cesar",
+"kg": false,
+"rubro": "Comida"
+},
+"58": {
+"nombre": "Crema Sancor  360cc",
+"kg": false,
+"rubro": "Lacteo"
+},
+"652": {
+"nombre": "Freddo Pinta Chocolate 320ml",
+"kg": false,
+"rubro": "Freddo"
+},
+"653": {
+"nombre": "Freddo Pinta Frutilla a la cre",
+"kg": false,
+"rubro": "Freddo"
+},
+"1018": {
+"nombre": "Salsa Lista Pizza La Campagnol",
+"kg": false,
+"rubro": "Arcor"
+},
+"1059": {
+"nombre": "Dibble Alfajor Maicena x 6 uni",
+"kg": false,
+"rubro": "DIBBLE"
+},
+"2109": {
+"nombre": "PP Ravioles Ricota Ahumada",
+"kg": false,
+"rubro": "Ravioles"
+},
+"2209": {
+"nombre": "Penetas",
+"kg": true,
+"rubro": "Fideos"
+},
+"2328": {
+"nombre": "PP Crepes Con Salsas Base x Kg",
+"kg": true,
+"rubro": "Canelones"
+},
+"2907": {
+"nombre": "Tapas copetin x24",
+"kg": false,
+"rubro": "Tartas"
+},
+"3105": {
+"nombre": "Dulce de Leche La Serenisima C",
+"kg": false,
+"rubro": "Lacteo"
+},
+"31": {
+"nombre": "Capelletis",
+"kg": true,
+"rubro": "Sorrentinos"
+},
+"3005": {
+"nombre": "Reggianito x kilo",
+"kg": true,
+"rubro": "Quesos"
+},
+"4013": {
+"nombre": "Pan Fresh Budin Chocolate",
+"kg": false,
+"rubro": "Pan F"
+},
+"4019": {
+"nombre": "Menu Estudiantil",
+"kg": false,
+"rubro": "Menu"
+},
+"62": {
+"nombre": "Pizzetas",
+"kg": false,
+"rubro": "Pan F"
+},
+"424": {
+"nombre": "Brownie Pan Fresh",
+"kg": false,
+"rubro": "Pan F"
+},
+"583": {
+"nombre": "Arcor Chocolate Aguila 70 Caca",
+"kg": false,
+"rubro": "Arcor"
+},
+"719": {
+"nombre": "Pampa Gourmet Barbacoa Premium",
+"kg": false,
+"rubro": "Dankon"
+},
+"1004": {
+"nombre": "Muecas barrita Manzana y Almen",
+"kg": false,
+"rubro": "Isla"
+},
+"1120": {
+"nombre": "Barrita CafÃ© Protein MERLIN B",
+"kg": false,
+"rubro": "Dankon"
+},
+"4041": {
+"nombre": "Ketchup Heinz sin azucar 369gr",
+"kg": false,
+"rubro": "Dankon"
+},
+"1034": {
+"nombre": "AQUARIUS POM 500 ml",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1041": {
+"nombre": "FreddoTableta x unidad Chocola",
+"kg": false,
+"rubro": "Freddo"
+},
+"1189": {
+"nombre": "Chips masa madre Almadre Tomat",
+"kg": false,
+"rubro": "Dankon"
+},
+"2757": {
+"nombre": "Ravioles Verdura sin sal",
+"kg": false,
+"rubro": "Ravioles"
+},
+"261": {
+"nombre": "Pesto Genoevese Recetas de Ent",
+"kg": false,
+"rubro": "Dankon"
+},
+"354": {
+"nombre": "Pasta Frola Cuadrado",
+"kg": false,
+"rubro": "Pasteleria"
+},
+"529": {
+"nombre": "Porotos Condimentados x 310 gr",
+"kg": false,
+"rubro": "Dankon"
+},
+"1022": {
+"nombre": "Molinillo Sal Rosa de MontaÃ±a",
+"kg": false,
+"rubro": "Dankon"
+},
+"4025": {
+"nombre": "Budin Banana y Nuez",
+"kg": false,
+"rubro": "Pan F"
+},
+"1038": {
+"nombre": "COCA COLA LIGHT 1,75 lt",
+"kg": false,
+"rubro": "Bebidas"
+},
+"1090": {
+"nombre": "El Aljibe alfajor bañado Blanc",
+"kg": false,
+"rubro": "El Aljibe - La Fontana"
+},
+"1100": {
+"nombre": "Wrap de Carne y Vegetales",
+"kg": false,
+"rubro": "Comida"
+},
+"2502": {
+"nombre": "Salsa Fileto sin sal Mediana",
+"kg": false,
+"rubro": "Salsas"
+},
+"2902": {
+"nombre": "Tapas Empanadas Integrales",
+"kg": false,
+"rubro": "Tartas"
+},
+"37": {
+"nombre": "Salsa Tabasco Original 60cc",
+"kg": false,
+"rubro": "Dankon"
+},
+"38": {
+"nombre": "Porcion Capellettis",
+"kg": false,
+"rubro": "Pasta Cocida"
+},
+"1088": {
+"nombre": "Arcor Mermelada BC Naranja x 3",
+"kg": false,
+"rubro": "Arcor"
+},
+"1142": {
+"nombre": "Freddo Tableta x unidad Frutil",
+"kg": false,
+"rubro": "Freddo"
+},
+"1143": {
+"nombre": "Freddo Tableta x unidad Menta",
+"kg": false,
+"rubro": "Freddo"
+},
+"1170": {
+"nombre": "Freddo Tableta x unidad Frambu",
+"kg": false,
+"rubro": "Freddo"
+},
+"2702": {
+"nombre": "Sin TACC Fideos de Espinaca",
+"kg": false,
+"rubro": "SIN TACC"
+},
+"4047": {
+"nombre": "AGUA SMART WATER  1LITRO",
+"kg": false,
+"rubro": "Bebidas"
+},
+"53": {
+"nombre": "Salsa de Soja Lee Kum Kee x 50",
+"kg": false,
+"rubro": "Dankon"
+},
+"148": {
+"nombre": "Arcor Tomate Perita Arcor x 40",
+"kg": false,
+"rubro": "Arcor"
+},
+"223": {
+"nombre": "Mostaza y Miel Pampa Gourmet 3",
+"kg": false,
+"rubro": "Dankon"
+},
+"307": {
+"nombre": "Capsulas Dolce Gusto",
+"kg": false,
+"rubro": "Nestle"
+},
+"528": {
+"nombre": "Pimiento Entero 310 grs Cristo",
+"kg": false,
+"rubro": "Otros"
+},
+"1020": {
+"nombre": "Molinillo al Ajillo Indo Deli",
+"kg": false,
+"rubro": "Otros"
+},
+"1112": {
+"nombre": "Aceitunas Rellenas con Anchoas",
+"kg": false,
+"rubro": "Dankon"
+},
+"1129": {
+"nombre": "Arytza Mostaza Ahumada x 360gr",
+"kg": false,
+"rubro": "Dankon"
+},
+"4011": {
+"nombre": "Panzotis Berenjena asada y Por",
+"kg": false,
+"rubro": "Sorrentinos"
+},
+"4067": {
+"nombre": "Salsa Spicy Mango Pampa Gourme",
+"kg": false,
+"rubro": "Dankon"
+},
+"2411": {
+"nombre": "Ñoquis Romanos con Salsas base",
+"kg": true,
+"rubro": "Ñoquis"
+},
+"520": {
+"nombre": "Pasta de Aceitunas Negras x 20",
+"kg": false,
+"rubro": "Dankon"
+},
+"585": {
+"nombre": "Arcor Chocolate Aguila 60% c/n",
+"kg": false,
+"rubro": "Arcor"
+},
+"1122": {
+"nombre": "Aceite de Oliva Extra Virgen D",
+"kg": false,
+"rubro": "Dankon"
+},
+"47": {
+"nombre": "Arytza Mostaza ClÃ¡sica x 360g",
+"kg": false,
+"rubro": "Dankon"
+},
+"207": {
+"nombre": "Brownie Bandeja Cuarto",
+"kg": false,
+"rubro": "Panaderia"
+},
+"1118": {
+"nombre": "Mostaza MAILLE Francia Origina",
+"kg": false,
+"rubro": "Otros"
+},
+"1160": {
+"nombre": "Fideos Rellenos Pavita y Jamon",
+"kg": true,
+"rubro": "Fideos"
+}
+}

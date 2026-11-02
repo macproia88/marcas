@@ -5,7 +5,11 @@
   "tickets": 746,
   "altas_club_100": 15.5,
   "sug_100": 62.2,
-  "sugestiva_pct_anterior": 0.1855
+  "sugestiva_pct_anterior": 0.1855,
+  "unidades_mes": 3310,
+  "kilos_mes": 596.5,
+  "sugestivas_mes": 730,
+  "sug_u100": 22.1
  },
  {
   "local": "Beccar",
@@ -13,7 +17,11 @@
   "tickets": 685,
   "altas_club_100": 17.4,
   "sug_100": 54.3,
-  "sugestiva_pct_anterior": 0.1597
+  "sugestiva_pct_anterior": 0.1597,
+  "unidades_mes": 2784,
+  "kilos_mes": 487.3,
+  "sugestivas_mes": 534,
+  "sug_u100": 19.2
  },
  {
   "local": "Beccar",
@@ -21,7 +29,11 @@
   "tickets": 1063,
   "altas_club_100": 18.3,
   "sug_100": 60.7,
-  "sugestiva_pct_anterior": 0.1803
+  "sugestiva_pct_anterior": 0.1803,
+  "unidades_mes": 4230,
+  "kilos_mes": 776.8,
+  "sugestivas_mes": 874,
+  "sug_u100": 20.7
  },
  {
   "local": "Beccar",
@@ -29,7 +41,11 @@
   "tickets": 423,
   "altas_club_100": 19.6,
   "sug_100": 52.0,
-  "sugestiva_pct_anterior": 0.1556
+  "sugestiva_pct_anterior": 0.1556,
+  "unidades_mes": 1600,
+  "kilos_mes": 324.3,
+  "sugestivas_mes": 306,
+  "sug_u100": 19.1
  },
  {
   "local": "Florida",
@@ -37,7 +53,11 @@
   "tickets": 277,
   "altas_club_100": 13.0,
   "sug_100": 49.5,
-  "sugestiva_pct_anterior": 0.1662
+  "sugestiva_pct_anterior": 0.1662,
+  "unidades_mes": 920,
+  "kilos_mes": 178.3,
+  "sugestivas_mes": 170,
+  "sug_u100": 18.5
  },
  {
   "local": "Florida",
@@ -45,7 +65,11 @@
   "tickets": 365,
   "altas_club_100": 9.0,
   "sug_100": 66.4,
-  "sugestiva_pct_anterior": 0.2065
+  "sugestiva_pct_anterior": 0.2065,
+  "unidades_mes": 1517,
+  "kilos_mes": 259.8,
+  "sugestivas_mes": 339,
+  "sug_u100": 22.3
  },
  {
   "local": "Florida",
@@ -53,7 +77,11 @@
   "tickets": 293,
   "altas_club_100": 9.6,
   "sug_100": 60.9,
-  "sugestiva_pct_anterior": 0.1793
+  "sugestiva_pct_anterior": 0.1793,
+  "unidades_mes": 1025,
+  "kilos_mes": 181.8,
+  "sugestivas_mes": 221,
+  "sug_u100": 21.6
  },
  {
   "local": "Florida",
@@ -61,7 +89,11 @@
   "tickets": 801,
   "altas_club_100": 6.4,
   "sug_100": 57.5,
-  "sugestiva_pct_anterior": 0.1849
+  "sugestiva_pct_anterior": 0.1849,
+  "unidades_mes": 3138,
+  "kilos_mes": 516.4,
+  "sugestivas_mes": 654,
+  "sug_u100": 20.8
  },
  {
   "local": "Florida",
@@ -69,7 +101,11 @@
   "tickets": 425,
   "altas_club_100": 10.6,
   "sug_100": 47.9,
-  "sugestiva_pct_anterior": 0.1627
+  "sugestiva_pct_anterior": 0.1627,
+  "unidades_mes": 1471,
+  "kilos_mes": 255.1,
+  "sugestivas_mes": 282,
+  "sug_u100": 19.2
  },
  {
   "local": "Florida",
@@ -77,7 +113,11 @@
   "tickets": 201,
   "altas_club_100": 15.9,
   "sug_100": 57.6,
-  "sugestiva_pct_anterior": 0.1784
+  "sugestiva_pct_anterior": 0.1784,
+  "unidades_mes": 1297,
+  "kilos_mes": 253.1,
+  "sugestivas_mes": 257,
+  "sug_u100": 19.8
  },
  {
   "local": "Florida",
@@ -85,7 +125,11 @@
   "tickets": 298,
   "altas_club_100": 10.7,
   "sug_100": 33.5,
-  "sugestiva_pct_anterior": 0.1326
+  "sugestiva_pct_anterior": 0.1326,
+  "unidades_mes": 907,
+  "kilos_mes": 173.6,
+  "sugestivas_mes": 139,
+  "sug_u100": 15.3
  },
  {
   "local": "Paz",
@@ -93,7 +137,11 @@
   "tickets": 329,
   "altas_club_100": 8.5,
   "sug_100": 66.6,
-  "sugestiva_pct_anterior": 0.1747
+  "sugestiva_pct_anterior": 0.1747,
+  "unidades_mes": 1497,
+  "kilos_mes": 219.2,
+  "sugestivas_mes": 292,
+  "sug_u100": 19.5
  },
  {
   "local": "Paz",
@@ -101,7 +149,11 @@
   "tickets": 374,
   "altas_club_100": 5.9,
   "sug_100": 56.5,
-  "sugestiva_pct_anterior": 0.1593
+  "sugestiva_pct_anterior": 0.1593,
+  "unidades_mes": 1509,
+  "kilos_mes": 206.8,
+  "sugestivas_mes": 272,
+  "sug_u100": 18.0
  },
  {
   "local": "Paz",
@@ -109,7 +161,11 @@
   "tickets": 542,
   "altas_club_100": 12.5,
   "sug_100": 57.9,
-  "sugestiva_pct_anterior": 0.1506
+  "sugestiva_pct_anterior": 0.1506,
+  "unidades_mes": 2457,
+  "kilos_mes": 355.1,
+  "sugestivas_mes": 418,
+  "sug_u100": 17.0
  },
  {
   "local": "Paz",
@@ -117,7 +173,11 @@
   "tickets": 754,
   "altas_club_100": 10.5,
   "sug_100": 52.7,
-  "sugestiva_pct_anterior": 0.1471
+  "sugestiva_pct_anterior": 0.1471,
+  "unidades_mes": 3257,
+  "kilos_mes": 536.6,
+  "sugestivas_mes": 540,
+  "sug_u100": 16.6
  },
  {
   "local": "Paz",
@@ -125,7 +185,11 @@
   "tickets": 863,
   "altas_club_100": 15.2,
   "sug_100": 58.5,
-  "sugestiva_pct_anterior": 0.1546
+  "sugestiva_pct_anterior": 0.1546,
+  "unidades_mes": 2859,
+  "kilos_mes": 408.1,
+  "sugestivas_mes": 499,
+  "sug_u100": 17.5
  },
  {
   "local": "Paz",
@@ -133,6 +197,10 @@
   "tickets": 573,
   "altas_club_100": 5.4,
   "sug_100": 50.1,
-  "sugestiva_pct_anterior": 0.1507
+  "sugestiva_pct_anterior": 0.1507,
+  "unidades_mes": 2460,
+  "kilos_mes": 331.3,
+  "sugestivas_mes": 437,
+  "sug_u100": 17.8
  }
 ]

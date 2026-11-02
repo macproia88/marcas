@@ -109,7 +109,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Puntaje de 0 a 100: en cada indicador se compara contra la mejor de los 3 locales (la mejor saca 100) y se promedian los tres. Solo personas con 200 tickets o más. La encargada no compite acá, tiene su premio aparte. Tickets y club: 1 al 22/10. Sugestivas cada 100 clientes: 1 al 25/10 (venta por empleado de Maxi Rest ÷ tickets de cada una).</p>
+    <p class="note">Puntaje de 0 a 100: en cada indicador se compara contra la mejor de los 3 locales (la mejor saca 100) y se promedian los tres. Solo personas con 200 tickets o más. La encargada no compite acá, tiene su premio aparte. Tickets y club: 1 al 22/10. Sugestivas cada 100 clientes: 1 al 25/10 (venta por empleado de Maxi Rest ÷ tickets de cada una). Las 3 columnas de la derecha (unidades, kilos y sugestivas cada 100 unidades) son del 1 al 31/10, de la venta por artículo por vendedora de Maxi Rest, y todavía no suman al puntaje: se definen en la reunión.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -126,6 +126,9 @@
           <th data-field="altas_club_100">Altas club c/100</th>
           <th data-field="tickets">Tickets</th>
           <th data-field="puntaje">Puntaje</th>
+          <th data-field="unidades_mes">Unidades (oct. completo)</th>
+          <th data-field="kilos_mes">Kilos</th>
+          <th data-field="sug_u100">Sugestivas c/100 unidades</th>
         </tr></thead>
         <tbody data-draw="t-ven"></tbody>
       </table>
@@ -287,6 +290,7 @@ dash.calc('premios', {
       const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (r.puntaje * 0.6) + 'px';
       const t = document.createElement('span'); t.textContent = String(r.puntaje);
       td.append(bar, t); tr.appendChild(td);
+      [r.unidades_mes == null ? '—' : num(Number(r.unidades_mes)), r.kilos_mes == null ? '—' : one(Number(r.kilos_mes)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100))].forEach((t) => { const c = document.createElement('td'); c.textContent = t; tr.appendChild(c); });
       tb.appendChild(tr);
     });
   });

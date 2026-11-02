@@ -224,7 +224,7 @@ def main():
     armar('apps.html', 'Tablero de apps', 'PedidosYa y Rappi · los 3 locales',
           dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DA, textos=ta, liq=cierres_apps(DA)), 'paginaApps();')
     armar('mostrador.html', 'Tablero de mostrador', 'Clientes que compran en el local · los 3 locales',
-          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, top_rango=top_rango, clubm=cargar('club_mensual.json'), club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
+          dict(meses=meses, mes=defecto, men=MEN, dias=dias, det=DM, top=top, top_rango=top_rango, clubm=cargar('club_mensual.json'), kgb=cargar('kg_bienvenida.json'), club={'2026-10': CL}, textos=tm), 'paginaMostrador();')
 
 
 if __name__ == '__main__':

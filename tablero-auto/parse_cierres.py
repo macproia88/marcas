@@ -62,7 +62,7 @@ def articulos(b):
         if r:
             rubro = r.group(1); continue
         # El nombre ocupa 17 letras: si es largo queda pegado a las unidades ("Empanada de Carne28.0 78400.00")
-        m = (re.match(r'\s*(\d+) (.{17})' + NUM + r'\s+' + NUM + r'\s*$', line)
+        m = (re.match(r'\s*(\d+) (.{17})(-?\d+\.\d+)\s+' + NUM + r'\s*$', line)  # pegado: las unidades siempre traen decimal (28.0)
              or re.match(r'\s*(\d+)\s+(.+?)\s+' + NUM + r'\s+' + NUM + r'\s*$', line))
         if m and not line.strip().startswith('TOTAL'):
             out.append([int(m.group(1)), m.group(2).strip(), rubro, float(m.group(3)), float(m.group(4))])

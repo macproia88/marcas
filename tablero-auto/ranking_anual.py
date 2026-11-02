@@ -63,7 +63,7 @@ KPIS = [  # clave, nombre, formato, tipo, explicación
 
 
 MENOS = {'chicos'}
-FALTA = {'grandes': 'no está la venta detallada de septiembre en el cerebro', 'chicos': 'no está la venta detallada de septiembre en el cerebro'}  # indicadores donde menos es mejor
+FALTA = {}  # indicadores donde menos es mejor
 
 
 def armar():
@@ -72,7 +72,7 @@ def armar():
            'Fuentes: venta, tickets y pedidos por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja); apps: estados de cuenta de PedidosYa y liquidaciones de Rappi (octubre de PedidosYa con el detalle de pedidos; octubre de Rappi estimado). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
     mm, KM = datos_mostrador()
     pagina('ranking-mostrador.html', 'Ranking de mostrador', 'solo mostrador (sin apps)', KPIS_M, mm, KM,
-           'Fuentes: venta y tickets de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja; mostrador = venta total menos el código 202 de apps). Tamaño de los tickets: venta detallada de Maxi Rest (enero a agosto y 1 al 25 de octubre; septiembre no está en el cerebro). Sugestivas, unidades y kilos: venta por artículo de Maxi Rest (desde octubre; desde noviembre se carga sola con los cierres de caja). Sugestivas, unidades y kilos de septiembre: informe de unidades por artículo de Maxi Rest (Septiembre_completo, solo cantidades). Club: reporte de ventas de ALAX desde julio (cuánto más gasta el socio y altas: octubre). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
+           'Fuentes: venta y tickets de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja; mostrador = venta total menos el código 202 de apps). Tamaño de los tickets: venta detallada de Maxi Rest (enero a octubre; en Beccar falta el 6 de septiembre en el archivo de Maxi Rest). Sugestivas, unidades y kilos: venta por artículo de Maxi Rest (desde octubre; desde noviembre se carga sola con los cierres de caja). Sugestivas, unidades y kilos de septiembre: informe de unidades por artículo de Maxi Rest (Septiembre_completo, solo cantidades). Club: reporte de ventas de ALAX desde julio (cuánto más gasta el socio y altas: octubre). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
 
 
 def pagina(archivo, titulo, alcance, KPIS, meses, K, fuentes):

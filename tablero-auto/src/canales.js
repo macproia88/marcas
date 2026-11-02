@@ -297,6 +297,6 @@ function paginaMostrador() {
       cc.appendChild(el('h3', { text: 'Venta del club (de cada $100 de mostrador)', class: 'sub' }));
       table(cc, hd, ms.map((m) => [MESC[+m.slice(5) - 1]].concat(cols.map((L) => pf(g(m, L, 'v'))))));
     }
-    document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest hasta agosto y del 1 al 25/10; desde el 26/10, cierres de caja), venta por artículo de Maxi Rest (informe de unidades y, día a día, los cierres de caja) y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';
+    document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest de enero al 25/10; desde el 26/10, cierres de caja), venta por artículo de Maxi Rest (informe de unidades y, día a día, los cierres de caja) y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';
   });
 }

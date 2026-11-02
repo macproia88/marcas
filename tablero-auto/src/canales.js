@@ -36,9 +36,9 @@ function vbars(c, cats, series, fmt, opts = {}) {
   const y = d3.scaleLinear().domain([0, mx * 1.12]).nice().range([H - m.b, m.t]);
   const s = d3.select(c).append('svg').attr('viewBox', `0 0 ${W} ${H}`);
   s.append('g').attr('class', 'axis').attr('transform', `translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat((v) => fmt(v)));
-  const step = Math.ceil(cats.length / Math.max(1, Math.floor((W - m.l) / 34)));
+  const step = opts.allTicks ? 1 : Math.ceil(cats.length / Math.max(1, Math.floor((W - m.l) / 34)));
   s.append('g').attr('class', 'axis').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickFormat((i) => (i % step ? '' : cats[i])).tickSizeOuter(0))
-    .selectAll('text').each(function (i) { const t = d3.select(this); const parts = String(cats[i]).split('\n'); if (i % step) return; t.text(null); parts.forEach((p, k) => t.append('tspan').attr('x', 0).attr('dy', k ? '1.1em' : '0.8em').text(p)); });
+    .selectAll('text').style('font-size', opts.allTicks && (W - m.l) / cats.length < 44 ? '9px' : null).each(function (i) { const t = d3.select(this); const parts = String(cats[i]).split('\n'); if (i % step) return; t.text(null); parts.forEach((p, k) => t.append('tspan').attr('x', 0).attr('dy', k ? '1.1em' : '0.8em').text(p)); });
   const base = cats.map(() => 0), bw = opts.prev ? x.bandwidth() / 2 : x.bandwidth();
   if (opts.prev) s.append('g').selectAll('rect').data(opts.prev.values).join('rect').attr('x', (_, i) => x(i) + bw).attr('width', bw)
     .attr('y', (v) => y(v || 0)).attr('height', (v) => y(0) - y(v || 0)).attr('fill', opts.prev.color)
@@ -261,7 +261,7 @@ function paginaMostrador() {
       if (m25.some((v) => v)) {
         const cm = card('c-mm25', 'Clientes de mostrador mes a mes contra 2025', 'Tickets de mostrador de cada mes (color) y del mismo día de la semana de 2025 (gris), solo los días que tienen dato de los dos años.' + (LOCAL === 'Todos' ? ' Los 3 sin Paz: Paz no tiene 2025 antes del 7/10/2025 (elegí Paz para ver octubre).' : '') + ' Al pie, la variación.'); S.appendChild(cm);
         const cats = meses.map((m, i) => MESN[+m.slice(5) - 1].slice(0, 3) + '\n' + (m25[i] ? ((m26[i] / m25[i] - 1 >= 0 ? '+' : '') + pf(m26[i] / m25[i] - 1, 1)) : ''));
-        vbars(cm, cats, [{ name: '2026', color: COL[LOCAL] || COL.Florida, values: m26.map((v) => v || 0) }], nf, { labels: false, h: 280, prev: { name: '2025', color: COL.y25, values: m25 } });
+        vbars(cm, cats, [{ name: '2026', color: COL[LOCAL] || COL.Florida, values: m26.map((v) => v || 0) }], nf, { labels: false, allTicks: true, h: 280, prev: { name: '2025', color: COL.y25, values: m25 } });
       }
     }
     if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, y club salen de la venta detallada de Maxi Rest y de ALAX: aparecen cuando se cargan los archivos del mes.');

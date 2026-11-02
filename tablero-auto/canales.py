@@ -94,21 +94,22 @@ def textos_mostrador(Mo, MEN, TOP, CL, mes):
     for L in ['Todos'] + LOC:
         sel = (lambda r: True) if L == 'Todos' else (lambda r, L=L: r['local'] == L)
         t = []
-        pk = picos(Mo['horas'], 'tickets', L)
-        t.append(f"Horas pico: {rango_horas(pk)}. El mediodía concentra la mayor parte de los clientes.")
+        if [r for r in Mo['horas'] if sel(r)]:
+            pk = picos(Mo['horas'], 'tickets', L)
+            t.append(f"Horas pico: {rango_horas(pk)}. El mediodía concentra la mayor parte de los clientes.")
         co = collections.Counter(); tt = 0
         for r in Mo['cobro']:
             if sel(r): co[r['forma']] += r['tickets']; tt += r['tickets']
-        t.append('Cómo paga: ' + ', '.join(f"{k.lower() if k not in ('MODO', 'Mercado Pago') else k} {P(v/tt)}" for k, v in co.most_common(4)) + '.')
+        if tt: t.append('Cómo paga: ' + ', '.join(f"{k.lower() if k not in ('MODO', 'Mercado Pago') else k} {P(v/tt)}" for k, v in co.most_common(4)) + '.')
         ban = [r for r in Mo['bandas'] if sel(r)]
         tp = sum(r['tickets'] for r in ban); tv = sum(r['venta'] for r in ban)
         alto = [r for r in ban if r['orden'] >= 3]
         chico = [r for r in ban if r['orden'] == 0]
-        t.append(f"Los tickets de más de $30.000 son {P(sum(r['tickets'] for r in alto)/tp)} de los clientes pero {P(sum(r['venta'] for r in alto)/tv)} de la venta. Los de hasta $10.000 son {P(sum(r['tickets'] for r in chico)/tp)}: ahí está la venta sugestiva.")
+        if tp: t.append(f"Los tickets de más de $30.000 son {P(sum(r['tickets'] for r in alto)/tp)} de los clientes pero {P(sum(r['venta'] for r in alto)/tv)} de la venta. Los de hasta $10.000 son {P(sum(r['tickets'] for r in chico)/tp)}: ahí está la venta sugestiva.")
         top = collections.Counter()
         for r in TOP:
             if sel(r) and r['venta'] > 0: top[r['articulo'].strip()] += r['venta']
-        t.append('Lo que más se vende en pesos: ' + ', '.join(p.lower() for p, _ in top.most_common(4)) + ' (fideos incluye el kilo de regalo del club).')
+        if top: t.append('Lo que más se vende en pesos: ' + ', '.join(p.lower() for p, _ in top.most_common(4)) + ' (fideos incluye el kilo de regalo del club).')
         cl = [r for r in CL if sel(r)]
         if cl:
             vc = sum(r['venta_club'] for r in cl); vm = sum(r['venta_mostrador'] for r in cl)
@@ -200,6 +201,47 @@ def cierres_apps(DA):
     return sorted(out, key=lambda r: (r['mes'], r['local'], r['app']))
 
 
+COBRO_CIERRE = {'EFECTIVO': 'Efectivo', 'VISA DEBITO': 'Débito', 'Mercado Pago': 'Mercado Pago', 'MODO': 'MODO',
+                'VISA': 'Crédito', 'MASTER': 'Crédito', 'AMEX': 'Crédito', 'CABAL': 'Crédito'}
+APPS_CIERRE = ('PEDIDOS YA', 'RAPPI', 'MP DELIVERY', 'MP delivery', 'Pago Online')
+
+
+def completar_con_cierres(DM, V):
+    """Los días que la venta detallada de Maxi Rest todavía no cubre se completan con los cierres de turno (mails de fin de turno):
+    tickets y venta de mostrador del día (ventas_diarias.json, que ya sale de los cierres) y forma de cobro (VENTAS POR FORMA DE COBRO
+    del cierre, sin las formas de apps). El tamaño del ticket y los horarios no vienen en el cierre: quedan hasta el último día de la detallada
+    (campo hasta_det)."""
+    import collections, articulos
+    C = cargar('cierres.json')
+    cob = collections.defaultdict(lambda: collections.defaultdict(lambda: [0, 0.0]))
+    for c in C:
+        L = articulos.LOCAL.get(c['sucursal'].strip().lower())
+        if not L: continue
+        for f, (imp, n) in c['formas'].items():
+            if f.startswith(APPS_CIERRE): continue
+            k = COBRO_CIERRE.get(f, 'Otros'); a = cob[(L, c['fecha'])][k]; a[0] += n; a[1] += imp
+    dias = collections.defaultdict(list)
+    for x in V:
+        if x['fecha'] >= '2026-01-01': dias[(x['local'], x['fecha'][:7])].append(x)
+    for (L, mes), xs in dias.items():
+        Mo = DM.setdefault(mes, {'mes': mes, 'horas': [], 'bandas': [], 'cobro': [], 'resumen': []})
+        r = next((q for q in Mo['resumen'] if q['local'] == L), None)
+        hasta = r['hasta'] if r else f'{mes}-00'
+        nuevos = sorted((x for x in xs if x['fecha'] > hasta and (L, x['fecha']) in cob), key=lambda x: x['fecha'])
+        if not nuevos: continue
+        if r is None:
+            r = dict(local=L, desde=nuevos[0]['fecha'], hasta=hasta, tickets=0, venta=0, ticket=0); Mo['resumen'].append(r)
+        r.setdefault('hasta_det', None if hasta.endswith('-00') else hasta)
+        for x in nuevos:
+            r['tickets'] += int(x['tickets_mostrador'] or 0); r['venta'] += round(x['venta_mostrador'] or 0)
+            for k, (n, imp) in cob[(L, x['fecha'])].items():
+                q = next((c for c in Mo['cobro'] if c['local'] == L and c['forma'] == k), None)
+                if q is None: q = dict(local=L, forma=k, tickets=0, venta=0); Mo['cobro'].append(q)
+                q['tickets'] += n; q['venta'] += round(imp)
+        r['hasta'] = nuevos[-1]['fecha']; r['ticket'] = round(r['venta'] / r['tickets']) if r['tickets'] else 0
+    return DM
+
+
 def main():
     V = cargar('ventas_diarias.json')
     ult = max(x['fecha'] for x in V); mes_max = ult[:7]
@@ -207,7 +249,7 @@ def main():
     meses = sorted({r['mes'] for r in MEN if r['mes'] >= '2026-01'})
     dias_mes = {r['local']: r['dias'] for r in MEN if r['mes'] == mes_max}
     defecto = mes_max if min(dias_mes.values() or [0]) >= 7 else meses[-2]
-    DA = cargar('apps_det.json'); DM = cargar('mostrador_det.json')
+    DA = cargar('apps_det.json'); DM = completar_con_cierres(cargar('mostrador_det.json'), V)
     import articulos
     ART = articulos.armar(); CL = cargar('club_local.json')
     dias = [dict(fecha=x['fecha'], local=x['local'], tickets=x['tickets_mostrador'], tickets_2025=x.get('tickets_mostrador_2025'),

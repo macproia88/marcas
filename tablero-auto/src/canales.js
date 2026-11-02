@@ -248,19 +248,22 @@ function paginaMostrador() {
       { labels: false, line: t25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.tickets_2025 == null) ? null : sum(r, 'tickets_2025'); }) } : null });
     if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, y club salen de la venta detallada de Maxi Rest y de ALAX: aparecen cuando se cargan los archivos del mes.');
     else {
-      const hasta = Mo.resumen.map((r) => r.hasta).sort()[0];
-      c = card('c-hora', 'A qué hora y qué día vienen', `Clientes promedio en un día, por franja de una hora (venta detallada de Maxi Rest hasta el ${hasta.slice(8)}/${hasta.slice(5, 7)}).`); S.appendChild(c);
-      heat(c, sel(Mo.horas), 'tickets', (v) => nf(v));
+      const hasta = Mo.resumen.map((r) => r.hasta_det === undefined ? r.hasta : r.hasta_det).filter(Boolean).sort()[0], hastaC = Mo.resumen.map((r) => r.hasta).sort()[0];
+      const fd = (d) => `${+d.slice(8)}/${+d.slice(5, 7)}`;
+      if (Mo.horas.length) { c = card('c-hora', 'A qué hora y qué día vienen', `Clientes promedio en un día, por franja de una hora (venta detallada de Maxi Rest hasta el ${fd(hasta)}: el cierre de turno no trae la hora de cada ticket).`); S.appendChild(c);
+        heat(c, sel(Mo.horas), 'tickets', (v) => nf(v)); }
       const g = el('div', { class: 'grid2' }); S.appendChild(g);
-      c = card('c-cobro', 'Cómo paga', 'De cada 100 tickets de mostrador.'); const cb = card('c-bandas', 'Cuánto gasta cada cliente', 'Tickets según el total. Al lado: % de los clientes · % de la venta.'); g.append(c, cb);
+      const fuenteC = hasta && hasta < hastaC ? ` Venta detallada de Maxi Rest hasta el ${fd(hasta)} y cierres de turno hasta el ${fd(hastaC)} (en el cierre, un pago combinado cuenta una vez por cada forma).` : (!hasta ? ` Cierres de turno de Maxi Rest hasta el ${fd(hastaC)} (un pago combinado cuenta una vez por cada forma).` : '');
+      c = card('c-cobro', 'Cómo paga', 'De cada 100 tickets de mostrador.' + fuenteC); const cb = card('c-bandas', 'Cuánto gasta cada cliente', `Tickets según el total. Al lado: % de los clientes · % de la venta (venta detallada de Maxi Rest${hasta ? ' hasta el ' + fd(hasta) : ''}: el cierre de turno no trae el total de cada ticket).`); g.append(c); if (Mo.bandas.length) g.append(cb);
       const co = {}; sel(Mo.cobro).forEach((r) => { co[r.forma] = (co[r.forma] || 0) + r.tickets; }); const tco = Object.values(co).reduce((a, b) => a + b, 0);
       hbars(c, Object.entries(co).sort((a, b) => b[1] - a[1]).map(([k, v]) => ({ k, v: v / tco })), (v) => pf(v), COL.Beccar);
       const bd = {}; sel(Mo.bandas).forEach((r) => { bd[r.orden] = bd[r.orden] || { k: r.banda, v: 0, venta: 0 }; bd[r.orden].v += r.tickets; bd[r.orden].venta += r.venta; });
       const tv = Object.values(bd).reduce((s, b) => s + b.venta, 0), tp = Object.values(bd).reduce((s, b) => s + b.v, 0);
       hbars(cb, Object.keys(bd).sort().map((k) => ({ k: bd[k].k, v: bd[k].v, t: `${pf(bd[k].v / tp)} de los clientes · ${pf(bd[k].venta / tv)} de la venta`, ts: `${pf(bd[k].v / tp)} · ${pf(bd[k].venta / tv)}` })), nf, COL.Paz);
       const Mp = D.det[(+MES.slice(0, 4) - 1) + MES.slice(4)];
-      if (Mp) {
-        c = card('c-vs25', 'Contra el mismo mes del año pasado', `Venta detallada de Maxi Rest de ${mesNom(MES)} y del mismo mes de ${+MES.slice(0, 4) - 1}, solo mostrador. El ticket en pesos no descuenta la inflación. Efectivo: de cada 100 tickets, cuántos se pagaron solo en efectivo.`); S.appendChild(c);
+      const nd = Math.min(...sel(Mo.resumen).map((r) => +r.hasta.slice(8) - +r.desde.slice(8) + 1));
+      if (Mp && nd >= 7) {
+        c = card('c-vs25', 'Contra el mismo mes del año pasado', `${mesNom(MES)} (venta detallada de Maxi Rest y cierres de turno) contra el mismo mes de ${+MES.slice(0, 4) - 1} (venta detallada), solo mostrador. El ticket en pesos no descuenta la inflación. Efectivo: de cada 100 tickets, cuántos se pagaron solo en efectivo.`); S.appendChild(c);
         const fs = sel(Mo.resumen).map((r) => { const d1 = +r.desde.slice(8), d2 = +r.hasta.slice(8);
           const ds = (Mp.dias || []).filter((x) => x.local === r.local && x.dia >= d1 && x.dia <= d2);
           const e1t = Mo.cobro.filter((x) => x.local === r.local), e1 = e1t.filter((x) => x.forma === 'Efectivo').reduce((s, x) => s + x.tickets, 0) / e1t.reduce((s, x) => s + x.tickets, 0);
@@ -270,7 +273,7 @@ function paginaMostrador() {
           return [r.local, nf(c0), nf(c1), { t: (dt >= 0 ? '+' : '') + pf(dt), cls: dt >= 0 ? 'good' : 'bad' }, '$' + nf(k0), '$' + nf(r.ticket), { t: (dk >= 0 ? '+' : '') + pf(dk), cls: dk >= 0 ? 'good' : 'bad' }, pf(e0), pf(e1)]; });
         if (window.innerWidth < 640) table(c, ['Local', 'Clientes/día', 'Var.', 'Ticket', 'Var.'], fs.map((f) => [f[0], f[2], f[3], f[5], f[6]]));
         else table(c, ['Local', 'Clientes por día año pasado', 'Clientes por día', 'Variación', 'Ticket año pasado', 'Ticket', 'Variación', 'Efectivo año pasado', 'Efectivo'], fs);
-        const r0 = sel(Mo.resumen)[0]; if (r0) c.appendChild(el('p', { class: 'note', text: `Mismos días del calendario: del ${+r0.desde.slice(8)} al ${+r0.hasta.slice(8)} de cada año. Clientes por día = tickets de esos días dividido los días con venta. El tablero principal compara contra el mismo día de la semana del año pasado, por eso los porcentajes pueden diferir un poco.` }));
+        const r0 = sel(Mo.resumen)[0]; if (r0) c.appendChild(el('p', { class: 'note', text: `Mismos días del calendario: del ${+r0.desde.slice(8)} al ${+r0.hasta.slice(8)} de cada año (este año, venta detallada de Maxi Rest y, después, cierres de turno). Clientes por día = tickets de esos días dividido los días con venta. El tablero principal compara contra el mismo día de la semana del año pasado, por eso los porcentajes pueden diferir un poco.` }));
       }
       if (CL) {
         c = card('c-club', 'Socio contra no socio', 'Mes completo. Compras con DNI del reporte de ALAX contra los tickets de mostrador.'); S.appendChild(c);

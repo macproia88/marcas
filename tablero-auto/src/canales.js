@@ -286,6 +286,16 @@ function paginaMostrador() {
       hbars(ck, Object.entries(qk).sort((a, b) => b[1] - a[1]).slice(0, 15).map(([k, v]) => ({ k, v, t: `${nf(v / tkm * 100, 1)} kg cada 100`, ts: `· ${nf(v / tkm * 100, 1)}` })), (v) => nf(v) + ' kg', COL.Florida);
     }
     anio(S, 'tickets', 'venta_mostrador', 'Clientes');
+    if (D.clubm && D.clubm.length) {
+      const cc = card('c-clubm', 'El club mes a mes', 'Desde julio, cuando arrancó el club. Clientes = de cada 100 tickets de mostrador, cuántos compraron con DNI. Venta = de cada $100 de mostrador, cuántos son de socios. Reporte de ventas de ALAX contra la venta de mostrador de Maxi Rest.'); S.appendChild(cc);
+      const ms = [...new Set(D.clubm.map((r) => r.mes))].sort(), LL = LOCAL === 'Todos' ? LOCS : [LOCAL];
+      const g = (m, L, k) => { const rs = D.clubm.filter((r) => r.mes === m && (L === 'Todos' ? true : r.local === L)); const a = sum(rs, k === 'c' ? 'compras_dni' : 'venta_club'), b = sum(rs, k === 'c' ? 'tickets' : 'venta_mostrador'); return b ? a / b : null; };
+      const cols = LL.length > 1 ? LL.concat(['Todos']) : LL, hd = ['Mes'].concat(cols.map((L) => (L === 'Todos' ? 'Los 3' : L)));
+      cc.appendChild(el('h3', { text: 'Clientes del club (de cada 100 tickets)', class: 'sub' }));
+      table(cc, hd, ms.map((m) => [MESC[+m.slice(5) - 1]].concat(cols.map((L) => pf(g(m, L, 'c'))))));
+      cc.appendChild(el('h3', { text: 'Venta del club (de cada $100 de mostrador)', class: 'sub' }));
+      table(cc, hd, ms.map((m) => [MESC[+m.slice(5) - 1]].concat(cols.map((L) => pf(g(m, L, 'v'))))));
+    }
     document.getElementById('pie').textContent = 'Fuentes: tickets y venta de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest hasta agosto y del 1 al 25/10; desde el 26/10, cierres de caja), venta por artículo de Maxi Rest (informe de unidades y, día a día, los cierres de caja) y reporte de ventas de ALAX. Mostrador = venta total menos apps (código 202). * mes en curso.';
   });
 }

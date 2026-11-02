@@ -62,7 +62,8 @@ KPIS = [  # clave, nombre, formato, tipo, explicación
 ]
 
 
-MENOS = {'chicos'}  # indicadores donde menos es mejor
+MENOS = {'chicos'}
+FALTA = {'grandes': 'no está la venta detallada de septiembre en el cerebro', 'chicos': 'no está la venta detallada de septiembre en el cerebro'}  # indicadores donde menos es mejor
 
 
 def armar():
@@ -71,7 +72,7 @@ def armar():
            'Fuentes: venta, tickets y pedidos por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja); apps: estados de cuenta de PedidosYa y liquidaciones de Rappi (octubre de PedidosYa con el detalle de pedidos; octubre de Rappi estimado). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
     mm, KM = datos_mostrador()
     pagina('ranking-mostrador.html', 'Ranking de mostrador', 'solo mostrador (sin apps)', KPIS_M, mm, KM,
-           'Fuentes: venta y tickets de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja; mostrador = venta total menos el código 202 de apps). Tamaño de los tickets: venta detallada de Maxi Rest (enero a agosto y 1 al 25 de octubre; septiembre no está en el cerebro). Sugestivas, unidades y kilos: venta por artículo de Maxi Rest (desde octubre; desde noviembre se carga sola con los cierres de caja). Club y clientes con DNI: reportes de ALAX (octubre). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
+           'Fuentes: venta y tickets de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja; mostrador = venta total menos el código 202 de apps). Tamaño de los tickets: venta detallada de Maxi Rest (enero a agosto y 1 al 25 de octubre; septiembre no está en el cerebro). Sugestivas, unidades y kilos: venta por artículo de Maxi Rest (desde octubre; desde noviembre se carga sola con los cierres de caja). Sugestivas, unidades y kilos de septiembre: informe de unidades por artículo de Maxi Rest (Septiembre_completo, solo cantidades). Club: reporte de ventas de ALAX desde julio (cuánto más gasta el socio y altas: octubre). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
 
 
 def pagina(archivo, titulo, alcance, KPIS, meses, K, fuentes):
@@ -95,11 +96,13 @@ def pagina(archivo, titulo, alcance, KPIS, meses, K, fuentes):
         if not g: continue
         cnt = {L: sum(1 for x in g.values() if x == L) for L in LOC}
         filas = ''
-        for mes in meses:
+        con = sorted(g); rango = [x for x in meses if con and con[0] <= x <= con[-1]]
+        for mes in rango:
             vals = K.get(k, {}).get(mes)
-            if not vals or len(vals) < 3: continue
+            if mes not in g or not vals or len(vals) < 3:
+                filas += f'<tr><td>{MESN[int(mes[5:]) - 1]}</td><td colspan="4" class="sd">Sin dato: {html.escape(FALTA.get(k, "no está el archivo de ese mes en el cerebro"))}</td></tr>'
+                continue
             w = g[mes]
-            if mes not in g: continue
             filas += f'<tr><td>{MESN[int(mes[5:]) - 1]}</td>' + ''.join(
                 f'<td class="n{" win" if L == w else ""}">{fmt(vals[L])}</td>' for L in LOC) + f'<td>{chip(w)}</td></tr>'
         resumen = ' · '.join(f'{L} {cnt[L]}' for L in sorted(LOC, key=lambda L: -cnt[L]))
@@ -116,7 +119,7 @@ def pagina(archivo, titulo, alcance, KPIS, meses, K, fuentes):
 table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left}th{font-size:12px;color:var(--muted)}
 .n{text-align:right;font-variant-numeric:tabular-nums}td.win{background:var(--win);font-weight:700;color:var(--ok)}.tw{overflow-x:auto}
 .chip{color:#fff;border-radius:999px;padding:2px 9px;font-size:12px;white-space:nowrap}.tag{font-size:11px;font-weight:600;border-radius:4px;padding:1px 6px;vertical-align:2px;border:1px solid var(--line);color:var(--muted)}
-.tag.gestión{color:var(--ok);border-color:var(--ok)}
+.sd{color:var(--muted);font-style:italic}.tag.gestión{color:var(--ok);border-color:var(--ok)}
 @media (max-width:640px){h1{font-size:23px}.card{padding:12px}table{font-size:12.5px}th,td{padding:6px 5px}}"""
     out = f"""<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{titulo}</title><style>{css}</style></head><body>
@@ -142,6 +145,13 @@ def datos_mostrador():
     meses = sorted({k[0] for k in m if all((k[0], L) in m and m[(k[0], L)]['dias'] >= 25 for L in LOC)})
     DM = canales.cargar('mostrador_det.json'); ART = articulos.armar()
     CL = {'2026-10': canales.cargar('club_local.json')}
+    CM = canales.cargar('club_mensual.json')
+    UNID = {}
+    for f in (canales.DATA).glob('unid_*.json'):
+        UNID[f.stem[5:]] = json.loads(f.read_text(encoding='utf-8'))
+    C = canales.cargar('cierres.json'); B = canales.cargar('art_base.json') if (canales.DATA / 'art_base.json').exists() else {}
+    PK = articulos.por_kilo(B, C)
+    RUB = {f['codigo']: f['rubro'] for a in ART.values() for f in a['filas']}
     K = {}
     def put(k, mes, L, v):
         if v is not None: K.setdefault(k, {}).setdefault(mes, {})[L] = v
@@ -169,10 +179,18 @@ def datos_mostrador():
                     put('uni100', mes, L, sum(f['cantidad'] for f in un) / dd * 100)
                     put('kg100', mes, L, sum(f['cantidad'] for f in F if f['kg']) / dd * 100)
                     put('precio_u', mes, L, sum(f['venta'] for f in un) / sum(f['cantidad'] for f in un))
+            elif mes in UNID and L in UNID[mes]:  # meses con informe de unidades por artículo (solo cantidades)
+                dd = r['tickets']; filas = [f for f in UNID[mes][L] if f[0] not in (202, 4000, 1, 22) and f[2] > 0]
+                kgs = lambda cod, u: cod in PK or (cod not in RUB and abs(u - round(u)) > 1e-6)
+                un = [f for f in filas if not kgs(f[0], f[2])]
+                put('sug100', mes, L, sum(f[2] for f in un if RUB.get(f[0], f[3]) in ('Salsas', 'Quesos', 'Postre', 'Freddo', 'Bebidas')) / dd * 100)
+                put('uni100', mes, L, sum(f[2] for f in un) / dd * 100)
+                put('kg100', mes, L, sum(f[2] for f in filas if kgs(f[0], f[2])) / dd * 100)
+            for c in CM:  # club: compras con DNI y venta de socios (reporte de ventas de ALAX), desde julio
+                if c['mes'] == mes and c['local'] == L:
+                    put('club', mes, L, c['pct_venta']); put('dni100', mes, L, c['pct_clientes'] * 100)
             for c in (CL.get(mes) or []):
                 if c['local'] == L:
-                    put('club', mes, L, c['venta_club'] / c['venta_mostrador'])
-                    put('dni100', mes, L, c['tickets_club'] / c['tickets'] * 100)
                     put('socio', mes, L, c['ticket_socio'] / c['ticket_no_socio'] - 1)
                     put('altas100', mes, L, c['altas'] / c['tickets'] * 100)
     return meses, K
@@ -190,8 +208,8 @@ KPIS_M = [
     ('sug100', 'Sugestivas cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Salsas, quesos, postres, Freddo y bebidas vendidos cada 100 tickets (son productos por unidad).'),
     ('uni100', 'Unidades cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Productos por unidad vendidos cada 100 tickets (sin los de peso).'),
     ('kg100', 'Kilos cada 100 clientes', lambda v: nfmt(v, 1) + ' kg', 'gestión', 'Kilos de productos por peso (fideos, ñoquis, sorrentinos, comida al peso) cada 100 tickets.'),
-    ('club', 'Venta del club', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada $100 de venta de mostrador, cuántos son de socios (compras con DNI en ALAX).'),
-    ('dni100', 'Clientes con DNI cada 100 tickets', lambda v: nfmt(v, 1), 'gestión', 'Compras con DNI en caja (ALAX) cada 100 tickets de mostrador.'),
+    ('club', 'Venta del club', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada $100 de venta de mostrador, cuántos son de socios (compras con DNI en el reporte de ventas de ALAX). Desde julio, cuando arrancó el club.'),
+    ('dni100', 'Clientes del club', lambda v: nfmt(v, 1) + '%', 'gestión', 'De cada 100 clientes de mostrador, cuántos compraron con DNI (socios del club, reporte de ventas de ALAX). Desde julio.'),
     ('altas100', 'Altas al club cada 100 tickets', lambda v: nfmt(v, 1), 'gestión', 'Kilos de bienvenida entregados (socios nuevos) cada 100 tickets de mostrador.'),
     ('socio', 'Cuánto más gasta el socio', pfmt, 'gestión', 'Ticket del socio contra el ticket del que no es socio.'),
 ]

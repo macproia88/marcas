@@ -62,12 +62,23 @@ KPIS = [  # clave, nombre, formato, tipo, explicación
 ]
 
 
+MENOS = {'chicos'}  # indicadores donde menos es mejor
+
+
 def armar():
     meses, K = datos()
+    pagina('ranking-anual.html', 'Ranking del año', 'los 3 locales, mostrador y apps', KPIS, meses, K,
+           'Fuentes: venta, tickets y pedidos por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja); apps: estados de cuenta de PedidosYa y liquidaciones de Rappi (octubre de PedidosYa con el detalle de pedidos; octubre de Rappi estimado). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
+    mm, KM = datos_mostrador()
+    pagina('ranking-mostrador.html', 'Ranking de mostrador', 'solo mostrador (sin apps)', KPIS_M, mm, KM,
+           'Fuentes: venta y tickets de mostrador por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja; mostrador = venta total menos el código 202 de apps). Tamaño de los tickets: venta detallada de Maxi Rest (enero a agosto y 1 al 25 de octubre; septiembre no está en el cerebro). Sugestivas, unidades y kilos: venta por artículo de Maxi Rest (desde octubre; desde noviembre se carga sola con los cierres de caja). Club y clientes con DNI: reportes de ALAX (octubre). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.')
+
+
+def pagina(archivo, titulo, alcance, KPIS, meses, K, fuentes):
     gan = {}  # kpi -> mes -> local ganador
     for k, *_ in KPIS:
         for mes, vals in K.get(k, {}).items():
-            if len(vals) == 3: gan.setdefault(k, {})[mes] = max(vals, key=vals.get)
+            if len(vals) == 3: gan.setdefault(k, {})[mes] = (min if k in MENOS else max)(vals, key=vals.get)
     tot = {L: 0 for L in LOC}; totg = {L: 0 for L in LOC}
     for k, _, _, tipo, _ in KPIS:
         for L in gan.get(k, {}).values():
@@ -88,6 +99,7 @@ def armar():
             vals = K.get(k, {}).get(mes)
             if not vals or len(vals) < 3: continue
             w = g[mes]
+            if mes not in g: continue
             filas += f'<tr><td>{MESN[int(mes[5:]) - 1]}</td>' + ''.join(
                 f'<td class="n{" win" if L == w else ""}">{fmt(vals[L])}</td>' for L in LOC) + f'<td>{chip(w)}</td></tr>'
         resumen = ' · '.join(f'{L} {cnt[L]}' for L in sorted(LOC, key=lambda L: -cnt[L]))
@@ -95,7 +107,7 @@ def armar():
                  f'<p class="note">{html.escape(expl)} Meses ganados: <b>{resumen}</b>.</p>'
                  f'<div class="tw"><table><thead><tr><th>Mes</th>' + ''.join(f'<th class="n">{L}</th>' for L in LOC) +
                  f'<th>Mejor</th></tr></thead><tbody>{filas}</tbody></table></div></section>')
-    desde, hasta = MESN[int(meses[0][5:]) - 1], MESN[int(meses[-1][5:]) - 1]
+    meses = sorted({m for k in K.values() for m in k}); desde, hasta = MESN[int(meses[0][5:]) - 1], MESN[int(meses[-1][5:]) - 1]
     css = """:root{--bg:#f7f3ed;--panel:#fff;--fg:#2b211d;--muted:#6b625c;--line:#e7dfd6;--win:#e6f2ea;--ok:#2f6b4f}
 @media (prefers-color-scheme:dark){:root{--bg:#1c1917;--panel:#26211e;--fg:#f2ece6;--muted:#b3a89f;--line:#3a332e;--win:#20382b;--ok:#6fbf8f}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -107,16 +119,82 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:7px 8px;b
 .tag.gestión{color:var(--ok);border-color:var(--ok)}
 @media (max-width:640px){h1{font-size:23px}.card{padding:12px}table{font-size:12.5px}th,td{padding:6px 5px}}"""
     out = f"""<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ranking del año</title><style>{css}</style></head><body>
-<div class="wrap"><h1>Ranking del año</h1>
-<p class="sub">Qué local fue el mejor en cada indicador, mes a mes · {desde} a {hasta} 2026 · los 3 locales. En verde, el mejor de cada mes.</p>
-<section class="card"><h2>Meses ganados en el año</h2><p class="note">Cuántas veces salió primero cada local, sumando todos los indicadores y meses. <b>Gestión</b> = indicadores que no dependen del tamaño del local (ticket, crecimiento contra el mes anterior y lo que llega de las apps): es la comparación más justa. <b>Tamaño</b> = venta, clientes y pedidos totales, que suele ganar el local más grande.</p>
+<title>{titulo}</title><style>{css}</style></head><body>
+<div class="wrap"><h1>{titulo}</h1>
+<p class="sub">Qué local fue el mejor en cada indicador, mes a mes · {desde} a {hasta} 2026 · {alcance}. En verde, el mejor de cada mes.</p>
+<section class="card"><h2>Meses ganados en el año</h2><p class="note">Cuántas veces salió primero cada local, sumando todos los indicadores y meses. <b>Gestión</b> = indicadores que no dependen del tamaño del local (por ticket, por cliente, crecimiento contra el mes anterior): es la comparación más justa. <b>Tamaño</b> = totales de venta, clientes o pedidos, que suele ganar el local más grande.</p>
 <div class="tw"><table><thead><tr><th>Local</th><th class="n">Total</th><th class="n">Gestión</th><th class="n">Tamaño</th></tr></thead><tbody>{med}</tbody></table></div></section>
 {secs}
-<p class="note">Fuentes: venta, tickets y pedidos por día del tablero La Presumida (venta detallada de Maxi Rest y cierres de caja); apps: estados de cuenta de PedidosYa y liquidaciones de Rappi (octubre de PedidosYa con el detalle de pedidos; octubre de Rappi estimado). Los crecimientos arrancan en febrero porque no hay diciembre 2025 cargado.</p>
+<p class="note">{fuentes}</p>
 </div></body></html>"""
-    (RAIZ / 'ranking-anual.html').write_text(out, encoding='utf-8')
-    print('armado ranking-anual.html', meses[0], meses[-1], tot, totg)
+    (RAIZ / archivo).write_text(out, encoding='utf-8')
+    print('armado', archivo, meses[0], meses[-1], tot, totg)
+
+
+
+
+def datos_mostrador():
+    import collections, articulos
+    V = canales.cargar('ventas_diarias.json')
+    ult = max(x['fecha'] for x in V)
+    M = canales.mensual(V, ult[:7])
+    m = {(r['mes'], r['local']): r for r in M if r['local'] in LOC and r['mes'] >= '2026-01'}
+    meses = sorted({k[0] for k in m if all((k[0], L) in m and m[(k[0], L)]['dias'] >= 25 for L in LOC)})
+    DM = canales.cargar('mostrador_det.json'); ART = articulos.armar()
+    CL = {'2026-10': canales.cargar('club_local.json')}
+    K = {}
+    def put(k, mes, L, v):
+        if v is not None: K.setdefault(k, {}).setdefault(mes, {})[L] = v
+    for i, mes in enumerate(meses):
+        for L in LOC:
+            r = m[(mes, L)]; d = r['dias']; tk = r['tickets']; vm = r['venta_mostrador']
+            put('venta_m', mes, L, vm); put('clientes', mes, L, tk / d); put('ticket', mes, L, vm / tk)
+            if i:
+                p = m[(meses[i - 1], L)]; pd_ = p['dias']
+                put('crec_venta', mes, L, (vm / d) / (p['venta_mostrador'] / pd_) - 1)
+                put('crec_clientes', mes, L, (tk / d) / (p['tickets'] / pd_) - 1)
+                put('crec_ticket', mes, L, (vm / tk) / (p['venta_mostrador'] / p['tickets']) - 1)
+            if mes in DM:
+                b = [x for x in DM[mes]['bandas'] if x['local'] == L]; t = sum(x['tickets'] for x in b)
+                if t:
+                    put('grandes', mes, L, sum(x['tickets'] for x in b if x['orden'] >= 3) / t)
+                    put('chicos', mes, L, sum(x['tickets'] for x in b if x['orden'] == 0) / t)
+            a = ART.get(mes)
+            if a and a['desde'] == mes + '-01' and a['hasta'][8:] >= '28':
+                F = [f for f in a['filas'] if f['local'] == L and f['codigo'] not in (202, 4000, 1) and f['venta'] > 0]
+                dd = sum(x['tickets_mostrador'] for x in V if x['local'] == L and a['desde'] <= x['fecha'] <= a['hasta'])
+                if dd:
+                    un = [f for f in F if not f['kg']]
+                    put('sug100', mes, L, sum(f['cantidad'] for f in un if f['rubro'] in ('Salsas', 'Quesos', 'Postre', 'Freddo', 'Bebidas')) / dd * 100)
+                    put('uni100', mes, L, sum(f['cantidad'] for f in un) / dd * 100)
+                    put('kg100', mes, L, sum(f['cantidad'] for f in F if f['kg']) / dd * 100)
+                    put('precio_u', mes, L, sum(f['venta'] for f in un) / sum(f['cantidad'] for f in un))
+            for c in (CL.get(mes) or []):
+                if c['local'] == L:
+                    put('club', mes, L, c['venta_club'] / c['venta_mostrador'])
+                    put('dni100', mes, L, c['tickets_club'] / c['tickets'] * 100)
+                    put('socio', mes, L, c['ticket_socio'] / c['ticket_no_socio'] - 1)
+                    put('altas100', mes, L, c['altas'] / c['tickets'] * 100)
+    return meses, K
+
+
+KPIS_M = [
+    ('venta_m', 'Venta de mostrador', mfmt, 'tamaño', 'Venta del mes sin apps, en pesos.'),
+    ('clientes', 'Clientes por día', lambda v: nfmt(v), 'tamaño', 'Tickets de mostrador ÷ días con venta.'),
+    ('ticket', 'Ticket promedio', lambda v: '$' + nfmt(v), 'gestión', 'Venta de mostrador ÷ tickets.'),
+    ('crec_venta', 'Crecimiento de la venta', pfmt, 'gestión', 'Venta de mostrador por día contra el mes anterior del mismo local.'),
+    ('crec_clientes', 'Crecimiento de clientes', pfmt, 'gestión', 'Clientes por día contra el mes anterior del mismo local.'),
+    ('crec_ticket', 'Crecimiento del ticket', pfmt, 'gestión', 'Ticket promedio contra el mes anterior del mismo local.'),
+    ('grandes', 'Tickets de más de $30.000', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada 100 tickets, cuántos son de más de $30.000.'),
+    ('chicos', 'Tickets de hasta $10.000 (menos es mejor)', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada 100 tickets, cuántos son de hasta $10.000: ahí está la venta sugestiva que falta. Gana el que tiene menos.'),
+    ('sug100', 'Sugestivas cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Salsas, quesos, postres, Freddo y bebidas vendidos cada 100 tickets (son productos por unidad).'),
+    ('uni100', 'Unidades cada 100 clientes', lambda v: nfmt(v, 1), 'gestión', 'Productos por unidad vendidos cada 100 tickets (sin los de peso).'),
+    ('kg100', 'Kilos cada 100 clientes', lambda v: nfmt(v, 1) + ' kg', 'gestión', 'Kilos de productos por peso (fideos, ñoquis, sorrentinos, comida al peso) cada 100 tickets.'),
+    ('club', 'Venta del club', lambda v: nfmt(v * 100, 1) + '%', 'gestión', 'De cada $100 de venta de mostrador, cuántos son de socios (compras con DNI en ALAX).'),
+    ('dni100', 'Clientes con DNI cada 100 tickets', lambda v: nfmt(v, 1), 'gestión', 'Compras con DNI en caja (ALAX) cada 100 tickets de mostrador.'),
+    ('altas100', 'Altas al club cada 100 tickets', lambda v: nfmt(v, 1), 'gestión', 'Kilos de bienvenida entregados (socios nuevos) cada 100 tickets de mostrador.'),
+    ('socio', 'Cuánto más gasta el socio', pfmt, 'gestión', 'Ticket del socio contra el ticket del que no es socio.'),
+]
 
 
 if __name__ == '__main__':

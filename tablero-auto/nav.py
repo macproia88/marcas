@@ -15,6 +15,7 @@ PAGINAS = [
     ('apps.html', 'Tablero de apps'),
     ('tablero-club.html', 'Tablero del club'),
     ('reconocimiento.html', 'Agenda de reconocimiento'),
+    ('ranking-anual.html', 'Ranking del año'),
     ('https://macproia88.github.io/sel-oct26-presumida/', 'Selección de personal (CVs)'),
 ]
 MARCA = re.compile(r'<nav id="lp-nav".*?</nav>\s*', re.S)

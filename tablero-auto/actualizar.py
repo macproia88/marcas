@@ -175,7 +175,11 @@ if __name__ == '__main__':
         import canales; canales.main()
     except Exception as e:
         print('AVISO: no se armaron los tableros por canal:', e)
+    try:
+        import ranking_anual; ranking_anual.armar()
+    except Exception as e:
+        print('AVISO: no se armó el ranking del año:', e)
     import nav; nav.main()  # links a las otras páginas del negocio, abajo de cada una
     import sello, datetime as _dt  # fecha y hora de actualización arriba de cada página que se rearmó
-    for _n in ['tablero-presumida-v2.html', 'apps.html', 'mostrador.html']:
+    for _n in ['tablero-presumida-v2.html', 'apps.html', 'mostrador.html', 'ranking-anual.html']:
         sello.sellar(RAIZ / _n if 'RAIZ' in globals() else pathlib.Path(__file__).resolve().parent.parent / _n, _dt.datetime.now(sello.AR))

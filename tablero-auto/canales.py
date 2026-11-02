@@ -253,7 +253,7 @@ def main():
     import articulos
     ART = articulos.armar(); CL = cargar('club_local.json')
     dias = [dict(fecha=x['fecha'], local=x['local'], tickets=x['tickets_mostrador'], tickets_2025=x.get('tickets_mostrador_2025'),
-                 venta=x['venta_mostrador'], pedidos=x.get('pedidos_app'), venta_app=x['venta_app']) for x in V if x['fecha'] >= '2026-01-01']
+                 venta=x['venta_mostrador'], pedidos=x.get('pedidos_app'), venta_app=x['venta_app'], pedidos_2025=x.get('pedidos_app_2025'), venta_app_2025=x.get('venta_app_2025')) for x in V if x['fecha'] >= '2026-01-01']
     ta, tm = {}, {}
     for m in meses:
         ba, bm = textos_base(MEN, m, 'apps'), textos_base(MEN, m, 'mostrador')

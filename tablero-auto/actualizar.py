@@ -21,6 +21,7 @@ DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Doming
 TICKET_APP = {'Florida': 20675.0, 'Beccar': 18620.0, 'Paz': 18057.0}
 # Ticket promedio de apps oct-2025, para clientes 2025 (mismo criterio que el tablero)
 TK25 = {'Florida': 18142, 'Beccar': 16025}
+TK25_APP = {'Florida': 18142, 'Beccar': 16025, 'Paz': 14378}  # Paz: venta de apps oct-2025 de la presentación ($4,10M) ÷ 285 pedidos
 
 
 def cargar(nombre):
@@ -75,6 +76,33 @@ def actualizar_ventas():
         nuevos.append(x)
         print(f"{f} {L}: ${x['venta']:,.0f} ({len(a['turnos'])} turnos: {', '.join(map(str, a['turnos']))})")
     V += nuevos
+    # Año pasado: donde no hay referencia de la planilla de la presentación (ref_2025.json), se completa con la venta
+    # detallada de Maxi Rest de 2025 (ref_2025_det.json, mismo día de la semana, 364 días antes). Lo que ya tenía dato no se toca.
+    try:
+        RD = {(r['fecha'], r['local']): r for r in cargar('ref_2025_det.json')}
+    except FileNotFoundError:
+        RD = {}
+    # Pedidos de apps 2025: en la detallada de 2025 las apps se cargaban agrupadas (pocos tickets por día), así que se estiman
+    # con la venta de apps del día ÷ ticket de apps de oct-2025 (TK25), ajustado por cuánto cambió el ticket de mostrador
+    # de ese mes contra octubre 2025 (inflación del propio local).
+    try:
+        DM = cargar('mostrador_det.json')
+    except FileNotFoundError:
+        DM = {}
+    tkm = {(m, q['local']): q['ticket'] for m, b in DM.items() if m.startswith('2025') for q in b['resumen']}
+    def tk_app25(L, mes25):
+        if L not in TK25_APP or (mes25, L) not in tkm or ('2025-10', L) not in tkm: return None
+        return TK25_APP[L] * tkm[(mes25, L)] / tkm[('2025-10', L)]
+    for x in V:
+        r = RD.get((x['fecha'], x['local']))
+        if not r: continue
+        t = tk_app25(x['local'], r['fecha_2025'][:7])
+        ped = round(r['venta_app_2025'] / t) if t else None
+        if x.get('venta_2025') is None:
+            x.update(venta_2025=r['venta_2025'], tickets_mostrador_2025=r['tickets_mostrador_2025'],
+                     venta_mostrador_2025=r['venta_mostrador_2025'], venta_app_2025=r['venta_app_2025'], ref_2025='venta detallada 2025')
+            x['clientes_2025'] = r['tickets_mostrador_2025'] + (ped or 0) if ped is not None else None
+        x['pedidos_app_2025'] = ped
     V.sort(key=lambda x: (x['fecha'], x['local']))
     (DATA / 'ventas_diarias.json').write_text(json.dumps(V, ensure_ascii=False), encoding='utf-8')
     for a in avisos:

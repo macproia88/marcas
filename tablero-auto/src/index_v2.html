@@ -146,7 +146,7 @@
       <div class="tile"><div class="k">Apps sobre la venta</div><div class="v" id="k-app" data-source="kpi_periodo" data-field="pct_app">—</div><div class="d" id="k-app-d" data-source="kpi_periodo" data-field="venta_app">—</div></div>
     </div>
     <div class="grid">
-      <div class="card" id="c-diaria"><h2>Venta por día contra 2025</h2><p class="note">Barras: 2026. Línea: mismo día de la semana de 2025. Paz 1 al 12/10/2025 es estimado.</p><div class="chart" id="ch-diaria" data-source="ventas_diarias"></div></div>
+      <div class="card" id="c-diaria"><h2>Venta por día contra 2025</h2><p class="note">Barra de color: 2026. Barra gris al lado: mismo día de la semana de 2025. Paz 1 al 12/10/2025 es estimado.</p><div class="chart" id="ch-diaria" data-source="ventas_diarias"></div></div>
       <div class="card" id="c-clientes"><h2>Clientes por día</h2><p class="note">Abajo: tickets de mostrador. Arriba: pedidos de apps (PedidosYa + Rappi).</p><div class="chart" id="ch-clientes" data-source="ventas_diarias"></div></div>
     </div>
     <div class="card" id="c-ticket"><h2>Ticket promedio de mostrador por día</h2><p class="note">Naranja: 2026. Gris: mismo día de la semana de 2025. Punteada: 2025 + 33,4% de inflación. Si el naranja está arriba de la punteada, el ticket le gana a la inflación. Con los 3 locales juntos, 2025 aparece desde el 12/10 (Paz no tiene tickets de 2025 antes del 13/10).</p><div class="chart" id="ch-ticket" data-source="ventas_diarias"></div></div>
@@ -459,12 +459,14 @@ const drawDaily = () => {
   const rows = v.data.filter((d) => d.fecha >= a && d.fecha <= b && (local === 'Todos' || d.local === local));
   const days = [...new Set(rows.map((d) => d.fecha))].sort();
   const agg = days.map((f) => { const r = rows.filter((d) => d.fecha === f); const s = (k) => r.reduce((t, d) => t + (Number(d[k]) || 0), 0);
-    return {fecha: f, venta: s('venta'), v25: r.every((d) => d.venta_2025 != null) ? s('venta_2025') : null, tk: s('tickets_mostrador'), vm: s('venta_mostrador'), vm25: r.every((d) => d.venta_mostrador_2025) ? s('venta_mostrador_2025') : null, tk25: r.every((d) => d.tickets_mostrador_2025) ? s('tickets_mostrador_2025') : null, ped: s('pedidos_app'), c25: r.length && r.every((d) => d.clientes_2025 != null) ? s('clientes_2025') : null}; });
+    return {fecha: f, venta: s('venta'), v25: r.every((d) => d.venta_2025 != null) ? s('venta_2025') : null, tk: s('tickets_mostrador'), vm: s('venta_mostrador'), vm25: r.every((d) => d.venta_mostrador_2025) ? s('venta_mostrador_2025') : null, tk25: r.every((d) => d.tickets_mostrador_2025) ? s('tickets_mostrador_2025') : null, ped: s('pedidos_app'), ped25: r.length && r.every((d) => d.pedidos_app_2025 != null) ? s('pedidos_app_2025') : null, c25: r.length && r.every((d) => d.clientes_2025 != null) ? s('clientes_2025') : null}; });
   const fmtD = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
+  const PREV = ['#9aa7b4', '#c9d1d9'];
   const draw = (el, series, isMoney) => {
     const W = el.clientWidth || 400, H = 240, m = {t: 10, r: 8, b: 26, l: 8};
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`);
-    const max = d3.max(agg, (d) => Math.max(...series.map((s) => s.stack ? series.filter((z) => z.stack).reduce((t, z) => t + (d[z.k] || 0), 0) : (d[s.k] || 0)))) || 1;
+    const sumOf = (d, f) => series.filter(f).reduce((t, z) => t + (d[z.k] || 0), 0);
+    const max = d3.max(agg, (d) => Math.max(sumOf(d, (z) => z.stack), sumOf(d, (z) => z.prev), ...series.filter((z) => !z.stack && !z.prev).map((z) => d[z.k] || 0))) || 1;
     const y = d3.scaleLinear([0, max * 1.08], [H - m.b, m.t]).nice();
     const fy = (t) => isMoney ? (t / 1e6).toLocaleString('es-AR') + ' M' : t.toLocaleString('es-AR');
     const tmp = svg.append('text').text(fy(y.domain()[1])); m.l = tmp.node().getComputedTextLength() + 10; tmp.remove();
@@ -473,11 +475,14 @@ const drawDaily = () => {
     svg.append('g').selectAll('text').data(y.ticks(4)).join('text').attr('x', m.l - 6).attr('y', (t) => y(t) + 4).attr('text-anchor', 'end').text(fy);
     const step = Math.ceil(agg.length / Math.max(1, Math.floor((W - m.l) / 46)));
     svg.append('g').selectAll('text').data(agg.filter((d, i) => i % step === 0)).join('text').attr('x', (d) => x(d.fecha) + x.bandwidth() / 2).attr('y', H - 8).attr('text-anchor', 'middle').text((d) => fmtD(d.fecha));
-    const stacks = series.filter((s) => s.stack);
+    const stacks = series.filter((s) => s.stack), prevs = series.filter((s) => s.prev && agg.some((d) => d[s.k] != null)), bw = prevs.length ? x.bandwidth() / 2 : x.bandwidth();
     agg.forEach((d) => { let base = 0; stacks.forEach((s, i) => { const v0 = d[s.k] || 0;
-      svg.append('rect').attr('x', x(d.fecha)).attr('width', x.bandwidth()).attr('y', y(base + v0)).attr('height', Math.max(0, y(base) - y(base + v0))).attr('fill', dash.colors[i]).attr('rx', i === stacks.length - 1 ? 3 : 0);
-      base += v0; }); });
-    series.filter((s) => !s.stack).forEach((s) => {
+      svg.append('rect').attr('x', x(d.fecha)).attr('width', bw).attr('y', y(base + v0)).attr('height', Math.max(0, y(base) - y(base + v0))).attr('fill', dash.colors[i]).attr('rx', i === stacks.length - 1 ? 2 : 0);
+      base += v0; });
+      if (prevs.length && prevs.every((s) => d[s.k] != null)) { let b2 = 0; prevs.forEach((s, i) => { const v0 = d[s.k] || 0;
+        svg.append('rect').attr('x', x(d.fecha) + bw).attr('width', bw).attr('y', y(b2 + v0)).attr('height', Math.max(0, y(b2) - y(b2 + v0))).attr('fill', PREV[i % PREV.length]).attr('rx', i === prevs.length - 1 ? 2 : 0);
+        b2 += v0; }); } });
+    series.filter((s) => !s.stack && !s.prev).forEach((s) => {
       const pts = agg.filter((d) => d[s.k] != null);
       svg.append('path').datum(pts).attr('fill', 'none').attr('stroke', 'var(--color-fg-muted)').attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
         .attr('d', d3.line().x((d) => x(d.fecha) + x.bandwidth() / 2).y((d) => y(d[s.k])));
@@ -491,8 +496,9 @@ const drawDaily = () => {
         const left = Math.min(x(d.fecha) + x.bandwidth() + 8, W - tip.offsetWidth - 4); tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '8px'; })
       .on('mouseleave', () => { tip.hidden = true; });
   };
-  draw(box, [{k: 'venta', n: 'Venta 2026', stack: true}, {k: 'v25', n: 'Venta 2025'}], true);
-  draw(box2, [{k: 'tk', n: 'Tickets mostrador', stack: true}, {k: 'ped', n: 'Pedidos apps', stack: true}, {k: 'c25', n: 'Clientes 2025'}], false);
+  draw(box, [{k: 'venta', n: 'Venta 2026', stack: true}, {k: 'v25', n: 'Venta 2025', prev: true}], true);
+  if (agg.some((d) => d.tk25 != null && d.ped25 != null)) draw(box2, [{k: 'tk', n: 'Tickets mostrador 2026', stack: true}, {k: 'ped', n: 'Pedidos apps 2026', stack: true}, {k: 'tk25', n: 'Tickets mostrador 2025', prev: true}, {k: 'ped25', n: 'Pedidos apps 2025', prev: true}], false);
+  else draw(box2, [{k: 'tk', n: 'Tickets mostrador', stack: true}, {k: 'ped', n: 'Pedidos apps', stack: true}, {k: 'c25', n: 'Clientes 2025'}], false);
   agg.forEach((d) => { d.tp = d.tk ? d.vm / d.tk : null; d.tp25 = d.vm25 && d.tk25 ? d.vm25 / d.tk25 : null; d.tpi = d.tp25 ? d.tp25 * 1.334 : null; });
   (() => {
     const el = box3, W = el.clientWidth || 400, H = 240, m = {t: 12, r: 10, b: 26, l: 8};

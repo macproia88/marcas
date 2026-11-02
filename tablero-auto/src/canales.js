@@ -27,10 +27,11 @@ function hbars(c, items, fmt, color) {
 }
 
 function vbars(c, cats, series, fmt, opts = {}) {
+  if (opts.prev && !opts.prev.values.some((v) => v != null)) { opts = Object.assign({}, opts); delete opts.prev; if (c.querySelector('p')) c.querySelector('p').textContent += ' (Paz no tiene venta de 2025 antes del 7/10/2025: para comparar, elegí Florida o Beccar.)'; }
   // series: [{name, color, values[]}] apiladas; opts.line: {name, color, values[]}
   const W = width(c), H = opts.h || 240, m = { t: 18, r: 8, b: 34, l: 44 };
   const tot = cats.map((_, i) => series.reduce((s, se) => s + (se.values[i] || 0), 0));
-  const mx = d3.max([...tot, ...(opts.line ? opts.line.values.filter((v) => v != null) : [])]) || 1;
+  const mx = d3.max([...tot, ...(opts.line ? opts.line.values.filter((v) => v != null) : []), ...(opts.prev ? opts.prev.values.filter((v) => v != null) : [])]) || 1;
   const x = d3.scaleBand().domain(cats.map((_, i) => i)).range([m.l, W - m.r]).padding(0.2);
   const y = d3.scaleLinear().domain([0, mx * 1.12]).nice().range([H - m.b, m.t]);
   const s = d3.select(c).append('svg').attr('viewBox', `0 0 ${W} ${H}`);
@@ -38,9 +39,12 @@ function vbars(c, cats, series, fmt, opts = {}) {
   const step = Math.ceil(cats.length / Math.max(1, Math.floor((W - m.l) / 34)));
   s.append('g').attr('class', 'axis').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x).tickFormat((i) => (i % step ? '' : cats[i])).tickSizeOuter(0))
     .selectAll('text').each(function (i) { const t = d3.select(this); const parts = String(cats[i]).split('\n'); if (i % step) return; t.text(null); parts.forEach((p, k) => t.append('tspan').attr('x', 0).attr('dy', k ? '1.1em' : '0.8em').text(p)); });
-  const base = cats.map(() => 0);
+  const base = cats.map(() => 0), bw = opts.prev ? x.bandwidth() / 2 : x.bandwidth();
+  if (opts.prev) s.append('g').selectAll('rect').data(opts.prev.values).join('rect').attr('x', (_, i) => x(i) + bw).attr('width', bw)
+    .attr('y', (v) => y(v || 0)).attr('height', (v) => y(0) - y(v || 0)).attr('fill', opts.prev.color)
+    .on('mousemove', (ev, v) => { const i = opts.prev.values.indexOf(v); showTip(ev, `${String(cats[i]).replace('\n', ' ')} · ${opts.prev.name}: ${v == null ? 'sin dato' : fmt(v)}`); }).on('mouseleave', hideTip);
   series.forEach((se) => {
-    s.append('g').selectAll('rect').data(se.values).join('rect').attr('x', (_, i) => x(i)).attr('width', x.bandwidth())
+    s.append('g').selectAll('rect').data(se.values).join('rect').attr('x', (_, i) => x(i)).attr('width', bw)
       .attr('y', (v, i) => y(base[i] + (v || 0))).attr('height', (v, i) => y(base[i]) - y(base[i] + (v || 0))).attr('fill', se.color)
       .on('mousemove', (ev, v) => { const i = se.values.indexOf(v); showTip(ev, `${String(cats[i]).replace('\n', ' ')} · ${se.name}: ${fmt(v)}`); }).on('mouseleave', hideTip)
       .each((v, i) => { base[i] += v || 0; });
@@ -164,6 +168,8 @@ function paginaApps() {
     const vs = ndp && sum(pv, 'pedidos') ? (ped / nd) / (sum(pv, 'pedidos') / ndp) - 1 : null;
     const K = [['Pedidos de ' + MESN[+MES.slice(5) - 1], nf(ped), nf(ped / nd) + ' por día' + (vs != null ? ' · ' + (vs >= 0 ? '+' : '') + pf(vs) + ' vs mes anterior' : '')],
       ['Venta en apps', mf(vap), 'cargada en Maxi Rest (código 202)'], ['Ticket promedio', '$' + nf(vap / ped), 'venta en Maxi Rest ÷ pedidos']];
+    const a25 = dias.filter((r) => r.pedidos_2025 != null), p25 = sum(a25, 'pedidos_2025'), p26 = sum(a25, 'pedidos');
+    if (p25) K.push(['Pedidos vs 2025', (p26 / p25 - 1 >= 0 ? '+' : '') + pf(p26 / p25 - 1, 1), 'mismos días de la semana (venta detallada de Maxi Rest 2025)']);
     if (A) {
       const py = sel(A.plata).filter((r) => r.app === 'PedidosYa'), rec = sel(A.reclamos), tiempos = sel(A.tiempos), vpy = sum(py, 'venta');
       const pago = vpy - sum(py, 'descuentos');
@@ -175,9 +181,10 @@ function paginaApps() {
     const S = document.getElementById('secs'); S.replaceChildren();
     sec(S, 'Cómo vino ' + MESN[+MES.slice(5) - 1]);
     const fechas = [...new Set(delMes(D.dias).map((r) => r.fecha))].sort();
-    let c = card('c-dias', 'Pedidos día por día', 'PedidosYa + Rappi. Pasá el mouse por una barra para ver el número.'); S.appendChild(c);
-    if (A) vbars(c, fechas.map(diaLabel), [{ name: 'PedidosYa', color: COL.PedidosYa, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'pedidosya')) }, { name: 'Rappi', color: COL.Rappi, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'rappi')) }], nf, { labels: false });
-    else vbars(c, fechas.map(diaLabel), (LOCAL === 'Todos' ? LOCS : [LOCAL]).map((L) => ({ name: L, color: COL[L], values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f && r.local === L), 'pedidos')) })), nf, { labels: false });
+    const prevA = p25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.pedidos_2025 == null) ? null : sum(r, 'pedidos_2025'); }) } : null;
+    let c = card('c-dias', 'Pedidos día por día', 'PedidosYa + Rappi. Pasá el mouse por una barra para ver el número.' + (prevA ? ' Barra gris al lado: pedidos del mismo día de la semana de 2025.' : '')); S.appendChild(c);
+    if (A) vbars(c, fechas.map(diaLabel), [{ name: 'PedidosYa', color: COL.PedidosYa, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'pedidosya')) }, { name: 'Rappi', color: COL.Rappi, values: fechas.map((f) => sum(sel(A.dias).filter((r) => r.fecha === f), 'rappi')) }], nf, Object.assign(prevA ? { prev: prevA } : {}, { labels: false }));
+    else vbars(c, fechas.map(diaLabel), (LOCAL === 'Todos' ? LOCS : [LOCAL]).map((L) => ({ name: L, color: COL[L], values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f && r.local === L), 'pedidos')) })), nf, Object.assign(prevA ? { prev: prevA } : {}, { labels: false }));
     cierreApps(S);
     if (!A) { sinDetalle(S, 'Horarios, productos, agregados, tamaño del pedido, plata y reclamos salen del detalle de pedidos de PedidosYa y el reporte de Rappi del mes. Hoy está cargado solo octubre: con los archivos de este mes se completa.'); }
     else {
@@ -243,9 +250,9 @@ function paginaMostrador() {
       else table(c0, ['Local', 'Unidades cada 100 clientes', 'de esas, sugestivas', 'Precio por unidad', 'Kilos cada 100 clientes', 'Precio por kilo', 'Ticket (precio de lista)', 'Clientes'], filas);
     }
     const fechas = [...new Set(delMes(D.dias).map((r) => r.fecha))].sort();
-    let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Línea: mismo día de la semana de 2025.' : '')); S.appendChild(c);
+    let c = card('c-dias', 'Clientes día por día', 'Tickets de mostrador.' + (t25 ? ' Barra de color: 2026. Barra gris al lado: mismo día de la semana de 2025.' : '')); S.appendChild(c);
     vbars(c, fechas.map(diaLabel), [{ name: '2026', color: COL.Florida, values: fechas.map((f) => sum(dias.filter((r) => r.fecha === f), 'tickets')) }], nf,
-      { labels: false, line: t25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.tickets_2025 == null) ? null : sum(r, 'tickets_2025'); }) } : null });
+      { labels: false, prev: t25 ? { name: '2025', color: COL.y25, values: fechas.map((f) => { const r = dias.filter((x) => x.fecha === f); return r.some((x) => x.tickets_2025 == null) ? null : sum(r, 'tickets_2025'); }) } : null });
     if (!Mo) sinDetalle(S, 'Horarios, formas de pago, tamaño del ticket, y club salen de la venta detallada de Maxi Rest y de ALAX: aparecen cuando se cargan los archivos del mes.');
     else {
       const hasta = Mo.resumen.map((r) => r.hasta_det === undefined ? r.hasta : r.hasta_det).filter(Boolean).sort()[0], hastaC = Mo.resumen.map((r) => r.hasta).sort()[0];

@@ -64,7 +64,7 @@ def historial(fecha, filas, turnos):
     return out
 
 
-FERIADOS = {'2026-10-12', '2026-11-23', '2026-12-08', '2026-12-25'}
+FERIADOS = {'2026-10-12', '2026-11-09', '2026-11-11', '2026-11-23', '2026-12-08', '2026-12-25'}
 
 
 def sugerido(target):

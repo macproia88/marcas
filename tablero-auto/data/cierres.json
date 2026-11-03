@@ -206701,5 +206701,649 @@
   "thread": "1a1a1ab6c0d6b0b8",
   "subject": "MaxiREST - Fin de turno - 2026-08-04 Intermedio",
   "sender": "cielitomioolivos@gmail.com"
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-11-03",
+  "turno": "Mañana",
+  "total": 2624155.0,
+  "tickets": 100,
+  "neto21": 2168723.14,
+  "iva21": 455431.86,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    452916.0,
+    33
+   ],
+   "VISA DEBITO": [
+    458742.0,
+    26
+   ],
+   "MASTER": [
+    64300.0,
+    5
+   ],
+   "RAPPI TARJETA": [
+    121870.0,
+    1
+   ],
+   "VISA": [
+    216737.0,
+    7
+   ],
+   "PEDIDOS YA ONLINE": [
+    882730.0,
+    2
+   ],
+   "Mercado Pago": [
+    322960.0,
+    21
+   ],
+   "MODO": [
+    52300.0,
+    5
+   ],
+   "MP DELIVERY": [
+    51600.0,
+    1
+   ]
+  },
+  "cod202_unid": 4.0,
+  "cod202_importe": 1056200.0,
+  "articulos": [
+   [
+    4000,
+    "Descuento Alax",
+    "",
+    16.0,
+    -120400.0
+   ],
+   [
+    585,
+    "Arcor Chocolate A",
+    "Arcor",
+    1.0,
+    8700.0
+   ],
+   [
+    180,
+    "COCA COLA ORIGINA",
+    "Bebidas",
+    6.0,
+    15600.0
+   ],
+   [
+    213,
+    "El Aljibe Alfajor",
+    "El Aljibe - La Fontana",
+    2.0,
+    6200.0
+   ],
+   [
+    20,
+    "Panqueques Docena",
+    "Canelones",
+    1.0,
+    6800.0
+   ],
+   [
+    287,
+    "Canelones de Espi",
+    "Canelones",
+    8.0,
+    24000.0
+   ],
+   [
+    97,
+    "Lengua",
+    "Carnes",
+    0.4,
+    12915.0
+   ],
+   [
+    103,
+    "Sandwich Milanesa",
+    "Carnes",
+    1.0,
+    13000.0
+   ],
+   [
+    128,
+    "Vitel Tone",
+    "Carnes",
+    0.5,
+    26790.0
+   ],
+   [
+    4018,
+    "Sandwich Milanesa",
+    "Carnes",
+    1.0,
+    7000.0
+   ],
+   [
+    113,
+    "Pastel De Papas",
+    "Comida",
+    0.6,
+    17400.0
+   ],
+   [
+    115,
+    "Bomba de Papa",
+    "Comida",
+    0.4,
+    8970.0
+   ],
+   [
+    210,
+    "Wraps Muzzarella",
+    "Comida",
+    1.0,
+    12600.0
+   ],
+   [
+    211,
+    "Bunuelo De Acelga",
+    "Comida",
+    1.4,
+    37530.0
+   ],
+   [
+    233,
+    "Milanesa De Beren",
+    "Comida",
+    0.3,
+    5600.0
+   ],
+   [
+    4,
+    "Fuciles al Huevo",
+    "Fideos",
+    2.8,
+    36400.0
+   ],
+   [
+    2202,
+    "Fideos Finitos al",
+    "Fideos",
+    1.0,
+    13000.0
+   ],
+   [
+    2204,
+    "Fideos Media Cint",
+    "Fideos",
+    1.0,
+    13000.0
+   ],
+   [
+    2215,
+    "Fideos Media Cint",
+    "Fideos",
+    1.0,
+    13000.0
+   ],
+   [
+    4007,
+    "Fideos Caseros Al",
+    "Fideos",
+    0.5,
+    6500.0
+   ],
+   [
+    666,
+    "Freddo Tableta x",
+    "Freddo",
+    3.0,
+    12600.0
+   ],
+   [
+    1181,
+    "Crema La Serenisi",
+    "Lacteo",
+    1.0,
+    3500.0
+   ],
+   [
+    111,
+    "Sandwich Triple C",
+    "Lunch",
+    6.0,
+    16800.0
+   ],
+   [
+    23,
+    "Ñoquis de Papa",
+    "Ñoquis",
+    1.0,
+    13000.0
+   ],
+   [
+    2403,
+    "Ñoquis de Espinac",
+    "Ñoquis",
+    1.5,
+    19500.0
+   ],
+   [
+    2414,
+    "Ñoquis tricolor",
+    "Ñoquis",
+    1.5,
+    19500.0
+   ],
+   [
+    60,
+    "Pan",
+    "Pan F",
+    0.9,
+    4968.0
+   ],
+   [
+    226,
+    "Pan fresh pepas",
+    "Pan F",
+    1.0,
+    5800.0
+   ],
+   [
+    234,
+    "Palmeritas",
+    "Pan F",
+    1.0,
+    5800.0
+   ],
+   [
+    4027,
+    "Cookies chocolate",
+    "Pan F",
+    1.0,
+    4800.0
+   ],
+   [
+    68,
+    "Galletas Semola M",
+    "Panaderia",
+    1.0,
+    6600.0
+   ],
+   [
+    69,
+    "Galletas de Queso",
+    "Panaderia",
+    1.0,
+    8600.0
+   ],
+   [
+    39,
+    "Porcion Sorrentin",
+    "Pasta Cocida",
+    1.0,
+    13600.0
+   ],
+   [
+    95,
+    "Pizza Jamon y Mor",
+    "Pizzas",
+    1.0,
+    17800.0
+   ],
+   [
+    124,
+    "Empanada de Carne",
+    "Pizzas",
+    13.0,
+    36400.0
+   ],
+   [
+    126,
+    "Empanada Jamon y",
+    "Pizzas",
+    5.0,
+    14000.0
+   ],
+   [
+    127,
+    "Empanada Cebolla",
+    "Pizzas",
+    2.0,
+    5600.0
+   ],
+   [
+    129,
+    "Empanada de Espin",
+    "Pizzas",
+    1.0,
+    2800.0
+   ],
+   [
+    105,
+    "Suprema x Kilo",
+    "Pollo",
+    0.1,
+    4410.0
+   ],
+   [
+    217,
+    "Cuarto de Pollo",
+    "Pollo",
+    3.0,
+    22500.0
+   ],
+   [
+    302,
+    "Wrap de Pollo",
+    "Pollo",
+    1.0,
+    10500.0
+   ],
+   [
+    98,
+    "Queso rallado Chi",
+    "Quesos",
+    6.0,
+    29500.0
+   ],
+   [
+    99,
+    "Queso Rallado Gra",
+    "Quesos",
+    1.0,
+    9500.0
+   ],
+   [
+    9,
+    "Ravioles Ricota J",
+    "Ravioles",
+    1.0,
+    6500.0
+   ],
+   [
+    10,
+    "Ravioles Pollo y",
+    "Ravioles",
+    3.0,
+    19500.0
+   ],
+   [
+    14,
+    "Ravioles de Masa",
+    "Ravioles",
+    1.0,
+    6500.0
+   ],
+   [
+    81,
+    "Pastelitos",
+    "Reventa",
+    6.0,
+    13800.0
+   ],
+   [
+    85,
+    "Alfajores Pier",
+    "Reventa",
+    1.0,
+    3700.0
+   ],
+   [
+    202,
+    "Generico",
+    "Reventa",
+    4.0,
+    1056200.0
+   ],
+   [
+    50,
+    "Salsa Fileto Chic",
+    "Salsas",
+    1.0,
+    4200.0
+   ],
+   [
+    56,
+    "Salsa Pesto",
+    "Salsas",
+    1.0,
+    8200.0
+   ],
+   [
+    255,
+    "Salsa Fileto Medi",
+    "Salsas",
+    1.0,
+    5800.0
+   ],
+   [
+    258,
+    "Estofado de Pollo",
+    "Salsas",
+    1.0,
+    6400.0
+   ],
+   [
+    264,
+    "Salsa Pomarola Me",
+    "Salsas",
+    1.0,
+    6400.0
+   ],
+   [
+    276,
+    "Salsa Blanca Chic",
+    "Salsas",
+    2.0,
+    8400.0
+   ],
+   [
+    363,
+    "Salsa Bolognesa M",
+    "Salsas",
+    2.0,
+    12800.0
+   ],
+   [
+    580,
+    "Santa Clara Galle",
+    "Santa",
+    1.0,
+    2900.0
+   ],
+   [
+    3106,
+    "Toscanitos bañado",
+    "Santa",
+    1.0,
+    5400.0
+   ],
+   [
+    29,
+    "Sorrentinos Jamon",
+    "Sorrentinos",
+    0.6,
+    19215.0
+   ],
+   [
+    100,
+    "Tortilla de Acelg",
+    "Tartas",
+    0.2,
+    5290.0
+   ],
+   [
+    102,
+    "Tortilla de zanah",
+    "Tartas",
+    0.6,
+    12880.0
+   ],
+   [
+    130,
+    "Tarta de Calabaza",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    131,
+    "Tarta de Verdura",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    133,
+    "Tarta de Puerro",
+    "Tartas",
+    1.0,
+    9000.0
+   ],
+   [
+    134,
+    "Tarta D Jamon. Qu",
+    "Tartas",
+    5.0,
+    45000.0
+   ],
+   [
+    135,
+    "Tarta de Zapallit",
+    "Tartas",
+    1.0,
+    9000.0
+   ],
+   [
+    136,
+    "Tarta de Pollo",
+    "Tartas",
+    1.0,
+    9000.0
+   ],
+   [
+    139,
+    "Tarta Grande de A",
+    "Tartas",
+    1.6,
+    52700.0
+   ],
+   [
+    241,
+    "Tapa Pascualina F",
+    "Tartas",
+    2.0,
+    7600.0
+   ],
+   [
+    470,
+    "Tarta Grande de P",
+    "Tartas",
+    0.3,
+    10395.0
+   ],
+   [
+    137,
+    "Ensalada Rusa",
+    "Verduras",
+    0.4,
+    9660.0
+   ],
+   [
+    154,
+    "Ensalada Pollo y",
+    "Verduras",
+    2.0,
+    26000.0
+   ],
+   [
+    178,
+    "Verduras al Peso",
+    "Verduras",
+    0.1,
+    1610.0
+   ],
+   [
+    187,
+    "Papas y Batatas a",
+    "Verduras",
+    0.2,
+    4272.0
+   ],
+   [
+    333,
+    "Ensalada de Rucul",
+    "Verduras",
+    1.0,
+    13000.0
+   ],
+   [
+    334,
+    "Ensalada Caesar",
+    "Verduras",
+    7.0,
+    91000.0
+   ],
+   [
+    335,
+    "Ensalada Choclo C",
+    "Verduras",
+    1.0,
+    7500.0
+   ],
+   [
+    336,
+    "Ensalada Completa",
+    "Verduras",
+    2.0,
+    26000.0
+   ],
+   [
+    393,
+    "Ensalada Verdura",
+    "Verduras",
+    2.0,
+    15000.0
+   ],
+   [
+    177,
+    "Menu Risotto",
+    "Menu",
+    13.0,
+    108800.0
+   ],
+   [
+    193,
+    "Menu Bond/escal/b",
+    "Menu",
+    33.0,
+    330000.0
+   ],
+   [
+    376,
+    "Menu Mix de Ravio",
+    "Menu",
+    9.0,
+    54000.0
+   ],
+   [
+    437,
+    "Menu Pastas",
+    "Menu",
+    13.0,
+    96000.0
+   ],
+   [
+    229,
+    "Budin de pan",
+    "Postre",
+    0.5,
+    5850.0
+   ]
+  ],
+  "thread": "1a1a2ddc0826b94a",
+  "subject": "MaxiREST - Fin de turno - 2026-11-03 Mañana",
+  "sender": ""
  }
 ]

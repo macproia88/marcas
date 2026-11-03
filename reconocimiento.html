@@ -36,7 +36,7 @@
   document.addEventListener('DOMContentLoaded', () => Object.keys(DRAW).forEach(run));
 })();</script>
 </head><body>
-<div id="lp-upd" style="font:12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#6b6b6b;text-align:right;padding:6px 16px">Última actualización: 03/11/2026 a las 12:51 (hora Argentina)</div>
+<div id="lp-upd" style="font:12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#6b6b6b;text-align:right;padding:6px 16px">Última actualización: 03/11/2026 a las 13:17 (hora Argentina)</div>
 <div class="wrap"><div id="dash-root">
 
 <style>
@@ -62,6 +62,7 @@
 #dash-root .rc tr.top td { font-weight: var(--cds-font-weight-medium); }
 #dash-root .rc .bar { display: inline-block; height: .5rem; border-radius: var(--cds-radius); background: var(--cds-chart-muted); vertical-align: middle; margin-right: var(--cds-gap-xs); }
 #dash-root .rc tr.top .bar { background: var(--color-ok); }
+#dash-root .rc tr.enc td { color: var(--cds-color-text-secondary, #777); font-style: italic; }
 #dash-root .rc .filters { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); margin-bottom: var(--cds-gap-md); }
 #dash-root .rc .filters button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-md); border-radius: 999px; border: 1px solid var(--color-border-line); background: var(--color-bg); color: var(--color-fg); cursor: pointer; }
 #dash-root .rc .filters button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
@@ -152,7 +153,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas cada 100 clientes 30%, sugestivas cada 100 unidades 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera): sugestivas cada 100 clientes (1 al 25/10, venta por empleado de Maxi Rest ÷ tickets de cada una), altas al club cada 100 tickets (1 al 22/10) sugestivas cada 100 unidades vendidas (1 al 31/10, venta por artículo por vendedora de Maxi Rest), y unidades y kilos por ticket (unidades y kilos del 1 al 31/10 de esa misma venta por artículo ÷ tickets del mes, estimados con sus tickets del 1 al 22/10 y su venta del mes, porque los tickets por vendedora llegan hasta el 22/10). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. Las encargadas (Miriam en Florida, Pamela en Paz) no compiten acá, tienen su premio aparte.</p>
+    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas cada 100 clientes 30%, sugestivas cada 100 unidades 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera): sugestivas cada 100 clientes (1 al 25/10, venta por empleado de Maxi Rest ÷ tickets de cada una), altas al club cada 100 tickets (1 al 22/10) sugestivas cada 100 unidades vendidas (1 al 31/10, venta por artículo por vendedora de Maxi Rest), y unidades y kilos por ticket (unidades y kilos del 1 al 31/10 de esa misma venta por artículo ÷ tickets del mes, estimados con sus tickets del 1 al 22/10 y su venta del mes, porque los tickets por vendedora llegan hasta el 22/10). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. Las encargadas (Miriam en Florida, Pamela en Paz) figuran en la tabla para ver dónde quedan, pero no compiten: gana la primera que no es encargada. Su puntaje cuenta como referencia del mejor valor del local.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -223,11 +224,13 @@ dash.calc('ranking', {
     const cols = Object.keys(W);
     const LOCS = ['Florida', 'Beccar', 'Paz'];
     return LOCS.flatMap((L) => {
-      const xs = vendedoras.filter((v) => v.local === L && Number(v.tickets) >= 200 && v.rol !== 'encargada');
+      // Las encargadas se muestran (y cuentan como referencia del mejor valor) pero no compiten: la posición 1 es la primera que no es encargada
+      const xs = vendedoras.filter((v) => v.local === L && Number(v.tickets) >= 200);
       const max = Object.fromEntries(cols.map((c) => [c, Math.max(...xs.map((v) => Number(v[c])))]));
+      let n = 0;
       return xs.map((v) => ({ ...v, puntaje: Math.round(cols.reduce((s, c) => s + W[c] * Number(v[c]) / max[c] * 100, 0) * 10) / 10 }))
         .sort((a, b) => b.puntaje - a.puntaje)
-        .map((v, i) => ({ posicion: i + 1, ...v }));
+        .map((v) => ({ posicion: v.rol === 'encargada' ? 'Enc.' : ++n, ...v }));
     });
   }
 });
@@ -330,9 +333,11 @@ dash.calc('premios', {
     const d = dash.data('ranking');
     if (d.status !== 'ok') return;
     const rows = d.data.filter((r) => !filtro || r.local === filtro);
-    rows.forEach((r, i) => {
+    rows.forEach((r0, i) => {
+      let r = r0;
       const tr = document.createElement('tr');
       if (r.posicion === 1) tr.className = 'top';
+      if (r.rol === 'encargada') { tr.className = 'enc'; r = { ...r, vendedora: r.vendedora + ' (encargada, fuera de concurso)' }; }
       const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100)), d3.format('.2f')(Number(r.u_tk)).replace('.', ','), d3.format('.2f')(Number(r.kg_tk)).replace('.', ',')];
       cells.forEach((t) => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
       const td = document.createElement('td');

@@ -19,7 +19,7 @@ LOC = {'fpastas': 'Florida', 'Beccar': 'Beccar', 'Pastas Paz': 'Paz'}
 LOCS = ['Florida', 'Beccar', 'Paz']
 TURNOS = {'Florida': 'Mañana, Intermedio y Noche', 'Beccar': 'Mañana y Noche', 'Paz': 'Mañana e Intermedio'}
 REVENTA = {'Bebidas', 'Lacteo', 'Arcor', 'Dankon', 'DIBBLE', 'Isla', 'Santa', 'Nestle', 'Reventa', 'El Aljibe - La Fontana',
-           'Panaderia', 'Pan F', 'Freddo', 'Verduras', 'Otros', 'Sin rubro', ''}
+           'Panaderia', 'Pan F', 'Freddo', 'Otros', 'Sin rubro', ''}
 EXCLUIR = {0, 1, 202, 4000}
 DIAS = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
 

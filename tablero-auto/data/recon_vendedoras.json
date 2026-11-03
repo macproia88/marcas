@@ -189,7 +189,8 @@
   "tickets_mes_est": 480,
   "u_tk": 3.12,
   "kg_tk": 0.457,
-  "venta_mes": 12802600
+  "venta_mes": 12802600,
+  "rol": "encargada"
  },
  {
   "local": "Paz",

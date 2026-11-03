@@ -192,6 +192,46 @@ def main():
     # ---------- sugerido para hoy (el día siguiente al informado)
     tgt = (d + dt.timedelta(days=1)).isoformat(); tg = dt.date.fromisoformat(tgt)
     SUG, sdias = sugerido(tgt)
+    hp = DATA / 'sugerido_hist.json'
+    SH = json.load(open(hp)) if hp.exists() else {}
+    SH[tgt] = {f"{L}|{r['nombre']}": r['sug'][L] for r in SUG for L in LOCS if r['sug'][L] > 0}
+    json.dump(SH, open(hp, 'w'), ensure_ascii=False, sort_keys=True)
+
+    # ---------- ayer: vendido contra el sugerido que se mandó para ese día (desde el martes 03/11)
+    VS = []
+    if fecha in SH:
+        vend = collections.defaultdict(float); meta = {}
+        for f in filas.values():
+            if f['rubro'] in REVENTA: continue
+            vend[f"{f['local']}|{f['nombre']}"] += f['q']; meta[f['nombre']] = (f['rubro'], f['kg'])
+        for k in set(SH[fecha]) | set(vend):
+            L, nom = k.split('|', 1)
+            if L not in turnos: continue          # local sin cierre ayer: no se compara
+            sg = SH[fecha].get(k, 0.0); v = vend.get(k, 0.0)
+            rub, kg = meta.get(nom, (None, None))
+            if rub is None:
+                rr = next((r for r in SUG if r['nombre'] == nom), None)
+                rub, kg = (rr['rubro'], rr['kg']) if rr else ('', False)
+            VS.append(dict(local=L, nombre=nom, rubro=rub, kg=kg, sug=sg, vend=round(v, 2), dif=round(v - sg, 2)))
+        VS.sort(key=lambda x: (LOCS.index(x['local']), x['rubro'], x['nombre']))
+        ws6 = wb.create_sheet(f'Ayer vendido vs sugerido', 1)
+        hoja(ws6, ['Local', 'Rubro', 'Producto', 'Unidad', 'Sugerido', 'Vendido', 'Diferencia', 'Qué pasó'], [10, 14, 34, 8, 11, 11, 11, 30])
+        RED = PatternFill('solid', fgColor='F2D4CE'); GRN = PatternFill('solid', fgColor='D4E6D0')
+        for x in VS:
+            tol = max(1.0 if not x['kg'] else 0.5, 0.2 * x['sug'])
+            if x['dif'] > tol: txt, fill = 'Vendió más que el sugerido', RED
+            elif x['dif'] < -tol: txt, fill = 'Vendió menos que el sugerido (posible sobrante)', GRN
+            else: txt, fill = 'Dentro del sugerido', None
+            x['estado'] = txt
+            ws6.append([x['local'], x['rubro'], x['nombre'], 'kg' if x['kg'] else 'u', x['sug'], x['vend'], x['dif'], txt]); rr = ws6.max_row
+            for col in range(1, 9):
+                c = ws6.cell(rr, col); c.font = AR; c.border = Border(bottom=thin)
+                if 5 <= col <= 7: c.number_format = '#,##0.0' if x['kg'] else '#,##0'
+            if fill:
+                for col in (7, 8): ws6.cell(rr, col).fill = fill
+        ws6.append([]); ws6.append(['Más/menos = la venta de mostrador se pasó o quedó corta en más de 20% del sugerido (mínimo 1 unidad o 0,5 kg). Vendido más puede ser que se produjo más de lo sugerido o que faltó; vendido menos es posible sobrante.'])
+        ws6.cell(ws6.max_row, 1).font = Font(name='Arial', italic=True, color='555555')
+        ws6.auto_filter.ref = f'A1:H{len(VS) + 1}'
     ws5 = wb.create_sheet(f'Sugerido {DIAS[tg.weekday()]} {tg:%d-%m}', 0)
     hoja(ws5, ['Rubro', 'Producto', 'Unidad', 'Florida sugerido', 'Florida máx.', 'Beccar sugerido', 'Beccar máx.', 'Paz sugerido', 'Paz máx.', 'Total sugerido'],
          [14, 34, 8, 11, 10, 11, 10, 11, 10, 12])
@@ -237,6 +277,17 @@ def main():
         if p['sem'] is not None: extra += f" · semana anterior {num(p['sem'], p['kg'])}"
         print(f"TOP {p['nombre']}: {num(p['tot'], p['kg'])} {'kg' if p['kg'] else 'u'} (F {num(p['q']['Florida'], p['kg'])} · B {num(p['q']['Beccar'], p['kg'])} · P {num(p['q']['Paz'], p['kg'])}){extra}")
 
+    if VS:
+        for L in LOCS:
+            xs = [x for x in VS if x['local'] == L]
+            if not xs: continue
+            n_ok = sum(x['estado'] == 'Dentro del sugerido' for x in xs); n_mas = sum(x['estado'].startswith('Vendió más') for x in xs); n_men = len(xs) - n_ok - n_mas
+            print(f'VSLOCAL {L}: {len(xs)} productos · dentro del sugerido {n_ok} · vendió más {n_mas} · vendió menos {n_men}')
+        big = sorted([x for x in VS if x['estado'] != 'Dentro del sugerido'], key=lambda x: -abs(x['dif']) / (2 if x['kg'] else 1))[:12]
+        for x in big:
+            print(f"VS {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} · vendido {num(x['vend'], x['kg'])} {'kg' if x['kg'] else 'u'} ({'+' if x['dif'] > 0 else ''}{num(x['dif'], x['kg'])})")
+    else:
+        print(f'VSNO no hay sugerido guardado para el {d:%d/%m} (la comparación arranca con el martes 03/11)')
     print(f'SUGERIDO para el {DIAS[tg.weekday()]} {tg:%d/%m} (promedio de los últimos 4 {DIAS[tg.weekday()]}): ' + ' · '.join(f"{L} {len(sdias[L])} días" for L in LOCS))
     RS = collections.OrderedDict()
     for r in SUG:

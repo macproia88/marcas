@@ -83,7 +83,10 @@ def sugerido(target):
             por_dia[(L, x['fecha'])][cod] += q
     dias = {}
     for L in LOCS:
-        cand = sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True)[:4]
+        if t.day == 29:   # día de ñoquis: se compara con los 29 anteriores
+            cand = sorted([f for f in con_cierre[L] if f < target and f.endswith('-29')], reverse=True)[:4]
+        else:             # día normal: mismos días de la semana, sin feriados ni días 29
+            cand = sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and not f.endswith('-29') and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True)[:4]
         dias[L] = cand
     P = collections.OrderedDict()
     for L in LOCS:
@@ -199,7 +202,7 @@ def main():
         for col in range(1, 11):
             c = ws5.cell(rr, col); c.font = B if col in (4, 6, 8, 10) else AR; c.border = Border(bottom=thin)
             if col >= 4: c.number_format = '#,##0.0' if r['kg'] else '#,##0'
-    ws5.append([]); ws5.append(['Cómo se calcula: promedio de lo vendido en MOSTRADOR los últimos 4 ' + DIAS[tg.weekday()] + ' (sin feriados), por local, redondeado para arriba (unidades enteras; kg al medio kilo). Máx. = el mejor de esos días. No incluye apps (código 202).'])
+    ws5.append([]); ws5.append(['Cómo se calcula: promedio de lo vendido en MOSTRADOR los últimos 4 ' + DIAS[tg.weekday()] + ' (sin feriados ni días 29; el 29 se compara con los 29 anteriores), por local, redondeado para arriba (unidades enteras; kg al medio kilo). Máx. = el mejor de esos días. No incluye apps (código 202).'])
     ws5.append(['Días usados: ' + ' · '.join(f"{L}: {', '.join(dt.date.fromisoformat(x).strftime('%d/%m') for x in sdias[L]) or 'sin datos'}" for L in LOCS)])
     for rr in (ws5.max_row - 1, ws5.max_row): ws5.cell(rr, 1).font = Font(name='Arial', italic=True, color='555555')
     ws5.auto_filter.ref = f'A1:J{len(SUG) + 1}'

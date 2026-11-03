@@ -35,7 +35,7 @@
 <div class="rc">
   <header>
     <h1>Reconocimiento Octubre</h1>
-    <p class="lead">Local del mes: <b data-draw="w-local" data-source="premios" data-where="premio=local" data-field="ganador">—</b>. Mejor vendedora de los 3 locales: <b data-draw="w-ventas" data-source="premios" data-where="premio=ventas" data-field="ganador">—</b>. Cierre de octubre: venta, club, reclamos y reseñas con el mes completo; sugestiva y unidades por cliente con el mes completo; el ranking de vendedoras sigue al 25/10.</p>
+    <p class="lead">Local del mes: <b data-draw="w-local" data-source="premios" data-where="premio=local" data-field="ganador">—</b>. Mejor vendedora de cada local: <b data-draw="w-ventas" data-source="premios" data-where="premio=ventas" data-field="ganador">—</b>. Cierre de octubre: venta, club, reclamos y reseñas con el mes completo; sugestiva y unidades por cliente con el mes completo; el ranking de vendedoras es parejo: todo en proporción a los clientes que atendió cada una, y gana una por local.</p>
   </header>
 
   <section class="prizes" id="premios">
@@ -52,10 +52,10 @@
       <span class="kpis">Cómo maneja el equipo: venta sugestiva, unidades por cliente, altas al club, reclamos en apps y reseñas de Google.</span>
     </div>
     <div class="prize">
-      <span class="tag">Ventas del mes</span>
+      <span class="tag">Ventas del mes · una por local</span>
       <span class="win" data-draw="p-ven" data-source="premios" data-where="premio=ventas" data-field="ganador">—</span>
-      <span class="sub"><span data-draw="l-ven" data-source="premios" data-where="premio=ventas" data-field="local">—</span> · puntaje <span data-draw="pt-ven" data-source="premios" data-where="premio=ventas" data-field="puntos">—</span> de 100</span>
-      <span class="kpis">Sugestivas cada 100 clientes, altas al club cada 100 tickets y tickets atendidos.</span>
+      <span class="sub">puntaje <span data-draw="pt-ven" data-source="premios" data-where="premio=ventas" data-field="puntos">—</span> de 100</span>
+      <span class="kpis">Todo en proporción: sugestivas cada 100 clientes, altas al club cada 100 tickets y sugestivas cada 100 unidades. No cuenta cuántos clientes atendió.</span>
     </div>
     <div class="prize">
       <span class="tag">Producción del mes</span>
@@ -109,7 +109,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Puntaje de 0 a 100: en cada indicador se compara contra la mejor de los 3 locales (la mejor saca 100) y se promedian los tres. Solo personas con 200 tickets o más. La encargada no compite acá, tiene su premio aparte. Tickets y club: 1 al 22/10. Sugestivas cada 100 clientes: 1 al 25/10 (venta por empleado de Maxi Rest ÷ tickets de cada una). Las 3 columnas de la derecha (unidades, kilos y sugestivas cada 100 unidades) son del 1 al 31/10, de la venta por artículo por vendedora de Maxi Rest, y todavía no suman al puntaje: se definen en la reunión.</p>
+    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se promedian los tres: sugestivas cada 100 clientes (1 al 25/10, venta por empleado de Maxi Rest ÷ tickets de cada una), altas al club cada 100 tickets (1 al 22/10) y sugestivas cada 100 unidades vendidas (1 al 31/10, venta por artículo por vendedora de Maxi Rest). Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. La encargada no compite acá, tiene su premio aparte.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -124,11 +124,11 @@
           <th data-field="local">Local</th>
           <th data-field="sug_100">Sugestivas c/100 clientes</th>
           <th data-field="altas_club_100">Altas club c/100</th>
-          <th data-field="tickets">Tickets</th>
-          <th data-field="puntaje">Puntaje</th>
+          <th data-field="sug_u100">Sugestivas c/100 unidades</th>
+          <th data-field="puntaje">Puntaje (en su local)</th>
+          <th data-field="tickets">Tickets (no suma)</th>
           <th data-field="unidades_mes">Unidades (oct. completo)</th>
           <th data-field="kilos_mes">Kilos</th>
-          <th data-field="sug_u100">Sugestivas c/100 unidades</th>
         </tr></thead>
         <tbody data-draw="t-ven"></tbody>
       </table>
@@ -141,7 +141,7 @@
     <div class="how">
       <div><h3>Local del mes</h3><ul><li>Crecimiento de la venta contra 2025</li><li>Crecimiento de tickets de mostrador contra 2025</li><li>Sugestivas cada 100 clientes (salsas, quesos, postres, Freddo, bebidas; son productos por unidad)</li><li>Unidades cada 100 clientes (sin productos por peso: los kilos no se suman con las unidades)</li><li>Tickets de mostrador del mes (más clientes atendidos)</li><li>Ticket promedio de mostrador</li><li>Unidades vendidas en el mes (sin productos por peso)</li><li>Días del mes en que fue el local con más clientes con DNI en caja (empate: medio día a cada uno)</li><li>Altas al club cada 100 tickets</li><li>Reclamos en PedidosYa cada 100 pedidos (menos es mejor)</li><li>Reseñas nuevas en Google</li><li>Reclamos de calidad cada 1.000 pedidos (menos es mejor)</li></ul></div>
       <div><h3>Encargado del mes</h3><ul><li>Sugestivas cada 100 clientes del equipo</li><li>Unidades cada 100 clientes</li><li>Altas al club del equipo</li><li>Reclamos en apps (armado y faltantes)</li><li>Reseñas nuevas en Google</li></ul></div>
-      <div><h3>Ventas del mes</h3><ul><li>Sugestivas cada 100 clientes que atendió</li><li>Altas al club cada 100 tickets</li><li>Tickets atendidos</li></ul></div>
+      <div><h3>Ventas del mes</h3><ul><li>Sugestivas cada 100 clientes que atendió</li><li>Altas al club cada 100 tickets</li><li>Sugestivas cada 100 unidades vendidas</li><li>Se compara con las de su mismo local y gana una por local</li></ul></div>
       <div><h3>Producción del mes (a completar)</h3><ul><li>Hoy: reclamos por calidad de la comida en PedidosYa</li><li>Para premiar a una persona hace falta la planilla de producción con kilos producidos, mermas y faltantes por pastero y cocinera</li><li>Sumar asistencia y puntualidad cuando Beccar tenga reloj</li></ul></div>
     </div>
   </section>
@@ -174,12 +174,15 @@ dash.calc('ranking', {
   description: 'Cada indicador dividido por el mejor valor de todas, por 100; el puntaje es el promedio de los tres.',
   inputs: ['vendedoras'],
   fn: (vendedoras) => {
-    const cols = ['sug_100', 'altas_club_100', 'tickets'];
-    const max = Object.fromEntries(cols.map((c) => [c, Math.max(...vendedoras.map((v) => Number(v[c])))]));
-    return vendedoras
-      .map((v) => ({ ...v, puntaje: Math.round(cols.reduce((s, c) => s + Number(v[c]) / max[c] * 100, 0) / cols.length) }))
-      .sort((a, b) => b.puntaje - a.puntaje)
-      .map((v, i) => ({ posicion: i + 1, ...v }));
+    const cols = ['sug_100', 'altas_club_100', 'sug_u100'];
+    const LOCS = ['Florida', 'Beccar', 'Paz'];
+    return LOCS.flatMap((L) => {
+      const xs = vendedoras.filter((v) => v.local === L && Number(v.tickets) >= 200);
+      const max = Object.fromEntries(cols.map((c) => [c, Math.max(...xs.map((v) => Number(v[c])))]));
+      return xs.map((v) => ({ ...v, puntaje: Math.round(cols.reduce((s, c) => s + Number(v[c]) / max[c] * 100, 0) / cols.length) }))
+        .sort((a, b) => b.puntaje - a.puntaje)
+        .map((v, i) => ({ posicion: i + 1, ...v }));
+    });
   }
 });
 
@@ -197,7 +200,7 @@ dash.calc('premios', {
     return [
       { premio: 'local', ...top('local_total') },
       { premio: 'encargado', ...top('encargado_total') },
-      { premio: 'ventas', ganador: ranking[0].vendedora, local: ranking[0].local, puntos: ranking[0].puntaje },
+      { premio: 'ventas', ganador: ranking.filter((r) => r.posicion === 1).map((r) => r.vendedora + ' (' + r.local + ')').join(', '), local: 'una por local', puntos: ranking.filter((r) => r.posicion === 1).map((r) => r.puntaje).join(' / ') },
       { premio: 'produccion', ganador: pro.local, local: pro.local, puntos: Number(cal.calidad_1000) }
     ];
   }
@@ -283,14 +286,14 @@ dash.calc('premios', {
     const rows = d.data.filter((r) => !filtro || r.local === filtro);
     rows.forEach((r, i) => {
       const tr = document.createElement('tr');
-      if (i === 0) tr.className = 'top';
-      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), num(Number(r.tickets))];
+      if (r.posicion === 1) tr.className = 'top';
+      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100))];
       cells.forEach((t) => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
       const td = document.createElement('td');
       const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (r.puntaje * 0.6) + 'px';
       const t = document.createElement('span'); t.textContent = String(r.puntaje);
       td.append(bar, t); tr.appendChild(td);
-      [r.unidades_mes == null ? '—' : num(Number(r.unidades_mes)), r.kilos_mes == null ? '—' : one(Number(r.kilos_mes)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100))].forEach((t) => { const c = document.createElement('td'); c.textContent = t; tr.appendChild(c); });
+      [num(Number(r.tickets)), r.unidades_mes == null ? '—' : num(Number(r.unidades_mes)), r.kilos_mes == null ? '—' : one(Number(r.kilos_mes))].forEach((t) => { const c = document.createElement('td'); c.textContent = t; tr.appendChild(c); });
       tb.appendChild(tr);
     });
   });

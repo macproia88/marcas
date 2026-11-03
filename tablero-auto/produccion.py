@@ -287,7 +287,7 @@ def main():
         for x in big:
             print(f"VS {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} · vendido {num(x['vend'], x['kg'])} {'kg' if x['kg'] else 'u'} ({'+' if x['dif'] > 0 else ''}{num(x['dif'], x['kg'])})")
     else:
-        print(f'VSNO no hay sugerido guardado para el {d:%d/%m} (la comparación arranca con el martes 03/11)')
+        print(f'VSNO no hay sugerido guardado para el {d:%d/%m} (la comparación arranca con el lunes 02/11)')
     print(f'SUGERIDO para el {DIAS[tg.weekday()]} {tg:%d/%m} (promedio de los últimos 4 {DIAS[tg.weekday()]}): ' + ' · '.join(f"{L} {len(sdias[L])} días" for L in LOCS))
     RS = collections.OrderedDict()
     for r in SUG:

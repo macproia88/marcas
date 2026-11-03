@@ -50,6 +50,9 @@ def datos():
             diario[L][f] = {n: round(q, 2) for n, q in d.items()}
     # ---- control: vendido vs sugerido de cada día que tiene sugerido guardado y cierres
     hp = DATA / 'sugerido_hist.json'; SH = json.load(open(hp)) if hp.exists() else {}
+    sp = DATA / 'sugerido_sim.json'; SIM = json.load(open(sp)) if sp.exists() else {}
+    SIMD = {f for f in SIM if f not in SH}            # días anteriores al primer sugerido mandado: recalculados hacia atrás
+    SH = {**{f: SIM[f] for f in SIMD}, **SH}
     control = []
     for f in sorted(SH):
         if f >= hoy.isoformat(): continue
@@ -64,7 +67,7 @@ def datos():
                 est = 'ok' if abs(q - s) <= tol else ('mas' if q > s else 'menos')
                 if q <= 0 and s >= (1.0 if kg else 3.0): est = 'cero'   # no se vendió nada: posible faltante
                 filas.append([n, rubro.get(n, ''), kg, s, round(q, 2), est])
-            control.append(dict(fecha=f, local=L, turnos=sorted(set(turnos[(L, f)])), filas=sorted(filas, key=lambda z: (z[1], z[0]))))
+            control.append(dict(fecha=f, sim=f in SIMD, local=L, turnos=sorted(set(turnos[(L, f)])), filas=sorted(filas, key=lambda z: (z[1], z[0]))))
     meta = {n: [rubro.get(n, ''), bool(kgs.get(n, False))] for n in set(rubro)}
     for p in prods.values():
         meta.setdefault(p['n'], [p['r'], bool(p['kg'])])
@@ -139,7 +142,7 @@ function semana(){
 function control(){
   const fs=[...new Set(D.control.map(c=>c.fecha))].sort().reverse(), fe=document.getElementById('c-dia');
   if(!fs.length){document.getElementById('t-ctl').innerHTML='<p class="note">Todavía no hay días para comparar: la primera comparación es la venta del lunes 02/11, que aparece cuando lleguen sus cierres.</p>';document.getElementById('k-ctl').innerHTML='';return}
-  if(!fe.options.length){fe.innerHTML=fs.map(f=>`<option value="${f}">${dname(f)}</option>`).join('')}
+  if(!fe.options.length){fe.innerHTML=fs.map(f=>`<option value="${f}">${dname(f)}${D.control.find(c=>c.fecha===f&&c.sim)?' (recalculado)':''}</option>`).join('')}
   const f=fe.value||fs[0], rub=document.getElementById('c-rub').value, solo=document.getElementById('c-dif').checked;
   const cs=D.control.filter(c=>c.fecha===f&&(LOC==='Todos'||c.local===LOC));
   let n=0,ok=0,mas=0,men=0,cer=0,rows=[];
@@ -192,7 +195,7 @@ def armar():
 <div class="bar"><label>Rubro</label><select id="f-rub"></select><label>Buscar</label><input id="f-q" placeholder="producto"><label>Ver</label><select id="f-modo"><option value="s">Sugerido (promedio)</option><option value="max">Máximo de los 4 días</option></select></div>
 <p class="note" id="n-sem"></p><div class="tw" id="t-sem"></div></section>
 <section class="card"><h2>Control: vendido contra sugerido</h2>
-<p class="note">Lo que se vendió en mostrador cada día contra el sugerido que se mandó esa mañana. Dentro = diferencia de hasta 20% (mínimo 1 unidad o 0,5 kg). Vendió más: se produjo de más y se vendió, o faltó. Vendió menos: posible sobrante. Cero con sugerido de 3 unidades o 1 kg o más: no se vendió nada, revisar si faltó. Tocá el título de cualquier columna para ordenar de mayor a menor.</p>
+<p class="note">Lo que se vendió en mostrador cada día contra el sugerido que se mandó esa mañana. Dentro = diferencia de hasta 20% (mínimo 1 unidad o 0,5 kg). Vendió más: se produjo de más y se vendió, o faltó. Vendió menos: posible sobrante. Los días antes del 02/11 dicen "(recalculado)": es el sugerido que se hubiera mandado esa mañana con los cierres que había hasta el día anterior (en las primeras semanas de octubre, con 1 a 3 semanas de historia). Cero con sugerido de 3 unidades o 1 kg o más: no se vendió nada, revisar si faltó. Tocá el título de cualquier columna para ordenar de mayor a menor.</p>
 <div class="bar"><label>Día</label><select id="c-dia"></select><label>Rubro</label><select id="c-rub"></select><label><input type="checkbox" id="c-dif" checked> solo diferencias</label></div>
 <div class="kpis" id="k-ctl"></div><div class="tw" id="t-ctl"></div></section>
 <section class="card"><h2>Comportamiento día por día</h2>

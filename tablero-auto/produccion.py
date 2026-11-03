@@ -64,6 +64,48 @@ def historial(fecha, filas, turnos):
     return out
 
 
+FERIADOS = {'2026-10-12', '2026-11-23', '2026-12-08', '2026-12-25'}
+
+
+def sugerido(target):
+    """Sugerido para producir el día target (AAAA-MM-DD): promedio de lo vendido en mostrador los últimos 4 días
+    iguales de la semana (mismo local; solo días con cierre de ese local; sin feriados). Unidades redondeadas para arriba;
+    kg al medio kilo para arriba. Devuelve filas y los días usados por local."""
+    import math
+    c = json.load(open(DATA / 'cierres.json')); mae = json.load(open(DATA / 'productos_maestro.json'))
+    t = dt.date.fromisoformat(target)
+    por_dia = collections.defaultdict(lambda: collections.defaultdict(float)); con_cierre = collections.defaultdict(set)
+    for x in c:
+        if 'articulos' not in x: continue
+        L = LOC.get(x['sucursal'], x['sucursal']); con_cierre[L].add(x['fecha'])
+        for cod, nom, rub, q, imp in x['articulos']:
+            if cod in EXCLUIR: continue
+            por_dia[(L, x['fecha'])][cod] += q
+    dias = {}
+    for L in LOCS:
+        cand = sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True)[:4]
+        dias[L] = cand
+    P = collections.OrderedDict()
+    for L in LOCS:
+        cods = set()
+        for f in dias[L]: cods |= set(por_dia[(L, f)])
+        for cod in cods:
+            m = mae.get(str(cod), {}); rub = m.get('rubro', '')
+            nombre = m.get('nombre') or next((a[1] for x in c if 'articulos' in x for a in x['articulos'] if a[0] == cod), str(cod))
+            if not rub:
+                rub = next((a[2] for x in c if 'articulos' in x for a in x['articulos'] if a[0] == cod), '')
+            if rub in REVENTA: continue
+            vals = [por_dia[(L, f)].get(cod, 0.0) for f in dias[L]]
+            kg = m.get('kg', any(abs(v - round(v)) > 1e-6 for v in vals))
+            prom = sum(vals) / len(vals)
+            sug = (math.ceil(prom * 2 - 1e-9) / 2) if kg else math.ceil(prom - 1e-9)
+            k = (rub, nombre, kg)
+            r = P.setdefault(k, dict(rubro=rub, nombre=nombre, kg=kg, cods=set(), sug={X: 0.0 for X in LOCS}, mx={X: 0.0 for X in LOCS}))
+            r['cods'].add(cod); r['sug'][L] += sug; r['mx'][L] += max(vals)
+    filas = sorted(P.values(), key=lambda r: (r['rubro'], -sum(r['sug'].values())))
+    return [r for r in filas if sum(r['sug'].values()) > 0], dias
+
+
 def num(q, kg): return f'{q:.1f}'.replace('.', ',') if kg else f'{q:.0f}'
 
 
@@ -144,6 +186,25 @@ def main():
             ws3.append([f['local'], t, f['rubro'], f['nombre'], 'kg' if f['kg'] else 'u', round(q, 2)])
             for col in range(1, 7): ws3.cell(ws3.max_row, col).font = AR
 
+    # ---------- sugerido para hoy (el día siguiente al informado)
+    tgt = (d + dt.timedelta(days=1)).isoformat(); tg = dt.date.fromisoformat(tgt)
+    SUG, sdias = sugerido(tgt)
+    ws5 = wb.create_sheet(f'Sugerido {DIAS[tg.weekday()]} {tg:%d-%m}', 0)
+    hoja(ws5, ['Rubro', 'Producto', 'Unidad', 'Florida sugerido', 'Florida máx.', 'Beccar sugerido', 'Beccar máx.', 'Paz sugerido', 'Paz máx.', 'Total sugerido'],
+         [14, 34, 8, 11, 10, 11, 10, 11, 10, 12])
+    for r in SUG:
+        ws5.append([r['rubro'], r['nombre'], 'kg' if r['kg'] else 'u', r['sug']['Florida'], round(r['mx']['Florida'], 1), r['sug']['Beccar'], round(r['mx']['Beccar'], 1),
+                    r['sug']['Paz'], round(r['mx']['Paz'], 1), sum(r['sug'].values())])
+        rr = ws5.max_row
+        for col in range(1, 11):
+            c = ws5.cell(rr, col); c.font = B if col in (4, 6, 8, 10) else AR; c.border = Border(bottom=thin)
+            if col >= 4: c.number_format = '#,##0.0' if r['kg'] else '#,##0'
+    ws5.append([]); ws5.append(['Cómo se calcula: promedio de lo vendido en MOSTRADOR los últimos 4 ' + DIAS[tg.weekday()] + ' (sin feriados), por local, redondeado para arriba (unidades enteras; kg al medio kilo). Máx. = el mejor de esos días. No incluye apps (código 202).'])
+    ws5.append(['Días usados: ' + ' · '.join(f"{L}: {', '.join(dt.date.fromisoformat(x).strftime('%d/%m') for x in sdias[L]) or 'sin datos'}" for L in LOCS)])
+    for rr in (ws5.max_row - 1, ws5.max_row): ws5.cell(rr, 1).font = Font(name='Arial', italic=True, color='555555')
+    ws5.auto_filter.ref = f'A1:J{len(SUG) + 1}'
+    wb.active = 0
+
     ws4 = wb.create_sheet('Cómo se calculó')
     txt = [f'Venta de mostrador del {DIAS[d.weekday()]} {d:%d/%m/%Y}, los 3 locales.',
            'Fuente: mails "Fin de turno" de Maxi Rest de cada turno, sección VENTAS POR ARTICULO (columna de cantidad).',
@@ -172,6 +233,14 @@ def main():
         extra = ''
         if p['sem'] is not None: extra += f" · semana anterior {num(p['sem'], p['kg'])}"
         print(f"TOP {p['nombre']}: {num(p['tot'], p['kg'])} {'kg' if p['kg'] else 'u'} (F {num(p['q']['Florida'], p['kg'])} · B {num(p['q']['Beccar'], p['kg'])} · P {num(p['q']['Paz'], p['kg'])}){extra}")
+
+    print(f'SUGERIDO para el {DIAS[tg.weekday()]} {tg:%d/%m} (promedio de los últimos 4 {DIAS[tg.weekday()]}): ' + ' · '.join(f"{L} {len(sdias[L])} días" for L in LOCS))
+    RS = collections.OrderedDict()
+    for r in SUG:
+        k = (r['rubro'], r['kg']); RS.setdefault(k, {L: 0.0 for L in LOCS})
+        for L in LOCS: RS[k][L] += r['sug'][L]
+    for (rub, kg), q in RS.items():
+        print(f"SUGRUBRO {rub} ({'kg' if kg else 'u'}): Florida {num(q['Florida'], kg)} · Beccar {num(q['Beccar'], kg)} · Paz {num(q['Paz'], kg)} · Total {num(sum(q.values()), kg)}")
 
 
 if __name__ == '__main__':

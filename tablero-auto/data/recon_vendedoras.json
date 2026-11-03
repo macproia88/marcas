@@ -9,7 +9,11 @@
   "unidades_mes": 3310,
   "kilos_mes": 596.5,
   "sugestivas_mes": 730,
-  "sug_u100": 22.1
+  "sug_u100": 22.1,
+  "tickets_mes_est": 1295,
+  "u_tk": 2.56,
+  "kg_tk": 0.46,
+  "venta_mes": 29066476
  },
  {
   "local": "Beccar",
@@ -21,7 +25,11 @@
   "unidades_mes": 2784,
   "kilos_mes": 487.3,
   "sugestivas_mes": 534,
-  "sug_u100": 19.2
+  "sug_u100": 19.2,
+  "tickets_mes_est": 1067,
+  "u_tk": 2.61,
+  "kg_tk": 0.457,
+  "venta_mes": 24178489
  },
  {
   "local": "Beccar",
@@ -33,7 +41,11 @@
   "unidades_mes": 4230,
   "kilos_mes": 776.8,
   "sugestivas_mes": 874,
-  "sug_u100": 20.7
+  "sug_u100": 20.7,
+  "tickets_mes_est": 1720,
+  "u_tk": 2.46,
+  "kg_tk": 0.452,
+  "venta_mes": 36900867
  },
  {
   "local": "Beccar",
@@ -45,7 +57,11 @@
   "unidades_mes": 1600,
   "kilos_mes": 324.3,
   "sugestivas_mes": 306,
-  "sug_u100": 19.1
+  "sug_u100": 19.1,
+  "tickets_mes_est": 662,
+  "u_tk": 2.42,
+  "kg_tk": 0.49,
+  "venta_mes": 14573025
  },
  {
   "local": "Florida",
@@ -57,7 +73,11 @@
   "unidades_mes": 920,
   "kilos_mes": 178.3,
   "sugestivas_mes": 170,
-  "sug_u100": 18.5
+  "sug_u100": 18.5,
+  "tickets_mes_est": 421,
+  "u_tk": 2.19,
+  "kg_tk": 0.424,
+  "venta_mes": 8755719
  },
  {
   "local": "Florida",
@@ -69,7 +89,11 @@
   "unidades_mes": 1517,
   "kilos_mes": 259.8,
   "sugestivas_mes": 339,
-  "sug_u100": 22.3
+  "sug_u100": 22.3,
+  "tickets_mes_est": 600,
+  "u_tk": 2.53,
+  "kg_tk": 0.433,
+  "venta_mes": 14360824
  },
  {
   "local": "Florida",
@@ -81,7 +105,11 @@
   "unidades_mes": 1025,
   "kilos_mes": 181.8,
   "sugestivas_mes": 221,
-  "sug_u100": 21.6
+  "sug_u100": 21.6,
+  "tickets_mes_est": 400,
+  "u_tk": 2.56,
+  "kg_tk": 0.454,
+  "venta_mes": 9492676
  },
  {
   "local": "Florida",
@@ -93,7 +121,11 @@
   "unidades_mes": 3138,
   "kilos_mes": 516.4,
   "sugestivas_mes": 654,
-  "sug_u100": 20.8
+  "sug_u100": 20.8,
+  "tickets_mes_est": 1261,
+  "u_tk": 2.49,
+  "kg_tk": 0.41,
+  "venta_mes": 28303447
  },
  {
   "local": "Florida",
@@ -105,7 +137,11 @@
   "unidades_mes": 1471,
   "kilos_mes": 255.1,
   "sugestivas_mes": 282,
-  "sug_u100": 19.2
+  "sug_u100": 19.2,
+  "tickets_mes_est": 678,
+  "u_tk": 2.17,
+  "kg_tk": 0.376,
+  "venta_mes": 13918056
  },
  {
   "local": "Florida",
@@ -117,7 +153,11 @@
   "unidades_mes": 1297,
   "kilos_mes": 253.1,
   "sugestivas_mes": 257,
-  "sug_u100": 19.8
+  "sug_u100": 19.8,
+  "tickets_mes_est": 551,
+  "u_tk": 2.36,
+  "kg_tk": 0.46,
+  "venta_mes": 12924191
  },
  {
   "local": "Florida",
@@ -129,7 +169,11 @@
   "unidades_mes": 907,
   "kilos_mes": 173.6,
   "sugestivas_mes": 139,
-  "sug_u100": 15.3
+  "sug_u100": 15.3,
+  "tickets_mes_est": 478,
+  "u_tk": 1.9,
+  "kg_tk": 0.363,
+  "venta_mes": 8840442
  },
  {
   "local": "Paz",
@@ -141,7 +185,11 @@
   "unidades_mes": 1497,
   "kilos_mes": 219.2,
   "sugestivas_mes": 292,
-  "sug_u100": 19.5
+  "sug_u100": 19.5,
+  "tickets_mes_est": 480,
+  "u_tk": 3.12,
+  "kg_tk": 0.457,
+  "venta_mes": 12802600
  },
  {
   "local": "Paz",
@@ -153,7 +201,11 @@
   "unidades_mes": 1509,
   "kilos_mes": 206.8,
   "sugestivas_mes": 272,
-  "sug_u100": 18.0
+  "sug_u100": 18.0,
+  "tickets_mes_est": 515,
+  "u_tk": 2.93,
+  "kg_tk": 0.402,
+  "venta_mes": 12190768
  },
  {
   "local": "Paz",
@@ -165,7 +217,11 @@
   "unidades_mes": 2457,
   "kilos_mes": 355.1,
   "sugestivas_mes": 418,
-  "sug_u100": 17.0
+  "sug_u100": 17.0,
+  "tickets_mes_est": 782,
+  "u_tk": 3.14,
+  "kg_tk": 0.454,
+  "venta_mes": 20069119
  },
  {
   "local": "Paz",
@@ -177,7 +233,11 @@
   "unidades_mes": 3257,
   "kilos_mes": 536.6,
   "sugestivas_mes": 540,
-  "sug_u100": 16.6
+  "sug_u100": 16.6,
+  "tickets_mes_est": 1152,
+  "u_tk": 2.83,
+  "kg_tk": 0.466,
+  "venta_mes": 28346112
  },
  {
   "local": "Paz",
@@ -189,7 +249,11 @@
   "unidades_mes": 2859,
   "kilos_mes": 408.1,
   "sugestivas_mes": 499,
-  "sug_u100": 17.5
+  "sug_u100": 17.5,
+  "tickets_mes_est": 934,
+  "u_tk": 3.06,
+  "kg_tk": 0.437,
+  "venta_mes": 23378234
  },
  {
   "local": "Paz",
@@ -201,6 +265,10 @@
   "unidades_mes": 2460,
   "kilos_mes": 331.3,
   "sugestivas_mes": 437,
-  "sug_u100": 17.8
+  "sug_u100": 17.8,
+  "tickets_mes_est": 863,
+  "u_tk": 2.85,
+  "kg_tk": 0.384,
+  "venta_mes": 20262985
  }
 ]

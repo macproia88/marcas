@@ -55,7 +55,7 @@
       <span class="tag">Ventas del mes · una por local</span>
       <span class="win" data-draw="p-ven" data-source="premios" data-where="premio=ventas" data-field="ganador">—</span>
       <span class="sub">puntaje <span data-draw="pt-ven" data-source="premios" data-where="premio=ventas" data-field="puntos">—</span> de 100</span>
-      <span class="kpis">Todo en proporción: sugestivas cada 100 clientes (40%), sugestivas cada 100 unidades (40%) y altas al club cada 100 tickets (20%). No cuenta cuántos clientes atendió.</span>
+      <span class="kpis">Todo en proporción: sugestivas cada 100 clientes (30%), sugestivas cada 100 unidades (30%), unidades por ticket (15%), kilos por ticket (10%) y altas al club (15%). No cuenta cuántos clientes atendió.</span>
     </div>
     <div class="prize">
       <span class="tag">Producción del mes</span>
@@ -109,7 +109,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas cada 100 clientes 40%, sugestivas cada 100 unidades 40% y altas al club 20% (el club pesa menos porque el alta la puede haber impulsado la cajera): sugestivas cada 100 clientes (1 al 25/10, venta por empleado de Maxi Rest ÷ tickets de cada una), altas al club cada 100 tickets (1 al 22/10) y sugestivas cada 100 unidades vendidas (1 al 31/10, venta por artículo por vendedora de Maxi Rest). Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. La encargada no compite acá, tiene su premio aparte.</p>
+    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas cada 100 clientes 30%, sugestivas cada 100 unidades 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera): sugestivas cada 100 clientes (1 al 25/10, venta por empleado de Maxi Rest ÷ tickets de cada una), altas al club cada 100 tickets (1 al 22/10) sugestivas cada 100 unidades vendidas (1 al 31/10, venta por artículo por vendedora de Maxi Rest), y unidades y kilos por ticket (unidades y kilos del 1 al 31/10 de esa misma venta por artículo ÷ tickets del mes, estimados con sus tickets del 1 al 22/10 y su venta del mes, porque los tickets por vendedora llegan hasta el 22/10). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. La encargada no compite acá, tiene su premio aparte.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -125,6 +125,8 @@
           <th data-field="sug_100">Sugestivas c/100 clientes</th>
           <th data-field="altas_club_100">Altas club c/100</th>
           <th data-field="sug_u100">Sugestivas c/100 unidades</th>
+          <th data-field="u_tk">Unidades por ticket</th>
+          <th data-field="kg_tk">Kilos por ticket</th>
           <th data-field="puntaje">Puntaje (en su local)</th>
           <th data-field="tickets">Tickets (no suma)</th>
           <th data-field="unidades_mes">Unidades (oct. completo)</th>
@@ -141,7 +143,7 @@
     <div class="how">
       <div><h3>Local del mes</h3><ul><li>Crecimiento de la venta contra 2025</li><li>Crecimiento de tickets de mostrador contra 2025</li><li>Sugestivas cada 100 clientes (salsas, quesos, postres, Freddo, bebidas; son productos por unidad)</li><li>Unidades cada 100 clientes (sin productos por peso: los kilos no se suman con las unidades)</li><li>Tickets de mostrador del mes (más clientes atendidos)</li><li>Ticket promedio de mostrador</li><li>Unidades vendidas en el mes (sin productos por peso)</li><li>Días del mes en que fue el local con más clientes con DNI en caja (empate: medio día a cada uno)</li><li>Altas al club cada 100 tickets</li><li>Reclamos en PedidosYa cada 100 pedidos (menos es mejor)</li><li>Reseñas nuevas en Google</li><li>Reclamos de calidad cada 1.000 pedidos (menos es mejor)</li></ul></div>
       <div><h3>Encargado del mes</h3><ul><li>Sugestivas cada 100 clientes del equipo</li><li>Unidades cada 100 clientes</li><li>Altas al club del equipo</li><li>Reclamos en apps (armado y faltantes)</li><li>Reseñas nuevas en Google</li></ul></div>
-      <div><h3>Ventas del mes</h3><ul><li>Sugestivas cada 100 clientes que atendió</li><li>Sugestivas cada 100 unidades vendidas</li><li>Altas al club cada 100 tickets (pesa la mitad)</li><li>Se compara con las de su mismo local y gana una por local</li></ul></div>
+      <div><h3>Ventas del mes</h3><ul><li>Sugestivas cada 100 clientes que atendió</li><li>Sugestivas cada 100 unidades vendidas</li><li>Unidades y kilos por ticket</li><li>Altas al club cada 100 tickets (pesa menos)</li><li>Se compara con las de su mismo local y gana una por local</li></ul></div>
       <div><h3>Producción del mes (a completar)</h3><ul><li>Hoy: reclamos por calidad de la comida en PedidosYa</li><li>Para premiar a una persona hace falta la planilla de producción con kilos producidos, mermas y faltantes por pastero y cocinera</li><li>Sumar asistencia y puntualidad cuando Beccar tenga reloj</li></ul></div>
     </div>
   </section>
@@ -174,7 +176,7 @@ dash.calc('ranking', {
   description: 'Cada indicador dividido por el mejor valor de todas, por 100; el puntaje es el promedio de los tres.',
   inputs: ['vendedoras'],
   fn: (vendedoras) => {
-    const W = { sug_100: 0.4, sug_u100: 0.4, altas_club_100: 0.2 };  // el club pesa menos: el alta la puede haber hecho la cajera
+    const W = { sug_100: 0.30, sug_u100: 0.30, u_tk: 0.15, kg_tk: 0.10, altas_club_100: 0.15 };  // el club pesa menos: el alta la puede haber hecho la cajera
     const cols = Object.keys(W);
     const LOCS = ['Florida', 'Beccar', 'Paz'];
     return LOCS.flatMap((L) => {
@@ -288,7 +290,7 @@ dash.calc('premios', {
     rows.forEach((r, i) => {
       const tr = document.createElement('tr');
       if (r.posicion === 1) tr.className = 'top';
-      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100))];
+      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : one(Number(r.sug_u100)), d3.format('.2f')(Number(r.u_tk)).replace('.', ','), d3.format('.2f')(Number(r.kg_tk)).replace('.', ',')];
       cells.forEach((t) => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
       const td = document.createElement('td');
       const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (r.puntaje * 0.6) + 'px';

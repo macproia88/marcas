@@ -207,7 +207,11 @@ if __name__ == '__main__':
         import ranking_anual; ranking_anual.armar()
     except Exception as e:
         print('AVISO: no se armó el ranking del año:', e)
+    try:  # producción: sugerido de la semana y control vendido vs sugerido
+        import produccion_web; produccion_web.armar()
+    except Exception as e:
+        print('AVISO: no se armó produccion.html:', e)
     import nav; nav.main()  # links a las otras páginas del negocio, abajo de cada una
     import sello, datetime as _dt  # fecha y hora de actualización arriba de cada página que se rearmó
-    for _n in ['tablero-presumida-v2.html', 'apps.html', 'mostrador.html', 'ranking-anual.html', 'ranking-mostrador.html']:
+    for _n in ['tablero-presumida-v2.html', 'apps.html', 'mostrador.html', 'ranking-anual.html', 'ranking-mostrador.html', 'produccion.html']:
         sello.sellar(RAIZ / _n if 'RAIZ' in globals() else pathlib.Path(__file__).resolve().parent.parent / _n, _dt.datetime.now(sello.AR))

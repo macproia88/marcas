@@ -62,6 +62,7 @@ def datos():
                 s, q = sug.get(n, 0.0), v.get(n, 0.0)
                 kg = kgs.get(n, False); tol = max(0.5 if kg else 1.0, 0.2 * s)
                 est = 'ok' if abs(q - s) <= tol else ('mas' if q > s else 'menos')
+                if q <= 0 and s >= (1.0 if kg else 3.0): est = 'cero'   # no se vendió nada: posible faltante
                 filas.append([n, rubro.get(n, ''), kg, s, round(q, 2), est])
             control.append(dict(fecha=f, local=L, turnos=sorted(set(turnos[(L, f)])), filas=sorted(filas, key=lambda z: (z[1], z[0]))))
     meta = {n: [rubro.get(n, ''), bool(kgs.get(n, False))] for n in set(rubro)}
@@ -83,7 +84,8 @@ select,input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--
 .seg button.on{background:var(--acc);color:#fff}
 table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:left}th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel)}
 .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.tw{overflow:auto;max-height:640px}tr.rub td{background:var(--hi);font-weight:700}
-td.hoy,th.hoy{background:var(--hi)}td.ok{color:var(--ok)}td.mas{background:var(--badbg);color:var(--bad);font-weight:600}td.menos{background:var(--okbg);color:var(--ok);font-weight:600}
+td.hoy,th.hoy{background:var(--hi)}td.ok{color:var(--ok)}td.mas{background:var(--badbg);color:var(--bad);font-weight:600}td.menos{background:var(--okbg);color:var(--ok);font-weight:600}td.cero{background:#fff2cc;color:#7a5a00;font-weight:700}
+th.s{cursor:pointer;user-select:none}th.s:hover{color:var(--fg)}th.s::after{content:' ⇅';opacity:.35}th.s.desc::after{content:' ▼';opacity:1}th.s.asc::after{content:' ▲';opacity:1}
 .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 12px}.kpi{flex:1 1 150px;border:1px solid var(--line);border-radius:10px;padding:10px 12px}.kpi b{display:block;font-size:22px;font-family:Georgia,serif}
 .kpi span{font-size:12px;color:var(--muted)}.u{color:var(--muted);font-size:12px}svg text{fill:var(--muted);font-size:11px}.leg{font-size:12px;color:var(--muted)}
 @media (max-width:640px){h1{font-size:23px}.card{padding:12px}table{font-size:12px}th,td{padding:5px 4px}}"""
@@ -94,6 +96,24 @@ const fmt=(v,kg)=>v==null?'':(kg?(Math.round(v*10)/10).toLocaleString('es-AR',{m
 const fd=s=>s.slice(8,10)+'/'+s.slice(5,7), DS=['dom','lun','mar','mié','jue','vie','sáb'];
 const dname=s=>{const d=new Date(s+'T12:00:00');return DS[d.getDay()]+' '+fd(s)};
 let LOC='Todos';
+// ---------- ordenar tablas: tocar el título de una columna ordena de mayor a menor (otra vez: de menor a mayor)
+const ORD={};
+const num=t=>{t=(t||'').trim();if(!t)return null;const x=t.replace(/\./g,'').replace(',','.').replace('+','');return isNaN(+x)?null:+x};
+function sortable(id){
+  const box=document.getElementById(id),tb=box.querySelector('tbody'),ths=[...box.querySelectorAll('thead th')];
+  ths.forEach((th,i)=>{th.classList.add('s');th.onclick=()=>{const o=ORD[id];ORD[id]={c:i,d:o&&o.c===i&&o.d==='desc'?'asc':'desc'};aplicar(id)}});
+  aplicar(id);
+}
+function aplicar(id){
+  const o=ORD[id];if(!o)return;const box=document.getElementById(id),tb=box.querySelector('tbody');if(!tb)return;
+  box.querySelectorAll('thead th').forEach((th,i)=>{th.classList.toggle('desc',i===o.c&&o.d==='desc');th.classList.toggle('asc',i===o.c&&o.d==='asc')});
+  const rows=[...tb.rows],grupos=[];let g=null;
+  rows.forEach(r=>{if(r.classList.contains('rub')){g={h:r,rs:[]};grupos.push(g)}else{if(!g){g={h:null,rs:[]};grupos.push(g)}g.rs.push(r)}});
+  const k=r=>{const t=r.cells[o.c]?r.cells[o.c].textContent:'';const n=num(t);return n==null?t.toLowerCase():n};
+  const cmp=(a,b)=>{const x=k(a),y=k(b);if(typeof x==='number'&&typeof y==='number')return o.d==='desc'?y-x:x-y;if(typeof x==='number')return -1;if(typeof y==='number')return 1;return o.d==='desc'?y.localeCompare(x,'es'):x.localeCompare(y,'es')};
+  if(grupos.length>1&&grupos.every(g=>g.h)){grupos.sort((a,b)=>cmp(a.h,b.h))}
+  grupos.forEach(g=>{g.rs.sort(cmp);if(g.h)tb.appendChild(g.h);g.rs.forEach(r=>tb.appendChild(r))});
+}
 const rubros=[...new Set(Object.values(D.meta).map(m=>m[0]))].sort();
 function sel(id,opts,all){const e=document.getElementById(id);e.innerHTML=(all?`<option value="">${all}</option>`:'')+opts.map(o=>`<option>${o}</option>`).join('');return e}
 ['f-rub','c-rub','g-rub'].forEach(id=>sel(id,rubros,id==='g-rub'?null:'Todos los rubros'));
@@ -111,7 +131,7 @@ function semana(){
     const tot=[0,1,2,3,4,5,6].map(i=>arr.reduce((a,p)=>a+p.v[i],0));
     h+=`<tr class="rub"><td>${r}</td><td>${u}</td>`+tot.map((v,i)=>`<td class="n ${i===0?'hoy':''}">${fmt(v,kg)}</td>`).join('')+`<td class="n">${fmt(tot.reduce((a,b)=>a+b),kg)}</td></tr>`;
     arr.forEach(p=>{h+=`<tr><td>${p.n}</td><td class="u">${u}</td>`+p.v.map((v,i)=>`<td class="n ${i===0?'hoy':''}">${v?fmt(v,kg):''}</td>`).join('')+`<td class="n">${fmt(p.v.reduce((a,b)=>a+b),kg)}</td></tr>`})});
-  document.getElementById('t-sem').innerHTML=h+'</tbody></table>';
+  document.getElementById('t-sem').innerHTML=h+'</tbody></table>';sortable('t-sem');
   const du=D.dias_usados[D.semana[0].fecha];
   document.getElementById('n-sem').textContent='Hoy sale de: '+LOCS.filter(L=>LOC==='Todos'||L===LOC).map(L=>`${L} ${du[L].join(', ')||'sin datos'}`).join(' · ')+'.';
 }
@@ -122,15 +142,15 @@ function control(){
   if(!fe.options.length){fe.innerHTML=fs.map(f=>`<option value="${f}">${dname(f)}</option>`).join('')}
   const f=fe.value||fs[0], rub=document.getElementById('c-rub').value, solo=document.getElementById('c-dif').checked;
   const cs=D.control.filter(c=>c.fecha===f&&(LOC==='Todos'||c.local===LOC));
-  let n=0,ok=0,mas=0,men=0,rows=[];
-  cs.forEach(c=>c.filas.forEach(r=>{if(rub&&r[1]!==rub)return;n++;if(r[5]==='ok')ok++;else if(r[5]==='mas')mas++;else men++;if(!solo||r[5]!=='ok')rows.push([c.local,...r])}));
-  document.getElementById('k-ctl').innerHTML=`<div class="kpi"><b>${n?Math.round(ok/n*100):0}%</b><span>productos dentro del sugerido (${ok} de ${n})</span></div><div class="kpi"><b>${mas}</b><span>vendieron más que el sugerido</span></div><div class="kpi"><b>${men}</b><span>vendieron menos (posible sobrante)</span></div>`
+  let n=0,ok=0,mas=0,men=0,cer=0,rows=[];
+  cs.forEach(c=>c.filas.forEach(r=>{if(rub&&r[1]!==rub)return;n++;if(r[5]==='ok')ok++;else if(r[5]==='mas')mas++;else if(r[5]==='cero')cer++;else men++;if(!solo||r[5]!=='ok')rows.push([c.local,...r])}));
+  document.getElementById('k-ctl').innerHTML=`<div class="kpi"><b>${n?Math.round(ok/n*100):0}%</b><span>productos dentro del sugerido (${ok} de ${n})</span></div><div class="kpi"><b>${mas}</b><span>vendieron más que el sugerido</span></div><div class="kpi"><b>${men}</b><span>vendieron menos (posible sobrante)</span></div><div class="kpi"><b>${cer}</b><span>no se vendió nada: ¿faltó? (revisar con el local)</span></div>`
    +`<div class="kpi"><b style="font-size:15px">${cs.map(c=>c.local+': '+c.turnos.join(', ')).join('<br>')||'sin cierres'}</b><span>turnos leídos</span></div>`;
   rows.sort((a,b)=>Math.abs(b[5]-b[4])-Math.abs(a[5]-a[4]));
   let h='<table><thead><tr><th>Local</th><th>Rubro</th><th>Producto</th><th class="n">Sugerido</th><th class="n">Vendido</th><th class="n">Diferencia</th><th>Qué pasó</th></tr></thead><tbody>';
-  const tx={ok:'Dentro del sugerido',mas:'Vendió más',menos:'Vendió menos'};
+  const tx={ok:'Dentro del sugerido',mas:'Vendió más',menos:'Vendió menos',cero:'No se vendió nada: ¿faltó?'};
   rows.forEach(r=>{const kg=r[3],d=r[5]-r[4];h+=`<tr><td>${r[0]}</td><td>${r[2]}</td><td>${r[1]}</td><td class="n">${fmt(r[4],kg)}</td><td class="n">${fmt(r[5],kg)}</td><td class="n ${r[6]}">${d>0?'+':''}${fmt(d,kg)}</td><td class="${r[6]}">${tx[r[6]]}</td></tr>`});
-  document.getElementById('t-ctl').innerHTML=h+'</tbody></table>';
+  document.getElementById('t-ctl').innerHTML=h+'</tbody></table>';sortable('t-ctl');
 }
 // ---------- 3. comportamiento
 function graf(){
@@ -168,11 +188,11 @@ def armar():
 <p class="sub">Cuánto producir cada día según lo que se vende en mostrador, el control de cómo salió y el comportamiento de cada rubro · La Presumida Florida, Beccar y Pastas Paz · sin apps (Maxi carga PedidosYa y Rappi juntos en el código 202).</p>
 <div class="bar"><span class="seg"><button class="on" data-l="Todos">Los 3 locales</button><button data-l="Florida">Florida</button><button data-l="Beccar">Beccar</button><button data-l="Paz">Paz</button></span></div>
 <section class="card"><h2>Sugerido de la semana</h2>
-<p class="note">Para cada día: promedio de lo vendido en mostrador los últimos 4 días iguales de la semana, por local, redondeado para arriba (unidades enteras, kg al medio kilo). Sin feriados ni días 29; el día 29 se compara con los 29 anteriores. "Máximo" muestra el mejor de esos días, para cubrirse. La columna resaltada es hoy.</p>
+<p class="note">Para cada día: promedio de lo vendido en mostrador los últimos 4 días iguales de la semana, por local, redondeado para arriba (unidades enteras, kg al medio kilo). Sin feriados ni días 29; el día 29 se compara con los 29 anteriores. "Máximo" muestra el mejor de esos días, para cubrirse. La columna resaltada es hoy. Tocá el título de cualquier columna para ordenar de mayor a menor (dentro de cada rubro).</p>
 <div class="bar"><label>Rubro</label><select id="f-rub"></select><label>Buscar</label><input id="f-q" placeholder="producto"><label>Ver</label><select id="f-modo"><option value="s">Sugerido (promedio)</option><option value="max">Máximo de los 4 días</option></select></div>
 <p class="note" id="n-sem"></p><div class="tw" id="t-sem"></div></section>
 <section class="card"><h2>Control: vendido contra sugerido</h2>
-<p class="note">Lo que se vendió en mostrador cada día contra el sugerido que se mandó esa mañana. Dentro = diferencia de hasta 20% (mínimo 1 unidad o 0,5 kg). Vendió más: se produjo de más y se vendió, o faltó. Vendió menos: posible sobrante.</p>
+<p class="note">Lo que se vendió en mostrador cada día contra el sugerido que se mandó esa mañana. Dentro = diferencia de hasta 20% (mínimo 1 unidad o 0,5 kg). Vendió más: se produjo de más y se vendió, o faltó. Vendió menos: posible sobrante. Cero con sugerido de 3 unidades o 1 kg o más: no se vendió nada, revisar si faltó. Tocá el título de cualquier columna para ordenar de mayor a menor.</p>
 <div class="bar"><label>Día</label><select id="c-dia"></select><label>Rubro</label><select id="c-rub"></select><label><input type="checkbox" id="c-dif" checked> solo diferencias</label></div>
 <div class="kpis" id="k-ctl"></div><div class="tw" id="t-ctl"></div></section>
 <section class="card"><h2>Comportamiento día por día</h2>

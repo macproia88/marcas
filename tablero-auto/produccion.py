@@ -181,6 +181,7 @@ def main():
         for col in range(1, 8):
             ws2.cell(r, col).font = AR
             if col >= 4: ws2.cell(r, col).number_format = '#,##0.0' if kg else '#,##0'
+    ws2.auto_filter.ref = f'A1:G{ws2.max_row}'
 
     ws3 = wb.create_sheet('Por turno')
     hoja(ws3, ['Local', 'Turno', 'Rubro', 'Producto', 'Unidad', 'Cantidad'], [10, 12, 14, 34, 8, 10])
@@ -188,6 +189,7 @@ def main():
         for t, q in f['turnos'].items():
             ws3.append([f['local'], t, f['rubro'], f['nombre'], 'kg' if f['kg'] else 'u', round(q, 2)])
             for col in range(1, 7): ws3.cell(ws3.max_row, col).font = AR
+    ws3.auto_filter.ref = f'A1:F{ws3.max_row}'
 
     # ---------- sugerido para hoy (el día siguiente al informado)
     tgt = (d + dt.timedelta(days=1)).isoformat(); tg = dt.date.fromisoformat(tgt)
@@ -222,6 +224,8 @@ def main():
             if x['dif'] > tol: txt, fill = 'Vendió más que el sugerido', RED
             elif x['dif'] < -tol: txt, fill = 'Vendió menos que el sugerido (posible sobrante)', GRN
             else: txt, fill = 'Dentro del sugerido', None
+            if x['vend'] <= 0 and x['sug'] >= (1.0 if x['kg'] else 3.0):
+                txt, fill = 'No se vendió nada: ¿faltó? Revisar con el local', PatternFill('solid', fgColor='FFF2CC')
             x['estado'] = txt
             ws6.append([x['local'], x['rubro'], x['nombre'], 'kg' if x['kg'] else 'u', x['sug'], x['vend'], x['dif'], txt]); rr = ws6.max_row
             for col in range(1, 9):
@@ -229,7 +233,7 @@ def main():
                 if 5 <= col <= 7: c.number_format = '#,##0.0' if x['kg'] else '#,##0'
             if fill:
                 for col in (7, 8): ws6.cell(rr, col).fill = fill
-        ws6.append([]); ws6.append(['Más/menos = la venta de mostrador se pasó o quedó corta en más de 20% del sugerido (mínimo 1 unidad o 0,5 kg). Vendido más puede ser que se produjo más de lo sugerido o que faltó; vendido menos es posible sobrante.'])
+        ws6.append([]); ws6.append(['Más/menos = la venta de mostrador se pasó o quedó corta en más de 20% del sugerido (mínimo 1 unidad o 0,5 kg). Vendido más puede ser que se produjo más de lo sugerido; vendido menos es posible sobrante; cero con sugerido de 3 u o 1 kg o más = no se vendió nada, revisar si faltó. Usá la flecha de cada título para ordenar de mayor a menor.'])
         ws6.cell(ws6.max_row, 1).font = Font(name='Arial', italic=True, color='555555')
         ws6.auto_filter.ref = f'A1:H{len(VS) + 1}'
     ws5 = wb.create_sheet(f'Sugerido {DIAS[tg.weekday()]} {tg:%d-%m}', 0)
@@ -281,8 +285,11 @@ def main():
         for L in LOCS:
             xs = [x for x in VS if x['local'] == L]
             if not xs: continue
-            n_ok = sum(x['estado'] == 'Dentro del sugerido' for x in xs); n_mas = sum(x['estado'].startswith('Vendió más') for x in xs); n_men = len(xs) - n_ok - n_mas
-            print(f'VSLOCAL {L}: {len(xs)} productos · dentro del sugerido {n_ok} · vendió más {n_mas} · vendió menos {n_men}')
+            n_ok = sum(x['estado'] == 'Dentro del sugerido' for x in xs); n_mas = sum(x['estado'].startswith('Vendió más') for x in xs)
+            n_cer = sum(x['estado'].startswith('No se vendió') for x in xs); n_men = len(xs) - n_ok - n_mas - n_cer
+            print(f'VSLOCAL {L}: {len(xs)} productos · dentro del sugerido {n_ok} · vendió más {n_mas} · vendió menos {n_men} · no se vendió nada {n_cer}')
+        for x in sorted([x for x in VS if x['estado'].startswith('No se vendió')], key=lambda x: -x['sug']):
+            print(f"VSCERO {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} {'kg' if x['kg'] else 'u'}, vendido 0 (¿faltó? revisar con el local)")
         big = sorted([x for x in VS if x['estado'] != 'Dentro del sugerido'], key=lambda x: -abs(x['dif']) / (2 if x['kg'] else 1))[:12]
         for x in big:
             print(f"VS {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} · vendido {num(x['vend'], x['kg'])} {'kg' if x['kg'] else 'u'} ({'+' if x['dif'] > 0 else ''}{num(x['dif'], x['kg'])})")

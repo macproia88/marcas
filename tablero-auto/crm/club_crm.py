@@ -91,13 +91,22 @@ if len(u):
 else: F['telefono']=last.usuario_movil; F['fecha_alta']=None; F['fecha_nac']=None
 F['key']=F.index
 # historial previo y medición
-H=pd.DataFrame(columns=['fecha_lista','key','club','dni','nombre','prioridad','mensaje'])
+H=pd.DataFrame(columns=['fecha_lista','key','club','dni','nombre','prioridad','mensaje','control'])
 if prev_crm:
     pf=sorted(prev_crm)[-1]
     try: H=pd.read_excel(pf,sheet_name='Historial contactos',dtype={'dni':str}); H['fecha_lista']=pd.to_datetime(H.fecha_lista)
     except Exception: pass
 if prev_csv:
-    H2=pd.concat([pd.read_csv(f,dtype={'dni':str}) for f in prev_csv]); H2['fecha_lista']=pd.to_datetime(H2.fecha_lista)
+    TP={'1':'1. Nuevo sin segunda compra','2':'2. En riesgo','3':'3. Frecuente que bajó','4':'4. Dormido'}
+    parts=[]
+    for f in prev_csv:
+        d=pd.read_csv(f,dtype=str)
+        if 'f' in d.columns:
+            d=pd.DataFrame({'fecha_lista':d.f,'club':np.where(d.c=='P','Paz','La Presumida'),'dni':d.dni,'prioridad':d.t.map(TP),'control':np.where(d.k=='1','Sí','No')})
+        parts.append(d)
+    H2=pd.concat(parts); H2['fecha_lista']=pd.to_datetime(H2.fecha_lista)
+    if 'control' not in H2: H2['control']='No'
+    H2['control']=H2.control.fillna('No')
     H2['key']=H2.club+'|'+H2.dni; H2['nombre']=None; H2['mensaje']=None
     H=pd.concat([H,H2]).drop_duplicates(['fecha_lista','key'])
 H=H[H.fecha_lista<HOY] if len(H) else H
@@ -108,18 +117,26 @@ if len(H):
     H['dias_hasta_volver']=H.apply(volvio,axis=1); H['volvio']=np.where(H.dias_hasta_volver.notna(),'Sí','No')
 recientes=set(H[H.fecha_lista>=HOY-pd.Timedelta(days=21)].key) if len(H) else set()
 cand=F[~F.key.isin(recientes)]
-C=cand[(cand.grupo_semana_ant=='Frecuentes')&(cand.grupo!='Frecuentes')].sort_values('gasto_total',ascending=False).head(20).assign(prioridad='3. Frecuente que bajó',motivo=lambda d:'Venía 4+ veces al mes; bajó a '+d.grupo.str.lower(),mensaje='Hola {n}, te extrañamos esta semana en {m}. Te guardamos una salsa de regalo con tu próxima compra.')
-B=cand[cand.grupo=='En riesgo'].sort_values(['visitas','gasto_total'],ascending=False).head(40).assign(prioridad='2. En riesgo valioso',motivo=lambda d:'Hace '+d.dias_sin_venir.astype(str)+' días que no viene; vino '+d.visitas.astype(str)+' veces',mensaje='Hola {n}, hace un tiempo que no te vemos en {m}. Esta semana, con tu DNI, te llevás 1/2 kg de ñoquis de regalo en tu compra.')
-A=cand[(cand.grupo=='Nuevos')&cand.dias_sin_venir.between(14,30)].sort_values('ticket_prom',ascending=False).head(100-len(B)-len(C)).assign(prioridad='1. Nuevo sin segunda compra',motivo=lambda d:'Compró una vez hace '+d.dias_sin_venir.astype(str)+' días y no volvió',mensaje='Hola {n}, gracias por sumarte al Club de {m}. Tenés 15 días para usar tu beneficio de segunda compra: 10% en pastas frescas.')
-LI=pd.concat([A,B,C])
+import hashlib
+C=cand[(cand.grupo_semana_ant=='Frecuentes')&(cand.grupo!='Frecuentes')].assign(prioridad='3. Frecuente que bajó',motivo=lambda d:'Venía 4+ veces al mes; bajó a '+d.grupo.str.lower(),mensaje='Hola {n}, te extrañamos esta semana en {m}. Te guardamos una salsa de regalo con tu próxima compra.')
+B=cand[cand.grupo=='En riesgo'].assign(prioridad='2. En riesgo',motivo=lambda d:'Hace '+d.dias_sin_venir.astype(str)+' días que no viene; vino '+d.visitas.astype(str)+' veces',mensaje='Hola {n}, hace un tiempo que no te vemos en {m}. Esta semana, con tu DNI, te llevás 1/2 kg de ñoquis de regalo en tu compra.')
+A=cand[(cand.grupo=='Nuevos')&cand.dias_sin_venir.between(14,30)].assign(prioridad='1. Nuevo sin segunda compra',motivo=lambda d:'Compró una vez hace '+d.dias_sin_venir.astype(str)+' días y no volvió',mensaje='Hola {n}, gracias por sumarte al Club de {m}. Tenés 15 días para usar tu beneficio de segunda compra: 10% en pastas frescas.')
+Dm=cand[cand.grupo=='Dormidos'].assign(prioridad='4. Dormido',motivo=lambda d:'Hace '+d.dias_sin_venir.astype(str)+' días que no viene',mensaje='Hola {n}, te esperamos de nuevo en {m}: con tu DNI tenés 15% en tu próxima compra hasta el domingo.')
+LI=pd.concat([A,B,C,Dm]).drop_duplicates('key')
+LI=LI.sort_values(['prioridad','gasto_total'],ascending=[True,False])
 LI['mensaje']=[mm.replace('{n}',str(n).split(' ')[0]).replace('{m}','Pastas Paz' if c=='Paz' else 'La Presumida') for mm,n,c in zip(LI.mensaje,LI.nombre,LI.club)]
-newH=LI.assign(fecha_lista=HOY)[['fecha_lista','key','club','dni','nombre','prioridad','mensaje']]
+# grupo de control: 10% al azar (fijo por socio y fecha), no recibe el mail
+LI['control']=['Sí' if int(hashlib.md5(f"{k}|{HOY:%Y-%m-%d}".encode()).hexdigest(),16)%10==0 else 'No' for k in LI.key]
+CTRL=LI[LI.control=='Sí']; LI_all=LI; LI=LI[LI.control=='No']
+newH=LI_all.assign(fecha_lista=HOY)[['fecha_lista','key','club','dni','nombre','prioridad','mensaje','control']]
 HH=pd.concat([H.drop(columns=[c for c in ['dias_hasta_volver','volvio'] if c in H.columns]),newH],ignore_index=True)
 # resultado agregado para la web
 res=[]
 if len(H):
+    H['control']=H.control.fillna('No') if 'control' in H else 'No'
     for (fl,pr),x in H.groupby(['fecha_lista','prioridad']):
-        res.append(dict(fecha_lista=fl.strftime('%Y-%m-%d'),prioridad=pr,contactados=int(len(x)),volvieron=int((x.volvio=='Sí').sum())))
+        e=x[x.control!='Sí']; c=x[x.control=='Sí']
+        res.append(dict(fecha_lista=fl.strftime('%Y-%m-%d'),prioridad=pr,contactados=int(len(e)),volvieron=int((e.volvio=='Sí').sum()),control=int(len(c)),control_volvieron=int((c.volvio=='Sí').sum())))
 # ---- Excel
 A_='Arial'; HF=PatternFill('solid',fgColor='7A3E2B'); th=Side(style='thin',color='CCCCCC'); BX=Border(top=th,bottom=th,left=th,right=th)
 GR=PatternFill('solid',fgColor='E5F4E4'); RD=PatternFill('solid',fgColor='FBEBEB')
@@ -135,9 +152,9 @@ def put(ws,r,c,val,fmt=None,bold=False):
 wb=Workbook(); ws=wb.active; ws.title='LEEME'
 txt=[f"CLUB - CRM SEMANAL. Lista del {HOY:%d/%m/%Y}, con compras de ALAX hasta el {END:%d/%m/%Y}.",
 "Hojas: Lista de la semana (a quién escribir y con qué mensaje) · Resultado de los mensajes (quién volvió de las listas anteriores) · Sube o baja · Evolución semanal · Ficha de clientes · Historial contactos.",
-"En la Lista: completar la columna 'Enviado' (Sí/No). Si no se completa, se asume que se mandó a todos.",
+"La Lista trae a TODOS los socios de cada grupo, menos el 10% elegido al azar que queda como grupo de control (no recibe el mail) para medir si el mail funciona. Los mails se mandan desde el email marketing de ALAX con los archivos ALAX_mail_*.csv.",
 "Grupos (últimos 30 días): Frecuentes 4+ días con compra · Recurrentes 2-3 · Nuevos 1ª compra en 30 días · Ocasionales 1 vez y ya eran clientes · En riesgo 31-60 días sin venir · Dormidos +60.",
-"Volvió = compró con su DNI desde el día de la lista. A quien se contactó en las últimas 3 semanas no se lo repite.",
+"Volvió = compró con su DNI desde el día de la lista. A quien se contactó (o quedó de control) en las últimas 3 semanas no se lo repite.",
 "Los beneficios de los mensajes son sugeridos: confirmarlos antes de mandar. Archivo PRIVADO (nombres, DNI y mails): no compartir fuera del equipo."]
 for i,t_ in enumerate(txt,1): ws.cell(i,1,t_).font=Font(name=A_,bold=(i==1),size=12 if i==1 else 10)
 ws.column_dimensions['A'].width=160
@@ -150,11 +167,13 @@ for i,r_ in enumerate(LI.itertuples(),2):
 ws.freeze_panes='E2'; ws.auto_filter.ref=f"A1:O{len(LI)+1}"
 for j,wd in enumerate([24,12,9,24,30,12,11,36,8,12,11,12,70,11,12],1): ws.column_dimensions[CL(j)].width=wd
 ws=wb.create_sheet('Resultado de los mensajes')
-hdr(ws,['Lista del','Tipo de contacto','Contactados','Volvieron','% que volvió'])
+hdr(ws,['Lista del','Tipo de contacto','Recibieron el mail','Volvieron','% que volvió','Grupo de control (sin mail)','Volvieron sin mail','% que volvió sin mail','Efecto del mail (puntos)'])
 for i,r_ in enumerate(res,2):
     put(ws,i,1,pd.Timestamp(r_['fecha_lista'])); put(ws,i,2,r_['prioridad']); put(ws,i,3,r_['contactados']); put(ws,i,4,r_['volvieron']); ws.cell(i,5,f'=IF(C{i}=0,0,D{i}/C{i})').number_format='0%'
+    put(ws,i,6,r_['control']); put(ws,i,7,r_['control_volvieron']); ws.cell(i,8,f'=IF(F{i}=0,0,G{i}/F{i})').number_format='0%'; ws.cell(i,9,f'=(E{i}-H{i})*100').number_format='+0.0;-0.0;0'
 if not res: ws.cell(2,1,'Todavía no hay listas anteriores para medir: la primera medición sale la semana que viene.').font=Font(name=A_,italic=True)
-for j,wd in enumerate([12,28,12,12,12],1): ws.column_dimensions[CL(j)].width=wd
+for j,wd in enumerate([12,28,12,11,11,14,12,12,14],1): ws.column_dimensions[CL(j)].width=wd
+ws.cell(len(res)+3,1,'Efecto del mail = % que volvió con mail − % que volvió sin mail. El grupo de control es el 10% de cada lista elegido al azar que NO recibe el mail.').font=Font(name=A_,italic=True,size=9)
 ws=wb.create_sheet('Sube o baja')
 hdr(ws,['Local','Grupo','Semana anterior','Esta semana','Cambio','Lectura'])
 good={'Frecuentes':1,'Recurrentes':1,'Nuevos':1,'Ocasionales':1,'En riesgo':-1,'Dormidos':-1}; r=2
@@ -192,17 +211,18 @@ ws.conditional_formatting.add(f"K2:K{len(FF)+1}",CellIsRule(operator='equal',for
 ws.conditional_formatting.add(f"K2:K{len(FF)+1}",CellIsRule(operator='equal',formula=['"Empeoró"'],fill=RD))
 for j,wd in enumerate([12,9,11,26,30,13,12,12,12,12,10,12,12,9,9,9,12,11],1): ws.column_dimensions[CL(j)].width=wd
 ws=wb.create_sheet('Historial contactos')
-hc=['fecha_lista','key','club','dni','nombre','prioridad','mensaje']
+hc=['fecha_lista','key','club','dni','nombre','prioridad','mensaje','control']
 hdr(ws,hc)
 for i,row in enumerate(HH[hc].itertuples(index=False),2):
     for j,val in enumerate(row,1): put(ws,i,j,val)
 os.makedirs(OUT,exist_ok=True)
 xf=os.path.join(OUT,f'Club_CRM_{HOY:%Y-%m-%d}.xlsx'); wb.save(xf)
-newH[['fecha_lista','club','dni','prioridad']].assign(fecha_lista=HOY.strftime('%Y-%m-%d')).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
+TIPOS={'1':'1. Nuevo sin segunda compra','2':'2. En riesgo','3':'3. Frecuente que bajó','4':'4. Dormido'}
+pd.DataFrame({'f':HOY.strftime('%Y-%m-%d'),'c':np.where(newH.club=='Paz','P','L'),'dni':newH.dni,'t':newH.prioridad.str[0],'k':np.where(newH.control=='Sí',1,0)}).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
 
 # CSV para cargar en el email marketing de ALAX: uno por club y por tipo de mensaje
 for (club,pr),x in LI.groupby(['club','prioridad']):
-    tipo={'1':'nuevos','2':'en_riesgo','3':'frecuentes_que_bajaron'}[pr[0]]
+    tipo={'1':'nuevos','2':'en_riesgo','3':'frecuentes_que_bajaron','4':'dormidos'}[pr[0]]
     x.assign(nombre_pila=x.nombre.str.split(' ').str[0])[['email','nombre_pila','nombre','dni']].to_csv(os.path.join(OUT,f"ALAX_mail_{'Paz' if club=='Paz' else 'LaPresumida'}_{tipo}_{HOY:%Y-%m-%d}.csv"),index=False)
 # web
 s=open(HTML,encoding='utf-8').read(); m=re.search(r'window\.DATA=(\{.*?\});\s*\n',s,re.S); D=json.loads(m.group(1))
@@ -210,4 +230,4 @@ D['grupos_semana']=[r for r in rows if r['semana']>='2026-08-03']; D['contactos_
 D.setdefault('info',[{}])[0]['grupos_hasta']=END.strftime('%Y-%m-%d')
 D['info'][0]['actualizado']=pd.Timestamp.now(tz='America/Argentina/Buenos_Aires').strftime('%Y-%m-%dT%H:%M')
 s=s[:m.start(1)]+json.dumps(D,ensure_ascii=False)+s[m.end(1):]; open(HTML,'w',encoding='utf-8').write(s)
-print(json.dumps(dict(excel=xf,compras_hasta=str(END.date()),lista=len(LI),por_tipo=LI.prioridad.value_counts().to_dict(),medidos=res,ultima_semana={k:int(W[W.local=='Total'].iloc[-1][k]) for k in G}),ensure_ascii=False))
+print(json.dumps(dict(excel=xf,compras_hasta=str(END.date()),lista=len(LI),control=len(CTRL),por_tipo=LI.prioridad.value_counts().to_dict(),medidos=res,ultima_semana={k:int(W[W.local=='Total'].iloc[-1][k]) for k in G}),ensure_ascii=False))

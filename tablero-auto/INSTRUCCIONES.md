@@ -61,3 +61,10 @@ Toda página que se publique en este repo lleva la línea "Última actualizació
 ## Links entre páginas
 
 Abajo de cada página del negocio va la lista de links a las otras (`tablero-auto/nav.py`). `actualizar.py` y `reconocimiento.py` la ponen solos. Si se suma una página nueva del negocio, agregarla a `PAGINAS` en `nav.py`.
+
+## Club: grupos semana a semana (tablero-club.html)
+
+- Sección "¿Cómo se mueven los grupos semana a semana?" sale de `DATA['grupos_semana']`.
+- Para actualizarla: `python3 tablero-auto/club_grupos.py <carpetas o archivos con los Reporte_de_ventas de ALAX>` (los de julio en adelante; se juntan por venta_id). Después actualizar `info.actualizado`.
+- Solo publica cantidades por grupo, local y semana. La ficha con nombres, DNI y mails NO va a la web (es pública): queda en el Excel Club_Ficha_y_Grupos_Semanales.xlsx.
+- Grupos (últimos 30 días a cada domingo): Frecuentes 4+ días con compra, Recurrentes 2-3, Nuevos 1ª compra en 30 días, Ocasionales 1 vez y ya eran clientes, En riesgo 31-60 días sin venir, Dormidos +60.

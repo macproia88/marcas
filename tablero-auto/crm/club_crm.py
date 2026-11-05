@@ -2,7 +2,7 @@
 Uso: python3 tablero-auto/crm/club_crm.py <carpeta con los reportes de ALAX y el último Club_CRM_*.xlsx> <carpeta de salida> [AAAA-MM-DD fecha de la lista]
 - Lee todos los Reporte_de_ventas* (se juntan por venta_id) y los Reporte_de_usuarios* de ALAX.
 - Arma grupos, ficha, lista de 100 (sin repetir a quien se contactó en las últimas 3 semanas) y mide quién volvió de las listas anteriores.
-- Escribe <salida>/Club_CRM_<fecha>.xlsx (PRIVADO: tiene nombres, DNI y mails; va al Drive 01 Club, nunca a la web)
+- Escribe <salida>/Club_CRM_<fecha>.xlsx (al chat) y Club_CRM_contactos_<fecha>.csv (al Drive 01 Club, para medir la semana siguiente) (PRIVADO: tiene nombres, DNI y mails; va al Drive 01 Club, nunca a la web)
 - Actualiza tablero-club.html con DATA['grupos_semana'] y DATA['contactos_resultado'] (solo cantidades).
 """
 import sys,os,glob,json,re,warnings
@@ -16,6 +16,7 @@ IN,OUT=sys.argv[1],sys.argv[2]
 HOY=pd.Timestamp(sys.argv[3]) if len(sys.argv)>3 else pd.Timestamp.now().normalize()
 HTML=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..','tablero-club.html')
 V=[];U=[];prev_crm=[]
+prev_csv=glob.glob(os.path.join(IN,'**','Club_CRM_contactos_*.csv'),recursive=True)
 for f in glob.glob(os.path.join(IN,'**','*.xlsx'),recursive=True):
     b=os.path.basename(f)
     if b.startswith('Club_CRM_'): prev_crm.append(f); continue
@@ -95,6 +96,10 @@ if prev_crm:
     pf=sorted(prev_crm)[-1]
     try: H=pd.read_excel(pf,sheet_name='Historial contactos',dtype={'dni':str}); H['fecha_lista']=pd.to_datetime(H.fecha_lista)
     except Exception: pass
+if prev_csv:
+    H2=pd.concat([pd.read_csv(f,dtype={'dni':str}) for f in prev_csv]); H2['fecha_lista']=pd.to_datetime(H2.fecha_lista)
+    H2['key']=H2.club+'|'+H2.dni; H2['nombre']=None; H2['mensaje']=None
+    H=pd.concat([H,H2]).drop_duplicates(['fecha_lista','key'])
 H=H[H.fecha_lista<HOY] if len(H) else H
 def volvio(r):
     x=vis[(vis.key==r.key)&(vis.dia>=r.fecha_lista)]
@@ -193,6 +198,7 @@ for i,row in enumerate(HH[hc].itertuples(index=False),2):
     for j,val in enumerate(row,1): put(ws,i,j,val)
 os.makedirs(OUT,exist_ok=True)
 xf=os.path.join(OUT,f'Club_CRM_{HOY:%Y-%m-%d}.xlsx'); wb.save(xf)
+newH[['fecha_lista','club','dni','prioridad']].assign(fecha_lista=HOY.strftime('%Y-%m-%d')).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
 # web
 s=open(HTML,encoding='utf-8').read(); m=re.search(r'window\.DATA=(\{.*?\});\s*\n',s,re.S); D=json.loads(m.group(1))
 D['grupos_semana']=[r for r in rows if r['semana']>='2026-08-03']; D['contactos_resultado']=res

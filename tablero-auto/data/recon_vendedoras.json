@@ -4,7 +4,7 @@
   "vendedora": "Viviana",
   "tickets": 746,
   "altas_club_100": 15.5,
-  "sug_100": 62.2,
+  "sug_100": 56.4,
   "sugestiva_pct_anterior": 0.1855,
   "unidades_mes": 3310,
   "kilos_mes": 596.5,
@@ -13,14 +13,15 @@
   "tickets_mes_est": 1295,
   "u_tk": 2.56,
   "kg_tk": 0.46,
-  "venta_mes": 29066476
+  "venta_mes": 29066476,
+  "sug_100_1al25": 62.2
  },
  {
   "local": "Beccar",
   "vendedora": "Valeria",
   "tickets": 685,
   "altas_club_100": 17.4,
-  "sug_100": 54.3,
+  "sug_100": 50.0,
   "sugestiva_pct_anterior": 0.1597,
   "unidades_mes": 2784,
   "kilos_mes": 487.3,
@@ -29,14 +30,15 @@
   "tickets_mes_est": 1067,
   "u_tk": 2.61,
   "kg_tk": 0.457,
-  "venta_mes": 24178489
+  "venta_mes": 24178489,
+  "sug_100_1al25": 54.3
  },
  {
   "local": "Beccar",
   "vendedora": "Ana",
   "tickets": 1063,
   "altas_club_100": 18.3,
-  "sug_100": 60.7,
+  "sug_100": 50.8,
   "sugestiva_pct_anterior": 0.1803,
   "unidades_mes": 4230,
   "kilos_mes": 776.8,
@@ -45,14 +47,15 @@
   "tickets_mes_est": 1720,
   "u_tk": 2.46,
   "kg_tk": 0.452,
-  "venta_mes": 36900867
+  "venta_mes": 36900867,
+  "sug_100_1al25": 60.7
  },
  {
   "local": "Beccar",
   "vendedora": "Karina",
   "tickets": 423,
   "altas_club_100": 19.6,
-  "sug_100": 52.0,
+  "sug_100": 46.2,
   "sugestiva_pct_anterior": 0.1556,
   "unidades_mes": 1600,
   "kilos_mes": 324.3,
@@ -61,14 +64,15 @@
   "tickets_mes_est": 662,
   "u_tk": 2.42,
   "kg_tk": 0.49,
-  "venta_mes": 14573025
+  "venta_mes": 14573025,
+  "sug_100_1al25": 52.0
  },
  {
   "local": "Florida",
   "vendedora": "Elizabeth Ojeda",
   "tickets": 277,
   "altas_club_100": 13.0,
-  "sug_100": 49.5,
+  "sug_100": 40.4,
   "sugestiva_pct_anterior": 0.1662,
   "unidades_mes": 920,
   "kilos_mes": 178.3,
@@ -77,14 +81,15 @@
   "tickets_mes_est": 421,
   "u_tk": 2.19,
   "kg_tk": 0.424,
-  "venta_mes": 8755719
+  "venta_mes": 8755719,
+  "sug_100_1al25": 49.5
  },
  {
   "local": "Florida",
   "vendedora": "Melisa",
   "tickets": 365,
   "altas_club_100": 9.0,
-  "sug_100": 66.4,
+  "sug_100": 56.5,
   "sugestiva_pct_anterior": 0.2065,
   "unidades_mes": 1517,
   "kilos_mes": 259.8,
@@ -93,14 +98,15 @@
   "tickets_mes_est": 600,
   "u_tk": 2.53,
   "kg_tk": 0.433,
-  "venta_mes": 14360824
+  "venta_mes": 14360824,
+  "sug_100_1al25": 66.4
  },
  {
   "local": "Florida",
   "vendedora": "Valeria",
   "tickets": 293,
   "altas_club_100": 9.6,
-  "sug_100": 60.9,
+  "sug_100": 55.2,
   "sugestiva_pct_anterior": 0.1793,
   "unidades_mes": 1025,
   "kilos_mes": 181.8,
@@ -109,14 +115,15 @@
   "tickets_mes_est": 400,
   "u_tk": 2.56,
   "kg_tk": 0.454,
-  "venta_mes": 9492676
+  "venta_mes": 9492676,
+  "sug_100_1al25": 60.9
  },
  {
   "local": "Florida",
   "vendedora": "Yesica Silva",
   "tickets": 801,
   "altas_club_100": 6.4,
-  "sug_100": 57.5,
+  "sug_100": 51.9,
   "sugestiva_pct_anterior": 0.1849,
   "unidades_mes": 3138,
   "kilos_mes": 516.4,
@@ -125,14 +132,15 @@
   "tickets_mes_est": 1261,
   "u_tk": 2.49,
   "kg_tk": 0.41,
-  "venta_mes": 28303447
+  "venta_mes": 28303447,
+  "sug_100_1al25": 57.5
  },
  {
   "local": "Florida",
   "vendedora": "Luana",
   "tickets": 425,
   "altas_club_100": 10.6,
-  "sug_100": 47.9,
+  "sug_100": 41.6,
   "sugestiva_pct_anterior": 0.1627,
   "unidades_mes": 1471,
   "kilos_mes": 255.1,
@@ -141,14 +149,15 @@
   "tickets_mes_est": 678,
   "u_tk": 2.17,
   "kg_tk": 0.376,
-  "venta_mes": 13918056
+  "venta_mes": 13918056,
+  "sug_100_1al25": 47.9
  },
  {
   "local": "Florida",
   "vendedora": "Lucila",
   "tickets": 201,
   "altas_club_100": 15.9,
-  "sug_100": 57.6,
+  "sug_100": 46.6,
   "sugestiva_pct_anterior": 0.1784,
   "unidades_mes": 1297,
   "kilos_mes": 253.1,
@@ -157,14 +166,15 @@
   "tickets_mes_est": 551,
   "u_tk": 2.36,
   "kg_tk": 0.46,
-  "venta_mes": 12924191
+  "venta_mes": 12924191,
+  "sug_100_1al25": 57.6
  },
  {
   "local": "Florida",
   "vendedora": "Analia Ponce",
   "tickets": 298,
   "altas_club_100": 10.7,
-  "sug_100": 33.5,
+  "sug_100": 29.1,
   "sugestiva_pct_anterior": 0.1326,
   "unidades_mes": 907,
   "kilos_mes": 173.6,
@@ -173,14 +183,15 @@
   "tickets_mes_est": 478,
   "u_tk": 1.9,
   "kg_tk": 0.363,
-  "venta_mes": 8840442
+  "venta_mes": 8840442,
+  "sug_100_1al25": 33.5
  },
  {
   "local": "Paz",
   "vendedora": "Pamela",
   "tickets": 329,
   "altas_club_100": 8.5,
-  "sug_100": 66.6,
+  "sug_100": 60.8,
   "sugestiva_pct_anterior": 0.1747,
   "unidades_mes": 1497,
   "kilos_mes": 219.2,
@@ -190,14 +201,15 @@
   "u_tk": 3.12,
   "kg_tk": 0.457,
   "venta_mes": 12802600,
-  "rol": "encargada"
+  "rol": "encargada",
+  "sug_100_1al25": 66.6
  },
  {
   "local": "Paz",
   "vendedora": "Agustina",
   "tickets": 374,
   "altas_club_100": 5.9,
-  "sug_100": 56.5,
+  "sug_100": 52.8,
   "sugestiva_pct_anterior": 0.1593,
   "unidades_mes": 1509,
   "kilos_mes": 206.8,
@@ -206,14 +218,15 @@
   "tickets_mes_est": 515,
   "u_tk": 2.93,
   "kg_tk": 0.402,
-  "venta_mes": 12190768
+  "venta_mes": 12190768,
+  "sug_100_1al25": 56.5
  },
  {
   "local": "Paz",
   "vendedora": "Silvina",
   "tickets": 542,
   "altas_club_100": 12.5,
-  "sug_100": 57.9,
+  "sug_100": 53.5,
   "sugestiva_pct_anterior": 0.1506,
   "unidades_mes": 2457,
   "kilos_mes": 355.1,
@@ -222,14 +235,15 @@
   "tickets_mes_est": 782,
   "u_tk": 3.14,
   "kg_tk": 0.454,
-  "venta_mes": 20069119
+  "venta_mes": 20069119,
+  "sug_100_1al25": 57.9
  },
  {
   "local": "Paz",
   "vendedora": "Cristina",
   "tickets": 754,
   "altas_club_100": 10.5,
-  "sug_100": 52.7,
+  "sug_100": 46.9,
   "sugestiva_pct_anterior": 0.1471,
   "unidades_mes": 3257,
   "kilos_mes": 536.6,
@@ -238,14 +252,15 @@
   "tickets_mes_est": 1152,
   "u_tk": 2.83,
   "kg_tk": 0.466,
-  "venta_mes": 28346112
+  "venta_mes": 28346112,
+  "sug_100_1al25": 52.7
  },
  {
   "local": "Paz",
   "vendedora": "Paula",
   "tickets": 863,
   "altas_club_100": 15.2,
-  "sug_100": 58.5,
+  "sug_100": 53.4,
   "sugestiva_pct_anterior": 0.1546,
   "unidades_mes": 2859,
   "kilos_mes": 408.1,
@@ -254,14 +269,15 @@
   "tickets_mes_est": 934,
   "u_tk": 3.06,
   "kg_tk": 0.437,
-  "venta_mes": 23378234
+  "venta_mes": 23378234,
+  "sug_100_1al25": 58.5
  },
  {
   "local": "Paz",
   "vendedora": "Yanina",
   "tickets": 573,
   "altas_club_100": 5.4,
-  "sug_100": 50.1,
+  "sug_100": 50.6,
   "sugestiva_pct_anterior": 0.1507,
   "unidades_mes": 2460,
   "kilos_mes": 331.3,
@@ -270,6 +286,7 @@
   "tickets_mes_est": 863,
   "u_tk": 2.85,
   "kg_tk": 0.384,
-  "venta_mes": 20262985
+  "venta_mes": 20262985,
+  "sug_100_1al25": 50.1
  }
 ]

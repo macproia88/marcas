@@ -199,6 +199,11 @@ for i,row in enumerate(HH[hc].itertuples(index=False),2):
 os.makedirs(OUT,exist_ok=True)
 xf=os.path.join(OUT,f'Club_CRM_{HOY:%Y-%m-%d}.xlsx'); wb.save(xf)
 newH[['fecha_lista','club','dni','prioridad']].assign(fecha_lista=HOY.strftime('%Y-%m-%d')).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
+
+# CSV para cargar en el email marketing de ALAX: uno por club y por tipo de mensaje
+for (club,pr),x in LI.groupby(['club','prioridad']):
+    tipo={'1':'nuevos','2':'en_riesgo','3':'frecuentes_que_bajaron'}[pr[0]]
+    x.assign(nombre_pila=x.nombre.str.split(' ').str[0])[['email','nombre_pila','nombre','dni']].to_csv(os.path.join(OUT,f"ALAX_mail_{'Paz' if club=='Paz' else 'LaPresumida'}_{tipo}_{HOY:%Y-%m-%d}.csv"),index=False)
 # web
 s=open(HTML,encoding='utf-8').read(); m=re.search(r'window\.DATA=(\{.*?\});\s*\n',s,re.S); D=json.loads(m.group(1))
 D['grupos_semana']=[r for r in rows if r['semana']>='2026-08-03']; D['contactos_resultado']=res

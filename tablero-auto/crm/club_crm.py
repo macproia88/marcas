@@ -101,6 +101,8 @@ if prev_csv:
     parts=[]
     for f in prev_csv:
         d=pd.read_csv(f,dtype=str)
+        if 'f' not in d.columns and 'c' in d.columns:
+            d['f']=re.search(r'(\d{4}-\d{2}-\d{2})',os.path.basename(f)).group(1)
         if 'f' in d.columns:
             d=pd.DataFrame({'fecha_lista':d.f,'club':np.where(d.c=='P','Paz','La Presumida'),'dni':d.dni,'prioridad':d.t.map(TP),'control':np.where(d.k=='1','Sí','No')})
         parts.append(d)
@@ -218,7 +220,7 @@ for i,row in enumerate(HH[hc].itertuples(index=False),2):
 os.makedirs(OUT,exist_ok=True)
 xf=os.path.join(OUT,f'Club_CRM_{HOY:%Y-%m-%d}.xlsx'); wb.save(xf)
 TIPOS={'1':'1. Nuevo sin segunda compra','2':'2. En riesgo','3':'3. Frecuente que bajó','4':'4. Dormido'}
-pd.DataFrame({'f':HOY.strftime('%Y-%m-%d'),'c':np.where(newH.club=='Paz','P','L'),'dni':newH.dni,'t':newH.prioridad.str[0],'k':np.where(newH.control=='Sí',1,0)}).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
+pd.DataFrame({'c':np.where(newH.club=='Paz','P','L'),'dni':newH.dni,'t':newH.prioridad.str[0],'k':np.where(newH.control=='Sí',1,0)}).to_csv(os.path.join(OUT,f'Club_CRM_contactos_{HOY:%Y-%m-%d}.csv'),index=False)
 
 # CSV para cargar en el email marketing de ALAX: uno por club y por tipo de mensaje
 for (club,pr),x in LI.groupby(['club','prioridad']):

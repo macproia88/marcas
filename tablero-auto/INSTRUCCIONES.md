@@ -69,3 +69,11 @@ Abajo de cada página del negocio va la lista de links a las otras (`tablero-aut
 - Solo publica cantidades por grupo, local y semana. La ficha con nombres, DNI y mails NO va a la web (es pública): queda en el Excel Club_Ficha_y_Grupos_Semanales.xlsx.
 - Grupos (últimos 30 días a cada domingo): Frecuentes 4+ días con compra, Recurrentes 2-3, Nuevos 1ª compra en 30 días, Ocasionales 1 vez y ya eran clientes, En riesgo 31-60 días sin venir, Dormidos +60.
 - Corrida semanal completa (CRM): `python3 tablero-auto/crm/club_crm.py <carpeta con los 6 reportes de ALAX + históricos + el último Club_CRM_*.xlsx> <carpeta salida> [AAAA-MM-DD]`. Escribe Club_CRM_<fecha>.xlsx (privado, va al Drive "01 Club", id 1E2Hu-V88MzKEtA5M5MnUuqPQAjO4Z3mx) y actualiza `grupos_semana` y `contactos_resultado` en tablero-club.html.
+
+## Planilla Z automática con el formato de Fermín
+
+- `python3 tablero-auto/zetas_fermin.py <xlsx de Fermín del mes> <AAAA-MM> <salida.xlsx> [--cruce <cruce.xlsx>]`.
+- Usa la planilla Z del mes de Fermín como base (mismas hojas, estilos, fórmulas y tablas dinámicas; se edita el XML, no se pasa por LibreOffice) y completa en FLORIDA, BECCAR y OLIVOS, por cada día con cierres de Maxi (`data/cierres.json`): I PLANILLA CAJA = venta total del día, J MEDIOS ELECTRÓNICOS = total − EFECTIVO − CTA. CTE. El Z (D, E, F) queda como lo cargó Fermín.
+- Vuelve a poner los valores calculados de las fórmulas (para que se vean en el celular) y marca el libro para recalcular al abrir.
+- `--cruce`: Excel aparte con Fermín vs Maxi día por día (caja y medios, tolerancia $1). Probado con octubre: 52 días OK y 41 con diferencias, la mayor Florida 09/10 (+$1,49M: faltaba el cierre de la Mañana en Maxi).
+- Avisa días con turnos faltantes (sin Mañana, o menos de 2 turnos en Florida/Beccar entre semana) y días pasados sin cierres.

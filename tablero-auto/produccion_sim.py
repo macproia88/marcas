@@ -54,15 +54,18 @@ def main():
     t = DESDE; fin = dt.date.fromisoformat(HASTA_REAL)
     while t < fin:
         f = t.isoformat(); sim[f] = {}
+        sfil, usados = P.sugerido(f); SUGDIA = {}
+        oficial = {(L, r['nombre']): r['sug'][L] for r in sfil for L in P.LOCS}
         for L in P.LOCS:
             if f not in con[L]: continue                       # local sin cierre ese día: no se compara
-            prev = dias_previos(con, L, t)
+            if L not in SUGDIA: SUGDIA[L] = None
+            prev = usados[L]                                    # mismos días que usa el sugerido real (sin atípicos)
             if not prev: continue
             prods = set().union(*[set(por[(L, d)]) for d in prev]) | set(por[(L, f)])
             for n in prods:
                 rub, kg = meta.get(n, ('', False)); vals = [por[(L, d)].get(n, 0.0) for d in prev]
                 prom, med, mx = sum(vals) / len(vals), statistics.median(vals), max(vals)
-                s_prom, s_med = redondeo(prom, kg), redondeo(med, kg)
+                s_prom, s_med = oficial.get((L, n), redondeo(med, kg)), redondeo(prom, kg)   # s_prom = sugerido oficial (mediana); s_med = promedio, para comparar
                 v = round(por[(L, f)].get(n, 0.0), 2)
                 if s_prom > 0: sim[f][f'{L}|{n}'] = s_prom
                 if s_prom == 0 and v == 0: continue
@@ -96,7 +99,7 @@ def main():
 
     wb = Workbook(); ws = wb.active; ws.title = 'Resumen'
     hoja(ws, ['Local', 'Días comparados', 'Productos-día', 'Dentro del sugerido', 'Vendió más', 'Vendió menos (posible sobrante)', 'No se vendió nada (¿faltó?)',
-              '% dentro (promedio)', '% dentro si se usara la mediana', 'Unidades sugeridas', 'Unidades vendidas', 'Kg sugeridos', 'Kg vendidos'],
+              '% dentro (sugerido actual: mediana sin días atípicos)', '% dentro si se usara el promedio', 'Unidades sugeridas', 'Unidades vendidas', 'Kg sugeridos', 'Kg vendidos'],
          [10, 11, 11, 12, 11, 14, 14, 12, 14, 12, 12, 11, 11])
     res = {}
     for L in P.LOCS + ['Los 3']:
@@ -116,12 +119,12 @@ def main():
     ws.auto_filter.ref = f'A1:M{ws.max_row}'
     ws.append([])
     for t_ in ['Cómo leerlo: para cada día desde el 01/10 se calculó el sugerido que se hubiera mandado esa mañana, con el mismo método del mensaje diario '
-               '(promedio de los últimos 4 días iguales de la semana, por local, redondeado para arriba; sin feriados; el 29 con los 29). Solo se usan cierres anteriores a ese día.',
+               '(mediana de los últimos 4 días iguales de la semana que sirven de referencia, por local, redondeada para arriba; sin feriados ni días atípicos; el 29 con los 29). Solo se usan cierres anteriores a ese día.',
                'Dentro = diferencia de hasta 20% del sugerido (mínimo 1 unidad o 0,5 kg). Vendió más = se vendió más de lo sugerido (o se produjo más). Vendió menos = posible sobrante. '
                'Cero = sugerido de 3 u o 1 kg o más y no se vendió nada: revisar si faltó.',
                'Ojo: en las primeras semanas de octubre el sugerido sale de 1 a 3 semanas de historia (no 4), y los cierres de Florida y Beccar con detalle empiezan el 29-30/09. '
                'Los feriados (12/10) se muestran en el detalle pero no entran en estos porcentajes.',
-               'Mediana: en vez del promedio de los 4 días, el del medio. Un día muy fuerte (fin de semana largo, ñoquis) pesa menos.']:
+               'Desde el 06/11 el sugerido usa la MEDIANA (el valor del medio) de los últimos 4 días iguales que sirven de referencia: sin Día de la Madre, sin días con turnos faltantes y sin días 35% arriba o 40% abajo de lo normal. La columna del promedio queda para comparar con el método anterior.']:
         ws.append([t_]); ws.cell(ws.max_row, 1).font = Font(name='Arial', size=9, italic=True, color='555555')
 
     # por rubro
@@ -179,7 +182,7 @@ def main():
 
     fn = out / 'Produccion_Control_Octubre_2026.xlsx'; wb.save(fn)
     print('ARCHIVO', fn)
-    for L, (a, b) in res.items(): print(f'RES {L}: dentro {a:.0%} (mediana {b:.0%})')
+    for L, (a, b) in res.items(): print(f'RES {L}: dentro {a:.0%} (con el promedio anterior {b:.0%})')
     print('SIM dias', len(sim), 'filas', len(filas))
 
 

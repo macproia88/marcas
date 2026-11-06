@@ -67,46 +67,98 @@ def historial(fecha, filas, turnos):
 FERIADOS = {'2026-10-12', '2026-11-09', '2026-11-11', '2026-11-23', '2026-12-08', '2026-12-25'}
 
 
-def sugerido(target):
-    """Sugerido para producir el día target (AAAA-MM-DD): promedio de lo vendido en mostrador los últimos 4 días
-    iguales de la semana (mismo local; solo días con cierre de ese local; sin feriados). Unidades redondeadas para arriba;
-    kg al medio kilo para arriba. Devuelve filas y los días usados por local."""
-    import math
+ATIPICOS = {'2026-10-17': 'víspera del Día de la Madre', '2026-10-18': 'Día de la Madre'}   # días especiales que no sirven de referencia
+
+
+def _cargar_base():
     c = json.load(open(DATA / 'cierres.json')); mae = json.load(open(DATA / 'productos_maestro.json'))
-    t = dt.date.fromisoformat(target)
-    por_dia = collections.defaultdict(lambda: collections.defaultdict(float)); con_cierre = collections.defaultdict(set)
+    por_dia = collections.defaultdict(lambda: collections.defaultdict(float)); turnos = collections.defaultdict(set)
     for x in c:
         if 'articulos' not in x: continue
-        L = LOC.get(x['sucursal'], x['sucursal']); con_cierre[L].add(x['fecha'])
+        L = LOC.get(x['sucursal'], x['sucursal']); turnos[(L, x['fecha'])].add(x['turno'])
         for cod, nom, rub, q, imp in x['articulos']:
             if cod in EXCLUIR: continue
             por_dia[(L, x['fecha'])][cod] += q
-    dias = {}
+    return c, mae, por_dia, turnos
+
+
+def _unid_prod(por_dia, mae, c, L, f):
+    """Unidades de producción (sin reventa ni kg) vendidas ese día: sirve para detectar días fuera de lo normal."""
+    t = 0.0
+    for cod, q in por_dia[(L, f)].items():
+        m = mae.get(str(cod), {})
+        if (m.get('rubro') or '') in REVENTA or m.get('kg') or abs(q - round(q)) > 1e-6: continue
+        t += q
+    return t
+
+
+def motivo_atipico(L, f, por_dia, turnos, mae, c, con):
+    """Por qué un día NO se usa como referencia (o None si sirve):
+    - día especial cargado a mano (ATIPICOS), feriado o día 29 (se trata aparte);
+    - falta un turno (sin el cierre de la mañana, o un solo turno en un día que no es domingo);
+    - vendió mucho más (más de 35% arriba) o mucho menos (40% abajo) que la mediana de ese mismo día de la semana
+      en las 6 semanas alrededor: fin de semana largo, lluvia fuerte, corte de luz, cierre que no llegó completo."""
+    if f in ATIPICOS: return ATIPICOS[f]
+    d = dt.date.fromisoformat(f); ts = turnos[(L, f)]
+    if d.weekday() != 6 and f not in FERIADOS and ('Mañana' not in ts or len(ts) < 2):
+        return 'faltan turnos (' + ', '.join(sorted(ts)) + ')'
+    ref = [g for g in con[L] if g != f and g not in FERIADOS and g not in ATIPICOS and not g.endswith('-29')
+           and dt.date.fromisoformat(g).weekday() == d.weekday() and abs((dt.date.fromisoformat(g) - d).days) <= 42]
+    if len(ref) >= 3:
+        import statistics
+        m = statistics.median(_unid_prod(por_dia, mae, c, L, g) for g in ref); u = _unid_prod(por_dia, mae, c, L, f)
+        if m and u > 1.35 * m: return f'vendió {u / m - 1:.0%} más que un {DIAS[d.weekday()]} normal'
+        if m and u < 0.60 * m: return f'vendió {1 - u / m:.0%} menos que un {DIAS[d.weekday()]} normal'
+    return None
+
+
+def sugerido(target, detalle=False):
+    """Sugerido para producir el día target (AAAA-MM-DD), solo mostrador.
+    Toma los últimos 4 días iguales de la semana que sirven de referencia (mismo local; sin feriados, sin días especiales,
+    sin días con turnos faltantes y sin días muy fuera de lo normal) y usa la MEDIANA (el valor del medio), que no se
+    deja arrastrar por un día muy fuerte o muy flojo. Unidades redondeadas para arriba; kg al medio kilo para arriba.
+    Probado contra la venta real del 20/10 al 05/11: el promedio anterior sugería 13% de más; así queda en -2%.
+    Devuelve filas y los días usados por local (con detalle=True también los días dejados afuera y por qué)."""
+    import math, statistics
+    c, mae, por_dia, turnos = _cargar_base()
+    con_cierre = collections.defaultdict(set)
+    for (L, f) in por_dia: con_cierre[L].add(f)
+    t = dt.date.fromisoformat(target)
+    dias, afuera = {}, {}
     for L in LOCS:
         if t.day == 29:   # día de ñoquis: se compara con los 29 anteriores
-            cand = sorted([f for f in con_cierre[L] if f < target and f.endswith('-29')], reverse=True)[:4]
-        else:             # día normal: mismos días de la semana, sin feriados ni días 29
-            cand = sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and not f.endswith('-29') and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True)[:4]
-        dias[L] = cand
+            cand = sorted([f for f in con_cierre[L] if f < target and f.endswith('-29')], reverse=True)
+        else:
+            cand = sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and not f.endswith('-29')
+                           and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True)
+        ok, fuera = [], []
+        for f in cand:
+            if len(ok) == 4: break
+            mot = None if t.day == 29 else motivo_atipico(L, f, por_dia, turnos, mae, c, con_cierre)
+            (fuera.append((f, mot)) if mot else ok.append(f))
+        dias[L] = ok; afuera[L] = fuera
+    nombres = {}
+    for x in c:
+        for a in x.get('articulos', []): nombres.setdefault(a[0], (a[1], a[2]))
     P = collections.OrderedDict()
     for L in LOCS:
+        if not dias[L]: continue
         cods = set()
         for f in dias[L]: cods |= set(por_dia[(L, f)])
         for cod in cods:
-            m = mae.get(str(cod), {}); rub = m.get('rubro', '')
-            nombre = m.get('nombre') or next((a[1] for x in c if 'articulos' in x for a in x['articulos'] if a[0] == cod), str(cod))
-            if not rub:
-                rub = next((a[2] for x in c if 'articulos' in x for a in x['articulos'] if a[0] == cod), '')
+            m = mae.get(str(cod), {}); rub = m.get('rubro') or nombres.get(cod, ('', ''))[1]
+            nombre = m.get('nombre') or nombres.get(cod, (str(cod), ''))[0]
             if rub in REVENTA: continue
             vals = [por_dia[(L, f)].get(cod, 0.0) for f in dias[L]]
             kg = m.get('kg', any(abs(v - round(v)) > 1e-6 for v in vals))
-            prom = sum(vals) / len(vals)
-            sug = (math.ceil(prom * 2 - 1e-9) / 2) if kg else math.ceil(prom - 1e-9)
+            base = statistics.median(vals)
+            sug = (math.ceil(base * 2 - 1e-9) / 2) if kg else math.ceil(base - 1e-9)
             k = (rub, nombre, kg)
             r = P.setdefault(k, dict(rubro=rub, nombre=nombre, kg=kg, cods=set(), sug={X: 0.0 for X in LOCS}, mx={X: 0.0 for X in LOCS}))
             r['cods'].add(cod); r['sug'][L] += sug; r['mx'][L] += max(vals)
     filas = sorted(P.values(), key=lambda r: (r['rubro'], -sum(r['sug'].values())))
-    return [r for r in filas if sum(r['sug'].values()) > 0], dias
+    filas = [r for r in filas if sum(r['sug'].values()) > 0]
+    return (filas, dias, afuera) if detalle else (filas, dias)
 
 
 def num(q, kg): return f'{q:.1f}'.replace('.', ',') if kg else f'{q:.0f}'
@@ -193,7 +245,7 @@ def main():
 
     # ---------- sugerido para hoy (el día siguiente al informado)
     tgt = (d + dt.timedelta(days=1)).isoformat(); tg = dt.date.fromisoformat(tgt)
-    SUG, sdias = sugerido(tgt)
+    SUG, sdias, safuera = sugerido(tgt, detalle=True)
     hp = DATA / 'sugerido_hist.json'
     SH = json.load(open(hp)) if hp.exists() else {}
     SH[tgt] = {f"{L}|{r['nombre']}": r['sug'][L] for r in SUG for L in LOCS if r['sug'][L] > 0}
@@ -201,6 +253,7 @@ def main():
 
     # ---------- ayer: vendido contra el sugerido que se mandó para ese día (desde el martes 03/11)
     VS = []
+    parcial = {L for L in turnos if d.weekday() != 6 and fecha not in FERIADOS and ('Mañana' not in turnos[L] or len(turnos[L]) < 2)}
     if fecha in SH:
         vend = collections.defaultdict(float); meta = {}
         for f in filas.values():
@@ -209,6 +262,7 @@ def main():
         for k in set(SH[fecha]) | set(vend):
             L, nom = k.split('|', 1)
             if L not in turnos: continue          # local sin cierre ayer: no se compara
+            if L in parcial: continue             # faltan turnos de ayer: la comparación no sirve
             sg = SH[fecha].get(k, 0.0); v = vend.get(k, 0.0)
             rub, kg = meta.get(nom, (None, None))
             if rub is None:
@@ -246,9 +300,26 @@ def main():
         for col in range(1, 11):
             c = ws5.cell(rr, col); c.font = B if col in (4, 6, 8, 10) else AR; c.border = Border(bottom=thin)
             if col >= 4: c.number_format = '#,##0.0' if r['kg'] else '#,##0'
-    ws5.append([]); ws5.append(['Cómo se calcula: promedio de lo vendido en MOSTRADOR los últimos 4 ' + DIAS[tg.weekday()] + ' (sin feriados ni días 29; el 29 se compara con los 29 anteriores), por local, redondeado para arriba (unidades enteras; kg al medio kilo). Máx. = el mejor de esos días. No incluye apps (código 202).'])
+    ws5.append([]); ws5.append(['Cómo se calcula: MEDIANA (el valor del medio) de lo vendido en MOSTRADOR los últimos 4 ' + DIAS[tg.weekday()] + ' que sirven de referencia, por local, redondeado para arriba (unidades enteras; kg al medio kilo). Se dejan afuera feriados, días especiales (Día de la Madre), días con turnos faltantes y días que vendieron 35% más o 40% menos que un ' + DIAS[tg.weekday()] + ' normal. El 29 se compara con los 29 anteriores. Máx. = el mejor de esos días. Solo mostrador.'])
     ws5.append(['Días usados: ' + ' · '.join(f"{L}: {', '.join(dt.date.fromisoformat(x).strftime('%d/%m') for x in sdias[L]) or 'sin datos'}" for L in LOCS)])
-    for rr in (ws5.max_row - 1, ws5.max_row): ws5.cell(rr, 1).font = Font(name='Arial', italic=True, color='555555')
+    ws5.append(['Días dejados afuera: ' + (' · '.join(f"{L} {dt.date.fromisoformat(f):%d/%m} ({m})" for L in LOCS for f, m in safuera[L]) or 'ninguno')])
+    for rr in (ws5.max_row - 2, ws5.max_row - 1, ws5.max_row): ws5.cell(rr, 1).font = Font(name='Arial', italic=True, color='555555')
+    # sugerido por rubro: lo que amasa el pastero
+    wsr = wb.create_sheet(f'Sugerido por rubro', 1)
+    hoja(wsr, ['Rubro', 'Unidad', 'Florida', 'Beccar', 'Paz', 'Total', 'Productos'], [16, 8, 11, 11, 11, 11, 70])
+    RR = collections.OrderedDict()
+    for r in SUG:
+        g = RR.setdefault((r['rubro'], r['kg']), dict(q={L: 0.0 for L in LOCS}, p=[]))
+        for L in LOCS: g['q'][L] += r['sug'][L]
+        g['p'].append(f"{r['nombre']} {num(sum(r['sug'].values()), r['kg'])}")
+    for (rub, kg), g in RR.items():
+        wsr.append([rub, 'kg' if kg else 'u', *[g['q'][L] for L in LOCS], sum(g['q'].values()), ' · '.join(g['p'])]); rr = wsr.max_row
+        for col in range(1, 8):
+            cc = wsr.cell(rr, col); cc.font = B if col in (1, 6) else AR; cc.border = Border(bottom=thin)
+            if 3 <= col <= 6: cc.number_format = '#,##0.0' if kg else '#,##0'
+        wsr.cell(rr, 7).alignment = Alignment(wrap_text=True, vertical='top')
+    wsr.append([]); wsr.append(['Suma de los sugeridos por producto de cada rubro. Es el número para planificar la masa y el relleno del día; el detalle por producto está en la primera hoja.'])
+    wsr.cell(wsr.max_row, 1).font = Font(name='Arial', italic=True, color='555555')
     ws5.auto_filter.ref = f'A1:J{len(SUG) + 1}'
     wb.active = 0
 
@@ -281,6 +352,8 @@ def main():
         if p['sem'] is not None: extra += f" · semana anterior {num(p['sem'], p['kg'])}"
         print(f"TOP {p['nombre']}: {num(p['tot'], p['kg'])} {'kg' if p['kg'] else 'u'} (F {num(p['q']['Florida'], p['kg'])} · B {num(p['q']['Beccar'], p['kg'])} · P {num(p['q']['Paz'], p['kg'])}){extra}")
 
+    for L in sorted(parcial):
+        print(f"VSPARCIAL {L}: ayer llegaron solo los turnos {', '.join(turnos[L])}; no se compara contra el sugerido")
     if VS:
         for L in LOCS:
             xs = [x for x in VS if x['local'] == L]
@@ -288,6 +361,14 @@ def main():
             n_ok = sum(x['estado'] == 'Dentro del sugerido' for x in xs); n_mas = sum(x['estado'].startswith('Vendió más') for x in xs)
             n_cer = sum(x['estado'].startswith('No se vendió') for x in xs); n_men = len(xs) - n_ok - n_mas - n_cer
             print(f'VSLOCAL {L}: {len(xs)} productos · dentro del sugerido {n_ok} · vendió más {n_mas} · vendió menos {n_men} · no se vendió nada {n_cer}')
+        for L in LOCS:   # por rubro: lo que de verdad planifica el pastero (producto por producto siempre hay ruido de 1 o 2 unidades)
+            g = collections.OrderedDict()
+            for x in VS:
+                if x['local'] != L or not x['rubro']: continue
+                k = (x['rubro'], x['kg']); g.setdefault(k, [0.0, 0.0]); g[k][0] += x['sug']; g[k][1] += x['vend']
+            for (rub, kg), (sg, vd) in sorted(g.items(), key=lambda z: -z[1][1] / (2 if z[0][1] else 1))[:8]:
+                if sg <= 0: continue
+                print(f"VSRUBRO {L} {rub}: sugerido {num(sg, kg)} · vendido {num(vd, kg)} {'kg' if kg else 'u'} ({(vd - sg) / sg:+.0%})")
         for x in sorted([x for x in VS if x['estado'].startswith('No se vendió')], key=lambda x: -x['sug']):
             print(f"VSCERO {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} {'kg' if x['kg'] else 'u'}, vendido 0 (¿faltó? revisar con el local)")
         big = sorted([x for x in VS if x['estado'] != 'Dentro del sugerido'], key=lambda x: -abs(x['dif']) / (2 if x['kg'] else 1))[:12]
@@ -295,7 +376,10 @@ def main():
             print(f"VS {x['local']} {x['nombre']}: sugerido {num(x['sug'], x['kg'])} · vendido {num(x['vend'], x['kg'])} {'kg' if x['kg'] else 'u'} ({'+' if x['dif'] > 0 else ''}{num(x['dif'], x['kg'])})")
     else:
         print(f'VSNO no hay sugerido guardado para el {d:%d/%m} (la comparación arranca con el lunes 02/11)')
-    print(f'SUGERIDO para el {DIAS[tg.weekday()]} {tg:%d/%m} (promedio de los últimos 4 {DIAS[tg.weekday()]}): ' + ' · '.join(f"{L} {len(sdias[L])} días" for L in LOCS))
+    print(f'SUGERIDO para el {DIAS[tg.weekday()]} {tg:%d/%m} (mediana de los últimos 4 {DIAS[tg.weekday()]} que sirven de referencia): ' + ' · '.join(f"{L} {len(sdias[L])} días ({', '.join(dt.date.fromisoformat(x).strftime('%d/%m') for x in sdias[L])})" for L in LOCS))
+    for L in LOCS:
+        for f, m in safuera[L]:
+            print(f"AFUERA {L} {dt.date.fromisoformat(f):%d/%m}: {m}")
     RS = collections.OrderedDict()
     for r in SUG:
         k = (r['rubro'], r['kg']); RS.setdefault(k, {L: 0.0 for L in LOCS})

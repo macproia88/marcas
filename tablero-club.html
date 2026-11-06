@@ -105,7 +105,72 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
   #dash-root .metric button { font-size: .85rem; padding: 6px 10px; }
   #dash-root .sec > h2 { font-size: 1.2rem; }
 }
-</style></head><body><div id="dash-root">
+</style><style>
+:root{--mbr-red:#D21F3C;--mbr-new:#2DC495;--mbr-rec:#1E9BD7;--mbr-rea:#F2C230;--mbr-old:#4B3BA8;--mbr-soft:#F3EFEA;--mbr-ink-on-new:#0F3A2C;--mbr-ink-on-red:#FFF6F7;--mbr-ink-on-rec:#0B2E40;--mbr-ink-on-rea:#3D2E00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mbr-red:#F04C66;--mbr-old:#8F82F0;--mbr-soft:#2C2723}}
+:root[data-theme="dark"]{--mbr-red:#F04C66;--mbr-old:#8F82F0;--mbr-soft:#2C2723}
+#dash-root .mbr{display:flex;flex-direction:column;gap:22px;padding:28px;border:1px solid var(--color-border-line);border-radius:16px;background:var(--color-panel)}
+#dash-root .mbr-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding-bottom:14px;border-bottom:1px solid var(--color-border-line)}
+#dash-root .mbr-logo{width:34px;height:34px;border-radius:9px;background:var(--mbr-red);color:#fff;display:grid;place-items:center;font-weight:700}
+#dash-root .mbr-top .t{font-weight:700;letter-spacing:.5px}
+#dash-root .mbr-top .t span{color:var(--color-fg-muted)}
+#dash-root .mbr-top .crumb{color:var(--color-fg-muted);font-size:.95rem}
+#dash-root .mbr-top .who{margin-left:auto;color:var(--mbr-red);font-weight:600;font-size:.95rem}
+#dash-root .mbr-upd{margin:0;font-size:.9rem;color:var(--color-fg-muted)}
+#dash-root .mbr-blk{display:flex;flex-direction:column;gap:10px;padding-top:6px}
+#dash-root .mbr-blk + .mbr-blk{border-top:1px solid var(--color-border-line);padding-top:26px}
+#dash-root .mbr-eye{margin:0;color:var(--mbr-red);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase}
+#dash-root .mbr-h{margin:0;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;line-height:1.15}
+#dash-root .mbr-sub{margin:0;font-size:1.08rem;line-height:1.45;max-width:75ch}
+#dash-root .mbr-sub b.r{color:var(--mbr-red)}
+#dash-root .mbr-row{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin-top:6px}
+#dash-root .mbr-card{border:1px solid var(--color-border-line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0;background:var(--color-panel)}
+#dash-root .mbr-card h4{margin:0;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;color:var(--color-fg-muted);font-weight:700}
+#dash-root .mbr-glos{background:var(--mbr-soft);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+#dash-root .mbr-glos h4{color:var(--mbr-red)}
+#dash-root .mbr-glos p{margin:0;font-size:.98rem;line-height:1.4}
+#dash-root .mbr-bars{display:flex;align-items:flex-end;justify-content:space-around;gap:12px;height:280px;padding-top:24px}
+#dash-root .mbr-col{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;max-width:150px;height:100%}
+#dash-root .mbr-stack{width:100%;flex:1;display:flex;flex-direction:column-reverse;border-radius:6px 6px 0 0;overflow:hidden}
+#dash-root .mbr-stack div{display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;min-height:0}
+#dash-root .mbr-col .lab{font-size:.92rem;color:var(--color-fg-muted);text-align:center;line-height:1.25}
+#dash-root .mbr-col{min-width:0}
+#dash-root .mbr-bars{min-width:0}
+#dash-root .mbr-col .top{font-size:.9rem;font-weight:700}
+#dash-root .mbr-leg{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:.9rem;color:var(--color-fg-muted)}
+#dash-root .mbr-leg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+#dash-root .mbr-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+#dash-root .mbr-big{font-size:2.6rem;font-weight:700;line-height:1}
+#dash-root .mbr-big small{font-size:.95rem;font-weight:400;color:var(--color-fg-muted);margin-left:8px}
+#dash-root .mbr-vbar{width:100%;border-radius:6px 6px 0 0}
+#dash-root .mbr-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#dash-root .mbr-kpi{border:1px solid var(--color-border-line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+#dash-root .mbr-kpi span{font-size:.8rem;letter-spacing:.8px;text-transform:uppercase;color:var(--color-fg-muted);font-weight:700}
+#dash-root .mbr-kpi b{font-size:1.9rem;line-height:1.1}
+#dash-root .mbr-kpi i{font-style:normal;font-size:.88rem;color:var(--color-fg-muted)}
+#dash-root .mbr-donut{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+#dash-root .mbr-donut ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:.98rem}
+#dash-root .mbr-donut li i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-1px}
+#dash-root .mbr-tbl{overflow-x:auto}
+#dash-root .mbr-tbl table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:620px}
+#dash-root .mbr-tbl th{font-size:.8rem;text-transform:uppercase;letter-spacing:.6px;color:var(--color-fg-muted);text-align:right;padding:10px 8px;border-bottom:1px solid var(--color-border-line);background:var(--mbr-soft)}
+#dash-root .mbr-tbl td{text-align:right;padding:12px 8px;border-bottom:1px solid var(--color-border-line)}
+#dash-root .mbr-tbl th:first-child,#dash-root .mbr-tbl td:first-child{text-align:left}
+#dash-root .mbr-tbl td:first-child{font-weight:600}
+#dash-root .mbr-tbl .up{color:var(--color-ok);font-weight:600}
+#dash-root .mbr-tbl .dn{color:var(--color-bad);font-weight:600}
+#dash-root .mbr-note{margin:0;font-size:.88rem;color:var(--color-fg-muted)}
+@media (max-width:760px){
+#dash-root .mbr{padding:18px 16px}
+#dash-root .mbr-row,#dash-root .mbr-2{grid-template-columns:1fr}
+#dash-root .mbr-top .who{margin-left:0;width:100%}
+#dash-root .mbr-bars{height:230px}
+#dash-root .mbr-stack div{font-size:.8rem}
+#dash-root .mbr-kpis{grid-template-columns:1fr 1fr}
+#dash-root .mbr-kpi b{font-size:1.5rem}
+}
+</style>
+</head><body><div id="dash-root">
 
 <div class="cl">
   <header class="cl-head" id="resumen">
@@ -120,6 +185,77 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
       <select class="cl-sel" id="sel-mes" aria-label="Mes" data-draw="mes-sel" data-source="meses"></select>
     </div>
   </header>
+
+  <section class="sec" id="mbr">
+    <div class="mbr">
+      <div class="mbr-top">
+        <div class="mbr-logo">C</div>
+        <div class="t">CLUB <span>MBR</span></div>
+        <div class="crumb">Revisión mensual del club · <b data-draw="mbr-locname">Todos</b></div>
+        <div class="who">La Presumida y Paz · <span data-draw="mbr-mes">—</span></div>
+      </div>
+      <p class="mbr-upd">Última actualización: <b>viernes 06/11/2026 a las 13:10</b> · Compras con DNI hasta el <b>sábado 31/10 a las 20:58</b> · Cambia con el botón de local de arriba.</p>
+
+      <div class="mbr-blk" id="mbr-ciclo">
+        <p class="mbr-eye">Ciclo de vida del socio</p>
+        <h3 class="mbr-h">Ciclo de vida del socio</h3>
+        <p class="mbr-sub" data-draw="mbr-ciclo-sub">—</p>
+        <div class="mbr-row">
+          <div class="mbr-card">
+            <h4>Distribución mensual de socios activos</h4>
+            <div class="mbr-bars" data-draw="mbr-ciclo"></div>
+            <div class="mbr-leg"><span><i style="background:var(--mbr-new)"></i>Nuevos</span><span><i style="background:var(--mbr-red)"></i>Frecuentes</span><span><i style="background:var(--mbr-rec)"></i>Recurrentes</span><span><i style="background:var(--mbr-rea)"></i>Reactivados</span></div>
+          </div>
+          <div class="mbr-glos">
+            <h4>Glosario de estados</h4>
+            <p><b>Activos:</b> compraron con DNI al menos una vez en el mes.</p>
+            <p><b style="color:#16916B">Nuevos:</b> primera compra en el club, o sin compras en los 90 días previos.</p>
+            <p><b style="color:var(--mbr-red)">Frecuentes:</b> también habían comprado en los 30 días previos.</p>
+            <p><b style="color:#1679AB">Recurrentes:</b> su compra anterior fue entre 31 y 60 días antes.</p>
+            <p><b style="color:#9A7400">Reactivados:</b> su última compra fue entre 61 y 90 días antes.</p>
+          </div>
+        </div>
+        <p class="mbr-note">Julio no se muestra: las compras con DNI arrancan el 2/7, así que ese mes todos figuran como nuevos.</p>
+      </div>
+
+      <div class="mbr-blk" id="mbr-frec">
+        <p class="mbr-eye">Frecuencia de compra</p>
+        <h3 class="mbr-h">Frecuencia: socio que vuelve vs. socio nuevo</h3>
+        <p class="mbr-sub" data-draw="mbr-frec-sub">—</p>
+        <div class="mbr-2" data-draw="mbr-frec"></div>
+        <p class="mbr-note">Compras en el mes dividido socios que compraron. "Ya venían" = su primera compra fue en un mes anterior.</p>
+      </div>
+
+      <div class="mbr-blk" id="mbr-cupon">
+        <p class="mbr-eye">Cupones</p>
+        <h3 class="mbr-h">Compras con cupón</h3>
+        <p class="mbr-sub" data-draw="mbr-cupon-sub">—</p>
+        <div class="mbr-row">
+          <div class="mbr-card">
+            <h4>Evolución de compras: con cupón y sin cupón</h4>
+            <div class="mbr-bars" data-draw="mbr-cupon"></div>
+            <div class="mbr-leg"><span><i style="background:var(--mbr-red)"></i>Con cupón</span><span><i style="background:var(--cds-chart-muted)"></i>Sin cupón</span></div>
+          </div>
+          <div class="mbr-kpis" style="grid-template-columns:1fr;align-content:start" data-draw="mbr-cupon-kpis"></div>
+        </div>
+      </div>
+
+      <div class="mbr-blk" id="mbr-mix">
+        <p class="mbr-eye">Campañas del club</p>
+        <h3 class="mbr-h">Mix de cupones canjeados</h3>
+        <p class="mbr-sub" data-draw="mbr-mix-sub">—</p>
+        <div class="mbr-card"><h4 data-draw="mbr-mix-h">Cupones canjeados por campaña</h4><div class="mbr-donut" data-draw="mbr-mix"></div></div>
+      </div>
+
+      <div class="mbr-blk" id="mbr-camp">
+        <p class="mbr-eye">Campañas del club</p>
+        <h3 class="mbr-h">Desempeño de cada cupón</h3>
+        <p class="mbr-sub" data-draw="mbr-camp-sub">—</p>
+        <div class="mbr-tbl" data-draw="mbr-camp"></div>
+        <p class="mbr-note">Canjes = cupones usados en el local en el mes. Share = parte de todos los canjes del mes. Var. share en puntos (pp).</p>
+      </div>
+    </div>
+  </section>
 
   <section class="sec" id="numeros">
     <h2>Los números del mes</h2>
@@ -438,6 +574,65 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>
       h += '<tr><td>' + df(x.fecha_lista) + '</td><td>' + x.prioridad.replace(/^\d\. /, '') + '</td><td class="r"><b>' + pf(a) + '</b> <span class="note">(' + x.volvieron + ' de ' + x.contactados + '</span></td><td class="r">' + pf(c) + '<br><span class="note">' + (x.control_volvieron || 0) + ' de ' + (x.control || 0) + '</span></td><td class="r ' + (ef > 0 ? 'ok' : ef < 0 ? 'bad' : '') + '"><b>' + (ef == null ? '—' : (ef > 0 ? '+' : '') + ef + ' puntos') + '</b></td></tr>'; });
     el.innerHTML = h + '</table>';
   });
+})();
+</script>
+<script>
+window.MBR={"meses":[{"m":"2026-07","lab":"Jul 26","loc":{"Total":{"activos":280,"compras":499,"frec":1.78,"frec_viejos":0.0,"frec_nuevos":1.78,"con_cupon":180,"sin_cupon":319,"ticket_con":33642,"ticket_sin":24403,"estados":{"Nuevos":280,"Frecuentes":0,"Recurrentes":0,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":131,"Porciones calientes":22,"Regalo compra grande":10,"Flanes con ravioles":8,"Salsa con ravioles":7},"venta":13840263,"retencion":null},"Florida":{"activos":161,"compras":329,"frec":2.04,"frec_viejos":0.0,"frec_nuevos":2.04,"con_cupon":64,"sin_cupon":265,"ticket_con":39394,"ticket_sin":23026,"estados":{"Nuevos":160,"Frecuentes":1,"Recurrentes":0,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":43,"Porciones calientes":8,"Regalo compra grande":5,"Flanes con ravioles":5,"Salsa con ravioles":2},"venta":8623171,"retencion":null},"Beccar":{"activos":33,"compras":51,"frec":1.55,"frec_viejos":0.0,"frec_nuevos":1.55,"con_cupon":37,"sin_cupon":14,"ticket_con":27571,"ticket_sin":30011,"estados":{"Nuevos":32,"Frecuentes":1,"Recurrentes":0,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":25,"Porciones calientes":6,"Salsa con ravioles":3,"Regalo compra grande":1,"Flanes con ravioles":1},"venta":1440287,"retencion":null},"Paz":{"activos":89,"compras":119,"frec":1.34,"frec_viejos":0.0,"frec_nuevos":1.34,"con_cupon":79,"sin_cupon":40,"ticket_con":31826,"ticket_sin":31563,"estados":{"Nuevos":88,"Frecuentes":1,"Recurrentes":0,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":63,"Porciones calientes":8,"Regalo compra grande":4,"Flanes con ravioles":2,"Salsa con ravioles":2},"venta":3776805,"retencion":null}}},{"m":"2026-08","lab":"Ago 26","loc":{"Total":{"activos":431,"compras":833,"frec":1.93,"frec_viejos":2.83,"frec_nuevos":1.48,"con_cupon":251,"sin_cupon":582,"ticket_con":34890,"ticket_sin":27500,"estados":{"Nuevos":286,"Frecuentes":132,"Recurrentes":13,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":183,"Porciones calientes":23,"Regalo compra grande":18,"Premio por compras":10,"Flanes con ravioles":8,"Salsa con ravioles":5,"Clientes de delivery":2},"venta":24762828,"retencion":51.8},"Florida":{"activos":290,"compras":616,"frec":2.12,"frec_viejos":3.05,"frec_nuevos":1.53,"con_cupon":138,"sin_cupon":478,"ticket_con":37674,"ticket_sin":25652,"estados":{"Nuevos":177,"Frecuentes":105,"Recurrentes":8,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":101,"Regalo compra grande":14,"Flanes con ravioles":7,"Porciones calientes":6,"Premio por compras":5,"Salsa con ravioles":3},"venta":17461199,"retencion":70.2},"Beccar":{"activos":54,"compras":84,"frec":1.56,"frec_viejos":2.3,"frec_nuevos":1.39,"con_cupon":48,"sin_cupon":36,"ticket_con":32333,"ticket_sin":47266,"estados":{"Nuevos":44,"Frecuentes":8,"Recurrentes":2,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":31,"Porciones calientes":12,"Premio por compras":3,"Regalo compra grande":1,"Salsa con ravioles":1},"venta":3253579,"retencion":30.3},"Paz":{"activos":88,"compras":133,"frec":1.51,"frec_viejos":1.83,"frec_nuevos":1.4,"con_cupon":65,"sin_cupon":68,"ticket_con":30866,"ticket_sin":30025,"estados":{"Nuevos":65,"Frecuentes":20,"Recurrentes":3,"Reactivados":0},"canjes":{"Bienvenida (1 kg de fideos)":51,"Porciones calientes":5,"Regalo compra grande":3,"Clientes de delivery":2,"Premio por compras":2,"Flanes con ravioles":1,"Salsa con ravioles":1},"venta":4048050,"retencion":25.8}}},{"m":"2026-09","lab":"Sep 26","loc":{"Total":{"activos":670,"compras":1361,"frec":2.03,"frec_viejos":2.68,"frec_nuevos":1.53,"con_cupon":384,"sin_cupon":977,"ticket_con":30715,"ticket_sin":25318,"estados":{"Nuevos":377,"Frecuentes":211,"Recurrentes":73,"Reactivados":9},"canjes":{"Bienvenida (1 kg de fideos)":276,"Regalo compra grande":29,"Porciones calientes":26,"Flanes con ravioles":17,"Otros (sorteos, municipalidad)":13,"Salsa con ravioles":12,"Premio por compras":5},"venta":36530857,"retencion":60.8},"Florida":{"activos":417,"compras":932,"frec":2.24,"frec_viejos":2.77,"frec_nuevos":1.67,"con_cupon":217,"sin_cupon":715,"ticket_con":31542,"ticket_sin":23341,"estados":{"Nuevos":203,"Frecuentes":165,"Recurrentes":47,"Reactivados":2},"canjes":{"Bienvenida (1 kg de fideos)":155,"Regalo compra grande":19,"Flanes con ravioles":12,"Salsa con ravioles":10,"Porciones calientes":9,"Otros (sorteos, municipalidad)":4,"Premio por compras":4},"venta":23534120,"retencion":68.3},"Beccar":{"activos":146,"compras":237,"frec":1.62,"frec_viejos":2.44,"frec_nuevos":1.38,"con_cupon":99,"sin_cupon":138,"ticket_con":28866,"ticket_sin":26674,"estados":{"Nuevos":112,"Frecuentes":18,"Recurrentes":13,"Reactivados":3},"canjes":{"Bienvenida (1 kg de fideos)":76,"Porciones calientes":11,"Regalo compra grande":5,"Flanes con ravioles":3,"Salsa con ravioles":1,"Premio por compras":1,"Otros (sorteos, municipalidad)":1},"venta":6538793,"retencion":51.9},"Paz":{"activos":109,"compras":192,"frec":1.76,"frec_viejos":2.35,"frec_nuevos":1.33,"con_cupon":68,"sin_cupon":124,"ticket_con":30768,"ticket_sin":35206,"estados":{"Nuevos":62,"Frecuentes":30,"Recurrentes":13,"Reactivados":4},"canjes":{"Bienvenida (1 kg de fideos)":45,"Otros (sorteos, municipalidad)":8,"Porciones calientes":6,"Regalo compra grande":5,"Flanes con ravioles":2,"Salsa con ravioles":1},"venta":6457944,"retencion":42.0}}},{"m":"2026-10","lab":"Oct 26","loc":{"Total":{"activos":2857,"compras":5248,"frec":1.84,"frec_viejos":2.79,"frec_nuevos":1.59,"con_cupon":2769,"sin_cupon":2479,"ticket_con":27661,"ticket_sin":24954,"estados":{"Nuevos":2268,"Frecuentes":401,"Recurrentes":133,"Reactivados":55},"canjes":{"Bienvenida (1 kg de fideos)":1705,"Ensaladas 50%":478,"5x4 Ravioles":236,"Flanes con ravioles":96,"Regalo compra grande":79,"Porciones calientes":60,"Salsa con ravioles":43,"Otros (sorteos, municipalidad)":29,"Premio por compras":29},"venta":138456181,"retencion":71.9},"Florida":{"activos":1026,"compras":2075,"frec":2.02,"frec_viejos":2.76,"frec_nuevos":1.63,"con_cupon":965,"sin_cupon":1110,"ticket_con":27846,"ticket_sin":22689,"estados":{"Nuevos":669,"Frecuentes":255,"Recurrentes":80,"Reactivados":22},"canjes":{"Bienvenida (1 kg de fideos)":448,"Ensaladas 50%":215,"5x4 Ravioles":104,"Regalo compra grande":53,"Flanes con ravioles":46,"Porciones calientes":27,"Salsa con ravioles":27,"Premio por compras":19,"Otros (sorteos, municipalidad)":19},"venta":52057316,"retencion":73.1},"Beccar":{"activos":1131,"compras":1972,"frec":1.74,"frec_viejos":2.98,"frec_nuevos":1.58,"con_cupon":1063,"sin_cupon":909,"ticket_con":26616,"ticket_sin":25494,"estados":{"Nuevos":999,"Frecuentes":99,"Recurrentes":23,"Reactivados":10},"canjes":{"Bienvenida (1 kg de fideos)":855,"Ensaladas 50%":106,"5x4 Ravioles":32,"Flanes con ravioles":18,"Regalo compra grande":17,"Porciones calientes":15,"Salsa con ravioles":10,"Premio por compras":5,"Otros (sorteos, municipalidad)":1},"venta":51467398,"retencion":75.3},"Paz":{"activos":706,"compras":1201,"frec":1.7,"frec_viejos":2.62,"frec_nuevos":1.53,"con_cupon":741,"sin_cupon":460,"ticket_con":28918,"ticket_sin":29354,"estados":{"Nuevos":600,"Frecuentes":53,"Recurrentes":30,"Reactivados":23},"canjes":{"Bienvenida (1 kg de fideos)":402,"Ensaladas 50%":157,"5x4 Ravioles":100,"Flanes con ravioles":32,"Porciones calientes":18,"Otros (sorteos, municipalidad)":9,"Regalo compra grande":9,"Salsa con ravioles":6,"Premio por compras":5},"venta":34931466,"retencion":62.4}}}],"camp_orden":["Bienvenida (1 kg de fideos)","Ensaladas 50%","5x4 Ravioles","Regalo compra grande","Porciones calientes","Flanes con ravioles","Salsa con ravioles","Premio por compras","Otros (sorteos, municipalidad)","Clientes de delivery"]};
+(function(){
+const M=MBR.meses, ST=['Nuevos','Frecuentes','Recurrentes','Reactivados'];
+const COL={Nuevos:['var(--mbr-new)','var(--mbr-ink-on-new)'],Frecuentes:['var(--mbr-red)','var(--mbr-ink-on-red)'],Recurrentes:['var(--mbr-rec)','var(--mbr-ink-on-rec)'],Reactivados:['var(--mbr-rea)','var(--mbr-ink-on-rea)']};
+const PAL=['#D21F3C','#1E9BD7','#2DC495','#F2C230','#4B3BA8','#E8833A','#8C6D5A','#7FA7C9','#B9B2AA','#5E9E6E'];
+const nf=n=>Math.round(n).toLocaleString('es-AR');
+const pf=(n,d=0)=>n.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d})+'%';
+const df=n=>n.toLocaleString('es-AR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const mf=n=>'$'+nf(n);
+const loc=()=>dash.params().local||'Total';
+const LN={Total:'Todos los locales',Florida:'Florida',Beccar:'Beccar',Paz:'Paz'};
+const X=(m)=>m.loc[loc()];
+const last=M[M.length-1], prev=M[M.length-2];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+dash.draw('mbr-locname',el=>{el.textContent=LN[loc()];});
+dash.draw('mbr-mes',el=>{el.textContent=last.lab;});
+dash.draw('mbr-ciclo-sub',el=>{const x=X(last),n=x.activos;el.innerHTML='<b class="r">'+pf(x.estados.Nuevos/n*100,1)+' de los socios activos</b> de '+esc(last.lab)+' fueron nuevos y <b>'+pf(x.estados.Frecuentes/n*100,1)+' frecuentes</b>, sobre '+nf(n)+' socios activos.';});
+dash.draw('mbr-ciclo',el=>{
+  el.innerHTML=M.slice(1).map(m=>{const x=X(m),n=x.activos;
+    const segs=ST.map(s=>{const p=x.estados[s]/n*100;const c=COL[s];return '<div style="height:'+p+'%;background:'+c[0]+';color:'+c[1]+'" title="'+s+': '+nf(x.estados[s])+' socios ('+pf(p,1)+')">'+(p>=6?pf(p):'')+'</div>';}).join('');
+    return '<div class="mbr-col"><div class="top">'+nf(n)+'</div><div class="mbr-stack">'+segs+'</div><div class="lab">'+esc(m.lab)+'</div></div>';}).join('');
+});
+function vbars(vals,labs,color,fmt){const mx=Math.max(...vals.filter(v=>v!=null))*1.15;
+  return '<div class="mbr-bars" style="height:220px">'+vals.map((v,i)=>v==null?'<div class="mbr-col"><div class="top">—</div><div style="flex:1"></div><div class="lab">'+labs[i]+'</div></div>':'<div class="mbr-col"><div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;width:100%;gap:6px"><div class="top" style="text-align:center">'+fmt(v)+'</div><div class="mbr-vbar" style="height:'+(v/mx*100)+'%;background:'+(i==vals.length-1?color:color)+';opacity:'+(i==vals.length-1?1:.55)+'"></div></div><div class="lab">'+labs[i]+'</div></div>').join('')+'</div>';}
+dash.draw('mbr-frec-sub',el=>{const x=X(last);const r=x.frec_viejos/x.frec_nuevos;el.innerHTML='El socio que ya venía compra <b class="r">'+df(x.frec_viejos)+' veces por mes</b> frente a '+df(x.frec_nuevos)+' del socio nuevo: <b>'+df(r)+' veces más</b> ('+esc(last.lab)+').';});
+dash.draw('mbr-frec',el=>{const labs=M.map(m=>m.lab);
+  const v1=M.map((m,i)=>i==0?null:X(m).frec_viejos), v2=M.map(m=>X(m).frec_nuevos);
+  el.innerHTML='<div class="mbr-card"><h4>Socios que ya venían</h4><div class="mbr-big" style="color:var(--mbr-old)">'+df(X(last).frec_viejos)+'<small>compras por socio · '+esc(last.lab)+'</small></div>'+vbars(v1,labs,'var(--mbr-old)',df)+'</div>'+
+  '<div class="mbr-card"><h4>Socios nuevos del mes</h4><div class="mbr-big" style="color:var(--mbr-red)">'+df(X(last).frec_nuevos)+'<small>compras por socio · '+esc(last.lab)+'</small></div>'+vbars(v2,labs,'var(--mbr-red)',df)+'</div>';});
+dash.draw('mbr-cupon-sub',el=>{const x=X(last),p=X(prev);const s=x.con_cupon/x.compras*100,sp=p.con_cupon/p.compras*100;
+  el.innerHTML='<b class="r">'+nf(x.con_cupon)+' compras con cupón</b> en '+esc(last.lab)+', el <b>'+pf(s,1)+' del total</b> de compras con DNI ('+(s>=sp?'+':'')+(s-sp).toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1})+' pp contra '+esc(prev.lab)+').';});
+dash.draw('mbr-cupon',el=>{const mx=Math.max(...M.map(m=>X(m).compras))*1.12;
+  el.innerHTML=M.map(m=>{const x=X(m),s=x.con_cupon/x.compras*100;return '<div class="mbr-col"><div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;width:100%;gap:6px"><div class="top" style="text-align:center;color:var(--mbr-red)">'+pf(s,1)+'</div><div style="height:'+(x.compras/mx*100)+'%;display:flex;flex-direction:column-reverse;border-radius:6px 6px 0 0;overflow:hidden"><div style="flex:'+x.con_cupon+';background:var(--mbr-red)" title="Con cupón: '+nf(x.con_cupon)+'"></div><div style="flex:'+x.sin_cupon+';background:var(--cds-chart-muted)" title="Sin cupón: '+nf(x.sin_cupon)+'"></div></div></div><div class="lab">'+esc(m.lab)+' · '+nf(x.compras)+'</div></div>';}).join('');});
+dash.draw('mbr-cupon-kpis',el=>{const x=X(last),p=X(prev);const v=(x.con_cupon/p.con_cupon-1)*100;
+  el.innerHTML='<div class="mbr-kpi"><span>Compras con cupón · '+esc(last.lab)+'</span><b>'+nf(x.con_cupon)+'</b><i>'+(v>=0?'+':'')+pf(v)+' contra '+esc(prev.lab)+' ('+nf(p.con_cupon)+')</i></div>'+
+  '<div class="mbr-kpi"><span>Ticket con cupón</span><b>'+mf(x.ticket_con)+'</b><i>Sin cupón: '+mf(x.ticket_sin)+'</i></div>'+
+  '<div class="mbr-kpi"><span>Socios activos</span><b>'+nf(x.activos)+'</b><i>'+nf(x.compras)+' compras · '+df(x.frec)+' por socio</i></div>';});
+function canj(m){return X(m).canjes||{};}
+dash.draw('mbr-mix-h',el=>{el.textContent='Cupones canjeados por campaña · '+last.lab;});
+dash.draw('mbr-mix-sub',el=>{const c=canj(last),t=Object.values(c).reduce((a,b)=>a+b,0);const top=MBR.camp_orden.filter(k=>c[k]).sort((a,b)=>c[b]-c[a]);
+  el.innerHTML='Se canjearon <b class="r">'+nf(t)+' cupones</b> en '+esc(last.lab)+'; el que más aportó fue <b>'+esc(top[0]||'—')+'</b> ('+pf((c[top[0]]||0)/t*100,1)+').';});
+dash.draw('mbr-mix',el=>{const c=canj(last),t=Object.values(c).reduce((a,b)=>a+b,0);const ks=MBR.camp_orden.filter(k=>c[k]).sort((a,b)=>c[b]-c[a]);
+  let a0=-Math.PI/2,paths='';const R=90,r=58,cx=100,cy=100;
+  ks.forEach((k,i)=>{const a1=a0+c[k]/t*2*Math.PI;const lg=(a1-a0)>Math.PI?1:0;const p=(a,rr)=>[cx+rr*Math.cos(a),cy+rr*Math.sin(a)];const [x0,y0]=p(a0,R),[x1,y1]=p(a1,R),[x2,y2]=p(a1,r),[x3,y3]=p(a0,r);
+    paths+='<path d="M'+x0+' '+y0+'A'+R+' '+R+' 0 '+lg+' 1 '+x1+' '+y1+'L'+x2+' '+y2+'A'+r+' '+r+' 0 '+lg+' 0 '+x3+' '+y3+'Z" fill="'+PAL[MBR.camp_orden.indexOf(k)%PAL.length]+'" stroke="var(--color-panel)" stroke-width="2"><title>'+esc(k)+': '+nf(c[k])+'</title></path>';a0=a1;});
+  el.innerHTML='<svg viewBox="0 0 200 200" width="220" height="220" role="img" aria-label="Cupones canjeados por campaña">'+paths+'<text x="100" y="98" text-anchor="middle" font-size="26" font-weight="700" fill="var(--color-fg)">'+nf(t)+'</text><text x="100" y="120" text-anchor="middle" font-size="12" fill="var(--color-fg-muted)">canjes</text></svg>'+
+  '<ul>'+ks.map(k=>'<li><i style="background:'+PAL[MBR.camp_orden.indexOf(k)%PAL.length]+'"></i>'+esc(k)+' · <b>'+pf(c[k]/t*100)+'</b> <span style="color:var(--color-fg-muted)">('+nf(c[k])+')</span></li>').join('')+'</ul>';});
+dash.draw('mbr-camp-sub',el=>{const c=canj(last),p=canj(prev);const ks=MBR.camp_orden.filter(k=>(c[k]||0)>0&&(p[k]||0)>0).sort((a,b)=>(c[b]/p[b])-(c[a]/p[a]));
+  el.innerHTML='Contra '+esc(prev.lab)+', el que más creció fue <b class="r">'+esc(ks[0]||'—')+'</b>'+(ks[0]?' (de '+nf(p[ks[0]])+' a '+nf(c[ks[0]])+' canjes)':'')+'. Los cupones nuevos del mes aparecen sin mes anterior.';});
+dash.draw('mbr-camp',el=>{const c=canj(last),p=canj(prev);const tc=Object.values(c).reduce((a,b)=>a+b,0)||1,tp=Object.values(p).reduce((a,b)=>a+b,0)||1;
+  const ks=MBR.camp_orden.filter(k=>c[k]||p[k]).sort((a,b)=>(c[b]||0)-(c[a]||0));
+  const avg=k=>{const v=M.slice(0,-1).map(m=>canj(m)[k]||0);return v.reduce((a,b)=>a+b,0)/v.length;};
+  const cls=v=>v>0?'up':v<0?'dn':'';const sg=v=>(v>0?'+':'')+v.toLocaleString('es-AR',{maximumFractionDigits:0});const sg1=v=>(v>0?'+':'')+v.toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1});
+  el.innerHTML='<table><thead><tr><th>Cupón</th><th>'+esc(prev.lab)+'</th><th>'+esc(last.lab)+'</th><th>MoM%</th><th>Prom. '+(M.length-1)+'M</th><th>vs prom.%</th><th>Share '+esc(prev.lab)+'</th><th>Share '+esc(last.lab)+'</th><th>Var. share</th></tr></thead><tbody>'+
+  ks.map(k=>{const a=p[k]||0,b=c[k]||0,mo=a?(b/a-1)*100:null,av=avg(k),va=av?(b/av-1)*100:null,s0=a/tp*100,s1=b/tc*100;
+    return '<tr><td>'+esc(k)+'</td><td>'+nf(a)+'</td><td><b>'+nf(b)+'</b></td><td class="'+(mo==null?'':cls(mo))+'">'+(mo==null?'nuevo':sg(mo)+'%')+'</td><td>'+nf(av)+'</td><td class="'+(va==null?'':cls(va))+'">'+(va==null?'—':sg(va)+'%')+'</td><td>'+pf(s0,1)+'</td><td><b>'+pf(s1,1)+'</b></td><td class="'+cls(s1-s0)+'">'+sg1(s1-s0)+' pp</td></tr>';}).join('')+'</tbody></table>';});
 })();
 </script>
 <script>dash.run();</script>

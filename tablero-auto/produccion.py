@@ -134,8 +134,19 @@ def sugerido(target, detalle=False):
         ok, fuera = [], []
         for f in cand:
             if len(ok) == 4: break
-            mot = None if t.day == 29 else motivo_atipico(L, f, por_dia, turnos, mae, c, con_cierre)
+            if t.day == 29:   # entre días 29 solo se deja afuera el que tiene turnos faltantes
+                ts = turnos[(L, f)]; d29 = dt.date.fromisoformat(f)
+                mot = ('faltan turnos (' + ', '.join(sorted(ts)) + ')') if d29.weekday() != 6 and ('Mañana' not in ts or len(ts) < 2) else None
+            else:
+                mot = motivo_atipico(L, f, por_dia, turnos, mae, c, con_cierre)
             (fuera.append((f, mot)) if mot else ok.append(f))
+        if t.day == 29 and not ok:   # todavía no hay 2 días 29 con cierre: se usa el mismo día de la semana
+            ok, fuera = [], [(f, 'día 29 con poca historia: se usa el mismo día de la semana') for f in ok]
+            for f in sorted([f for f in con_cierre[L] if f < target and f not in FERIADOS and not f.endswith('-29')
+                             and dt.date.fromisoformat(f).weekday() == t.weekday()], reverse=True):
+                if len(ok) == 4: break
+                mot = motivo_atipico(L, f, por_dia, turnos, mae, c, con_cierre)
+                (fuera.append((f, mot)) if mot else ok.append(f))
         dias[L] = ok; afuera[L] = fuera
     nombres = {}
     for x in c:

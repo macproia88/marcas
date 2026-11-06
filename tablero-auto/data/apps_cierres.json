@@ -588,14 +588,14 @@
   "mes": "2026-10",
   "local": "Florida",
   "app": "PedidosYa",
-  "pedidos": 1919,
-  "facturado": 44038945.57,
-  "se_queda": 15179812.23,
-  "depositado": 28859133.34,
+  "pedidos": 2438,
+  "facturado": 53817940.83,
+  "se_queda": 18511408.22,
+  "depositado": 35306532.61,
   "efectivo": 0.0,
-  "completo": false,
-  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_77651.pdf, PDF 20261005_20261011_estado-de-cuenta_77651.pdf, PDF 20261012_20261018_estado-de-cuenta_77651.pdf, PDF 20261019_20261025_estado-de-cuenta_77651.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_77651.xls, Excel 20261005_20261011_estado-de-cuenta_77651.xls, Excel 20261012_20261018_estado-de-cuenta_77651.xls, Excel 20261019_20261025_estado-de-cuenta_77651.xls",
-  "nota": "Semanas partidas entre meses: 28/09-04/10 (por fecha de pedido: 52% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion. Faltan dias sin liquidacion: 26/10 al 31/10 (6 dias)."
+  "completo": true,
+  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_77651.pdf, PDF 20261005_20261011_estado-de-cuenta_77651.pdf, PDF 20261012_20261018_estado-de-cuenta_77651.pdf, PDF 20261019_20261025_estado-de-cuenta_77651.pdf, PDF 20261026_20261101_estado-de-cuenta_77651.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_77651.xls, Excel 20261005_20261011_estado-de-cuenta_77651.xls, Excel 20261012_20261018_estado-de-cuenta_77651.xls, Excel 20261019_20261025_estado-de-cuenta_77651.xls, Excel 20261026_20261101_estado-de-cuenta_77651.xls",
+  "nota": "Semanas partidas entre meses: 26/10-01/11 (por fecha de pedido: 81% a este mes); 28/09-04/10 (por fecha de pedido: 52% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion."
  },
  {
   "mes": "2026-10",
@@ -614,14 +614,14 @@
   "mes": "2026-10",
   "local": "Beccar",
   "app": "PedidosYa",
-  "pedidos": 1102,
-  "facturado": 23201185.66,
-  "se_queda": 8173396.95,
-  "depositado": 15027788.71,
+  "pedidos": 1382,
+  "facturado": 28015480.58,
+  "se_queda": 9753538.85,
+  "depositado": 18261941.73,
   "efectivo": 0.0,
-  "completo": false,
-  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_77652.pdf, PDF 20261005_20261011_estado-de-cuenta_77652.pdf, PDF 20261012_20261018_estado-de-cuenta_77652.pdf, PDF 20261019_20261025_estado-de-cuenta_77652.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_77652.xls, Excel 20261005_20261011_estado-de-cuenta_77652.xls, Excel 20261012_20261018_estado-de-cuenta_77652.xls, Excel 20261019_20261025_estado-de-cuenta_77652.xls",
-  "nota": "Semanas partidas entre meses: 28/09-04/10 (por fecha de pedido: 54% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion. Faltan dias sin liquidacion: 26/10 al 31/10 (6 dias)."
+  "completo": true,
+  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_77652.pdf, PDF 20261005_20261011_estado-de-cuenta_77652.pdf, PDF 20261012_20261018_estado-de-cuenta_77652.pdf, PDF 20261019_20261025_estado-de-cuenta_77652.pdf, PDF 20261026_20261101_estado-de-cuenta_77652.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_77652.xls, Excel 20261005_20261011_estado-de-cuenta_77652.xls, Excel 20261012_20261018_estado-de-cuenta_77652.xls, Excel 20261019_20261025_estado-de-cuenta_77652.xls, Excel 20261026_20261101_estado-de-cuenta_77652.xls",
+  "nota": "Semanas partidas entre meses: 26/10-01/11 (por fecha de pedido: 77% a este mes); 28/09-04/10 (por fecha de pedido: 54% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion."
  },
  {
   "mes": "2026-10",
@@ -640,13 +640,13 @@
   "mes": "2026-10",
   "local": "Paz",
   "app": "PedidosYa",
-  "pedidos": 485,
-  "facturado": 11116227.22,
-  "se_queda": 3416453.79,
-  "depositado": 7699773.43,
+  "pedidos": 588,
+  "facturado": 12569108.2,
+  "se_queda": 3807821.86,
+  "depositado": 8761286.34,
   "efectivo": 0.0,
-  "completo": false,
-  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_370256.pdf, PDF 20261005_20261011_estado-de-cuenta_370256.pdf, PDF 20261012_20261018_estado-de-cuenta_370256.pdf, PDF 20261019_20261025_estado-de-cuenta_370256.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_370256.xls, Excel 20261005_20261011_estado-de-cuenta_370256.xls, Excel 20261012_20261018_estado-de-cuenta_370256.xls, Excel 20261019_20261025_estado-de-cuenta_370256.xls",
-  "nota": "Semanas partidas entre meses: 28/09-04/10 (por fecha de pedido: 56% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion. Faltan dias sin liquidacion: 26/10 al 31/10 (6 dias)."
+  "completo": true,
+  "fuente": "PedidosYa estado de cuenta semanal: PDF 20260928_20261004_estado-de-cuenta_370256.pdf, PDF 20261005_20261011_estado-de-cuenta_370256.pdf, PDF 20261012_20261018_estado-de-cuenta_370256.pdf, PDF 20261019_20261025_estado-de-cuenta_370256.pdf, PDF 20261026_20261101_estado-de-cuenta_370256.pdf, apps.xlsx hoja Liquidaciones (semana 20260928) | pedidos: Excel 20260928_20261004_estado-de-cuenta_370256.xls, Excel 20261005_20261011_estado-de-cuenta_370256.xls, Excel 20261012_20261018_estado-de-cuenta_370256.xls, Excel 20261019_20261025_estado-de-cuenta_370256.xls, Excel 20261026_20261101_estado-de-cuenta_370256.xls",
+  "nota": "Semanas partidas entre meses: 26/10-01/11 (por fecha de pedido: 57% a este mes); 28/09-04/10 (por fecha de pedido: 56% a este mes). Costos, deposito y efectivo de esas semanas prorrateados en la misma proporcion."
  }
 ]

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tablero de gestión · Conversión y ticket por tienda</title>
+<style>
+:root{
+  --bg:#0f1218;--panel:#171b23;--panel2:#1e232d;--line:#2a303c;--txt:#e8eaf0;--mut:#8b93a5;
+  --acc:#7c9cff;--hi:#ffd54a;--up:#2fbf71;--dn:#ef5b5b;--upbg:rgba(47,191,113,.18);--dnbg:rgba(239,91,91,.20);
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f4f6fa;--panel:#fff;--panel2:#f0f2f7;--line:#e1e5ee;--txt:#1b1f29;--mut:#677085;
+  --acc:#3f63e0;--hi:#e0a800;--upbg:rgba(47,191,113,.16);--dnbg:rgba(239,91,91,.16)}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:18px 16px 8px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px;margin-bottom:14px}
+h1{font-size:22px;margin:0;letter-spacing:-.2px}
+.sub{color:var(--mut);font-size:13px}
+.upd{font-size:12px;color:var(--mut);background:var(--panel);border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}
+.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end;position:sticky;top:0;z-index:5;margin-bottom:14px;backdrop-filter:blur(6px)}
+label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin-bottom:5px}
+select,input[type=search]{width:100%;background:var(--panel2);color:var(--txt);border:1px solid var(--line);border-radius:9px;padding:8px 10px;font:inherit}
+.seg{display:flex;background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:3px}
+.seg button{flex:1;border:0;background:none;color:var(--mut);padding:6px 8px;border-radius:7px;font:inherit;cursor:pointer}
+.seg button.on{background:var(--acc);color:#fff;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;grid-column:1/-1}
+.chip{border:1px solid var(--line);background:var(--panel2);color:var(--txt);border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer;user-select:none}
+.chip.off{opacity:.38}
+.chip.hl{border-color:var(--hi);box-shadow:0 0 0 1px var(--hi) inset}
+.mini{font-size:12px;color:var(--acc);cursor:pointer;background:none;border:0;padding:4px 6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:14px}
+.kpi .v{font-size:26px;font-weight:700;margin-top:2px}
+.kpi .d{font-size:12px;margin-top:2px}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.story{margin-bottom:14px}
+.story h2,.card h2{font-size:15px;margin:0 0 8px}
+.story ul{margin:6px 0 0;padding-left:18px}.story li{margin:4px 0}
+.grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:14px;margin-bottom:14px}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+svg text{fill:var(--mut);font-size:11px}
+.tblwrap{overflow:auto;max-height:620px;border-radius:10px;border:1px solid var(--line)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{position:sticky;top:0;background:var(--panel2);font-size:12px;color:var(--mut);cursor:pointer;z-index:2}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--panel);z-index:1}
+th:first-child{z-index:3;background:var(--panel2)}
+td.u{background:var(--upbg)}td.n{background:var(--dnbg)}
+tr.hl td:first-child{color:var(--hi);font-weight:700}
+tr.hl td{border-bottom-color:var(--hi)}
+tr.avg td{font-weight:700;background:var(--panel2)}
+tr:hover td{filter:brightness(1.12)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--mut);margin:8px 0 0}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.tip{position:fixed;pointer-events:none;background:#000c;color:#fff;padding:6px 9px;border-radius:7px;font-size:12px;display:none;z-index:50}
+.note{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>Tablero de gestión por tienda</h1>
+    <div class="sub">Conversión (cr) y ticket promedio (ATV) · enero a julio · 23 tiendas</div>
+  </div>
+  <div class="upd" id="upd">Última actualización: 06/11/2026 a las 21:29 (hora Argentina)</div>
+</header>
+
+<div class="card filters">
+  <div><label>Indicador</label>
+    <div class="seg" id="segMet"><button data-m="cr" class="on">Conversión (cr)</button><button data-m="atv">Ticket (ATV)</button></div></div>
+  <div><label>Desde</label><select id="fDesde"></select></div>
+  <div><label>Hasta</label><select id="fHasta"></select></div>
+  <div><label>Tienda destacada</label><select id="fHl"></select></div>
+  <div><label>Buscar tienda</label><input type="search" id="fQ" placeholder="ej. Soleil"></div>
+  <div class="chips" id="chips"></div>
+  <div style="grid-column:1/-1;margin-top:-4px">
+    <button class="mini" id="bAll">Todas</button><button class="mini" id="bNone">Ninguna</button>
+    <button class="mini" id="bUp">Solo las que mejoraron</button><button class="mini" id="bDn">Solo las que empeoraron</button>
+  </div>
+</div>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="card story" id="story"></div>
+
+<div class="grid2">
+  <div class="card"><h2 id="tLine">Evolución mes a mes</h2><div id="line"></div>
+    <div class="legend" id="lineLeg"></div></div>
+  <div class="card"><h2 id="tBar">Ranking de variación</h2><div id="bar"></div></div>
+</div>
+
+<div class="grid2">
+  <div class="card"><h2>Mapa conversión vs ticket <span class="sub" id="tSc"></span></h2><div id="scatter"></div>
+    <div class="note">Las líneas punteadas son el promedio de las tiendas filtradas. Arriba a la derecha: convierten y venden caro. Abajo a la izquierda: hay que trabajarlas.</div></div>
+  <div class="card"><h2>Promedio de la red, mes a mes</h2><div id="net"></div>
+    <div class="note">Promedio simple de las tiendas filtradas (cada tienda pesa igual, sin ponderar por tráfico).</div></div>
+</div>
+
+<div class="card" style="margin-bottom:14px">
+  <h2 id="tTbl">Detalle por tienda</h2>
+  <div class="tblwrap"><table id="tbl"></table></div>
+  <div class="legend"><span><i class="sw" style="background:var(--upbg);outline:1px solid var(--up)"></i>Subió contra el mes anterior</span>
+  <span><i class="sw" style="background:var(--dnbg);outline:1px solid var(--dn)"></i>Bajó contra el mes anterior</span>
+  <span>Hacé clic en un encabezado para ordenar · clic en una tienda para destacarla</span></div>
+  <div class="note">Fuente: tabla de cr y ATV enviada (enero a julio). La variación se calcula con los valores redondeados a un decimal, así que puede diferir 0,1 pp de la columna "Incremento cr vs Enero" original.</div>
+</div>
+</div>
+<div class="tip" id="tip"></div>
+
+<script>
+const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio'];
+const MC=['Ene','Feb','Mar','Abr','May','Jun','Jul'];
+// [tienda, cr% ene..jul, ATV $ ene..jul]
+const DATA=[
+['ARCOS',[13.7,12.1,11.3,12.9,16.2,17.4,14.7],[91684,110353,121674,115936,113761,111863,123562]],
+['BARRACAS',[24.8,22.7,23.3,22.2,24.2,25.5,23.9],[83352,94625,104659,109130,108719,129163,120038]],
+['GONNET',[31.0,27.5,31.5,32.3,39.2,38.5,38.0],[110329,127070,121660,135337,124872,133032,131111]],
+['LA RIOJA',[30.6,30.8,32.9,36.0,38.3,35.2,35.4],[141736,140842,136065,143369,154707,153031,161572]],
+['MDQ',[18.1,17.3,19.0,18.0,18.8,21.1,18.1],[123149,133394,126298,135954,138993,129532,133203]],
+['MITRE',[28.5,27.9,28.6,29.7,28.9,31.3,31.3],[85037,100803,99003,110694,108813,110708,101857]],
+['SOLEIL',[15.3,15.1,17.1,17.1,17.5,18.0,17.8],[111265,120969,117872,124625,116875,123529,121191]],
+['QUILMES',[14.1,13.7,14.1,15.2,13.8,14.6,14.2],[103525,116912,118906,117701,118958,123487,121258]],
+['PARQUE BROWN',[12.2,9.5,10.4,9.7,10.3,10.8,10.4],[68497,75471,77230,76727,78883,79669,77621]],
+['TERRAZAS',[9.4,8.9,9.6,8.7,9.5,9.8,10.9],[68829,76539,75417,75125,77263,75193,79652]],
+['TOM',[9.6,9.1,9.2,9.1,9.0,12.0,9.9],[81151,101635,112919,118629,124242,122990,128457]],
+['PALMAS',[12.5,10.7,9.7,9.8,12.2,13.0,11.3],[83085,104651,116806,116682,126952,127233,127740]],
+['ALTO PALERMO',[9.7,8.5,8.6,9.1,9.3,10.9,8.5],[85706,109786,119813,128131,126311,132661,131141]],
+['ALTO ROSARIO',[9.2,7.6,7.6,7.9,8.4,8.5,6.8],[91863,108511,120652,134127,129433,134605,139481]],
+['AVELLANEDA',[10.5,10.1,10.3,10.1,10.6,11.5,9.4],[85014,106149,118522,122816,127295,126024,131970]],
+['ABASTO',[10.4,10.0,10.1,11.0,10.5,10.4,9.0],[89735,105878,120203,123841,126822,134668,139316]],
+['UNICENTER',[11.2,9.3,9.9,10.2,10.3,12.1,9.9],[90381,109937,121166,130831,133461,135861,135958]],
+['DOT',[16.1,12.5,11.4,14.2,13.8,18.3,13.2],[98411,97070,101844,121899,116699,115110,115160]],
+['FLORIDA',[16.7,13.3,14.6,19.4,19.4,24.4,21.5],[80209,92487,104906,102470,96420,99894,102770]],
+['MENDOZA',[8.8,8.3,8.5,8.1,8.7,8.9,6.2],[97555,111346,119684,134263,130912,144521,147235]],
+['CORDOBA',[8.3,7.5,8.4,8.2,9.5,8.9,7.9],[91875,110654,119030,125761,123104,134337,139617]],
+['COMAHUE',[12.6,10.8,10.8,10.7,10.5,11.6,9.9],[90049,109926,120462,120122,125832,138925,134312]],
+['PATAGONIA',[17.0,15.3,15.3,16.5,14.6,13.6,12.1],[106500,121827,135114,138361,144419,144929,146946]],
+].map(([n,cr,atv])=>({n,cr,atv}));
+
+const S={met:'cr',d:0,h:6,hl:'SOLEIL',on:new Set(DATA.map(x=>x.n)),q:'',sort:{k:'var',dir:-1}};
+const $=id=>document.getElementById(id);
+const nf0=new Intl.NumberFormat('es-AR',{maximumFractionDigits:0});
+const nf1=new Intl.NumberFormat('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1});
+const fmt=(v,m=S.met)=>m==='cr'?nf1.format(v)+'%':'$ '+nf0.format(v);
+const fvar=(v,m=S.met)=>(Math.abs(v)<0.05&&(v=0),m==='cr')?(v>0?'+':'')+nf1.format(v)+' pp':(v>0?'+':'')+nf1.format(v)+'%';
+const vari=(s,m=S.met)=>{const a=s[m][S.d],b=s[m][S.h];return m==='cr'?b-a:(b/a-1)*100};
+const avg=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const sel=()=>DATA.filter(s=>S.on.has(s.n)&&s.n.toLowerCase().includes(S.q.toLowerCase()));
+const COLS=['#7c9cff','#2fbf71','#ff8a5b','#c77dff','#29c5d6','#f06292','#a0d468','#ffb74d'];
+const tip=$('tip');
+function showTip(e,h){tip.innerHTML=h;tip.style.display='block';tip.style.left=Math.min(e.clientX+12,innerWidth-200)+'px';tip.style.top=(e.clientY+12)+'px'}
+function hideTip(){tip.style.display='none'}
+
+// ---------- filtros ----------
+['fDesde','fHasta'].forEach((id,i)=>{$(id).innerHTML=MESES.map((m,j)=>`<option value="${j}">${m}</option>`).join('');$(id).value=i?6:0});
+$('fHl').innerHTML='<option value="">(ninguna)</option>'+DATA.map(s=>`<option ${s.n===S.hl?'selected':''}>${s.n}</option>`).join('');
+$('fDesde').onchange=e=>{S.d=+e.target.value;if(S.d>=S.h){S.h=Math.min(6,S.d+1);$('fHasta').value=S.h;if(S.d>=S.h){S.d=S.h-1;e.target.value=S.d}}render()};
+$('fHasta').onchange=e=>{S.h=+e.target.value;if(S.h<=S.d){S.d=Math.max(0,S.h-1);$('fDesde').value=S.d;if(S.h<=S.d){S.h=S.d+1;e.target.value=S.h}}render()};
+$('fHl').onchange=e=>{S.hl=e.target.value;render()};
+$('fQ').oninput=e=>{S.q=e.target.value;render()};
+document.querySelectorAll('#segMet button').forEach(b=>b.onclick=()=>{S.met=b.dataset.m;document.querySelectorAll('#segMet button').forEach(x=>x.classList.toggle('on',x===b));render()});
+$('bAll').onclick=()=>{S.on=new Set(DATA.map(x=>x.n));render()};
+$('bNone').onclick=()=>{S.on=new Set();render()};
+$('bUp').onclick=()=>{S.on=new Set(DATA.filter(s=>vari(s)>0).map(x=>x.n));render()};
+$('bDn').onclick=()=>{S.on=new Set(DATA.filter(s=>vari(s)<0).map(x=>x.n));render()};
+
+function chips(){
+  $('chips').innerHTML=DATA.map(s=>`<span class="chip ${S.on.has(s.n)?'':'off'} ${s.n===S.hl?'hl':''}" data-n="${s.n}">${s.n}</span>`).join('');
+  $('chips').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=c.dataset.n;S.on.has(n)?S.on.delete(n):S.on.add(n);render()});
+}
+
+// ---------- KPIs ----------
+function kpis(L){
+  if(!L.length){$('kpis').innerHTML='<div class="card">Elegí al menos una tienda.</div>';return}
+  const m=S.met,o=m==='cr'?'atv':'cr';
+  const a1=avg(L.map(s=>s[m][S.h])),a0=avg(L.map(s=>s[m][S.d]));
+  const b1=avg(L.map(s=>s[o][S.h])),b0=avg(L.map(s=>s[o][S.d]));
+  const dv=m==='cr'?a1-a0:(a1/a0-1)*100, dvo=o==='cr'?b1-b0:(b1/b0-1)*100;
+  const ups=L.filter(s=>vari(s)>0).length;
+  const srt=[...L].sort((x,y)=>vari(y)-vari(x));
+  const best=srt[0],worst=srt[srt.length-1];
+  const k=(t,v,d,c)=>`<div class="card kpi"><label>${t}</label><div class="v">${v}</div><div class="d ${c||''}">${d}</div></div>`;
+  $('kpis').innerHTML=
+    k(`${m==='cr'?'Conversión':'Ticket'} promedio · ${MESES[S.h]}`,fmt(a1),`${fvar(dv)} vs ${MESES[S.d]}`,dv>=0?'up':'dn')+
+    k(`${o==='cr'?'Conversión':'Ticket'} promedio · ${MESES[S.h]}`,fmt(b1,o),`${fvar(dvo,o)} vs ${MESES[S.d]}`,dvo>=0?'up':'dn')+
+    k('Tiendas que mejoraron',`${ups} de ${L.length}`,`${L.length-ups} empeoraron o quedaron igual`,ups>=L.length/2?'up':'dn')+
+    k('Mejor y peor evolución',best.n,`${fvar(vari(best))} · peor: ${worst.n} ${fvar(vari(worst))}`,'');
+}
+
+// ---------- historia ----------
+function story(L){
+  if(!L.length){$('story').innerHTML='';return}
+  const srt=[...L].sort((x,y)=>vari(y)-vari(x));
+  const ups=srt.filter(s=>vari(s,'cr')>0).map(s=>s.n);
+  const both=L.filter(s=>vari(s,'cr')<0&&vari(s,'atv')>0);
+  const top=[...L].sort((x,y)=>y.cr[S.h]-x.cr[S.h]).slice(0,3).map(s=>s.n);
+  const crA=avg(L.map(s=>s.cr[S.h]))-avg(L.map(s=>s.cr[S.d]));
+  const atvA=(avg(L.map(s=>s.atv[S.h]))/avg(L.map(s=>s.atv[S.d]))-1)*100;
+  const hl=DATA.find(s=>s.n===S.hl);
+  let li=[];
+  li.push(`Entre <b>${MESES[S.d]}</b> y <b>${MESES[S.h]}</b> la conversión promedio ${Math.abs(crA)<0.05?'<b>quedó igual</b>':(crA>0?'subió':'bajó')+' <b>'+nf1.format(Math.abs(crA))+' pp</b>'} y el ticket promedio ${atvA>=0?'subió':'bajó'} <b>${nf1.format(Math.abs(atvA))}%</b>.${atvA>5&&crA<1.5?' El ticket crece mucho más que la conversión: la mejora viene sobre todo de precio, no de que compre más gente de la que entra.':''}`);
+  li.push(`<b>${ups.length} de ${L.length}</b> tiendas mejoraron la conversión${ups.length?': '+ups.slice(0,6).join(', ')+(ups.length>6?' y otras':''):''}.`);
+  if(both.length) li.push(`<b>${both.length}</b> tiendas venden más caro pero convierten menos (${both.slice(0,5).map(s=>s.n).join(', ')}${both.length>5?'…':''}): hay que revisar si el ticket más alto está espantando ventas.`);
+  li.push(`Las que mejor convierten en ${MESES[S.h]}: <b>${top.join(', ')}</b>.`);
+  if(hl) li.push(`<b>${hl.n}</b>: conversión ${fmt(hl.cr[S.d],'cr')} → ${fmt(hl.cr[S.h],'cr')} (${fvar(vari(hl,'cr'),'cr')}) y ticket ${fmt(hl.atv[S.d],'atv')} → ${fmt(hl.atv[S.h],'atv')} (${fvar(vari(hl,'atv'),'atv')}). Puesto ${[...L].sort((x,y)=>vari(y,'cr')-vari(x,'cr')).findIndex(s=>s.n===hl.n)+1||'–'} de ${L.length} en mejora de conversión.`);
+  $('story').innerHTML='<h2>Lo que hay que contar</h2><ul>'+li.map(x=>`<li>${x}</li>`).join('')+'</ul>';
+}
+
+// ---------- gráficos ----------
+function scale(d0,d1,r0,r1){return v=>r0+(v-d0)/(d1-d0||1)*(r1-r0)}
+function nice(min,max){const p=(max-min)*.08||1;return [min-p,max+p]}
+function line(L){
+  const W=640,H=300,P={l:54,r:14,t:10,b:28},m=S.met;
+  const idx=[];for(let i=S.d;i<=S.h;i++)idx.push(i);
+  const show=L.length>8?L.filter(s=>s.n===S.hl).concat([...L].sort((a,b)=>vari(b)-vari(a)).filter(s=>s.n!==S.hl).slice(0,7)):L;
+  const av=idx.map(i=>avg(L.map(s=>s[m][i])));
+  const all=show.flatMap(s=>idx.map(i=>s[m][i])).concat(av);
+  if(!all.length){$('line').innerHTML='';$('lineLeg').innerHTML='';return}
+  const [y0,y1]=nice(Math.min(...all),Math.max(...all));
+  const x=scale(idx[0],idx[idx.length-1],P.l,W-P.r),y=scale(y0,y1,H-P.b,P.t);
+  let g='';for(let k=0;k<=4;k++){const v=y0+(y1-y0)*k/4;g+=`<line x1="${P.l}" x2="${W-P.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)"/><text x="${P.l-6}" y="${y(v)+4}" text-anchor="end">${m==='cr'?nf1.format(v)+'%':'$'+nf0.format(v/1000)+'k'}</text>`}
+  idx.forEach(i=>g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${MC[i]}</text>`);
+  const path=(vals,c,w,dash,n)=>`<polyline fill="none" stroke="${c}" stroke-width="${w}" ${dash?'stroke-dasharray="5 4"':''} points="${idx.map((i,j)=>x(i)+','+y(vals[j])).join(' ')}"/>`+idx.map((i,j)=>`<circle cx="${x(i)}" cy="${y(vals[j])}" r="${w>2?4:3}" fill="${c}" data-t="${n} · ${MESES[i]}: ${fmt(vals[j])}"/>`).join('');
+  let leg='';
+  show.forEach((s,k)=>{const c=s.n===S.hl?'var(--hi)':COLS[k%COLS.length];g+=path(idx.map(i=>s[m][i]),c,s.n===S.hl?3.5:2,false,s.n);leg+=`<span><i class="sw" style="background:${c}"></i>${s.n}</span>`});
+  g+=path(av,'var(--mut)',2,true,'Promedio');leg+=`<span><i class="sw" style="background:var(--mut)"></i>Promedio filtradas</span>`;
+  $('line').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%">${g}</svg>`;
+  $('lineLeg').innerHTML=leg+(L.length>8?'<span>(se muestran la destacada y las 7 que más mejoraron)</span>':'');
+  $('tLine').textContent=`Evolución de ${m==='cr'?'la conversión':'el ticket'}`;
+}
+function bar(L){
+  const srt=[...L].sort((a,b)=>vari(b)-vari(a));
+  const rh=22,W=520,P={l:110,r:60},H=srt.length*rh+10;
+  if(!srt.length){$('bar').innerHTML='';return}
+  const vs=srt.map(s=>vari(s)),mx=Math.max(...vs.map(Math.abs),.1);
+  const zero=P.l+(W-P.l-P.r)/2,sc=(W-P.l-P.r)/2/mx;
+  let g=`<line x1="${zero}" x2="${zero}" y1="0" y2="${H}" stroke="var(--line)"/>`;
+  srt.forEach((s,i)=>{const v=vs[i],y0=i*rh+5,w=Math.abs(v)*sc,c=v>=0?'var(--up)':'var(--dn)';
+    g+=`<text x="${P.l-8}" y="${y0+14}" text-anchor="end" style="${s.n===S.hl?'fill:var(--hi);font-weight:700':''}">${s.n}</text>
+    <rect x="${v>=0?zero:zero-w}" y="${y0+3}" width="${Math.max(w,1)}" height="${rh-8}" rx="3" fill="${c}" data-t="${s.n}: ${fvar(v)}"/>
+    <text x="${v>=0?zero+w+5:zero-w-5}" y="${y0+14}" text-anchor="${v>=0?'start':'end'}">${fvar(v)}</text>`});
+  $('bar').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%">${g}</svg>`;
+  $('tBar').textContent=`Variación de ${S.met==='cr'?'conversión':'ticket'}: ${MESES[S.d]} → ${MESES[S.h]}`;
+}
+function scatter(L){
+  const W=560,H=360,P={l:58,r:16,t:12,b:34},i=S.h;
+  if(!L.length){$('scatter').innerHTML='';return}
+  const xs=L.map(s=>s.cr[i]),ys=L.map(s=>s.atv[i]);
+  const [x0,x1]=nice(Math.min(...xs),Math.max(...xs)),[y0,y1]=nice(Math.min(...ys),Math.max(...ys));
+  const x=scale(x0,x1,P.l,W-P.r),y=scale(y0,y1,H-P.b,P.t),ax=avg(xs),ay=avg(ys);
+  let g='';
+  for(let k=0;k<=4;k++){const vx=x0+(x1-x0)*k/4,vy=y0+(y1-y0)*k/4;
+    g+=`<text x="${x(vx)}" y="${H-14}" text-anchor="middle">${nf1.format(vx)}%</text><text x="${P.l-6}" y="${y(vy)+4}" text-anchor="end">$${nf0.format(vy/1000)}k</text>`}
+  g+=`<text x="${(P.l+W-P.r)/2}" y="${H-1}" text-anchor="middle">Conversión (cr)</text>`;
+  g+=`<line x1="${x(ax)}" x2="${x(ax)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--mut)" stroke-dasharray="4 4"/><line x1="${P.l}" x2="${W-P.r}" y1="${y(ay)}" y2="${y(ay)}" stroke="var(--mut)" stroke-dasharray="4 4"/>`;
+  L.forEach(s=>{const h=s.n===S.hl,c=h?'var(--hi)':(vari(s,'cr')>=0?'var(--up)':'var(--dn)');
+    g+=`<circle cx="${x(s.cr[i])}" cy="${y(s.atv[i])}" r="${h?8:6}" fill="${c}" fill-opacity=".85" stroke="var(--panel)" data-t="${s.n} · cr ${fmt(s.cr[i],'cr')} · ATV ${fmt(s.atv[i],'atv')}"/>
+    <text x="${x(s.cr[i])+9}" y="${y(s.atv[i])+4}" style="font-size:10px;${h?'fill:var(--hi);font-weight:700':''}">${s.n}</text>`});
+  $('scatter').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%">${g}</svg>`;
+  $('tSc').textContent=`· ${MESES[i]} (verde: mejoró cr; rojo: empeoró)`;
+}
+function net(L){
+  const W=560,H=240,P={l:48,r:56,t:14,b:28};
+  if(!L.length){$('net').innerHTML='';return}
+  const idx=[0,1,2,3,4,5,6],cr=idx.map(i=>avg(L.map(s=>s.cr[i]))),at=idx.map(i=>avg(L.map(s=>s.atv[i])));
+  const x=scale(0,6,P.l,W-P.r),[a0,a1]=nice(Math.min(...cr),Math.max(...cr)),[b0,b1]=nice(Math.min(...at),Math.max(...at));
+  const yc=scale(a0,a1,H-P.b,P.t),ya=scale(b0,b1,H-P.b,P.t),bw=(W-P.l-P.r)/7*.55;
+  let g=`<rect x="${x(S.d)-bw}" y="${P.t}" width="${x(S.h)-x(S.d)+bw*2}" height="${H-P.b-P.t}" fill="var(--acc)" opacity=".07" rx="6"/>`;
+  idx.forEach(i=>{g+=`<rect x="${x(i)-bw/2}" y="${ya(at[i])}" width="${bw}" height="${H-P.b-ya(at[i])}" rx="4" fill="var(--acc)" opacity=".55" data-t="${MESES[i]} · ATV ${fmt(at[i],'atv')}"/><text x="${x(i)}" y="${H-8}" text-anchor="middle">${MC[i]}</text>`});
+  for(let k=0;k<=3;k++){const v=b0+(b1-b0)*k/3,c=a0+(a1-a0)*k/3;g+=`<text x="${P.l-6}" y="${ya(v)+4}" text-anchor="end">$${nf0.format(v/1000)}k</text><text x="${W-P.r+6}" y="${yc(c)+4}">${nf1.format(c)}%</text>`}
+  g+=`<polyline fill="none" stroke="var(--hi)" stroke-width="2.5" points="${idx.map(i=>x(i)+','+yc(cr[i])).join(' ')}"/>`+idx.map(i=>`<circle cx="${x(i)}" cy="${yc(cr[i])}" r="4" fill="var(--hi)" data-t="${MESES[i]} · cr ${fmt(cr[i],'cr')}"/>`).join('');
+  $('net').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%">${g}</svg><div class="legend"><span><i class="sw" style="background:var(--acc)"></i>Ticket promedio (eje izq.)</span><span><i class="sw" style="background:var(--hi)"></i>Conversión promedio (eje der.)</span></div>`;
+}
+
+// ---------- tabla ----------
+function table(L){
+  const m=S.met,idx=[];for(let i=S.d;i<=S.h;i++)idx.push(i);
+  const rows=L.map(s=>({s,var:vari(s),prom:avg(idx.map(i=>s[m][i])),n:s.n,...Object.fromEntries(idx.map(i=>['m'+i,s[m][i]]))}));
+  const {k,dir}=S.sort;rows.sort((a,b)=>k==='n'?dir*a.n.localeCompare(b.n):dir*((a[k]??0)-(b[k]??0)));
+  const varLbl=m==='cr'?`Var. pp ${MC[S.d]}→${MC[S.h]}`:`Var. % ${MC[S.d]}→${MC[S.h]}`;
+  let h=`<thead><tr><th data-k="n">Tienda</th>${idx.map(i=>`<th data-k="m${i}">${MC[i]}</th>`).join('')}<th data-k="var">${varLbl}</th><th data-k="prom">Promedio</th></tr></thead><tbody>`;
+  rows.forEach(r=>{h+=`<tr class="${r.n===S.hl?'hl':''}" data-n="${r.n}"><td>${r.n}</td>`+idx.map(i=>{const v=r.s[m][i],p=i>0?r.s[m][i-1]:null;const c=p==null?'':v>p?'u':v<p?'n':'';return `<td class="${c}">${fmt(v)}</td>`}).join('')+
+    `<td class="${r.var>0?'u':r.var<0?'n':''}" style="font-weight:600">${fvar(r.var)}</td><td>${fmt(r.prom)}</td></tr>`});
+  if(L.length){const a=idx.map(i=>avg(L.map(s=>s[m][i])));const av=m==='cr'?a[a.length-1]-a[0]:(a[a.length-1]/a[0]-1)*100;
+    h+=`<tr class="avg"><td>Promedio</td>${a.map(v=>`<td>${fmt(v)}</td>`).join('')}<td>${fvar(av)}</td><td>${fmt(avg(a))}</td></tr>`}
+  $('tbl').innerHTML=h+'</tbody>';
+  $('tbl').querySelectorAll('th').forEach(th=>th.onclick=()=>{const kk=th.dataset.k;S.sort={k:kk,dir:S.sort.k===kk?-S.sort.dir:(kk==='n'?1:-1)};render()});
+  $('tbl').querySelectorAll('tbody tr[data-n]').forEach(tr=>tr.onclick=()=>{S.hl=S.hl===tr.dataset.n?'':tr.dataset.n;$('fHl').value=S.hl;render()});
+  $('tTbl').textContent=`Detalle por tienda · ${m==='cr'?'Conversión (cr)':'Ticket promedio (ATV)'}`;
+}
+
+function render(){const L=sel();chips();kpis(L);story(L);line(L);bar(L);scatter(L);net(L);table(L)}
+document.addEventListener('mousemove',e=>{const t=e.target.closest&&e.target.closest('[data-t]');t?showTip(e,t.dataset.t):hideTip()});
+render();
+</script>
+</body>
+</html>

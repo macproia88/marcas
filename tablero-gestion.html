@@ -57,6 +57,22 @@ tr:hover td{filter:brightness(1.12)}
 .sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
 .tip{position:fixed;pointer-events:none;background:#000c;color:#fff;padding:6px 9px;border-radius:7px;font-size:12px;display:none;z-index:50}
 .note{font-size:12px;color:var(--mut);margin-top:8px}
+.tgl{display:none}
+@media (max-width:700px){
+  .wrap{padding:12px 10px 6px}
+  h1{font-size:19px}
+  .filters{position:static;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+  .filters>div:first-child{grid-column:1/-1}
+  .tgl{display:block;grid-column:1/-1;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:9px;padding:9px 10px;font:inherit;text-align:left}
+  .chips,.chipbtns{display:none}
+  .filters.open .chips{display:flex}.filters.open .chipbtns{display:block}
+  .kpis{grid-template-columns:1fr 1fr;gap:8px}
+  .kpi{padding:11px}.kpi .v{font-size:19px;word-break:break-word}.kpi label{font-size:10px}
+  .card{padding:12px;border-radius:12px}
+  .grid2{gap:10px;margin-bottom:10px}
+  th,td{padding:6px 7px;font-size:12.5px}
+  .tblwrap{max-height:none}
+}
 </style>
 </head>
 <body>
@@ -66,7 +82,7 @@ tr:hover td{filter:brightness(1.12)}
     <h1>Tablero de gestión por tienda</h1>
     <div class="sub">Conversión (cr) y ticket promedio (ATV) · enero a julio · 23 tiendas</div>
   </div>
-  <div class="upd" id="upd">Última actualización: 06/11/2026 a las 21:29 (hora Argentina)</div>
+  <div class="upd" id="upd">Última actualización: 06/11/2026 a las 21:32 (hora Argentina)</div>
 </header>
 
 <div class="card filters">
@@ -76,8 +92,9 @@ tr:hover td{filter:brightness(1.12)}
   <div><label>Hasta</label><select id="fHasta"></select></div>
   <div><label>Tienda destacada</label><select id="fHl"></select></div>
   <div><label>Buscar tienda</label><input type="search" id="fQ" placeholder="ej. Soleil"></div>
+  <button class="tgl" id="tgl">Tiendas: todas ▾</button>
   <div class="chips" id="chips"></div>
-  <div style="grid-column:1/-1;margin-top:-4px">
+  <div class="chipbtns" style="grid-column:1/-1;margin-top:-4px">
     <button class="mini" id="bAll">Todas</button><button class="mini" id="bNone">Ninguna</button>
     <button class="mini" id="bUp">Solo las que mejoraron</button><button class="mini" id="bDn">Solo las que empeoraron</button>
   </div>
@@ -95,7 +112,7 @@ tr:hover td{filter:brightness(1.12)}
 
 <div class="grid2">
   <div class="card"><h2>Mapa conversión vs ticket <span class="sub" id="tSc"></span></h2><div id="scatter"></div>
-    <div class="note">Las líneas punteadas son el promedio de las tiendas filtradas. Arriba a la derecha: convierten y venden caro. Abajo a la izquierda: hay que trabajarlas.</div></div>
+    <div class="note">En el celular se ven los nombres de las tiendas más destacadas; tocá un punto para ver el resto. Las líneas punteadas son el promedio de las tiendas filtradas. Arriba a la derecha: convierten y venden caro. Abajo a la izquierda: hay que trabajarlas.</div></div>
   <div class="card"><h2>Promedio de la red, mes a mes</h2><div id="net"></div>
     <div class="note">Promedio simple de las tiendas filtradas (cada tienda pesa igual, sin ponderar por tráfico).</div></div>
 </div>
@@ -168,7 +185,10 @@ $('bNone').onclick=()=>{S.on=new Set();render()};
 $('bUp').onclick=()=>{S.on=new Set(DATA.filter(s=>vari(s)>0).map(x=>x.n));render()};
 $('bDn').onclick=()=>{S.on=new Set(DATA.filter(s=>vari(s)<0).map(x=>x.n));render()};
 
+const cw=id=>Math.max(300,Math.round($(id).clientWidth||600));
+$('tgl').onclick=()=>{document.querySelector('.filters').classList.toggle('open');chips()};
 function chips(){
+  $('tgl').textContent=`Tiendas: ${S.on.size===DATA.length?'todas':S.on.size+' de '+DATA.length} ${document.querySelector('.filters').classList.contains('open')?'▴':'▾'}`;
   $('chips').innerHTML=DATA.map(s=>`<span class="chip ${S.on.has(s.n)?'':'off'} ${s.n===S.hl?'hl':''}" data-n="${s.n}">${s.n}</span>`).join('');
   $('chips').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{const n=c.dataset.n;S.on.has(n)?S.on.delete(n):S.on.add(n);render()});
 }
@@ -214,7 +234,7 @@ function story(L){
 function scale(d0,d1,r0,r1){return v=>r0+(v-d0)/(d1-d0||1)*(r1-r0)}
 function nice(min,max){const p=(max-min)*.08||1;return [min-p,max+p]}
 function line(L){
-  const W=640,H=300,P={l:54,r:14,t:10,b:28},m=S.met;
+  const W=cw('line'),H=W<500?240:300,P={l:46,r:12,t:10,b:28},m=S.met;
   const idx=[];for(let i=S.d;i<=S.h;i++)idx.push(i);
   const show=L.length>8?L.filter(s=>s.n===S.hl).concat([...L].sort((a,b)=>vari(b)-vari(a)).filter(s=>s.n!==S.hl).slice(0,7)):L;
   const av=idx.map(i=>avg(L.map(s=>s[m][i])));
@@ -234,10 +254,10 @@ function line(L){
 }
 function bar(L){
   const srt=[...L].sort((a,b)=>vari(b)-vari(a));
-  const rh=22,W=520,P={l:110,r:60},H=srt.length*rh+10;
+  const rh=22,W=cw('bar'),P={l:104,r:6},H=srt.length*rh+10;
   if(!srt.length){$('bar').innerHTML='';return}
   const vs=srt.map(s=>vari(s)),mx=Math.max(...vs.map(Math.abs),.1);
-  const zero=P.l+(W-P.l-P.r)/2,sc=(W-P.l-P.r)/2/mx;
+  const zero=P.l+(W-P.l-P.r)/2,sc=((W-P.l-P.r)/2-52)/mx;
   let g=`<line x1="${zero}" x2="${zero}" y1="0" y2="${H}" stroke="var(--line)"/>`;
   srt.forEach((s,i)=>{const v=vs[i],y0=i*rh+5,w=Math.abs(v)*sc,c=v>=0?'var(--up)':'var(--dn)';
     g+=`<text x="${P.l-8}" y="${y0+14}" text-anchor="end" style="${s.n===S.hl?'fill:var(--hi);font-weight:700':''}">${s.n}</text>
@@ -247,11 +267,12 @@ function bar(L){
   $('tBar').textContent=`Variación de ${S.met==='cr'?'conversión':'ticket'}: ${MESES[S.d]} → ${MESES[S.h]}`;
 }
 function scatter(L){
-  const W=560,H=360,P={l:58,r:16,t:12,b:34},i=S.h;
+  const W=cw('scatter'),H=W<500?320:360,P={l:50,r:16,t:12,b:34},i=S.h,small=W<600;
   if(!L.length){$('scatter').innerHTML='';return}
   const xs=L.map(s=>s.cr[i]),ys=L.map(s=>s.atv[i]);
   const [x0,x1]=nice(Math.min(...xs),Math.max(...xs)),[y0,y1]=nice(Math.min(...ys),Math.max(...ys));
   const x=scale(x0,x1,P.l,W-P.r),y=scale(y0,y1,H-P.b,P.t),ax=avg(xs),ay=avg(ys);
+  const bc=[...L].sort((a,b)=>b.cr[i]-a.cr[i]),ba=[...L].sort((a,b)=>b.atv[i]-a.atv[i]),lab=new Set([...bc.slice(0,2),...bc.slice(-1),...ba.slice(0,1),...ba.slice(-1)].map(s=>s.n));
   let g='';
   for(let k=0;k<=4;k++){const vx=x0+(x1-x0)*k/4,vy=y0+(y1-y0)*k/4;
     g+=`<text x="${x(vx)}" y="${H-14}" text-anchor="middle">${nf1.format(vx)}%</text><text x="${P.l-6}" y="${y(vy)+4}" text-anchor="end">$${nf0.format(vy/1000)}k</text>`}
@@ -259,12 +280,12 @@ function scatter(L){
   g+=`<line x1="${x(ax)}" x2="${x(ax)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--mut)" stroke-dasharray="4 4"/><line x1="${P.l}" x2="${W-P.r}" y1="${y(ay)}" y2="${y(ay)}" stroke="var(--mut)" stroke-dasharray="4 4"/>`;
   L.forEach(s=>{const h=s.n===S.hl,c=h?'var(--hi)':(vari(s,'cr')>=0?'var(--up)':'var(--dn)');
     g+=`<circle cx="${x(s.cr[i])}" cy="${y(s.atv[i])}" r="${h?8:6}" fill="${c}" fill-opacity=".85" stroke="var(--panel)" data-t="${s.n} · cr ${fmt(s.cr[i],'cr')} · ATV ${fmt(s.atv[i],'atv')}"/>
-    <text x="${x(s.cr[i])+9}" y="${y(s.atv[i])+4}" style="font-size:10px;${h?'fill:var(--hi);font-weight:700':''}">${s.n}</text>`});
+    ${!small||h||lab.has(s.n)?`<text x="${x(s.cr[i])+(x(s.cr[i])>W-90?-9:9)}" text-anchor="${x(s.cr[i])>W-90?'end':'start'}" y="${y(s.atv[i])+4}" style="font-size:10px;${h?'fill:var(--hi);font-weight:700':''}">${s.n}</text>`:''}`});
   $('scatter').innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%">${g}</svg>`;
   $('tSc').textContent=`· ${MESES[i]} (verde: mejoró cr; rojo: empeoró)`;
 }
 function net(L){
-  const W=560,H=240,P={l:48,r:56,t:14,b:28};
+  const W=cw('net'),H=240,P={l:46,r:46,t:14,b:28};
   if(!L.length){$('net').innerHTML='';return}
   const idx=[0,1,2,3,4,5,6],cr=idx.map(i=>avg(L.map(s=>s.cr[i]))),at=idx.map(i=>avg(L.map(s=>s.atv[i])));
   const x=scale(0,6,P.l,W-P.r),[a0,a1]=nice(Math.min(...cr),Math.max(...cr)),[b0,b1]=nice(Math.min(...at),Math.max(...at));
@@ -294,6 +315,8 @@ function table(L){
 }
 
 function render(){const L=sel();chips();kpis(L);story(L);line(L);bar(L);scatter(L);net(L);table(L)}
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-t]');if(t){showTip(e,t.dataset.t);clearTimeout(window._tt);window._tt=setTimeout(hideTip,2500)}});
+let _rw=innerWidth;addEventListener('resize',()=>{if(innerWidth!==_rw){_rw=innerWidth;render()}});
 document.addEventListener('mousemove',e=>{const t=e.target.closest&&e.target.closest('[data-t]');t?showTip(e,t.dataset.t):hideTip()});
 render();
 </script>

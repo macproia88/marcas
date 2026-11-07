@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Matías Jonathan Flores — Gerente de Sucursal</title>
+<meta name="description" content="CV de Matías Jonathan Flores: Gerente de Sucursal / Store Manager con más de 25 años en retail (Walmart, Changomas, Norte).">
+<meta property="og:title" content="Matías Jonathan Flores — Gerente de Sucursal">
+<meta property="og:description" content="+25 años en retail · +60 personas a cargo · Ausentismo 16% → 8%. Tocá para conocerme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:#0b1222;font-family:Inter,system-ui,sans-serif;color:#fff;overflow:hidden}
+.stage{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(1200px 600px at 20% 10%,#1d2f57 0,#0b1222 60%)}
+.phone{position:relative;width:min(100vw,440px);height:min(100dvh,860px);overflow:hidden;border-radius:0;user-select:none}
+@media(min-width:520px){.phone{border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.55);height:min(92dvh,860px)}}
+.bars{position:absolute;top:calc(10px + env(safe-area-inset-top));left:12px;right:12px;display:flex;gap:4px;z-index:5}
+.bars i{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.28);overflow:hidden}
+.bars i b{display:block;height:100%;width:0;background:#fff;transition:width .35s}
+.who{position:absolute;top:calc(22px + env(safe-area-inset-top));left:14px;right:14px;display:flex;align-items:center;gap:8px;z-index:5;font-size:13px;font-weight:600}
+.who .av{width:30px;height:30px;border-radius:50%;background:#fff;color:#16233f;display:grid;place-items:center;font-weight:900;font-size:12px}
+.who .sm{opacity:.7;font-weight:500}
+.slide{position:absolute;inset:0;padding:calc(76px + env(safe-area-inset-top)) 26px calc(34px + env(safe-area-inset-bottom));display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .45s}
+.slide.on{opacity:1;pointer-events:auto}
+.s1{background:linear-gradient(160deg,#16233f 0%,#22407a 55%,#0e7c74 100%)}
+.s2{background:linear-gradient(170deg,#0e7c74,#0a4f5c)}
+.s3{background:linear-gradient(170deg,#1b1f3a,#3b1d5c)}
+.s4{background:linear-gradient(170deg,#16233f,#1f3b66)}
+.s5{background:linear-gradient(170deg,#f2a541,#e0662f)}
+.s6{background:linear-gradient(170deg,#0e7c74,#16233f)}
+.k{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;opacity:.75;margin-bottom:10px}
+h1{font-size:46px;line-height:1.02;margin:0 0 14px;font-weight:900;letter-spacing:-1.5px}
+h2{font-size:34px;line-height:1.05;margin:0 0 18px;font-weight:900;letter-spacing:-1px}
+p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
+.big-av{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.12);border:3px solid rgba(255,255,255,.55);display:grid;place-items:center;font-size:40px;font-weight:900;margin:auto 0 26px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600}
+.hint{margin-top:auto;text-align:center;font-size:13px;font-weight:600;opacity:.8;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35;transform:translateX(4px)}}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.tile{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:18px 14px}
+.tile .n{font-size:44px;font-weight:900;letter-spacing:-1.5px;line-height:1}
+.tile .l{font-size:13.5px;opacity:.9;margin-top:6px;line-height:1.3}
+.abs{display:flex;gap:26px;align-items:flex-end;height:260px;margin:10px 0 14px;padding:0 12px}
+.abs .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.abs .v{font-size:40px;font-weight:900;margin-bottom:8px}
+.abs .b{width:100%;border-radius:16px 16px 4px 4px;height:0;transition:height 1.1s cubic-bezier(.2,.8,.2,1)}
+.abs .b1{background:rgba(255,255,255,.35)}.abs .b2{background:#3fe0c5}
+.abs .t{font-size:13px;opacity:.8;margin-top:8px;font-weight:600}
+.badge{display:inline-block;background:#3fe0c5;color:#0b1222;font-weight:900;border-radius:10px;padding:4px 10px;font-size:15px;margin-bottom:12px;transform:scale(0);transition:transform .5s .9s cubic-bezier(.3,1.6,.5,1)}
+.on .badge{transform:scale(1)}
+.tl{position:relative;margin-top:4px;padding-left:26px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:rgba(255,255,255,.2);border-radius:3px}
+.st{position:relative;margin-bottom:18px;opacity:0;transform:translateY(14px);transition:.5s}
+.on .st{opacity:1;transform:none}
+.on .st:nth-child(2){transition-delay:.25s}.on .st:nth-child(3){transition-delay:.5s}
+.st::before{content:"";position:absolute;left:-24px;top:4px;width:13px;height:13px;border-radius:50%;background:#3fe0c5;box-shadow:0 0 0 4px rgba(63,224,197,.25)}
+.st .y{font-size:12.5px;font-weight:800;color:#3fe0c5;letter-spacing:.5px}
+.st .r{font-size:19px;font-weight:800;margin:2px 0}
+.st .d{font-size:14px;opacity:.85;line-height:1.35}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{border:0;font:inherit;font-weight:700;font-size:14px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.22);color:#fff;cursor:pointer}
+.chip.sel{background:#fff;color:#c4501f}
+.ans{background:rgba(255,255,255,.95);color:#1d2433;border-radius:20px;padding:18px 18px 8px;min-height:200px}
+.ans .q{font-size:13px;font-weight:800;color:#c4501f;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.ans li{list-style:none;margin:0 0 12px;padding-left:30px;position:relative;font-size:15.5px;line-height:1.35;font-weight:500;animation:in .4s both}
+.ans li:nth-child(2){animation-delay:.08s}.ans li:nth-child(3){animation-delay:.16s}
+.ans li::before{content:"✓";position:absolute;left:0;top:0;width:22px;height:22px;border-radius:50%;background:#0e7c74;color:#fff;font-size:13px;font-weight:900;display:grid;place-items:center}
+.ans ul{margin:0;padding:0}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+.btn{display:block;text-align:center;text-decoration:none;font:inherit;font-weight:800;font-size:16px;padding:15px;border-radius:14px;border:0;cursor:pointer;margin-bottom:10px;width:100%}
+.btn.wa{background:#25d366;color:#08311a}
+.btn.w{background:#fff;color:#16233f}
+.btn.g{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.mail{text-align:center;font-weight:700;font-size:15px;margin:4px 0 16px;user-select:all}
+.msg{text-align:center;font-size:13px;font-weight:700;color:#3fe0c5;min-height:18px}
+.upd{text-align:center;font-size:11.5px;opacity:.6;margin-top:auto}
+.nav{position:absolute;top:50%;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer;z-index:6;display:none}
+@media(hover:hover){.nav{display:block}}
+.nav.prev{left:-58px}.nav.next{right:-58px}
+@media(max-width:560px){.nav{display:none!important}}
+.out{position:relative}
+</style>
+</head>
+<body>
+<div class="stage">
+ <div class="out">
+  <button class="nav prev" id="prev" aria-label="Anterior">‹</button>
+  <div class="phone" id="phone">
+    <div class="bars" id="bars"></div>
+    <div class="who"><div class="av">MF</div><div>Matías Flores <span class="sm">· Gerente de Sucursal</span></div></div>
+
+    <section class="slide s1">
+      <div class="big-av">MF</div>
+      <div class="k">Hola, soy</div>
+      <h1>Matías<br>Jonathan Flores</h1>
+      <p class="lead">Gerente de Sucursal con más de 25 años haciendo funcionar supermercados e hipermercados.</p>
+      <div class="tags"><span>Walmart</span><span>Changomas</span><span>Norte</span><span>Vicente López</span></div>
+      <div class="hint">Tocá para conocerme →</div>
+    </section>
+
+    <section class="slide s2">
+      <div class="k">En números</div>
+      <h2>Mi carrera en 4 datos</h2>
+      <div class="grid4">
+        <div class="tile"><div class="n"><span data-c="25">0</span>+</div><div class="l">años en retail masivo</div></div>
+        <div class="tile"><div class="n"><span data-c="18">0</span></div><div class="l">años en Walmart / Changomas</div></div>
+        <div class="tile"><div class="n"><span data-c="60">0</span>+</div><div class="l">personas a cargo, con jefes y supervisores</div></div>
+        <div class="tile"><div class="n">−<span data-c="50">0</span>%</div><div class="l">de ausentismo en mi sucursal</div></div>
+      </div>
+      <div class="hint">Mi mejor logro →</div>
+    </section>
+
+    <section class="slide s3">
+      <div class="k">Mi logro favorito</div>
+      <h2>Bajé el ausentismo a la mitad</h2>
+      <div class="abs">
+        <div class="c"><div class="v">16%</div><div class="b b1" data-h="100%"></div><div class="t">Cuando llegué</div></div>
+        <div class="c"><div class="v" style="color:#3fe0c5">8%</div><div class="b b2" data-h="50%"></div><div class="t">Después</div></div>
+      </div>
+      <div><span class="badge">−50%</span></div>
+      <p class="lead" style="font-size:16px">Con políticas de motivación y trabajando el clima laboral en Changomas. Un equipo que viene a trabajar es un local que vende y atiende mejor.</p>
+    </section>
+
+    <section class="slide s4">
+      <div class="k">Mi camino</div>
+      <h2>De la recepción a la gerencia</h2>
+      <div class="tl">
+        <div class="st"><div class="y">2000 – 2007</div><div class="r">Jefe de Recepción · Norte</div><div class="d">Mercadería, proveedores, control de calidad e inventario. Conozco el local desde el depósito.</div></div>
+        <div class="st"><div class="y">2007 – 2022</div><div class="r">Store Manager · Walmart</div><div class="d">Hipermercados completos: P&amp;L, layout, equipos grandes. Merma por debajo del objetivo y la transición a Changomas.</div></div>
+        <div class="st"><div class="y">2022 – 2026</div><div class="r">Store Manager · Changomas</div><div class="d">+60 personas, KPIs todos los días y ventas en crecimiento sostenido.</div></div>
+      </div>
+    </section>
+
+    <section class="slide s5">
+      <div class="k">Elegí el puesto</div>
+      <h2>¿Qué estás buscando?</h2>
+      <div class="chips" id="chips"></div>
+      <div class="ans" id="ans"></div>
+    </section>
+
+    <section class="slide s6">
+      <div class="k">¿Hablamos?</div>
+      <h2>Estoy disponible para una entrevista</h2>
+      <a class="btn wa" href="https://wa.me/5491158676708?text=Hola%20Mat%C3%ADas%2C%20vimos%20tu%20CV" target="_blank" rel="noopener">💬 WhatsApp · 11 5867-6708</a>
+      <div class="mail">matiasjonathanflores@gmail.com</div>
+      <a class="btn w" href="CV_Matias_Flores_Gerente_Sucursal_ATS.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
+      <a class="btn g" href="CV_Matias_Jonathan_Flores.pdf" target="_blank" rel="noopener">🎨 CV en una página</a>
+      <button class="btn g" id="copy">📋 Copiar CV en texto</button>
+      <div class="msg" id="msg"></div>
+      <div class="upd">Última actualización: 07/11/2026 09:40 (hora de Buenos Aires)</div>
+    </section>
+  </div>
+  <button class="nav next" id="next" aria-label="Siguiente">›</button>
+ </div>
+</div>
+
+<script>
+const CV_TXT="Matías Jonathan Flores\nGerente de Sucursal | Store Manager | Gerente de Tienda – Retail y Supermercados\nVicente López, Buenos Aires (Zona Norte GBA) | Tel./WhatsApp: 11 5867-6708 | matiasjonathanflores@gmail.com\nCV interactivo: https://macproia88.github.io/marcas/cv-matias/\n\nPERFIL PROFESIONAL\nGerente de Sucursal (Store Manager) con más de 25 años de experiencia en retail y consumo masivo, de los\ncuales 18 años fueron al frente de hipermercados de Walmart Argentina y Changomas. Experiencia en la\ngestión integral de la sucursal: cuenta de resultados (P&L), control de gastos operativos, ventas, KPIs\ncomerciales, control de stock, inventarios y merma, y liderazgo de equipos de más de 60 colaboradores con\njefes y supervisores a cargo. Redujo el ausentismo del 16% al 8%, mantuvo la merma por debajo del objetivo y\nlideró la transición operativa de Walmart a Changomas. Formación en liderazgo y coaching ontológico.\n\nEXPERIENCIA LABORAL\nStore Manager / Gerente de Sucursal – Changomas (DORINKA S.R.L.)\n11/2022 – 03/2026 | Hipermercado\n\nGestión integral de la sucursal (comercial, operativa y de personal), reportando directamente a la Dirección.\nLiderazgo, motivación y desarrollo de un equipo de más de 60 colaboradores, con jefes y supervisores a\ncargo.\nSeguimiento y análisis diario de KPIs: ventas, productividad, inventarios y ausentismo.\nPlanificación de acciones comerciales para aumentar la facturación y el flujo de clientes.\nControl de stock, auditorías de inventario, control de merma y abastecimiento de la tienda.\nLogro: reducción del ausentismo del 16% al 8% (−50%) con políticas de motivación y mejora del clima\nlaboral.\nLogro: crecimiento sostenido del volumen de ventas de la sucursal.\nStore Manager / Gerente de Tienda – Walmart Argentina (hoy Changomas)\n06/2007 – 11/2022 | Hipermercados\n\nGestión comercial, operativa y administrativa de hipermercados bajo los estándares globales de Walmart.\nControl de la cuenta de resultados (P&L) y optimización del gasto operativo (OpEx).\nDirección y capacitación de grandes dotaciones de personal; liderazgo de mandos medios y planes de\ncarrera.\nDiseño del layout comercial y visual merchandising alineados a las campañas nacionales.\nLogro: inventarios generales y cíclicos con merma por debajo del objetivo.\nLogro: liderazgo de la transición operativa de la sucursal durante la adquisición corporativa (Walmart a\nChangomas).\nJefe de Recepción – Supermercados Norte\n2000 – 2007 | Supermercados\n\nRecepción de mercadería, control de calidad y auditoría de ingresos al centro de distribución y la tienda.\nLiderazgo del personal de depósito y control de las normas de seguridad e higiene.\nNegociación operativa con proveedores, gestión de devoluciones y optimización del espacio de\nalmacenamiento.\nControl de la documentación contra el sistema para asegurar la exactitud del inventario.\n\nEDUCACIÓN\nCoaching Ontológico – Escuela de Formadores (en curso, último año)\nCurso de Liderazgo – Universidad de Buenos Aires (UBA) (en curso)\nOratoria y Comunicación Efectiva – Universidad de Buenos Aires (UBA)\nPerito Mercantil – Instituto San Pío X\n\nCOMPETENCIAS\nGestión comercial: gestión de sucursal, P&L, control de gastos operativos, KPIs de retail (ventas, ticket\npromedio, conversión, UPT), estrategia comercial, layout, visual merchandising, atención al cliente.\nOperaciones: control de stock, inventarios generales y cíclicos, auditorías, control de merma, recepción de\nmercadería, abastecimiento, logística en tienda, negociación con proveedores, seguridad e higiene.\nGestión de personas: liderazgo de equipos, gestión de mandos medios, capacitación, planes de carrera, clima\nlaboral, reducción de ausentismo, coaching, gestión del cambio.\nHerramientas: Excel (intermedio), Microsoft Office, sistemas POS, CRM.";
+const ROLES={
+  sucursal:{l:"Gerente de Sucursal",a:["18 años gerenciando hipermercados en Walmart y Changomas","Manejo la sucursal completa: ventas, P&L, stock, merma y personas","Equipos de más de 60 personas con mandos medios"]},
+  operaciones:{l:"Operaciones / Zonal",a:["Leo los KPIs todos los días: la base para gestionar varias sucursales","Formé jefes y supervisores, con planes de carrera","Lideré la transición de Walmart a Changomas"]},
+  logistica:{l:"Logística / Depósito",a:["7 años como Jefe de Recepción en Supermercados Norte","Inventarios generales y cíclicos con merma bajo el objetivo","Negociación con proveedores, devoluciones y seguridad e higiene"]},
+  alimentos:{l:"Alimentos / Gastronomía",a:["Control de merma y stock, clave con productos frescos","Recepción de mercadería con control de calidad","Equipos estables: bajé el ausentismo a la mitad"]}
+};
+const slides=[...document.querySelectorAll('.slide')], N=slides.length;
+const bars=document.getElementById('bars'); bars.innerHTML=slides.map(()=>'<i><b></b></i>').join('');
+let cur=0, role=ROLES[location.hash.slice(1)]?location.hash.slice(1):'sucursal';
+
+function count(el){const t=+el.dataset.c,st=performance.now();(function f(n){const p=Math.min(1,(n-st)/1100);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(st)}
+function go(i){
+  cur=Math.max(0,Math.min(N-1,i));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+  [...bars.children].forEach((b,k)=>b.firstChild.style.width=k<=cur?'100%':'0');
+  const s=slides[cur];
+  s.querySelectorAll('[data-c]').forEach(count);
+  s.querySelectorAll('[data-h]').forEach(b=>{b.style.height='0';setTimeout(()=>b.style.height=b.dataset.h,60)});
+}
+function renderRole(){
+  document.getElementById('chips').innerHTML=Object.entries(ROLES).map(([k,r])=>`<button class="chip ${k===role?'sel':''}" data-k="${k}">${r.l}</button>`).join('');
+  document.getElementById('ans').innerHTML=`<div class="q">Lo que te aporto como ${ROLES[role].l}</div><ul>${ROLES[role].a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  document.querySelectorAll('.chip').forEach(c=>c.onclick=e=>{e.stopPropagation();role=c.dataset.k;renderRole();});
+}
+document.getElementById('phone').addEventListener('click',e=>{
+  if(e.target.closest('a,button,.mail,.ans,.chips'))return;
+  const r=e.currentTarget.getBoundingClientRect();
+  go(e.clientX-r.left<r.width*.3?cur-1:cur+1);
+});
+let sx=null;
+document.getElementById('phone').addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+document.getElementById('phone').addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){e.preventDefault();go(dx<0?cur+1:cur-1)}sx=null});
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+document.getElementById('copy').onclick=async e=>{e.stopPropagation();const m=document.getElementById('msg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.'}catch(err){m.textContent='No se pudo copiar. Descargá el PDF.'}};
+renderRole(); go(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matías Jonathan Flores — CV interactivo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16233f; --navy2:#22345c; --ink:#1d2433; --muted:#5d6678; --line:#e3e7ee;
+    --bg:#f4f6f9; --card:#fff; --accent:#0e7c74; --accent-soft:#e2f3f1; --warn:#b4540a; --warn-soft:#fdf0e3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 16px 40px}
+  header.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:26px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+  .avatar{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.35);display:grid;place-items:center;font-weight:800;font-size:26px;letter-spacing:1px}
+  h1{margin:0;font-size:28px;letter-spacing:-.4px}
+  .role{margin:4px 0 10px;font-size:16px;color:#cfe0ff;font-weight:500;min-height:24px}
+  .contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;color:#dbe4f3}
+  .contact span{white-space:nowrap}
+  .section-title{font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:26px 0 10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
+  .chip:hover{border-color:var(--accent)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.1}
+  .kpi .l{font-size:13px;color:var(--muted);margin-top:4px}
+  .kpi .src{font-size:11px;color:#8a93a4;margin-top:6px}
+  .two{grid-template-columns:1.35fr 1fr}
+  .pitch p{margin:0 0 10px}
+  .fit{list-style:none;padding:0;margin:8px 0 0}
+  .fit li{padding:6px 0 6px 26px;position:relative;border-top:1px dashed var(--line)}
+  .fit li:first-child{border-top:0}
+  .fit li::before{content:"✓";position:absolute;left:4px;color:var(--accent);font-weight:800}
+  .gap{margin-top:12px;background:var(--warn-soft);color:#7a3a07;border-radius:10px;padding:10px 12px;font-size:13.5px}
+  .gap b{color:var(--warn)}
+  h3{margin:0 0 8px;font-size:16px}
+  /* Gantt timeline */
+  .gantt{position:relative;padding-top:22px}
+  .axis{position:absolute;top:0;left:0;right:0;height:18px;font-size:11px;color:#8a93a4}
+  .axis span{position:absolute;transform:translateX(-50%)}
+  .row{position:relative;height:40px;margin-bottom:8px;border-bottom:1px dashed #eef1f5}
+  .bar{position:absolute;top:4px;height:32px;border-radius:8px;background:var(--navy2);color:#fff;font-size:12.5px;font-weight:600;display:flex;align-items:center;padding:0 10px;cursor:pointer;overflow:hidden;white-space:nowrap;border:2px solid transparent;transition:.15s}
+  .bar:hover,.bar.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .bar.c1{background:#5b6b8c}.bar.c2{background:#22345c}.bar.c3{background:#0e7c74}
+  .bar.dim{opacity:.35}
+  .job{margin-top:14px}
+  .job .hd{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .job .co{color:var(--muted);font-size:14px}
+  .job .dt{font-size:13px;color:var(--muted);font-weight:600}
+  .job ul{margin:10px 0 0;padding-left:0;list-style:none}
+  .job li{padding:6px 10px;border-radius:8px;margin-bottom:4px;transition:.15s}
+  .job li.hl{background:var(--accent-soft)}
+  .job li.lo{opacity:.55}
+  .job li.win{font-weight:600}
+  .job li.win::before{content:"★ ";color:var(--accent)}
+  /* skills */
+  .skills{grid-template-columns:repeat(3,1fr)}
+  .sk h4{margin:0 0 8px;font-size:14px;color:var(--navy)}
+  .tag{display:inline-block;margin:0 6px 6px 0;padding:5px 10px;border-radius:8px;background:#eef1f6;font-size:13px;cursor:pointer;border:1.5px solid transparent;transition:.15s}
+  .tag:hover{border-color:var(--accent)}
+  .tag.hl{background:var(--accent-soft);color:#075a54;font-weight:600}
+  .tag.sel{border-color:var(--accent);background:var(--accent);color:#fff}
+  .evid{font-size:13px;color:var(--muted);margin-top:10px;min-height:20px}
+  /* absentismo chart */
+  .abs{display:flex;align-items:flex-end;gap:22px;height:150px;padding:10px 6px 0;border-bottom:1px solid var(--line)}
+  .abs .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .abs .b{width:64px;border-radius:8px 8px 0 0;background:#c2cad8;transition:height .8s ease}
+  .abs .b.after{background:var(--accent)}
+  .abs .v{font-weight:800;font-size:18px;margin-bottom:4px}
+  .abs-l{display:flex;gap:22px;padding:6px}
+  .abs-l div{flex:1;text-align:center;font-size:12.5px;color:var(--muted)}
+  .edu{list-style:none;margin:0;padding:0}
+  .edu li{padding:9px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}
+  .edu li:first-child{border-top:0}
+  .pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap;align-self:center}
+  .pill.ok{background:#e7eefb;color:#2a4a8a}.pill.cur{background:var(--accent-soft);color:#075a54}
+  .cta{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+  .cta-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:10px;font-size:14px}
+  .mail{font-size:14px;font-weight:600;color:var(--navy);user-select:all}
+  .dl{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .btn.ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+  .btn.ghost:hover{border-color:var(--accent)}
+  footer{margin-top:28px;font-size:12.5px;color:#8a93a4;text-align:center}
+  @media(max-width:820px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .two,.skills{grid-template-columns:1fr}
+    header.hero{grid-template-columns:1fr;text-align:left}
+    h1{font-size:24px}
+    .bar{font-size:11px;padding:0 6px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="avatar">MF</div>
+    <div>
+      <h1>Matías Jonathan Flores</h1>
+      <div class="role" id="headline"></div>
+      <div class="contact">
+        <span>📍 Vicente López, Buenos Aires</span>
+        <span>📞 11 5867-6708</span>
+        <span>✉️ matiasjonathanflores@gmail.com</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-title">Descargar CV</div>
+  <div class="card dl">
+    <a class="btn" href="CV_Matias_Flores_Gerente_Sucursal_ATS.pdf" target="_blank" rel="noopener">📄 CV para postulaciones (PDF)</a>
+    <a class="btn ghost" href="CV_Matias_Jonathan_Flores.pdf" target="_blank" rel="noopener">🎨 CV diseño, 1 página (PDF)</a>
+    <button class="btn ghost" id="copyBtn">📋 Copiar CV en texto</button>
+    <span id="copyMsg" style="font-size:13px;color:var(--accent);font-weight:600"></span>
+  </div>
+
+  <div class="section-title">Ver el perfil según el puesto</div>
+  <div class="chips" id="roles"></div>
+
+  <div class="section-title">En números</div>
+  <div class="grid kpis">
+    <div class="card kpi"><div class="n">+25</div><div class="l">años en retail masivo</div><div class="src">Norte, Walmart y Changomas (2000–2026)</div></div>
+    <div class="card kpi"><div class="n">+18</div><div class="l">años en la misma compañía</div><div class="src">Walmart Argentina → Changomas (2007–2026)</div></div>
+    <div class="card kpi"><div class="n">+60</div><div class="l">colaboradores a cargo</div><div class="src">Sucursal Changomas, con jefes y supervisores</div></div>
+    <div class="card kpi"><div class="n">−50%</div><div class="l">de ausentismo (16% → 8%)</div><div class="src">Con políticas de motivación, en Changomas</div></div>
+  </div>
+
+  <div class="section-title">Perfil para este puesto</div>
+  <div class="grid two">
+    <div class="card pitch">
+      <h3 id="pitchTitle"></h3>
+      <div id="pitch"></div>
+      <ul class="fit" id="fit"></ul>
+    </div>
+    <div class="card">
+      <h3>Logro principal: ausentismo</h3>
+      <div class="abs">
+        <div class="col"><div class="v">16%</div><div class="b" id="bBefore" style="height:0"></div></div>
+        <div class="col"><div class="v" style="color:var(--accent)">8%</div><div class="b after" id="bAfter" style="height:0"></div></div>
+      </div>
+      <div class="abs-l"><div>Al asumir</div><div>Después de su gestión</div></div>
+      <p style="font-size:13.5px;color:var(--muted);margin:10px 0 0">El ausentismo bajó a la mitad gracias a políticas de motivación y mejoras en el clima laboral. Además, la sucursal sostuvo el crecimiento de las ventas.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Trayectoria · tocá una etapa para ver el detalle</div>
+  <div class="card">
+    <div class="gantt" id="gantt"></div>
+    <div class="job" id="job"></div>
+  </div>
+
+  <div class="section-title">Competencias · tocá una para ver dónde la aplicó</div>
+  <div class="grid skills" id="skills"></div>
+  <div class="card evid" id="evid" style="margin-top:14px">Elegí una competencia para ver en qué etapa de su carrera la aplicó.</div>
+
+  <div class="section-title">Formación</div>
+  <div class="card">
+    <ul class="edu">
+      <li><span><b>Coaching Ontológico</b> — Escuela de Formadores</span><span class="pill cur">Último año</span></li>
+      <li><span><b>Curso de Liderazgo</b> — Universidad de Buenos Aires (UBA)</span><span class="pill cur">En curso</span></li>
+      <li><span><b>Oratoria y Comunicación Efectiva</b> — Universidad de Buenos Aires (UBA)</span><span class="pill ok">Completo</span></li>
+      <li><span><b>Perito Mercantil</b> — Instituto San Pío X</span><span class="pill ok">Secundario</span></li>
+      <li><span><b>Herramientas:</b> Excel intermedio, Paquete Office, sistemas POS y CRM</span><span class="pill ok">Digital</span></li>
+    </ul>
+  </div>
+
+  <div class="section-title">Contacto</div>
+  <div class="card cta">
+    <div><h3 style="margin:0 0 4px">¿Conversamos?</h3><div style="color:var(--muted);font-size:14px">Estoy disponible para una entrevista.</div></div>
+    <div class="cta-btns">
+      <a class="btn" href="https://wa.me/5491158676708" target="_blank" rel="noopener">WhatsApp · 11 5867-6708</a>
+      <span class="mail">matiasjonathanflores@gmail.com</span>
+    </div>
+  </div>
+
+  <footer>Última actualización: 07/11/2026 09:30 (hora de Buenos Aires)</footer>
+</div>
+
+<script>
+const JOBS = [
+  {id:"norte", cls:"c1", short:"Norte · Recepción", title:"Jefe de Recepción", co:"Supermercados Norte", from:2000, to:2007, dt:"2000 – 2007",
+   items:[
+    {t:"Coordinó la recepción de mercadería, con control de calidad y auditoría de cada ingreso al centro de distribución y a la tienda.", k:["stock","logistica","proveedores"]},
+    {t:"Lideró al personal de depósito: distribuía las tareas y controlaba las normas de seguridad e higiene.", k:["equipos","seguridad"]},
+    {t:"Trabajó en relación directa con proveedores: negociación operativa, devoluciones y optimización del espacio de almacenamiento.", k:["proveedores","logistica"]},
+    {t:"Controlaba la documentación física contra el sistema para asegurar la exactitud del inventario.", k:["stock","sistemas"]}
+   ]},
+  {id:"walmart", cls:"c2", short:"Walmart · Store Manager", title:"Store Manager / Director de Tienda", co:"Walmart Argentina (hipermercados)", from:2007, to:2022.9, dt:"Jun 2007 – Nov 2022",
+   items:[
+    {t:"Tuvo a cargo la gestión comercial, operativa y administrativa completa de hipermercados, bajo los estándares globales de la cadena.", k:["pyl","kpis","comercial"]},
+    {t:"Controló la cuenta de resultados (P&L) de la sucursal y optimizó el gasto operativo.", k:["pyl"]},
+    {t:"Dirigió y capacitó dotaciones grandes, con jefes y supervisores a cargo y planes de carrera para el equipo.", k:["equipos","capacitacion"]},
+    {t:"Diseñó el layout comercial y el visual merchandising según las campañas nacionales.", k:["comercial","vm"]},
+    {t:"Lideró los inventarios generales anuales y cíclicos con buenos resultados sostenidos, manteniendo la merma por debajo del objetivo.", k:["stock","merma"], win:true},
+    {t:"Condujo la transición operativa de la sucursal cuando la compañía fue adquirida y pasó a ser Changomas.", k:["cambio","equipos"], win:true}
+   ]},
+  {id:"changomas", cls:"c3", short:"Changomas", title:"Store Manager / Director de Tienda", co:"DORINKA S.R.L. — Changomas / Hiper Changomas", from:2022.9, to:2026.25, dt:"Nov 2022 – Mar 2026",
+   items:[
+    {t:"Estuvo a cargo de la gestión integral de la sucursal, reportando directamente a la Dirección de la compañía.", k:["pyl","comercial"]},
+    {t:"Lideró, motivó y desarrolló a un equipo de más de 60 colaboradores.", k:["equipos","capacitacion","clima"]},
+    {t:"Seguía todos los días los indicadores: ventas, productividad, inventario y ausentismo.", k:["kpis"]},
+    {t:"Planificó acciones comerciales para aumentar la facturación y el flujo de clientes.", k:["comercial"]},
+    {t:"Supervisó el stock, las auditorías de inventario y el abastecimiento de la tienda.", k:["stock","merma","logistica"]},
+    {t:"Bajó el ausentismo del 16% al 8% con políticas de motivación y mejoró el clima laboral.", k:["clima","equipos","kpis"], win:true},
+    {t:"Sostuvo el crecimiento del volumen de ventas de la sucursal.", k:["comercial","kpis"], win:true}
+   ]}
+];
+
+const SKILLS = [
+  {g:"Gestión del negocio", items:[["pyl","Cuenta de resultados (P&L) y gastos"],["kpis","KPIs de retail (ventas, ticket, conversión, UPT)"],["comercial","Estrategia comercial"],["vm","Layout y visual merchandising"]]},
+  {g:"Operaciones", items:[["stock","Control de stock e inventarios"],["merma","Control de merma"],["logistica","Recepción y abastecimiento"],["proveedores","Negociación con proveedores"],["seguridad","Seguridad e higiene"],["sistemas","Sistemas POS / CRM / Excel"]]},
+  {g:"Personas", items:[["equipos","Dirección de equipos grandes"],["capacitacion","Capacitación y planes de carrera"],["clima","Clima laboral y ausentismo"],["cambio","Gestión del cambio"]]}
+];
+
+const ROLES = [
+  {id:"sucursal", label:"Gerente de Sucursal", headline:"Store Manager · Gerente de Sucursal en retail masivo",
+   title:"Gerente de Sucursal / Store Manager",
+   pitch:"Dirigió hipermercados durante más de 18 años, primero en Walmart y después en Changomas. Maneja la sucursal completa: ventas, gastos, stock y personas, con indicadores diarios y reportando directamente a la Dirección.",
+   fit:["Experiencia directa en el puesto durante 18 años, en dos cadenas grandes","Manejo de la cuenta de resultados (P&L) y de los gastos operativos","Equipos de más de 60 personas, con mandos medios a cargo","Ausentismo reducido a la mitad y merma por debajo del objetivo"],
+   gap:"<b>Para profundizar en la entrevista:</b> cifras concretas de crecimiento de ventas y tamaño de la sucursal (m², facturación).",
+   keys:["pyl","kpis","comercial","vm","equipos","merma"], focus:"changomas"},
+  {id:"operaciones", label:"Gerente de Operaciones / Zonal", headline:"Gerente de Operaciones · Supervisor Zonal multi-sucursal",
+   title:"Gerente de Operaciones / Area Manager",
+   pitch:"Perfil listo para dar el salto de una sucursal a varias. Ya trabaja con los indicadores que se usan para comparar locales (ventas, merma, ausentismo, productividad) y tiene experiencia formando jefes y supervisores.",
+   fit:["Lectura diaria de KPIs: la base para gestionar varias sucursales","Formación de mandos medios y planes de carrera","Gestión del cambio durante la venta de Walmart a Changomas","Conoce la operación de punta a punta, desde la recepción hasta el salón"],
+   gap:"<b>A tener en cuenta:</b> su experiencia es con una sucursal por vez. Para un puesto zonal sería un paso de crecimiento.",
+   keys:["kpis","equipos","capacitacion","cambio","pyl","stock"], focus:"walmart"},
+  {id:"logistica", label:"Logística / Centro de Distribución", headline:"Jefe de Logística · Recepción y Centro de Distribución",
+   title:"Jefe de Logística / Centro de Distribución",
+   pitch:"Arrancó 7 años como Jefe de Recepción en Supermercados Norte y después, como gerente, siguió a cargo del stock, los inventarios y el abastecimiento de la tienda. Combina el conocimiento del depósito con la mirada del negocio.",
+   fit:["7 años a cargo de la recepción y la auditoría de ingresos","Inventarios generales y cíclicos con merma bajo el objetivo","Negociación operativa con proveedores y gestión de devoluciones","Control de normas de seguridad e higiene en el depósito"],
+   gap:"<b>Para profundizar en la entrevista:</b> manejo de sistemas de depósito (WMS) y experiencia con flota o distribución.",
+   keys:["logistica","stock","proveedores","seguridad","merma","sistemas"], focus:"norte"},
+  {id:"alimentos", label:"Cadenas de alimentos / gastronomía", headline:"Gerente de Local · Cadenas de alimentos y gastronomía",
+   title:"Gerente de Local en cadenas de alimentos",
+   pitch:"Trae al negocio de alimentos lo que más pesa en la rentabilidad: control de merma, recepción de mercadería fresca, stock y un equipo estable con buena atención al cliente.",
+   fit:["Merma e inventarios controlados, clave con productos perecederos","Recepción de mercadería con control de calidad","Bajó el ausentismo a la mitad: equipos más estables","Atención al cliente y acciones comerciales en el salón"],
+   gap:"<b>A tener en cuenta:</b> no tiene experiencia en producción ni en cocina, así que necesitaría una inducción en esa parte.",
+   keys:["merma","stock","logistica","clima","equipos","comercial"], focus:"changomas"}
+];
+
+const MIN=2000, MAX=2026.4, span=MAX-MIN;
+let role=ROLES[0], jobSel=null, skillSel=null;
+
+function renderRoles(){
+  document.getElementById('roles').innerHTML = ROLES.map(r=>`<button class="chip ${r.id===role.id?'on':''}" data-r="${r.id}">${r.label}</button>`).join('');
+  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.r;});
+}
+function renderPitch(){
+  document.getElementById('headline').textContent=role.headline;
+  document.getElementById('pitchTitle').textContent=role.title;
+  document.getElementById('pitch').innerHTML=`<p>${role.pitch}</p>`;
+  document.getElementById('fit').innerHTML=role.fit.map(f=>`<li>${f}</li>`).join('');
+}
+function renderGantt(){
+  const years=[2000,2005,2010,2015,2020,2026];
+  let h=`<div class="axis">${years.map(y=>`<span style="left:${(y-MIN)/span*100}%">${y}</span>`).join('')}</div>`;
+  JOBS.forEach(j=>{
+    const l=(j.from-MIN)/span*100, w=(j.to-j.from)/span*100;
+    const dim = skillSel && !j.items.some(i=>i.k.includes(skillSel));
+    h+=`<div class="row"><div class="bar ${j.cls} ${j.id===jobSel?'sel':''} ${dim?'dim':''}" data-j="${j.id}" style="${j.to>=2026?`right:0;width:max(${w}%,104px)`:`left:${l}%;width:${w}%`}">${j.short}</div></div>`;
+  });
+  const g=document.getElementById('gantt'); g.innerHTML=h;
+  g.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{jobSel=b.dataset.j; renderGantt(); renderJob();});
+}
+function renderJob(){
+  const j=JOBS.find(x=>x.id===jobSel)||JOBS[2];
+  const keys = skillSel ? [skillSel] : role.keys;
+  document.getElementById('job').innerHTML=`<div class="hd"><div><b>${j.title}</b><div class="co">${j.co}</div></div><div class="dt">${j.dt}</div></div>
+  <ul>${j.items.map(i=>{const m=i.k.some(k=>keys.includes(k)); return `<li class="${m?'hl':'lo'} ${i.win?'win':''}">${i.t}</li>`}).join('')}</ul>`;
+}
+function renderSkills(){
+  document.getElementById('skills').innerHTML=SKILLS.map(g=>`<div class="card sk"><h4>${g.g}</h4>${g.items.map(([k,l])=>`<span class="tag ${k===skillSel?'sel':(role.keys.includes(k)?'hl':'')}" data-s="${k}">${l}</span>`).join('')}</div>`).join('');
+  document.querySelectorAll('[data-s]').forEach(t=>t.onclick=()=>{
+    skillSel = skillSel===t.dataset.s ? null : t.dataset.s;
+    if(skillSel){const first=[...JOBS].reverse().find(j=>j.items.some(i=>i.k.includes(skillSel))); if(first) jobSel=first.id;}
+    renderSkills(); renderGantt(); renderJob(); renderEvid();
+  });
+}
+function renderEvid(){
+  const el=document.getElementById('evid');
+  if(!skillSel){el.textContent='Elegí una competencia para ver en qué etapa de su carrera la aplicó.';return;}
+  const label=SKILLS.flatMap(g=>g.items).find(([k])=>k===skillSel)[1];
+  const where=JOBS.filter(j=>j.items.some(i=>i.k.includes(skillSel))).map(j=>`${j.short} (${j.dt})`);
+  el.innerHTML=`<b>${label}</b>: la aplicó en ${where.join(' · ')}. Las etapas sin relación con esta competencia quedan atenuadas en la trayectoria.`;
+}
+function renderAll(){renderRoles();renderPitch();renderGantt();renderJob();renderSkills();renderEvid();}
+
+function fromHash(){const r=ROLES.find(x=>x.id===location.hash.slice(1)); role=r||ROLES[0]; jobSel=role.focus; skillSel=null; renderAll();}
+window.addEventListener('hashchange',fromHash);
+const CV_TXT="Matías Jonathan Flores\nGerente de Sucursal | Store Manager | Gerente de Tienda – Retail y Supermercados\nVicente López, Buenos Aires (Zona Norte GBA) | Tel./WhatsApp: 11 5867-6708 | matiasjonathanflores@gmail.com\nCV interactivo: https://macproia88.github.io/marcas/cv-matias/\n\nPERFIL PROFESIONAL\nGerente de Sucursal (Store Manager) con más de 25 años de experiencia en retail y consumo masivo, de los\ncuales 18 años fueron al frente de hipermercados de Walmart Argentina y Changomas. Experiencia en la\ngestión integral de la sucursal: cuenta de resultados (P&L), control de gastos operativos, ventas, KPIs\ncomerciales, control de stock, inventarios y merma, y liderazgo de equipos de más de 60 colaboradores con\njefes y supervisores a cargo. Redujo el ausentismo del 16% al 8%, mantuvo la merma por debajo del objetivo y\nlideró la transición operativa de Walmart a Changomas. Formación en liderazgo y coaching ontológico.\n\nEXPERIENCIA LABORAL\nStore Manager / Gerente de Sucursal – Changomas (DORINKA S.R.L.)\n11/2022 – 03/2026 | Hipermercado\n\nGestión integral de la sucursal (comercial, operativa y de personal), reportando directamente a la Dirección.\nLiderazgo, motivación y desarrollo de un equipo de más de 60 colaboradores, con jefes y supervisores a\ncargo.\nSeguimiento y análisis diario de KPIs: ventas, productividad, inventarios y ausentismo.\nPlanificación de acciones comerciales para aumentar la facturación y el flujo de clientes.\nControl de stock, auditorías de inventario, control de merma y abastecimiento de la tienda.\nLogro: reducción del ausentismo del 16% al 8% (−50%) con políticas de motivación y mejora del clima\nlaboral.\nLogro: crecimiento sostenido del volumen de ventas de la sucursal.\nStore Manager / Gerente de Tienda – Walmart Argentina (hoy Changomas)\n06/2007 – 11/2022 | Hipermercados\n\nGestión comercial, operativa y administrativa de hipermercados bajo los estándares globales de Walmart.\nControl de la cuenta de resultados (P&L) y optimización del gasto operativo (OpEx).\nDirección y capacitación de grandes dotaciones de personal; liderazgo de mandos medios y planes de\ncarrera.\nDiseño del layout comercial y visual merchandising alineados a las campañas nacionales.\nLogro: inventarios generales y cíclicos con merma por debajo del objetivo.\nLogro: liderazgo de la transición operativa de la sucursal durante la adquisición corporativa (Walmart a\nChangomas).\nJefe de Recepción – Supermercados Norte\n2000 – 2007 | Supermercados\n\nRecepción de mercadería, control de calidad y auditoría de ingresos al centro de distribución y la tienda.\nLiderazgo del personal de depósito y control de las normas de seguridad e higiene.\nNegociación operativa con proveedores, gestión de devoluciones y optimización del espacio de\nalmacenamiento.\nControl de la documentación contra el sistema para asegurar la exactitud del inventario.\n\nEDUCACIÓN\nCoaching Ontológico – Escuela de Formadores (en curso, último año)\nCurso de Liderazgo – Universidad de Buenos Aires (UBA) (en curso)\nOratoria y Comunicación Efectiva – Universidad de Buenos Aires (UBA)\nPerito Mercantil – Instituto San Pío X\n\nCOMPETENCIAS\nGestión comercial: gestión de sucursal, P&L, control de gastos operativos, KPIs de retail (ventas, ticket\npromedio, conversión, UPT), estrategia comercial, layout, visual merchandising, atención al cliente.\nOperaciones: control de stock, inventarios generales y cíclicos, auditorías, control de merma, recepción de\nmercadería, abastecimiento, logística en tienda, negociación con proveedores, seguridad e higiene.\nGestión de personas: liderazgo de equipos, gestión de mandos medios, capacitación, planes de carrera, clima\nlaboral, reducción de ausentismo, coaching, gestión del cambio.\nHerramientas: Excel (intermedio), Microsoft Office, sistemas POS, CRM.";
+document.getElementById('copyBtn').onclick=async()=>{const m=document.getElementById('copyMsg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.';}catch(e){m.textContent='No se pudo copiar desde acá. Usá el PDF para postulaciones.';}};
+
+fromHash();
+setTimeout(()=>{document.getElementById('bBefore').style.height='100%';document.getElementById('bAfter').style.height='50%';},200);
+</script>
+</body>
+</html>

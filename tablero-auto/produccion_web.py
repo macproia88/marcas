@@ -87,7 +87,7 @@ select,input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--
 .seg button.on{background:var(--acc);color:#fff}
 table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:left}th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel)}
 .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.tw{overflow:auto;max-height:640px}tr.rub td{background:var(--hi);font-weight:700}
-td.hoy,th.hoy{background:var(--hi)}td.ok{color:var(--ok)}td.mas{background:var(--badbg);color:var(--bad);font-weight:600}td.menos{background:var(--okbg);color:var(--ok);font-weight:600}td.cero{background:#fff2cc;color:#7a5a00;font-weight:700}
+td.hoy,th.hoy{background:var(--hi)}td.top{font-weight:700;color:var(--acc)}td.ok{color:var(--ok)}td.mas{background:var(--badbg);color:var(--bad);font-weight:600}td.menos{background:var(--okbg);color:var(--ok);font-weight:600}td.cero{background:#fff2cc;color:#7a5a00;font-weight:700}
 th.s{cursor:pointer;user-select:none}th.s:hover{color:var(--fg)}th.s::after{content:' ⇅';opacity:.35}th.s.desc::after{content:' ▼';opacity:1}th.s.asc::after{content:' ▲';opacity:1}
 .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 12px}.kpi{flex:1 1 150px;border:1px solid var(--line);border-radius:10px;padding:10px 12px}.kpi b{display:block;font-size:22px;font-family:Georgia,serif}
 .kpi span{font-size:12px;color:var(--muted)}.u{color:var(--muted);font-size:12px}svg text{fill:var(--muted);font-size:11px}.leg{font-size:12px;color:var(--muted)}
@@ -119,7 +119,7 @@ function aplicar(id){
 }
 const rubros=[...new Set(Object.values(D.meta).map(m=>m[0]))].sort();
 function sel(id,opts,all){const e=document.getElementById(id);e.innerHTML=(all?`<option value="">${all}</option>`:'')+opts.map(o=>`<option>${o}</option>`).join('');return e}
-['f-rub','c-rub','g-rub'].forEach(id=>sel(id,rubros,id==='g-rub'?null:'Todos los rubros'));
+['f-rub','c-rub','g-rub','p-rub'].forEach(id=>sel(id,rubros,id==='g-rub'?null:'Todos los rubros'));
 document.getElementById('g-rub').value=rubros.includes('Ravioles')?'Ravioles':rubros[0];
 document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));LOC=b.dataset.l;all()});
 const val=(o,i)=>LOC==='Todos'?LOCS.reduce((a,L)=>a+o[L][i],0):o[LOC][i];
@@ -174,7 +174,31 @@ function graf(){
   el.innerHTML=s+'</svg>';
   document.getElementById('g-leg').innerHTML=Ls.map(L=>`<span style="color:${col[L]}">●</span> ${L}`).join(' &nbsp; ')+` · ${rub} en ${kgR?'kg':'unidades'} · línea punteada = lunes · los días sin cierre del local quedan en blanco`;
 }
-function all(){semana();control();graf()}
+// ---------- 4. comparar locales
+function comp(){
+  const F=D.fechas, de=document.getElementById('p-de'), ha=document.getElementById('p-ha');
+  if(!de.options.length){const o=F.slice().reverse().map(f=>`<option value="${f}">${dname(f)}</option>`).join('');de.innerHTML=o;ha.innerHTML=o;ha.value=F[F.length-1];de.value=F[Math.max(0,F.length-7)]}
+  let a=de.value,b=ha.value;if(a>b){[a,b]=[b,a]}
+  const rub=document.getElementById('p-rub').value,q=document.getElementById('p-q').value.toLowerCase(),modo=document.getElementById('p-modo').value;
+  const fs=F.filter(f=>f>=a&&f<=b), nd={};LOCS.forEach(L=>nd[L]=fs.filter(f=>D.turnos[L+'|'+f]).length);
+  const P={};
+  LOCS.forEach(L=>fs.forEach(f=>Object.entries(D.diario[L][f]||{}).forEach(([n,v])=>{const m=D.meta[n]||['',false];if(rub&&m[0]!==rub)return;if(q&&!n.toLowerCase().includes(q))return;
+    const p=P[n]=P[n]||{n,r:m[0],kg:m[1],v:{Florida:0,Beccar:0,Paz:0}};p.v[L]+=v})));
+  const show=(p,L)=>modo==='prom'?(nd[L]?p.v[L]/nd[L]:0):p.v[L];
+  const g={};Object.values(P).forEach(p=>{const k=p.r+'|'+(p.kg?'kg':'u');(g[k]=g[k]||[]).push(p)});
+  const f1=(v,kg)=>v?(modo==='prom'||kg?v.toLocaleString('es-AR',{maximumFractionDigits:1,minimumFractionDigits:kg||modo==='prom'?1:0}):fmt(v,kg)):'';
+  let h='<table><thead><tr><th>Producto</th><th>Un.</th>'+LOCS.map(L=>`<th class="n">${L}</th>`).join('')+'<th class="n">Total</th><th class="n">% Florida</th><th class="n">% Beccar</th><th class="n">% Paz</th></tr></thead><tbody>';
+  const fila=(cls,a,u,vals,kg)=>{const t=vals.reduce((x,y)=>x+y,0),mx=Math.max(...vals);
+    return `<tr${cls?` class="${cls}"`:''}><td>${a}</td><td class="u">${u}</td>`+vals.map(v=>`<td class="n${v&&v===mx&&vals.filter(z=>z>0).length>1?' top':''}">${f1(v,kg)}</td>`).join('')+`<td class="n">${f1(t,kg)}</td>`+vals.map(v=>`<td class="n">${t&&v?Math.round(v/t*100)+'%':''}</td>`).join('')+'</tr>'};
+  Object.keys(g).sort().forEach(k=>{const [r,u]=k.split('|'),kg=u==='kg',arr=g[k].map(p=>({...p,s:LOCS.map(L=>show(p,L))})).filter(p=>p.s.some(x=>x>0)).sort((x,y)=>y.s.reduce((m,n)=>m+n)-x.s.reduce((m,n)=>m+n));
+    if(!arr.length)return;
+    h+=fila('rub',r,u,LOCS.map((L,i)=>arr.reduce((m,p)=>m+p.s[i],0)),kg);
+    arr.forEach(p=>h+=fila('',p.n,u,p.s,kg))});
+  document.getElementById('t-cmp').innerHTML=h+'</tbody></table>';sortable('t-cmp');
+  document.getElementById('n-cmp').textContent=`Del ${dname(a)} al ${dname(b)} · días con cierre: `+LOCS.map(L=>`${L} ${nd[L]} de ${fs.length}`).join(' · ')+(LOCS.some(L=>nd[L]<fs.length)?'. Si a un local le faltan días, mirá "Promedio por día" para comparar parejo.':'.');
+}
+function all(){semana();control();comp();graf()}
+['p-de','p-ha','p-rub','p-q','p-modo'].forEach(i=>document.getElementById(i).oninput=comp);
 ['f-rub','f-q','f-modo'].forEach(i=>document.getElementById(i).oninput=semana);
 ['c-dia','c-rub','c-dif'].forEach(i=>document.getElementById(i).oninput=control);
 document.getElementById('g-rub').oninput=graf;
@@ -188,7 +212,7 @@ def armar():
     html = f"""<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Producción por datos</title><style>{CSS}</style></head><body>
 <div class="wrap"><h1>Producción por datos</h1>
-<p class="sub">Cuánto producir cada día según lo que se vende en mostrador, el control de cómo salió y el comportamiento de cada rubro · La Presumida Florida, Beccar y Pastas Paz · sin apps (Maxi carga PedidosYa y Rappi juntos en el código 202).</p>
+<p class="sub">Cuánto producir cada día según lo que se vende en mostrador, el control de cómo salió, la comparación entre locales y el comportamiento de cada rubro · La Presumida Florida, Beccar y Pastas Paz · sin apps (Maxi carga PedidosYa y Rappi juntos en el código 202).</p>
 <div class="bar"><span class="seg"><button class="on" data-l="Todos">Los 3 locales</button><button data-l="Florida">Florida</button><button data-l="Beccar">Beccar</button><button data-l="Paz">Paz</button></span></div>
 <section class="card"><h2>Sugerido de la semana</h2>
 <p class="note">Para cada día: mediana (el valor del medio) de lo vendido en mostrador los últimos 4 días iguales de la semana que sirven de referencia, por local, redondeada para arriba (unidades enteras, kg al medio kilo). Se dejan afuera feriados, días especiales como el Día de la Madre, días con turnos faltantes y días que vendieron 35% más o 40% menos de lo normal; el día 29 se compara con los 29 anteriores. "Máximo" muestra el mejor de esos días, para cubrirse. La columna resaltada es hoy. Tocá el título de cualquier columna para ordenar de mayor a menor (dentro de cada rubro).</p>
@@ -198,6 +222,10 @@ def armar():
 <p class="note">Lo que se vendió en mostrador cada día contra el sugerido que se mandó esa mañana. Dentro = diferencia de hasta 20% (mínimo 1 unidad o 0,5 kg). Vendió más: se produjo de más y se vendió, o faltó. Vendió menos: posible sobrante. Los días antes del 02/11 dicen "(recalculado)": es el sugerido que se hubiera mandado esa mañana con los cierres que había hasta el día anterior (en las primeras semanas de octubre, con 1 a 3 semanas de historia). Cero con sugerido de 3 unidades o 1 kg o más: no se vendió nada, revisar si faltó. Tocá el título de cualquier columna para ordenar de mayor a menor.</p>
 <div class="bar"><label>Día</label><select id="c-dia"></select><label>Rubro</label><select id="c-rub"></select><label><input type="checkbox" id="c-dif" checked> solo diferencias</label></div>
 <div class="kpis" id="k-ctl"></div><div class="tw" id="t-ctl"></div></section>
+<section class="card"><h2>Comparar locales: cuánto vende cada uno</h2>
+<p class="note">Lo vendido en mostrador por producto en los 3 locales, uno al lado del otro, en el período elegido. En rojo, el local que más vendió de cada producto. Ojo: algunos productos de Paz tienen otro nombre en Maxi (por ejemplo, "Ravioles Pollo, Jamon, Carne y..."), así que aparecen en una fila aparte. Los % muestran qué parte del total vendió cada local. Con "Promedio por día" se divide por los días que cada local tiene cierre, así se compara parejo aunque falte algún cierre. No depende del botón de local de arriba. Tocá el título de cualquier columna para ordenar.</p>
+<div class="bar"><label>Desde</label><select id="p-de"></select><label>Hasta</label><select id="p-ha"></select><label>Rubro</label><select id="p-rub"></select><label>Buscar</label><input id="p-q" placeholder="producto"><label>Ver</label><select id="p-modo"><option value="tot">Total del período</option><option value="prom">Promedio por día</option></select></div>
+<p class="note" id="n-cmp"></p><div class="tw" id="t-cmp"></div></section>
 <section class="card"><h2>Comportamiento día por día</h2>
 <p class="note">Venta diaria de mostrador del rubro elegido, por local, en las últimas semanas. Sirve para ver qué días de la semana se vende más y si un producto viene subiendo o bajando.</p>
 <div class="bar"><label>Rubro</label><select id="g-rub"></select></div>

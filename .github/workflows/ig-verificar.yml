@@ -1,0 +1,38 @@
+name: IG - verificar conexion
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/ig-verificar.yml', 'quinta-ig/publicador/verificar.trigger']
+permissions:
+  contents: write
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probar la llave (nunca se imprime)
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: |
+          mkdir -p quinta-ig/publicador
+          OUT=quinta-ig/publicador/estado-conexion.json
+          if [ -z "$IG_TOKEN" ]; then
+            echo '{"secreto":"FALTA","detalle":"No existe el secret IG_TOKEN"}' > $OUT
+          else
+            A=$(curl -s "https://graph.instagram.com/v23.0/me?fields=user_id,username,followers_count&access_token=$IG_TOKEN")
+            B=$(curl -s "https://graph.facebook.com/v23.0/17841454960836233?fields=username,followers_count&access_token=$IG_TOKEN")
+            python3 - "$A" "$B" > $OUT <<'PY'
+          import json,sys,datetime
+          def clean(s):
+              try: d=json.loads(s)
+              except Exception: return {"raw":"no-json"}
+              if "error" in d: return {"error":d["error"].get("message","")[:200],"code":d["error"].get("code")}
+              return d
+          print(json.dumps({"secreto":"OK","fecha":datetime.datetime.utcnow().isoformat()+"Z",
+            "instagram_api":clean(sys.argv[1]),"graph_api":clean(sys.argv[2])},ensure_ascii=False,indent=1))
+          PY
+          fi
+          cat $OUT
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add $OUT && git commit -m "Estado de conexion IG" && git push || true

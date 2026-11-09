@@ -12,6 +12,26 @@
   "publicado_el": "2026-11-08 21:59"
  },
  {
+  "id": "post-manana-martes-110k",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/manana-martes-110k.jpg"
+  ],
+  "texto": "☀️ Mañana martes 27° en General Rodríguez… ¿tenés el día libre? 😎\n\nQuinta de día completa a $110.000: pileta, quinchos, parrilla y juegos para hasta 15 personas. Sale menos de $7.400 por persona.\n\n👇 Etiquetá con quién te escapás mañana\n💬 Comentá INFO o escribinos ya\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 600 m de la autopista\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #ZonaOeste",
+  "fecha": "2026-11-09 13:20",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-manana-martes-110k",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/manana-martes-110k-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-09 13:20",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-temporada-pileta",
   "tipo": "STORY",
   "media": [
@@ -32,6 +52,16 @@
   "estado": "pendiente"
  },
  {
+  "id": "h-manana-martes-110k-noche",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/manana-martes-110k-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-09 21:30",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-escapada-finde-1",
   "tipo": "STORY",
   "media": [
@@ -49,7 +79,7 @@
   ],
   "texto": "🔥 SE VIENE EL CALOR 🔥\n\nMartes 28°, miércoles 29° y jueves 31°… ¿y vos en la oficina? 😅\n\nPromo entre semana: quinta con pileta desde $110.000 el día.\n\n🏡 Quinta de día para hasta 15 personas: pileta, quinchos, parrilla y juegos.\n🛏️ O quinta con casa para 5.\n\n👇 Etiquetá con quién te hacés la escapada\n💬 Comentá INFO y te pasamos fechas libres\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 600 m de la autopista\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste",
   "fecha": "2026-11-10 21:00",
-  "estado": "pendiente"
+  "estado": "reemplazado"
  },
  {
   "id": "reel-10mil-por-persona",

@@ -133,7 +133,7 @@
     <div class="card" id="c-alertas"><h2>Para mirar esta semana</h2><ul class="alertas" id="r-alertas"></ul></div>
     <div class="card" id="c-avance"><h2>Avance contra el plan de octubre</h2><p class="note">Octubre cerrado: venta del mes contra la meta del plan. Muestra siempre los 3 locales.</p>
       <div class="tw"><table id="tb-avance"><thead><tr><th>Local</th><th>Meta del mes</th><th>Plan del mes</th><th>Real del mes</th><th>Avance</th><th>Cierre</th><th>vs meta</th></tr></thead><tbody></tbody></table></div></div>
-    <p class="note" style="font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0">Datos al día: venta con los cierres de caja (se actualiza sola) · productos, márgenes y venta sugestiva por local: octubre completo · vendedoras al 25/10 · clientes por hora al 22/10 · club y cupones al 31/10 · compras hasta el 17/10 · fichadas 05/10 al 18/10 · PedidosYa liquidado hasta el 18/10 · resultado del negocio (estado de resultados) hasta septiembre.</p>
+    <p class="note" style="font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0">Datos al día: venta con los cierres de caja (se actualiza sola) · productos, márgenes y venta sugestiva por local: octubre completo · vendedoras al 25/10 · clientes por hora al 22/10 · club y cupones al 31/10 · compras: octubre completo (maestra del 06/11) · fichadas 05/10 al 18/10 · PedidosYa liquidado hasta el 18/10 · resultado del negocio (estado de resultados) enero a octubre (octubre borrador).</p>
   </section>
 
   <!-- VENTAS -->
@@ -232,30 +232,30 @@
   <section class="page" id="compras" hidden>
     <div class="tiles">
       <div class="tile"><div class="k">Compras septiembre</div><div class="v" id="k-c-sep">—</div><div class="d" id="k-c-sep-d">—</div></div>
-      <div class="tile"><div class="k">Compras octubre (facturas al 17/10)</div><div class="v" id="k-c-oct">—</div><div class="d" id="k-c-oct-d">—</div></div>
+      <div class="tile"><div class="k">Compras octubre (mes completo)</div><div class="v" id="k-c-oct">—</div><div class="d" id="k-c-oct-d">—</div></div>
       <div class="tile"><div class="k">Compras sobre la venta, octubre</div><div class="v" id="k-c-pct">—</div><div class="d" id="k-c-pct-d">—</div></div>
       <div class="tile"><div class="k">Insumos que subieron en octubre</div><div class="v" id="k-c-suba">—</div><div class="d" id="k-c-suba-d">—</div></div>
     </div>
     <div>
-      <div class="card" id="c-cv"><h2>Compras sobre la venta</h2><p class="note">Todas las facturas cargadas en el sistema de compras (con IVA, incluye descartables y packaging) ÷ toda la venta del mes. Octubre acumulado: facturas cargadas hasta el 17/10 ÷ venta hasta el 22/10, así que va a subir cuando se carguen las facturas que faltan.</p>
+      <div class="card" id="c-cv"><h2>Compras sobre la venta</h2><p class="note">Todas las facturas cargadas en el sistema de compras (con IVA, incluye descartables y packaging) ÷ toda la venta del mes. Octubre completo: facturas del 1 al 31/10 de la maestra de compras (actualizada el 06/11) ÷ venta del mes.</p>
         <div class="tw"><table id="tb-cv" data-source="compras_venta" data-row-key="mes,local">
           <thead><tr><th data-field="mes">Mes</th><th data-field="local">Local</th><th data-field="compras">Compras</th><th data-field="venta">Venta</th><th data-field="pct">Compras / venta</th></tr></thead><tbody></tbody></table></div></div>
-      <div class="card" id="c-rubro"><h2>Compras por rubro</h2><p class="note">Facturas cargadas en el sistema de compras, con IVA. Para comparar meses de distinto largo se muestra el promedio por día: septiembre 30 días, octubre 17 días (facturas cargadas hasta el 17/10).</p>
-        <div class="tw"><table id="tb-rubro"><thead><tr><th>Rubro</th><th>Septiembre</th><th>Octubre (al 17/10)</th><th>Por día sept.</th><th>Por día oct.</th><th>Variación por día</th><th>% de las compras de oct.</th></tr></thead><tbody></tbody></table></div></div>
+      <div class="card" id="c-rubro"><h2>Compras por rubro</h2><p class="note">Facturas cargadas en el sistema de compras, con IVA. Para comparar meses de distinto largo se muestra el promedio por día: septiembre 30 días, octubre 31 días (mes completo, maestra del 06/11).</p>
+        <div class="tw"><table id="tb-rubro"><thead><tr><th>Rubro</th><th>Septiembre</th><th>Octubre</th><th>Por día sept.</th><th>Por día oct.</th><th>Variación por día</th><th>% de las compras de oct.</th></tr></thead><tbody></tbody></table></div></div>
     </div>
     <div class="card" id="c-precios"><h2>Precios que cambiaron en octubre</h2><p class="note">Última compra de octubre contra la compra anterior del mismo insumo, proveedor y local, sin IVA por unidad. Solo cambios de 3% o más. Rojo = subió, verde = bajó. Sigue el filtro de local.</p>
       <div class="tw"><table id="tb-precios"><thead><tr><th>Insumo</th><th>Proveedor</th><th>Local</th><th>Fecha</th><th>Antes</th><th>Ahora</th><th>Variación</th></tr></thead><tbody></tbody></table></div></div>
     <div>
-      <div class="card" id="c-prov"><h2>Gasto por proveedor</h2><p class="note">Top 20, los tres locales, con IVA. Octubre: facturas cargadas hasta el 17/10.</p>
+      <div class="card" id="c-prov"><h2>Gasto por proveedor</h2><p class="note">Top 20, los tres locales, con IVA. Octubre completo (maestra del 06/11).</p>
         <div class="tw"><table id="tb-prov" data-source="compras_proveedor" data-row-key="proveedor">
-          <thead><tr><th data-field="proveedor">Proveedor</th><th data-field="septiembre">Septiembre</th><th data-field="octubre">Octubre (al 17/10)</th></tr></thead><tbody></tbody></table></div></div>
+          <thead><tr><th data-field="proveedor">Proveedor</th><th data-field="septiembre">Septiembre</th><th data-field="octubre">Octubre</th></tr></thead><tbody></tbody></table></div></div>
     </div>
   </section>
 
 
   <!-- COSTOS -->
   <section class="page" id="costos" hidden>
-    <div class="card" id="c-res"><h2>Resultado del negocio por mes</h2><p class="note">Del estado de resultados. Venta neta = venta sin IVA. Mercadería, sueldos (con cargas sociales), apps, alquiler y otros gastos del local; impuestos = ingresos brutos y tasas. El % es sobre la venta neta. Junio no está cerrado. Sigue el filtro de local.</p>
+    <div class="card" id="c-res"><h2>Resultado del negocio por mes</h2><p class="note">Del estado de resultados. Venta neta = venta sin IVA. Mercadería, sueldos (con cargas sociales), apps, alquiler y otros gastos del local; impuestos = ingresos brutos y tasas. El % es sobre la venta neta. Versión del EERR del 06/11: octubre es borrador (~75%, la mitad de los gastos estimados con septiembre); enero y febrero ~80%, marzo a junio ~85%, julio a septiembre ~90%. Sigue el filtro de local.</p>
       <div class="tw"><table id="tb-res"><thead><tr><th>Concepto</th></tr></thead><tbody></tbody></table></div></div>
     <div class="card" id="c-apps"><h2>Resultado de las apps (según las liquidaciones)</h2><p class="note">Solo datos de las liquidaciones de PedidosYa y Rappi, sin supuestos. Venta = lo que pagó el cliente (con IVA). Se queda la app = comisión, cargos y publicidad menos reintegros (sin IVA); el % es sobre la venta sin IVA. Impuestos = IVA de la comisión, percepciones y retenciones. Depositado = lo que llegó al banco. Agosto y septiembre de PedidosYa son 4 semanas (03/08–30/08 y 31/08–27/09); octubre son 3 semanas (28/09–18/10). Rappi: mes calendario; octubre todavía no tiene liquidación.</p>
       <div class="tw"><table id="tb-apps" data-source="apps_liq">
@@ -883,13 +883,13 @@ const drawCompras = () => {
   const cr = dash.data('compras_rubro'), cv = dash.data('compras_venta'), pv = dash.data('precios_var');
   if (cr.status === 'ok') {
     const rows = cr.data.filter(inL); const s = (m) => d3.sum(rows.filter((r) => r.mes === m), (r) => r.compras);
-    const sep = s('2026-09'), oct = s('2026-10'); const dv = (oct / 17) / (sep / 30) - 1;
+    const sep = s('2026-09'), oct = s('2026-10'); const dv = (oct / 31) / (sep / 30) - 1;
     setT('k-c-sep', fM(sep)); setT('k-c-sep-d', fM(sep / 30) + ' por día');
-    setT('k-c-oct', fM(oct)); setT('k-c-oct-d', fM(oct / 17) + ' por día (' + fP(dv, 0, true) + ')', dv > 0.02 ? 'bad' : dv < -0.02 ? 'good' : null);
+    setT('k-c-oct', fM(oct)); setT('k-c-oct-d', fM(oct / 31) + ' por día (' + fP(dv, 0, true) + ')', dv > 0.02 ? 'bad' : dv < -0.02 ? 'good' : null);
     const tb = document.querySelector('#tb-rubro tbody'); tb.replaceChildren();
     const R = d3.rollups(rows, (g) => ({sep: d3.sum(g.filter((r) => r.mes === '2026-09'), (r) => r.compras), oct: d3.sum(g.filter((r) => r.mes === '2026-10'), (r) => r.compras)}), (r) => r.rubro).sort((a, b) => b[1].oct - a[1].oct);
-    R.concat([['Total', {sep, oct}]]).forEach(([rb, o]) => { const tr = document.createElement('tr'); if (rb === 'Total') tr.style.fontWeight = '600'; const v = o.sep ? (o.oct / 17) / (o.sep / 30) - 1 : null;
-      [[rb], [fM(o.sep)], [fM(o.oct)], [fM(o.sep / 30)], [fM(o.oct / 17)], [v == null ? '—' : fP(v, 0, true), v == null ? '' : v > 0.05 ? 'bad' : v < -0.05 ? 'good' : ''], [fP(oct ? o.oct / oct : null, 0)]].forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i === 0) td.className = 'l'; if (c) td.classList.add(c); tr.append(td); }); tb.append(tr); });
+    R.concat([['Total', {sep, oct}]]).forEach(([rb, o]) => { const tr = document.createElement('tr'); if (rb === 'Total') tr.style.fontWeight = '600'; const v = o.sep ? (o.oct / 31) / (o.sep / 30) - 1 : null;
+      [[rb], [fM(o.sep)], [fM(o.oct)], [fM(o.sep / 30)], [fM(o.oct / 31)], [v == null ? '—' : fP(v, 0, true), v == null ? '' : v > 0.05 ? 'bad' : v < -0.05 ? 'good' : ''], [fP(oct ? o.oct / oct : null, 0)]].forEach(([t, c], i) => { const td = document.createElement('td'); td.textContent = t; if (i === 0) td.className = 'l'; if (c) td.classList.add(c); tr.append(td); }); tb.append(tr); });
   }
   if (cv.status === 'ok') { const o = cv.data.filter((r) => r.mes === '2026-10' && (local === 'Todos' ? r.local === 'Todos' : r.local === local))[0]; const sp = cv.data.filter((r) => r.mes === '2026-09' && (local === 'Todos' ? r.local === 'Todos' : r.local === local))[0];
     setT('k-c-pct', o ? fP(o.pct, 1) : '—'); setT('k-c-pct-d', sp ? 'Septiembre: ' + fP(sp.pct, 1) : '—'); }

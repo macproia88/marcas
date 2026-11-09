@@ -163,6 +163,12 @@ def textos_base(MEN, mes, canal):
         if m1 and m1['dias']:
             c1, v1 = (m1['pedidos'], m1['venta_app']) if canal == 'apps' else (m1['tickets'], m1['venta_mostrador'])
             if c1: t += f". Contra {MESN[int(prev[5:])-1]}: {PS((cant/m0['dias'])/(c1/m1['dias'])-1)} {nom} por día y {PS((vta/cant)/(v1/c1)-1)} en el ticket"
+        try:
+            from produccion import ATIPICOS
+        except Exception:
+            ATIPICOS = {}
+        esp = [f"el {f[8:10]}/{f[5:7]} {m}" for f, m in sorted(ATIPICOS.items()) if f.startswith(mes) and 'cerr' in m]
+        if esp: t += '. Ojo: ' + '; '.join(esp) + ' y ese día está sumado: baja el promedio por día y la comparación contra 2025'
         out[L] = [t + '.']
     return out
 

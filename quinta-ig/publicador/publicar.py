@@ -115,6 +115,15 @@ def main():
         if not os.path.exists(COLA):
             print("  Sin cola todavía")
             continue
+        # Candado: la llave tiene que ser de la cuenta que dice cuentas.json
+        try:
+            quien = llamar("GET", IG_ID, fields="username").get("username", "")
+        except Exception as e:
+            print(f"  No se pudo confirmar la cuenta ({e}): no se publica nada")
+            continue
+        if quien.lower() != c["usuario"].lower():
+            print(f"  CANDADO: la llave es de @{quien} y esta fila es de @{c['usuario']}: no se publica nada")
+            continue
         procesar_cuenta()
 
 

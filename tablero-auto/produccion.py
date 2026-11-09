@@ -67,7 +67,7 @@ def historial(fecha, filas, turnos):
 FERIADOS = {'2026-10-12', '2026-11-09', '2026-11-11', '2026-11-23', '2026-12-08', '2026-12-25'}
 
 
-ATIPICOS = {'2026-10-17': 'víspera del Día de la Madre', '2026-10-18': 'Día de la Madre'}   # días especiales que no sirven de referencia
+ATIPICOS = {'2026-10-17': 'víspera del Día de la Madre', '2026-10-18': 'Día de la Madre', '2026-11-09': 'los locales cerraron a las 14'}   # días especiales que no sirven de referencia
 
 
 def _cargar_base():

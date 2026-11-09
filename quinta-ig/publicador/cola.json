@@ -19,7 +19,9 @@
   ],
   "texto": "☀️ Mañana martes 27° en General Rodríguez… ¿tenés el día libre? 😎\n\nQuinta de día completa a $110.000: pileta, quinchos, parrilla y juegos para hasta 15 personas. Sale menos de $7.400 por persona.\n\n👇 Etiquetá con quién te escapás mañana\n💬 Comentá INFO o escribinos ya\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 600 m de la autopista\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #ZonaOeste",
   "fecha": "2026-11-09 13:20",
-  "estado": "pendiente"
+  "estado": "error",
+  "error": "Media ID is not available",
+  "intento": "2026-11-09 13:20"
  },
  {
   "id": "h-manana-martes-110k",
@@ -29,7 +31,9 @@
   ],
   "texto": "",
   "fecha": "2026-11-09 13:20",
-  "estado": "pendiente"
+  "estado": "publicado",
+  "ig_media_id": "17999499369029815",
+  "publicado_el": "2026-11-09 13:20"
  },
  {
   "id": "h-temporada-pileta",

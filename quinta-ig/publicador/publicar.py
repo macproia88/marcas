@@ -55,6 +55,7 @@ def es_video(m):
 
 
 def esperar(cid):
+    time.sleep(3)
     for _ in range(40):  # hasta ~10 minutos
         st = llamar("GET", cid, fields="status_code,status")
         if st.get("status_code") == "FINISHED":
@@ -83,8 +84,7 @@ def contenedor(m, tipo, texto=None, en_carrusel=False):
     if texto and tipo != "STORY" and not en_carrusel:
         p["caption"] = texto
     cid = llamar("POST", f"{IG_ID}/media", **p)["id"]
-    if es_video(m) or tipo == "STORY":
-        esperar(cid)
+    esperar(cid)  # siempre: si se publica antes de que esté listo da "Media ID is not available"
     return cid
 
 

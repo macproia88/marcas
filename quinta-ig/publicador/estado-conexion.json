@@ -1,1 +1,13 @@
-{"secreto":"FALTA","detalle":"No existe el secret IG_TOKEN"}
+{
+ "secreto": "OK",
+ "fecha": "2026-11-09T00:52:44.510648Z",
+ "instagram_api": {
+  "error": "Invalid OAuth access token - Cannot parse access token",
+  "code": 190
+ },
+ "graph_api": {
+  "id": "17841454960836233",
+  "followers_count": 10894,
+  "username": "quintaelflorido"
+ }
+}

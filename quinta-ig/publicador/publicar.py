@@ -40,8 +40,14 @@ def llamar(metodo, ruta, **params):
         raise RuntimeError(msg[:300])
 
 
+PAGES = "https://macproia88.github.io/marcas/"
+
+
 def url_de(m):
-    return m if m.startswith("http") else RAW + m.lstrip("/")
+    if m.startswith("http"):
+        return m
+    # Los videos van por GitHub Pages (sirve video/mp4); las fotos por raw.
+    return (PAGES if es_video(m) else RAW) + m.lstrip("/")
 
 
 def es_video(m):
@@ -142,5 +148,22 @@ def procesar_cuenta():
         json.dump(cola, open(COLA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
+def probar():
+    """Crea los contenedores de los videos pendientes (sin publicar) para ver si Instagram los acepta."""
+    global IG_ID, TOKEN, COLA
+    for c in json.load(open(CUENTAS, encoding="utf-8")):
+        IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        COLA = os.path.join(REPO, c["cola"])
+        if not (IG_ID and TOKEN and os.path.exists(COLA)):
+            continue
+        for item in json.load(open(COLA, encoding="utf-8")):
+            if item.get("estado") == "pendiente" and any(es_video(m) for m in item["media"]):
+                try:
+                    contenedor(item["media"][0], item["tipo"].upper(), item.get("texto"))
+                    print(f"PRUEBA OK {item['id']}")
+                except Exception as e:
+                    print(f"PRUEBA ERROR {item['id']}: {e}")
+
+
 if __name__ == "__main__":
-    main()
+    probar() if "--probar" in sys.argv else main()

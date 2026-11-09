@@ -32,7 +32,8 @@ jobs:
             "instagram_api":clean(sys.argv[1]),"graph_api":clean(sys.argv[2])},ensure_ascii=False,indent=1))
           PY
           fi
-          cat $OUT
+          python3 quinta-ig/publicador/publicar.py --probar > quinta-ig/publicador/prueba-videos.txt 2>&1 || true
+          cat $OUT quinta-ig/publicador/prueba-videos.txt
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add $OUT && git commit -m "Estado de conexion IG" && git push || true
+          git add $OUT quinta-ig/publicador/prueba-videos.txt && git commit -m "Estado de conexion IG" && git push || true

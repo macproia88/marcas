@@ -4,7 +4,7 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
   push:
-    paths: ['quinta-ig/publicador/cola.json']
+    paths: ['quinta-ig/publicador/cola.json', 'clientes/*/cola.json']
 concurrency:
   group: ig-publicar
   cancel-in-progress: false
@@ -18,13 +18,14 @@ jobs:
       - name: Publicar lo que corresponde
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_TOKEN_CATRIEL: ${{ secrets.IG_TOKEN_CATRIEL }}
         run: python3 quinta-ig/publicador/publicar.py
       - name: Guardar resultado
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           if ! git diff --quiet; then
-            git add quinta-ig/publicador/cola.json
+            git add quinta-ig/publicador/cola.json clientes/*/cola.json
             git commit -m "Publicador: resultado [skip ci]"
             git pull --rebase -q && git push -q
           fi

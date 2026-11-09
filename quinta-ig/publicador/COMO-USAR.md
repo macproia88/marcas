@@ -31,3 +31,13 @@ Desde el 08/11/2026 todo se publica con la API oficial de Instagram, gratis y si
 Secret `IG_TOKEN` del repo (usuario del sistema, no vence). Nunca imprimirla ni guardarla en archivos.
 Cuenta de Instagram: quintaelflorido, id 17841454960836233. API: graph.facebook.com/v23.0.
 Verificación rápida: push que toque `quinta-ig/publicador/verificar.trigger` → escribe `estado-conexion.json`.
+
+## Varias cuentas (clientes)
+- Lista de cuentas: `quinta-ig/publicador/cuentas.json` (nombre, usuario, ig_id, secret, cola, activa).
+- Cada cliente: carpeta `clientes/<slug>/` con su `cola.json` y sus imágenes; su llave en el secret indicado.
+- Al sumar un secret nuevo hay que agregarlo también en el `env:` de `.github/workflows/ig-publicar.yml`.
+- Alta de un cliente: en la app "Publicador Quinta El Florido" (developers.facebook.com/apps/1441500650864869)
+  → Roles → agregar "Evaluador de Instagram" con su usuario → el cliente acepta en Instagram
+  (Configuración → Apps y sitios web → Invitaciones de prueba) → Casos de uso → API setup with Unified login
+  → paso 2 "Generar identificador" → guardar la llave como secret → anotar el ig_id que muestra esa pantalla.
+- La cuenta de Instagram tiene que ser profesional (empresa o creador).

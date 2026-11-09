@@ -11,11 +11,12 @@ Cada item de cola.json:
 """
 import json, os, sys, time, urllib.parse, urllib.request, datetime
 
-IG_ID = "17841454960836233"
 API = "https://graph.facebook.com/v23.0"
 RAW = "https://raw.githubusercontent.com/macproia88/marcas/main/"
-TOKEN = os.environ.get("IG_TOKEN", "")
-COLA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cola.json")
+AQUI = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(AQUI, "..", ".."))
+CUENTAS = os.path.join(AQUI, "cuentas.json")
+IG_ID = TOKEN = COLA = ""  # se cargan por cuenta en main()
 ART = datetime.timezone(datetime.timedelta(hours=-3))
 
 
@@ -95,8 +96,23 @@ def publicar(item):
 
 
 def main():
-    if not TOKEN:
-        sys.exit("Falta el secret IG_TOKEN")
+    global IG_ID, TOKEN, COLA
+    for c in json.load(open(CUENTAS, encoding="utf-8")):
+        if not c.get("activa", True):
+            continue
+        IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        COLA = os.path.join(REPO, c["cola"])
+        print(f"=== {c['nombre']} ===")
+        if not TOKEN or not IG_ID:
+            print(f"  Falta el secret {c['secret']} o el ig_id: se saltea")
+            continue
+        if not os.path.exists(COLA):
+            print("  Sin cola todavía")
+            continue
+        procesar_cuenta()
+
+
+def procesar_cuenta():
     cola = json.load(open(COLA, encoding="utf-8"))
     ahora = datetime.datetime.now(ART)
     cambios = False

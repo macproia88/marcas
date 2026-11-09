@@ -22,6 +22,16 @@
   "estado": "pendiente"
  },
  {
+  "id": "post-pileta-temporada",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/2026-11-pileta.jpg"
+  ],
+  "texto": "☀️ La pileta ya está lista para la temporada.\n\nAgua cristalina, quinchos con mesa para todos, parrilla y mucho verde para desconectarte a pocos minutos de la ciudad.\n\n🏡 Quinta El Florido — ideal para pasar el día con amigos o en familia. Desde $140.000 el día.\n📍 General Rodríguez, a 600 m de la autopista\n\n💬 Comentá INFO y te pasamos precio y fechas libres\n📲 O escribinos directo al WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaEnAlquiler #DiaDeCampo #QuintaConPileta #Escapada #FinDeSemana #ZonaOeste",
+  "fecha": "2026-11-09 21:00",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-escapada-finde-1",
   "tipo": "STORY",
   "media": [
@@ -62,12 +72,35 @@
   "estado": "pendiente"
  },
  {
+  "id": "h-disponible-finde-140k",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/finde-140k.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 19:30",
+  "estado": "pendiente"
+ },
+ {
   "id": "post-sorteo",
   "tipo": "POST",
   "media": [
    "quinta-ig/sorteo-feed.jpg"
   ],
   "texto": "🎉 ¡SORTEO! Ganá un DÍA DE PILETA para hasta 15 personas en Quinta El Florido 🏊‍♂️☀️\n\nPara participar:\n1️⃣ Seguí a @quintaelflorido\n2️⃣ Etiquetá a 2 amigos en los comentarios (cada comentario con amigos distintos = 1 chance más)\n3️⃣ Compartí este posteo en tu historia y etiquetanos (chance extra)\n\n📅 Sorteamos el lunes 23/11 a las 20 hs en vivo por historia.\n\nBases: válido para mayores de 18 años. El premio es un día en nuestra quinta de día (pileta, quinchos, parrilla y juegos) para hasta 15 personas, a usar un día de semana (lunes a jueves) de diciembre 2026, excluyendo feriados, a coordinar con el ganador. No canjeable por dinero. Si el ganador no responde en 48 hs, se sortea de nuevo. Participación hasta el domingo 22/11 a las 23:59. Este sorteo no está patrocinado, avalado ni administrado por Instagram ni Facebook.\n\n📍 General Rodríguez, a 600 m de la autopista\n📲 Reservas: WhatsApp 11 3877-7015\n\n#Sorteo #QuintaElFlorido #GeneralRodriguez #QuintaConPileta #DiaDeCampo #SorteoArgentina",
+  "fecha": "2026-11-12 21:00",
+  "estado": "pausado"
+ },
+ {
+  "id": "carrusel-2-opciones",
+  "tipo": "CARRUSEL",
+  "media": [
+   "quinta-ig/carrusel-2opciones-1.jpg",
+   "quinta-ig/carrusel-2opciones-2.jpg",
+   "quinta-ig/carrusel-2opciones-3.jpg",
+   "quinta-ig/carrusel-2opciones-4.jpg"
+  ],
+  "texto": "🏡 ¿Plan con amigos o con la familia? Tenemos 2 opciones 👉\n\n1️⃣ Quinta de día: pileta, 2 quinchos, parrilla y juegos para hasta 15 personas.\n2️⃣ Quinta con casa: pileta propia y parrilla, para quedarte a dormir (5 personas).\n\nMate, fernet, asado y pileta a 600 m de la autopista 🔥\n💰 Desde $140.000 el día\n\n👇 Etiquetá a tu grupo: ¿cuál elegís, la 1 o la 2?\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #PlanConAmigos #Escapada",
   "fecha": "2026-11-12 21:00",
   "estado": "pendiente"
  },
@@ -79,7 +112,7 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 21:30",
-  "estado": "pendiente"
+  "estado": "pausado"
  },
  {
   "id": "h-este-finde-pileta",
@@ -102,13 +135,13 @@
   "estado": "pendiente"
  },
  {
-  "id": "post-pileta-temporada",
-  "tipo": "POST",
+  "id": "h-temporada-reserva",
+  "tipo": "STORY",
   "media": [
-   "quinta-ig/2026-11-pileta.jpg"
+   "quinta-ig/2026-11-historia-reserva.jpg"
   ],
-  "texto": "☀️ La pileta ya está lista para la temporada.\n\nAgua cristalina, quinchos con mesa para todos, parrilla y mucho verde para desconectarte a pocos minutos de la ciudad.\n\n🏡 Quinta El Florido — ideal para pasar el día con amigos o en familia. Desde $140.000 el día.\n📍 General Rodríguez, a 600 m de la autopista\n\n💬 Comentá INFO y te pasamos precio y fechas libres\n📲 O escribinos directo al WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaEnAlquiler #DiaDeCampo #QuintaConPileta #Escapada #FinDeSemana #ZonaOeste",
-  "fecha": "2026-11-14 21:00",
+  "texto": "",
+  "fecha": "2026-11-15 19:30",
   "estado": "pendiente"
  },
  {
@@ -129,7 +162,7 @@
   ],
   "texto": "",
   "fecha": "2026-11-15 22:00",
-  "estado": "pendiente"
+  "estado": "pausado"
  },
  {
   "id": "h-y-las-fiestas",
@@ -159,7 +192,7 @@
   ],
   "texto": "",
   "fecha": "2026-11-18 22:00",
-  "estado": "pendiente"
+  "estado": "pausado"
  },
  {
   "id": "h-escapada-finde-2",
@@ -189,6 +222,6 @@
   ],
   "texto": "",
   "fecha": "2026-11-21 22:00",
-  "estado": "pendiente"
+  "estado": "pausado"
  }
 ]

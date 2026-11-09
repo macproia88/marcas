@@ -2,9 +2,13 @@
  {
   "id": "prueba-historia-semana-calor",
   "tipo": "STORY",
-  "media": ["quinta-ig/promo-semana-calor-h.jpg"],
+  "media": [
+   "quinta-ig/promo-semana-calor-h.jpg"
+  ],
   "texto": "",
   "fecha": "2026-11-08 21:50",
-  "estado": "pendiente"
+  "estado": "publicado",
+  "ig_media_id": "18145665487591139",
+  "publicado_el": "2026-11-08 21:59"
  }
 ]

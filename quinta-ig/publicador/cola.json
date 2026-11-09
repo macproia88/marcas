@@ -72,10 +72,30 @@
   "estado": "pendiente"
  },
  {
-  "id": "h-disponible-finde-140k",
+  "id": "post-viernes-de-locos-110k",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/viernes-de-locos-110k.jpg"
+  ],
+  "texto": "🔥 VIERNES DE LOCOS 🔥\n\nMañana viernes 13, la quinta de día completa a $110.000 😱\nPileta, quinchos, parrilla y juegos para hasta 15 personas: sale menos de $7.400 por persona.\n\n⏰ Solo reservando HOY. Mañana vuelve al precio normal.\n\n👇 Etiquetá a quien tiene que faltar al trabajo mañana 😅\n💬 Comentá INFO o escribinos ya\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 600 m de la autopista\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ViernesDeLocos #ZonaOeste",
+  "fecha": "2026-11-12 09:05",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-viernes-de-locos-110k-am",
   "tipo": "STORY",
   "media": [
-   "quinta-ig/finde-140k.jpg"
+   "quinta-ig/viernes-de-locos-110k-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 09:20",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-viernes-de-locos-110k-pm",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/viernes-de-locos-110k-h.jpg"
   ],
   "texto": "",
   "fecha": "2026-11-12 19:30",
@@ -90,19 +110,6 @@
   "texto": "🎉 ¡SORTEO! Ganá un DÍA DE PILETA para hasta 15 personas en Quinta El Florido 🏊‍♂️☀️\n\nPara participar:\n1️⃣ Seguí a @quintaelflorido\n2️⃣ Etiquetá a 2 amigos en los comentarios (cada comentario con amigos distintos = 1 chance más)\n3️⃣ Compartí este posteo en tu historia y etiquetanos (chance extra)\n\n📅 Sorteamos el lunes 23/11 a las 20 hs en vivo por historia.\n\nBases: válido para mayores de 18 años. El premio es un día en nuestra quinta de día (pileta, quinchos, parrilla y juegos) para hasta 15 personas, a usar un día de semana (lunes a jueves) de diciembre 2026, excluyendo feriados, a coordinar con el ganador. No canjeable por dinero. Si el ganador no responde en 48 hs, se sortea de nuevo. Participación hasta el domingo 22/11 a las 23:59. Este sorteo no está patrocinado, avalado ni administrado por Instagram ni Facebook.\n\n📍 General Rodríguez, a 600 m de la autopista\n📲 Reservas: WhatsApp 11 3877-7015\n\n#Sorteo #QuintaElFlorido #GeneralRodriguez #QuintaConPileta #DiaDeCampo #SorteoArgentina",
   "fecha": "2026-11-12 21:00",
   "estado": "pausado"
- },
- {
-  "id": "carrusel-2-opciones",
-  "tipo": "CARRUSEL",
-  "media": [
-   "quinta-ig/carrusel-2opciones-1.jpg",
-   "quinta-ig/carrusel-2opciones-2.jpg",
-   "quinta-ig/carrusel-2opciones-3.jpg",
-   "quinta-ig/carrusel-2opciones-4.jpg"
-  ],
-  "texto": "🏡 ¿Plan con amigos o con la familia? Tenemos 2 opciones 👉\n\n1️⃣ Quinta de día: pileta, 2 quinchos, parrilla y juegos para hasta 15 personas.\n2️⃣ Quinta con casa: pileta propia y parrilla, para quedarte a dormir (5 personas).\n\nMate, fernet, asado y pileta a 600 m de la autopista 🔥\n💰 Desde $140.000 el día\n\n👇 Etiquetá a tu grupo: ¿cuál elegís, la 1 o la 2?\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #PlanConAmigos #Escapada",
-  "fecha": "2026-11-12 21:00",
-  "estado": "pendiente"
  },
  {
   "id": "h-sorteo",
@@ -132,6 +139,29 @@
   ],
   "texto": "",
   "fecha": "2026-11-14 10:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-disponible-finde-140k",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/finde-140k.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-14 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "carrusel-2-opciones",
+  "tipo": "CARRUSEL",
+  "media": [
+   "quinta-ig/carrusel-2opciones-1.jpg",
+   "quinta-ig/carrusel-2opciones-2.jpg",
+   "quinta-ig/carrusel-2opciones-3.jpg",
+   "quinta-ig/carrusel-2opciones-4.jpg"
+  ],
+  "texto": "🏡 ¿Plan con amigos o con la familia? Tenemos 2 opciones 👉\n\n1️⃣ Quinta de día: pileta, 2 quinchos, parrilla y juegos para hasta 15 personas.\n2️⃣ Quinta con casa: pileta propia y parrilla, para quedarte a dormir (5 personas).\n\nMate, fernet, asado y pileta a 600 m de la autopista 🔥\n💰 Desde $140.000 el día\n\n👇 Etiquetá a tu grupo: ¿cuál elegís, la 1 o la 2?\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #PlanConAmigos #Escapada",
+  "fecha": "2026-11-14 21:00",
   "estado": "pendiente"
  },
  {

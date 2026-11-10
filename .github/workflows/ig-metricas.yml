@@ -1,0 +1,28 @@
+name: IG - juntar metricas
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+  push:
+    paths: ['quinta-ig/metricas/metricas.py', 'quinta-ig/metricas/correr.trigger']
+concurrency:
+  group: ig-metricas
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  metricas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Juntar metricas de Instagram
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 quinta-ig/metricas/metricas.py | tee quinta-ig/metricas/ultima-corrida.txt
+      - name: Guardar
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt
+          git commit -m "Metricas IG [skip ci]" || exit 0
+          git pull --rebase -q && git push -q

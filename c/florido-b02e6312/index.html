@@ -90,6 +90,7 @@ footer { border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; 
       <div class="big" id="res-monto">—</div>
       <p class="sub" id="res-cant"></p>
       <div class="tw" style="margin-top:10px"><table><thead><tr><th>Cargada</th><th>Para</th><th class="n">Monto</th></tr></thead><tbody id="res-tb"></tbody></table></div>
+      <p class="sub" style="margin-top:10px">Este celular recuerda tu clave. <a href="#" id="olvidar" style="color:var(--agua)">Ocultar y olvidar la clave</a></p>
     </div>
   </section>
 
@@ -259,6 +260,10 @@ function mostrar(lista) {
   $("res-tb").replaceChildren(...delMes.map((r) => { const tr = el("tr"); tr.append(el("td", null, r.registrada.split("-").reverse().slice(0, 2).join("/")), el("td", null, r.para), el("td", "n", plata(r.monto))); return tr; }));
   $("res-lock").hidden = true; $("res-open").hidden = false;
 }
+$("olvidar").addEventListener("click", (e) => {
+  e.preventDefault(); try { localStorage.removeItem("clave-informe"); } catch (x) {}
+  $("pin").value = ""; $("res-tb").replaceChildren(); $("res-open").hidden = true; $("res-lock").hidden = false;
+});
 $("f").addEventListener("submit", async (e) => {
   e.preventDefault(); $("err").textContent = "";
   const pin = $("pin").value.trim();

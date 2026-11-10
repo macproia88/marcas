@@ -133,6 +133,41 @@ function chg(id, now, before) {
   s.append(b, ' vs los 7 días anteriores');
 }
 
+
+// Gráfico de línea que se adapta al ancho real (celular o compu)
+function lineaVistas(cont, vals) {
+  const dibujar = () => {
+    const W = Math.max(cont.clientWidth, 280), chico = W < 520, H = chico ? 200 : 240;
+    const m = { l: chico ? 40 : 48, r: 14, t: 26, b: 26 }, fs = chico ? 11 : 12;
+    const max = Math.max(...vals.map((x) => x.v), 1);
+    const x = (i) => m.l + i * (W - m.l - m.r) / Math.max(vals.length - 1, 1);
+    const y = (v) => H - m.b - v / max * (H - m.t - m.b);
+    const k = (v) => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 0 : 1).replace(".", ",") + " mil" : String(Math.round(v));
+    let g = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Vistas por día" style="font:${fs}px var(--sans)">`;
+    [0, .5, 1].forEach((f) => { g += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${y(max * f) + 4}" text-anchor="end" style="fill:var(--muted)">${k(max * f)}</text>`; });
+    g += `<path d="M${x(0)},${y(0)} ${vals.map((p, i) => `L${x(i)},${y(p.v)}`).join(" ")} L${x(vals.length - 1)},${y(0)} Z" fill="var(--agua)" opacity=".14"/>`;
+    g += `<path d="${vals.map((p, i) => (i ? "L" : "M") + x(i) + "," + y(p.v)).join(" ")}" fill="none" stroke="var(--agua)" stroke-width="2.5" stroke-linejoin="round"/>`;
+    const im = vals.reduce((b, p, i) => p.v > vals[b].v ? i : b, 0);
+    const ax = Math.min(Math.max(x(im), m.l + 30), W - m.r - 30);
+    g += `<circle cx="${x(im)}" cy="${y(vals[im].v)}" r="5" fill="var(--nar)"/><text x="${ax}" y="${y(vals[im].v) - 10}" text-anchor="middle" style="fill:var(--fg);font-weight:600">${n(vals[im].v)}</text>`;
+    const paso = chico ? 7 : 5;
+    vals.forEach((p, i) => { if (i % paso === 0) g += `<text x="${Math.min(x(i), W - m.r - 14)}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted)">${+p.k.slice(8)}/${+p.k.slice(5, 7)}</text>`; });
+    cont.innerHTML = g + "</svg>";
+  };
+  dibujar(); let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(dibujar, 150); });
+}
+// Barras de horas conectados (hora Argentina)
+function barrasHoras(cont, h, notaEl) {
+  if (!h || !h.some((v) => v > 0)) return false;
+  const max = Math.max(...h), top = h.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).slice(0, 3).map((x) => x[1]).sort((a, b) => a - b);
+  const bars = document.createElement("div"); bars.className = "hbars";
+  const lab = document.createElement("div"); lab.className = "hlabs";
+  h.forEach((v, i) => { const b = document.createElement("div"); b.style.height = Math.max(4, v / max * 100) + "%"; b.title = i + " h"; if (top.includes(i)) b.className = "top"; bars.append(b); const s = document.createElement("span"); s.textContent = i % 3 === 0 ? i : ""; lab.append(s); });
+  cont.replaceChildren(bars, lab);
+  if (notaEl) notaEl.textContent = `Más gente conectada: ${top.map((i) => i + " h").join(", ")}. El mejor momento para publicar es un rato antes.`;
+  return true;
+}
+
 fetch('quinta-ig/metricas/datos.json?' + Date.now()).then((r) => r.json()).then((d) => {
   $('upd').textContent = 'Actualizado: ' + (d.actualizado ? d.actualizado.split(' ').map((x, i) => i ? x : x.split('-').reverse().join('/')).join(' ') : '—') + ' · se actualiza solo cada 3 horas';
   const dias = Object.entries(d.dias || {}).sort();
@@ -150,25 +185,13 @@ fetch('quinta-ig/metricas/datos.json?' + Date.now()).then((r) => r.json()).then(
   const s = (arr, k) => arr.length ? arr.reduce((a, x) => a + (Number(x[k]) || 0), 0) : null;
   if (!sinPermiso) {
     $('k-vis').textContent = n(s(ult, 'views')); chg('k-vis-s', s(ult, 'views'), s(ant, 'views'));
-    $('k-alc').textContent = n(s(ult, 'reach')); chg('k-alc-s', s(ult, 'reach'), s(ant, 'reach'));
+    const sem = d.semana || {}, ra = (sem.actual || {}).reach ?? s(ult, 'reach'), rb = (sem.anterior || {}).reach ?? s(ant, 'reach');
+    $('k-alc').textContent = n(ra); chg('k-alc-s', ra, rb);
     $('k-link').textContent = n(s(ult, 'profile_links_taps')); chg('k-link-s', s(ult, 'profile_links_taps'), s(ant, 'profile_links_taps'));
   }
 
   // Gráfico de vistas por día
-  if (dias.length) {
-    const W = 900, H = 220, m = { l: 44, r: 10, t: 10, b: 24 };
-    const vals = dias.slice(-30).map(([k, v]) => ({ k, v: Number(v.views) || 0 }));
-    const max = Math.max(...vals.map((x) => x.v), 1);
-    const x = (i) => m.l + i * (W - m.l - m.r) / Math.max(vals.length - 1, 1);
-    const y = (v) => H - m.b - v / max * (H - m.t - m.b);
-    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vistas por día de los últimos 30 días">`;
-    [0, .5, 1].forEach((f) => { svg += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${y(max * f) + 4}" text-anchor="end">${n(max * f)}</text>`; });
-    svg += `<path d="M${x(0)},${y(0)} ` + vals.map((p, i) => `L${x(i)},${y(p.v)}`).join(' ') + ` L${x(vals.length - 1)},${y(0)} Z" fill="var(--agua)" opacity=".15"/>`;
-    svg += `<path d="` + vals.map((p, i) => (i ? 'L' : 'M') + x(i) + ',' + y(p.v)).join(' ') + `" fill="none" stroke="var(--agua)" stroke-width="2.5"/>`;
-    vals.forEach((p, i) => { if (i % 5 === 0 || i === vals.length - 1) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${p.k.slice(8)}/${p.k.slice(5, 7)}</text>`; });
-    svg += '</svg>';
-    $('chart-vistas').innerHTML = svg;
-  }
+  if (dias.length) lineaVistas($('chart-vistas'), dias.slice(-30).map(([k, v]) => ({ k, v: Number(v.views) || 0 })));
 
   // Horas
   if (d.horas_conectados && d.horas_conectados.some((v) => v > 0)) {
@@ -212,7 +235,7 @@ fetch('quinta-ig/metricas/datos.json?' + Date.now()).then((r) => r.json()).then(
   // Resumen en una frase
   $('take').textContent = sinPermiso
     ? `La cuenta tiene ${n(seg)} seguidores y ${pubs.length} publicaciones en los últimos 60 días. La más vista: "${(pubs[0] && (pubs[0].caption || '').split('\n')[0].slice(0, 50)) || '—'}".`
-    : `En los últimos 7 días la cuenta tuvo ${n(s(ult, 'views'))} vistas y llegó a ${n(s(ult, 'reach'))} personas; ${n(s(ult, 'profile_links_taps'))} tocaron el enlace de WhatsApp.`;
+    : `En los últimos 7 días la cuenta tuvo ${n(s(ult, 'views'))} vistas y llegó a ${n((d.semana && d.semana.actual && d.semana.actual.reach) ?? s(ult, 'reach'))} personas distintas; ${n(s(ult, 'profile_links_taps'))} tocaron el enlace de WhatsApp.`;
 }).catch(() => { $('take').textContent = 'No se pudieron cargar los datos. Probá recargar la página.'; });
 </script>
 </body>

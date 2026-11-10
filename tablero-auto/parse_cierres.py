@@ -69,8 +69,29 @@ def articulos(b):
     return out
 
 
+def nombres_por_codigo(C):
+    """Nombres vistos para cada código (sirve para despegar unidades de 2 cifras, ver despegar)."""
+    n = {}
+    for c in C:
+        for a in c.get('articulos', []):
+            n.setdefault(a[0], set()).add(a[1])
+    return n
+
+
+def despegar(arts, nombres):
+    """Con el texto del mail sin espacios de relleno, "Ravioles Ricota 22.0" se lee como nombre "Ravioles Ricota 2"
+    (17 letras) y 2.0 unidades. Si el nombre de 17 letras termina en " <cifras>" y lo de antes es un nombre que ya se
+    vio para ese código, esas cifras son parte de las unidades (22.0)."""
+    for a in arts:
+        m = re.match(r'^(.*\S) (\d+)$', a[1])
+        if len(a[1]) == 17 and m and m.group(1) in nombres.get(a[0], ()) and a[3] >= 0:
+            a[1], a[3] = m.group(1), float(m.group(2) + f'{a[3]:.1f}')
+    return arts
+
+
 def main(path, thread=''):
     C = json.loads((DATA / 'cierres.json').read_text(encoding='utf-8'))
+    nombres = nombres_por_codigo(C)
     claves = {(c['sucursal'].lower(), c['fecha'], c['turno']) for c in C}
     nuevos = []
     for body, subj, sender in textos(path):
@@ -79,6 +100,7 @@ def main(path, thread=''):
             o = parse_bloque(partes[i - 1], partes[i])
             if not o:
                 continue
+            despegar(o['articulos'], nombres)
             suma = sum(v[0] for v in o['formas'].values())
             o.update(thread=thread, subject=subj or f"MaxiREST - Fin de turno - {o['fecha']} {o['turno']}", sender=sender)
             ok = abs(suma - o['total']) < 1

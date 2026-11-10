@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Informe Instagram · Quinta El Florido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Informe para el dueño: una columna, primero la plata (reservas), después los números, después el plan de la semana */
+:root {
+  --bg: #F3F6F8; --panel: #FFFFFF; --fg: #0E1B2A; --muted: #5B6B7C; --line: #DCE4EA;
+  --agua: #1C8FB0; --nar: #D9661A; --ok: #1E8E57; --bad: #C2413A; --wa: #1A9E52; --soft: #E7F3F7;
+  --serif: "DM Serif Display", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #08141F; --panel: #0F2132; --fg: #E8EEF3; --muted: #93A5B6; --line: #1E3449;
+  --agua: #4CC3E3; --nar: #FF8A3D; --ok: #4CC38A; --bad: #EF6B63; --wa: #25B864; --soft: #12304A; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #08141F; --panel: #0F2132; --fg: #E8EEF3; --muted: #93A5B6; --line: #1E3449;
+  --agua: #4CC3E3; --nar: #FF8A3D; --ok: #4CC38A; --bad: #EF6B63; --wa: #25B864; --soft: #12304A; color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans);
+  padding-block: 24px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 6vw, 44px); line-height: 1.1; margin: 4px 0 0; text-wrap: balance }
+h2 { font-size: 18px; font-weight: 600; margin: 0 0 4px }
+.sub { color: var(--muted); font-size: 13px; margin: 0 }
+.story { margin: 10px 0 0; max-width: 62ch; font-size: 16px }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0 }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px }
+.lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.num { font-family: var(--serif); font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums }
+.good { color: var(--ok) } .badc { color: var(--bad) }
+.res { background: var(--soft); border-color: transparent }
+.res .big { font-family: var(--serif); font-size: clamp(36px, 8vw, 54px); line-height: 1.05 }
+.lock { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 12px }
+.lock input { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); width: 10ch; letter-spacing: .2em }
+button { font: inherit; font-weight: 600; background: var(--agua); color: #fff; border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer }
+.err { color: var(--bad); font-size: 13px }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px }
+th, td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left }
+th { font-size: 12px; color: var(--muted); font-weight: 500 }
+td.n, th.n { text-align: right }
+.tw { overflow-x: auto }
+.chart svg { width: 100%; height: auto; display: block }
+.chart text { fill: var(--muted); font: 11px var(--sans) }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px }
+.hbar { display: grid; grid-template-columns: 10ch 1fr 5ch; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0 }
+.hbar .b { height: 10px; border-radius: 5px; background: var(--agua) }
+.hbar .v { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums }
+.top { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px }
+.post { display: flex; gap: 12px; align-items: flex-start; text-decoration: none; color: inherit; min-width: 0 }
+.post img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; background: var(--line); flex: none }
+.post .t { font-size: 13px; color: var(--muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical }
+.post b { font-family: var(--serif); font-weight: 400; font-size: 24px; display: block }
+.plan { display: flex; flex-direction: column }
+.pl { display: grid; grid-template-columns: 9ch 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: start }
+.pl:last-child { border-bottom: 0 }
+.pl .d { font-weight: 600; font-size: 14px } .pl .h { color: var(--muted); font-size: 13px }
+.chip { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; margin-right: 6px; background: var(--line); color: var(--fg) }
+.chip.REEL { background: var(--nar); color: #fff } .chip.STORY { background: var(--agua); color: #fff }
+.pl .x { font-size: 14px; margin-top: 2px }
+.empty { color: var(--muted); font-size: 13px }
+footer { border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 4px }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Informe de Instagram</p>
+    <h1 id="titulo">Quinta El Florido</h1>
+    <p class="sub" id="upd">Actualizado: —</p>
+    <p class="story" id="story">Cargando tus números…</p>
+  </header>
+
+  <section class="card res" aria-labelledby="res-h">
+    <p class="lbl" id="res-h">Reservas que llegaron por Instagram · <span id="mes"></span></p>
+    <div id="res-lock">
+      <p class="sub" style="margin-top:6px">Este dato es privado. Ingresá tu clave para verlo.</p>
+      <form class="lock" id="f">
+        <input id="pin" inputmode="numeric" autocomplete="off" maxlength="12" aria-label="Clave" placeholder="••••••">
+        <button type="submit">Ver reservas</button>
+        <span class="err" id="err"></span>
+      </form>
+    </div>
+    <div id="res-open" hidden>
+      <div class="big" id="res-monto">—</div>
+      <p class="sub" id="res-cant"></p>
+      <div class="tw" style="margin-top:10px"><table><thead><tr><th>Cargada</th><th>Para</th><th class="n">Monto</th></tr></thead><tbody id="res-tb"></tbody></table></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="sem-h">
+    <h2 id="sem-h">Últimos 7 días</h2>
+    <p class="sub" style="margin-bottom:10px">Comparado con los 7 días anteriores.</p>
+    <div class="grid">
+      <div class="card"><div class="lbl">Personas que te vieron</div><div class="num" id="k1">—</div><div class="sub" id="k1s">&nbsp;</div></div>
+      <div class="card"><div class="lbl">Vistas</div><div class="num" id="k2">—</div><div class="sub" id="k2s">&nbsp;</div></div>
+      <div class="card"><div class="lbl">Tocaron tu WhatsApp</div><div class="num" id="k3">—</div><div class="sub" id="k3s">&nbsp;</div></div>
+      <div class="card"><div class="lbl">Seguidores nuevos (neto)</div><div class="num" id="k4">—</div><div class="sub" id="k4s">&nbsp;</div></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="vd-h">
+    <h2 id="vd-h">Vistas por día</h2>
+    <p class="sub">Últimos 30 días. Los picos son los días de promo.</p>
+    <div class="chart" id="chart"><p class="empty">Sin datos todavía.</p></div>
+  </section>
+
+  <section class="card" aria-labelledby="best-h">
+    <h2 id="best-h">Lo que mejor funcionó este mes</h2>
+    <p class="sub" style="margin-bottom:12px">Tocá una publicación para verla en Instagram.</p>
+    <div class="top" id="best"><p class="empty">Sin datos todavía.</p></div>
+  </section>
+
+  <section class="two" aria-label="Tu público">
+    <div class="card"><h2>¿Quién te sigue?</h2><p class="sub" id="genero">&nbsp;</p><div id="edad"></div></div>
+    <div class="card"><h2>¿De dónde son?</h2><div id="ciudad"><p class="empty">Sin datos todavía.</p></div></div>
+  </section>
+
+  <section class="card" aria-labelledby="plan-h">
+    <h2 id="plan-h">Lo que se publica esta semana</h2>
+    <p class="sub">Se publica solo, en el día y horario indicados.</p>
+    <div class="plan" id="plan"><p class="empty">Sin publicaciones programadas.</p></div>
+  </section>
+
+  <footer>
+    <span>Servicio de gestión de Instagram · Walter Cerrotta</span>
+    <span id="upd2">Actualizado: —</span>
+  </footer>
+</div>
+
+<script>
+// Configuración del cliente: cambiar estas rutas para cada cliente nuevo
+const CFG = {
+  metricas: "../../quinta-ig/metricas/datos.json",
+  cola: "../../quinta-ig/publicador/cola.json",
+  media: "../../",
+  reservas: "reservas.enc.json",
+};
+const $ = (id) => document.getElementById(id);
+const n = (v) => v == null ? "—" : Math.round(v).toLocaleString("es-AR");
+const plata = (v) => "$" + Math.round(v).toLocaleString("es-AR");
+const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+const TZ = { timeZone: "America/Argentina/Buenos_Aires" };
+const hoyAR = new Date(new Date().toLocaleString("en-US", TZ));
+const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+$("mes").textContent = MESES[hoyAR.getMonth()] + " " + hoyAR.getFullYear();
+
+function cambio(id, ahora, antes) {
+  const s = $(id); s.textContent = "";
+  if (ahora == null || !antes) { s.innerHTML = "&nbsp;"; return; }
+  const p = (ahora - antes) / Math.abs(antes) * 100;
+  s.append(el("span", p >= 0 ? "good" : "badc", (p >= 0 ? "▲ " : "▼ ") + Math.abs(p).toFixed(0) + "%"), " vs semana anterior");
+}
+
+const nocache = "?" + Date.now();
+fetch(CFG.metricas + nocache).then((r) => r.json()).then((d) => {
+  const act = d.actualizado ? d.actualizado.slice(8, 10) + "/" + d.actualizado.slice(5, 7) + "/" + d.actualizado.slice(0, 4) + " " + d.actualizado.slice(11) : "—";
+  $("upd").textContent = "Actualizado: " + act + " · se actualiza solo cada 3 horas";
+  $("upd2").textContent = "Actualizado: " + act;
+  if (d.cuenta && d.cuenta.name) $("titulo").textContent = d.cuenta.name.replace("ElFlorido", "El Florido");
+
+  const dias = Object.entries(d.dias || {}).sort();
+  const u = dias.slice(-7).map((x) => x[1]), a = dias.slice(-14, -7).map((x) => x[1]);
+  const s = (arr, k) => arr.length ? arr.reduce((t, x) => t + (Number(x[k]) || 0), 0) : null;
+  const neto = (arr) => arr.length ? s(arr, "seguidos_nuevos") - s(arr, "dejaron_de_seguir") : null;
+  $("k1").textContent = n(s(u, "reach")); cambio("k1s", s(u, "reach"), s(a, "reach"));
+  $("k2").textContent = n(s(u, "views")); cambio("k2s", s(u, "views"), s(a, "views"));
+  $("k3").textContent = n(s(u, "profile_links_taps")); cambio("k3s", s(u, "profile_links_taps"), s(a, "profile_links_taps"));
+  const nn = neto(u); $("k4").textContent = nn == null ? "—" : (nn >= 0 ? "+" : "") + nn;
+  $("k4s").textContent = `${n(s(u, "seguidos_nuevos"))} nuevos, ${n(s(u, "dejaron_de_seguir"))} se fueron`;
+
+  const seg = d.cuenta && d.cuenta.followers_count;
+  const pv = s(u, "views"), pa = s(a, "views");
+  const veces = pa ? pv / pa : null;
+  $("story").textContent = u.length
+    ? `Esta semana ${n(s(u, "reach"))} personas vieron la quinta en Instagram${veces && veces >= 1.2 ? `, ${veces.toFixed(1).replace(".", ",")} veces más vistas que la semana anterior` : ""}. ${n(s(u, "profile_links_taps"))} tocaron el WhatsApp para consultar. Hoy la cuenta tiene ${n(seg)} seguidores.`
+    : `Hoy la cuenta tiene ${n(seg)} seguidores.`;
+
+  // Gráfico
+  if (dias.length) {
+    const vals = dias.slice(-30).map(([k, v]) => ({ k, v: Number(v.views) || 0 }));
+    const W = 860, H = 230, m = { l: 46, r: 12, t: 12, b: 26 };
+    const max = Math.max(...vals.map((x) => x.v), 1);
+    const x = (i) => m.l + i * (W - m.l - m.r) / Math.max(vals.length - 1, 1);
+    const y = (v) => H - m.b - v / max * (H - m.t - m.b);
+    let g = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vistas por día">`;
+    [0, .5, 1].forEach((f) => { g += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${y(max * f) + 4}" text-anchor="end">${n(max * f)}</text>`; });
+    g += `<path d="M${x(0)},${y(0)} ${vals.map((p, i) => `L${x(i)},${y(p.v)}`).join(" ")} L${x(vals.length - 1)},${y(0)} Z" fill="var(--agua)" opacity=".14"/>`;
+    g += `<path d="${vals.map((p, i) => (i ? "L" : "M") + x(i) + "," + y(p.v)).join(" ")}" fill="none" stroke="var(--agua)" stroke-width="2.5" stroke-linejoin="round"/>`;
+    const im = vals.reduce((b, p, i) => p.v > vals[b].v ? i : b, 0);
+    g += `<circle cx="${x(im)}" cy="${y(vals[im].v)}" r="5" fill="var(--nar)"/><text x="${x(im)}" y="${y(vals[im].v) - 10}" text-anchor="middle" style="fill:var(--fg);font-weight:600">${n(vals[im].v)}</text>`;
+    vals.forEach((p, i) => { if (i % 5 === 0 || i === vals.length - 1) g += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${p.k.slice(8)}/${p.k.slice(5, 7)}</text>`; });
+    $("chart").innerHTML = g + "</svg>";
+  }
+
+  // Mejores publicaciones del mes
+  const limite = new Date(Date.now() - 30 * 864e5).toISOString();
+  const pubs = (d.publicaciones || []).filter((p) => (p.timestamp || "") >= limite.slice(0, 19) && p.metricas && p.metricas.views)
+    .sort((p, q) => q.metricas.views - p.metricas.views).slice(0, 3);
+  if (pubs.length) $("best").replaceChildren(...pubs.map((p) => {
+    const a = el("a", "post"); a.href = p.permalink; a.target = "_blank"; a.rel = "noopener";
+    const img = el("img"); img.src = p.thumbnail_url || p.media_url || ""; img.alt = ""; img.loading = "lazy";
+    const t = el("div"); t.style.minWidth = "0";
+    t.append(el("b", null, n(p.metricas.views) + " vistas"), el("div", "t", (p.caption || "").split("\n")[0]));
+    a.append(img, t); return a;
+  }));
+
+  // Público
+  const aud = d.audiencia || {};
+  if (aud.gender) { const t = Object.values(aud.gender).reduce((x, y) => x + y, 0); $("genero").textContent = `${Math.round((aud.gender.F || 0) / t * 100)}% mujeres · ${Math.round((aud.gender.M || 0) / t * 100)}% hombres`; }
+  const barras = (cont, obj, fmt, lim) => {
+    const e = Object.entries(obj || {}).sort((p, q) => q[1] - p[1]).slice(0, lim); if (!e.length) return;
+    const tot = Object.values(obj).reduce((x, y) => x + y, 0), max = e[0][1];
+    cont.replaceChildren(...e.map(([k, v]) => { const r = el("div", "hbar"), w = el("div"), b = el("div", "b"); b.style.width = (v / max * 100) + "%"; w.append(b); r.append(el("span", null, fmt(k)), w, el("span", "v", (v / tot * 100).toFixed(0) + "%")); return r; }));
+  };
+  barras($("edad"), aud.age, (k) => k + " años", 6);
+  barras($("ciudad"), aud.city, (k) => k.split(",")[0].replace("Ciudad Autónoma de Buenos Aires", "CABA"), 6);
+}).catch(() => { $("story").textContent = "No se pudieron cargar los números. Probá recargar la página."; });
+
+// Plan de la semana
+fetch(CFG.cola + nocache).then((r) => r.json()).then((c) => {
+  const pad = (x) => String(x).padStart(2, "0");
+  const fmt = (dt) => `${dt.getFullYear()}-${pad(dt.getMonth() + 1)}-${pad(dt.getDate())} ${pad(dt.getHours())}:${pad(dt.getMinutes())}`;
+  const desde = fmt(hoyAR), hasta = fmt(new Date(hoyAR.getTime() + 7 * 864e5));
+  const items = c.filter((i) => i.estado === "pendiente" && i.fecha >= desde && i.fecha <= hasta).sort((p, q) => p.fecha < q.fecha ? -1 : 1);
+  if (!items.length) return;
+  const DIAS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+  const TIPO = { POST: "Posteo", REEL: "Reel", STORY: "Historia", CARRUSEL: "Carrusel" };
+  $("plan").replaceChildren(...items.map((i) => {
+    const f = new Date(i.fecha.replace(" ", "T") + ":00");
+    const r = el("div", "pl"), izq = el("div"), der = el("div");
+    izq.append(el("div", "d", `${DIAS[f.getDay()]} ${f.getDate()}/${f.getMonth() + 1}`), el("div", "h", i.fecha.slice(11) + " h"));
+    const txt = (i.texto || "").split("\n").find((l) => l.trim()) || "Imagen con la promo del día";
+    const x = el("div", "x"); x.append(el("span", "chip " + i.tipo, TIPO[i.tipo] || i.tipo), txt.replace(/#\S+/g, "").trim());
+    der.append(x); r.append(izq, der); return r;
+  }));
+}).catch(() => {});
+
+// Reservas con clave
+async function abrir(pin) {
+  const enc = await (await fetch(CFG.reservas + nocache)).json();
+  const b = (s) => Uint8Array.from(atob(s), (ch) => ch.charCodeAt(0));
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pin), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({ name: "PBKDF2", salt: b(enc.salt), iterations: enc.iter, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["decrypt"]);
+  const plano = await crypto.subtle.decrypt({ name: "AES-GCM", iv: b(enc.iv) }, key, b(enc.data));
+  return JSON.parse(new TextDecoder().decode(plano));
+}
+function mostrar(lista) {
+  const mesKey = `${hoyAR.getFullYear()}-${String(hoyAR.getMonth() + 1).padStart(2, "0")}`;
+  const delMes = lista.filter((r) => (r.registrada || "").startsWith(mesKey));
+  const total = delMes.reduce((t, r) => t + (Number(r.monto) || 0), 0);
+  $("res-monto").textContent = plata(total);
+  $("res-cant").textContent = `${delMes.length} ${delMes.length === 1 ? "reserva" : "reservas"} de gente nueva que llegó por Instagram este mes.`;
+  $("res-tb").replaceChildren(...delMes.map((r) => { const tr = el("tr"); tr.append(el("td", null, r.registrada.split("-").reverse().slice(0, 2).join("/")), el("td", null, r.para), el("td", "n", plata(r.monto))); return tr; }));
+  $("res-lock").hidden = true; $("res-open").hidden = false;
+}
+$("f").addEventListener("submit", async (e) => {
+  e.preventDefault(); $("err").textContent = "";
+  const pin = $("pin").value.trim();
+  try { mostrar(await abrir(pin)); try { localStorage.setItem("clave-informe", pin); } catch (x) {} }
+  catch (x) { $("err").textContent = "Clave incorrecta. Revisala y probá de nuevo."; }
+});
+(async () => { let p = null; try { p = localStorage.getItem("clave-informe"); } catch (x) {} if (p) { try { mostrar(await abrir(p)); } catch (x) {} } })();
+</script>
+</body>
+</html>

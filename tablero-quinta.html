@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablero Quinta El Florido</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Panel nocturno de pileta: azul profundo, agua turquesa, naranja de la marca */
+:root {
+  --bg: #F3F6F8; --panel: #FFFFFF; --fg: #0E1B2A; --muted: #5B6B7C; --line: #DCE4EA;
+  --agua: #1C8FB0; --nar: #E8701A; --ok: #1E8E57; --warn: #B7791F; --bad: #C2413A;
+  --serif: "DM Serif Display", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #08141F; --panel: #0F2132; --fg: #E8EEF3; --muted: #93A5B6; --line: #1E3449;
+  --agua: #4CC3E3; --nar: #FF8A3D; --ok: #4CC38A; --warn: #E0A84A; --bad: #EF6B63; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #08141F; --panel: #0F2132; --fg: #E8EEF3; --muted: #93A5B6; --line: #1E3449;
+  --agua: #4CC3E3; --nar: #FF8A3D; --ok: #4CC38A; --warn: #E0A84A; --bad: #EF6B63; color-scheme: dark }
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans);
+  padding-block: 24px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 5vw, 40px); margin: 0; text-wrap: balance }
+h2 { font-size: 17px; font-weight: 600; margin: 0 0 4px }
+.sub { color: var(--muted); font-size: 13px; margin: 0 }
+.take { margin: 6px 0 0; max-width: 64ch; color: var(--muted) }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; min-width: 0 }
+.lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted) }
+.num { font-family: var(--serif); font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums }
+.chg.good { color: var(--ok) } .chg.bad { color: var(--bad) }
+.tw { overflow-x: auto }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap }
+th { font-size: 12px; color: var(--muted); font-weight: 500 }
+td.n, th.n { text-align: right }
+td.t { white-space: normal; min-width: 18ch; max-width: 36ch }
+td img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; display: block; background: var(--line) }
+.chart svg { width: 100%; height: auto; display: block }
+.chart text { fill: var(--muted); font: 11px var(--sans) }
+.bars { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; align-items: end; height: 120px }
+.bars div { background: var(--agua); border-radius: 3px 3px 0 0; min-height: 2px }
+.bars div.top { background: var(--nar) }
+.hrs { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; font-size: 10px; color: var(--muted); text-align: center }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px }
+.hbar { display: grid; grid-template-columns: 9ch 1fr 6ch; gap: 8px; align-items: center; font-size: 13px; margin: 6px 0 }
+.hbar .b { height: 10px; border-radius: 5px; background: var(--agua) }
+.hbar .v { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums }
+.empty { color: var(--muted); font-size: 13px; padding: 12px 0 }
+.warnbox { border: 1px solid var(--warn); color: var(--warn); border-radius: 10px; padding: 10px 14px; font-size: 13px }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px }
+.links a { color: var(--fg) }
+a { color: var(--agua) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Quinta El Florido · Instagram</h1>
+    <p class="take" id="take">Cargando datos…</p>
+    <p class="sub" id="upd">Actualizado: —</p>
+  </header>
+
+  <div class="warnbox" id="permiso" hidden>Las estadísticas de alcance, vistas e historias todavía no llegan: falta habilitar el permiso de estadísticas en la app de Meta. Mientras tanto se muestran seguidores, me gusta y comentarios.</div>
+
+  <section class="grid" id="kpis" aria-label="Resumen">
+    <div class="card"><div class="lbl">Seguidores</div><div class="num" id="k-seg">—</div><div class="sub" id="k-seg-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Vistas · 7 días</div><div class="num" id="k-vis">—</div><div class="sub" id="k-vis-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Personas alcanzadas · 7 días</div><div class="num" id="k-alc">—</div><div class="sub" id="k-alc-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Toques al enlace (WhatsApp) · 7 días</div><div class="num" id="k-link">—</div><div class="sub" id="k-link-s">&nbsp;</div></div>
+  </section>
+
+  <section class="card" id="vistas-dia">
+    <h2>Vistas por día</h2>
+    <p class="sub">Últimos 30 días, todas las publicaciones e historias.</p>
+    <div class="chart" id="chart-vistas"><div class="empty">Sin datos todavía.</div></div>
+  </section>
+
+  <section class="card" id="horas">
+    <h2>¿A qué hora están conectados tus seguidores?</h2>
+    <p class="sub">Promedio de los últimos días, hora Argentina. En naranja, las 3 horas con más gente: el mejor momento para publicar.</p>
+    <div id="horas-chart"><div class="empty">Sin datos todavía.</div></div>
+  </section>
+
+  <section class="two">
+    <div class="card" id="aud-edad"><h2>Edad de los seguidores</h2><div id="edad"><div class="empty">Sin datos todavía.</div></div></div>
+    <div class="card" id="aud-ciudad"><h2>Ciudades principales</h2><div id="ciudad"><div class="empty">Sin datos todavía.</div></div></div>
+  </section>
+
+  <section class="card" id="publicaciones">
+    <h2>Publicaciones de los últimos 60 días</h2>
+    <p class="sub">Ordenadas por vistas (o por me gusta mientras no estén las vistas).</p>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Fecha</th><th>Tipo</th><th>Publicación</th><th class="n">Vistas</th><th class="n">Alcance</th><th class="n">Me gusta</th><th class="n">Coment.</th><th class="n">Guardados</th><th class="n">Compart.</th></tr></thead>
+      <tbody id="tb-pubs"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" id="historias">
+    <h2>Historias</h2>
+    <p class="sub">Se guardan antes de que desaparezcan a las 24 horas. Salidas = gente que cerró la historia.</p>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Publicada</th><th class="n">Alcance</th><th class="n">Vistas</th><th class="n">Respuestas</th><th class="n">Compart.</th><th class="n">Salidas</th></tr></thead>
+      <tbody id="tb-hist"></tbody>
+    </table></div>
+  </section>
+
+  <nav class="links" aria-label="Otras páginas del negocio">
+    <a href="tablero-presumida-v2.html">Tablero La Presumida</a>
+    <a href="produccion.html">Producción</a>
+    <a href="mostrador.html">Mostrador</a>
+    <a href="tablero-club.html">Club La Presumida</a>
+    <a href="apps.html">Apps</a>
+    <a href="ranking-mostrador.html">Ranking mostrador</a>
+    <a href="reconocimiento.html">Reconocimiento</a>
+  </nav>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const n = (v) => v == null ? '—' : Math.round(v).toLocaleString('es-AR');
+const fecha = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }); };
+const hora = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }); };
+const el = (tag, attrs = {}, txt) => { const e = document.createElement(tag); Object.assign(e, attrs); if (txt != null) e.textContent = txt; return e; };
+
+function chg(id, now, before) {
+  const s = $(id); if (before == null || !before || now == null) { s.textContent = ' '; return; }
+  const p = (now - before) / before * 100;
+  s.textContent = ''; const b = el('span', { className: 'chg ' + (p >= 0 ? 'good' : 'bad') }, (p >= 0 ? '+' : '') + p.toFixed(0) + '%');
+  s.append(b, ' vs los 7 días anteriores');
+}
+
+fetch('quinta-ig/metricas/datos.json?' + Date.now()).then((r) => r.json()).then((d) => {
+  $('upd').textContent = 'Actualizado: ' + (d.actualizado ? d.actualizado.split(' ').map((x, i) => i ? x : x.split('-').reverse().join('/')).join(' ') : '—') + ' · se actualiza solo cada 3 horas';
+  const dias = Object.entries(d.dias || {}).sort();
+  const sinPermiso = !dias.length;
+  $('permiso').hidden = !sinPermiso;
+
+  // Seguidores
+  const seg = d.cuenta && d.cuenta.followers_count;
+  $('k-seg').textContent = n(seg);
+  const hist = Object.entries(d.seguidores_hist || {}).sort();
+  if (hist.length > 1) { const dif = hist[hist.length - 1][1] - hist[0][1]; $('k-seg-s').textContent = (dif >= 0 ? '+' : '') + dif + ' desde el ' + hist[0][0].split('-').reverse().slice(0, 2).join('/'); }
+
+  // KPIs 7 días
+  const ult = dias.slice(-7).map((x) => x[1]), ant = dias.slice(-14, -7).map((x) => x[1]);
+  const s = (arr, k) => arr.length ? arr.reduce((a, x) => a + (Number(x[k]) || 0), 0) : null;
+  if (!sinPermiso) {
+    $('k-vis').textContent = n(s(ult, 'views')); chg('k-vis-s', s(ult, 'views'), s(ant, 'views'));
+    $('k-alc').textContent = n(s(ult, 'reach')); chg('k-alc-s', s(ult, 'reach'), s(ant, 'reach'));
+    $('k-link').textContent = n(s(ult, 'profile_links_taps')); chg('k-link-s', s(ult, 'profile_links_taps'), s(ant, 'profile_links_taps'));
+  }
+
+  // Gráfico de vistas por día
+  if (dias.length) {
+    const W = 900, H = 220, m = { l: 44, r: 10, t: 10, b: 24 };
+    const vals = dias.slice(-30).map(([k, v]) => ({ k, v: Number(v.views) || 0 }));
+    const max = Math.max(...vals.map((x) => x.v), 1);
+    const x = (i) => m.l + i * (W - m.l - m.r) / Math.max(vals.length - 1, 1);
+    const y = (v) => H - m.b - v / max * (H - m.t - m.b);
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Vistas por día de los últimos 30 días">`;
+    [0, .5, 1].forEach((f) => { svg += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${y(max * f) + 4}" text-anchor="end">${n(max * f)}</text>`; });
+    svg += `<path d="M${x(0)},${y(0)} ` + vals.map((p, i) => `L${x(i)},${y(p.v)}`).join(' ') + ` L${x(vals.length - 1)},${y(0)} Z" fill="var(--agua)" opacity=".15"/>`;
+    svg += `<path d="` + vals.map((p, i) => (i ? 'L' : 'M') + x(i) + ',' + y(p.v)).join(' ') + `" fill="none" stroke="var(--agua)" stroke-width="2.5"/>`;
+    vals.forEach((p, i) => { if (i % 5 === 0 || i === vals.length - 1) svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${p.k.slice(8)}/${p.k.slice(5, 7)}</text>`; });
+    svg += '</svg>';
+    $('chart-vistas').innerHTML = svg;
+  }
+
+  // Horas
+  if (d.horas_conectados && d.horas_conectados.some((v) => v > 0)) {
+    const h = d.horas_conectados, max = Math.max(...h), top = [...h].map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).slice(0, 3).map((x) => x[1]);
+    const bars = el('div', { className: 'bars' }), lab = el('div', { className: 'hrs' });
+    h.forEach((v, i) => { const b = el('div'); b.style.height = (v / max * 100) + '%'; b.title = i + ' h: ' + n(v); if (top.includes(i)) b.className = 'top'; bars.append(b); lab.append(el('span', {}, i % 3 === 0 ? i : '')); });
+    $('horas-chart').replaceChildren(bars, lab);
+  }
+
+  // Audiencia
+  const hb = (cont, obj, fmt, limit) => {
+    const ent = Object.entries(obj || {}).sort((a, b) => b[1] - a[1]).slice(0, limit); if (!ent.length) return;
+    const tot = Object.values(obj).reduce((a, b) => a + b, 0), max = ent[0][1];
+    cont.replaceChildren(...ent.map(([k, v]) => { const r = el('div', { className: 'hbar' }); const b = el('div', { className: 'b' }); b.style.width = (v / max * 100) + '%'; r.append(el('span', {}, fmt(k)), el('div', {}, null), el('span', { className: 'v' }, (v / tot * 100).toFixed(0) + '%')); r.children[1].append(b); return r; }));
+  };
+  if (d.audiencia) { hb($('edad'), d.audiencia.age, (k) => k, 7); hb($('ciudad'), d.audiencia.city, (k) => k.split(',')[0], 8); }
+
+  // Publicaciones
+  const pubs = (d.publicaciones || []).map((p) => ({ ...p, m: p.metricas || {} }));
+  pubs.sort((a, b) => ((b.m.views || 0) - (a.m.views || 0)) || ((b.like_count || 0) - (a.like_count || 0)));
+  const tipo = (p) => p.media_product_type === 'REELS' ? 'Reel' : p.media_type === 'CAROUSEL_ALBUM' ? 'Carrusel' : 'Posteo';
+  $('tb-pubs').replaceChildren(...pubs.map((p) => {
+    const tr = el('tr'); const img = el('img', { src: p.thumbnail_url || p.media_url || '', alt: '', loading: 'lazy' }); const a = el('a', { href: p.permalink, target: '_blank', rel: 'noopener' }); a.append(img);
+    const t = (p.caption || '(sin texto)').split('\n')[0].slice(0, 70);
+    [a, fecha(p.timestamp), tipo(p), t, n(p.m.views), n(p.m.reach), n(p.like_count), n(p.comments_count), n(p.m.saved), n(p.m.shares)].forEach((v, i) => {
+      const td = el('td'); if (v instanceof Node) td.append(v); else td.textContent = v; if (i >= 4) td.className = 'n'; if (i === 3) td.className = 't'; tr.append(td); });
+    return tr;
+  }));
+
+  // Historias
+  const hs = d.historias || [];
+  if (!hs.length) $('tb-hist').replaceChildren(Object.assign(el('tr'), {}).appendChild(Object.assign(el('td', { colSpan: 7, className: 'empty' }, 'Todavía no hay historias guardadas.'))).parentNode);
+  else $('tb-hist').replaceChildren(...hs.map((h) => {
+    const m = h.metricas || {}, nav = m.navegacion || {};
+    const tr = el('tr'); const img = el('img', { src: h.thumbnail_url || h.media_url || '', alt: '', loading: 'lazy' });
+    [img, hora(h.timestamp), n(m.reach), n(m.views), n(m.replies), n(m.shares), n(nav.TAP_EXIT != null ? nav.TAP_EXIT : null)].forEach((v, i) => {
+      const td = el('td'); if (v instanceof Node) td.append(v); else td.textContent = v; if (i >= 2) td.className = 'n'; tr.append(td); });
+    return tr;
+  }));
+
+  // Resumen en una frase
+  $('take').textContent = sinPermiso
+    ? `La cuenta tiene ${n(seg)} seguidores y ${pubs.length} publicaciones en los últimos 60 días. La más vista: "${(pubs[0] && (pubs[0].caption || '').split('\n')[0].slice(0, 50)) || '—'}".`
+    : `En los últimos 7 días la cuenta tuvo ${n(s(ult, 'views'))} vistas y llegó a ${n(s(ult, 'reach'))} personas; ${n(s(ult, 'profile_links_taps'))} tocaron el enlace de WhatsApp.`;
+}).catch(() => { $('take').textContent = 'No se pudieron cargar los datos. Probá recargar la página.'; });
+</script>
+</body>
+</html>

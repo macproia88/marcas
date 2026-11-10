@@ -124,8 +124,19 @@ def main():
                 dias[k] = v
     datos["dias"] = dict(sorted(dias.items())[-120:])
 
+    # Totales de la semana sin repetir personas (el alcance por día sumado cuenta varias veces a la misma persona)
+    def rango(dias_atras_fin, largo=7):
+        fin_d = (ahora - datetime.timedelta(days=dias_atras_fin)).date()
+        ini_d = fin_d - datetime.timedelta(days=largo - 1)
+        ini = int(datetime.datetime(ini_d.year, ini_d.month, ini_d.day, tzinfo=ART).timestamp())
+        fin = int(datetime.datetime(fin_d.year, fin_d.month, fin_d.day, tzinfo=ART).timestamp()) + 86400
+        r = intentar(f"semana {ini_d}", lambda: get(f"{IG}/insights", metric="reach,accounts_engaged,views,profile_links_taps",
+                     period="day", metric_type="total_value", since=ini, until=fin))
+        return {"desde": ini_d.isoformat(), "hasta": fin_d.isoformat(), **(total(r) if r else {})}
+    datos["semana"] = {"actual": rango(1), "anterior": rango(8)}
+
     # Audiencia (una vez por día alcanza)
-    if datos.get("audiencia_fecha") != hoy_txt:
+    if datos.get("audiencia_fecha") != hoy_txt or not any(datos.get("horas_conectados") or []):
         aud = {}
         for b in ("age", "gender", "city"):
             r = intentar(f"audiencia {b}", lambda: get(f"{IG}/insights", metric="follower_demographics", period="lifetime",
@@ -138,7 +149,11 @@ def main():
             datos["audiencia"] = aud
             datos["audiencia_fecha"] = hoy_txt
         # Horas en que los seguidores están conectados
-        on = intentar("online_followers", lambda: get(f"{IG}/insights", metric="online_followers", period="lifetime"))
+        hasta_on = int((ahora - datetime.timedelta(days=1)).timestamp())
+        on = intentar("online_followers", lambda: get(f"{IG}/insights", metric="online_followers", period="lifetime",
+                      since=hasta_on - 29 * 86400, until=hasta_on))
+        if on is not None:
+            datos["online_crudo"] = json.dumps(on)[:1500]
         if on and on.get("data"):
             horas = [0] * 24
             for v in on["data"][0].get("values", []):

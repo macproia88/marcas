@@ -24,5 +24,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt
-          git commit -m "Metricas IG [skip ci]" || exit 0
+          git commit -m "Metricas IG" || exit 0
           git pull --rebase -q && git push -q

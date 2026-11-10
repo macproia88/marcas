@@ -150,7 +150,7 @@
       <div class="card" id="c-clientes"><h2>Clientes por día</h2><p class="note">Abajo: tickets de mostrador. Arriba: pedidos de apps (PedidosYa + Rappi).</p><div class="chart" id="ch-clientes" data-source="ventas_diarias"></div></div>
     </div>
     <div class="card" id="c-ticket"><h2>Ticket promedio de mostrador por día</h2><p class="note">Naranja: 2026. Gris: mismo día de la semana de 2025. Punteada: 2025 + 33,4% de inflación. Si el naranja está arriba de la punteada, el ticket le gana a la inflación. Con los 3 locales juntos, 2025 aparece desde el 12/10 (Paz no tiene tickets de 2025 antes del 13/10).</p><div class="chart" id="ch-ticket" data-source="ventas_diarias"></div></div>
-    <div class="card" id="c-locales"><h2>Los tres locales en el período</h2><p class="note">Real = variación nominal menos 33,4 puntos de inflación (INDEC, septiembre 2026).</p>
+    <div class="card" id="c-locales"><h2>Los tres locales en el período</h2><p class="note">Real = (1 + variación nominal) ÷ 1,334 − 1, con 33,4% de inflación interanual (INDEC, septiembre 2026). Es la misma cuenta que la presentación de los martes. Tickets y ticket promedio se comparan solo con los días que tienen dato de 2025.</p>
       <div class="tw"><table id="tb-locales" data-source="kpi_periodo" data-row-key="desde,hasta,local">
         <thead><tr><th data-field="local">Local</th><th data-field="venta">Venta</th><th data-field="var_real_pp">Real vs 2025</th><th data-field="venta_dia">Venta por día</th><th data-field="tickets_mostrador">Tickets mostrador</th><th data-field="var_tickets">vs 2025</th><th data-field="ticket_prom">Ticket prom.</th><th data-field="pedidos_app">Pedidos apps</th><th data-field="pct_app">% apps</th></tr></thead><tbody></tbody></table></div>
     </div>
@@ -274,7 +274,7 @@ const PER = {
 window.LP_PER = PER;
 dash.calc('kpi_periodo', {
   title: 'Ventas por rango de fechas y local',
-  description: 'Para el rango de fechas elegido suma las ventas diarias por local y para los 3 locales, y calcula variaciones contra el mismo día de la semana de 2025 (real = nominal menos 33,4 puntos).',
+  description: 'Para el rango de fechas elegido suma las ventas diarias por local y para los 3 locales, y calcula variaciones contra el mismo día de la semana de 2025 (real = (1 + nominal) ÷ 1,334 − 1, como en la presentación de los martes).',
   inputs: ['ventas_diarias'],
   porFiltro: true,
   fn: (ventas_diarias) => {
@@ -287,6 +287,9 @@ dash.calc('kpi_periodo', {
       const g = (k) => acc[k + '_ok'] ? acc[k] : null;
       const venta = acc.venta, v25 = g('venta_2025'), tk = acc.tickets_mostrador, tk25 = g('tickets_mostrador_2025');
       const vm = acc.venta_mostrador, vm25 = g('venta_mostrador_2025'), va = acc.venta_app, ped = g('pedidos_app');
+      // tickets y ticket promedio contra 2025: solo los días que tienen tickets de 2025 (igual que la presentación de los martes)
+      const rc = r.filter((d) => Number(d.tickets_mostrador_2025) > 0); const sc = (k) => rc.reduce((t, d) => t + (Number(d[k]) || 0), 0);
+      const tkc = sc('tickets_mostrador'), tkc25 = sc('tickets_mostrador_2025'), vmc = sc('venta_mostrador'), vmc25 = sc('venta_mostrador_2025');
       const tp = tk ? vm / tk : null, tp25 = tk25 && vm25 ? vm25 / tk25 : null, dias = new Set(r.map((d) => d.fecha)).size || 1;
       const fs = [...new Set(ventas_diarias.map((d) => d.fecha))].sort(); const i0 = fs.indexOf(r.length ? r[0].fecha : desde);
       const nd = new Set(r.map((d) => d.fecha)).size; const prevF = i0 >= nd ? new Set(fs.slice(i0 - nd, i0)) : null;
@@ -298,9 +301,9 @@ dash.calc('kpi_periodo', {
       out.push({desde, hasta, local: loc, dias, venta, venta_2025: v25,
         var_ant: vAnt ? vHoy / vAnt - 1 : null, var_tk_ant: tkAnt ? tkHoy / tkAnt - 1 : null, var_tp_ant: tpAnt && tp ? tp / tpAnt - 1 : null,
         ant_desde: prevF ? [...prevF][0] : null, ant_hasta: prevF ? [...prevF][prevF.size - 1] : null,
-        var_real_pp: v25 ? (venta / v25 - 1 - 0.334) * 100 : null, venta_dia: pd(r, 'venta') ?? venta / dias,
-        venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tk25 ? tk / tk25 - 1 : null,
-        ticket_prom: tp, var_ticket_real_pp: tp && tp25 ? (tp / tp25 - 1 - 0.334) * 100 : null,
+        var_real_pp: v25 ? (venta / v25 / 1.334 - 1) * 100 : null, venta_dia: pd(r, 'venta') ?? venta / dias,
+        venta_app: va, pct_app: venta ? va / venta : null, tickets_mostrador: tk, var_tickets: tkc25 ? tkc / tkc25 - 1 : null,
+        ticket_prom: tp, var_ticket_real_pp: tkc && tkc25 && vmc25 ? ((vmc / tkc) / (vmc25 / tkc25) / 1.334 - 1) * 100 : null,
         pedidos_app: ped, ticket_app: ped ? va / ped : null});
     }
     return out;
@@ -372,7 +375,7 @@ const $ = (s) => document.querySelector(s);
 const fM = (v) => v == null ? '—' : '$' + (Math.abs(v) >= 1e6 ? (v / 1e6).toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + ' M' : Math.round(v).toLocaleString('es-AR'));
 const fN = (v, d = 0) => v == null ? '—' : Number(v).toLocaleString('es-AR', {maximumFractionDigits: d, minimumFractionDigits: d});
 const fP = (v, d = 1, s = false) => v == null ? '—' : (s && v > 0 ? '+' : '') + (v * 100).toLocaleString('es-AR', {maximumFractionDigits: d, minimumFractionDigits: d}) + '%';
-const fPP = (v) => v == null ? '—' : (v > 0 ? '+' : '') + v.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + ' p.p.';
+const fPP = (v) => v == null ? '—' : (v > 0 ? '+' : '') + v.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1}) + '%';
 const cls = (el, v, good = true) => { el.classList.remove('good', 'bad'); if (v == null) return; el.classList.add((v >= 0) === good ? 'good' : 'bad'); };
 window.LP = {fM, fN, fP, fPP, cls};
 const fd = (f) => f.slice(8, 10) + '/' + f.slice(5, 7);
@@ -523,7 +526,7 @@ const drawDaily = () => {
         tip.hidden = false; tip.replaceChildren();
         const hd = document.createElement('div'); hd.className = 'h'; hd.textContent = fmtD(d.fecha); tip.append(hd);
         [['2026', d.tp], ['2025', d.tp25], ['2025 + inflación', d.tpi]].forEach(([n, v]) => { const l = document.createElement('div'); l.textContent = `${n}: ${v == null ? '—' : window.LP.fM(v)}`; tip.append(l); });
-        if (d.tp && d.tp25) { const l = document.createElement('div'); const r = (d.tp / d.tp25 - 1 - 0.334) * 100; l.textContent = `Real: ${r > 0 ? '+' : ''}${r.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1})} p.p.`; l.style.color = r >= 0 ? 'var(--color-ok)' : 'var(--color-bad)'; tip.append(l); }
+        if (d.tp && d.tp25) { const l = document.createElement('div'); const r = (d.tp / d.tp25 / 1.334 - 1) * 100; l.textContent = `Real: ${r > 0 ? '+' : ''}${r.toLocaleString('es-AR', {maximumFractionDigits: 1, minimumFractionDigits: 1})}%`; l.style.color = r >= 0 ? 'var(--color-ok)' : 'var(--color-bad)'; tip.append(l); }
         const left = Math.min(x(d.fecha) + 10, W - tip.offsetWidth - 4); tip.style.left = Math.max(0, left) + 'px'; tip.style.top = '8px'; })
       .on('mouseleave', () => { tip.hidden = true; });
   })();

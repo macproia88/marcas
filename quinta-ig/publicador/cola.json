@@ -72,6 +72,40 @@
   "publicado_el": "2026-11-09 21:53"
  },
  {
+  "id": "reel-papa-lujan",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/reel-papa-lujan.mp4"
+  ],
+  "texto": "🙏 ¿Venís a ver al Papa a Luján?\n\nEl miércoles 11 a las 10 h, el Papa León XIV da misa frente a la Basílica de Luján. Va a haber muchísima gente.\n\nDormí a 15 minutos, en nuestra casa con pileta para 5. Llegás el martes, cenás tranquilo y el miércoles salís sin madrugar y sin tráfico de Capital.\n\n💬 Comentá PAPA y te pasamos disponibilidad\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 15 minutos de Luján\n\n#PapaEnArgentina #PapaLeónXIV #LeónXIV #Luján #BasílicaDeLuján #QuintaElFlorido #GeneralRodriguez #QuintaConPileta",
+  "fecha": "2026-11-09 23:19",
+  "estado": "publicado",
+  "ig_media_id": "18156357178532200",
+  "publicado_el": "2026-11-09 23:20"
+ },
+ {
+  "id": "h-papa-lujan",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/papa-lujan-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-09 23:19",
+  "estado": "publicado",
+  "ig_media_id": "18102852731387290",
+  "publicado_el": "2026-11-09 23:20"
+ },
+ {
+  "id": "calor-2026-11-10-h",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/calor-2026-11-10-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-10 18:15",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-escapada-finde-1",
   "tipo": "STORY",
   "media": [
@@ -90,6 +124,16 @@
   "texto": "🔥 SE VIENE EL CALOR 🔥\n\nMartes 28°, miércoles 29° y jueves 31°… ¿y vos en la oficina? 😅\n\nPromo entre semana: quinta con pileta desde $110.000 el día.\n\n🏡 Quinta de día para hasta 15 personas: pileta, quinchos, parrilla y juegos.\n🛏️ O quinta con casa para 5.\n\n👇 Etiquetá con quién te hacés la escapada\n💬 Comentá INFO y te pasamos fechas libres\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 600 m de la autopista\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste",
   "fecha": "2026-11-10 21:00",
   "estado": "reemplazado"
+ },
+ {
+  "id": "calor-2026-11-10",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/calor-2026-11-10.jpg"
+  ],
+  "texto": "🔥 Se viene el calor: 29° el jueves y 28° el finde en zona oeste… ¿ya tenés dónde tirarte a la pileta? 🏊‍♀️\n\nPileta, quincho, parrilla y sombra para pasar el día con tu gente, a minutos de la ciudad.\n\n🏡 Quinta de día para hasta 15 personas, o quinta con casa para 5 si te querés quedar.\n💰 Desde $140.000 el día\n\n👇 Etiquetá con quién te tirarías a la pileta\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste",
+  "fecha": "2026-11-10 21:00",
+  "estado": "pendiente"
  },
  {
   "id": "reel-10mil-por-persona",
@@ -313,29 +357,5 @@
   "texto": "",
   "fecha": "2026-11-21 22:00",
   "estado": "pausado"
- },
- {
-  "id": "reel-papa-lujan",
-  "tipo": "REEL",
-  "media": [
-   "quinta-ig/reel-papa-lujan.mp4"
-  ],
-  "texto": "🙏 ¿Venís a ver al Papa a Luján?\n\nEl miércoles 11 a las 10 h, el Papa León XIV da misa frente a la Basílica de Luján. Va a haber muchísima gente.\n\nDormí a 15 minutos, en nuestra casa con pileta para 5. Llegás el martes, cenás tranquilo y el miércoles salís sin madrugar y sin tráfico de Capital.\n\n💬 Comentá PAPA y te pasamos disponibilidad\n📲 WhatsApp: 11 3877-7015\n📍 General Rodríguez, a 15 minutos de Luján\n\n#PapaEnArgentina #PapaLeónXIV #LeónXIV #Luján #BasílicaDeLuján #QuintaElFlorido #GeneralRodriguez #QuintaConPileta",
-  "fecha": "2026-11-09 23:19",
-  "estado": "publicado",
-  "ig_media_id": "18156357178532200",
-  "publicado_el": "2026-11-09 23:20"
- },
- {
-  "id": "h-papa-lujan",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/papa-lujan-h.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-09 23:19",
-  "estado": "publicado",
-  "ig_media_id": "18102852731387290",
-  "publicado_el": "2026-11-09 23:20"
  }
 ]

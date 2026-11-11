@@ -1,5 +1,5 @@
 {
- "fecha": "2026-11-11T23:20:00.710812Z",
+ "fecha": "2026-11-11T23:23:28.276716Z",
  "catriel": {
   "largo": 253,
   "largo_limpio": 253,
@@ -15,11 +15,12 @@
   }
  },
  "florido": {
-  "largo": 253,
+  "largo": 258,
   "empieza": "EAA",
   "facebook_api": {
-   "error": "Unsupported get request. Object with ID '17841454960836233' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Ple",
-   "code": 100
+   "id": "17841454960836233",
+   "followers_count": 10964,
+   "username": "quintaelflorido"
   }
  }
 }

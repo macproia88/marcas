@@ -92,6 +92,9 @@ summary { cursor: pointer; font-weight: 600 }
 details p { margin-top: 8px; color: var(--muted) }
 footer { border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted) }
 footer .tel { font-family: var(--mono); color: var(--fg); user-select: all }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px }
+.links a { text-decoration: none; font-weight: 600; font-size: 14px; color: var(--green); background: var(--green-soft); padding: 8px 14px; border-radius: 999px }
+.links a:hover { text-decoration: underline }
 </style>
 </head>
 <body>
@@ -282,8 +285,13 @@ footer .tel { font-family: var(--mono); color: var(--fg); user-select: all }
   </section>
 
   <footer>
+    <nav class="links" aria-label="Más información">
+      <a href="https://macproia88.github.io/marcas/c/demo-quintas/" target="_blank" rel="noopener">Ver ejemplo del informe semanal</a>
+      <a href="https://wa.me/5491138777015" target="_blank" rel="noopener">Escribir a Juan por WhatsApp</a>
+      <a href="https://www.instagram.com/quintaelflorido/" target="_blank" rel="noopener">Ver el caso @quintaelflorido</a>
+    </nav>
     <span>Servicio de gestión de Instagram · Juan · WhatsApp <span class="tel">011 3877-7015</span> · @quintaelflorido</span>
-    <span>Actualizado: 11/11/2026 08:42</span>
+    <span>Actualizado: 11/11/2026 08:56</span>
   </footer>
 </div>
 

@@ -1,8 +1,25 @@
 {
- "largo_llave": 253,
- "fecha": "2026-11-11T23:19:17.991777Z",
- "instagram_api": {
-  "error": "Invalid OAuth access token - Cannot parse access token",
-  "code": 190
+ "fecha": "2026-11-11T23:20:00.710812Z",
+ "catriel": {
+  "largo": 253,
+  "largo_limpio": 253,
+  "empieza": "EAA",
+  "instagram_api": {
+   "error": "Invalid OAuth access token - Cannot parse access token",
+   "code": 190
+  },
+  "facebook_api": {
+   "id": "17841475673833807",
+   "followers_count": 53688,
+   "username": "ca7rielypacoamorosoarg"
+  }
+ },
+ "florido": {
+  "largo": 253,
+  "empieza": "EAA",
+  "facebook_api": {
+   "error": "Unsupported get request. Object with ID '17841454960836233' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Ple",
+   "code": 100
+  }
  }
 }

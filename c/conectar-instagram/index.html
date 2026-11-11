@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Conectá tu Instagram">
+<meta property="og:description" content="Paso a paso para dar acceso de socio a tu Instagram en 10 minutos, sin compartir contraseñas.">
+<title>Conectá tu Instagram</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Guía de una columna: pasos numerados (es una secuencia real) con una "vista de pantalla" dibujada por paso */
+:root {
+  --bg: #F3F6F2; --panel: #FFFFFF; --fg: #13221A; --muted: #56675C; --line: #D6E0D8;
+  --green: #1F6B45; --green-soft: #E2F0E7; --sun: #E08A1E; --sun-soft: #FCEFD9;
+  --meta: #0A66D8; --screen: #F7F8FA; --screen-line: #DADDE2; --warn: #B4471E;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0D1712; --panel: #15231B; --fg: #E5EEE8; --muted: #9AB0A2; --line: #26392E;
+  --green: #5DC48D; --green-soft: #183326; --sun: #F2A64A; --sun-soft: #3A2A12;
+  --meta: #5BA2FF; --screen: #1B2A22; --screen-line: #2F4438; --warn: #F08A62; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0D1712; --panel: #15231B; --fg: #E5EEE8; --muted: #9AB0A2; --line: #26392E;
+  --green: #5DC48D; --green-soft: #183326; --sun: #F2A64A; --sun-soft: #3A2A12;
+  --meta: #5BA2FF; --screen: #1B2A22; --screen-line: #2F4438; --warn: #F08A62; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--sans); margin: 0;
+  padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15 }
+h1 { font-size: clamp(30px, 7vw, 44px); font-weight: 700 }
+h2 { font-size: 22px; font-weight: 700 }
+h3 { font-size: 17px; font-weight: 600 }
+p { margin: 0 }
+.lead { font-size: 18px; color: var(--muted); max-width: 60ch }
+.eyebrow { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); font-weight: 600 }
+header { display: flex; flex-direction: column; gap: 12px }
+.facts { display: flex; flex-wrap: wrap; gap: 8px }
+.chip { font-size: 13px; padding: 5px 12px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-weight: 600 }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0 }
+.check { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px }
+.check li { display: flex; gap: 10px; align-items: flex-start }
+.check li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 3px; border-radius: 5px; border: 2px solid var(--green) }
+.idcard { background: var(--sun-soft); border: 2px solid var(--sun); border-radius: 16px; padding: 18px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; justify-content: space-between }
+.idcard .lbl { font-size: 13px; color: var(--muted); font-weight: 600 }
+.idnum { font-family: var(--mono); font-size: clamp(20px, 5.5vw, 28px); letter-spacing: .04em; user-select: all; font-variant-numeric: tabular-nums }
+button.copy { font: 600 14px var(--sans); background: var(--fg); color: var(--bg); border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer }
+button.copy:focus-visible, a:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px }
+ol.steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 22px; counter-reset: s }
+ol.steps > li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px }
+ol.steps > li::before { content: counter(s); font: 700 20px/44px var(--display); width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: var(--bg); text-align: center }
+.stepbody { display: flex; flex-direction: column; gap: 10px; min-width: 0 }
+.path { font-size: 15px }
+.path b { background: var(--green-soft); color: var(--green); padding: 1px 7px; border-radius: 6px; font-weight: 600; white-space: nowrap }
+.note { font-size: 14px; color: var(--muted) }
+.tip { font-size: 14px; border-left: 3px solid var(--sun); padding: 2px 0 2px 12px; color: var(--muted) }
+/* vista de pantalla dibujada */
+.screen { background: var(--screen); border: 1px solid var(--screen-line); border-radius: 12px; overflow: hidden; font-size: 13px }
+.screen .bar { display: flex; gap: 6px; padding: 8px 10px; border-bottom: 1px solid var(--screen-line) }
+.screen .bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--screen-line) }
+.screen .body { padding: 14px; display: flex; gap: 14px; flex-wrap: wrap }
+.side { display: flex; flex-direction: column; gap: 4px; min-width: 150px }
+.side span { padding: 4px 8px; border-radius: 6px; color: var(--muted) }
+.side .grp { font-weight: 600; color: var(--fg) }
+.side .on { background: var(--fg); color: var(--bg); font-weight: 600 }
+.menu { border: 1px solid var(--screen-line); background: var(--panel); border-radius: 8px; padding: 6px; display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 200px }
+.menu div { padding: 8px 10px; border-radius: 6px }
+.menu .hl { outline: 2px solid var(--sun); background: var(--sun-soft) }
+.menu small { display: block; color: var(--muted); font-size: 12px }
+.btn-meta { background: var(--meta); color: #fff; border-radius: 6px; padding: 6px 12px; font-weight: 600; align-self: flex-start }
+.dialog { background: var(--panel); border: 1px solid var(--screen-line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 220px }
+.field { border: 2px solid var(--sun); border-radius: 6px; padding: 7px 10px; font-family: var(--mono) }
+.row { display: flex; justify-content: flex-end; gap: 8px }
+.ghost { border: 1px solid var(--screen-line); border-radius: 6px; padding: 5px 12px }
+.perm { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--screen-line); gap: 10px }
+.perm:last-child { border-bottom: 0 }
+.tog { width: 34px; height: 20px; border-radius: 999px; background: var(--screen-line); position: relative; flex: none }
+.tog::after { content: ""; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: var(--panel) }
+.tog.y { background: var(--meta) }
+.tog.y::after { left: 17px }
+.caption { font-size: 12px; color: var(--muted); padding: 0 14px 10px }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px }
+@media (max-width: 560px) { .two { grid-template-columns: 1fr } }
+.yes h3 { color: var(--green) } .no h3 { color: var(--warn) }
+.list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px }
+details { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px }
+details + details { margin-top: 8px }
+summary { cursor: pointer; font-weight: 600 }
+details p { margin-top: 8px; color: var(--muted) }
+footer { border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--muted) }
+footer .tel { font-family: var(--mono); color: var(--fg); user-select: all }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Servicio de gestión de Instagram</span>
+    <h1>Conectá tu Instagram en 10 minutos</h1>
+    <p class="lead">Para que podamos publicar por vos y medir los resultados, necesitamos que nos des acceso de socio a tu Instagram desde Meta Business Suite. No nos pasás ninguna contraseña y podés quitar el acceso cuando quieras.</p>
+    <div class="facts">
+      <span class="chip">Unos 10 minutos</span>
+      <span class="chip">Desde la computadora</span>
+      <span class="chip">Sin compartir contraseñas</span>
+    </div>
+  </header>
+
+  <section class="box">
+    <h2>Antes de empezar</h2>
+    <ul class="check">
+      <li>Usá una computadora. Desde el celular la opción de socios no aparece o cuesta encontrarla.</li>
+      <li>Entrá con la cuenta de Facebook que administra la página de tu quinta.</li>
+      <li>Tené a mano el usuario y la contraseña de Instagram, por si te pide conectarlo.</li>
+    </ul>
+  </section>
+
+  <section class="idcard" aria-label="Identificador para pegar">
+    <div>
+      <div class="lbl">Identificador del negocio que vas a pegar en el paso 4</div>
+      <div class="idnum" id="bizid">2382079432185517</div>
+      <div class="lbl">Aparece con el nombre "Quinta El Florido"</div>
+    </div>
+    <button class="copy" type="button" data-copy="2382079432185517">Copiar número</button>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:18px">
+    <h2>Paso a paso</h2>
+    <ol class="steps">
+
+      <li><div class="stepbody">
+        <h3>Revisá que tu Instagram sea profesional</h3>
+        <p class="path">En la app de Instagram: <b>tu perfil</b> → menú <b>☰</b> → <b>Tipo de cuenta y herramientas</b>.</p>
+        <p class="note">Si dice "Cambiar a cuenta personal", ya es profesional y seguís al paso 2. Si dice "Cambiar a cuenta profesional", tocalo y elegí <b>Empresa</b>. No perdés seguidores ni publicaciones.</p>
+      </div></li>
+
+      <li><div class="stepbody">
+        <h3>Entrá a Meta Business Suite</h3>
+        <p class="path">En la computadora abrí <b>business.facebook.com</b> y entrá con tu Facebook. Abajo a la izquierda tocá el engranaje de <b>Configuración</b>.</p>
+        <p class="note">Si es la primera vez, Meta te pide crear un "portfolio comercial" con el nombre de tu quinta. Completalo y seguí.</p>
+        <p class="path">En el menú de la izquierda revisá <b>Cuentas</b> → <b>Perfiles de Instagram</b>: tu Instagram tiene que aparecer ahí. Si no aparece, tocá <b>Agregar</b> → conectar perfil de Instagram e iniciá sesión.</p>
+        <p class="note">Hacé lo mismo en <b>Cuentas</b> → <b>Páginas</b>: tiene que aparecer la página de Facebook de tu quinta.</p>
+      </div></li>
+
+      <li><div class="stepbody">
+        <h3>Abrí Socios y elegí "Otorgar a un socio acceso a tus activos"</h3>
+        <p class="path">En el menú de la izquierda: <b>Usuarios</b> → <b>Socios</b>. Arriba a la derecha tocá el botón azul <b>+ Agregar</b> y elegí la primera opción.</p>
+        <div class="screen" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="side">
+              <span class="grp">Usuarios</span>
+              <span>Personas</span>
+              <span class="on">Socios</span>
+              <span>Usuarios del sistema</span>
+              <span class="grp">Cuentas</span>
+              <span>Páginas</span>
+              <span>Perfiles de Instagram</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:200px">
+              <span class="btn-meta">+ Agregar ▾</span>
+              <div class="menu">
+                <div class="hl">Otorgar a un socio acceso a tus activos<small>Agrega a un socio y asígnale los activos de tu negocio.</small></div>
+                <div>Pídele a un socio que te asigne sus activos<small>Agrega un socio y pídele que asigne activos a tu negocio.</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="caption">Referencia de cómo se ve. La opción a elegir está resaltada.</div>
+        </div>
+      </div></li>
+
+      <li><div class="stepbody">
+        <h3>Pegá el identificador y tocá Siguiente</h3>
+        <p class="path">En la ventana <b>Agregar un nuevo socio</b>, en el campo <b>Identificador del negocio del socio</b>, pegá el número de arriba: <b style="font-family:var(--mono)">2382079432185517</b></p>
+        <div class="screen" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="dialog">
+              <strong>Agregar un nuevo socio</strong>
+              <span class="note">Ingresa el identificador del negocio del socio</span>
+              <div class="field">2382079432185517</div>
+              <div class="row"><span class="ghost">Cancelar</span><span class="btn-meta">Siguiente</span></div>
+            </div>
+          </div>
+          <div class="caption">Tiene que aparecer el nombre "Quinta El Florido". Así sabés que el número está bien.</div>
+        </div>
+      </div></li>
+
+      <li><div class="stepbody">
+        <h3>Elegí tu Instagram y tu página, y activá los permisos</h3>
+        <p class="path">Meta te muestra tus cuentas por tipo. Elegí <b>Perfiles de Instagram</b> → tu cuenta, y después <b>Páginas</b> → la página de tu quinta.</p>
+        <p class="path">En cada una activá estos permisos:</p>
+        <div class="screen" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="body">
+            <div class="dialog">
+              <strong>Permisos para el socio</strong>
+              <div class="perm"><span>Contenido (crear y publicar)</span><span class="tog y"></span></div>
+              <div class="perm"><span>Estadísticas</span><span class="tog y"></span></div>
+              <div class="perm"><span>Mensajes</span><span class="tog"></span></div>
+              <div class="perm"><span>Anuncios</span><span class="tog"></span></div>
+              <div class="perm"><span>Control total / Administrar</span><span class="tog"></span></div>
+            </div>
+          </div>
+          <div class="caption">Activá solo Contenido y Estadísticas. Los nombres exactos pueden variar un poco según tu versión de Meta.</div>
+        </div>
+        <p class="note">Tocá <b>Guardar</b> o <b>Asignar</b> para terminar.</p>
+      </div></li>
+
+      <li><div class="stepbody">
+        <h3>Avisanos por WhatsApp</h3>
+        <p>Mandá un mensaje a Juan al <span style="font-family:var(--mono)">011 3877-7015</span> diciendo "Listo, te di acceso". Nosotros confirmamos que llegó y conectamos tu cuenta al sistema de publicación. Desde ahí no tenés que hacer nada más.</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section class="two">
+    <div class="box yes">
+      <h3>Con este acceso podemos</h3>
+      <ul class="list">
+        <li>Publicar posteos, reels e historias</li>
+        <li>Ver las estadísticas para armar tu informe semanal</li>
+      </ul>
+    </div>
+    <div class="box no">
+      <h3>Con este acceso no podemos</h3>
+      <ul class="list">
+        <li>Ver ni cambiar tu contraseña</li>
+        <li>Gastar plata en anuncios</li>
+        <li>Borrar tu cuenta ni sacarte de administrador</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="box">
+    <h2>Para quitar el acceso</h2>
+    <p>Cuando quieras, en <b>Configuración</b> → <b>Usuarios</b> → <b>Socios</b> elegís "Quinta El Florido" y tocás <b>Quitar</b>. Se corta al instante.</p>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:10px">
+    <h2>Si algo no sale</h2>
+    <details><summary>No encuentro "Socios"</summary><p>Seguramente estás en el celular o en la app de Facebook. Abrí business.facebook.com desde una computadora y buscá el engranaje de Configuración abajo a la izquierda.</p></details>
+    <details><summary>Me dice que no tengo permiso</summary><p>Tenés que ser administrador del portfolio comercial. Si la página la creó otra persona (un socio, un familiar), pedile que haga estos pasos o que te haga administrador.</p></details>
+    <details><summary>No aparece mi Instagram en la lista</summary><p>Volvé al paso 2: tu Instagram tiene que estar conectado en Cuentas → Perfiles de Instagram. Si es una cuenta personal, primero pasala a Empresa (paso 1).</p></details>
+    <details><summary>El número no encuentra a "Quinta El Florido"</summary><p>Revisá que esté completo, son 16 dígitos: 2382079432185517. Usá el botón "Copiar número" de arriba para no equivocarte.</p></details>
+    <details><summary>Prefiero que me ayuden en vivo</summary><p>Escribile a Juan y lo hacen juntos por videollamada compartiendo pantalla. Son 10 minutos.</p></details>
+  </section>
+
+  <footer>
+    <span>Servicio de gestión de Instagram · Juan · WhatsApp <span class="tel">011 3877-7015</span> · @quintaelflorido</span>
+    <span>Actualizado: 10/11/2026 21:40</span>
+  </footer>
+</div>
+
+<script>
+document.addEventListener("click", async e => {
+  const b = e.target.closest("button[data-copy]"); if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "Copiado ✓"; }
+  catch (err) {
+    const r = document.createRange(); r.selectNodeContents(document.getElementById("bizid"));
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = "Seleccionado: copialo";
+  }
+  setTimeout(() => { b.textContent = "Copiar número"; }, 2000);
+});
+</script>
+</body>
+</html>

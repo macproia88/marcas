@@ -19,10 +19,18 @@ jobs:
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: python3 quinta-ig/metricas/metricas.py | tee quinta-ig/metricas/ultima-corrida.txt
+      - name: Juntar metricas del fan club CA7RIEL & Paco
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN_CATRIEL }}
+          METRICAS_IG: "17841475673833807"
+          METRICAS_OUT: clientes/ca7rielypaco/metricas/datos.json
+        run: |
+          mkdir -p clientes/ca7rielypaco/metricas
+          python3 quinta-ig/metricas/metricas.py | tee clientes/ca7rielypaco/metricas/ultima-corrida.txt || true
       - name: Guardar
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt
+          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas
           git commit -m "Metricas IG" || exit 0
           git pull --rebase -q && git push -q

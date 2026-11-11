@@ -5,11 +5,11 @@ publicaciones (con sus métricas) e historias (se guardan antes de que desaparez
 """
 import json, os, sys, time, datetime, urllib.parse, urllib.request
 
-IG = "17841454960836233"
+IG = os.environ.get("METRICAS_IG", "17841454960836233")  # cuenta a medir (por defecto El Florido)
 API = "https://graph.facebook.com/v23.0"
 TOKEN = os.environ.get("IG_TOKEN", "")
 AQUI = os.path.dirname(os.path.abspath(__file__))
-DATOS = os.path.join(AQUI, "datos.json")
+DATOS = os.environ.get("METRICAS_OUT") or os.path.join(AQUI, "datos.json")
 ART = datetime.timezone(datetime.timedelta(hours=-3))
 avisos = []
 

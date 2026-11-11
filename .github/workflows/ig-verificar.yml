@@ -33,13 +33,21 @@ jobs:
             "instagram_api":clean(sys.argv[1]),"graph_api":clean(sys.argv[2])},ensure_ascii=False,indent=1))
           PY
           fi
-          C=$(curl -s "https://graph.instagram.com/v23.0/me?fields=user_id,username,followers_count&access_token=$IG_TOKEN_CATRIEL")
-          python3 - "$C" "${#IG_TOKEN_CATRIEL}" > quinta-ig/publicador/estado-conexion-catriel.json <<'PY'
+          T=$(printf '%s' "$IG_TOKEN_CATRIEL" | tr -d ' \r\n"')
+          C=$(curl -s "https://graph.instagram.com/v23.0/me?fields=user_id,username,followers_count&access_token=$T")
+          D=$(curl -s "https://graph.facebook.com/v23.0/17841475673833807?fields=username,followers_count&access_token=$T")
+          E=$(curl -s "https://graph.facebook.com/v23.0/17841454960836233?fields=username,followers_count&access_token=$(printf '%s' "$IG_TOKEN" | tr -d ' \r\n"')")
+          python3 - "$C" "$D" "$E" "${#IG_TOKEN_CATRIEL}" "${#T}" "${T:0:3}" "${#IG_TOKEN}" "${IG_TOKEN:0:3}" > quinta-ig/publicador/estado-conexion-catriel.json <<'PY'
           import json,sys,datetime
-          try: d=json.loads(sys.argv[1])
-          except Exception: d={"raw":"no-json"}
-          if "error" in d: d={"error":d["error"].get("message","")[:200],"code":d["error"].get("code")}
-          print(json.dumps({"largo_llave":int(sys.argv[2]),"fecha":datetime.datetime.utcnow().isoformat()+"Z","instagram_api":d},ensure_ascii=False,indent=1))
+          def clean(s):
+              try: d=json.loads(s)
+              except Exception: return {"raw":"no-json"}
+              if "error" in d: return {"error":d["error"].get("message","")[:160],"code":d["error"].get("code")}
+              return d
+          a=sys.argv
+          print(json.dumps({"fecha":datetime.datetime.utcnow().isoformat()+"Z",
+            "catriel":{"largo":int(a[4]),"largo_limpio":int(a[5]),"empieza":a[6],"instagram_api":clean(a[1]),"facebook_api":clean(a[2])},
+            "florido":{"largo":int(a[7]),"empieza":a[8],"facebook_api":clean(a[3])}},ensure_ascii=False,indent=1))
           PY
           python3 quinta-ig/publicador/publicar.py --probar > quinta-ig/publicador/prueba-videos.txt 2>&1 || true
           cat $OUT quinta-ig/publicador/prueba-videos.txt

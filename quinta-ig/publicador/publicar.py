@@ -11,12 +11,20 @@ Cada item de cola.json:
 """
 import json, os, sys, time, urllib.parse, urllib.request, datetime
 
-API = "https://graph.facebook.com/v23.0"
+API_FB = "https://graph.facebook.com/v23.0"
+API_IG = "https://graph.instagram.com/v23.0"  # llaves del login de Instagram (empiezan con "IG")
+API = API_FB
 RAW = "https://raw.githubusercontent.com/macproia88/marcas/main/"
 AQUI = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(AQUI, "..", ".."))
 CUENTAS = os.path.join(AQUI, "cuentas.json")
 IG_ID = TOKEN = COLA = ""  # se cargan por cuenta en main()
+
+
+def elegir_api(token):
+    """Llaves del login de Instagram usan graph.instagram.com; las de Facebook, graph.facebook.com."""
+    global API
+    API = API_IG if token.startswith("IG") else API_FB
 ART = datetime.timezone(datetime.timedelta(hours=-3))
 
 
@@ -107,6 +115,7 @@ def main():
         if not c.get("activa", True):
             continue
         IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        elegir_api(TOKEN)
         COLA = os.path.join(REPO, c["cola"])
         print(f"=== {c['nombre']} ===")
         if not TOKEN or not IG_ID:
@@ -162,6 +171,7 @@ def probar():
     global IG_ID, TOKEN, COLA
     for c in json.load(open(CUENTAS, encoding="utf-8")):
         IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        elegir_api(TOKEN)
         COLA = os.path.join(REPO, c["cola"])
         if not (IG_ID and TOKEN and os.path.exists(COLA)):
             continue

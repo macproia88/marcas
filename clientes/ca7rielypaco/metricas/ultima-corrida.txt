@@ -1,16 +1,1 @@
-ok 0 días, 19 publicaciones, 5 historias, 120 avisos
-AVISO cuenta 2026-11-10 reach,views,accounts: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-10 replies,website_clic: (#10) Application does not have permission for this action
-AVISO seguidores 2026-11-10: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-09 reach,views,accounts: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-09 replies,website_clic: (#10) Application does not have permission for this action
-AVISO seguidores 2026-11-09: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-08 reach,views,accounts: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-08 replies,website_clic: (#10) Application does not have permission for this action
-AVISO seguidores 2026-11-08: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-07 reach,views,accounts: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-07 replies,website_clic: (#10) Application does not have permission for this action
-AVISO seguidores 2026-11-07: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-06 reach,views,accounts: (#10) Application does not have permission for this action
-AVISO cuenta 2026-11-06 replies,website_clic: (#10) Application does not have permission for this action
-AVISO seguidores 2026-11-06: (#10) Application does not have permission for this action
+ok 30 días, 19 publicaciones, 5 historias, 0 avisos

@@ -13,6 +13,7 @@ jobs:
       - name: Probar la llave (nunca se imprime)
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_TOKEN_CATRIEL: ${{ secrets.IG_TOKEN_CATRIEL }}
         run: |
           mkdir -p quinta-ig/publicador
           OUT=quinta-ig/publicador/estado-conexion.json
@@ -32,8 +33,16 @@ jobs:
             "instagram_api":clean(sys.argv[1]),"graph_api":clean(sys.argv[2])},ensure_ascii=False,indent=1))
           PY
           fi
+          C=$(curl -s "https://graph.instagram.com/v23.0/me?fields=user_id,username,followers_count&access_token=$IG_TOKEN_CATRIEL")
+          python3 - "$C" "${#IG_TOKEN_CATRIEL}" > quinta-ig/publicador/estado-conexion-catriel.json <<'PY'
+          import json,sys,datetime
+          try: d=json.loads(sys.argv[1])
+          except Exception: d={"raw":"no-json"}
+          if "error" in d: d={"error":d["error"].get("message","")[:200],"code":d["error"].get("code")}
+          print(json.dumps({"largo_llave":int(sys.argv[2]),"fecha":datetime.datetime.utcnow().isoformat()+"Z","instagram_api":d},ensure_ascii=False,indent=1))
+          PY
           python3 quinta-ig/publicador/publicar.py --probar > quinta-ig/publicador/prueba-videos.txt 2>&1 || true
           cat $OUT quinta-ig/publicador/prueba-videos.txt
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add $OUT quinta-ig/publicador/prueba-videos.txt && git commit -m "Estado de conexion IG" && git push || true
+          git add $OUT quinta-ig/publicador/estado-conexion-catriel.json quinta-ig/publicador/prueba-videos.txt && git commit -m "Estado de conexion IG" && git push || true

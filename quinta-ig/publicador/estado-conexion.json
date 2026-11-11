@@ -1,13 +1,12 @@
 {
  "secreto": "OK",
- "fecha": "2026-11-09T11:23:33.440124Z",
+ "fecha": "2026-11-11T23:16:19.836515Z",
  "instagram_api": {
   "error": "Invalid OAuth access token - Cannot parse access token",
   "code": 190
  },
  "graph_api": {
-  "id": "17841454960836233",
-  "followers_count": 10904,
-  "username": "quintaelflorido"
+  "error": "Unsupported get request. Object with ID '17841454960836233' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at ",
+  "code": 100
  }
 }

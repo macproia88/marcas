@@ -1,3 +1,3 @@
-PRUEBA OK reel-10mil-por-persona
-PRUEBA OK reel-cumple-15-personas
-PRUEBA OK reel-escapada-casa
+PRUEBA ERROR reel-10mil-por-persona: (#10) Application does not have permission for this action
+PRUEBA ERROR reel-cumple-15-personas: (#10) Application does not have permission for this action
+PRUEBA ERROR reel-escapada-casa: (#10) Application does not have permission for this action

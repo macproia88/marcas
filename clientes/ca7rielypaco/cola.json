@@ -1,1 +1,109 @@
-[]
+[
+ {
+  "id": "1111-cuenta-regresiva",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/00-post-manana.jpg"
+  ],
+  "texto": "MAÑANA ES LA NOCHE 🏆\nCA7RIEL & Paco Amoroso llegan a los Latin Grammy 2026 con 7 nominaciones por Free Spirits.\n¿Cuántos gramófonos se traen? Dejá tu número del 0 al 7 👇\n📺 Jueves 12/11 · 22 h (ARG) · TNT y HBO Max\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-11 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1112-historia-horarios",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/01-historia-horarios.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 11:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1112-post-gran-noche",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/02-post-hoy.jpg"
+  ],
+  "texto": "HOY ES LA GRAN NOCHE ✨\nCA7RIEL & Paco Amoroso van por 7 Latin Grammy con Free Spirits: Grabación, Álbum y Canción del Año, entre otras.\nDesde las 22 h (ARG) seguimos la ceremonia en vivo en historias. ¡Vamos! 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 19:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "ganador-1",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-1.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Grabación del Año por “Ha Ha”. Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-2",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-2.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Álbum del Año por Free Spirits. Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-3",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-3.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Canción del Año por “Hasta Jesús Tuvo un Mal Día” ft. Sting. Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-4",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-4.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix). Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-5",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-5.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día” ft. Sting. Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-6",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-6.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Mejor Álbum de Música Alternativa por Free Spirits. Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ },
+ {
+  "id": "ganador-7",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-7.jpg"
+  ],
+  "texto": "¡GANARON! 🏆\nCA7RIEL & Paco Amoroso se llevan el Latin Grammy a Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). Orgullo argentino 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true
+ }
+]

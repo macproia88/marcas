@@ -1,0 +1,158 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Plan Latin Grammy · Fan Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;600&display=swap">
+<style>
+/* Layout: revista de una columna; cada día es una "sección" con sus piezas en grilla y el texto que las acompaña. Diseño oscuro a propósito (identidad del fan club). */
+:root{
+  --ink:#0d0c0d; --panel:#171516; --line:#2c2829; --paper:#f3eee6; --mute:#a8a09a;
+  --red:#e2231a; --gold:#d9b25b; --ok:#5fbf7f;
+  --display:Anton,"Oswald",Impact,"Arial Narrow",sans-serif;
+  --label:Oswald,"Arial Narrow",sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --body:Inter,system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:15px;line-height:1.5;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:16px;padding-right:16px;padding-block:28px 60px}
+.mast{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;border-bottom:2px solid var(--paper);padding-bottom:12px}
+.logo{font-family:var(--display);font-size:clamp(34px,6vw,58px);line-height:.9;letter-spacing:.5px}
+.logo b{color:var(--red);font-weight:400}
+.issue{font-family:var(--label);font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-size:13px;text-align:right;color:var(--mute)}
+.intro{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin:26px 0 8px}
+.intro h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(40px,7vw,86px);line-height:.9;margin:0;text-wrap:balance}
+.intro p{color:var(--paper);max-width:62ch;margin:14px 0 0}
+.how{background:var(--panel);border:1px solid var(--line);padding:18px 20px;align-self:start}
+.how h2{font-family:var(--label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:14px;margin:0 0 10px;color:var(--gold)}
+.how ol{margin:0;padding-left:18px;display:grid;gap:6px}
+.updated{font-family:var(--label);letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mute);margin-top:10px}
+section.day{margin-top:46px}
+.dayhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:18px}
+.dayhead h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(28px,4vw,44px);margin:0;line-height:1}
+.dayhead p{margin:0;font-family:var(--serif);font-style:italic;font-weight:700;color:var(--gold);font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.card{background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.card img{display:block;width:100%;height:auto;background:#000}
+.meta{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-family:var(--label);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;padding:4px 9px;border:1px solid var(--line)}
+.when{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.post{color:var(--paper)}
+.story{color:var(--paper)}
+.wait{color:var(--gold);border-color:var(--gold)}
+.manual{color:var(--red);border-color:var(--red)}
+.card h3{font-family:var(--label);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:17px;margin:0}
+.cap{font-size:13.5px;color:var(--mute);white-space:pre-line;border-left:2px solid var(--line);padding-left:10px;margin:0}
+.notes{background:var(--panel);border:1px solid var(--line);padding:16px 18px;margin-top:14px;color:var(--paper)}
+.notes strong{color:var(--gold)}
+table.cal{width:100%;border-collapse:collapse;font-size:14.5px}
+.calwrap{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table.cal th,table.cal td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.cal th{font-family:var(--label);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--mute)}
+table.cal td:first-child{white-space:nowrap;font-variant-numeric:tabular-nums;font-family:var(--label);font-weight:500;letter-spacing:.06em}
+footer{margin-top:50px;border-top:2px solid var(--paper);padding-top:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--label);letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mute)}
+@media (max-width:760px){.intro{grid-template-columns:1fr}}
+</style>
+
+</head><body><div class="wrap">
+  <header class="mast">
+    <div class="logo">CA7RIEL <b>&amp;</b> PACO</div>
+    <div class="issue">Fan Club Argentina · @ca7rielypacoamorosoarg<br>Plan de contenido · Latin Grammy 2026</div>
+  </header>
+
+  <div class="intro">
+    <div>
+      <h1>Plan de publicaciones para aprobar</h1>
+      <p>Estas son las piezas preparadas para la semana de los Latin Grammy 2026, con fecha, hora y texto. <strong>Nada se publica sin aprobación.</strong> Lo aprobado se programa y sale solo a la hora indicada. Los siete diseños de ganadores quedan guardados y se publican a mano, uno por uno, solo si efectivamente ganan.</p>
+      <div class="updated">Última actualización: miércoles 11/11/2026 · 20:45 h</div>
+    </div>
+    <aside class="how">
+      <h2>Cómo aprobar</h2>
+      <ol>
+        <li>Mirá cada pieza y su texto.</li>
+        <li>Respondé "OK" o pedí cambios (foto, texto u horario).</li>
+        <li>Lo aprobado queda programado; el resto se corrige y se vuelve a mostrar.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <section class="day">
+    <div class="dayhead"><h2>Hoy · miércoles 11</h2><p>La previa</p></div>
+    <div class="grid">
+      <article class="card">
+        <img src="img/00-post-manana.jpg" alt="Post Cuenta regresiva, CA7RIEL y Paco bajo los cerezos" loading="lazy">
+        <div class="meta">
+          <div class="row"><span class="chip when">Mié 11 · 21:00 h</span><span class="chip post">Post</span><span class="chip wait">Esperando aprobación</span></div>
+          <h3>Cuenta regresiva</h3>
+          <p class="cap">MAÑANA ES LA NOCHE 🏆
+CA7RIEL &amp; Paco Amoroso llegan a los Latin Grammy 2026 con 7 nominaciones por Free Spirits.
+¿Cuántos gramófonos se traen? Dejá tu número del 0 al 7 👇
+📺 Jueves 12/11 · 22 h (ARG) · TNT y HBO Max
+#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="dayhead"><h2>Jueves 12 · Latin Grammy</h2><p>El día más fuerte del año</p></div>
+    <div class="grid">
+      <article class="card">
+        <img src="img/01-historia-horarios.jpg" alt="Historia con horarios por país y dónde ver la ceremonia" loading="lazy">
+        <div class="meta">
+          <div class="row"><span class="chip when">Jue 12 · 11:00 h</span><span class="chip story">Historia</span><span class="chip wait">Esperando aprobación</span></div>
+          <h3>Horarios y dónde verlo</h3>
+          <p class="cap">Horarios de 12 países (Argentina 22 h) · TNT y HBO Max · EE.UU.: Univision.
+Se repite a las 20:00 h para los que se suman tarde.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="img/02-post-hoy.jpg" alt="Post La gran noche, CA7RIEL y Paco en la alfombra roja" loading="lazy">
+        <div class="meta">
+          <div class="row"><span class="chip when">Jue 12 · 19:00 h</span><span class="chip post">Post</span><span class="chip wait">Esperando aprobación</span></div>
+          <h3>La gran noche</h3>
+          <p class="cap">HOY ES LA GRAN NOCHE ✨
+CA7RIEL &amp; Paco Amoroso van por 7 Latin Grammy con Free Spirits: Grabación, Álbum y Canción del Año, entre otras.
+Desde las 22 h (ARG) seguimos la ceremonia en vivo en historias. ¡Vamos! 🇦🇷
+#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="day">
+    <div class="dayhead"><h2>Durante la gala · ganadores</h2><p>Se publican a mano, solo si ganan</p></div>
+    <div class="grid">
+      <article class="card"><img src="img/03-ganador-1.jpg" alt="Ganaron Grabación del Año" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Grabación del Año · "Ha Ha"</h3></div></article>
+      <article class="card"><img src="img/03-ganador-2.jpg" alt="Ganaron Álbum del Año" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Álbum del Año · Free Spirits</h3></div></article>
+      <article class="card"><img src="img/03-ganador-3.jpg" alt="Ganaron Canción del Año" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Canción del Año · "Hasta Jesús Tuvo un Mal Día"</h3></div></article>
+      <article class="card"><img src="img/03-ganador-4.jpg" alt="Ganaron Mejor Interpretación de Música Electrónica" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Interpretación Electrónica · "Beto's Horns"</h3></div></article>
+      <article class="card"><img src="img/03-ganador-5.jpg" alt="Ganaron Mejor Canción Pop/Rock" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Canción Pop/Rock · "Hasta Jesús Tuvo un Mal Día"</h3></div></article>
+      <article class="card"><img src="img/03-ganador-6.jpg" alt="Ganaron Mejor Álbum de Música Alternativa" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Álbum Alternativo · Free Spirits</h3></div></article>
+      <article class="card"><img src="img/03-ganador-7.jpg" alt="Ganaron Mejor Video Musical Versión Larga" loading="lazy"><div class="meta"><div class="row"><span class="chip manual">Solo si ganan</span><span class="chip post">Post</span></div><h3>Video Versión Larga · Free Spirits (The Film)</h3></div></article>
+    </div>
+    <div class="notes"><strong>Texto para cada ganador:</strong> "¡GANARON! 🏆 CA7RIEL &amp; Paco Amoroso se llevan el Latin Grammy a [categoría] por [obra]. Orgullo argentino 🇦🇷 #CA7RIEL #PacoAmoroso #LatinGRAMMY". Si ganan, se sube el diseño de esa categoría como post y también como historia.</div>
+  </section>
+
+  <section class="day">
+    <div class="dayhead"><h2>Días siguientes</h2><p>En preparación · se muestran antes de programar</p></div>
+    <div class="calwrap">
+      <table class="cal">
+        <thead><tr><th>Cuándo</th><th>Formato</th><th>Contenido</th></tr></thead>
+        <tbody>
+          <tr><td>Vie 13 · 13:00</td><td>Carrusel</td><td>"Lo que dejó la noche": premios ganados, alfombra roja y mejores momentos de la ceremonia.</td></tr>
+          <tr><td>Sáb 14 · 20:00</td><td>Post</td><td>Free Spirits en Japón: recuerdo de gira entre cerezos.</td></tr>
+          <tr><td>Dom 15 · 20:00</td><td>Post</td><td>"¿Con qué look te quedás?": antes y después, para que comenten.</td></tr>
+          <tr><td>Lun 16 · 12:00</td><td>Historia</td><td>Agenda de la semana: São Paulo (18/11) y Río de Janeiro (19/11).</td></tr>
+          <tr><td>Mar 17 · 20:00</td><td>Post</td><td>Noticia: el show de Río pasó del 20 al 19/11 en Vivo Rio; las entradas siguen valiendo.</td></tr>
+          <tr><td>Mié 18 · 18:00</td><td>Historia</td><td>Hoy tocan en São Paulo · Espaço Unimed.</td></tr>
+          <tr><td>Jue 19 · 18:00</td><td>Historia</td><td>Hoy tocan en Río de Janeiro · Vivo Rio.</td></tr>
+          <tr><td>Dom 22 · 20:00</td><td>Post</td><td>Previa Chile: lunes 23/11 en el Movistar Arena de Santiago.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer><span>@ca7rielypacoamorosoarg</span><span>Fan Club Argentina · uso interno de aprobación</span></footer>
+</div>
+</body></html>

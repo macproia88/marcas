@@ -97,7 +97,13 @@ def contenedor(m, tipo, texto=None, en_carrusel=False):
     if ETIQUETAS and tipo == "POST" and not en_carrusel and not es_video(m):
         p["user_tags"] = json.dumps([{"username": u, "x": round(0.2 + 0.6 * i / max(1, len(ETIQUETAS) - 1), 2), "y": 0.9}
                                      for i, u in enumerate(ETIQUETAS)])
-    cid = llamar("POST", f"{IG_ID}/media", **p)["id"]
+    try:
+        cid = llamar("POST", f"{IG_ID}/media", **p)["id"]
+    except Exception:
+        if "user_tags" not in p:
+            raise
+        p.pop("user_tags")  # si una etiqueta falla, se publica igual sin etiquetas
+        cid = llamar("POST", f"{IG_ID}/media", **p)["id"]
     esperar(cid)  # siempre: si se publica antes de que esté listo da "Media ID is not available"
     return cid
 

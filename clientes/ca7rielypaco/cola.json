@@ -32,8 +32,9 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 11:00",
-  "estado": "pendiente",
-  "aprobado": "2026-11-11 20:51 (cliente)"
+  "estado": "borrador",
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "nota": "Rediseño en paleta clara: esperando OK de Juan"
  },
  {
   "id": "1112-post-gran-noche",
@@ -43,8 +44,9 @@
   ],
   "texto": "HOY ES LA GRAN NOCHE ✨\nCA7RIEL & Paco Amoroso van por 7 Latin Grammy con Free Spirits: Grabación, Álbum y Canción del Año, entre otras.\nDesde las 22 h (ARG) seguimos la ceremonia en vivo en historias. ¡Vamos! 🇦🇷\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 19:00",
-  "estado": "pendiente",
-  "aprobado": "2026-11-11 20:51 (cliente)"
+  "estado": "borrador",
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "nota": "Rediseño en paleta clara: esperando OK de Juan"
  },
  {
   "id": "ganador-1",

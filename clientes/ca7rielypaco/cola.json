@@ -247,11 +247,13 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 17:45",
-  "estado": "pendiente",
+  "estado": "publicado",
   "solo_si_ganan": true,
   "nota": "Historia del ganador; sale junto con ganador-4 si se confirma el premio",
   "aprobado": "2026-11-12 17:43 (Juan)",
-  "forzado": "17:49"
+  "forzado": "17:49",
+  "ig_media_id": "18133636211511224",
+  "publicado_el": "2026-11-12 17:51"
  },
  {
   "id": "ganador-5-h",

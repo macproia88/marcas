@@ -39,7 +39,7 @@ def html(f, y, cat, obra):
     cs = 50 if len(cat) < 24 else (42 if len(cat) < 36 else 38)
     return f'''<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body><div class="p">
 <div class="mast"><div class="logo">CA7RIEL <b>&amp;</b> PACO</div><div class="iss">EDICIÓN ESPECIAL<br>LATIN GRAMMY 2026</div></div>
-<div class="foto"><img src="{REPO}/fotos/{f}" style="object-position:50% {y}%"></div>
+<div class="foto"><img src="{REPO}/fotos-hd/{f}" style="object-position:50% {y}%"></div>
 <div class="txt"><div class="chip">GANADORES · LATIN GRAMMY 2026</div><h1>¡GANARON!</h1>
 <div class="cat" style="font-size:{cs}px">{cat}</div><div class="rule"></div>
 <div class="obra">{obra}</div><div class="ed">27.ª edición de los Latin Grammy · Las Vegas</div>

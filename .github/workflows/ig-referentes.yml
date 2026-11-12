@@ -1,0 +1,23 @@
+name: IG - referentes fan club
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 12 * * *'
+  push:
+    paths: ['clientes/ca7rielypaco/referentes/correr.trigger', '.github/workflows/ig-referentes.yml']
+permissions:
+  contents: write
+jobs:
+  referentes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Consultar cuentas
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN_CATRIEL }}
+        run: |
+          python3 clientes/ca7rielypaco/referentes/referentes.py
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add clientes/ca7rielypaco/referentes/datos.json
+          git commit -m "Referentes fan club [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

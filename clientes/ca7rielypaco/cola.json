@@ -137,5 +137,16 @@
   "solo_si_ganan": true,
   "aprobado": "2026-11-11 21:35 (cliente)",
   "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
+ },
+ {
+  "id": "1115-reel-gira",
+  "tipo": "REEL",
+  "media": [
+   "clientes/ca7rielypaco/videos/reel-gira.mp4"
+  ],
+  "texto": "Osaka, Milán y una gira que dio la vuelta al mundo. El FREE SPIRITS World Tour entra en su recta final con cuatro fechas en Sudamérica: São Paulo (18/11, Espaço Unimed), Río de Janeiro (19/11, Vivo Rio, nueva fecha), Santiago (23/11, Movistar Arena) y Lima (27/11, Multiespacio Costa 21), donde termina la gira.\n\n¿A cuál vas? Contanos en los comentarios.\n\n#CA7RIEL #PacoAmoroso #FreeSpiritsWorldTour #FreeSpirits",
+  "fecha": "2026-11-15 20:30",
+  "estado": "borrador",
+  "nota": "Reel con videos de shows de la clienta. Esperando OK de Juan."
  }
 ]

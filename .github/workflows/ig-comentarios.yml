@@ -1,0 +1,23 @@
+name: IG - comentarios fan club
+on:
+  workflow_dispatch:
+  push:
+    paths: ['clientes/ca7rielypaco/comentarios/leer.trigger', 'clientes/ca7rielypaco/comentarios/responder.json']
+permissions:
+  contents: write
+concurrency: { group: ig-comentarios, cancel-in-progress: false }
+jobs:
+  comentarios:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Responder y leer
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN_CATRIEL }}
+        run: |
+          python3 clientes/ca7rielypaco/comentarios/comentarios.py responder
+          python3 clientes/ca7rielypaco/comentarios/comentarios.py leer
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add clientes/ca7rielypaco/comentarios/datos.json clientes/ca7rielypaco/comentarios/responder.json 2>/dev/null || true
+          git commit -m "Comentarios fan club [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

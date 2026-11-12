@@ -1,26 +1,40 @@
 {
  "historial": {
-  "2026-11-11 22:05": {
+  "2026-11-11 22:14": {
    "ca7riel": {
-    "seg": 1367918
+    "seg": 1367918,
+    "pubs": 36,
+    "likes": 69223
    },
    "pacoamoroso": {
-    "seg": 1240323
+    "seg": 1240323,
+    "pubs": 21,
+    "likes": 124070
    },
    "ca7rielypacoamoroso": {
-    "seg": 1402441
+    "seg": 1402441,
+    "pubs": 43,
+    "likes": 93671
    },
    "ca7rielypacoamorosoarg": {
-    "seg": 53685
+    "seg": 53685,
+    "pubs": 2088,
+    "likes": 3033
    },
    "ca7rielypaco_usa": {
-    "seg": 56236
+    "seg": 56236,
+    "pubs": 2475,
+    "likes": 662
    },
    "ca7rielxpacochile": {
-    "seg": 32170
+    "seg": 32170,
+    "pubs": 1199,
+    "likes": 678
    },
    "pacoxamoroso": {
-    "seg": 5337
+    "seg": 5337,
+    "pubs": 371,
+    "likes": 585
    }
   },
   "2026-11-11 22:17": {

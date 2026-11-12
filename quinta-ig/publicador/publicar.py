@@ -74,6 +74,9 @@ def esperar(cid):
     raise RuntimeError("Tiempo de espera agotado procesando el video")
 
 
+ETIQUETAS = []  # usuarios a etiquetar en la foto (solo posts de una imagen)
+
+
 def contenedor(m, tipo, texto=None, en_carrusel=False):
     p = {}
     if es_video(m):
@@ -91,12 +94,17 @@ def contenedor(m, tipo, texto=None, en_carrusel=False):
             p.pop("media_type", None)
     if texto and tipo != "STORY" and not en_carrusel:
         p["caption"] = texto
+    if ETIQUETAS and tipo == "POST" and not en_carrusel and not es_video(m):
+        p["user_tags"] = json.dumps([{"username": u, "x": round(0.2 + 0.6 * i / max(1, len(ETIQUETAS) - 1), 2), "y": 0.9}
+                                     for i, u in enumerate(ETIQUETAS)])
     cid = llamar("POST", f"{IG_ID}/media", **p)["id"]
     esperar(cid)  # siempre: si se publica antes de que esté listo da "Media ID is not available"
     return cid
 
 
 def publicar(item):
+    global ETIQUETAS
+    ETIQUETAS = item.get("etiquetas") or []
     tipo, media = item["tipo"].upper(), item["media"]
     if tipo == "CARRUSEL":
         hijos = [contenedor(m, "POST", en_carrusel=True) for m in media]

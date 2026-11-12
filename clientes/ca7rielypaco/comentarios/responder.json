@@ -436,11 +436,15 @@
  {
   "comment_id": "18173824354482284",
   "texto": "¡Se lo merecen totalmente! 🎉🏆",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18123903265948242",
+  "hora": "2026-11-12 20:58"
  },
  {
   "comment_id": "18038250473899097",
   "texto": "¡Amarlos siempre! ❤️",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18062801663798886",
+  "hora": "2026-11-12 20:58"
  }
 ]

@@ -2,7 +2,7 @@ name: IG - referentes fan club
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 12 * * *'
+    - cron: '17 3,9,15,21 * * *'
   push:
     paths: ['clientes/ca7rielypaco/referentes/correr.trigger', '.github/workflows/ig-referentes.yml']
 permissions:

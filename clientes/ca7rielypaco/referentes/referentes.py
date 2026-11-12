@@ -24,6 +24,12 @@ for u in CUENTAS:
     except Exception as e:
         res[u] = {"error": str(e)[:150]}
 d["actualizado"] = hoy; d["cuentas"] = res
-d["historial"][hoy[:10]] = {u: v.get("seguidores") for u, v in res.items() if v.get("seguidores")}
+# historial por corrida (fecha y hora): seguidores, publicaciones totales y promedio de me gusta
+h = d.setdefault("historial", {})
+for k in list(h):  # formato viejo (solo fecha -> seguidores)
+    if len(k) == 10 and all(isinstance(x, int) for x in h[k].values()):
+        h[k + " 22:05"] = {u: {"seg": n} for u, n in h.pop(k).items()}
+h[hoy] = {u: {"seg": v["seguidores"], "pubs": v.get("publicaciones"), "likes": v.get("ultimas12_likes_prom")}
+          for u, v in res.items() if v.get("seguidores")}
 json.dump(d, open(f, "w"), ensure_ascii=False, indent=1)
 print(json.dumps(res, ensure_ascii=False, indent=1))

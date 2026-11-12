@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparativa de fan clubs · CA7RIEL &amp; Paco</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--ink:#2a2321;--paper:#f1e7de;--panel:#f8f1ea;--line:#d9c7ba;--mute:#7d6c66;--accent:#a8706a;--ok:#4f8a5f;--bad:#b4473f;
+ --c0:#a8706a;--c1:#3f5f8a;--c2:#8a7a3f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;padding:28px max(16px,env(safe-area-inset-left)) 48px}
+.wrap{max-width:1000px;margin:0 auto;display:grid;gap:26px}
+.mast{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.logo{font-family:Anton,Impact,sans-serif;font-size:clamp(32px,6vw,54px);line-height:.9}.logo b{color:var(--accent);font-weight:400}
+.issue{font-family:Oswald,sans-serif;font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:12.5px;color:var(--mute);text-align:right}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(36px,7vw,68px);line-height:.92;margin:0}
+.take{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;font-size:19px;color:var(--accent);margin:12px 0 0;max-width:64ch}
+.upd{font-family:Oswald,sans-serif;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--mute);margin:8px 0 0}
+.card{background:var(--panel);border:1px solid var(--line);padding:18px;min-width:0}
+h2{font-family:Oswald,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:17px;margin:0 0 10px}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{font-family:Oswald,sans-serif;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+th:first-child,td:first-child{text-align:left}
+tr.yo td{font-weight:600}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.good{color:var(--ok)}.bad{color:var(--bad)}
+svg{width:100%;height:auto;display:block}
+svg text{fill:var(--mute);font:11px Inter,sans-serif}
+.note{color:var(--mute);font-size:13px;margin:8px 0 0}
+.links{display:flex;flex-wrap:wrap;gap:8px 22px;border-top:2px solid var(--ink);padding-top:12px;font-family:Oswald,sans-serif;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+.links a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header class="mast"><div class="logo">CA7RIEL <b>&amp;</b> PACO</div><div class="issue">Fan Club Argentina · @ca7rielypacoamorosoarg<br>Comparativa de fan clubs</div></header>
+ <div>
+  <h1>Quién crece más</h1>
+  <p class="take" id="take">Cargando datos…</p>
+  <p class="upd" id="upd">Actualizado: —</p>
+ </div>
+ <section class="card"><h2>Hoy</h2><div class="tw"><table id="tabla"><thead><tr><th>Fan club</th><th>Seguidores</th><th>Últimas 24 h</th><th>Desde el 11/11</th><th>Posts desde el 11/11</th><th>Me gusta promedio</th></tr></thead><tbody></tbody></table></div>
+ <p class="note">"Me gusta promedio" son las últimas 12 publicaciones de cada cuenta. Los datos salen de la API oficial de Instagram y se toman 4 veces por día.</p></section>
+ <section class="card"><h2>Seguidores ganados o perdidos desde el 11/11</h2><div id="graf"></div><p class="note">Cada línea arranca en cero el 11/11 a las 22:05, para comparar cuánto crece cada uno aunque tengan tamaños distintos.</p></section>
+ <section class="card"><h2>Distancia con el fan club más grande</h2><div id="dist"></div></section>
+ <nav class="links"><a href="tablero.html">Tablero de Instagram</a><a href="plan/">Plan de contenido</a><a href="https://www.instagram.com/ca7rielypacoamorosoarg/" target="_blank" rel="noopener">Instagram del fan club</a></nav>
+</div>
+<script>
+const FC=[["ca7rielypacoamorosoarg","Argentina (nosotros)","var(--c0)"],["ca7rielypaco_usa","Estados Unidos","var(--c1)"],["ca7rielxpacochile","Chile","var(--c2)"]];
+const n=x=>x==null?"—":x.toLocaleString("es-AR");
+const sg=x=>x==null?"—":(x>0?"+":"")+x.toLocaleString("es-AR");
+const cl=x=>x>0?"good":x<0?"bad":"";
+fetch("referentes/datos.json?"+Date.now()).then(r=>r.json()).then(d=>{
+ document.getElementById("upd").textContent="Actualizado: "+d.actualizado.split(" ").reverse().join(" h · ").replace(/(\d{4})-(\d\d)-(\d\d)/,"$3/$2/$1");
+ const H=Object.keys(d.historial).sort(), first=H[0], last=H[H.length-1];
+ const seg=(k,u)=>{const e=d.historial[k][u];return e&&(e.seg??e)};
+ const pubs=(k,u)=>{const e=d.historial[k][u];return e&&e.pubs};
+ const tlast=new Date(last.replace(" ","T")), k24=[...H].reverse().find(k=>tlast-new Date(k.replace(" ","T"))>=20*3600e3)||first;
+ const tb=document.querySelector("#tabla tbody"); const rows=[];
+ for(const [u,lab,c] of FC){const now=seg(last,u),d24=now-seg(k24,u),d0=now-seg(first,u),p0=pubs(first,u)!=null&&pubs(last,u)!=null?pubs(last,u)-pubs(first,u):null,cu=d.cuentas[u]||{};
+  rows.push({u,lab,now,d0});
+  const tr=document.createElement("tr"); if(u==="ca7rielypacoamorosoarg")tr.className="yo";
+  tr.innerHTML=`<td><span class="dot" style="background:${c}"></span>${lab}</td><td>${n(now)}</td><td class="${cl(d24)}">${k24===last?"—":sg(d24)}</td><td class="${cl(d0)}">${sg(d0)}</td><td>${p0==null?"—":n(p0)}</td><td>${n(cu.ultimas12_likes_prom)}</td>`; tb.append(tr);}
+ // gráfico
+ const W=900,Hh=280,P=40, xs=H.map(k=>new Date(k.replace(" ","T")).getTime()), x0=xs[0], x1=Math.max(xs[xs.length-1],x0+86400e3);
+ const vals=FC.flatMap(([u])=>H.map(k=>seg(k,u)-seg(first,u))); let lo=Math.min(-10,...vals),hi=Math.max(10,...vals);
+ const X=t=>P+(t-x0)/(x1-x0)*(W-2*P), Y=v=>Hh-P-(v-lo)/(hi-lo)*(Hh-2*P);
+ let s=`<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Seguidores ganados o perdidos por fan club"><line x1="${P}" x2="${W-P}" y1="${Y(0)}" y2="${Y(0)}" stroke="#bba99c" stroke-dasharray="4 4"/><text x="4" y="${Y(0)+4}">0</text><text x="4" y="${Y(hi)+4}">${sg(hi)}</text><text x="4" y="${Y(lo)+4}">${sg(lo)}</text>`;
+ const days=[];for(let t=new Date(new Date(x0).toDateString()).getTime()+86400e3;t<=x1;t+=86400e3)days.push(t);
+ for(const t of days){const dd=new Date(t);s+=`<text x="${X(t)-14}" y="${Hh-12}">${dd.getDate()}/${dd.getMonth()+1}</text>`}
+ for(const [u,lab,c] of FC){const pts=H.map((k,i)=>`${X(xs[i]).toFixed(1)},${Y(seg(k,u)-seg(first,u)).toFixed(1)}`).join(" ");
+  s+=`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="${u==="ca7rielypacoamorosoarg"?3:2}"/>`;
+  const lv=seg(last,u)-seg(first,u); s+=`<text x="${X(xs[xs.length-1])+6}" y="${Y(lv)+4}" style="fill:${c}">${sg(lv)}</text>`;}
+ document.getElementById("graf").innerHTML=s+"</svg>";
+ const yo=rows[0], usa=rows[1], gap=usa.now-yo.now, gap0=seg(first,"ca7rielypaco_usa")-seg(first,"ca7rielypacoamorosoarg"), cambio=gap0-gap;
+ document.getElementById("dist").innerHTML=gap>0?`<p style="margin:0;font-size:17px">Nos faltan <b>${n(gap)}</b> seguidores para pasar al fan club de Estados Unidos. El 11/11 eran ${n(gap0)}: <b class="${cl(cambio)}">${cambio>=0?"achicamos":"se agrandó"} ${n(Math.abs(cambio))}</b>.</p>`:`<p style="margin:0;font-size:17px"><b>Somos el fan club más grande</b>: le sacamos ${n(-gap)} seguidores al de Estados Unidos.</p>`;
+ const best=[...rows].sort((a,b)=>b.d0-a.d0)[0];
+ document.getElementById("take").textContent=`Desde el 11/11, el que más creció es ${best.lab.replace(" (nosotros)","")} (${sg(best.d0)} seguidores). Nosotros: ${sg(yo.d0)}.`;
+}).catch(()=>{document.getElementById("take").textContent="No se pudieron cargar los datos. Recargá en unos minutos."});
+</script>
+</body>
+</html>

@@ -20,8 +20,9 @@
   ],
   "texto": "",
   "fecha": "2026-11-11 21:09",
-  "estado": "pendiente",
-  "aprobado": "2026-11-11 21:09 (Juan)"
+  "estado": "borrador",
+  "aprobado": "2026-11-11 21:09 (Juan)",
+  "nota": "Juan la sube desde el celu con encuesta"
  },
  {
   "id": "1112-historia-horarios",

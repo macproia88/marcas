@@ -250,7 +250,8 @@
   "estado": "pendiente",
   "solo_si_ganan": true,
   "nota": "Historia del ganador; sale junto con ganador-4 si se confirma el premio",
-  "aprobado": "2026-11-12 17:43 (Juan)"
+  "aprobado": "2026-11-12 17:43 (Juan)",
+  "forzado": "17:47"
  },
  {
   "id": "ganador-5-h",

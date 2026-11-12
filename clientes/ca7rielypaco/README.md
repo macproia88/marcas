@@ -2,7 +2,9 @@
 
 ## Aprobación
 - Nada se publica sin el OK de Juan. Se investiga, se prepara y se propone; Juan aprueba.
-- Ganadores Latin Grammy: preparados, pero se publican SOLO cuando el premio esté confirmado oficialmente y con el OK de Juan para cada uno.
+- Ganadores Latin Grammy: se publican solos, pero SOLO cuando el premio esté confirmado oficialmente (fuente confiable). Nunca anticipar. Decisión de Juan 11/11 21:39: "todo automático, nada manual".
+- Música: lo que publica el robot sale sin música (la API de Instagram no permite agregar canciones). Juan eligió todo automático, sin música.
+- Diseños de ganadores: foto arriba y texto abajo, el texto nunca tapa caras (pedido de la clienta).
 
 ## Frecuencia
 - Feed: 1 por día en días normales; máx. 2 si hay una noticia importante. Días especiales: lo necesario, sin repetir.

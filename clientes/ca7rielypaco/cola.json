@@ -133,7 +133,7 @@
   ],
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 19:52",
-  "estado": "pendiente",
+  "estado": "publicado",
   "solo_si_ganan": true,
   "aprobado": "2026-11-12 19:53 (Juan)",
   "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
@@ -142,7 +142,9 @@
    "ca7riel",
    "pacoamoroso",
    "latingrammys"
-  ]
+  ],
+  "ig_media_id": "18255456889309356",
+  "publicado_el": "2026-11-12 19:54"
  },
  {
   "id": "ganador-6",
@@ -301,10 +303,12 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 19:52",
-  "estado": "pendiente",
+  "estado": "publicado",
   "solo_si_ganan": true,
   "nota": "Historia del ganador; sale junto con ganador-5 si se confirma el premio",
-  "aprobado": "2026-11-12 19:53 (Juan)"
+  "aprobado": "2026-11-12 19:53 (Juan)",
+  "ig_media_id": "18045136970832867",
+  "publicado_el": "2026-11-12 19:54"
  },
  {
   "id": "ganador-6-h",

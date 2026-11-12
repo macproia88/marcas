@@ -160,8 +160,10 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 13:42",
-  "estado": "pendiente",
-  "aprobado": "2026-11-12 13:42 (Juan)"
+  "estado": "publicado",
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "ig_media_id": "18155337316498641",
+  "publicado_el": "2026-11-12 13:43"
  },
  {
   "id": "1112-h-hace-un-ano",

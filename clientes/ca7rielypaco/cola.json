@@ -151,5 +151,133 @@
   "fecha": "2026-11-15 20:30",
   "estado": "pendiente",
   "aprobado": "2026-11-11 22:01 (Juan)"
+ },
+ {
+  "id": "1112-h-hoy",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1500-hoy.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 13:42",
+  "estado": "pendiente",
+  "aprobado": "2026-11-12 13:42 (Juan)"
+ },
+ {
+  "id": "1112-h-hace-un-ano",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1500-hace-un-ano.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 15:00",
+  "estado": "pendiente",
+  "aprobado": "2026-11-12 13:42 (Juan)"
+ },
+ {
+  "id": "1112-h-faltan4",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1800-faltan4.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 18:00",
+  "estado": "pendiente",
+  "aprobado": "2026-11-12 13:42 (Juan)"
+ },
+ {
+  "id": "1112-h-arranca",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-2145-arranca.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 21:45",
+  "estado": "pendiente",
+  "aprobado": "2026-11-12 13:42 (Juan)"
+ },
+ {
+  "id": "ganador-1-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-1.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-1 si se confirma el premio"
+ },
+ {
+  "id": "ganador-2-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-2.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-2 si se confirma el premio"
+ },
+ {
+  "id": "ganador-3-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-3.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-3 si se confirma el premio"
+ },
+ {
+  "id": "ganador-4-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-4.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-4 si se confirma el premio"
+ },
+ {
+  "id": "ganador-5-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-5.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-5 si se confirma el premio"
+ },
+ {
+  "id": "ganador-6-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-6.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-6 si se confirma el premio"
+ },
+ {
+  "id": "ganador-7-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-7.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-7 si se confirma el premio"
  }
 ]

@@ -173,9 +173,11 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 15:00",
-  "estado": "pendiente",
+  "estado": "publicado",
   "aprobado": "2026-11-12 13:42 (Juan)",
-  "forzado": "2026-11-12 15:06"
+  "forzado": "2026-11-12 15:06",
+  "ig_media_id": "18120354299096552",
+  "publicado_el": "2026-11-12 15:06"
  },
  {
   "id": "1112-h-faltan4",

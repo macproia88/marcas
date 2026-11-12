@@ -34,7 +34,8 @@
   "texto": "",
   "fecha": "2026-11-12 11:00",
   "estado": "pendiente",
-  "aprobado": "2026-11-11 20:51 (cliente)"
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "forzado": "2026-11-12 11:15"
  },
  {
   "id": "1112-post-gran-noche",

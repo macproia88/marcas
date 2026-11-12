@@ -4,14 +4,14 @@ import sys, pathlib
 from playwright.sync_api import sync_playwright
 REPO = pathlib.Path(__file__).resolve().parent.parent
 HERE = pathlib.Path(__file__).resolve().parent / 'fuentes'
-P = [  # foto, posición vertical del recorte (%), categoría, obra
- ('04-micro-rode.jpg', 12, 'Grabación del Año', '“HA HA”'),
- ('10-free-spirits-cascos-bn.jpg', 34, 'Álbum del Año', 'FREE SPIRITS'),
- ('07-japon-sakura-sorpresa.jpg', 53, 'Canción del Año', '“HASTA JESÚS TUVO UN MAL DÍA” FT. STING'),
- ('14-escalera-bn.jpg', 17, 'Mejor Interpretación de Música Electrónica', '“BETO’S HORNS” (FRED AGAIN.. REMIX)'),
- ('06-times-square.jpg', 4, 'Mejor Canción Pop/Rock', '“HASTA JESÚS TUVO UN MAL DÍA” FT. STING'),
- ('09-boxeo-bn.jpg', 26, 'Mejor Álbum de Música Alternativa', 'FREE SPIRITS'),
- ('01-lucha-libre.jpg', 6, 'Mejor Video Musical Versión Larga', 'FREE SPIRITS (THE FILM)'),
+P = [  # foto, posición vertical del recorte (%), categoría, obra  (fotos nuevas de la clienta, 11/11)
+ ('16-show-guitarra.jpg', 50, 'Grabación del Año', '“HA HA”'),
+ ('17-alfombra-grammy-gris.jpg', 8, 'Álbum del Año', 'FREE SPIRITS'),
+ ('19-smoking-negro.jpg', 23, 'Canción del Año', '“HASTA JESÚS TUVO UN MAL DÍA” FT. STING'),
+ ('18-azul-gris-anteojos.jpg', 17, 'Mejor Interpretación de Música Electrónica', '“BETO’S HORNS” (FRED AGAIN.. REMIX)'),
+ ('21-trajes-blancos-rosa.jpg', 3, 'Mejor Canción Pop/Rock', '“HASTA JESÚS TUVO UN MAL DÍA” FT. STING'),
+ ('22-trajes-blancos-pose.jpg', 12, 'Mejor Álbum de Música Alternativa', 'FREE SPIRITS'),
+ ('20-brindis-azul.jpg', 23, 'Mejor Video Musical Versión Larga', 'FREE SPIRITS (THE FILM)'),
 ]
 CSS = f'''
 @font-face{{font-family:Anton;src:url({HERE}/anton-latin-400-normal.woff2)}}
@@ -45,7 +45,7 @@ def html(f, y, cat, obra):
 <div class="obra">{obra}</div><div class="ed">27.ª edición de los Latin Grammy · Las Vegas</div>
 <div class="foot"><span>@CA7RIELYPACOAMOROSOARG</span><span>FAN CLUB ARGENTINA</span></div></div></div></body></html>'''
 with sync_playwright() as p:
-    b = p.chromium.launch(executable_path='/usr/bin/google-chrome')
+    b = p.chromium.launch()
     pg = b.new_page(viewport={'width':1080,'height':1350})
     for i, row in enumerate(P, 1):
         h = HERE / f'g{i}.html'; h.write_text(html(*row))

@@ -20,8 +20,10 @@
   ],
   "texto": "",
   "fecha": "2026-11-11 21:15",
-  "estado": "pendiente",
-  "aprobado": "2026-11-11 21:09 (Juan)"
+  "estado": "publicado",
+  "aprobado": "2026-11-11 21:09 (Juan)",
+  "ig_media_id": "18119443631027782",
+  "publicado_el": "2026-11-11 21:18"
  },
  {
   "id": "1112-historia-horarios",

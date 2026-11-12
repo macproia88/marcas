@@ -24,4 +24,10 @@
 - Línea editorial tipo Billboard: natural, informativa, con datos concretos. Sin frases genéricas.
 
 ## Horarios (métricas)
-- Pico de seguidores conectados: 18 a 23 h (máximo cerca de 20–21 h). Post principal: 19 a 20:30 h.
+- Pico de seguidores conectados: 20 a 22 h (Argentina). Post principal: 20:30 h.
+
+## Plan de crecimiento (análisis 11/11)
+- Lo que funciona: carruseles editoriales propios (aniversarios, nostalgia, noticias grandes). Mediana carrusel 29.550 vistas vs reel 8.075.
+- Lo que falla: baches sin publicar (13 días entre 27/10 y 9/11), reels reposteados, historias con poco alcance, saldo de seguidores negativo.
+- Acción: no más de 2 días sin feed; priorizar carruseles; calendario de efemérides; reels solo con material propio (videos de shows que manda Juan); historias todos los días; hablarle a toda Latinoamérica (horarios por país).
+- Efemérides confirmadas: 13/11/2025 ganaron 5 Latin Grammy (Mejor Canción Pop "El Día del Amigo", Mejor Álbum Alternativo Papota, Mejor Canción Alternativa y Mejor Video Corto "#Tetas", Mejor Video Largo Papota).

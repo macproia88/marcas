@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es-AR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tablero Instagram · Fan Club CA7RIEL &amp; Paco Argentina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Tablero del fan club: misma identidad que el plan de contenido (oscuro, editorial tipo revista) */
+:root{
+  --bg:#0d0c0d; --panel:#171516; --fg:#f3eee6; --muted:#a8a09a; --line:#2c2829;
+  --agua:#d9b25b; --nar:#e2231a; --ok:#5fbf7f; --warn:#d9b25b; --bad:#ef6b63;
+  --display:Anton,"Oswald",Impact,"Arial Narrow",sans-serif;
+  --label:Oswald,"Arial Narrow",sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:Inter,system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+* { box-sizing: border-box }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--sans);
+  padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px }
+.mast { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; border-bottom:2px solid var(--fg); padding-bottom:12px }
+.logo { font-family:var(--display); font-size:clamp(34px,6vw,58px); line-height:.9; letter-spacing:.5px }
+.logo b { color:var(--nar); font-weight:400 }
+.issue { font-family:var(--label); font-weight:500; letter-spacing:.22em; text-transform:uppercase; font-size:13px; text-align:right; color:var(--muted) }
+h1 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(36px, 6vw, 68px); line-height: .92; margin: 0; text-wrap: balance }
+h2 { font-family: var(--label); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: 18px; margin: 0 0 4px }
+.sub { color: var(--muted); font-size: 13px; margin: 0 }
+.take { margin: 12px 0 0; max-width: 64ch; font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 19px; color: var(--agua) }
+.upd { font-family:var(--label); letter-spacing:.18em; text-transform:uppercase; font-size:12px; color:var(--muted); margin:10px 0 0 }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 18px; min-width: 0 }
+.lbl { font-family: var(--label); font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted) }
+.num { font-family: var(--display); font-size: 44px; line-height: 1.05; font-variant-numeric: tabular-nums; margin-top: 4px }
+.chg.good { color: var(--ok) } .chg.bad { color: var(--bad) }
+.tw { overflow-x: auto }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums }
+th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap }
+th { font-family: var(--label); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500 }
+td.n, th.n { text-align: right }
+td.t { white-space: normal; min-width: 18ch; max-width: 36ch }
+td img { width: 48px; height: 48px; object-fit: cover; display: block; background: var(--line) }
+.chart svg { width: 100%; height: auto; display: block }
+.chart text { fill: var(--muted); font: 11px var(--sans) }
+.bars { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; align-items: end; height: 120px; margin-top: 12px }
+.bars div { background: var(--muted); min-height: 2px }
+.bars div.top { background: var(--nar) }
+.hrs { display: grid; grid-template-columns: repeat(24, 1fr); gap: 3px; font-size: 10px; color: var(--muted); text-align: center }
+.three { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px }
+.hbar { display: grid; grid-template-columns: 10ch 1fr 5ch; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0 }
+.hbar .b { height: 10px; background: var(--agua) }
+.hbar .v { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums }
+.empty { color: var(--muted); font-size: 13px; padding: 12px 0 }
+.warnbox { border: 1px solid var(--warn); color: var(--warn); padding: 10px 14px; font-size: 13px }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; border-top: 2px solid var(--fg); padding-top: 12px; font-family: var(--label); letter-spacing: .16em; text-transform: uppercase; font-size: 12px }
+.links a { color: var(--fg) }
+a { color: var(--agua) }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <div class="logo">CA7RIEL <b>&amp;</b> PACO</div>
+    <div class="issue">Fan Club Argentina · @ca7rielypacoamorosoarg<br>Tablero de Instagram</div>
+  </header>
+  <div>
+    <h1>Cómo viene la cuenta</h1>
+    <p class="take" id="take">Cargando datos…</p>
+    <p class="upd" id="upd">Actualizado: —</p>
+  </div>
+
+  <div class="warnbox" id="permiso" hidden>Las estadísticas de alcance, vistas e historias todavía no llegan: falta habilitar el permiso de estadísticas en la app de Meta. Mientras tanto se muestran seguidores, me gusta y comentarios.</div>
+
+  <section class="grid" id="kpis" aria-label="Resumen">
+    <div class="card"><div class="lbl">Seguidores</div><div class="num" id="k-seg">—</div><div class="sub" id="k-seg-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Vistas · 7 días</div><div class="num" id="k-vis">—</div><div class="sub" id="k-vis-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Personas alcanzadas · 7 días</div><div class="num" id="k-alc">—</div><div class="sub" id="k-alc-s">&nbsp;</div></div>
+    <div class="card"><div class="lbl">Cuentas que interactuaron · 7 días</div><div class="num" id="k-link">—</div><div class="sub" id="k-link-s">&nbsp;</div></div>
+  </section>
+
+  <section class="card" id="vistas-dia">
+    <h2>Vistas por día</h2>
+    <p class="sub">Últimos 30 días, todas las publicaciones e historias.</p>
+    <div class="chart" id="chart-vistas"><div class="empty">Sin datos todavía.</div></div>
+  </section>
+
+  <section class="card" id="horas">
+    <h2>¿A qué hora están conectados tus seguidores?</h2>
+    <p class="sub">Promedio de los últimos días, hora Argentina. En rojo, las 3 horas con más gente: el mejor momento para publicar.</p>
+    <div id="horas-chart"><div class="empty">Sin datos todavía.</div></div>
+  </section>
+
+  <section class="three">
+    <div class="card" id="aud-edad"><h2>Edad de los seguidores</h2><div id="edad"><div class="empty">Sin datos todavía.</div></div></div>
+    <div class="card" id="aud-genero"><h2>Género</h2><div id="genero"><div class="empty">Sin datos todavía.</div></div></div>
+    <div class="card" id="aud-ciudad"><h2>Ciudades principales</h2><div id="ciudad"><div class="empty">Sin datos todavía.</div></div></div>
+  </section>
+
+  <section class="card" id="publicaciones">
+    <h2>Publicaciones de los últimos 60 días</h2>
+    <p class="sub">Ordenadas por vistas (o por me gusta mientras no estén las vistas).</p>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Fecha</th><th>Tipo</th><th>Publicación</th><th class="n">Vistas</th><th class="n">Alcance</th><th class="n">Me gusta</th><th class="n">Coment.</th><th class="n">Guardados</th><th class="n">Compart.</th></tr></thead>
+      <tbody id="tb-pubs"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" id="historias">
+    <h2>Historias</h2>
+    <p class="sub">Se guardan antes de que desaparezcan a las 24 horas. Salidas = gente que cerró la historia.</p>
+    <div class="tw"><table>
+      <thead><tr><th></th><th>Publicada</th><th class="n">Alcance</th><th class="n">Vistas</th><th class="n">Respuestas</th><th class="n">Compart.</th><th class="n">Salidas</th></tr></thead>
+      <tbody id="tb-hist"></tbody>
+    </table></div>
+  </section>
+
+  <nav class="links" aria-label="Otras páginas del fan club">
+    <a href="plan/">Plan de contenido para aprobar</a>
+    <a href="https://www.instagram.com/ca7rielypacoamorosoarg/" target="_blank" rel="noopener">Instagram del fan club</a>
+  </nav>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const n = (v) => v == null ? '—' : Math.round(v).toLocaleString('es-AR');
+const fecha = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }); };
+const hora = (iso) => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: 'America/Argentina/Buenos_Aires' }); };
+const el = (tag, attrs = {}, txt) => { const e = document.createElement(tag); Object.assign(e, attrs); if (txt != null) e.textContent = txt; return e; };
+
+function chg(id, now, before) {
+  const s = $(id); if (before == null || !before || now == null) { s.textContent = ' '; return; }
+  const p = (now - before) / before * 100;
+  s.textContent = ''; const b = el('span', { className: 'chg ' + (p >= 0 ? 'good' : 'bad') }, (p >= 0 ? '+' : '') + p.toFixed(0) + '%');
+  s.append(b, ' vs los 7 días anteriores');
+}
+
+
+// Gráfico de línea que se adapta al ancho real (celular o compu)
+function lineaVistas(cont, vals) {
+  const dibujar = () => {
+    const W = Math.max(cont.clientWidth, 280), chico = W < 520, H = chico ? 200 : 240;
+    const m = { l: chico ? 40 : 48, r: 14, t: 26, b: 26 }, fs = chico ? 11 : 12;
+    const max = Math.max(...vals.map((x) => x.v), 1);
+    const x = (i) => m.l + i * (W - m.l - m.r) / Math.max(vals.length - 1, 1);
+    const y = (v) => H - m.b - v / max * (H - m.t - m.b);
+    const k = (v) => v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 0 : 1).replace(".", ",") + " mil" : String(Math.round(v));
+    let g = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Vistas por día" style="font:${fs}px var(--sans)">`;
+    [0, .5, 1].forEach((f) => { g += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(max * f)}" y2="${y(max * f)}" stroke="var(--line)"/><text x="${m.l - 6}" y="${y(max * f) + 4}" text-anchor="end" style="fill:var(--muted)">${k(max * f)}</text>`; });
+    g += `<path d="M${x(0)},${y(0)} ${vals.map((p, i) => `L${x(i)},${y(p.v)}`).join(" ")} L${x(vals.length - 1)},${y(0)} Z" fill="var(--agua)" opacity=".14"/>`;
+    g += `<path d="${vals.map((p, i) => (i ? "L" : "M") + x(i) + "," + y(p.v)).join(" ")}" fill="none" stroke="var(--agua)" stroke-width="2.5" stroke-linejoin="round"/>`;
+    const im = vals.reduce((b, p, i) => p.v > vals[b].v ? i : b, 0);
+    const ax = Math.min(Math.max(x(im), m.l + 30), W - m.r - 30);
+    g += `<circle cx="${x(im)}" cy="${y(vals[im].v)}" r="5" fill="var(--nar)"/><text x="${ax}" y="${y(vals[im].v) - 10}" text-anchor="middle" style="fill:var(--fg);font-weight:600">${n(vals[im].v)}</text>`;
+    const paso = chico ? 7 : 5;
+    vals.forEach((p, i) => { if (i % paso === 0) g += `<text x="${Math.min(x(i), W - m.r - 14)}" y="${H - 6}" text-anchor="middle" style="fill:var(--muted)">${+p.k.slice(8)}/${+p.k.slice(5, 7)}</text>`; });
+    cont.innerHTML = g + "</svg>";
+  };
+  dibujar(); let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(dibujar, 150); });
+}
+// Barras de horas conectados (hora Argentina)
+function barrasHoras(cont, h, notaEl) {
+  if (!h || !h.some((v) => v > 0)) return false;
+  const max = Math.max(...h), top = h.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).slice(0, 3).map((x) => x[1]).sort((a, b) => a - b);
+  const bars = document.createElement("div"); bars.className = "hbars";
+  const lab = document.createElement("div"); lab.className = "hlabs";
+  h.forEach((v, i) => { const b = document.createElement("div"); b.style.height = Math.max(4, v / max * 100) + "%"; b.title = i + " h"; if (top.includes(i)) b.className = "top"; bars.append(b); const s = document.createElement("span"); s.textContent = i % 3 === 0 ? i : ""; lab.append(s); });
+  cont.replaceChildren(bars, lab);
+  if (notaEl) notaEl.textContent = `Más gente conectada: ${top.map((i) => i + " h").join(", ")}. El mejor momento para publicar es un rato antes.`;
+  return true;
+}
+
+fetch('metricas/datos.json?' + Date.now()).then((r) => r.json()).then((d) => {
+  $('upd').textContent = 'Actualizado: ' + (d.actualizado ? d.actualizado.split(' ').map((x, i) => i ? x : x.split('-').reverse().join('/')).join(' ') : '—') + ' · se actualiza solo cada 3 horas';
+  const dias = Object.entries(d.dias || {}).sort();
+  const sinPermiso = !dias.length;
+  $('permiso').hidden = !sinPermiso;
+
+  // Seguidores
+  const seg = d.cuenta && d.cuenta.followers_count;
+  $('k-seg').textContent = n(seg);
+  const hist = Object.entries(d.seguidores_hist || {}).sort();
+  if (hist.length > 1) { const dif = hist[hist.length - 1][1] - hist[0][1]; $('k-seg-s').textContent = (dif >= 0 ? '+' : '') + dif + ' desde el ' + hist[0][0].split('-').reverse().slice(0, 2).join('/'); }
+
+  // KPIs 7 días
+  const ult = dias.slice(-7).map((x) => x[1]), ant = dias.slice(-14, -7).map((x) => x[1]);
+  const s = (arr, k) => arr.length ? arr.reduce((a, x) => a + (Number(x[k]) || 0), 0) : null;
+  if (!sinPermiso) {
+    $('k-vis').textContent = n(s(ult, 'views')); chg('k-vis-s', s(ult, 'views'), s(ant, 'views'));
+    const sem = d.semana || {}, ra = (sem.actual || {}).reach ?? s(ult, 'reach'), rb = (sem.anterior || {}).reach ?? s(ant, 'reach');
+    $('k-alc').textContent = n(ra); chg('k-alc-s', ra, rb);
+    const ea = (sem.actual || {}).accounts_engaged ?? s(ult, 'accounts_engaged'), eb = (sem.anterior || {}).accounts_engaged ?? s(ant, 'accounts_engaged');
+    $('k-link').textContent = n(ea); chg('k-link-s', ea, eb);
+  }
+
+  // Gráfico de vistas por día
+  if (dias.length) lineaVistas($('chart-vistas'), dias.slice(-30).map(([k, v]) => ({ k, v: Number(v.views) || 0 })));
+
+  // Horas
+  if (d.horas_conectados && d.horas_conectados.some((v) => v > 0)) {
+    const h = d.horas_conectados, max = Math.max(...h), top = [...h].map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).slice(0, 3).map((x) => x[1]);
+    const bars = el('div', { className: 'bars' }), lab = el('div', { className: 'hrs' });
+    h.forEach((v, i) => { const b = el('div'); b.style.height = (v / max * 100) + '%'; b.title = i + ' h: ' + n(v); if (top.includes(i)) b.className = 'top'; bars.append(b); lab.append(el('span', {}, i % 3 === 0 ? i : '')); });
+    $('horas-chart').replaceChildren(bars, lab);
+  }
+
+  // Audiencia
+  const hb = (cont, obj, fmt, limit) => {
+    const ent = Object.entries(obj || {}).sort((a, b) => b[1] - a[1]).slice(0, limit); if (!ent.length) return;
+    const tot = Object.values(obj).reduce((a, b) => a + b, 0), max = ent[0][1];
+    cont.replaceChildren(...ent.map(([k, v]) => { const r = el('div', { className: 'hbar' }); const b = el('div', { className: 'b' }); b.style.width = (v / max * 100) + '%'; r.append(el('span', {}, fmt(k)), el('div', {}, null), el('span', { className: 'v' }, (v / tot * 100).toFixed(0) + '%')); r.children[1].append(b); return r; }));
+  };
+  if (d.audiencia) { hb($('edad'), d.audiencia.age, (k) => k, 7); hb($('genero'), d.audiencia.gender, (k) => ({ F: 'Mujeres', M: 'Hombres', U: 'Sin dato' })[k] || k, 3); hb($('ciudad'), d.audiencia.city, (k) => k.split(',')[0], 8); }
+
+  // Publicaciones
+  const pubs = (d.publicaciones || []).map((p) => ({ ...p, m: p.metricas || {} }));
+  pubs.sort((a, b) => ((b.m.views || 0) - (a.m.views || 0)) || ((b.like_count || 0) - (a.like_count || 0)));
+  const tipo = (p) => p.media_product_type === 'REELS' ? 'Reel' : p.media_type === 'CAROUSEL_ALBUM' ? 'Carrusel' : 'Posteo';
+  $('tb-pubs').replaceChildren(...pubs.map((p) => {
+    const tr = el('tr'); const img = el('img', { src: p.thumbnail_url || p.media_url || '', alt: '', loading: 'lazy' }); const a = el('a', { href: p.permalink, target: '_blank', rel: 'noopener' }); a.append(img);
+    const t = (p.caption || '(sin texto)').split('\n')[0].slice(0, 70);
+    [a, fecha(p.timestamp), tipo(p), t, n(p.m.views), n(p.m.reach), n(p.like_count), n(p.comments_count), n(p.m.saved), n(p.m.shares)].forEach((v, i) => {
+      const td = el('td'); if (v instanceof Node) td.append(v); else td.textContent = v; if (i >= 4) td.className = 'n'; if (i === 3) td.className = 't'; tr.append(td); });
+    return tr;
+  }));
+
+  // Historias
+  const hs = d.historias || [];
+  if (!hs.length) $('tb-hist').replaceChildren(Object.assign(el('tr'), {}).appendChild(Object.assign(el('td', { colSpan: 7, className: 'empty' }, 'Todavía no hay historias guardadas.'))).parentNode);
+  else $('tb-hist').replaceChildren(...hs.map((h) => {
+    const m = h.metricas || {}, nav = m.navegacion || {};
+    const tr = el('tr'); const img = el('img', { src: h.thumbnail_url || h.media_url || '', alt: '', loading: 'lazy' });
+    [img, hora(h.timestamp), n(m.reach), n(m.views), n(m.replies), n(m.shares), n(nav.TAP_EXIT != null ? nav.TAP_EXIT : null)].forEach((v, i) => {
+      const td = el('td'); if (v instanceof Node) td.append(v); else td.textContent = v; if (i >= 2) td.className = 'n'; tr.append(td); });
+    return tr;
+  }));
+
+  // Resumen en una frase
+  const sem7 = (d.semana && d.semana.actual) || {};
+  $('take').textContent = sinPermiso
+    ? `La cuenta tiene ${n(seg)} seguidores y ${pubs.length} publicaciones en los últimos 60 días.`
+    : `En los últimos 7 días la cuenta tuvo ${n(s(ult, 'views'))} vistas, llegó a ${n(sem7.reach ?? s(ult, 'reach'))} personas distintas y ${n(sem7.accounts_engaged ?? s(ult, 'accounts_engaged'))} cuentas interactuaron.`;
+}).catch(() => { $('take').textContent = 'No se pudieron cargar los datos. Probá recargar la página.'; });
+</script>
+</body>
+</html>

@@ -380,11 +380,15 @@
  {
   "comment_id": "18016962458990754",
   "texto": "🔥🏆 ¡Tres gramófonos!",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18143102134715284",
+  "hora": "2026-11-12 20:02"
  },
  {
   "comment_id": "18003786450040291",
   "texto": "👏🏆 ¡Gracias por festejar con nosotros!",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18124025458822322",
+  "hora": "2026-11-12 20:02"
  }
 ]

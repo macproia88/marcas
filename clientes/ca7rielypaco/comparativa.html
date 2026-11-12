@@ -54,7 +54,7 @@ const n=x=>x==null?"—":x.toLocaleString("es-AR");
 const sg=x=>x==null?"—":(x>0?"+":"")+x.toLocaleString("es-AR");
 const cl=x=>x>0?"good":x<0?"bad":"";
 fetch("referentes/datos.json?"+Date.now()).then(r=>r.json()).then(d=>{
- document.getElementById("upd").textContent="Actualizado: "+d.actualizado.split(" ").reverse().join(" h · ").replace(/(\d{4})-(\d\d)-(\d\d)/,"$3/$2/$1");
+ document.getElementById("upd").textContent="Actualizado: "+d.actualizado.replace(/(\d{4})-(\d\d)-(\d\d) (\d\d:\d\d)/,"$3/$2/$1 · $4 h");
  const H=Object.keys(d.historial).sort(), first=H[0], last=H[H.length-1];
  const seg=(k,u)=>{const e=d.historial[k][u];return e&&(e.seg??e)};
  const pubs=(k,u)=>{const e=d.historial[k][u];return e&&e.pubs};
@@ -78,7 +78,7 @@ fetch("referentes/datos.json?"+Date.now()).then(r=>r.json()).then(d=>{
  const yo=rows[0], usa=rows[1], gap=usa.now-yo.now, gap0=seg(first,"ca7rielypaco_usa")-seg(first,"ca7rielypacoamorosoarg"), cambio=gap0-gap;
  document.getElementById("dist").innerHTML=gap>0?`<p style="margin:0;font-size:17px">Nos faltan <b>${n(gap)}</b> seguidores para pasar al fan club de Estados Unidos. El 11/11 eran ${n(gap0)}: <b class="${cl(cambio)}">${cambio>=0?"achicamos":"se agrandó"} ${n(Math.abs(cambio))}</b>.</p>`:`<p style="margin:0;font-size:17px"><b>Somos el fan club más grande</b>: le sacamos ${n(-gap)} seguidores al de Estados Unidos.</p>`;
  const best=[...rows].sort((a,b)=>b.d0-a.d0)[0];
- document.getElementById("take").textContent=`Desde el 11/11, el que más creció es ${best.lab.replace(" (nosotros)","")} (${sg(best.d0)} seguidores). Nosotros: ${sg(yo.d0)}.`;
+ document.getElementById("take").textContent=rows.every(r=>r.d0===rows[0].d0)?`La comparación arrancó el 11/11. Todavía no hay diferencias entre los tres: el gráfico se completa solo, 4 veces por día.`:`Desde el 11/11, el que más creció es ${best.lab.replace(" (nosotros)","")} (${sg(best.d0)} seguidores). Nosotros: ${sg(yo.d0)}.`;
 }).catch(()=>{document.getElementById("take").textContent="No se pudieron cargar los datos. Recargá en unos minutos."});
 </script>
 </body>

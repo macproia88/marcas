@@ -517,9 +517,46 @@
     "pubs": 371,
     "likes": 585
    }
+  },
+  "2026-11-12 18:56": {
+   "ca7riel": {
+    "seg": 1367790,
+    "pubs": 36,
+    "likes": 69245
+   },
+   "pacoamoroso": {
+    "seg": 1240187,
+    "pubs": 21,
+    "likes": 124090
+   },
+   "ca7rielypacoamoroso": {
+    "seg": 1402577,
+    "pubs": 43,
+    "likes": 93708
+   },
+   "ca7rielypacoamorosoarg": {
+    "seg": 53685,
+    "pubs": 2091,
+    "likes": 1800
+   },
+   "ca7rielypaco_usa": {
+    "seg": 56244,
+    "pubs": 2479,
+    "likes": 667
+   },
+   "ca7rielxpacochile": {
+    "seg": 32201,
+    "pubs": 1199,
+    "likes": 678
+   },
+   "pacoxamoroso": {
+    "seg": 5336,
+    "pubs": 371,
+    "likes": 585
+   }
   }
  },
- "actualizado": "2026-11-12 18:50",
+ "actualizado": "2026-11-12 18:56",
  "cuentas": {
   "ca7riel": {
    "nombre": null,
@@ -530,29 +567,29 @@
   },
   "pacoamoroso": {
    "nombre": null,
-   "seguidores": 1240188,
+   "seguidores": 1240187,
    "publicaciones": 21,
-   "ultimas12_likes_prom": 124089,
+   "ultimas12_likes_prom": 124090,
    "ultima_pub": "2026-10-25T08:37:13+0000"
   },
   "ca7rielypacoamoroso": {
    "nombre": "CA7RIEL & Paco Amoroso",
-   "seguidores": 1402569,
+   "seguidores": 1402577,
    "publicaciones": 43,
-   "ultimas12_likes_prom": 93706,
+   "ultimas12_likes_prom": 93708,
    "ultima_pub": "2026-10-28T23:31:24+0000"
   },
   "ca7rielypacoamorosoarg": {
    "nombre": "CA7RIEL & Paco Argentina",
-   "seguidores": 53686,
+   "seguidores": 53685,
    "publicaciones": 2091,
-   "ultimas12_likes_prom": 1792,
+   "ultimas12_likes_prom": 1800,
    "ultima_pub": "2026-11-12T21:44:02+0000"
   },
   "ca7rielypaco_usa": {
    "nombre": "CA7RIEL & Paco Amoroso: Official USA Fans",
-   "seguidores": 56243,
-   "publicaciones": 2477,
+   "seguidores": 56244,
+   "publicaciones": 2479,
    "ultimas12_likes_prom": 667,
    "ultima_pub": "2026-11-09T14:30:21+0000"
   },
@@ -561,7 +598,7 @@
   },
   "ca7rielxpacochile": {
    "nombre": "Ca7riel & Paco Amoroso",
-   "seguidores": 32200,
+   "seguidores": 32201,
    "publicaciones": 1199,
    "ultimas12_likes_prom": 678,
    "ultima_pub": "2026-11-02T22:29:16+0000"

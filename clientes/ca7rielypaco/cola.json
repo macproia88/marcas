@@ -189,9 +189,11 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 18:00",
-  "estado": "pendiente",
+  "estado": "publicado",
   "aprobado": "2026-11-12 13:42 (Juan)",
-  "forzado": "18:06"
+  "forzado": "18:06",
+  "ig_media_id": "18172483186460880",
+  "publicado_el": "2026-11-12 18:06"
  },
  {
   "id": "1112-h-arranca",

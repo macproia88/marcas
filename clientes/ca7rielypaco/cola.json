@@ -137,10 +137,10 @@
    "clientes/ca7rielypaco/img/03-ganador-7.jpg"
   ],
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-  "fecha": "2026-11-12 12:00",
-  "estado": "borrador",
+  "fecha": "2026-11-12 18:42",
+  "estado": "pendiente",
   "solo_si_ganan": true,
-  "aprobado": "2026-11-11 21:35 (cliente)",
+  "aprobado": "2026-11-12 18:43 (Juan; la clienta vio el anuncio en vivo)",
   "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
@@ -289,9 +289,10 @@
    "clientes/ca7rielypaco/img/h-ganador-7.jpg"
   ],
   "texto": "",
-  "fecha": "",
-  "estado": "borrador",
+  "fecha": "2026-11-12 18:42",
+  "estado": "pendiente",
   "solo_si_ganan": true,
-  "nota": "Historia del ganador; sale junto con ganador-7 si se confirma el premio"
+  "nota": "Historia del ganador; sale junto con ganador-7 si se confirma el premio",
+  "aprobado": "2026-11-12 18:43 (Juan)"
  }
 ]

@@ -56,7 +56,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Grabación del Año por “Ha Ha”. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-2",
@@ -67,7 +69,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Álbum del Año por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-3",
@@ -78,7 +82,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Canción del Año por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-4",
@@ -89,7 +95,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-5",
@@ -100,7 +108,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-6",
@@ -111,7 +121,9 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Álbum de Música Alternativa por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  },
  {
   "id": "ganador-7",
@@ -122,6 +134,8 @@
   "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
   "fecha": "2026-11-12 12:00",
   "estado": "borrador",
-  "solo_si_ganan": true
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo."
  }
 ]

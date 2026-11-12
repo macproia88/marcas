@@ -397,5 +397,20 @@
   "estado": "respondido",
   "reply_id": "17996813724052379",
   "hora": "2026-11-12 20:12"
+ },
+ {
+  "comment_id": "18105158972049044",
+  "texto": "¡Jaja tal cual! Increíble y merecidísimo 🏆",
+  "estado": "pendiente"
+ },
+ {
+  "comment_id": "18469386712184473",
+  "texto": "¡Gracias! 🙌🔥 Ya son tres en la noche",
+  "estado": "pendiente"
+ },
+ {
+  "comment_id": "18132657403800767",
+  "texto": "¡Ganaron el Latin Grammy a Mejor Interpretación de Música Electrónica por 'Beto's Horns'! 🏆 Y ya suman tres esta noche",
+  "estado": "pendiente"
  }
 ]

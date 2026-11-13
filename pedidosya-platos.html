@@ -32,20 +32,30 @@ td.z{color:var(--line)}
 .notes{color:var(--muted);font-size:13px;line-height:1.5}
 footer{color:var(--muted);font-size:13px;display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:12px}
 footer a{color:var(--accent2)}
+.cards{display:none}
 @media (max-width:640px){
- .filters{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
- .filters label{flex:none}.filters label:last-child{grid-column:1/-1}
- section{background:transparent;padding:0}
- .scroll{overflow:visible}
- table{min-width:0}
- thead{display:none}
- tbody{display:flex;flex-direction:column;gap:10px}
- tr{display:grid;grid-template-columns:repeat(4,1fr);gap:8px 6px;background:var(--card);border-radius:8px;padding:12px}
- td{border:0;padding:0;text-align:left;position:static!important;min-width:0!important;background:transparent!important}
- td::before{content:attr(data-l);display:block;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:700}
- td:first-child{grid-column:1/-1;font-weight:700;font-size:16px}
- td:first-child::before{display:none}
- td.pr{grid-column:span 2}td.t{grid-column:span 2}
+ body{padding-block:16px 32px}
+ h1{font-size:26px}
+ .sub{font-size:14px}
+ .filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+ .filters label{flex:none;font-size:11px}.filters label:last-child{grid-column:1/-1}
+ select,input{font-size:14px;padding:8px}
+ section{display:none}
+ .cards{display:flex;flex-direction:column;gap:8px}
+ .card{background:var(--card);border-radius:10px;padding:12px 12px 8px}
+ .ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+ .cn{font-weight:700;font-size:15px;line-height:1.25;min-width:0}
+ .cp{font-size:12px;color:var(--muted);margin-top:2px}
+ .ct{text-align:right;flex:none}
+ .ct b{display:block;font-family:var(--display);font-size:22px;color:var(--accent2);line-height:1}
+ .ct span{font-size:11px;color:var(--muted)}
+ .bars{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;align-items:end;height:74px;margin-top:10px}
+ .bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+ .bar i{display:block;width:100%;max-width:22px;background:var(--accent);border-radius:3px 3px 0 0;min-height:2px;opacity:.85}
+ .bar i.zero{background:var(--line);opacity:1}
+ .bar em{font-style:normal;font-size:9.5px;color:var(--fg);margin-bottom:2px;font-variant-numeric:tabular-nums;white-space:nowrap}
+ .ml{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin-top:3px}
+ .ml span{font-size:10px;color:var(--muted);text-align:center}
 }
 </style>
 </head><body>
@@ -54,7 +64,7 @@ footer a{color:var(--accent2)}
 <header>
 <h1>PedidosYa plato por plato · 2026</h1>
 <div class="sub">Unidades vendidas por plato, mes por mes. Enero a noviembre 2026 (noviembre hasta el día 12).</div>
-<div class="upd">Actualizado: 13/11/2026 16:10</div>
+<div class="upd">Actualizado: 13/11/2026 16:15</div>
 </header>
 <div class="filters">
 <label for="fl">Local<select id="fl"></select></label>
@@ -62,10 +72,11 @@ footer a{color:var(--accent2)}
 <label for="fq">Buscar<input id="fq" type="search" placeholder="ej. ravioles"></label>
 </div>
 <div class="sum" id="sum"></div>
+<div class="cards" id="cards"></div>
 <section><div class="scroll"><table><thead><tr id="hd"></tr></thead><tbody id="db"></tbody></table></div></section>
 
 <footer>
-<div>Actualizado: 13/11/2026 16:10</div>
+<div>Actualizado: 13/11/2026 16:15</div>
 <div>Otras páginas: <a href="tablero-presumida-v2.html">Tablero La Presumida</a> · <a href="mostrador.html">Tablero de mostrador</a> · <a href="apps.html">Tablero de apps</a> · <b>PedidosYa plato por plato</b> · <a href="tablero-club.html">Tablero del club</a> · <a href="reconocimiento.html">Agenda de reconocimiento</a> · <a href="ranking-anual.html">Ranking del año</a> · <a href="ranking-mostrador.html">Ranking de mostrador</a> · <a href="produccion.html">Producción por datos</a> · <a href="https://macproia88.github.io/sel-oct26-presumida/">Selección de personal (CVs)</a></div>
 </footer>
 </div>
@@ -89,6 +100,12 @@ function render(){
  const tot=R.reduce((a,r)=>a+r.t,0);
  $('sum').innerHTML=`<b>${N(R.length)}</b>platos · <b>${N(tot)}</b>unidades en el año`;
  $('db').innerHTML=R.length?R.map(r=>`<tr><td>${r.p}</td><td class="pr" data-l="Precio de lista">${r.pr?'$'+N(r.pr):'—'}</td>${MS.map(m=>m===3?`<td class="na" data-l="${MN[m]}">—</td>`:`<td class="${r.u[m]?'':'z'}" data-l="${MN[m]}">${r.u[m]?N(r.u[m]):'0'}</td>`).join('')}<td class="t" data-l="Total año">${N(r.t)}</td></tr>`).join(''):'<tr><td>No hay platos con ese filtro.</td></tr>';
+ const MX=11;
+ $('cards').innerHTML=R.length?R.map(r=>{const vals=MS.map(m=>m===3?null:(r.u[m]||0));const mx=Math.max(1,...vals.filter(v=>v!=null));
+  const k=v=>v>=1000?(v/1000).toLocaleString('es-AR',{maximumFractionDigits:1})+'k':String(v);
+  return `<div class="card"><div class="ch"><div style="min-width:0"><div class="cn">${r.p}</div><div class="cp">${r.pr?'Precio de lista $'+N(r.pr):''}</div></div><div class="ct"><b>${N(r.t)}</b><span>en el año</span></div></div>
+  <div class="bars">${vals.map(v=>v==null?'<div class="bar"><em>—</em></div>':`<div class="bar"><em>${v?N(v):''}</em><i class="${v?'':'zero'}" style="height:${v?Math.max(4,Math.round(v/mx*52)):2}px"></i></div>`).join('')}</div>
+  <div class="ml">${MS.map(m=>`<span>${'EFMAMJJASON'[m-1]}</span>`).join('')}</div></div>`}).join(''):'<div class="card">No hay platos con ese filtro.</div>';
 }
 render();
 </script>

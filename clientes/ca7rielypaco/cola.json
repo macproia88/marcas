@@ -241,7 +241,8 @@
   "texto": "",
   "fecha": "2026-11-12 21:45",
   "estado": "pendiente",
-  "aprobado": "2026-11-12 13:42 (Juan)"
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "forzado": "21:47"
  },
  {
   "id": "ganador-1-h",

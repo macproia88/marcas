@@ -1479,36 +1479,73 @@
     "pubs": 371,
     "likes": 585
    }
+  },
+  "2026-11-12 23:30": {
+   "ca7riel": {
+    "seg": 1367848,
+    "pubs": 36,
+    "likes": 69269
+   },
+   "pacoamoroso": {
+    "seg": 1240278,
+    "pubs": 21,
+    "likes": 124135
+   },
+   "ca7rielypacoamoroso": {
+    "seg": 1403488,
+    "pubs": 44,
+    "likes": 92864
+   },
+   "ca7rielypacoamorosoarg": {
+    "seg": 53713,
+    "pubs": 2094,
+    "likes": 1469
+   },
+   "ca7rielypaco_usa": {
+    "seg": 56272,
+    "pubs": 2486,
+    "likes": 671
+   },
+   "ca7rielxpacochile": {
+    "seg": 32218,
+    "pubs": 1201,
+    "likes": 679
+   },
+   "pacoxamoroso": {
+    "seg": 5336,
+    "pubs": 371,
+    "likes": 585
+   }
   }
  },
- "actualizado": "2026-11-12 23:18",
+ "actualizado": "2026-11-12 23:30",
  "cuentas": {
   "ca7riel": {
    "nombre": null,
-   "seguidores": 1367837,
+   "seguidores": 1367848,
    "publicaciones": 36,
-   "ultimas12_likes_prom": 69267,
+   "ultimas12_likes_prom": 69269,
    "ultima_pub": "2026-10-17T13:45:35+0000"
   },
   "pacoamoroso": {
    "nombre": null,
-   "seguidores": 1240262,
+   "seguidores": 1240278,
    "publicaciones": 21,
-   "ultimas12_likes_prom": 124131,
+   "ultimas12_likes_prom": 124135,
    "ultima_pub": "2026-10-25T08:37:13+0000"
   },
   "ca7rielypacoamoroso": {
    "nombre": "CA7RIEL & Paco Amoroso",
-   "seguidores": 1403412,
+   "seguidores": 1403488,
    "publicaciones": 44,
-   "ultimas12_likes_prom": 92687,
+   "ultimas12_likes_prom": 92864,
    "ultima_pub": "2026-11-12T22:42:52+0000"
   },
   "ca7rielypacoamorosoarg": {
    "nombre": "CA7RIEL & Paco Argentina",
    "seguidores": 53713,
    "publicaciones": 2094,
-   "ultimas12_likes_prom": 1453,
+   "ultimas12_likes_prom": 1469,
    "ultima_pub": "2026-11-12T22:54:16+0000"
   },
   "ca7rielypaco_usa": {
@@ -1523,7 +1560,7 @@
   },
   "ca7rielxpacochile": {
    "nombre": "Ca7riel & Paco Amoroso",
-   "seguidores": 32217,
+   "seguidores": 32218,
    "publicaciones": 1201,
    "ultimas12_likes_prom": 679,
    "ultima_pub": "2026-11-02T22:29:16+0000"

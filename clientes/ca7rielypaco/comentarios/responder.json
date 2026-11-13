@@ -503,12 +503,16 @@
   "comment_id": "18001401612043790",
   "usuario": "pipitadelapipoll",
   "texto": "😂🏆 ¡Y van tres esta noche!",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18109456136211485",
+  "hora": "2026-11-13 00:51"
  },
  {
   "comment_id": "17973709494187354",
   "usuario": "maria.ines2070",
   "texto": "¡Gracias María Inés! ❤️ Qué orgullo los chicos 👏",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18094009784226193",
+  "hora": "2026-11-13 00:51"
  }
 ]

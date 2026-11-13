@@ -356,6 +356,18 @@
   "nota": "Portada y fotos de la noche enviadas por la clienta 13/11 15:29; descripción con felicitaciones a todos los involucrados (pedido de la clienta). Créditos: grammy.com."
  },
  {
+  "id": "1113-h-video-gramofonos",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/videos/h-1113-gramofonos.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-13 20:31",
+  "estado": "pendiente",
+  "aprobado": "2026-11-13 15:42 (Juan)",
+  "nota": "Video de la clienta: los dos con los tres gramófonos. Sale justo después del carrusel."
+ },
+ {
   "id": "1113-h-tres",
   "tipo": "STORY",
   "fecha": "2026-11-13 15:00",

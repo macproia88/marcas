@@ -1220,41 +1220,78 @@
     "pubs": 371,
     "likes": 585
    }
+  },
+  "2026-11-12 22:10": {
+   "ca7riel": {
+    "seg": 1367820,
+    "pubs": 36,
+    "likes": 69261
+   },
+   "pacoamoroso": {
+    "seg": 1240212,
+    "pubs": 21,
+    "likes": 124118
+   },
+   "ca7rielypacoamoroso": {
+    "seg": 1403077,
+    "pubs": 44,
+    "likes": 91661
+   },
+   "ca7rielypacoamorosoarg": {
+    "seg": 53701,
+    "pubs": 2094,
+    "likes": 1354
+   },
+   "ca7rielypaco_usa": {
+    "seg": 56263,
+    "pubs": 2486,
+    "likes": 669
+   },
+   "ca7rielxpacochile": {
+    "seg": 32212,
+    "pubs": 1201,
+    "likes": 678
+   },
+   "pacoxamoroso": {
+    "seg": 5336,
+    "pubs": 371,
+    "likes": 585
+   }
   }
  },
- "actualizado": "2026-11-12 21:58",
+ "actualizado": "2026-11-12 22:10",
  "cuentas": {
   "ca7riel": {
    "nombre": null,
-   "seguidores": 1367824,
+   "seguidores": 1367820,
    "publicaciones": 36,
-   "ultimas12_likes_prom": 69260,
+   "ultimas12_likes_prom": 69261,
    "ultima_pub": "2026-10-17T13:45:35+0000"
   },
   "pacoamoroso": {
    "nombre": null,
-   "seguidores": 1240196,
+   "seguidores": 1240212,
    "publicaciones": 21,
-   "ultimas12_likes_prom": 124116,
+   "ultimas12_likes_prom": 124118,
    "ultima_pub": "2026-10-25T08:37:13+0000"
   },
   "ca7rielypacoamoroso": {
    "nombre": "CA7RIEL & Paco Amoroso",
-   "seguidores": 1403011,
+   "seguidores": 1403077,
    "publicaciones": 44,
-   "ultimas12_likes_prom": 91499,
+   "ultimas12_likes_prom": 91661,
    "ultima_pub": "2026-11-12T22:42:52+0000"
   },
   "ca7rielypacoamorosoarg": {
    "nombre": "CA7RIEL & Paco Argentina",
-   "seguidores": 53699,
+   "seguidores": 53701,
    "publicaciones": 2094,
-   "ultimas12_likes_prom": 1339,
+   "ultimas12_likes_prom": 1354,
    "ultima_pub": "2026-11-12T22:54:16+0000"
   },
   "ca7rielypaco_usa": {
    "nombre": "CA7RIEL & Paco Amoroso: Official USA Fans",
-   "seguidores": 56262,
+   "seguidores": 56263,
    "publicaciones": 2486,
    "ultimas12_likes_prom": 669,
    "ultima_pub": "2026-11-09T14:30:21+0000"

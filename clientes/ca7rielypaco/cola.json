@@ -362,9 +362,11 @@
    "clientes/ca7rielypaco/img/h-1113-tres.jpg"
   ],
   "texto": "",
-  "estado": "pendiente",
+  "estado": "publicado",
   "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-  "forzado": "2026-11-13 15:04"
+  "forzado": "2026-11-13 15:04",
+  "ig_media_id": "17913558501307562",
+  "publicado_el": "2026-11-13 15:05"
  },
  {
   "id": "1113-h-faltan5",

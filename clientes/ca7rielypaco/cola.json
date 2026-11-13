@@ -240,9 +240,11 @@
   ],
   "texto": "",
   "fecha": "2026-11-12 21:45",
-  "estado": "pendiente",
+  "estado": "publicado",
   "aprobado": "2026-11-12 13:42 (Juan)",
-  "forzado": "21:47"
+  "forzado": "21:47",
+  "ig_media_id": "18120499327973749",
+  "publicado_el": "2026-11-12 21:47"
  },
  {
   "id": "ganador-1-h",

@@ -64,7 +64,7 @@
   "estado": "borrador",
   "solo_si_ganan": true,
   "aprobado": "2026-11-11 21:35 (cliente)",
-  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\"",
   "etiquetas": [
    "ca7rielypacoamoroso",
    "ca7riel",
@@ -83,7 +83,7 @@
   "estado": "borrador",
   "solo_si_ganan": true,
   "aprobado": "2026-11-11 21:35 (cliente)",
-  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "nota": "No ganó: Álbum del Año: ganó Rosalía LUX",
   "etiquetas": [
    "ca7rielypacoamoroso",
    "ca7riel",
@@ -102,7 +102,7 @@
   "estado": "borrador",
   "solo_si_ganan": true,
   "aprobado": "2026-11-11 21:35 (cliente)",
-  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\"",
   "etiquetas": [
    "ca7rielypacoamoroso",
    "ca7riel",
@@ -256,7 +256,7 @@
   "fecha": "",
   "estado": "borrador",
   "solo_si_ganan": true,
-  "nota": "Historia del ganador; sale junto con ganador-1 si se confirma el premio"
+  "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\""
  },
  {
   "id": "ganador-2-h",
@@ -268,7 +268,7 @@
   "fecha": "",
   "estado": "borrador",
   "solo_si_ganan": true,
-  "nota": "Historia del ganador; sale junto con ganador-2 si se confirma el premio"
+  "nota": "No ganó: Álbum del Año: ganó Rosalía LUX"
  },
  {
   "id": "ganador-3-h",
@@ -280,7 +280,7 @@
   "fecha": "",
   "estado": "borrador",
   "solo_si_ganan": true,
-  "nota": "Historia del ganador; sale junto con ganador-3 si se confirma el premio"
+  "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\""
  },
  {
   "id": "ganador-4-h",

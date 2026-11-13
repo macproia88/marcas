@@ -157,7 +157,7 @@
   "estado": "borrador",
   "solo_si_ganan": true,
   "aprobado": "2026-11-11 21:35 (cliente)",
-  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador.",
   "etiquetas": [
    "ca7rielypacoamoroso",
    "ca7riel",
@@ -323,7 +323,7 @@
   "fecha": "",
   "estado": "borrador",
   "solo_si_ganan": true,
-  "nota": "Historia del ganador; sale junto con ganador-6 si se confirma el premio"
+  "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador."
  },
  {
   "id": "ganador-7-h",

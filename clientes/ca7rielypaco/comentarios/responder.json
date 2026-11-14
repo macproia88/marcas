@@ -610,5 +610,23 @@
   "estado": "respondido",
   "reply_id": "18048249890684382",
   "hora": "2026-11-13 23:36"
+ },
+ {
+  "comment_id": "17956844388323638",
+  "usuario": "anabe.len98",
+  "texto": "😍🏆",
+  "estado": "pendiente"
+ },
+ {
+  "comment_id": "17940943392390745",
+  "usuario": "emilia_arrueta",
+  "texto": "¡Nosotros también, Emilia! 🐶❤️",
+  "estado": "pendiente"
+ },
+ {
+  "comment_id": "18101341145432182",
+  "usuario": "emilia_arrueta",
+  "texto": "❤️❤️❤️",
+  "estado": "pendiente"
  }
 ]

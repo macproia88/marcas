@@ -472,9 +472,11 @@
    "clientes/ca7rielypaco/img/h-1114-hace-un-ano.jpg"
   ],
   "texto": "",
-  "estado": "pendiente",
+  "estado": "publicado",
   "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-  "forzado": "2026-11-14 18:04"
+  "forzado": "2026-11-14 18:04",
+  "ig_media_id": "18074176868752593",
+  "publicado_el": "2026-11-14 18:04"
  },
  {
   "id": "1115-h-faltan3",

@@ -591,12 +591,16 @@
   "comment_id": "18121896941098858",
   "usuario": "gracequai",
   "texto": "¡Muy merecidos! 👏 Talento puro ✨",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18134159914805713",
+  "hora": "2026-11-13 22:37"
  },
  {
   "comment_id": "18573155662076829",
   "usuario": "maria_bea_1",
   "texto": "The best 🔥🏆",
-  "estado": "pendiente"
+  "estado": "respondido",
+  "reply_id": "18128299844476282",
+  "hora": "2026-11-13 22:37"
  }
 ]

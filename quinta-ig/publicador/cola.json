@@ -317,7 +317,8 @@
   ],
   "texto": "",
   "fecha": "2026-11-14 10:30",
-  "estado": "pendiente"
+  "estado": "pausado",
+  "nota": "pausado 13/11: precio viejo $140.000 y el finde 14-15/11 ya está alquilado"
  },
  {
   "id": "h-disponible-finde-140k",

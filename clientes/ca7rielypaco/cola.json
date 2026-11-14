@@ -473,7 +473,8 @@
   ],
   "texto": "",
   "estado": "pendiente",
-  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-14 18:04"
  },
  {
   "id": "1115-h-faltan3",

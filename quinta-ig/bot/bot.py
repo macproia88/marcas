@@ -89,6 +89,23 @@ elif modo == "enviar":
         dest = x.get("para_id") or x.get("comment_id")
         clave = hashlib.sha256(f"{x['tipo']}|{dest}|{x['texto']}".encode()).hexdigest()[:16]
         if clave in env: continue
+        # Último control justo antes de mandar: si Juan ya contestó a mano, no mandamos nada.
+        try:
+            if x["tipo"] == "dm":
+                cs = get(f"{IG}/conversations", platform="instagram", user_id=x["para_id"],
+                         fields="messages.limit(4){from,message,created_time}").get("data", [])
+                ms = (cs[0].get("messages") or {}).get("data", []) if cs else []
+                ult = next((m for m in ms if not ((m.get("from") or {}).get("username") == YO and es_auto(m.get("message") or ""))), None)
+                if ult and (ult.get("from") or {}).get("username") == YO:
+                    env[clave] = {"estado": "salteado", "motivo": "ya respondió Juan", "hora": ahora.strftime("%d/%m %H:%M")}
+                    guardar_json(env, "enviados.json"); continue
+            else:
+                rs = get(f"{x['comment_id']}", fields="replies{username}").get("replies", {}).get("data", [])
+                if any(r.get("username") == YO for r in rs):
+                    env[clave] = {"estado": "salteado", "motivo": "comentario ya respondido", "hora": ahora.strftime("%d/%m %H:%M")}
+                    guardar_json(env, "enviados.json"); continue
+        except Exception as e:
+            print("control previo falló, se manda igual:", str(e)[:120])
         try:
             if x["tipo"] == "dm":
                 post(f"{IG}/messages", recipient=json.dumps({"id": x["para_id"]}), message=json.dumps({"text": x["texto"]}))
@@ -110,6 +127,11 @@ elif modo == "limpiar":
     queda = [x for x in lista if x.get("estado") == "pendiente" and k(x) not in env]
     guardar_json(queda, "responder.json")
     print("quedan", len(queda), "sin enviar")
+elif modo == "probar_control":
+    # Solo lectura: confirma que la consulta de control previo funciona (no imprime textos).
+    cs = get(f"{IG}/conversations", platform="instagram", user_id=sys.argv[2], fields="messages.limit(4){from,message,created_time}").get("data", [])
+    ms = (cs[0].get("messages") or {}).get("data", []) if cs else []
+    print("CONTROL conversaciones:", len(cs), "mensajes:", len(ms), "de:", [("nosotros" if (m.get("from") or {}).get("username") == YO else "cliente") for m in ms])
 elif modo == "precios":
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     e = json.load(open(os.path.join(AQUI, "precios.enc.json"))); u = base64.b64decode

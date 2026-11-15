@@ -14,7 +14,8 @@ jobs:
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: |
-                    python3 quinta-ig/bot/bot.py leer
+                    python3 quinta-ig/bot/bot.py probar_control 1907332440664902 || true
+          python3 quinta-ig/bot/bot.py leer
           git config user.name "github-actions"; git config user.email "actions@github.com"
           git add quinta-ig/bot/pendientes.enc.json quinta-ig/bot/responder.json 2>/dev/null || true
           git commit -m "Bot quinta: pendientes [skip ci]" || exit 0

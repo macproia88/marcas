@@ -176,6 +176,12 @@
    "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
    "duerme": true,
    "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)"
+  },
+  "otra_ano_nuevo": {
+   "nombre": "Otra quinta (solo Año Nuevo)",
+   "capacidad": "hasta 20 personas; duermen cómodas 8",
+   "fechas": "31/12 y 1/1 libres",
+   "nota": "No es de las nuestras: se ofrece solo si piden 31/12 o 1/1. Precio en precios cifrados."
   }
  },
  "comodidades": [

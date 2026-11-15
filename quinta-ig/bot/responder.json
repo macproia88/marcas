@@ -17,18 +17,21 @@
   "tipo": "dm",
   "para_id": "1517524173769386",
   "texto": "¡Gracias! 😊 Te escribimos al WhatsApp a la brevedad para pasarte fechas y precios. Mientras, mirá fotos y videos en @quintaelflorido 🌳",
-  "estado": "pendiente"
+  "estado": "enviado",
+  "hora": "15/11 08:44"
  },
  {
   "tipo": "dm",
   "para_id": "28971862595818479",
   "texto": "¡Gracias! 😊 Te escribimos al WhatsApp a la brevedad para pasarte fechas y precios. Mientras, mirá fotos y videos en @quintaelflorido 🌳",
-  "estado": "pendiente"
+  "estado": "enviado",
+  "hora": "15/11 08:44"
  },
  {
   "tipo": "comentario",
   "comment_id": "18201126886391454",
   "texto": "🙌💚",
-  "estado": "pendiente"
+  "estado": "enviado",
+  "hora": "15/11 08:44"
  }
 ]

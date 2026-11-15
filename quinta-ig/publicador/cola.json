@@ -525,5 +525,35 @@
   "texto": "",
   "fecha": "2026-11-15 16:30",
   "estado": "pendiente"
+ },
+ {
+  "id": "promo-lunes-16-130k",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/promo-lunes-16-130k.jpg"
+  ],
+  "fecha": "2026-11-15 17:24",
+  "estado": "pendiente",
+  "texto": "🔥 PROMO MAÑANA LUNES 🔥\n\nQuinta de día a $130.000 el día completo, de 10 a 19 h ☀️\n\n👥 Hasta 15 personas\n🏊 Pileta 7x3, quincho con mesa para 10, parrilla y juegos para los chicos\n📍 General Rodríguez, a 600 m de la autopista\n\nSolo para mañana lunes 16. ¡El primero que escribe se lo lleva! 🙌\n\n💬 Escribinos por mensaje o comentá INFO\n📲 WhatsApp 11 3877-7015 · link directo en la bio 👆\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #ZonaOeste #Promo #DiaDePileta"
+ },
+ {
+  "id": "promo-lunes-16-130k-h",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/promo-lunes-16-130k-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 17:24",
+  "estado": "pendiente"
+ },
+ {
+  "id": "promo-lunes-16-130k-h2",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/promo-lunes-16-130k-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 21:30",
+  "estado": "pendiente"
  }
 ]

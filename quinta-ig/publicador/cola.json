@@ -490,5 +490,40 @@
   "estado": "publicado",
   "ig_media_id": "18037150268887357",
   "publicado_el": "2026-11-14 16:33"
+ },
+ {
+  "id": "h-2026-11-15-asi-esta-hoy",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-15-asi-esta-hoy.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 12:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "carrusel-hoy-15-11",
+  "tipo": "CARRUSEL",
+  "media": [
+   "quinta-ig/carrusel-hoy-1.jpg",
+   "quinta-ig/carrusel-hoy-2.jpg",
+   "quinta-ig/carrusel-hoy-3.jpg",
+   "quinta-ig/carrusel-hoy-4.jpg",
+   "quinta-ig/carrusel-hoy-5.jpg",
+   "quinta-ig/carrusel-hoy-6.jpg"
+  ],
+  "texto": "☀️ Así están hoy nuestras dos quintas 👉\n\nPasto cortado, pileta lista y sombra para todo el día. Las dos están pegadas, en General Rodríguez, a 600 m de la autopista.\n\n☀️ Quinta de día: hasta 15-20 personas, de 10 a 19 h. Desde $150.000 el día.\n🛏️ Quinta con casa: duermen 5, de día hasta 15. Desde $160.000.\n\n📅 Libres: domingo 22, sábado 28 y domingo 29.\nCon el calor se reservan rápido 🔥\n\n👇 Etiquetá con quién venís\n💬 Comentá INFO y te pasamos fechas libres\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #Calor #DiaDePileta",
+  "fecha": "2026-11-15 12:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-15-domingo-22",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-15-domingo-22.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 16:30",
+  "estado": "pendiente"
  }
 ]

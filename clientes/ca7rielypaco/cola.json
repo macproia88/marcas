@@ -495,7 +495,8 @@
   ],
   "texto": "",
   "estado": "pendiente",
-  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-15 13:04"
  },
  {
   "id": "1116-post-rio",

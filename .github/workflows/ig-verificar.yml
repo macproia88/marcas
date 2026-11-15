@@ -53,17 +53,19 @@ jobs:
           P=$(curl -s "https://graph.facebook.com/v23.0/me/accounts?fields=name,instagram_business_account{username}&access_token=$T")
           python3 - "$M" "$P" > quinta-ig/publicador/quien-catriel.json <<'PY'
           import json,sys,datetime
-          try: m=json.loads(sys.argv[1])
-          except Exception: m={}
-          try: p=json.loads(sys.argv[2])
-          except Exception: p={}
+          def ld(x):
+              try: v=json.loads(x)
+              except Exception: return {"raw":"no-json"}
+              return v if isinstance(v,dict) else {"tipo":type(v).__name__,"largo":len(v) if hasattr(v,"__len__") else None}
+          m=ld(sys.argv[1]); p=ld(sys.argv[2])
           nombre=(m.get("name") or "").lower()
           print(json.dumps({"fecha":datetime.datetime.utcnow().isoformat()+"Z",
             "llave_de_facebook_de_juan": ("juan" in nombre and "ponce" in nombre),
             "llave_de_facebook_de_walter": ("walter" in nombre or "cerrotta" in nombre),
             "error_me": (m.get("error") or {}).get("message"),
             "paginas":[{"pagina":x.get("name"),"instagram":(x.get("instagram_business_account") or {}).get("username")} for x in p.get("data",[])],
-            "error_paginas": (p.get("error") or {}).get("message")},ensure_ascii=False,indent=1))
+            "error_paginas": (p.get("error") or {}).get("message"), "forma_me": m.get("tipo"), "forma_paginas": p.get("tipo"),
+            "campos_me": sorted(k for k in m.keys() if k!="name")},ensure_ascii=False,indent=1))
           PY
           python3 quinta-ig/publicador/publicar.py --probar > quinta-ig/publicador/prueba-videos.txt 2>&1 || true
           cat $OUT quinta-ig/publicador/prueba-videos.txt

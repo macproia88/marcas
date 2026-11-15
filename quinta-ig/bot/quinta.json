@@ -168,7 +168,8 @@
    "nombre": "Quinta de día",
    "capacidad": "hasta 15-20 personas",
    "duerme": false,
-   "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta"
+   "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta",
+   "solo_por_dia": true
   },
   "casa": {
    "nombre": "Quinta con casa",
@@ -261,7 +262,7 @@
   },
   {
    "tema": "Horario quinta de día",
-   "regla": "De 10 a 19 h."
+   "regla": "De 10 a 19 h. Se alquila solo por día: no tiene casa, camas ni lugar cerrado, así que no se ofrece para dormir ni por varios días."
   },
   {
    "tema": "Horario casa",
@@ -367,5 +368,22 @@
  "estrategia": {
   "calor": "Clave del negocio: cuando hace calor la gente sale desesperada a reservar y las publicaciones se viralizan. Ante pronóstico de calor: publicar fuerte (reel + historias con precio y fechas libres) y el bot debe mencionar disponibilidad para esos días."
  },
- "precios_privados": "Cifrados en precios.enc.json (clave del informe). El bot los lee con: CLAVE=... python3 quinta-ig/bot/bot.py precios"
+ "precios_privados": "Cifrados en precios.enc.json (clave del informe). El bot los lee con: CLAVE=... python3 quinta-ig/bot/bot.py precios",
+ "feriados": {
+  "nota": "Feriados y días no laborables: se cobran como sábado/domingo.",
+  "fechas": [
+   "2026-11-23",
+   "2026-12-07",
+   "2026-12-08",
+   "2026-12-25",
+   "2027-01-01",
+   "2027-02-08",
+   "2027-02-09"
+  ],
+  "viernes_finde_largo": [
+   "2026-11-20",
+   "2026-12-04",
+   "2027-02-05"
+  ]
+ }
 }

@@ -1,8 +1,14 @@
 [
  {
   "tipo": "dm",
-  "para_id": "2538708649986271",
-  "estado": "pendiente",
-  "texto": "¡Gracias por contarnos! 😊 Para Año Nuevo nuestras dos quintas ya están tomadas, y la otra que tenemos para el 31/12 y 1/1 es hasta 20 personas, así que para 25 lamentablemente no nos da 🙏 Si llegan a quedar en 20 o menos, esa sale $950.000 los 2 días (duermen cómodas 8). ¿Cuántos serían finalmente?"
+  "para_id": "2511174089286084",
+  "texto": "¡Gracias! 💚🔥 Si te tienta un día de pileta, contanos qué fecha buscás y cuántos son. ¡Y seguinos en @quintaelflorido! 😊",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1692070022331585",
+  "texto": "¡Hola! 👋 Te cuento: tenemos dos quintas en General Rodríguez, a 600 m de la autopista 🌳\n☀️ Quinta de día (hasta 15-20, de 10 a 19 h) con pileta, quincho, parrilla y juegos: desde $150.000.\n🛏️ Quinta con casa (duermen 5, de día hasta 15) con pileta propia: desde $160.000.\n¿Qué fecha buscás y cuántos serían? 😊",
+  "estado": "pendiente"
  }
 ]

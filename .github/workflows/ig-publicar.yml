@@ -1,10 +1,6 @@
-name: IG - publicar cola
+name: IG - publicar cola (solo manual; publica el reloj)
 on:
-  schedule:
-    - cron: '*/15 * * * *'
   workflow_dispatch:
-  push:
-    paths: ['quinta-ig/publicador/cola.json', 'clientes/*/cola.json']
 concurrency:
   group: ig-publicar
   cancel-in-progress: false

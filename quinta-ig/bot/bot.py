@@ -16,10 +16,14 @@ ahora = datetime.datetime.now(AR)
 OAEP = padding.OAEP(mgf=padding.MGF1(hashes.SHA256()), algorithm=hashes.SHA256(), label=None)
 b64 = lambda x: base64.b64encode(x).decode()
 def guardar_cifrado(obj, nombre):
+    import hashlib
+    h = hashlib.sha256(json.dumps({k: v for k, v in obj.items() if k != "actualizado"}, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:16]
+    viejo = leer_json(nombre, {})
+    if viejo.get("h") == h: return
     pub = serialization.load_pem_public_key(open(os.path.join(AQUI, "publica.pem"), "rb").read())
     k, iv = AESGCM.generate_key(256), os.urandom(12)
     ct = AESGCM(k).encrypt(iv, json.dumps(obj, ensure_ascii=False).encode(), None)
-    json.dump({"k": b64(pub.encrypt(k, OAEP)), "iv": b64(iv), "data": b64(ct)}, open(os.path.join(AQUI, nombre), "w"))
+    json.dump({"k": b64(pub.encrypt(k, OAEP)), "iv": b64(iv), "data": b64(ct), "h": h}, open(os.path.join(AQUI, nombre), "w"))
 def abrir_cifrado(nombre):
     priv = serialization.load_pem_private_key(os.environ["BOT_PRIV"].encode(), None)
     d = json.load(open(os.path.join(AQUI, nombre))); u = base64.b64decode

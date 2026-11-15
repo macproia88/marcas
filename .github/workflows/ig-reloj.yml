@@ -1,0 +1,42 @@
+name: IG - reloj (publica y contesta cada 5 min)
+# Los cron de GitHub se atrasan horas. Este reloj corre ~5h50m en un loop
+# y al terminar se vuelve a lanzar solo. El cron es solo de respaldo.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 * * * *'
+permissions:
+  contents: write
+  actions: write
+concurrency: { group: ig-reloj, cancel-in-progress: false }
+jobs:
+  reloj:
+    runs-on: ubuntu-latest
+    timeout-minutes: 358
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q cryptography
+      - name: Loop
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_TOKEN_CATRIEL: ${{ secrets.IG_TOKEN_CATRIEL }}
+        run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          FIN=$(( $(date +%s) + 345*60 ))
+          while [ $(date +%s) -lt $FIN ]; do
+            git pull --rebase -q || { git rebase --abort; git reset -q --hard origin/main; }
+            python3 quinta-ig/publicador/publicar.py || true
+            python3 quinta-ig/bot/bot.py enviar || true
+            python3 quinta-ig/bot/bot.py leer || true
+            git add quinta-ig/publicador/cola.json clientes/*/cola.json quinta-ig/bot/pendientes.enc.json quinta-ig/bot/responder.json 2>/dev/null || true
+            if ! git diff --cached --quiet; then
+              git commit -qm "Reloj: publicador y bot [skip ci]"
+              for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+            fi
+            sleep 300
+          done
+      - name: Relanzarse
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run ig-reloj.yml --ref main || true

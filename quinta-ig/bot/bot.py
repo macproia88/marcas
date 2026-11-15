@@ -79,21 +79,28 @@ if modo == "leer":
     guardar_cifrado(out, "pendientes.enc.json")
     print("dms", len(out["dms"]), "comentarios", len(out["comentarios"]), "errores", len(out["errores"]))
 elif modo == "enviar":
+    # responder.json lo escribimos nosotros; el reloj solo anota lo mandado en enviados.json
+    # (clave = destinatario + texto). Así nunca se manda dos veces lo mismo.
+    import hashlib
     lista = leer_json("responder.json", [])
+    env = leer_json("enviados.json", {})
     for x in lista:
         if x.get("estado") != "pendiente": continue
+        dest = x.get("para_id") or x.get("comment_id")
+        clave = hashlib.sha256(f"{x['tipo']}|{dest}|{x['texto']}".encode()).hexdigest()[:16]
+        if clave in env: continue
         try:
             if x["tipo"] == "dm":
-                r = post(f"{IG}/messages", recipient=json.dumps({"id": x["para_id"]}), message=json.dumps({"text": x["texto"]}))
+                post(f"{IG}/messages", recipient=json.dumps({"id": x["para_id"]}), message=json.dumps({"text": x["texto"]}))
             else:
-                r = post(f"{x['comment_id']}/replies", message=x["texto"])
-            x["estado"] = "enviado"; x["hora"] = ahora.strftime("%d/%m %H:%M"); x["texto"] = "[enviado]"
+                post(f"{x['comment_id']}/replies", message=x["texto"])
+            env[clave] = {"estado": "enviado", "hora": ahora.strftime("%d/%m %H:%M")}
         except urllib.error.HTTPError as e:
-            x["estado"] = "error"; x["error"] = e.read().decode()[:200]
+            env[clave] = {"estado": "error", "error": e.read().decode()[:200]}
         except Exception as e:
-            x["estado"] = "error"; x["error"] = str(e)[:200]
-    guardar_json(lista, "responder.json")
-    print([(x.get("tipo"), x["estado"]) for x in lista[-30:]])
+            env[clave] = {"estado": "error", "error": str(e)[:200]}
+        guardar_json(env, "enviados.json")
+    print(len(env), "en enviados.json")
 elif modo == "precios":
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     e = json.load(open(os.path.join(AQUI, "precios.enc.json"))); u = base64.b64decode

@@ -151,11 +151,15 @@ def main():
 
 
 def procesar_cuenta():
+    # El reloj NO toca cola.json (lo editamos nosotros): anota lo hecho en <cola>.hechos.json.
+    # Así nunca hay choques de git y nunca se publica dos veces.
     cola = json.load(open(COLA, encoding="utf-8"))
+    HECHOS = COLA[:-5] + ".hechos.json"
+    hechos = json.load(open(HECHOS, encoding="utf-8")) if os.path.exists(HECHOS) else {}
     ahora = datetime.datetime.now(ART)
     cambios = False
     for item in cola:
-        if item.get("estado") != "pendiente":
+        if item.get("estado") != "pendiente" or item.get("id") in hechos:
             continue
         cuando = datetime.datetime.strptime(item["fecha"], "%Y-%m-%d %H:%M").replace(tzinfo=ART)
         if cuando > ahora:
@@ -170,14 +174,14 @@ def procesar_cuenta():
             item.update(estado="error", error=str(e)[:300],
                         intento=datetime.datetime.now(ART).strftime("%Y-%m-%d %H:%M"))
             print("  ERROR", e)
-        cambios = True
+        hechos[item["id"]] = {k: item[k] for k in ("estado", "ig_media_id", "publicado_el", "error", "intento") if k in item}
+        json.dump(hechos, open(HECHOS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     try:
         lim = llamar("GET", f"{IG_ID}/content_publishing_limit", fields="quota_usage,config")
         print("Cupo usado en 24 h:", json.dumps(lim.get("data", lim)))
     except Exception as e:
         print("No se pudo leer el cupo:", e)
-    if cambios:
-        json.dump(cola, open(COLA, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    # cola.json no se reescribe acá (ver hechos.json)
 
 
 def probar():

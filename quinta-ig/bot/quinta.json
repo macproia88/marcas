@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-15 09:45",
+ "actualizado": "2026-11-15 09:50",
  "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
  "calendario": [
   {
@@ -24,27 +24,43 @@
   },
   {
    "fecha": "2026-12-24",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Fiestas: Juan dijo reservado; [CONFIRMAR si son las dos quintas]"
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-24",
+   "quinta": "dia",
+   "estado": "alquilado"
   },
   {
    "fecha": "2026-12-25",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Fiestas: Juan dijo reservado; [CONFIRMAR si son las dos quintas]"
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-25",
+   "quinta": "dia",
+   "estado": "alquilado"
   },
   {
    "fecha": "2026-12-26",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Fiestas: Juan dijo reservado; [CONFIRMAR si son las dos quintas]"
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-26",
+   "quinta": "dia",
+   "estado": "alquilado"
   },
   {
    "fecha": "2026-12-27",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Fiestas: Juan dijo reservado; [CONFIRMAR si son las dos quintas]"
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-27",
+   "quinta": "dia",
+   "estado": "alquilado"
   },
   {
    "fecha": "2026-12-31",
@@ -88,75 +104,63 @@
   },
   {
    "fecha": "2027-01-11",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-12",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-13",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-14",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-15",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-16",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-17",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-18",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-19",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-20",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-21",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   },
   {
    "fecha": "2027-01-22",
-   "quinta": "?",
-   "estado": "alquilado",
-   "nota": "Del calendario de enero del 4/11; [CONFIRMAR cuál quinta]"
+   "quinta": "casa",
+   "estado": "alquilado"
   }
  ],
  "quintas": {
@@ -173,34 +177,6 @@
    "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)"
   }
  },
- "precios": [
-  {
-   "que": "Quinta de día – día de semana",
-   "precio": "[COMPLETAR]",
-   "bot_lo_dice": true
-  },
-  {
-   "que": "Quinta de día – sábado, domingo o feriado",
-   "precio": "$150.000",
-   "nota": "unos $10.000 por persona con 15",
-   "bot_lo_dice": true
-  },
-  {
-   "que": "Quinta de día – fin de semana sáb+dom (diciembre)",
-   "precio": "$320.000",
-   "bot_lo_dice": true
-  },
-  {
-   "que": "Casa – por noche",
-   "precio": "[COMPLETAR]",
-   "bot_lo_dice": true
-  },
-  {
-   "que": "Casa – fin de semana",
-   "precio": "[COMPLETAR]",
-   "bot_lo_dice": true
-  }
- ],
  "comodidades": [
   {
    "que": "Pileta",
@@ -294,7 +270,7 @@
   },
   {
    "tema": "Seña",
-   "regla": "[COMPLETAR] (en la reserva del 21/11 fue 50%)"
+   "regla": "50% para reservar el día y el otro 50% cuando ingresan."
   },
   {
    "tema": "Forma de pago",
@@ -389,21 +365,8 @@
   "extra_guardado": "a 15 minutos de Luján (Juan lo dejó aparte por las dudas: usarlo solo si preguntan por Luján)",
   "nota": "Las dos quintas están una pegada al lado de la otra."
  },
- "precio_por_dia": {
-  "nota": "Precio de cada día libre en el calendario. [COMPLETAR] = el bot no lo dice.",
-  "dia": {
-   "lunes a jueves": "[COMPLETAR]",
-   "viernes": "[COMPLETAR]",
-   "sábado, domingo y feriado": "$150.000",
-   "fin de semana sáb+dom diciembre": "$320.000 los dos días"
-  },
-  "casa": {
-   "noche lunes a jueves": "[COMPLETAR]",
-   "noche viernes a domingo": "[COMPLETAR]",
-   "referencia": "el 23/11 se alquiló a $170.000"
-  }
- },
  "estrategia": {
   "calor": "Clave del negocio: cuando hace calor la gente sale desesperada a reservar y las publicaciones se viralizan. Ante pronóstico de calor: publicar fuerte (reel + historias con precio y fechas libres) y el bot debe mencionar disponibilidad para esos días."
- }
+ },
+ "precios_privados": "Cifrados en precios.enc.json (clave del informe). El bot los lee con: CLAVE=... python3 quinta-ig/bot/bot.py precios"
 }

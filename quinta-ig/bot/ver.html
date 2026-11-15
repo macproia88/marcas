@@ -6,25 +6,33 @@ td,th{border:1px solid #e5d8d4;padding:6px 8px;text-align:left;vertical-align:to
 .mes{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:14px}.d{background:#fff;border:1px solid #eee;min-height:40px;font-size:12px;padding:3px;border-radius:4px}
 .d.oc{background:#ffcdd2;text-decoration:line-through;color:#b71c1c}.d.q{background:#ffe0b2}.d small{display:block;font-size:10px;color:#2e7d32}.d b{display:block}.nom{font-weight:700;margin:6px 0}footer{font-size:12px;color:#777;padding:16px;text-align:center}footer a{color:#b71c1c;margin:0 6px}</style></head>
 <body><header><h1>Quinta El Florido · Lo que sabe el bot</h1><div id="act"></div></header><main>
-<h2>Calendario · Quinta de día</h2><div id="cal_dia"></div><h2>Calendario · Casa (para dormir)</h2><div id="cal_casa"></div><p style="font-size:12px">Tachado en rojo: alquilado. "?" = falta confirmar en cuál quinta. En los días libres figura el precio; "—" = precio a completar.</p>
-<h2>Precios</h2><table id="pre"></table><h2>Comodidades</h2><table id="com"></table><h2>Reglas</h2><table id="reg"></table><h2>Fotos</h2><div id="fot"></div></main>
+<h2>Calendario · Quinta de día</h2><div id="cal_dia"></div><h2>Calendario · Casa (para dormir)</h2><div id="cal_casa"></div><p style="font-size:12px">Tachado en rojo: alquilado. En blanco: libre.</p>
+<h2>Precios (privado)</h2><div id="priv"><form id="fp"><input id="pin" type="password" inputmode="numeric" placeholder="Clave" style="padding:8px;font-size:16px"> <button style="padding:8px 14px;background:#b71c1c;color:#fff;border:0;border-radius:6px">Ver precios</button></form><p style="font-size:12px">Solo para nosotros: con la clave se ven los precios y los calendarios con el precio de cada día libre.</p></div><table id="pre"></table><h2>Comodidades</h2><table id="com"></table><h2>Reglas</h2><table id="reg"></table><h2>Fotos</h2><div id="fot"></div></main>
 <footer>Actualizado: <span id="act2"></span><br><a href="../../c/florido-b02e6312/">Informe de la quinta</a><a href="../../tablero-quinta.html">Tablero</a><a href="../../c/demo-quintas/">Demo para clientes</a></footer>
 <script>
 const f=s=>s.includes('[COMPLETAR')?`<span class="falta">${s}</span>`:s;
 fetch('quinta.json?'+Date.now()).then(r=>r.json()).then(d=>{
 document.getElementById('act').textContent='Última actualización: '+d.actualizado;document.getElementById('act2').textContent=d.actualizado;
-const pr=(q,dt)=>{const w=dt.getDay(),P=d.precio_por_dia[q];let v;
- if(q=='dia'){v=(w==0||w==6)?P['sábado, domingo y feriado']:(w==5?P['viernes']:P['lunes a jueves'])}
- else{v=(w==5||w==6||w==0)?P['noche viernes a domingo']:P['noche lunes a jueves']}
+let P=null;const pr=(q,dt)=>{const w=dt.getDay(),R=P.precio_por_dia[q];let v;
+ if(q=='dia'){v=(w==0||w==6)?R['sábado, domingo y feriado']:(w==5?R['viernes']:R['lunes a jueves'])}
+ else{v=(w==5||w==6||w==0)?R['noche viernes a domingo']:R['noche lunes a jueves']}
  return v&&!v.includes('[')?v.replace('$','').replace('.000','k'):'—'};
 const cal=q=>{let h='';const hoy=new Date();for(let m=0;m<5;m++){const p=new Date(hoy.getFullYear(),hoy.getMonth()+m,1);
 h+=`<div class="nom">${p.toLocaleDateString('es-AR',{month:'long',year:'numeric'})}</div><div class="mes">`+'LMMJVSD'.split('').map(x=>`<div style="text-align:center;font-size:11px">${x}</div>`).join('');
 for(let i=0;i<(p.getDay()+6)%7;i++)h+='<div></div>';const n=new Date(p.getFullYear(),p.getMonth()+1,0).getDate();
 for(let i=1;i<=n;i++){const dt=new Date(p.getFullYear(),p.getMonth(),i);const k=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
 const e=d.calendario.filter(c=>c.fecha==k&&(c.quinta==q||c.quinta=='?'));
-h+=e.length?`<div class="d ${e.some(c=>c.quinta==q)?'oc':'q'}"><b>${i}</b>${e.some(c=>c.quinta==q)?'alquilado':'?'}</div>`:`<div class="d"><b>${i}</b><small>${pr(q,dt)}</small></div>`}h+='</div>'}return h};
-document.getElementById('cal_dia').innerHTML=cal('dia');document.getElementById('cal_casa').innerHTML=cal('casa');
-document.getElementById('pre').innerHTML='<tr><th>Qué</th><th>Precio</th><th>¿Lo dice el bot?</th></tr>'+d.precios.map(p=>`<tr><td>${p.que}${p.nota?'<br><small>'+f(p.nota)+'</small>':''}</td><td>${f(p.precio)}</td><td>${p.bot_lo_dice?'Sí':'No'}</td></tr>`).join('');
+h+=e.length?`<div class="d oc"><b>${i}</b>alquilado</div>`:`<div class="d"><b>${i}</b>${P?'<small>'+pr(q,dt)+'</small>':''}</div>`}h+='</div>'}return h};
+const pintar=()=>{document.getElementById('cal_dia').innerHTML=cal('dia');document.getElementById('cal_casa').innerHTML=cal('casa');
+ if(P)document.getElementById('pre').innerHTML='<tr><th>Qué</th><th>Precio</th><th>¿Lo dice el bot?</th></tr>'+P.lista.map(p=>`<tr><td>${p.que}${p.nota?'<br><small>'+f(p.nota)+'</small>':''}</td><td>${f(p.precio)}</td><td>${p.bot_lo_dice?'Sí':'No'}</td></tr>`).join('')};
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const abrir=async pin=>{const e=await (await fetch('precios.enc.json?'+Date.now())).json();
+ const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveKey']);
+ const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+ return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.data))))};
+document.getElementById('fp').onsubmit=async ev=>{ev.preventDefault();const pin=document.getElementById('pin').value;
+ try{P=await abrir(pin);try{localStorage.setItem('clave-informe',pin)}catch(x){};document.getElementById('priv').style.display='none';pintar()}catch(x){alert('Clave incorrecta')}};
+(async()=>{let p=null;try{p=localStorage.getItem('clave-informe')}catch(x){};if(p){try{P=await abrir(p);document.getElementById('priv').style.display='none'}catch(x){}}pintar()})();
 document.getElementById('com').innerHTML='<tr><th>Qué</th><th>Quinta de día</th><th>Casa</th></tr>'+d.comodidades.map(c=>`<tr><td>${c.que}${c.detalle?'<br><small>'+f(c.detalle)+'</small>':''}</td><td>${f(c.dia)}</td><td>${f(c.casa)}</td></tr>`).join('');
 document.getElementById('reg').innerHTML=d.reglas.map(r=>`<tr><th>${r.tema}</th><td>${f(r.regla)}</td></tr>`).join('');
 document.getElementById('fot').innerHTML=d.fotos.map(x=>`<a href="${x.link}"><img src="${x.link}" alt="${x.que}" style="width:31%;margin:1%;border-radius:6px"></a>`).join('')})

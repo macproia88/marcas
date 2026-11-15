@@ -81,5 +81,10 @@ elif modo == "enviar":
             x["estado"] = "error"; x["error"] = str(e)[:200]
     guardar_json(lista, "responder.json")
     print([(x.get("tipo"), x["estado"]) for x in lista[-30:]])
+elif modo == "precios":
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    e = json.load(open(os.path.join(AQUI, "precios.enc.json"))); u = base64.b64decode
+    k = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=u(e["salt"]), iterations=e["iter"]).derive(os.environ["CLAVE"].encode())
+    print(json.dumps(json.loads(AESGCM(k).decrypt(u(e["iv"]), u(e["data"]), None)), ensure_ascii=False, indent=1))
 elif modo == "ver":
     print(json.dumps(abrir_cifrado("pendientes.enc.json"), ensure_ascii=False, indent=1))

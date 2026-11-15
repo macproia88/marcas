@@ -40,6 +40,10 @@ def post(path, **p):
     p["access_token"] = T
     r = urllib.request.Request(f"{API}/{path}", data=urllib.parse.urlencode(p).encode(), method="POST")
     return json.load(urllib.request.urlopen(r, timeout=30))
+AUTO = ("¡Hola! 👋 Gracias por escribir", "¡Hola! 🌙", "¡Hola! 🎄 Gracias por escribir", "📲 Escribinos al WhatsApp",
+        "¡Hola! 👋 Gracias por tu comentario", "Estamos en General Rodríguez, a solo", "☀️ Quinta de día", "☀ Quinta de día",
+        "¡Pasanos la fecha", "💰 Hasta diciembre", "¡Hola! Gracias por ponerte en contacto")
+def es_auto(t): return (not t.strip()) or t.startswith(AUTO)
 def fecha(s): return datetime.datetime.strptime(s[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=datetime.timezone.utc).astimezone(AR)
 
 modo = sys.argv[1] if len(sys.argv) > 1 else "leer"
@@ -47,13 +51,18 @@ if modo == "leer":
     out = {"actualizado": ahora.strftime("%Y-%m-%d %H:%M"), "dms": [], "comentarios": [], "errores": []}
     try:
         convs = get(f"{IG}/conversations", platform="instagram", limit=40,
-                    fields="id,updated_time,participants,messages.limit(8){id,from,message,created_time}")["data"]
+                    fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time}")["data"]
         for c in convs:
-            if (ahora - fecha(c["updated_time"])).days > 3: continue
+            if (ahora - fecha(c["updated_time"])).days > 7: continue
             msgs = (c.get("messages") or {}).get("data", [])
             if not msgs: continue
-            ult = msgs[0]
-            if (ult.get("from") or {}).get("username") == YO: continue
+            # Pendiente si hay un mensaje del cliente más nuevo que nuestra última respuesta real
+            # (las automáticas de Meta y la vista previa del link no cuentan como respuesta).
+            pend = False
+            for m in msgs:
+                if (m.get("from") or {}).get("username") != YO: pend = True; break
+                if not es_auto(m.get("message") or ""): break
+            if not pend: continue
             cliente = next((p for p in c.get("participants", {}).get("data", []) if p.get("username") != YO), {})
             out["dms"].append({"conv": c["id"], "para_id": cliente.get("id"), "usuario": cliente.get("username"),
                 "charla": [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",

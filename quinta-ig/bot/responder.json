@@ -2,36 +2,66 @@
  {
   "tipo": "dm",
   "para_id": "1641394670783832",
-  "texto": "¡Gracias! 🔥 Si querés info de fechas y precios de la quinta, escribinos por acá 😊",
+  "texto": "[enviado]",
   "estado": "enviado",
   "hora": "15/11 08:42"
  },
  {
   "tipo": "comentario",
   "comment_id": "17885103720533911",
-  "texto": "¡Gracias! 💚",
+  "texto": "[enviado]",
   "estado": "enviado",
   "hora": "15/11 08:42"
  },
  {
   "tipo": "dm",
   "para_id": "1517524173769386",
-  "texto": "¡Gracias! 😊 Te escribimos al WhatsApp a la brevedad para pasarte fechas y precios. Mientras, mirá fotos y videos en @quintaelflorido 🌳",
+  "texto": "[enviado]",
   "estado": "enviado",
   "hora": "15/11 08:44"
  },
  {
   "tipo": "dm",
   "para_id": "28971862595818479",
-  "texto": "¡Gracias! 😊 Te escribimos al WhatsApp a la brevedad para pasarte fechas y precios. Mientras, mirá fotos y videos en @quintaelflorido 🌳",
+  "texto": "[enviado]",
   "estado": "enviado",
   "hora": "15/11 08:44"
  },
  {
   "tipo": "comentario",
   "comment_id": "18201126886391454",
-  "texto": "🙌💚",
+  "texto": "[enviado]",
   "estado": "enviado",
   "hora": "15/11 08:44"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1439853081188815",
+  "texto": "¡Sí! Te cuento:\n🛏️ Quinta con casa: duermen cómodas 5 personas (2 camas de dos plazas y 1 de una plaza). De día pueden estar hasta 15 en total. Un solo día (sábado o domingo) sale $200.000, de 10 a 19 h.\n☀️ Quinta de día: para hasta 15-20 personas, sin dormir. El sábado 21 ya está alquilada, el domingo 22 la tenemos libre: $160.000, de 10 a 19 h.\nLas dos están pegadas, así que si son más pueden tomar las dos 😉 ¿Cuántos serían?\n📲 WhatsApp 11 3877-7015",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1589163958778682",
+  "texto": "¡Buen día! Sí, en principio tenemos libres el domingo 29/11 y el sábado 19/12 🙌\n☀️ Quinta de día (hasta 15-20 personas, de 10 a 19 h): $160.000 el día.\n🛏️ Quinta con casa (duermen 5, de día hasta 15): $200.000 el día.\n¿Cuántos serían y cuál fecha te sirve más? Con el calor se están yendo rápido 🔥\nPara reservar es el 50% de seña y el resto al ingresar.\n📲 WhatsApp 11 3877-7015",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1791857021995819",
+  "texto": "¡Hola! Sí, vimos tu consulta, ¡felicitaciones por recibirte! 🎓 Te soy sincero: para 50 personas nos queda chico, nuestras quintas son para hasta 15-20 personas cada una. Si la lista se achica a unos 30, podés tomar las dos quintas juntas (están pegadas) el 5 o el 6 de diciembre, que las tenemos libres. ¿Te sirve? 📲 WhatsApp 11 3877-7015",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1907332440664902",
+  "texto": "¡Hola! El 31 y el 1 nuestras dos quintas ya están completas, pero tenemos otra quinta disponible para Año Nuevo: para hasta 20 personas y duermen cómodas 8 🥂 ¿Cuántos serían? Te paso el valor y las fotos 👉 WhatsApp 11 3877-7015",
+  "estado": "esperar"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18136342900668517",
+  "texto": "🙌🔥 ¡Se viene el calor! Escribinos y te pasamos fechas libres",
+  "estado": "pendiente"
  }
 ]

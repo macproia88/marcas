@@ -74,7 +74,7 @@ elif modo == "enviar":
                 r = post(f"{IG}/messages", recipient=json.dumps({"id": x["para_id"]}), message=json.dumps({"text": x["texto"]}))
             else:
                 r = post(f"{x['comment_id']}/replies", message=x["texto"])
-            x["estado"] = "enviado"; x["hora"] = ahora.strftime("%d/%m %H:%M")
+            x["estado"] = "enviado"; x["hora"] = ahora.strftime("%d/%m %H:%M"); x["texto"] = "[enviado]"
         except urllib.error.HTTPError as e:
             x["estado"] = "error"; x["error"] = e.read().decode()[:200]
         except Exception as e:

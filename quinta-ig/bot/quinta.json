@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-15 08:55",
+ "actualizado": "2026-11-15 09:15",
  "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
  "calendario": [
   {
@@ -41,8 +41,9 @@
   },
   "casa": {
    "nombre": "Quinta con casa",
-   "capacidad": "5 personas",
-   "duerme": true
+   "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
+   "duerme": true,
+   "camas": "[CONFIRMAR: Juan dijo '2 camas de una plaza, una cama de una plaza'; para 5 personas serían 2 de dos plazas + 1 de una plaza]"
   }
  },
  "precios": [
@@ -83,13 +84,13 @@
   {
    "que": "Pileta",
    "dia": "Sí",
-   "casa": "Sí",
+   "casa": "Sí, 7 x 3 m",
    "detalle": "[COMPLETAR medidas / si es climatizada]"
   },
   {
    "que": "Quinchos",
    "dia": "Sí (2), con mesas y sillas",
-   "casa": "[COMPLETAR]"
+   "casa": "Sí, frente a la pileta, con mesa rústica para 10 personas"
   },
   {
    "que": "Parrilla",
@@ -119,7 +120,7 @@
   {
    "que": "Camas / habitaciones",
    "dia": "No",
-   "casa": "[COMPLETAR]"
+   "casa": "Duermen 5 cómodos [CONFIRMAR camas]"
   },
   {
    "que": "Ropa de cama y toallas",
@@ -129,7 +130,7 @@
   {
    "que": "Cocina / heladera / vajilla",
    "dia": "[COMPLETAR]",
-   "casa": "[COMPLETAR]"
+   "casa": "Cocina: Sí · heladera y vajilla [COMPLETAR]"
   },
   {
    "que": "Aire / ventilador",
@@ -139,7 +140,7 @@
   {
    "que": "WiFi",
    "dia": "[COMPLETAR]",
-   "casa": "[COMPLETAR]"
+   "casa": "Sí"
   },
   {
    "que": "Música",
@@ -220,5 +221,10 @@
    "que": "Collage",
    "link": "https://macproia88.github.io/marcas/quinta-ig/fb-collage-hoy.jpg"
   }
- ]
+ ],
+ "ubicacion": {
+  "zona": "General Rodríguez",
+  "autopista": "a 600 m de la autopista del Oeste",
+  "extra_guardado": "a 15 minutos de Luján (Juan lo dejó aparte por las dudas: usarlo solo si preguntan por Luján)"
+ }
 }

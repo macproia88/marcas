@@ -181,8 +181,7 @@
   {
    "que": "Pileta",
    "dia": "Sí, 7 x 3 m, con duchita al lado",
-   "casa": "Sí, 7 x 3 m",
-   "detalle": "[CONFIRMAR si la casa tiene su propia pileta de 7x3 o es la misma]"
+   "casa": "Sí, su propia pileta de 7 x 3 m"
   },
   {
    "que": "Quinchos",
@@ -262,11 +261,11 @@
   },
   {
    "tema": "Horario quinta de día",
-   "regla": "[COMPLETAR]"
+   "regla": "De 10 a 19 h."
   },
   {
    "tema": "Horario casa",
-   "regla": "[COMPLETAR]"
+   "regla": "Por día: de 10 a 19 h. Si se quedan una noche son 2 días: entran el primer día a las 10 h y se van el segundo día a las 19 h."
   },
   {
    "tema": "Seña",

@@ -14,8 +14,8 @@ const f=s=>s.includes('[COMPLETAR')?`<span class="falta">${s}</span>`:s;
 fetch('quinta.json?'+Date.now()).then(r=>r.json()).then(d=>{
 document.getElementById('act').textContent='Última actualización: '+d.actualizado;document.getElementById('act2').textContent=d.actualizado;
 let P=null;const pr=(q,dt)=>{const w=dt.getDay(),R=P.precio_por_dia[q];let v;
- if(q=='dia'){v=(w==0||w==6)?R['sábado, domingo y feriado']:(w==5?R['viernes']:R['lunes a jueves'])}
- else{v=(w==5||w==6||w==0)?R['noche viernes a domingo']:R['noche lunes a jueves']}
+ if(q=='dia'){v=(w==1||w==2||w==3||w==4)?R['lunes a jueves']:R['viernes, sábado, domingo y feriado']}
+ else{v=(w==0||w==6)?R['sábado, domingo y feriado']:(w==5?R['viernes']:R['lunes a jueves'])}
  return v&&!v.includes('[')?v.replace('$','').replace('.000','k'):'—'};
 const cal=q=>{let h='';const hoy=new Date();for(let m=0;m<5;m++){const p=new Date(hoy.getFullYear(),hoy.getMonth()+m,1);
 h+=`<div class="nom">${p.toLocaleDateString('es-AR',{month:'long',year:'numeric'})}</div><div class="mes">`+'LMMJVSD'.split('').map(x=>`<div style="text-align:center;font-size:11px">${x}</div>`).join('');

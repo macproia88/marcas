@@ -15,6 +15,7 @@
 - Capacidad y comodidades: solo lo que está en quinta.json. Si dice [COMPLETAR] o bot_lo_dice es false, no dar el dato: "te lo pasamos por WhatsApp".
 - Fechas: si la fecha figura en "calendario" de quinta.json para esa quinta (o con quinta "?"), decir que esa fecha ya está tomada y ofrecer otra libre cercana. Si NO figura, decir "esa fecha en principio la tenemos libre", nunca "confirmado".
 - Precios: son privados, están cifrados. Leerlos con `CLAVE=<clave> python3 quinta-ig/bot/bot.py precios` (la clave está en el pedido de la tarea). Usar "precio_por_dia" según la quinta y el día de la semana. Si dice [COMPLETAR] o bot_lo_dice es false, no dar número. Nunca escribir precios en archivos del repo.
+- Casa con noche: se cobran 2 días (entran el 1er día 10 h, se van el 2do día 19 h). Horario por día en las dos: 10 a 19 h.
 - Año Nuevo (31/12 al 3/1) está alquilado en las dos quintas.
 - Calor: si el cliente pregunta para días de calor o de este finde, transmitir que se llena rápido y conviene reservar ya.
 - Nunca confirmar reservas, ni cobrar, ni pasar datos de pago. Para reservar: "escribinos al WhatsApp 11 3877-7015 y lo cerramos".

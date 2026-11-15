@@ -43,6 +43,14 @@ def post(path, **p):
 AUTO = ("¡Hola! 👋 Gracias por escribir", "¡Hola! 🌙", "¡Hola! 🎄 Gracias por escribir", "📲 Escribinos al WhatsApp",
         "¡Hola! 👋 Gracias por tu comentario", "Estamos en General Rodríguez, a solo", "☀️ Quinta de día", "☀ Quinta de día",
         "¡Pasanos la fecha", "💰 Hasta diciembre", "¡Hola! Gracias por ponerte en contacto")
+def mensajes_de(para_id):
+    # Últimos mensajes de la charla con ESE cliente (la API no filtra por usuario, así que lo buscamos).
+    cs = get(f"{IG}/conversations", platform="instagram", limit=50,
+             fields="participants,messages.limit(4){from,message,created_time}").get("data", [])
+    for c in cs:
+        if any(p.get("id") == para_id for p in (c.get("participants") or {}).get("data", [])):
+            return (c.get("messages") or {}).get("data", [])
+    raise Exception("charla no encontrada")
 def es_auto(t): return (not t.strip()) or t.startswith(AUTO)
 def fecha(s): return datetime.datetime.strptime(s[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=datetime.timezone.utc).astimezone(AR)
 
@@ -92,9 +100,7 @@ elif modo == "enviar":
         # Último control justo antes de mandar: si Juan ya contestó a mano, no mandamos nada.
         try:
             if x["tipo"] == "dm":
-                cs = get(f"{IG}/conversations", platform="instagram", user_id=x["para_id"],
-                         fields="messages.limit(4){from,message,created_time}").get("data", [])
-                ms = (cs[0].get("messages") or {}).get("data", []) if cs else []
+                ms = mensajes_de(x["para_id"])
                 ult = next((m for m in ms if not ((m.get("from") or {}).get("username") == YO and es_auto(m.get("message") or ""))), None)
                 if ult and (ult.get("from") or {}).get("username") == YO:
                     env[clave] = {"estado": "salteado", "motivo": "ya respondió Juan", "hora": ahora.strftime("%d/%m %H:%M")}
@@ -129,9 +135,8 @@ elif modo == "limpiar":
     print("quedan", len(queda), "sin enviar")
 elif modo == "probar_control":
     # Solo lectura: confirma que la consulta de control previo funciona (no imprime textos).
-    cs = get(f"{IG}/conversations", platform="instagram", user_id=sys.argv[2], fields="messages.limit(4){from,message,created_time}").get("data", [])
-    ms = (cs[0].get("messages") or {}).get("data", []) if cs else []
-    print("CONTROL conversaciones:", len(cs), "mensajes:", len(ms), "de:", [("nosotros" if (m.get("from") or {}).get("username") == YO else "cliente") for m in ms])
+    ms = mensajes_de(sys.argv[2])
+    print("CONTROL mensajes:", len(ms), "de:", [("nosotros" if (m.get("from") or {}).get("username") == YO else "cliente") for m in ms])
 elif modo == "precios":
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     e = json.load(open(os.path.join(AQUI, "precios.enc.json"))); u = base64.b64decode

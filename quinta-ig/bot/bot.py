@@ -101,6 +101,15 @@ elif modo == "enviar":
             env[clave] = {"estado": "error", "error": str(e)[:200]}
         guardar_json(env, "enviados.json")
     print(len(env), "en enviados.json")
+elif modo == "limpiar":
+    # Saca de responder.json lo ya enviado (según enviados.json). Correr antes de agregar respuestas nuevas.
+    import hashlib
+    env = leer_json("enviados.json", {})
+    lista = leer_json("responder.json", [])
+    def k(x): return hashlib.sha256(f"{x['tipo']}|{x.get('para_id') or x.get('comment_id')}|{x['texto']}".encode()).hexdigest()[:16]
+    queda = [x for x in lista if x.get("estado") == "pendiente" and k(x) not in env]
+    guardar_json(queda, "responder.json")
+    print("quedan", len(queda), "sin enviar")
 elif modo == "precios":
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     e = json.load(open(os.path.join(AQUI, "precios.enc.json"))); u = base64.b64decode

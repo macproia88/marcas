@@ -23,7 +23,10 @@
 - Horario de ingreso y salida: [FALTA DATO]
 - Mascotas: [FALTA DATO]
 
-## Fechas ocupadas (el bot nunca confirma una fecha: pasa a Juan)
+## Fechas ocupadas
+Ver calendario.json (es la fuente actualizada). El bot nunca confirma una fecha.
+
+## (histórico)
 - 14 y 15/11 — alquilada
 - 21/11 — quinta de día
 - 23/11 — casa

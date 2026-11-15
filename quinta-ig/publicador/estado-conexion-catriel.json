@@ -1,8 +1,8 @@
 {
- "fecha": "2026-11-11T23:23:28.276716Z",
+ "fecha": "2026-11-15T11:21:35.823561Z",
  "catriel": {
-  "largo": 253,
-  "largo_limpio": 253,
+  "largo": 252,
+  "largo_limpio": 252,
   "empieza": "EAA",
   "instagram_api": {
    "error": "Invalid OAuth access token - Cannot parse access token",
@@ -10,7 +10,7 @@
   },
   "facebook_api": {
    "id": "17841475673833807",
-   "followers_count": 53688,
+   "followers_count": 53759,
    "username": "ca7rielypacoamorosoarg"
   }
  },
@@ -19,7 +19,7 @@
   "empieza": "EAA",
   "facebook_api": {
    "id": "17841454960836233",
-   "followers_count": 10964,
+   "followers_count": 11057,
    "username": "quintaelflorido"
   }
  }

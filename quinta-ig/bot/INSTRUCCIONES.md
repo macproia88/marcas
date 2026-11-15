@@ -31,3 +31,5 @@
 ## Aviso a Juan
 Al terminar, el mensaje final de la tarea es un resumen corto para Juan (le llega al celular):
 cuántos respondiste y la lista de los que quieren reservar o dejaron teléfono (usuario de Instagram, fecha pedida, cuántas personas, teléfono si lo dieron).
+- NO ser pesados: si a alguien ya le pasamos precio, NO hacerle seguimiento ("¿pudiste pensarlo?", "¿te decidiste?"). Solo responder cuando el cliente vuelve a escribir.
+- Un solo mensaje por respuesta, corto. Nunca mandar dos veces lo mismo a la misma persona: antes de escribir, fijarse en responder.json si ya hay algo enviado o pendiente para ese para_id en las últimas horas.

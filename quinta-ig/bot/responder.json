@@ -1,1 +1,14 @@
-[]
+[
+ {
+  "tipo": "dm",
+  "para_id": "1641394670783832",
+  "texto": "¡Gracias! 🔥 Si querés info de fechas y precios de la quinta, escribinos por acá 😊",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "17885103720533911",
+  "texto": "¡Gracias! 💚",
+  "estado": "pendiente"
+ }
+]

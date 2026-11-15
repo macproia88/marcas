@@ -1,8 +1,10 @@
 name: IG - bot quinta
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '7,37 * * * *'
   push:
-    paths: ['quinta-ig/bot/probar.trigger']
+    paths: ['quinta-ig/bot/responder.json', 'quinta-ig/bot/probar.trigger']
 permissions:
   contents: write
 concurrency: { group: ig-bot, cancel-in-progress: false }
@@ -11,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Probar permisos
+      - run: pip install -q cryptography
+      - name: Enviar respuestas y leer pendientes
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
         run: |
-          python3 quinta-ig/bot/probar.py > /dev/null
+          python3 quinta-ig/bot/bot.py enviar || true
+          python3 quinta-ig/bot/bot.py leer
           git config user.name "github-actions"; git config user.email "actions@github.com"
-          git add quinta-ig/bot/prueba.json
-          git commit -m "Bot quinta: prueba [skip ci]" || exit 0
+          git add quinta-ig/bot/pendientes.enc.json quinta-ig/bot/responder.json 2>/dev/null || true
+          git commit -m "Bot quinta: pendientes [skip ci]" || exit 0
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

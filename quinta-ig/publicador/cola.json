@@ -555,5 +555,105 @@
   "texto": "",
   "fecha": "2026-11-15 21:30",
   "estado": "pendiente"
+ },
+ {
+  "id": "destacada-casa-1",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/casa-1.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-casa-2",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/casa-2.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-casa-3",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/casa-3.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-casa-4",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/casa-4.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-casa-5",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/casa-5.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-1",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-1.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-2",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-2.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-3",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-3.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-4",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-4.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-5",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-5.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 22:45",
+  "estado": "pendiente"
  }
 ]

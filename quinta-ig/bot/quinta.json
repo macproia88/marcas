@@ -323,24 +323,64 @@
  ],
  "fotos": [
   {
-   "que": "Pileta con quincho",
-   "link": "https://macproia88.github.io/marcas/quinta-ig/fotos-limpias/limpia-07.jpg"
+   "n": 1,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-caminito.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
   },
   {
-   "que": "Caminito a la pileta",
-   "link": "https://macproia88.github.io/marcas/quinta-ig/fotos-limpias/hoy-caminito.jpg"
+   "n": 2,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-casa.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
   },
   {
-   "que": "Casa con pileta",
-   "link": "https://macproia88.github.io/marcas/quinta-ig/fotos-limpias/hoy-casa.jpg"
+   "n": 3,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-01.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
   },
   {
-   "que": "Juegos para chicos",
-   "link": "https://macproia88.github.io/marcas/quinta-ig/hd-parque-juegos.jpg"
+   "n": 4,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-02.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
   },
   {
-   "que": "Collage",
-   "link": "https://macproia88.github.io/marcas/quinta-ig/fb-collage-hoy.jpg"
+   "n": 5,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-03.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 6,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-04.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 7,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-05.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 8,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-06.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 9,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-07.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 10,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-08.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 11,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-09.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
+  },
+  {
+   "n": 12,
+   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-10.jpg",
+   "quinta": "[CONFIRMAR dia/casa]"
   }
  ],
  "ubicacion": {

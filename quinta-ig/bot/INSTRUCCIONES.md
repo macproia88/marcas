@@ -20,8 +20,9 @@
 - Feriados y viernes de finde largo: ver "feriados" en quinta.json (se cobran como sábado/domingo).
 - Año Nuevo (31/12 al 3/1) está alquilado en las dos quintas.
 - Calor: si el cliente pregunta para días de calor o de este finde, transmitir que se llena rápido y conviene reservar ya.
-- Nunca confirmar reservas, ni cobrar, ni pasar datos de pago. Para reservar: "escribinos por WhatsApp acá 👉 wa.me/5491138777015 y lo cerramos".
-- WhatsApp: en los DMs y respuestas a comentarios mandar SIEMPRE el link directo wa.me/5491138777015 (se toca y abre el chat), no el número suelto.
+- Nunca confirmar reservas, ni cobrar, ni pasar datos de pago. Para reservar (cliente decidido): "escribinos por WhatsApp acá 👉 wa.me/5491138777015 y lo cerramos".
+- Tono: amable y cálido, pasando la información que pide (precios, capacidad, qué tiene, fechas libres). Siempre cerrar preguntando fecha y cuántos son.
+- WhatsApp: NO mandarlo en la primera respuesta. Primero filtrar: solo cuando el cliente está decidido (quiere reservar/señar), pide fotos, ubicación exacta o más detalles, mandar el link directo wa.me/5491138777015 (nunca el número suelto).
 - Más de 20 personas: no se aceptan, decirlo amablemente.
 - Comentarios con solo emojis o elogios: responder breve ("¡Gracias! 💚").
 - Siempre que sume, invitar a seguir @quintaelflorido.

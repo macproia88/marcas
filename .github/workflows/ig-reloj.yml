@@ -28,7 +28,7 @@ jobs:
             python3 quinta-ig/publicador/publicar.py || true
             python3 quinta-ig/bot/bot.py enviar || true
             python3 quinta-ig/bot/bot.py leer || true
-            git add quinta-ig/publicador/cola.hechos.json clientes/*/cola.hechos.json quinta-ig/bot/pendientes.enc.json quinta-ig/bot/enviados.json 2>/dev/null || true
+            for f in quinta-ig/publicador/cola.hechos.json clientes/*/cola.hechos.json quinta-ig/bot/pendientes.enc.json quinta-ig/bot/enviados.json; do [ -e "$f" ] && git add "$f"; done; true
             if ! git diff --cached --quiet; then
               git commit -qm "Reloj: publicador y bot [skip ci]"
               for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

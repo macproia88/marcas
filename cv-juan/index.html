@@ -141,11 +141,13 @@ p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
 
 /* ===== Versión PC ===== */
 .desk{display:none}
-@media(min-width:1000px){
- html,body{overflow:auto;height:auto;background:#f4f6fb;color:#0f172a}
- .stage{display:none}
- .desk{display:block}
-}
+body.full{overflow:auto;height:auto;background:#f4f6fb;color:#0f172a}
+html:has(body.full){overflow:auto;height:auto}
+body.full .stage,body.full .swap{display:none}
+body.full .desk{display:block}
+.swap{position:fixed;z-index:50;right:22px;bottom:22px;display:none;align-items:center;gap:8px;background:#fff;color:#1e3a8a;border:0;border-radius:999px;padding:12px 18px;font:700 14px Inter,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35);cursor:pointer}
+@media(min-width:1000px){.swap{display:inline-flex}}
+.dk-back{position:fixed;z-index:50;right:22px;bottom:22px;background:#1e3a8a;color:#fff;border:0;border-radius:999px;padding:12px 18px;font:700 14px Inter,system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.25);cursor:pointer}
 .desk{font-family:Inter,system-ui,sans-serif;color:#0f172a;line-height:1.5}
 .dk-wrap{max-width:1120px;margin:0 auto;padding:0 40px}
 .dk-hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#7c3aed 100%);color:#fff;padding:56px 0 64px}
@@ -288,7 +290,7 @@ p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
       <a class="btn w" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
       <button class="btn g" id="copy">📋 Copiar CV en texto</button>
       <div class="msg" id="msg"></div>
-      <div class="upd">Última actualización: 16/11/2026 11:50 (hora de Buenos Aires)</div>
+      <div class="upd">Última actualización: 16/11/2026 13:10 (hora de Buenos Aires)</div>
     </section>
   </div>
   <button class="nav next" id="next" aria-label="Siguiente">›</button>
@@ -296,7 +298,9 @@ p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
 </div>
 
 
+<button class="swap" id="toFull">🖥️ Ver CV completo</button>
 <div class="desk">
+ <button class="dk-back" id="toStories">📱 Ver en formato historias</button>
  <header class="dk-hero"><div class="dk-wrap">
   <div>
    <div class="dk-id"><div class="dk-photo" role="img" aria-label="Foto de Juan Ponce"></div>
@@ -413,7 +417,7 @@ ph.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 ph.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){e.preventDefault();go(dx<0?cur+1:cur-1)}sx=null});
 document.getElementById('prev').onclick=()=>go(cur-1);
 document.getElementById('next').onclick=()=>go(cur+1);
-addEventListener('keydown',e=>{if(innerWidth>=1000)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+addEventListener('keydown',e=>{if(document.body.classList.contains('full'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 document.getElementById('copy').onclick=async e=>{e.stopPropagation();const m=document.getElementById('msg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.'}catch(err){m.textContent='No se pudo copiar. Descargá el PDF.'}};
 renderRole();go(0);
 
@@ -428,6 +432,10 @@ function dkRender(){
 dkRender();
 {const u=document.querySelector('.upd');document.getElementById('dkupd').textContent=u?u.textContent:'';}
 document.getElementById('dkcopy').onclick=async()=>{const m=document.getElementById('dkmsg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.'}catch(err){m.textContent='No se pudo copiar. Descargá el PDF.'}};
+
+document.getElementById('toFull').onclick=()=>{document.body.classList.add('full');scrollTo(0,0);try{history.replaceState(null,'','#completo')}catch(e){}};
+document.getElementById('toStories').onclick=()=>{document.body.classList.remove('full');try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}};
+if(location.hash==='#completo')document.body.classList.add('full');
 </script>
 </body>
 </html>

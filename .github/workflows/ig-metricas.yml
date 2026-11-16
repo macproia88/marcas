@@ -25,12 +25,22 @@ jobs:
           METRICAS_IG: "17841475673833807"
           METRICAS_OUT: clientes/ca7rielypaco/metricas/datos.json
         run: |
-          mkdir -p clientes/ca7rielypaco/metricas
+          mkdir -p clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas
           python3 quinta-ig/metricas/metricas.py | tee clientes/ca7rielypaco/metricas/ultima-corrida.txt || true
+      - name: Juntar metricas de Escuela Taller Fátima
+        env:
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+          METRICAS_USUARIO: escuelatallerfatima
+          METRICAS_IG: "17841403882435617"
+          METRICAS_OUT: clientes/tallerfatima/metricas/datos.json
+        run: |
+          pip install -q cryptography
+          mkdir -p clientes/tallerfatima/metricas
+          python3 quinta-ig/metricas/metricas.py | tee clientes/tallerfatima/metricas/ultima-corrida.txt || true
       - name: Guardar
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas
+          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas
           git commit -m "Metricas IG" || exit 0
           git pull --rebase -q && git push -q

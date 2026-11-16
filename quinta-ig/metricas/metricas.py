@@ -8,6 +8,12 @@ import json, os, sys, time, datetime, urllib.parse, urllib.request
 IG = os.environ.get("METRICAS_IG", "17841454960836233")  # cuenta a medir (por defecto El Florido)
 API = "https://graph.facebook.com/v23.0"
 TOKEN = os.environ.get("IG_TOKEN", "")
+if os.environ.get("METRICAS_USUARIO"):
+    # Cuentas conectadas por link: la llave está cifrada en quinta-ig/publicador/llaves
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "publicador"))
+    import conectar
+    _fila = next(c for c in json.load(open(conectar.CUENTAS, encoding="utf-8")) if c["usuario"] == os.environ["METRICAS_USUARIO"])
+    TOKEN = conectar.llave_de(_fila)
 AQUI = os.path.dirname(os.path.abspath(__file__))
 DATOS = os.environ.get("METRICAS_OUT") or os.path.join(AQUI, "datos.json")
 ART = datetime.timezone(datetime.timedelta(hours=-3))

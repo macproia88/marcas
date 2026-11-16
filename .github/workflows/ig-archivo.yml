@@ -1,0 +1,20 @@
+name: IG - bajar archivo del feed
+on:
+  workflow_dispatch:
+  push:
+    paths: ['quinta-ig/archivo-feed/bajar.py']
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install pillow -q
+      - env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 quinta-ig/archivo-feed/bajar.py
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add quinta-ig/archivo-feed; git commit -m "Archivo feed [skip ci]" || exit 0
+          git pull --rebase -X theirs -q && git push -q

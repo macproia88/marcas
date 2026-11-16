@@ -284,13 +284,13 @@ body.full .desk{display:block}
     <section class="slide s6">
       <div class="k">¿Hablamos?</div>
       <h2>Conversemos sobre tu equipo</h2>
-      <a class="btn wa" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vimos%20tu%20CV" target="_blank" rel="noopener">💬 WhatsApp · 11 3877-7015</a>
-      <a class="btn li" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">in · Ver mi LinkedIn</a>
+      <a class="btn wa" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vimos%20tu%20CV" target="_blank" rel="noopener" data-goatcounter-click="click-whatsapp">💬 WhatsApp · 11 3877-7015</a>
+      <a class="btn li" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener" data-goatcounter-click="click-linkedin">in · Ver mi LinkedIn</a>
       <div class="mail">juanijajp@gmail.com</div>
-      <a class="btn w" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
-      <button class="btn g" id="copy">📋 Copiar CV en texto</button>
+      <a class="btn w" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener" data-goatcounter-click="descarga-pdf">📄 Descargar CV (PDF)</a>
+      <button class="btn g" id="copy" data-goatcounter-click="copiar-texto">📋 Copiar CV en texto</button>
       <div class="msg" id="msg"></div>
-      <div class="upd">Última actualización: 16/11/2026 13:10 (hora de Buenos Aires)</div>
+      <div class="upd">Última actualización: 16/11/2026 13:15 (hora de Buenos Aires)</div>
     </section>
   </div>
   <button class="nav next" id="next" aria-label="Siguiente">›</button>
@@ -298,9 +298,9 @@ body.full .desk{display:block}
 </div>
 
 
-<button class="swap" id="toFull">🖥️ Ver CV completo</button>
+<button class="swap" id="toFull" data-goatcounter-click="ver-completo">🖥️ Ver CV completo</button>
 <div class="desk">
- <button class="dk-back" id="toStories">📱 Ver en formato historias</button>
+ <button class="dk-back" id="toStories" data-goatcounter-click="ver-historias">📱 Ver en formato historias</button>
  <header class="dk-hero"><div class="dk-wrap">
   <div>
    <div class="dk-id"><div class="dk-photo" role="img" aria-label="Foto de Juan Ponce"></div>
@@ -308,10 +308,10 @@ body.full .desk{display:block}
    <p class="dk-lead">18 años en retail y gastronomía. De Cajero a Gerente de Operaciones en Walmart / GDN, Store Manager en Puma y hoy al frente de una empresa gastronómica de 3 locales, donde ordeno el negocio con datos, IA y automatización.</p>
    <div class="dk-tags"><span>IA aplicada</span><span>Operaciones</span><span>Administración</span><span>Walmart / GDN</span><span>Puma</span><span>Gastronomía</span></div>
    <div class="dk-btns">
-    <a class="dk-btn dk-wa" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vimos%20tu%20CV" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a class="dk-btn dk-li" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">in LinkedIn</a>
-    <a class="dk-btn dk-pdf" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
-    <button class="dk-btn dk-cp" id="dkcopy">📋 Copiar CV en texto</button>
+    <a class="dk-btn dk-wa" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vimos%20tu%20CV" target="_blank" rel="noopener" data-goatcounter-click="click-whatsapp">💬 WhatsApp</a>
+    <a class="dk-btn dk-li" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener" data-goatcounter-click="click-linkedin">in LinkedIn</a>
+    <a class="dk-btn dk-pdf" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener" data-goatcounter-click="descarga-pdf">📄 Descargar CV (PDF)</a>
+    <button class="dk-btn dk-cp" id="dkcopy" data-goatcounter-click="copiar-texto">📋 Copiar CV en texto</button>
    </div>
    <div class="dk-msg" id="dkmsg"></div>
   </div>
@@ -371,7 +371,7 @@ body.full .desk{display:block}
  </div></section>
 
  <footer class="dk-foot"><div class="dk-wrap">
-  <div>Juan Ponce · Buenos Aires · <a href="https://wa.me/5491138777015" target="_blank" rel="noopener">11 3877-7015</a> · juanijajp@gmail.com · <a href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">LinkedIn</a></div>
+  <div>Juan Ponce · Buenos Aires · <a href="https://wa.me/5491138777015" target="_blank" rel="noopener" data-goatcounter-click="click-whatsapp">11 3877-7015</a> · juanijajp@gmail.com · <a href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener" data-goatcounter-click="click-linkedin">LinkedIn</a></div>
   <div class="u" id="dkupd"></div>
  </div></footer>
 </div>
@@ -437,5 +437,6 @@ document.getElementById('toFull').onclick=()=>{document.body.classList.add('full
 document.getElementById('toStories').onclick=()=>{document.body.classList.remove('full');try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}};
 if(location.hash==='#completo')document.body.classList.add('full');
 </script>
+<script data-goatcounter="https://juancontador.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

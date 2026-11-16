@@ -15,7 +15,7 @@ MARCA = ("Instagram de otras quintas", "demo-quintas", "manejo el Instagram de q
 def get(url):
     return json.load(urllib.request.urlopen(url, timeout=40))
 
-url = f"{API}/{IG}/conversations?" + urllib.parse.urlencode({"platform": "instagram", "limit": 50, "access_token": T,
+url = f"{API}/{IG}/conversations?" + urllib.parse.urlencode({"platform": "instagram", "limit": 25, "access_token": T,
       "fields": "updated_time,participants,messages.limit(25){from,message,created_time}"})
 out, vistas, paginas, err = [], 0, 0, ""
 try:
@@ -30,7 +30,8 @@ try:
             suyos = [m for m in msgs if (m.get("from") or {}).get("username") != YO]
             primero = min((m["created_time"] for m in nuestros if any(k in (m.get("message") or "") for k in MARCA)), default="")
             out.append({"usuario": otro.get("username"), "enviado": primero[:10],
-                        "respuestas": [{"t": (m.get("message") or "[adjunto]")[:400], "h": m["created_time"][:16]} for m in reversed(suyos)]})
+                        "respuestas": [{"t": (m.get("message") or "[adjunto]")[:400], "h": m["created_time"][:16]} for m in reversed(suyos)],
+                        "charla": [{"de": "yo" if (m.get("from") or {}).get("username") == YO else "ellos", "t": (m.get("message") or "[adjunto]")[:600], "h": m["created_time"][:16]} for m in reversed(msgs)] if suyos else [], "otro_id": otro.get("id")})
         url = (d.get("paging") or {}).get("next")
 except urllib.error.HTTPError as e:
     err = e.read().decode()[:300]

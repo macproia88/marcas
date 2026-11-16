@@ -138,6 +138,79 @@ p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
  .hoy li{font-size:12.5px;padding:6px 10px}
  .st .d{font-size:12.5px}
 }
+
+/* ===== Versión PC ===== */
+.desk{display:none}
+@media(min-width:1000px){
+ html,body{overflow:auto;height:auto;background:#f4f6fb;color:#0f172a}
+ .stage{display:none}
+ .desk{display:block}
+}
+.desk{font-family:Inter,system-ui,sans-serif;color:#0f172a;line-height:1.5}
+.dk-wrap{max-width:1120px;margin:0 auto;padding:0 40px}
+.dk-hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#7c3aed 100%);color:#fff;padding:56px 0 64px}
+.dk-hero .dk-wrap{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center}
+.dk-id{display:flex;gap:28px;align-items:center;margin-bottom:22px}
+.dk-photo{width:132px;height:132px;border-radius:50%;background:url(foto.jpg) center 30%/cover;border:4px solid rgba(255,255,255,.7);flex:none;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.dk-kick{font-size:12.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#c4b5fd;margin-bottom:6px}
+.dk-hero h1{font-size:54px;line-height:1;margin:0 0 8px;font-weight:900;letter-spacing:-1.5px}
+.dk-sub{font-size:18px;font-weight:600;opacity:.92}
+.dk-lead{font-size:17px;opacity:.9;max-width:620px;margin:0 0 20px}
+.dk-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.dk-tags span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13.5px;font-weight:600}
+.dk-btns{display:flex;flex-wrap:wrap;gap:10px}
+.dk-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s}
+.dk-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.dk-wa{background:#22c55e;color:#fff}.dk-li{background:#0a66c2;color:#fff}.dk-pdf{background:#fff;color:#1e3a8a}.dk-cp{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.dk-msg{font-size:13px;margin-top:8px;min-height:18px;color:#c4b5fd}
+.dk-nums{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dk-num{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:20px}
+.dk-num b{display:block;font-size:42px;font-weight:900;line-height:1;margin-bottom:6px}
+.dk-num span{font-size:14px;opacity:.85}
+.dk-sec{padding:56px 0 8px}
+.dk-h{display:flex;align-items:baseline;gap:14px;margin-bottom:22px}
+.dk-h h2{font-size:30px;margin:0;font-weight:900;letter-spacing:-.6px;color:#0f172a}
+.dk-h .k{font-size:12.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#7c3aed}
+.dk-now{background:#fff;border-radius:22px;box-shadow:0 10px 30px rgba(15,23,42,.08);padding:28px 30px;border-top:5px solid #0d9488}
+.dk-now .t{font-size:22px;font-weight:800}
+.dk-now .m{color:#475569;margin:2px 0 18px}
+.dk-grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.dk-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:16px}
+.dk-card b{display:block;color:#0d9488;font-size:12px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px}
+.dk-card p{margin:0;font-size:14.5px;color:#1e293b}
+.dk-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dk-kpi{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 8px 24px rgba(15,23,42,.07);border-left:5px solid #7c3aed}
+.dk-kpi .v{font-size:34px;font-weight:900;color:#1e3a8a;letter-spacing:-.5px}
+.dk-kpi .l{font-weight:700;margin:2px 0 8px}
+.dk-kpi .h{font-size:14px;color:#475569}
+.dk-tl{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.dk-st{background:#fff;border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(15,23,42,.07);position:relative}
+.dk-st .y{font-weight:800;color:#0d9488;font-size:13px;letter-spacing:.5px}
+.dk-st .r{font-size:18px;font-weight:800;margin:4px 0 6px}
+.dk-st .d{font-size:14.5px;color:#475569}
+.dk-st.cur{border:2px solid #0d9488}
+.dk-extra{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.dk-ex{background:#ede9fe;border-radius:18px;padding:18px 22px;font-size:14.5px;color:#312e81}
+.dk-ex b{display:block;margin-bottom:4px}
+.dk-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.dk-chip{border:2px solid #e2e8f0;background:#fff;color:#0f172a;font:inherit;font-weight:700;padding:10px 16px;border-radius:999px;cursor:pointer}
+.dk-chip.sel{background:#ea580c;border-color:#ea580c;color:#fff}
+.dk-ans{background:#fff;border-radius:18px;padding:22px 26px;box-shadow:0 8px 24px rgba(15,23,42,.07);border-top:5px solid #ea580c}
+.dk-ans .q{font-size:13px;font-weight:800;color:#c2410c;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.dk-ans ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dk-ans li{font-size:15.5px;padding-left:30px;position:relative}
+.dk-ans li::before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:#0d9488;color:#fff;font-size:13px;font-weight:900;display:grid;place-items:center}
+.dk-2col{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.dk-box{background:#fff;border-radius:18px;padding:22px 24px;box-shadow:0 8px 24px rgba(15,23,42,.07)}
+.dk-box h3{margin:0 0 12px;font-size:16px}
+.dk-tools{display:flex;flex-wrap:wrap;gap:8px}
+.dk-tools span{background:#eef2ff;color:#1e3a8a;font-weight:600;font-size:13.5px;padding:6px 12px;border-radius:999px}
+.dk-box p{margin:0 0 8px;font-size:14.5px;color:#334155}
+.dk-foot{margin-top:56px;background:#0f172a;color:#cbd5e1;padding:30px 0}
+.dk-foot .dk-wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.dk-foot a{color:#c4b5fd;text-decoration:none;font-weight:700}
+.dk-foot .u{font-size:13px;opacity:.75}
+@media(min-width:1000px) and (max-width:1180px){.dk-grid5{grid-template-columns:repeat(3,1fr)}.dk-hero h1{font-size:46px}}
 </style>
 </head>
 <body>
@@ -215,13 +288,89 @@ p.lead{font-size:18px;line-height:1.4;opacity:.92;margin:0}
       <a class="btn w" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
       <button class="btn g" id="copy">📋 Copiar CV en texto</button>
       <div class="msg" id="msg"></div>
-      <div class="upd">Última actualización: 16/11/2026 11:40 (hora de Buenos Aires)</div>
+      <div class="upd">Última actualización: 16/11/2026 11:50 (hora de Buenos Aires)</div>
     </section>
   </div>
   <button class="nav next" id="next" aria-label="Siguiente">›</button>
  </div>
 </div>
 
+
+<div class="desk">
+ <header class="dk-hero"><div class="dk-wrap">
+  <div>
+   <div class="dk-id"><div class="dk-photo" role="img" aria-label="Foto de Juan Ponce"></div>
+    <div><div class="dk-kick">CV · Operaciones · Administración · IA</div><h1>Juan Ponce</h1><div class="dk-sub">Gerente de Operaciones y Administración</div></div></div>
+   <p class="dk-lead">18 años en retail y gastronomía. De Cajero a Gerente de Operaciones en Walmart / GDN, Store Manager en Puma y hoy al frente de una empresa gastronómica de 3 locales, donde ordeno el negocio con datos, IA y automatización.</p>
+   <div class="dk-tags"><span>IA aplicada</span><span>Operaciones</span><span>Administración</span><span>Walmart / GDN</span><span>Puma</span><span>Gastronomía</span></div>
+   <div class="dk-btns">
+    <a class="dk-btn dk-wa" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vimos%20tu%20CV" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="dk-btn dk-li" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">in LinkedIn</a>
+    <a class="dk-btn dk-pdf" href="CV_Juan_Ponce_2026.pdf" target="_blank" rel="noopener">📄 Descargar CV (PDF)</a>
+    <button class="dk-btn dk-cp" id="dkcopy">📋 Copiar CV en texto</button>
+   </div>
+   <div class="dk-msg" id="dkmsg"></div>
+  </div>
+  <div class="dk-nums">
+   <div class="dk-num"><b>18</b><span>años en operaciones, retail y gastronomía</span></div>
+   <div class="dk-num"><b>75+</b><span>colaboradores liderados</span></div>
+   <div class="dk-num"><b>21</b><span>tiendas en la red que seguí en Puma</span></div>
+   <div class="dk-num"><b>3</b><span>locales gastronómicos que gestiono hoy con IA</span></div>
+  </div>
+ </div></header>
+
+ <section class="dk-sec"><div class="dk-wrap">
+  <div class="dk-h"><span class="k">Hoy</span><h2>Lo que hago actualmente</h2></div>
+  <div class="dk-now">
+   <div class="t">Gerente de Operaciones y Administración</div>
+   <div class="m">Empresa gastronómica multisucursal · 3 locales · zona norte GBA · agosto 2026 – actualidad</div>
+   <div class="dk-grid5">
+    <div class="dk-card"><b>Gestión</b><p>Salón, mostrador y delivery: encargados, equipos, reunión semanal de ventas y checklists de control.</p></div>
+    <div class="dk-card"><b>Cierres de caja automáticos</b><p>Los cierres de Maxi Rest se leen solos del mail (unos 7 turnos por día) y arman la planilla de cajas y la Z.</p></div>
+    <div class="dk-card"><b>Números para la dirección</b><p>Tableros web, estado de resultados por local y control de IVA cruzado con ARCA, bancos y tarjetas.</p></div>
+    <div class="dk-card"><b>Apps y clientes</b><p>Publicidad −8 puntos en PedidosYa y Rappi. Club de clientes con 1.700 socios nuevos en 23 días.</p></div>
+    <div class="dk-card"><b>IA en el día a día</b><p>Más de 200 CVs filtrados con puntaje y facturas de proveedores cargadas con IA.</p></div>
+   </div>
+  </div>
+ </div></section>
+
+ <section class="dk-sec"><div class="dk-wrap">
+  <div class="dk-h"><span class="k">Resultados</span><h2>Lo que mejoré, en números</h2></div>
+  <div class="dk-kpis" id="dkkpis"></div>
+ </div></section>
+
+ <section class="dk-sec"><div class="dk-wrap">
+  <div class="dk-h"><span class="k">Trayectoria</span><h2>De Cajas a la Gerencia</h2></div>
+  <div class="dk-tl">
+   <div class="dk-st"><div class="y">2008 – 2025 · Walmart / GDN</div><div class="r">De Cajero a Gerente de Operaciones</div><div class="d">17 años en cajas y tesorería, e-commerce (200–300 pedidos diarios), recepción y depósito, sectores comerciales y gerencia de operaciones, con hasta 75 personas a cargo.</div></div>
+   <div class="dk-st"><div class="y">2025 – 2026 · Puma Argentina</div><div class="r">Store Manager</div><div class="d">Seguimiento operativo de una red de 21 tiendas: ejecución comercial, estándares operativos e indicadores de desempeño.</div></div>
+   <div class="dk-st cur"><div class="y">2026 – hoy · Gastronomía</div><div class="r">Gerente de Operaciones y Administración</div><div class="d">3 locales con salón, mostrador y delivery. Cierres de caja automáticos, tableros para la dirección y control fiscal con IA.</div></div>
+  </div>
+  <div class="dk-extra">
+   <div class="dk-ex"><b>Emprendedor · Quinta El Florido (2020 – hoy)</b>Pasó de 1 a 3 unidades. Su Instagram creció de unos 500 a más de 10.900 seguidores en un año, con un publicador propio conectado a la API de Instagram.</div>
+   <div class="dk-ex"><b>Independiente · Marketing digital y automatización con IA (2026)</b>Manejo de redes para clientes y un sitio web con asistente que entiende la consulta y la deriva por WhatsApp al profesional que corresponde.</div>
+  </div>
+ </div></section>
+
+ <section class="dk-sec"><div class="dk-wrap">
+  <div class="dk-h"><span class="k">Elegí el puesto</span><h2>¿Qué estás buscando?</h2></div>
+  <div class="dk-chips" id="dkchips"></div>
+  <div class="dk-ans" id="dkans"></div>
+ </div></section>
+
+ <section class="dk-sec"><div class="dk-wrap">
+  <div class="dk-h"><span class="k">Herramientas</span><h2>Con qué trabajo</h2></div>
+  <div class="dk-2col">
+   <div class="dk-box"><h3>IA, automatización y sistemas</h3><div class="dk-tools"><span>IA generativa (Claude)</span><span>Automatización de reportes</span><span>Tableros web</span><span>Lectura automática de mails</span><span>Excel avanzado</span><span>Google Sheets y Drive</span><span>Power BI (en desarrollo)</span><span>Maxi Rest</span><span>ARCA</span><span>PedidosYa y Rappi</span><span>ALAX (CRM)</span><span>Meta Business</span></div></div>
+   <div class="dk-box"><h3>Formación e idiomas</h3><p><b>Técnico en Administración de Empresas</b> · UTN · finalizado en 2026</p><p><b>Licenciatura en Administración</b> · UTN · en curso</p><p>Español nativo · inglés básico</p></div>
+  </div>
+ </div></section>
+
+ <footer class="dk-foot"><div class="dk-wrap">
+  <div>Juan Ponce · Buenos Aires · <a href="https://wa.me/5491138777015" target="_blank" rel="noopener">11 3877-7015</a> · juanijajp@gmail.com · <a href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">LinkedIn</a></div>
+  <div class="u" id="dkupd"></div>
+ </div></footer>
+</div>
 <script>
 const CV_TXT="JUAN PONCE\nOPERACIONES | ADMINISTRACIÓN | AUTOMATIZACIÓN CON IA | LIDERAZGO DE EQUIPOS | RETAIL\nBuenos Aires, Argentina | +54 11 3877 7015 | juanijajp@gmail.com | linkedin.com/in/juan-poncee\n\nPERFIL PROFESIONAL\nProfesional de operaciones y administración con 18 años de trayectoria en retail, liderazgo de equipos, gestión de tiendas,\nlogística y comercio electrónico. Crecimiento de 17 años en Walmart/GDN y experiencia como Store Manager en PUMA. Hoy\nlidera Operaciones y Administración en una empresa gastronómica de 3 locales, donde aplica inteligencia artificial y\nautomatización para ordenar la información del negocio: cierres de caja, estado de resultados, control fiscal, tableros de\nindicadores para la dirección, análisis de apps de delivery y selección de personal. Perfil orientado a resultados, eficiencia,\ncontrol de costos y desarrollo de equipos.\n\nEXPERIENCIA PROFESIONAL\nGerente de Operaciones y Administración | EMPRESA GASTRONÓMICA MULTISUCURSAL (3 LOCALES, ZONA\nNORTE GBA)\nAgosto 2026 – Actualidad\nGestión y resultados\nGestión integral de operaciones y administración de 3 locales con salón, mostrador y delivery: coordinación de encargados,\nequipos, prioridades y procesos.\nRutinas de gestión: reunión semanal de ventas con reporte estándar (comparación contra el año anterior, semana contra\nsemana y crecimiento real contra inflación), reunión quincenal de compras y precios, y checklists de control para encargados.\nApps de delivery (PedidosYa y Rappi): detección de desvíos en comisiones y publicidad. El peso de la publicidad bajó 8\npuntos porcentuales, con un ahorro estimado de $1,5 a $1,9 millones por semana (a validar con períodos comparables).\nAnálisis de más de 3.900 pedidos mensuales de PedidosYa por plato y por local. Detecté promociones superpuestas que\ncostaron cerca de $1 millón en un mes sin verse en la liquidación.\nClub de fidelización (plataforma ALAX): aproximadamente 1.700 nuevos socios en 23 días. Los clientes identificados como\nfieles pasaron del 9% al 35%, según registros internos. Implementé cupones vinculados a la lista de precios, email marketing\nsegmentado y reportes semanales.\nIniciativas de eficiencia y producción propia, con un ahorro estimado de unos $4 millones por mes en tapas. También mejoras\nen compras y facturación, con impacto económico estimado a validar.\nAutomatización e inteligencia artificial aplicada a la gestión\nCierres de caja automáticos: los cierres de turno del sistema de punto de venta (Maxi Rest) de los 3 locales se leen solos\ndesde el mail, unos 7 turnos por día. Con eso se arman la planilla de cajas y la planilla Z, se detectan diferencias de caja y se\nconcilian las ventas con PedidosYa y Rappi.\nTableros web para la dirección: ventas por local, canal, vendedor y horario, más compras, costos y club de clientes. Tienen\nacceso con clave, se actualizan automáticamente y muestran la fecha de la última actualización.\nEstado de resultados mensual por local y tablero fiscal: cruce de facturación electrónica y compras en ARCA con\nextractos bancarios, liquidaciones de tarjetas, Ingresos Brutos, cargas sociales y planes de pago. Incluye control de IVA\ndébito, crédito y saldo a pagar mes a mes.\nSelección de personal con IA: filtro automático de más de 200 CVs con una grilla de puntaje de 0 a 100 (requisitos del aviso,\nestabilidad, experiencia y logros) y tableros diarios con los candidatos para los socios.\nDigitalización de compras: carga con IA de facturas y remitos de proveedores (6 a 15 por día), con precio unitario por\nproducto, comparación entre proveedores y evolución de precios, como base para el control del costo de mercadería.\nControl de asistencia con relojes de reconocimiento facial en 2 locales, y medición de productividad del personal de\natención.\nStore Manager | PUMA ARGENTINA\nOctubre 2025 – Julio 2026\nGestión y seguimiento operativo de una red de 21 tiendas, con foco en ejecución comercial, estándares operativos y\ncumplimiento de objetivos.\nCoordinación con responsables de tienda y seguimiento de indicadores de gestión, desempeño y productividad.\nAcompañamiento a los equipos para resolver desvíos y sostener los estándares de marca y experiencia del cliente.\nTrayectoria en Operaciones y Gestión Retail | GRUPO DE NARVÁEZ (GDN) / WALMART\nEnero 2008 – Julio 2025\nTrayectoria de crecimiento durante 17 años, de cajero a gerente de operaciones, en posiciones operativas, de jefatura y\ngerenciales.\nConducción de equipos de hasta aproximadamente 75 colaboradores, organización de turnos, seguimiento de desempeño y\nresolución de situaciones operativas.\nGestión de operaciones de e-commerce con 200 a 300 pedidos diarios y coordinación logística de flota.\n\nTRAYECTORIA EN GDN / WALMART – POSICIONES\nGerente de Operaciones / Tesorería / E-commerce / Auditoría | GDN / WALMART · 2020 – Julio 2025\nCoordinación de áreas operativas y administrativas de tienda; seguimiento de equipos, indicadores, procesos, tesorería, e-\ncommerce y controles internos.\nGerente de Cajas / Tesorería | GDN / WALMART · 2018 – 2020\nGestión de cajas y tesorería: coordinación de equipos, control de recaudación, fondos, cierres y cumplimiento de\nprocedimientos.\nGerente de Recepción y Depósito | GDN / WALMART · 2017 – 2018\nGestión de recepción, almacenamiento y movimiento de mercadería; coordinación del equipo y control de procesos de\nabastecimiento.\nGerente de Consumibles | GDN / WALMART · 2016 – 2017\nGestión comercial y operativa del sector: ventas, inventarios, reposición, disponibilidad de productos y objetivos.\nGerente de Hardlines | GDN / WALMART · 2014 – 2016\nGestión comercial y operativa del sector, liderazgo de equipos, ventas, inventarios, reposición y estándares de ejecución.\nJefe de E-commerce | GDN / WALMART · 2012 – 2014\nCoordinación de la operación de pedidos online, equipos de preparación, procesos logísticos, cumplimiento de entregas e\nindicadores.\nJefe de Cajas / Tesorería | GDN / WALMART · 2010 – 2012\nCoordinación de cajas y atención al cliente, organización de turnos, manejo de fondos y controles de tesorería.\nCajero | GDN / WALMART · 2008 – 2010\nAtención al cliente, operación de cajas, procesamiento de medios de pago y cumplimiento de procedimientos.\n\nEMPRENDIMIENTO Y PROYECTOS PROPIOS\nFundador y administrador | QUINTA EL FLORIDO\nEnero 2020 – Actualidad\nEmprendimiento de alquiler de quintas y espacios recreativos: reservas, atención al cliente, operación, comercialización\ndigital, ingresos y rentabilidad.\nCrecimiento de 1 a 3 propiedades o unidades operativas.\nInstagram de la marca: de unos 500 a más de 10.900 seguidores en un año. Publicación programada con un publicador propio\nconectado a la API oficial de Instagram, calendario de disponibilidad y medición de las reservas que llegan por las\npublicaciones.\nServicios de marketing digital y automatización con IA | INDEPENDIENTE\n2026 – Actualidad\nManejo de redes sociales para clientes con contenido y publicación asistidos por IA, por ejemplo la comunidad de fans de un\nartista musical.\nDesarrollo de un sitio web con asistente conversacional para un estudio de profesionales: el asistente entiende la consulta y la\nderiva por WhatsApp al profesional que corresponde (en desarrollo).\n\nFORMACIÓN\nTécnico en Administración de Empresas – Universidad Tecnológica Nacional (UTN) | Finalizado en 2026\nLicenciatura en Administración – UTN | En curso\n\nCONOCIMIENTOS Y HERRAMIENTAS\nGestión: operaciones y tiendas · retail y gastronomía · gestión multisucursal · control de gestión e indicadores · costos y\nrentabilidad · estado de resultados · IVA y conciliación fiscal · compras y proveedores · inventarios y abastecimiento · logística ·\ne-commerce y apps de delivery · fidelización de clientes · mejora continua.\nIA y automatización: IA generativa (Claude) aplicada a la gestión · automatización de reportes y procesos · tableros web de\nindicadores · lectura automática de mails y documentos · selección de personal asistida por IA · publicación automática en redes\n(API de Instagram).\nSistemas: Excel avanzado · Google Sheets y Google Drive · Power BI (en desarrollo) · GitHub Pages · Maxi Rest (punto de\nventa) · ARCA (facturación electrónica y libros de IVA) · portales de PedidosYa y Rappi · ALAX (CRM y fidelización) · Meta\nBusiness.\n\nCOMPETENCIAS E IDIOMAS\nLiderazgo operativo · orientación a resultados · visión integral del negocio · pensamiento analítico y uso de datos · organización y\nseguimiento · resolución de problemas · comunicación transversal · adaptabilidad y aprendizaje continuo.\nIdiomas: español nativo · inglés básico.";
 const KPIS=[
@@ -264,9 +413,21 @@ ph.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
 ph.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){e.preventDefault();go(dx<0?cur+1:cur-1)}sx=null});
 document.getElementById('prev').onclick=()=>go(cur-1);
 document.getElementById('next').onclick=()=>go(cur+1);
-addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+addEventListener('keydown',e=>{if(innerWidth>=1000)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
 document.getElementById('copy').onclick=async e=>{e.stopPropagation();const m=document.getElementById('msg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.'}catch(err){m.textContent='No se pudo copiar. Descargá el PDF.'}};
 renderRole();go(0);
+
+// ===== Versión PC =====
+document.getElementById('dkkpis').innerHTML=KPIS.map(k=>`<div class="dk-kpi"><div class="v">${k.v}</div><div class="l">${k.l}</div><div class="h">${k.h}</div></div>`).join('');
+let dkrole='ops';
+function dkRender(){
+  document.getElementById('dkchips').innerHTML=Object.entries(ROLES).map(([k,r])=>`<button class="dk-chip ${k===dkrole?'sel':''}" data-k="${k}">${r.l}</button>`).join('');
+  document.getElementById('dkans').innerHTML=`<div class="q">Lo que te aporto como ${ROLES[dkrole].l}</div><ul>${ROLES[dkrole].a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  document.querySelectorAll('.dk-chip').forEach(c=>c.onclick=()=>{dkrole=c.dataset.k;dkRender();});
+}
+dkRender();
+{const u=document.querySelector('.upd');document.getElementById('dkupd').textContent=u?u.textContent:'';}
+document.getElementById('dkcopy').onclick=async()=>{const m=document.getElementById('dkmsg');try{await navigator.clipboard.writeText(CV_TXT);m.textContent='¡Copiado! Pegalo en el formulario del portal.'}catch(err){m.textContent='No se pudo copiar. Descargá el PDF.'}};
 </script>
 </body>
 </html>

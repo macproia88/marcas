@@ -1,4 +1,26 @@
 [
- {"nombre": "Quinta El Florido", "usuario": "quintaelflorido", "ig_id": "17841454960836233", "secret": "IG_TOKEN", "cola": "quinta-ig/publicador/cola.json", "activa": true},
- {"nombre": "Fan club Ca7riel y Paco Amoroso", "usuario": "ca7rielypacoamorosoarg", "ig_id": "17841475673833807", "secret": "IG_TOKEN_CATRIEL", "cola": "clientes/ca7rielypaco/cola.json", "activa": true}
+ {
+  "nombre": "Quinta El Florido",
+  "usuario": "quintaelflorido",
+  "ig_id": "17841454960836233",
+  "secret": "IG_TOKEN",
+  "cola": "quinta-ig/publicador/cola.json",
+  "activa": true
+ },
+ {
+  "nombre": "Fan club Ca7riel y Paco Amoroso",
+  "usuario": "ca7rielypacoamorosoarg",
+  "ig_id": "17841475673833807",
+  "secret": "IG_TOKEN_CATRIEL",
+  "cola": "clientes/ca7rielypaco/cola.json",
+  "activa": true
+ },
+ {
+  "nombre": "tallerfatima",
+  "usuario": "escuelatallerfatima",
+  "cola": "clientes/tallerfatima/cola.json",
+  "activa": true,
+  "ig_id": "17841403882435617",
+  "llave": "llaves/escuelatallerfatima.enc"
+ }
 ]

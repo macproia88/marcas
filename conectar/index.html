@@ -48,7 +48,7 @@ footer{max-width:520px;margin:16px auto 0;color:var(--mute);font-size:13px;text-
   <button class="btn sec" id="copiar">Copiar código</button>
   <p class="mute" style="margin-top:16px">Si WhatsApp no se abre, copiá el código y pegáselo a quien te pasó el link.</p>
   <textarea id="paquete" readonly></textarea>
-  <p class="mute">Mandalo ahora: el permiso vence si pasa más de una hora.</p>
+  <p class="mute">Mandalo ahora mismo: el permiso vence en pocos minutos.</p>
  </section>
 
  <section class="card" id="error" hidden>
@@ -57,7 +57,7 @@ footer{max-width:520px;margin:16px auto 0;color:var(--mute);font-size:13px;text-
   <a class="btn pri" id="reintentar" href="#">Probar de nuevo</a>
  </section>
 </main>
-<footer>Actualizado: 16/11/2026 17:45 h</footer>
+<footer>Actualizado: 16/11/2026 18:05 h</footer>
 <script>
 const APP = "1441500650864869", CONFIG = "1830522311294734";
 const VOLVER = "https://macproia88.github.io/marcas/conectar/";
@@ -65,7 +65,7 @@ const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search), h = new URLSearchParams(location.hash.slice(1));
 
 function linkMeta(cliente, tipo) {
-  const p = new URLSearchParams({client_id: APP, config_id: CONFIG, display: "page",
+  const p = new URLSearchParams({client_id: APP, config_id: CONFIG, display: "popup",
     override_default_response_type: "true", redirect_uri: VOLVER, response_type: tipo,
     state: tipo + ":" + (cliente || "")});
   return "https://www.facebook.com/dialog/oauth?" + p.toString();
@@ -114,13 +114,13 @@ function mostrar(id) { ["inicio", "listo", "error"].forEach((s) => $(s).hidden =
   const err = q.get("error") || h.get("error");
   if (err) {
     // Si Meta no acepta el modo directo, reintentamos solos con el modo "code".
-    if (tipo === "token" && !/denied|cancel/i.test((q.get("error_reason") || "") + err)) {
+    if (false && !/denied|cancel/i.test((q.get("error_reason") || "") + err)) {
       location.replace(linkMeta(cliente, "code")); return;
     }
     $("reintentar").href = VOLVER + "?c=" + encodeURIComponent(cliente);
     mostrar("error"); return;
   }
-  $("ir").href = linkMeta(q.get("c") || "", "token");
+  $("ir").href = linkMeta(q.get("c") || "", "code");
   mostrar("inicio");
 })();
 </script>

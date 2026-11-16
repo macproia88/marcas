@@ -19,6 +19,8 @@ PAGINAS = [
     ('ranking-mostrador.html', 'Ranking de mostrador'),
     ('produccion.html', 'Producción por datos'),
     ('https://macproia88.github.io/sel-oct26-presumida/', 'Selección de personal (CVs)'),
+    ('https://macproia88.github.io/marcas/arca.html', 'Tablero ARCA (con clave)'),
+    ('https://macproia88.github.io/marcas/iva.html', 'Control diario de IVA (con clave)'),
 ]
 MARCA = re.compile(r'<nav id="lp-nav".*?</nav>\s*', re.S)
 ESTILO = ('font:13px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;max-width:1180px;margin:24px auto 16px;'

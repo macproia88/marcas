@@ -1,26 +1,20 @@
 [
  {
   "tipo": "dm",
-  "para_id": "25893642193566397",
-  "texto": "¡Hola! 😊 Para pasar la noche de Año Nuevo tenemos la otra quinta: hasta 20 personas y duermen cómodas 8 🥂 Sale $950.000 por el 31/12 y el 1/1 (los 2 días). ¿Cuántos serían?",
-  "estado": "pendiente"
- },
- {
-  "tipo": "dm",
-  "para_id": "2239471809944412",
-  "texto": "¡Genial! 🙌 El lunes 7/12 (feriado) en principio lo tenemos libre. Para 8 les va bárbaro la quinta de día ☀️ (pileta, parrilla, quincho y juegos para las nenas, de 10 a 19 h) a $160.000, o la casa a $200.000. ¿Lo quieren para pasar el día o para quedarse a dormir? Si ya lo quieren reservar, escribinos 👉 wa.me/5491138777015",
-  "estado": "pendiente"
- },
- {
-  "tipo": "dm",
-  "para_id": "2495755257900745",
-  "texto": "¡Hola! 😊 El sábado 12/12 en principio lo tenemos libre. Te cuento que el máximo es de 20 personas y el horario es de 10 a 19 h, así que podría ser un almuerzo o tarde de fin de año en la quinta de día (pileta, parrilla y quincho) a $160.000 🎉 Lo del catering y la música te lo pasamos por WhatsApp. ¿Les sirve de día y quedarían en 20?",
+  "para_id": "1377810430956873",
+  "texto": "¡Hola! 😊 Gracias por escribirnos. Te cuento que el máximo que aceptamos es de 20 personas, así que para 40 lamentablemente no podemos 🙏 Si en algún momento arman algo de hasta 20, la quinta de día (pileta, parrilla y quincho, de 10 a 19 h) les viene bárbaro, y hay domingos de diciembre en principio libres. ¡Seguinos en @quintaelflorido! 💚",
   "estado": "pendiente"
  },
  {
   "tipo": "dm",
   "para_id": "980681701332517",
-  "estado": "pendiente",
-  "texto": "¡Genial, gracias! 🙌 Te paso los datos para que las ofrezcas:\n\n☀️ Quinta de día (hasta 15 personas, de 10 a 19 h): pileta 7x3, galería, quincho, parrilla y juegos. $150.000 de lunes a jueves y $160.000 viernes, sábado, domingo y feriados.\n\n🏡 Quinta con casa (duermen 5, de día hasta 15): pileta 7x3, quincho, parrilla, cocina y WiFi. $160.000 de lunes a viernes y $200.000 sábados, domingos y feriados.\n\n📍 General Rodríguez, a 600 m de la autopista y a 15 min de Luján.\n\n🎥 Fotos y videos en nuestro Instagram, en las destacadas «Pasar el día» y «Casa».\n📅 Fechas libres: https://macproia88.github.io/marcas/quinta-ig/bot/ver.html\n\nCualquier cliente que tengas, escribime por acá o al WhatsApp 👉 wa.me/5491138777015"
+  "texto": "¡Tenés razón! 🙌 Las fotos de adentro de la casa te las pasamos por WhatsApp junto con los videos, escribinos acá 👉 wa.me/5491138777015 😊",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18133521680478444",
+  "texto": "¡Gracias! 💚",
+  "estado": "pendiente"
  }
 ]

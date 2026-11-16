@@ -21,6 +21,19 @@ CUENTAS = os.path.join(AQUI, "cuentas.json")
 IG_ID = TOKEN = COLA = ""  # se cargan por cuenta en main()
 
 
+def token_de(c):
+    """Llave de la cuenta: del secret (cuentas viejas) o del archivo cifrado (cuentas conectadas por link)."""
+    if c.get("llave"):
+        try:
+            sys.path.insert(0, AQUI)
+            import conectar
+            return conectar.llave_de(c)
+        except Exception as e:
+            print(f"  No se pudo abrir la llave cifrada de @{c.get('usuario')}: {e.__class__.__name__}")
+            return ""
+    return os.environ.get(c.get("secret", ""), "")
+
+
 def elegir_api(token):
     """Llaves del login de Instagram usan graph.instagram.com; las de Facebook, graph.facebook.com."""
     global API
@@ -128,12 +141,12 @@ def main():
     for c in json.load(open(CUENTAS, encoding="utf-8")):
         if not c.get("activa", True):
             continue
-        IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        IG_ID, TOKEN = c.get("ig_id", ""), token_de(c)
         elegir_api(TOKEN)
         COLA = os.path.join(REPO, c["cola"])
         print(f"=== {c['nombre']} ===")
         if not TOKEN or not IG_ID:
-            print(f"  Falta el secret {c['secret']} o el ig_id: se saltea")
+            print(f"  Falta la llave ({c.get('secret') or c.get('llave')}) o el ig_id: se saltea")
             continue
         if not os.path.exists(COLA):
             print("  Sin cola todavía")
@@ -188,7 +201,7 @@ def probar():
     """Crea los contenedores de los videos pendientes (sin publicar) para ver si Instagram los acepta."""
     global IG_ID, TOKEN, COLA
     for c in json.load(open(CUENTAS, encoding="utf-8")):
-        IG_ID, TOKEN = c.get("ig_id", ""), os.environ.get(c["secret"], "")
+        IG_ID, TOKEN = c.get("ig_id", ""), token_de(c)
         elegir_api(TOKEN)
         COLA = os.path.join(REPO, c["cola"])
         if not (IG_ID and TOKEN and os.path.exists(COLA)):

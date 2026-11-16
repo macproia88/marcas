@@ -117,9 +117,12 @@ def cuentas_de(tok, api):
             encontradas.setdefault(str(d["profile_id"]), "")
     except Exception as e:
         print("  debug_token:", str(e)[:120])
-    # 3) El propio usuario del token (login con Instagram)
+    # 3) Número de cuenta indicado a mano (lo muestra el panel de Meta)
+    if os.environ.get("IG_ID_MANUAL", "").strip():
+        encontradas.setdefault(os.environ["IG_ID_MANUAL"].strip(), "")
+    # 4) El propio usuario del token (login con Instagram)
     try:
-        r = http(f"{FB}/me", {"fields": "id,username", "access_token": tok})
+        r = http(f"{FB}/me", {"fields": "id,name", "access_token": tok})
         if r.get("username"):
             encontradas.setdefault(str(r["id"]), r["username"])
     except Exception as e:

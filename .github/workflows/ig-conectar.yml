@@ -25,6 +25,7 @@ jobs:
           ACCION: ${{ github.event.inputs.accion || 'renovar' }}
           CLIENTE: ${{ github.event.inputs.cliente }}
           PAQUETE: ${{ github.event.inputs.paquete }}
+          IG_ID_MANUAL: ${{ github.event.inputs.accion == 'reintentar' && github.event.inputs.paquete || '' }}
         run: |
           echo "::add-mask::$PAQUETE"
           python3 quinta-ig/publicador/conectar.py "$ACCION"

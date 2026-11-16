@@ -1,3 +1,15 @@
 # Archivos de la carpeta de Drive "Quinta El Florido - Fotos para Instagram" ya publicados/programados.
 # Formato: fecha_programada | id_drive | nombre_archivo | quinta | tipo_posteo
 2026-11-04 | repo | hd-pileta.jpg | quinta de día | finde-150k feed+historia
+2026-11-23 | repo | fotos-limpias/limpia-03,05,01,10 + hoy-casa | ambas | carrusel 2 opciones
+2026-11-23 | repo | fotos-limpias/limpia-02 | quinta de día | historia
+2026-11-24 | repo | 2026-11-14-asi-esta-hoy.mp4 (recorte 11-23 s) | ambas | reel juntada
+2026-11-24 | repo | fotos-limpias/limpia-06 | quinta de día | historia
+2026-11-25 | repo | fotos-limpias/limpia-09 | quinta con casa | post pernoctar
+2026-11-25 | repo | fotos-limpias/hoy-casa | quinta con casa | historia
+2026-11-26 | repo | fotos-limpias/limpia-04 | quinta de día | post diciembre
+2026-11-26 | repo | fotos-limpias/limpia-01 | quinta de día | historia
+2026-11-27 | repo | fotos-limpias/limpia-08 | quinta con casa | historia
+2026-11-28 | repo | fotos-limpias/limpia-10 | quinta con casa | historia
+2026-11-29 | repo | fotos-limpias/limpia-07 + limpia-08 | ambas | post collage autopista
+2026-11-29 | repo | fotos-limpias/hoy-caminito | quinta con casa | historia

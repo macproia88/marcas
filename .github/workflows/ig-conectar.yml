@@ -5,7 +5,7 @@ name: IG - conectar cliente (link) y renovar llaves
 on:
   workflow_dispatch:
     inputs:
-      accion: { description: "claves | conectar | renovar", required: true, default: conectar }
+      accion: { description: "claves | conectar | reintentar | renovar", required: true, default: conectar }
       cliente: { description: "carpeta del cliente (ej. tallerfatima)", required: false, default: "" }
       paquete: { description: "código cifrado que mandó el cliente", required: false, default: "" }
   schedule:
@@ -29,6 +29,7 @@ jobs:
           echo "::add-mask::$PAQUETE"
           python3 quinta-ig/publicador/conectar.py "$ACCION"
       - name: Guardar
+        if: always()
         run: |
           git config user.name "github-actions"; git config user.email "actions@github.com"
           git add conectar/clave-publica.json quinta-ig/publicador/llaves quinta-ig/publicador/cuentas.json 2>/dev/null || true

@@ -91,13 +91,49 @@ def largo_plazo(tok):
 
 
 def cuentas_de(tok, api):
-    """Lista de (ig_id, usuario) a las que da acceso la llave."""
+    """Lista de (ig_id, usuario) a las que da acceso la llave. Prueba varios caminos de Meta."""
     if api == "ig":
         r = http(f"{IG}/v23.0/me", {"fields": "user_id,username", "access_token": tok})
         return [(str(r.get("user_id") or r["id"]), r["username"])]
-    r = http(f"{FB}/me/accounts", {"fields": "instagram_business_account{id,username}", "access_token": tok, "limit": 100})
-    return [(p["instagram_business_account"]["id"], p["instagram_business_account"]["username"])
-            for p in r.get("data", []) if p.get("instagram_business_account")]
+    encontradas = {}
+    # 1) Cuentas de IG ligadas a páginas de Facebook
+    try:
+        r = http(f"{FB}/me/accounts", {"fields": "instagram_business_account{id,username}", "access_token": tok, "limit": 100})
+        for pg in r.get("data", []):
+            ig = pg.get("instagram_business_account")
+            if ig:
+                encontradas[ig["id"]] = ig.get("username", "")
+    except Exception as e:
+        print("  me/accounts:", str(e)[:120])
+    # 2) Cuentas a las que se dio permiso (granular scopes del token)
+    try:
+        d = http(f"{FB}/debug_token", {"input_token": tok, "access_token": f"{APP_ID}|{SECRETO}"}).get("data", {})
+        print("  Permisos:", ",".join(d.get("scopes", [])))
+        for g in d.get("granular_scopes", []):
+            if g.get("scope", "").startswith("instagram"):
+                for t in g.get("target_ids", []) or []:
+                    encontradas.setdefault(str(t), "")
+        if d.get("profile_id"):
+            encontradas.setdefault(str(d["profile_id"]), "")
+    except Exception as e:
+        print("  debug_token:", str(e)[:120])
+    # 3) El propio usuario del token (login con Instagram)
+    try:
+        r = http(f"{FB}/me", {"fields": "id,username", "access_token": tok})
+        if r.get("username"):
+            encontradas.setdefault(str(r["id"]), r["username"])
+    except Exception as e:
+        print("  me:", str(e)[:120])
+    salida = []
+    for ig_id, usuario in encontradas.items():
+        if not usuario:
+            try:
+                usuario = http(f"{FB}/{ig_id}", {"fields": "username", "access_token": tok}).get("username", "")
+            except Exception as e:
+                print(f"  {ig_id}:", str(e)[:120])
+        if usuario:
+            salida.append((ig_id, usuario))
+    return salida
 
 
 def guardar(usuario, ig_id, tok, api, cliente):
@@ -126,9 +162,22 @@ def conectar(paquete, cliente):
         sys.exit("El paquete no trae permiso (¿el cliente tocó Cancelar?)")
     cliente = cliente or d.get("state") or ""
     tok, api = largo_plazo(tok)
+    # Se guarda primero (cifrada) por si falla lo que sigue: así no hay que pedirle nada al cliente.
+    os.makedirs(LLAVES, exist_ok=True)
+    open(os.path.join(LLAVES, f"pendiente-{cliente or 'cliente'}.enc"), "wb").write(
+        fernet().encrypt(json.dumps({"llave": tok, "api": api}).encode()))
+    asociar(tok, api, cliente)
+
+
+def reintentar(cliente):
+    meta = json.loads(fernet().decrypt(open(os.path.join(LLAVES, f"pendiente-{cliente}.enc"), "rb").read()))
+    asociar(meta["llave"], meta["api"], cliente)
+
+
+def asociar(tok, api, cliente):
     cs = cuentas_de(tok, api)
     if not cs:
-        sys.exit("La llave no tiene ninguna cuenta de Instagram profesional asociada")
+        sys.exit("La llave quedó guardada pero no se encontró la cuenta de Instagram (ver Permisos arriba)")
     for ig_id, usuario in cs:
         guardar(usuario, ig_id, tok, api, cliente)
         print(f"CONECTADA: @{usuario} (ig_id {ig_id}), llave de 60 días guardada cifrada")
@@ -165,6 +214,8 @@ if __name__ == "__main__":
         claves()
     elif accion == "conectar":
         conectar(os.environ.get("PAQUETE", ""), os.environ.get("CLIENTE", "").strip())
+    elif accion == "reintentar":
+        reintentar(os.environ.get("CLIENTE", "").strip())
     elif accion == "renovar":
         renovar()
     else:

@@ -1,8 +1,14 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1769321284127547",
-  "texto": "¡Hola, buen día! 😊 El finde del 26 y 27/12 ya lo tenemos tomado en las dos quintas 🙏 El finde anterior, sábado 19 y domingo 20/12, en principio está libre: ☀️ quinta de día (hasta 15-20, de 10 a 19 h) $160.000 por día, y 🛏️ quinta con casa (duermen 5) $200.000 por día o $400.000 sábado + domingo con noche. ¿Les sirve esa fecha? ¿Cuántos serían?",
+  "para_id": "1542395104379741",
+  "texto": "¡Hola! 😊 Gracias por escribirnos. Te cuento que la capacidad máxima es de 20 personas, así que para 22 lamentablemente no podemos 🙏 Si llegan a quedar en 20 o menos, la quinta de día (pileta, parrilla y quincho, de 10 a 19 h) les viene bárbaro. ¿Para qué fecha sería?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18125524198822079",
+  "texto": "¡Hola! 😊 Tenemos dos quintas pegadas en General Rodríguez, con pileta y parrilla: ☀️ de día (hasta 20 personas) y 🛏️ con casa (duermen 5). Escribinos por mensaje privado con la fecha y cuántos son y te pasamos todo 💚",
   "estado": "pendiente"
  }
 ]

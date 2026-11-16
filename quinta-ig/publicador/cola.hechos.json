@@ -63,5 +63,30 @@
   "estado": "publicado",
   "ig_media_id": "18359873800171706",
   "publicado_el": "2026-11-15 22:35"
+ },
+ "destacada-dia-1": {
+  "estado": "publicado",
+  "ig_media_id": "18122065970099055",
+  "publicado_el": "2026-11-15 22:45"
+ },
+ "destacada-dia-2": {
+  "estado": "publicado",
+  "ig_media_id": "18145289503712096",
+  "publicado_el": "2026-11-15 22:46"
+ },
+ "destacada-dia-3": {
+  "estado": "publicado",
+  "ig_media_id": "18041007614814742",
+  "publicado_el": "2026-11-15 22:46"
+ },
+ "destacada-dia-4": {
+  "estado": "publicado",
+  "ig_media_id": "18118290194606311",
+  "publicado_el": "2026-11-15 22:46"
+ },
+ "destacada-dia-5": {
+  "estado": "publicado",
+  "ig_media_id": "18117543503153082",
+  "publicado_el": "2026-11-15 22:46"
  }
 }

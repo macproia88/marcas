@@ -1,8 +1,14 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1115273414745631",
-  "texto": "¡Hola! 😊 El 24 y 25 de diciembre ya están tomadas en las dos quintas 🙏 Cerquita tenemos libre el finde del 19 y 20 de diciembre, y también del 28 al 30. ¿Te sirve alguna de esas? ¿Cuántos serían y sería de día o con noche? 🌳",
+  "para_id": "3045769305772957",
+  "texto": "¡Hola! 👋 Somos Quinta El Florido, de General Rodríguez, a 600 m de la autopista del Oeste 🌳 Tenemos dos quintas pegadas con pileta y parrilla: ☀️ quinta de día (hasta 15-20 personas, de 10 a 19 h) y 🛏️ quinta con casa (duermen 5). ¿Para qué fecha sería y cuántos son?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1868218457512281",
+  "texto": "¡Hola! 😊 Sí, ya estamos tomando fechas para enero y se están moviendo rápido 🔥 La quinta de día (hasta 15-20 personas, de 10 a 19 h) tiene casi todo enero libre (menos del 1 al 3), y la quinta con casa tiene libre desde el 23/1. ¿Qué fecha buscás y cuántos serían?",
   "estado": "pendiente"
  }
 ]

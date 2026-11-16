@@ -658,5 +658,31 @@
   "forzado": "2026-11-13 22:04",
   "ig_media_id": "18109505495343771",
   "publicado_el": "2026-11-13 22:06"
+ },
+ {
+  "id": "1116-h-grammy",
+  "tipo": "STORY",
+  "fecha": "2026-11-16 12:30",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1116-grammy.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)"
+ },
+ {
+  "id": "1116-carrusel-grammy",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-16 18:00",
+  "media": [
+   "clientes/ca7rielypaco/img/1116-g1.jpg",
+   "clientes/ca7rielypaco/img/1116-g2.jpg",
+   "clientes/ca7rielypaco/img/1116-g3.jpg",
+   "clientes/ca7rielypaco/img/1116-g4.jpg"
+  ],
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)",
+  "etiquetas": [],
+  "texto": "Tres nominaciones a los Grammy para CA7RIEL & Paco Amoroso.\n\nLa Academia de la Grabación anunció hoy los nominados a la 69.ª entrega de los Grammy, y el dúo aparece en tres categorías:\n\n• Mejor Álbum de Rock o Alternativo Latino, por FREE SPIRITS (compiten con Jorge Drexler, Milo J, Juanes y Fito Páez)\n• Mejor Canción Latina, por “Hasta Jesús Tuvo un Mal Día”, junto a Sting\n• Mejor Grabación Remezclada, por “Beto’s Horns” (Fred Remix), con Fred again..\n\nLa ceremonia es el domingo 7 de febrero de 2027 en el Crypto.com Arena de Los Ángeles. Cuatro días después de ganar tres Latin Grammy, Free Spirits sigue sumando.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @recordingacademy\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #GRAMMYs"
  }
 ]

@@ -655,5 +655,45 @@
   "texto": "",
   "fecha": "2026-11-15 22:45",
   "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-6",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-6.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 09:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-7",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-7.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 09:35",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-8",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-8.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 09:40",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-9",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-9.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 09:45",
+  "estado": "pendiente"
  }
 ]

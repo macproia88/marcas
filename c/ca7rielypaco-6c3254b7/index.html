@@ -59,6 +59,8 @@ td.n, th.n { text-align: right }
 .plan { display: flex; flex-direction: column }
 .pl { display: grid; grid-template-columns: 9ch 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: start }
 .pl:last-child { border-bottom: 0 }
+.th { display: flex; gap: 8px; overflow-x: auto; margin-top: 8px; padding-bottom: 4px }
+.th a { flex: 0 0 auto } .th img, .th video { height: 170px; width: auto; border-radius: 6px; border: 1px solid var(--line); display: block }
 .pl .d { font-weight: 600; font-size: 14px } .pl .h { color: var(--muted); font-size: 13px }
 .chip { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; margin-right: 6px; background: var(--line); color: var(--fg) }
 .chip.REEL { background: var(--nar); color: #fff } .chip.STORY { background: var(--agua); color: #fff }
@@ -253,7 +255,17 @@ fetch(CFG.cola + nocache).then((r) => r.json()).then((c) => {
     izq.append(el("div", "d", `${DIAS[f.getDay()]} ${f.getDate()}/${f.getMonth() + 1}`), el("div", "h", i.fecha.slice(11) + " h"));
     const txt = (i.texto || "").split("\n").find((l) => l.trim()) || "Historia del fan club";
     const x = el("div", "x"); x.append(el("span", "chip " + i.tipo, TIPO[i.tipo] || i.tipo)); if (i.estado === "borrador") x.append(el("span", "chip", "Esperando aprobación")); x.append(txt.replace(/#\S+/g, "").trim());
-    der.append(x); r.append(izq, der); return r;
+    der.append(x);
+    const th = el("div", "th");
+    (i.media || []).forEach((m) => {
+      const u = "../../" + m + nocache, a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener";
+      let v;
+      if (/\.mp4$/i.test(m)) { v = document.createElement("video"); v.src = u; v.muted = true; v.preload = "metadata"; v.playsInline = true; }
+      else { v = document.createElement("img"); v.src = u; v.loading = "lazy"; v.alt = TIPO[i.tipo] || i.tipo; }
+      a.append(v); th.append(a);
+    });
+    if (th.childNodes.length) der.append(th);
+    r.append(izq, der); return r;
   }));
 }).catch(() => {});
 

@@ -1,0 +1,20 @@
+name: IG - bajar feed del carpintero
+on:
+  workflow_dispatch:
+  push:
+    paths: ['clientes/carpintero/herramientas/bajar_feed.py']
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q cryptography
+      - env:
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+        run: python3 clientes/carpintero/herramientas/bajar_feed.py
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add clientes/carpintero/fotos/ig; git commit -m "Carpintero: fotos del feed [skip ci]" || exit 0
+          git pull --rebase -X theirs -q && git push -q

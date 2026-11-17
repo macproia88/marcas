@@ -313,5 +313,17 @@
  "f964414679c70807": {
   "estado": "error",
   "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"AkHzIxSJk1nupfPJ3qq0xLp\"}}"
+ },
+ "d9e1793fa9f235b7": {
+  "estado": "enviado",
+  "hora": "16/11 23:19"
+ },
+ "3a0d164ff3867875": {
+  "estado": "enviado",
+  "hora": "16/11 23:19"
+ },
+ "4a30e5a8abe26767": {
+  "estado": "enviado",
+  "hora": "16/11 23:19"
  }
 }

@@ -33,13 +33,15 @@
   "estado": "borrador"
  },
  {
-  "id": "v2-1118-post-pino",
-  "tipo": "POST",
+  "id": "v2-1118-carrusel-pino",
+  "tipo": "CARRUSEL",
   "fecha": "2026-11-18 20:30",
   "media": [
-   "clientes/carpintero/img/v2/1118-pino.jpg"
+   "clientes/carpintero/img/v2/1118-pino-1.jpg",
+   "clientes/carpintero/img/v2/1118-pino-2.jpg",
+   "clientes/carpintero/img/v2/1118-pino-3.jpg"
   ],
-  "texto": "Alacena de pino para cocina.\n\nBajo mesada con cajones y alacena con puertas, fabricados en nuestro taller. Se hacen a medida de tu cocina.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros #MueblesDePino #Cocina",
+  "texto": "Combos de cocina en pino macizo.\n\nAlacena + bajo mesada con mesada, en distintas medidas. También para espacios chicos, desde 80 cm.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -75,13 +77,15 @@
   "estado": "borrador"
  },
  {
-  "id": "v2-1120-post-silla",
-  "tipo": "POST",
+  "id": "v2-1120-carrusel-bano",
+  "tipo": "CARRUSEL",
   "fecha": "2026-11-20 20:30",
   "media": [
-   "clientes/carpintero/img/v2/1120-silla.jpg"
+   "clientes/carpintero/img/v2/1120-bano-1.jpg",
+   "clientes/carpintero/img/v2/1120-bano-2.jpg",
+   "clientes/carpintero/img/v2/1120-bano-3.jpg"
   ],
-  "texto": "Silla de brazos curvos.\n\nLíneas simples y la veta de la madera como protagonista. Para el comedor o un rincón de lectura.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros #Sillas",
+  "texto": "Muebles para el baño.\n\nBotiquín con espejo y mini tolva en blanco: diseño moderno para aprovechar cada rincón.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -103,7 +107,7 @@
    "clientes/carpintero/img/v2/1121-living-2.jpg",
    "clientes/carpintero/img/v2/1121-living-3.jpg"
   ],
-  "texto": "Armá tu living.\n\nJuegos de sillón y butacas, sillones con mesita y combinaciones en madera y soga. Vení a verlos al showroom.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros #Living",
+  "texto": "Armá tu living.\n\nMesas ratonas, racks para TV y modulares varillados en madera, a la medida de tu espacio.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -144,7 +148,7 @@
    "clientes/carpintero/img/v2/1123-comedores-1.jpg",
    "clientes/carpintero/img/v2/1123-comedores-2.jpg"
   ],
-  "texto": "Comedores completos.\n\nMesa redonda con base de varillas, con 4 sillas o con 6 sillones tapizados.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros #Comedor",
+  "texto": "Comedores completos.\n\nMesa redonda con base de varillas o rectangular con sillas de soga tejida. Medidas a elección.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  }
 ]

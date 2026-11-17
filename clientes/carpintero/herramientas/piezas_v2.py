@@ -182,26 +182,88 @@ def reel(fotos, salida, seg=3.0):
                     "-movflags", "+faststart", os.path.join(BASE, "videos", "v2", salida)], check=True)
 
 
+
+# ---------- Estudio: muebles fotografiados en la vereda, recortados y puestos sobre fondo limpio ----------
+import numpy as np  # noqa: E402
+def fondo_estudio(w,h,piso=0.78):
+    y=np.linspace(0,1,h)[:,None]; x=np.linspace(-1,1,w)[None,:]
+    pared=np.array([239,234,226.]); suelo=np.array([222,212,198.])
+    t=np.clip((y-piso)/0.04+0.5,0,1)
+    base=pared*(1-t[...,None])+suelo*t[...,None]
+    luz=1+0.05*(1-x**2)[...,None]-0.06*np.abs(y-0.4)[...,None]
+    return Image.fromarray(np.clip(base*luz,0,255).astype('uint8'))
+def estudio(recorte, w=1080, h=1350, alto=0.70, piso=0.80):
+    from scipy import ndimage
+    im=recorte.convert('RGBA'); a=np.array(im.split()[-1]); a=np.where(a>200,255,np.where(a<90,0,a)).astype('uint8')
+    lab,n=ndimage.label(a>0)
+    if n>1:
+        tam=ndimage.sum(a>0,lab,range(1,n+1)); a[lab!=(1+int(np.argmax(tam)))]=0
+    im.putalpha(Image.fromarray(a).filter(ImageFilter.GaussianBlur(0.8)))
+    ys,xs=np.nonzero(a); im=im.crop((xs.min(),ys.min(),xs.max()+1,ys.max()+1))
+    k=min(alto*h/im.height, 0.84*w/im.width); im=im.resize((int(im.width*k),int(im.height*k)),Image.LANCZOS)
+    bg=fondo_estudio(w,h,piso).convert('RGBA')
+    x=(w-im.width)//2; yb=int(h*piso)+int(0.02*h); y=yb-im.height
+    sh=Image.new('L',(w,h),0); from PIL import ImageDraw
+    d=ImageDraw.Draw(sh); d.ellipse((x+im.width*0.04,yb-18,x+im.width*0.96,yb+16),fill=190)
+    sh=sh.filter(ImageFilter.GaussianBlur(22))
+    cont=Image.new('L',(w,h),0); cont.paste(im.split()[-1].point(lambda v:150 if v>0 else 0),(x+10,y+14)); cont=cont.filter(ImageFilter.GaussianBlur(18))
+    sombra=Image.fromarray(np.maximum(np.array(sh),(np.array(cont)*0.5).astype('uint8')))
+    bg.paste(Image.new('RGBA',(w,h),(70,55,40,255)),(0,0),sombra.point(lambda v:int(v*0.55)))
+    bg.alpha_composite(im,(x,y)); return bg.convert('RGB')
+
+
+def a_estudio(origen, nombre, alto=0.70):
+    """Recorta el mueble de una foto de vereda (rembg) y lo apoya sobre un fondo de estudio cálido. Devuelve la ruta relativa a fotos/."""
+    destino = os.path.join(F, "estudio", nombre)
+    if not os.path.exists(destino):
+        from rembg import remove, new_session
+        os.makedirs(os.path.dirname(destino), exist_ok=True)
+        im = ImageOps.exif_transpose(Image.open(os.path.join(F, origen))).convert("RGB")
+        estudio(remove(im, session=new_session("isnet-general-use")), alto=alto).save(destino, quality=93)
+    return "estudio/" + nombre
+
+
+def ig(clave):
+    """Foto bajada del feed de la cuenta (fotos/ig/<fecha>-<id>-<n>.jpg)."""
+    import glob
+    return "ig/" + os.path.basename(glob.glob(os.path.join(F, "ig", f"*{clave}.jpg"))[0])
+
+
 def semana():
-    """Semana del 17 al 23/11: ninguna foto se repite y se alternan mesas, sillones, pino, banquetas y sillas."""
+    """Semana del 17 al 23/11: sin vereda, ninguna foto se repite y cada día es un producto distinto
+    (mesas, combos de pino, sillones, baño, living, banqueta, comedores)."""
     pieza("mesa-ovalada-varillas-casa.jpg", "1117-mesas-1.jpg", centro=(0.5, 0.6))
     pieza("mesa-rectangular-varillas-casa.jpg", "1117-mesas-2.jpg", centro=(0.5, 0.55))
-    pieza("alacena-pino-vereda.jpg", "1118-pino.jpg", centro=(0.5, 0.55))
+    # Combos de pino (fotos del feed sacadas en la vereda -> estudio)
+    pieza(a_estudio(ig("17997719087698301-1"), "combo-pino-frente.jpg"), "1118-pino-1.jpg")
+    pieza(a_estudio(ig("18093307712212263-1"), "combo-pino-cajon.jpg"), "1118-pino-2.jpg")
+    pieza(a_estudio(ig("17937392346389722-1"), "combo-pino-chico.jpg"), "1118-pino-3.jpg")
+    # Sillones
     pieza("sillon-soga-ia.jpg", "1119-sillones-1.jpg", centro=(0.5, 0.55))
-    pieza("sillon-1c-gris.jpg", "1119-sillones-2.jpg", centro=(0.5, 0.55))
-    pieza("sillones-colores.jpg", "1119-sillones-3.jpg", centro=(0.5, 0.5))
-    pieza("silla-curva-alfombra.jpg", "1120-silla.jpg")
-    pieza("living-negro.jpg", "1121-living-1.jpg", centro=(0.5, 0.6))
-    pieza("sillon-beige-mesita.jpg", "1121-living-2.jpg", centro=(0.3, 0.5))
-    pieza("sillon-soga-mesita-showroom-ia.jpg", "1121-living-3.jpg", centro=(0.5, 0.65))
-    pieza("comedor-varillas-4-sillas.jpg", "1123-comedores-1.jpg", centro=(0.5, 0.55))
-    pieza("comedor-varillas-6-sillas.jpg", "1123-comedores-2.jpg", centro=(0.5, 0.6))
-    for dia, foto, tit in (("1117", "banquetas-soga-cocina.jpg", None), ("1118", "sillon-2c-azul.jpg", None),
-                           ("1119", "mesa-varillas.jpg", None), ("1120", "silla-soga.jpg", None),
-                           ("1121", "mesa-ratona-estante.jpg", None), ("1122", "banqueta-tapizada-ia.jpg", None),
-                           ("1123", "mesa-redonda-cruz-captura.jpg", "Buen lunes")):
+    pieza("sillon-soga-mesita-showroom-ia.jpg", "1119-sillones-2.jpg", centro=(0.5, 0.65))
+    pieza(ig("18067871552484905-1"), "1119-sillones-3.jpg", centro=(0.5, 0.6))
+    # Baño
+    pieza(ig("18039204800831938-1"), "1120-bano-1.jpg", centro=(0.5, 0.45))
+    pieza(ig("18104814131172848-1"), "1120-bano-2.jpg", centro=(0.5, 0.5))
+    pieza(a_estudio(ig("18104814131172848-5"), "tolva-bano-abierta.jpg", alto=0.74), "1120-bano-3.jpg")
+    # Living
+    pieza(ig("18622833976021274-1"), "1121-living-1.jpg", centro=(0.5, 0.5))
+    pieza(ig("18369884611125699-1"), "1121-living-2.jpg", centro=(0.5, 0.6))
+    pieza(ig("18017730569709409-1"), "1121-living-3.jpg", centro=(0.45, 0.6))
+    # Comedores
+    pieza("comedor-varillas-ia.jpg", "1123-comedores-1.jpg", centro=(0.5, 0.6))
+    pieza(a_estudio(ig("17876716164621819-1"), "comedor-rectangular-soga.jpg", alto=0.62), "1123-comedores-2.jpg")
+    historias = (("1117", "banquetas-soga-cocina.jpg", None),
+                 ("1118", ig("18376530370234044-1"), None),
+                 ("1119", ig("18069723743332138-1"), None),
+                 ("1120", ig("17938069988818732-2"), None),
+                 ("1121", a_estudio(ig("17852688873638087-1"), "cama-nido.jpg", alto=0.55), None),
+                 ("1122", "banqueta-tapizada-ia.jpg", None),
+                 ("1123", a_estudio(ig("17987662815034903-3"), "mesa-redonda-varillas.jpg", alto=0.6), "Buen lunes"))
+    for dia, foto, tit in historias:
         historia(foto, f"{dia}-historia.jpg", titulo=tit)
-    reel_video(os.path.join(F, "video-1.mp4"), "1122-reel-banqueta.mp4")
+    if not os.path.exists(os.path.join(BASE, "videos", "v2", "1122-reel-banqueta.mp4")):
+        reel_video(os.path.join(F, "video-1.mp4"), "1122-reel-banqueta.mp4")
 
 
 if __name__ == "__main__":

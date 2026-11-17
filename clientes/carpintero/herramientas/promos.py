@@ -95,3 +95,36 @@ if __name__ == "__main__":
     pieza("wa-1117/foto-13.jpg", "promo-4-bano-historia.jpg", "PARA TU BAÑO", "Botiquín\ncon espejo", "Laqueado blanco, con luz · mini tolva $189.000", "$149.000", desde=True)
     pieza("wa-1117/foto-13.jpg", "promo-4-bano.jpg", "PARA TU BAÑO", "Botiquín con espejo", "Laqueado blanco, con luz · mini tolva $189.000", "$149.000", desde=True, alto=1350)
     print("ok")
+
+
+def feed(foto, salida, etiqueta, nombre, precio, ml, estudio=True):
+    """Post 1080x1350: foto grande arriba, precio grande abajo, sello de WhatsApp + dirección."""
+    W, H = 1080, 1350
+    lienzo = pv.fondo_estudio(W, H, piso=0.999).convert("RGB")
+    if estudio:
+        from rembg import remove, new_session
+        cut = remove(Image.open(os.path.join(pv.F, foto)).convert("RGB"), session=new_session("isnet-general-use"))
+        im = pv.gradar(pv.estudio(cut, w=1000, h=760, alto=0.80, piso=0.86))
+    else:
+        im = pv.gradar(ImageOps.exif_transpose(Image.open(os.path.join(pv.F, foto))).convert("RGB"))
+        im.thumbnail((1000, 760))
+    t, m = tarjeta(im, 1000, 760, radio=30)
+    sombra = Image.new("L", lienzo.size, 0); sombra.paste(m, (48, 58))
+    lienzo.paste((90, 70, 50), (0, 0), sombra.filter(ImageFilter.GaussianBlur(22)).point(lambda v: int(v * 0.3)))
+    lienzo.paste(t, (40, 40), m)
+    d = ImageDraw.Draw(lienzo)
+    fe = f("Inter-Bold.otf", 28); tw = d.textlength(etiqueta, font=fe)
+    d.rounded_rectangle((64, 64, 64 + tw + 40, 116), 26, fill=TERRA)
+    d.text((84, 90), etiqueta, font=fe, fill="white", anchor="lm")
+    y = 830
+    d.text((60, y), nombre, font=f("Inter-SemiBold.otf", 50), fill=TX)
+    fp = f("Inter-Bold.otf", 92); d.text((60, y + 62), precio, font=fp, fill=TERRA)
+    px = 60 + d.textlength(precio, font=fp) + 28
+    fm = f("Inter-Medium.otf", 28)
+    d.text((px, y + 82), "en el showroom", font=fm, fill=TX)
+    t1 = "Mercado Libre "; d.text((px, y + 120), t1, font=fm, fill=MU)
+    ax = px + d.textlength(t1, font=fm); d.text((ax, y + 120), ml, font=fm, fill=MU)
+    d.line((ax, y + 138, ax + d.textlength(ml, font=fm), y + 138), fill=MU, width=3)
+    lienzo = pv.firma(lienzo)
+    lienzo = pv.sello(lienzo, k=1.0)
+    lienzo.save(os.path.join(OUT, salida), quality=93)

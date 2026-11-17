@@ -22,6 +22,17 @@
   "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
+  "id": "r3-1117-reel-precios",
+  "tipo": "REEL",
+  "fecha": "2026-11-17 18:30",
+  "media": [
+   "clientes/carpintero/videos/v2/1117-reel-precios-showroom.mp4"
+  ],
+  "texto": "Precio de showroom vs. Mercado Libre 👇\n\n· Ropero de pino 1,20 m: $149.000 (en ML $229.900)\n· 2 banquetas de petiribí tejidas: $270.000 (en ML $369.550)\n· Combo de cocina pino 1,20 m: $135.900 (en ML $179.900)\n· Alacena de pino 1,20 m: $69.900 (en ML $129.900)\n· Mesa redonda varillada 120 cm: $169.000 (en ML $239.000)\n· Banqueta alta de paraíso tapizada: $125.000 (en ML $269.000)\n\nPrecios en el local, efectivo o transferencia. Somos fabricantes.\n\nConsultá stock disponible por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #MueblesDePino #JoséIngenieros #TresDeFebrero #Muebles",
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 18:17 (Juan)"
+ },
+ {
   "id": "v2-1117-carrusel-mesas",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-17 20:30",

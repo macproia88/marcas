@@ -72,4 +72,3 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - **Los que más visitas al perfil generan** (es lo más cerca del WhatsApp): sillón "YPF" (29 visitas y 3 seguidores nuevos), comedor Paraíso (17), mini tolva de baño (14), banqueta de peteribí (12 visitas y 5 seguidores nuevos) y materas de peteribí (12).
 - **Patrón:** rinde el producto con nombre propio, la madera (paraíso, peteribí) y las opciones de tapizado. Los posteos sin texto o con solo hashtags rinden menos.
 - **Reels:** hubo solo 3, pero en 2026 llegaron al doble de gente que los carruseles (unas 900 personas contra 400 a 600). Por eso esta semana hay 5 reels.
-EOF

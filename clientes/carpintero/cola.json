@@ -26,191 +26,156 @@
   "aprobado": "2026-11-16 22:48 (Juan)"
  },
  {
-  "id": "1117-historia",
+  "id": "v2-1117-historia",
   "tipo": "STORY",
   "fecha": "2026-11-17 13:00",
   "media": [
-   "clientes/carpintero/img/1117-historia.jpg"
+   "clientes/carpintero/img/v2/1117-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1117-reel-banqueta",
-  "tipo": "REEL",
+  "id": "v2-1117-carrusel-mesas",
+  "tipo": "CARRUSEL",
   "fecha": "2026-11-17 20:30",
   "media": [
-   "clientes/carpintero/videos/1118-reel-banqueta.mp4"
+   "clientes/carpintero/img/v2/1117-mesas-1.jpg",
+   "clientes/carpintero/img/v2/1117-mesas-2.jpg"
   ],
-  "texto": "Banqueta alta tapizada, hecha en nuestro taller 🪑\n\nIdeal para desayunador o barra. Consultanos medidas, color de tapizado y precio.\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Banquetas",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Mesas con base de varillas ✨\n\nOvalada o rectangular, las hacemos a la medida de tu comedor. Así quedaron en casa de nuestros clientes.\n\n¿Cuál va con tu casa? Escribinos y te pasamos medidas y precio.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Comedor #MesaDeComedor",
+  "estado": "borrador"
  },
  {
-  "id": "1118-historia",
+  "id": "v2-1118-historia",
   "tipo": "STORY",
   "fecha": "2026-11-18 13:00",
   "media": [
-   "clientes/carpintero/img/1118-historia.jpg"
+   "clientes/carpintero/img/v2/1118-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1118-reel-mesa-varillas",
-  "tipo": "REEL",
-  "fecha": "2026-11-18 18:00",
-  "media": [
-   "clientes/carpintero/videos/1118-reel-mesa-varillas.mp4"
-  ],
-  "texto": "Mesa redonda con base de varillas 🪵 Con 4 o con 6 sillas.\n\n¿Cuántos son en tu casa? Escribinos por WhatsApp y te pasamos medidas y precio.\n\n📲 WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Comedor",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
- },
- {
-  "id": "1118-carrusel-mesa-varillas",
-  "tipo": "CARRUSEL",
+  "id": "v2-1118-post-silla",
+  "tipo": "POST",
   "fecha": "2026-11-18 20:30",
   "media": [
-   "clientes/carpintero/img/1119-mesa-varillas-1.jpg",
-   "clientes/carpintero/img/1119-mesa-varillas-2.jpg",
-   "clientes/carpintero/img/1119-mesa-varillas-3.jpg",
-   "clientes/carpintero/img/1119-mesa-varillas-4.jpg",
-   "clientes/carpintero/img/1119-mesa-varillas-5.jpg"
+   "clientes/carpintero/img/v2/1118-silla.jpg"
   ],
-  "texto": "Mesa redonda con base de varillas ✨\n\nLa armamos con 4 sillas de respaldo curvo o con 6 sillones tapizados. La base se hace varilla por varilla en el taller.\n\n¿Con cuál te quedás, 4 o 6? 👇\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Comedor",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Silla de brazos curvos 🪑\n\nMadera maciza y líneas simples. Ideal para el comedor o un rincón de lectura.\n\nConsultanos medidas, terminación y precio.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Sillas",
+  "estado": "borrador"
  },
  {
-  "id": "1119-historia",
+  "id": "v2-1119-historia",
   "tipo": "STORY",
   "fecha": "2026-11-19 13:00",
   "media": [
-   "clientes/carpintero/img/1119-historia.jpg"
+   "clientes/carpintero/img/v2/1119-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1119-reel-sillones",
+  "id": "v2-1119-reel-mesas",
   "tipo": "REEL",
   "fecha": "2026-11-19 20:30",
   "media": [
-   "clientes/carpintero/videos/1120-reel-sillones.mp4"
+   "clientes/carpintero/videos/v2/1119-reel-mesas.mp4"
   ],
-  "texto": "Sillones en el color que elijas 🎨\n\nAzul, gris, crudo, negro, naranja o mostaza: estos son algunos de los que hicimos. ¿Cuál va en tu living?\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Sillones #Living",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Comedores con base de varillas 🍽️ Redonda, ovalada o rectangular, a tu medida.\n\nEscribinos y te asesoramos.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Comedor",
+  "estado": "borrador"
  },
  {
-  "id": "1120-historia",
+  "id": "v2-1120-historia",
   "tipo": "STORY",
   "fecha": "2026-11-20 13:00",
   "media": [
-   "clientes/carpintero/img/1120-historia.jpg"
+   "clientes/carpintero/img/v2/1120-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1120-reel-soga",
-  "tipo": "REEL",
-  "fecha": "2026-11-20 18:00",
-  "media": [
-   "clientes/carpintero/videos/1120-reel-soga.mp4"
-  ],
-  "texto": "Madera y soga para tu living 🌿 Sillones bajos tejidos, mesitas y mesas ratonas.\n\nGuardalo para cuando renueves el living y consultanos por WhatsApp.\n\n📲 WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
- },
- {
-  "id": "1120-carrusel-soga",
+  "id": "v2-1120-carrusel-banquetas",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-20 20:30",
   "media": [
-   "clientes/carpintero/img/1121-soga-1.jpg",
-   "clientes/carpintero/img/1121-soga-2.jpg",
-   "clientes/carpintero/img/1121-soga-3.jpg",
-   "clientes/carpintero/img/1121-soga-4.jpg",
-   "clientes/carpintero/img/1121-soga-5.jpg"
+   "clientes/carpintero/img/v2/1119-banquetas-1.jpg",
+   "clientes/carpintero/img/v2/1119-banquetas-2.jpg"
   ],
-  "texto": "Madera y soga 🌿\n\nSillones bajos de soga tejida, mesitas redondas y mesas ratonas para armar tu rincón. Guardá este posteo para cuando renueves el living.\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Deco",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Banquetas para tu barra o desayunador 🍳\n\nCon asiento de soga tejida o tapizadas. Elegís la altura y la terminación.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Banquetas #Cocina",
+  "estado": "borrador"
  },
  {
-  "id": "1121-historia",
+  "id": "v2-1121-historia",
   "tipo": "STORY",
   "fecha": "2026-11-21 13:00",
   "media": [
-   "clientes/carpintero/img/1121-historia.jpg"
+   "clientes/carpintero/img/v2/1121-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1121-carrusel-sillones",
+  "id": "v2-1121-carrusel-soga",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-21 20:30",
   "media": [
-   "clientes/carpintero/img/1121-sillones-1.jpg",
-   "clientes/carpintero/img/1121-sillones-2.jpg",
-   "clientes/carpintero/img/1121-sillones-3.jpg",
-   "clientes/carpintero/img/1121-sillones-4.jpg",
-   "clientes/carpintero/img/1121-sillones-5.jpg"
+   "clientes/carpintero/img/v2/1120-soga-1.jpg",
+   "clientes/carpintero/img/v2/1120-soga-2.jpg"
   ],
-  "texto": "Elegí tu sillón 🛋️\n\nDe 1 o 2 cuerpos, con el tapizado y el color que quieras. Mandanos el color que buscás y te pasamos el precio.\n\n¿Azul, gris, crudo o naranja? 👇\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Sillones",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Madera y soga 🌿\n\nSillones de soga tejida y mesitas para armar un living cálido. Guardalo para cuando renueves tu casa.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Living #Sillones",
+  "estado": "borrador"
  },
  {
-  "id": "1122-historia",
+  "id": "v2-1122-historia",
   "tipo": "STORY",
   "fecha": "2026-11-22 13:00",
   "media": [
-   "clientes/carpintero/img/1122-historia.jpg"
+   "clientes/carpintero/img/v2/1122-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
  },
  {
-  "id": "1122-reel-showroom",
+  "id": "v2-1122-reel-madera",
   "tipo": "REEL",
   "fecha": "2026-11-22 18:00",
   "media": [
-   "clientes/carpintero/videos/1122-reel-showroom.mp4"
+   "clientes/carpintero/videos/v2/1121-reel-madera.mp4"
   ],
-  "texto": "Todo esto lo hacemos en nuestro taller de José Ingenieros 🔨 Livings, sillones y comedores.\n\nVení a verlos al showroom o escribinos por WhatsApp.\n\n📲 WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Muebles de madera hechos por nosotros 🔨 Sillones, sillas y banquetas.\n\nVení a verlos al showroom o escribinos.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco",
+  "estado": "borrador"
  },
  {
-  "id": "1122-post-comedor",
+  "id": "v2-1122-post-comedor",
   "tipo": "POST",
   "fecha": "2026-11-22 20:30",
   "media": [
-   "clientes/carpintero/img/1122-comedor.jpg"
+   "clientes/carpintero/img/v2/1121-comedor.jpg"
   ],
-  "texto": "La mesa donde entran todos 🍽️\n\nMesa redonda con base de varillas y 6 sillones tapizados, hecha en nuestro taller. Escribinos y te pasamos medidas y precio.\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom #Comedor",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "texto": "Mesa redonda con base de varillas y sillas tapizadas 🤍\n\nUn comedor para disfrutar en familia. Escribinos y te pasamos medidas y precio.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Comedor",
+  "estado": "borrador"
  },
  {
-  "id": "1123-historia",
+  "id": "v2-1123-historia",
   "tipo": "STORY",
   "fecha": "2026-11-23 13:00",
   "media": [
-   "clientes/carpintero/img/1123-historia.jpg"
+   "clientes/carpintero/img/v2/1123-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "nota": "Pausado 17/11 08:15: el cliente pidió cambiar el estilo"
+  "estado": "borrador"
+ },
+ {
+  "id": "v2-1123-post-showroom",
+  "tipo": "POST",
+  "fecha": "2026-11-23 20:30",
+  "media": [
+   "clientes/carpintero/img/v2/1122-showroom.jpg"
+  ],
+  "texto": "Te esperamos en el showroom 🏠\n\nSomos fabricantes: vení a ver y probar los muebles en Román Gómez 1893, José Ingenieros.\n\n📲 Consultas por WhatsApp: 11 4194-3328 (link en el perfil)\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Deco #Showroom",
+  "estado": "borrador"
  }
 ]

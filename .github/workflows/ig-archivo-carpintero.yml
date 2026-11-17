@@ -16,5 +16,5 @@ jobs:
         run: python3 clientes/carpintero/herramientas/bajar_feed.py
       - run: |
           git config user.name "github-actions"; git config user.email "actions@github.com"
-          git add clientes/carpintero/fotos/ig; git commit -m "Carpintero: fotos del feed [skip ci]" || exit 0
+          git add clientes/carpintero/fotos/ig clientes/carpintero/marca; git commit -m "Carpintero: fotos del feed [skip ci]" || exit 0
           git pull --rebase -X theirs -q && git push -q

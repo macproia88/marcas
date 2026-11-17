@@ -55,5 +55,15 @@ for m in items:
     indice.append({"id": m["id"], "fecha": fecha, "tipo": m.get("media_product_type") or m.get("media_type"),
                    "texto": (m.get("caption") or "")[:300], "permalink": m.get("permalink"), "archivos": archivos})
 
+# Foto de perfil (logo)
+try:
+    perfil = get(f"{API}/{fila['ig_id']}", fields="profile_picture_url,name,biography")
+    os.makedirs(os.path.join(REPO, "clientes", "carpintero", "marca"), exist_ok=True)
+    with urllib.request.urlopen(perfil["profile_picture_url"], timeout=60) as r, open(os.path.join(REPO, "clientes", "carpintero", "marca", "perfil-ig.jpg"), "wb") as f:
+        f.write(r.read())
+    print("Foto de perfil guardada")
+except Exception as e:
+    print("Sin foto de perfil:", e)
+
 json.dump(indice, open(os.path.join(DEST, "indice.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 print(f"{len(indice)} posteos, {sum(len(i['archivos']) for i in indice)} imágenes")

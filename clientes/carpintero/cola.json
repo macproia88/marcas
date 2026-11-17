@@ -11,6 +11,16 @@
   "aprobado": "2026-11-17 08:52 (Juan)"
  },
  {
+  "id": "r2-1117-banquetas",
+  "tipo": "STORY",
+  "fecha": "2026-11-17 17:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-banquetas-x2.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
+ },
+ {
   "id": "v2-1117-carrusel-mesas",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-17 20:30",
@@ -23,6 +33,26 @@
   "aprobado": "2026-11-17 08:52 (Juan)"
  },
  {
+  "id": "r2-1117-ropero",
+  "tipo": "STORY",
+  "fecha": "2026-11-17 22:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-ropero-120.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
+ },
+ {
+  "id": "r2-1118-combo",
+  "tipo": "STORY",
+  "fecha": "2026-11-18 10:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-combo-120.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
+ },
+ {
   "id": "v2-1118-historia",
   "tipo": "STORY",
   "fecha": "2026-11-18 13:00",
@@ -32,6 +62,16 @@
   "texto": "",
   "estado": "pendiente",
   "aprobado": "2026-11-17 12:17 (Juan)"
+ },
+ {
+  "id": "r2-1118-alacena",
+  "tipo": "STORY",
+  "fecha": "2026-11-18 17:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-alacena-120.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
  },
  {
   "id": "v2-1118-carrusel-pino",
@@ -47,6 +87,16 @@
   "aprobado": "2026-11-17 12:17 (Juan)"
  },
  {
+  "id": "r2-1119-mesa",
+  "tipo": "STORY",
+  "fecha": "2026-11-19 10:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-mesa-varillada.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
+ },
+ {
   "id": "v2-1119-historia",
   "tipo": "STORY",
   "fecha": "2026-11-19 13:00",
@@ -56,6 +106,16 @@
   "texto": "",
   "estado": "pendiente",
   "aprobado": "2026-11-17 12:17 (Juan)"
+ },
+ {
+  "id": "r2-1119-banqueta",
+  "tipo": "STORY",
+  "fecha": "2026-11-19 17:00",
+  "media": [
+   "clientes/carpintero/img/promos/r2-banqueta-tapizada.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
  },
  {
   "id": "v2-1119-carrusel-sillones",
@@ -69,6 +129,16 @@
   "texto": "Sillones.\n\nDe soga tejida o tapizados, en el color que elijas.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros #Sillones #Living",
   "estado": "pendiente",
   "aprobado": "2026-11-17 12:17 (Juan)"
+ },
+ {
+  "id": "r2-1120-botiquin",
+  "tipo": "STORY",
+  "fecha": "2026-11-20 10:00",
+  "media": [
+   "clientes/carpintero/img/promos/promo-4-bano-historia.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador"
  },
  {
   "id": "v2-1120-historia",

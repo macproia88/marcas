@@ -64,11 +64,31 @@ def firma(im):
     return im
 
 
+def sello(im):
+    """Sello chico abajo a la izquierda: pastilla blanca translúcida (efecto vidrio) con el WhatsApp."""
+    w, h = im.size
+    f = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Medium.otf"), 23)
+    t = "WhatsApp  11 4194-3328"
+    d0 = ImageDraw.Draw(im)
+    tw = d0.textlength(t, font=f)
+    x0, y0 = 36, h - 86
+    x1, y1 = x0 + tw + 66, y0 + 50
+    zona = im.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(12))
+    blanco = Image.new("RGB", zona.size, (255, 255, 255))
+    zona = Image.blend(zona, blanco, 0.72)
+    m = Image.new("L", zona.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, zona.width - 1, zona.height - 1], 25, fill=255)
+    im.paste(zona, (x0, y0), m)
+    d = ImageDraw.Draw(im)
+    d.ellipse([x0 + 20, y0 + 20, x0 + 30, y0 + 30], fill=(37, 211, 102))
+    d.text((x0 + 42, y0 + 11), t, font=f, fill=(28, 26, 25))
+    return im
+
+
 def pieza(nombre, salida, w=1080, h=1350, centro=(0.5, 0.5), caja=None):
-    firma(preparar(nombre, w, h, centro, caja)).save(os.path.join(OUT, salida), quality=93)
+    sello(firma(preparar(nombre, w, h, centro, caja))).save(os.path.join(OUT, salida), quality=93)
 
 
-def historia(nombre, salida, caja=None):
+def historia(nombre, salida, caja=None, titulo=None):
     """Historia 1080x1920 sin recortar el mueble: la foto entera al medio y, arriba y abajo,
     la misma foto ampliada y desenfocada (no hay franjas ni recuadros de color)."""
     im = ImageOps.exif_transpose(Image.open(os.path.join(F, nombre))).convert("RGB")
@@ -81,7 +101,13 @@ def historia(nombre, salida, caja=None):
     frente = frente.resize((1080, int(frente.height * 1080 / frente.width)), Image.LANCZOS)
     fondo.paste(frente, (0, (1920 - frente.height) // 2))
     fondo = gradar(fondo)
-    firma(fondo).save(os.path.join(OUT, salida), quality=93)
+    if titulo:
+        d = ImageDraw.Draw(fondo)
+        ft = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Light.otf"), 78)
+        capa = Image.new("L", fondo.size, 0); ImageDraw.Draw(capa).text((70, 150), titulo, font=ft, fill=255)
+        fondo.paste((0, 0, 0), (0, 0), capa.filter(ImageFilter.GaussianBlur(10)).point(lambda v: int(v * 0.5)))
+        d.text((70, 150), titulo, font=ft, fill=(255, 255, 255))
+    sello(firma(fondo)).save(os.path.join(OUT, salida), quality=93)
 
 
 if __name__ == "__main__":
@@ -125,25 +151,25 @@ def reel(fotos, salida, seg=3.0):
 
 
 def semana():
-    S = (0, 0, 1206, 1322)  # silla: sin el ícono de sonido de la captura
     # Feed (4:5)
     pieza("mesa-ovalada-varillas-casa.jpg", "1117-mesas-1.jpg", centro=(0.5, 0.6))
     pieza("mesa-rectangular-varillas-casa.jpg", "1117-mesas-2.jpg", centro=(0.5, 0.55))
-    pieza("silla-curva-alfombra.jpg", "1118-silla.jpg", caja=S)
-    pieza("banquetas-soga-cocina.jpg", "1119-banquetas-1.jpg", centro=(0.5, 0.55))
-    pieza("banqueta-tapizada-ia.jpg", "1119-banquetas-2.jpg", centro=(0.5, 0.6))
-    pieza("sillon-soga-ia.jpg", "1120-soga-1.jpg", centro=(0.5, 0.55))
-    pieza("sillon-soga-mesita-showroom-ia.jpg", "1120-soga-2.jpg", centro=(0.5, 0.65))
+    pieza("silla-curva-alfombra.jpg", "1118-silla.jpg")
+    pieza("sillon-soga-ia.jpg", "1119-soga-1.jpg", centro=(0.5, 0.55))
+    pieza("sillon-soga-mesita-showroom-ia.jpg", "1119-soga-2.jpg", centro=(0.5, 0.65))
+    pieza("banquetas-soga-cocina.jpg", "1120-banquetas-1.jpg", centro=(0.5, 0.55))
+    pieza("banqueta-tapizada-ia.jpg", "1120-banquetas-2.jpg", centro=(0.5, 0.6))
     pieza("comedor-varillas-ia.jpg", "1121-comedor.jpg", w=1080, h=810)
-    # Historias (mueble entero)
-    for dia, foto, caja in (("1117", "mesa-ovalada-varillas-casa.jpg", None), ("1118", "silla-curva-alfombra.jpg", S),
-                            ("1119", "banquetas-soga-cocina.jpg", None), ("1120", "sillon-soga-mesita-showroom-ia.jpg", None),
-                            ("1121", "banqueta-tapizada-ia.jpg", None), ("1122", "sillon-soga-ia.jpg", None),
-                            ("1123", "mesa-rectangular-varillas-casa.jpg", None)):
-        historia(foto, f"{dia}-historia.jpg", caja)
-    # Reels
-    reel([("mesa-ovalada-varillas-casa.jpg", None), ("comedor-varillas-ia.jpg", None), ("mesa-rectangular-varillas-casa.jpg", None)], "1119-reel-mesas.mp4")
-    reel([("sillon-soga-ia.jpg", None), ("sillon-soga-mesita-showroom-ia.jpg", None), ("banquetas-soga-cocina.jpg", None), ("silla-curva-alfombra.jpg", S)], "1121-reel-madera.mp4")
+    # Historias: nunca la misma foto que el feed del mismo día
+    for dia, foto, tit in (("1117", "banquetas-soga-cocina.jpg", None), ("1118", "sillon-soga-ia.jpg", None),
+                           ("1119", "banqueta-tapizada-ia.jpg", None), ("1120", "mesa-ovalada-varillas-casa.jpg", None),
+                           ("1121", "sillon-soga-mesita-showroom-ia.jpg", None), ("1122", "silla-curva-alfombra.jpg", None),
+                           ("1123", "mesa-rectangular-varillas-casa.jpg", "Buen lunes")):
+        historia(foto, f"{dia}-historia.jpg", titulo=tit)
+    # Reel mixto (mesa, banqueta, sillón, silla)
+    reel([("mesa-ovalada-varillas-casa.jpg", None), ("banquetas-soga-cocina.jpg", None), ("sillon-soga-ia.jpg", None),
+          ("mesa-rectangular-varillas-casa.jpg", None), ("silla-curva-alfombra.jpg", None), ("banqueta-tapizada-ia.jpg", None)],
+         "1122-reel-mixto.mp4", seg=2.6)
 
 
 if __name__ == "__main__":

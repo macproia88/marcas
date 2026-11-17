@@ -18,7 +18,7 @@
    "clientes/carpintero/img/v2/1117-mesas-1.jpg",
    "clientes/carpintero/img/v2/1117-mesas-2.jpg"
   ],
-  "texto": "Mesas con base de varillas.\n\nOvaladas o rectangulares, fabricadas a la medida de cada comedor. Así lucen hoy en casa de nuestros clientes.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Mesas con base de varillas.\n\nOvaladas o rectangulares, fabricadas a la medida de cada comedor. Así lucen hoy en casa de nuestros clientes.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "pendiente",
   "aprobado": "2026-11-17 08:52 (Juan)"
  },
@@ -39,7 +39,7 @@
   "media": [
    "clientes/carpintero/img/v2/1118-silla.jpg"
   ],
-  "texto": "Silla de brazos curvos.\n\nLíneas simples y la veta de la madera como protagonista. Para el comedor o un rincón de lectura.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Silla de brazos curvos.\n\nLíneas simples y la veta de la madera como protagonista. Para el comedor o un rincón de lectura.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -53,13 +53,14 @@
   "estado": "borrador"
  },
  {
-  "id": "v2-1119-reel-mesas",
-  "tipo": "REEL",
+  "id": "v2-1119-carrusel-soga",
+  "tipo": "CARRUSEL",
   "fecha": "2026-11-19 20:30",
   "media": [
-   "clientes/carpintero/videos/v2/1119-reel-mesas.mp4"
+   "clientes/carpintero/img/v2/1119-soga-1.jpg",
+   "clientes/carpintero/img/v2/1119-soga-2.jpg"
   ],
-  "texto": "Comedores con base de varillas.\n\nRedonda, ovalada o rectangular: cada mesa se fabrica a medida en nuestro taller.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Madera y soga.\n\nSillones de soga tejida y mesitas para un living cálido y natural.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -77,10 +78,10 @@
   "tipo": "CARRUSEL",
   "fecha": "2026-11-20 20:30",
   "media": [
-   "clientes/carpintero/img/v2/1119-banquetas-1.jpg",
-   "clientes/carpintero/img/v2/1119-banquetas-2.jpg"
+   "clientes/carpintero/img/v2/1120-banquetas-1.jpg",
+   "clientes/carpintero/img/v2/1120-banquetas-2.jpg"
   ],
-  "texto": "Banquetas para barra y desayunador.\n\nCon asiento de soga tejida o tapizado. Elegís la altura y la terminación.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Banquetas para barra y desayunador.\n\nCon asiento de soga tejida o tapizado. Elegís la altura y la terminación.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -94,14 +95,13 @@
   "estado": "borrador"
  },
  {
-  "id": "v2-1121-carrusel-soga",
-  "tipo": "CARRUSEL",
+  "id": "v2-1121-post-comedor",
+  "tipo": "POST",
   "fecha": "2026-11-21 20:30",
   "media": [
-   "clientes/carpintero/img/v2/1120-soga-1.jpg",
-   "clientes/carpintero/img/v2/1120-soga-2.jpg"
+   "clientes/carpintero/img/v2/1121-comedor.jpg"
   ],
-  "texto": "Madera y soga.\n\nSillones de soga tejida a mano y mesitas para un living cálido y natural.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Mesa redonda con base de varillas y sillas tapizadas.\n\nUn comedor pensado para reunir a la familia.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
@@ -115,27 +115,17 @@
   "estado": "borrador"
  },
  {
-  "id": "v2-1122-reel-madera",
+  "id": "v2-1122-reel-mixto",
   "tipo": "REEL",
-  "fecha": "2026-11-22 18:00",
-  "media": [
-   "clientes/carpintero/videos/v2/1121-reel-madera.mp4"
-  ],
-  "texto": "Hecho en nuestro taller.\n\nSillones, sillas y banquetas de madera, fabricados por nosotros en José Ingenieros.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
-  "estado": "borrador"
- },
- {
-  "id": "v2-1122-post-comedor",
-  "tipo": "POST",
   "fecha": "2026-11-22 20:30",
   "media": [
-   "clientes/carpintero/img/v2/1121-comedor.jpg"
+   "clientes/carpintero/videos/v2/1122-reel-mixto.mp4"
   ],
-  "texto": "Mesa redonda con base de varillas y sillas tapizadas.\n\nUn comedor pensado para reunir a la familia.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
+  "texto": "Hecho en nuestro taller.\n\nMesas, banquetas, sillones y sillas de madera, fabricados por nosotros en José Ingenieros.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "borrador"
  },
  {
-  "id": "v2-1123-historia",
+  "id": "v2-1123-historia-buen-lunes",
   "tipo": "STORY",
   "fecha": "2026-11-23 13:00",
   "media": [

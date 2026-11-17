@@ -1,7 +1,7 @@
 # El carpintero3 (@elcarpintero3f)
 
 Cliente de manejo de Instagram. Mueblería con showroom en **Román Gómez 1893, José Ingenieros**.
-Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 horas: **11 4194-3328** (agregado a la bio el 16/11).
+Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp: **11 4194-3328** (el cliente no quiere que diga "24 hs") (agregado a la bio el 16/11).
 
 - Cuenta conectada al robot publicador el 16/11/2026 (`quinta-ig/publicador/cuentas.json`, ig_id `17841431830396652`, llave cifrada en `quinta-ig/publicador/llaves/elcarpintero3f.enc`).
 - Métricas cada 3 horas en `metricas/datos.json` (paso "El carpintero3" de `ig-metricas.yml`).
@@ -32,7 +32,7 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - Producto real, sacado en el showroom con luz de día y fondo limpio, no en la vereda.
 - Si se usa una imagen de ambiente hecha con IA, siempre al lado de la foto real del mismo mueble.
 - Una sola estética de marca, con los colores del logo (verde del casco, amarillo y madera clara). Nada de flyers con colores sueltos.
-- En cada texto: medidas, tipo de madera, si se hace a medida, el showroom y "consultá por WhatsApp 24 hs al 11 4194-3328".
+- En cada texto: medidas, tipo de madera, si se hace a medida, el showroom y "consultá por WhatsApp al 11 4194-3328".
 
 ## Reglas de publicación
 - Feed: 3 posteos y 2 reels por semana, a las **20:30**. Máximo un posteo de feed por día.
@@ -72,3 +72,11 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - **Los que más visitas al perfil generan** (es lo más cerca del WhatsApp): sillón "YPF" (29 visitas y 3 seguidores nuevos), comedor Paraíso (17), mini tolva de baño (14), banqueta de peteribí (12 visitas y 5 seguidores nuevos) y materas de peteribí (12).
 - **Patrón:** rinde el producto con nombre propio, la madera (paraíso, peteribí) y las opciones de tapizado. Los posteos sin texto o con solo hashtags rinden menos.
 - **Reels:** hubo solo 3, pero en 2026 llegaron al doble de gente que los carruseles (unas 900 personas contra 400 a 600). Por eso esta semana hay 5 reels.
+
+## Lo que pidió el cliente (17/11/2026, por WhatsApp a Juan)
+- **No decir "WhatsApp 24 hs"**, porque la gente escribe a cualquier hora. Solo "WhatsApp: 11 4194-3328".
+- **Sin recuadros negros ni amarillos** sobre las fotos.
+- **El mueble tiene que verse entero**: nada de recortes que dejen medio sillón o tapen la mesa.
+- **No usar fotos en la vereda**: el piso queda horrible.
+- **Las fotos que hay son viejas y siempre las mismas**: hacen falta fotos nuevas.
+- No le gustó ninguna de las piezas de la primera semana. Quedaron en pausa (borrador).

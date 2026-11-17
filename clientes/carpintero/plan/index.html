@@ -8,18 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap">
 <style>
-/* Colores del cartel del local: negro #1C1A19, rojo del "3" #C4243A, amarillo #F2C230, verde agua #2FB592, crema #F6EEE2 */
-:root{--verde:#1C1A19;--crema:#F6EEE2;--marron:#1C1A19;--amarillo:#F2C230;--agua:#2FB592;--rojo:#C4243A;--linea:#e6dccb;--gris:#6b6259;
+/* Estilo sobrio pedido por el cliente: sin amarillo. Blanco, crema suave, negro y madera. */
+:root{--verde:#1C1A19;--crema:#FAF8F5;--marron:#1C1A19;--amarillo:#EDE6DC;--agua:#8A6A4B;--rojo:#1C1A19;--linea:#ECE6DE;--gris:#7a716a;
   --tit:Inter,system-ui,sans-serif;--txt:Inter,system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--crema);color:var(--marron);font-family:var(--txt);font-size:16px;line-height:1.5}
 .wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
-header{background:var(--amarillo);color:var(--verde);border-bottom:6px solid var(--rojo);margin:0 -16px;padding:22px 16px 26px}
+header{background:#fff;color:var(--verde);border-bottom:1px solid var(--linea);margin:0 -16px;padding:22px 16px 26px}
 header .in{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 header img{height:46px}
 header .tag{font-family:var(--tit);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:14px;opacity:.9}
 .intro{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin:30px 0 10px}
-h1{font-family:var(--tit);font-weight:900;font-size:clamp(34px,6vw,60px);line-height:1;margin:0;color:var(--verde);text-wrap:balance}
+h1{font-family:var(--tit);font-weight:300;letter-spacing:-.01em;font-size:clamp(34px,6vw,60px);line-height:1;margin:0;color:var(--verde);text-wrap:balance}
 .intro p{max-width:62ch;margin:14px 0 0}
 .upd{font-size:13px;color:var(--gris);margin-top:10px}
 .how{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:18px 20px;align-self:start}
@@ -39,7 +39,7 @@ section.dia{margin-top:42px}
 .chip{font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;border:1px solid var(--linea)}
 .cuando{background:var(--verde);color:#fff;border-color:var(--verde)}
 .esp{background:var(--amarillo);border-color:var(--amarillo)}
-.ok{background:#fff6d6;color:var(--verde);border-color:var(--amarillo)}
+.ok{background:#f3efe9;color:var(--verde);border-color:var(--linea)}
 .pub{background:var(--agua);color:#fff;border-color:var(--agua)}
 .cap{font-size:14px;white-space:pre-line;border-left:3px solid var(--linea);padding-left:10px;margin:0;color:#4a3f36}
 .btns{display:flex;gap:8px;flex-wrap:wrap}
@@ -55,7 +55,7 @@ footer a{color:var(--agua)}
 <body>
 <div class="wrap">
   <header><div class="in">
-    <span style="font-weight:900;font-size:28px;letter-spacing:-.01em">EL CARPINTERO<span style="color:var(--rojo)">3</span></span>
+    <span style="font-weight:300;font-size:22px;letter-spacing:.32em">EL CARPINTERO 3</span>
     <span class="tag">Plan de publicaciones · Instagram</span>
   </div></header>
 
@@ -63,7 +63,7 @@ footer a{color:var(--agua)}
     <div>
       <h1>Publicaciones para aprobar</h1>
       <p>Estas son las publicaciones de esta semana para <strong>@elcarpintero3f</strong>, con día, hora y texto. Están hechas con las fotos y videos de sus muebles y con los colores del cartel del local. Todas llevan el WhatsApp <strong>11 4194-3328</strong> para que los interesados escriban directo. Si quieren cambiar algo, avisen <strong>antes de la hora indicada</strong> y lo corregimos.</p>
-      <div class="upd" id="upd">Última actualización: martes 17/11/2026 · 09:00 h · estilo nuevo: fotos limpias, sin recuadros</div>
+      <div class="upd" id="upd">Última actualización: martes 17/11/2026 · 09:05 h · estilo premium, sin amarillo</div>
     </div>
     <aside class="how">
       <h2>Cómo aprobar</h2>

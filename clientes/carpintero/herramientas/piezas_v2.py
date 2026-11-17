@@ -18,29 +18,49 @@ RECORTE = {"banquetas-soga-cocina.jpg": (0, 140, 1206, 1561), "banqueta-tapizada
            "comedor-varillas-ia.jpg": (0, 0, 1192, 845), "silla-curva-alfombra.jpg": (0, 0, 1206, 1322)}
 
 
+def gradar(im):
+    """Look premium y parejo: tonos cálidos suaves, negros apenas levantados, color un poco más sobrio y viñeta leve."""
+    import numpy as np
+    a = np.asarray(im).astype("float32") / 255.0
+    a = 0.035 + a * 0.95                      # negros levantados, luces sin quemar
+    a = np.clip((a - 0.5) * 1.06 + 0.5, 0, 1)  # un toque de contraste
+    g = a.mean(axis=2, keepdims=True)
+    a = g + (a - g) * 0.90                     # saturación más sobria
+    a[..., 0] *= 1.025; a[..., 2] *= 0.975     # calidez de madera
+    h, w = a.shape[:2]
+    yy, xx = np.mgrid[0:h, 0:w]
+    r = ((xx - w / 2) / (w / 2)) ** 2 + ((yy - h / 2) / (h / 2)) ** 2
+    a *= (1 - 0.07 * np.clip(r - 0.35, 0, 1))[..., None]
+    return Image.fromarray((np.clip(a, 0, 1) * 255).astype("uint8"))
+
+
 def preparar(nombre, w, h, centro=(0.5, 0.5), caja=None):
     im = ImageOps.exif_transpose(Image.open(os.path.join(F, nombre))).convert("RGB")
     caja = caja or RECORTE.get(nombre)
     if caja:
         im = im.crop(caja)
     im = ImageOps.fit(im, (w, h), Image.LANCZOS, centering=centro)
-    im = ImageEnhance.Contrast(im).enhance(1.03)
-    return im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=45, threshold=3))
+    im = gradar(im)
+    return im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=40, threshold=3))
 
 
 def firma(im):
-    """Firma chica abajo a la derecha, blanca con sombra difusa (sin caja)."""
+    """Firma premium: EL CARPINTERO 3 en letra fina y espaciada, blanca con sombra difusa, sin caja."""
     w, h = im.size
-    f = ImageFont.truetype(FUENTE, 26)
-    t = "EL CARPINTERO3"
+    f = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Light.otf"), 22)
+    letras = list("EL CARPINTERO 3")
+    esp = 5
     d0 = ImageDraw.Draw(im)
-    tw = d0.textlength(t, font=f)
-    x, y = w - tw - 40, h - 64
-    sombra = Image.new("L", im.size, 0)
-    ImageDraw.Draw(sombra).text((x, y + 2), t, font=f, fill=150)
-    sombra = sombra.filter(ImageFilter.GaussianBlur(6))
+    tw = sum(d0.textlength(c, font=f) for c in letras) + esp * (len(letras) - 1)
+    x0, y = w - tw - 44, h - 62
+    capa = Image.new("L", im.size, 0); dc = ImageDraw.Draw(capa)
+    x = x0
+    for c in letras:
+        dc.text((x, y), c, font=f, fill=255); x += d0.textlength(c, font=f) + esp
+    dc.line([(x0, y - 12), (x0 + 34, y - 12)], fill=255, width=1)
+    sombra = capa.filter(ImageFilter.GaussianBlur(7)).point(lambda v: int(v * 0.55))
     im.paste((0, 0, 0), (0, 0), sombra)
-    ImageDraw.Draw(im).text((x, y), t, font=f, fill=(255, 255, 255))
+    im.paste((255, 255, 255), (0, 0), capa)
     return im
 
 
@@ -60,6 +80,7 @@ def historia(nombre, salida, caja=None):
     frente = im.copy(); frente.thumbnail((1080, 1920), Image.LANCZOS)
     frente = frente.resize((1080, int(frente.height * 1080 / frente.width)), Image.LANCZOS)
     fondo.paste(frente, (0, (1920 - frente.height) // 2))
+    fondo = gradar(fondo)
     firma(fondo).save(os.path.join(OUT, salida), quality=93)
 
 
@@ -114,11 +135,10 @@ def semana():
     pieza("sillon-soga-ia.jpg", "1120-soga-1.jpg", centro=(0.5, 0.55))
     pieza("sillon-soga-mesita-showroom-ia.jpg", "1120-soga-2.jpg", centro=(0.5, 0.65))
     pieza("comedor-varillas-ia.jpg", "1121-comedor.jpg", w=1080, h=810)
-    pieza("frente-local-ia.jpg", "1122-showroom.jpg", centro=(0.5, 0.6))
     # Historias (mueble entero)
     for dia, foto, caja in (("1117", "mesa-ovalada-varillas-casa.jpg", None), ("1118", "silla-curva-alfombra.jpg", S),
                             ("1119", "banquetas-soga-cocina.jpg", None), ("1120", "sillon-soga-mesita-showroom-ia.jpg", None),
-                            ("1121", "frente-local-ia.jpg", None), ("1122", "comedor-varillas-ia.jpg", None),
+                            ("1121", "banqueta-tapizada-ia.jpg", None), ("1122", "comedor-varillas-ia.jpg", None),
                             ("1123", "mesa-rectangular-varillas-casa.jpg", None)):
         historia(foto, f"{dia}-historia.jpg", caja)
     # Reels

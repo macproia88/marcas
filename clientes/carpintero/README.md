@@ -65,3 +65,11 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - Fotos de los muebles que tiene hoy en el showroom, con medidas y madera de cada uno.
 - Logo en buena calidad.
 - Si quiere mostrar precios o prefiere "consultá por WhatsApp".
+
+## Qué rinde más (análisis del 16/11/2026, 50 posteos con métricas)
+- **Época dorada: febrero a junio de 2025.** Los posteos sacaban de 3.000 a 5.200 vistas y llegaban a unas 1.000 personas cada uno. En 2026 la mayoría quedó entre 300 y 1.000 vistas.
+- **Los 5 mejores:** comedor "todo Paraíso" (5.235 vistas), rack para TV varillado (4.753), cama nido (4.510), sillón "YPF" tapizado en pana, chenille o ecocuero (4.256) y juguetero (4.027).
+- **Los que más visitas al perfil generan** (es lo más cerca del WhatsApp): sillón "YPF" (29 visitas y 3 seguidores nuevos), comedor Paraíso (17), mini tolva de baño (14), banqueta de peteribí (12 visitas y 5 seguidores nuevos) y materas de peteribí (12).
+- **Patrón:** rinde el producto con nombre propio, la madera (paraíso, peteribí) y las opciones de tapizado. Los posteos sin texto o con solo hashtags rinden menos.
+- **Reels:** hubo solo 3, pero en 2026 llegaron al doble de gente que los carruseles (unas 900 personas contra 400 a 600). Por eso esta semana hay 5 reels.
+EOF

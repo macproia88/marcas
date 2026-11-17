@@ -13,7 +13,7 @@ OUT = os.path.join(BASE, "img", "v2")
 os.makedirs(OUT, exist_ok=True)
 FUENTE = os.path.join(BASE, "herramientas", "fuentes", "Inter-SemiBold.otf")
 # Recortes fijos para sacar marcas de agua de IA y botones de capturas de pantalla
-RECORTE = {"banquetas-soga-cocina.jpg": (0, 140, 1206, 1561), "banqueta-tapizada-ia.jpg": (0, 0, 1024, 1265),
+RECORTE = {"mesa-redonda-cruz-captura.jpg": (0, 245, 720, 1205), "banquetas-soga-cocina.jpg": (0, 140, 1206, 1561), "banqueta-tapizada-ia.jpg": (0, 0, 1024, 1265),
            "frente-local-ia.jpg": (0, 0, 1024, 1262), "sillon-soga-mesita-showroom-ia.jpg": (0, 0, 896, 1135),
            "comedor-varillas-ia.jpg": (0, 0, 1192, 845), "silla-curva-alfombra.jpg": (0, 0, 1206, 1322)}
 
@@ -64,24 +64,67 @@ def firma(im):
     return im
 
 
-def sello(im):
-    """Sello chico abajo a la izquierda: pastilla blanca translúcida (efecto vidrio) con el WhatsApp."""
-    w, h = im.size
-    f = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Medium.otf"), 23)
-    t = "WhatsApp  11 4194-3328"
-    d0 = ImageDraw.Draw(im)
-    tw = d0.textlength(t, font=f)
-    x0, y0 = 36, h - 86
-    x1, y1 = x0 + tw + 66, y0 + 50
-    zona = im.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(12))
-    blanco = Image.new("RGB", zona.size, (255, 255, 255))
-    zona = Image.blend(zona, blanco, 0.72)
-    m = Image.new("L", zona.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, zona.width - 1, zona.height - 1], 25, fill=255)
-    im.paste(zona, (x0, y0), m)
+def dibujar_sello(im, x0, base, vidrio=True):
+    """Dos pastillas apiladas abajo a la izquierda: verde WhatsApp grande y blanca con la dirección."""
+    fb = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Bold.otf"), 40)
+    fr = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Medium.otf"), 27)
+    t1, t2 = "WhatsApp 11 4194-3328", "Román Gómez 1893, José Ingenieros"
     d = ImageDraw.Draw(im)
-    d.ellipse([x0 + 20, y0 + 20, x0 + 30, y0 + 30], fill=(37, 211, 102))
-    d.text((x0 + 42, y0 + 11), t, font=f, fill=(28, 26, 25))
+    w1 = d.textlength(t1, font=fb) + 108; h1 = 74
+    w2 = d.textlength(t2, font=fr) + 88; h2 = 54
+    y2 = base - h2; y1 = y2 - 12 - h1
+    if vidrio and im.mode == "RGB":
+        zona = im.crop((x0, y2, int(x0 + w2), base)).filter(ImageFilter.GaussianBlur(14))
+        zona = Image.blend(zona, Image.new("RGB", zona.size, (255, 255, 255)), 0.85)
+        m = Image.new("L", zona.size, 0); ImageDraw.Draw(m).rounded_rectangle([0, 0, zona.width - 1, zona.height - 1], 27, fill=255)
+        im.paste(zona, (x0, y2), m)
+    else:
+        d.rounded_rectangle([x0, y2, x0 + w2, base], 27, fill=(255, 255, 255, 235))
+    px, py = x0 + 33, y2 + 29
+    d.ellipse([px - 11, py - 17, px + 11, py + 5], fill=(28, 26, 25))
+    d.polygon([(px - 10, py - 3), (px + 10, py - 3), (px, py + 13)], fill=(28, 26, 25))
+    d.ellipse([px - 4, py - 10, px + 4, py - 2], fill=(255, 255, 255))
+    d.text((x0 + 58, y2 + 12), t2, font=fr, fill=(40, 36, 33))
+    d.rounded_rectangle([x0, y1, x0 + w1, y1 + h1], 37, fill=(37, 211, 102))
+    cx, cy = x0 + 46, y1 + h1 // 2
+    d.ellipse([cx - 20, cy - 20, cx + 20, cy + 20], outline=(255, 255, 255), width=4)
+    d.polygon([(cx - 17, cy + 11), (cx - 23, cy + 24), (cx - 6, cy + 18)], fill=(255, 255, 255))
+    d.ellipse([cx - 6, cy - 6, cx + 6, cy + 6], fill=(255, 255, 255))
+    d.text((x0 + 84, y1 + 14), t1, font=fb, fill=(255, 255, 255))
     return im
+
+
+def sello(im, k=1.0):
+    if k == 1.0:
+        return dibujar_sello(im, 34, im.size[1] - 36)
+    # Historias: el mismo sello, más grande (dibujado chico y ampliado)
+    w, h = im.size
+    capa = Image.new("RGBA", (int(w / k), int(h / k)), (0, 0, 0, 0))
+    dibujar_sello(capa, 30, capa.size[1] - 150, vidrio=False)
+    capa = capa.resize((w, h), Image.LANCZOS)
+    base = im.convert("RGBA"); base.alpha_composite(capa)
+    return base.convert("RGB")
+
+
+def reel_video(origen, salida):
+    """Reel con el video real del cliente: 1080x1920, sello y firma superpuestos, música."""
+    import subprocess, sys, tempfile
+    tmp = tempfile.mkdtemp()
+    capa = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
+    dibujar_sello(capa, 34, 1920 - 150, vidrio=False)
+    f = ImageFont.truetype(os.path.join(BASE, "herramientas", "fuentes", "Inter-Light.otf"), 24)
+    ImageDraw.Draw(capa).text((1080 - 360, 1920 - 200), "E L   C A R P I N T E R O   3", font=f, fill=(255, 255, 255, 230))
+    capa.save(f"{tmp}/capa.png")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", origen, "-i", f"{tmp}/capa.png", "-filter_complex",
+                    "[0:v]scale=1080:1920:flags=lanczos,setsar=1,fps=30,eq=saturation=0.92:contrast=1.04[v];[v][1:v]overlay=0:0,format=yuv420p",
+                    "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", f"{tmp}/a.mp4"], check=True)
+    dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"{tmp}/a.mp4"]))
+    musica = os.path.join(BASE, "..", "tallerfatima", "herramientas", "musica.py")
+    subprocess.run([sys.executable, musica, f"{tmp}/m.wav", str(dur + 0.5)], check=True)
+    os.makedirs(os.path.join(BASE, "videos", "v2"), exist_ok=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{tmp}/a.mp4", "-i", f"{tmp}/m.wav", "-map", "0:v", "-map", "1:a",
+                    "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-af", f"afade=t=out:st={dur - 1.5}:d=1.5", "-shortest",
+                    "-movflags", "+faststart", os.path.join(BASE, "videos", "v2", salida)], check=True)
 
 
 def pieza(nombre, salida, w=1080, h=1350, centro=(0.5, 0.5), caja=None):
@@ -107,18 +150,7 @@ def historia(nombre, salida, caja=None, titulo=None):
         capa = Image.new("L", fondo.size, 0); ImageDraw.Draw(capa).text((70, 150), titulo, font=ft, fill=255)
         fondo.paste((0, 0, 0), (0, 0), capa.filter(ImageFilter.GaussianBlur(10)).point(lambda v: int(v * 0.5)))
         d.text((70, 150), titulo, font=ft, fill=(255, 255, 255))
-    sello(firma(fondo)).save(os.path.join(OUT, salida), quality=93)
-
-
-if __name__ == "__main__":
-    # Prueba 1: carrusel de mesas con base de varillas (fotos en casas de clientes)
-    pieza("mesa-ovalada-varillas-casa.jpg", "prueba-mesas-1.jpg", centro=(0.5, 0.6))
-    pieza("mesa-rectangular-varillas-casa.jpg", "prueba-mesas-2.jpg", centro=(0.5, 0.55))
-    # Prueba 2: posteo de la silla de brazos curvos
-    pieza("silla-curva-alfombra.jpg", "prueba-silla.jpg", centro=(0.5, 0.5), caja=(0, 0, 1206, 1322))
-    # Prueba 3: historia vertical del sillón de soga
-    historia("sillon-soga-ia.jpg", "prueba-historia-sillon.jpg")
-    print("Listo")
+    sello(firma(fondo), k=1.45).save(os.path.join(OUT, salida), quality=93)
 
 
 def reel(fotos, salida, seg=3.0):
@@ -151,25 +183,25 @@ def reel(fotos, salida, seg=3.0):
 
 
 def semana():
-    # Feed (4:5)
+    """Semana del 17 al 23/11: ninguna foto se repite y se alternan mesas, sillones, pino, banquetas y sillas."""
     pieza("mesa-ovalada-varillas-casa.jpg", "1117-mesas-1.jpg", centro=(0.5, 0.6))
     pieza("mesa-rectangular-varillas-casa.jpg", "1117-mesas-2.jpg", centro=(0.5, 0.55))
-    pieza("silla-curva-alfombra.jpg", "1118-silla.jpg")
-    pieza("sillon-soga-ia.jpg", "1119-soga-1.jpg", centro=(0.5, 0.55))
-    pieza("sillon-soga-mesita-showroom-ia.jpg", "1119-soga-2.jpg", centro=(0.5, 0.65))
-    pieza("banquetas-soga-cocina.jpg", "1120-banquetas-1.jpg", centro=(0.5, 0.55))
-    pieza("banqueta-tapizada-ia.jpg", "1120-banquetas-2.jpg", centro=(0.5, 0.6))
-    pieza("comedor-varillas-ia.jpg", "1121-comedor.jpg", w=1080, h=810)
-    # Historias: nunca la misma foto que el feed del mismo día
-    for dia, foto, tit in (("1117", "banquetas-soga-cocina.jpg", None), ("1118", "sillon-soga-ia.jpg", None),
-                           ("1119", "banqueta-tapizada-ia.jpg", None), ("1120", "mesa-ovalada-varillas-casa.jpg", None),
-                           ("1121", "sillon-soga-mesita-showroom-ia.jpg", None), ("1122", "silla-curva-alfombra.jpg", None),
-                           ("1123", "mesa-rectangular-varillas-casa.jpg", "Buen lunes")):
+    pieza("alacena-pino-vereda.jpg", "1118-pino.jpg", centro=(0.5, 0.55))
+    pieza("sillon-soga-ia.jpg", "1119-sillones-1.jpg", centro=(0.5, 0.55))
+    pieza("sillon-1c-gris.jpg", "1119-sillones-2.jpg", centro=(0.5, 0.55))
+    pieza("sillones-colores.jpg", "1119-sillones-3.jpg", centro=(0.5, 0.5))
+    pieza("silla-curva-alfombra.jpg", "1120-silla.jpg")
+    pieza("living-negro.jpg", "1121-living-1.jpg", centro=(0.5, 0.6))
+    pieza("sillon-beige-mesita.jpg", "1121-living-2.jpg", centro=(0.3, 0.5))
+    pieza("sillon-soga-mesita-showroom-ia.jpg", "1121-living-3.jpg", centro=(0.5, 0.65))
+    pieza("comedor-varillas-4-sillas.jpg", "1123-comedores-1.jpg", centro=(0.5, 0.55))
+    pieza("comedor-varillas-6-sillas.jpg", "1123-comedores-2.jpg", centro=(0.5, 0.6))
+    for dia, foto, tit in (("1117", "banquetas-soga-cocina.jpg", None), ("1118", "sillon-2c-azul.jpg", None),
+                           ("1119", "mesa-varillas.jpg", None), ("1120", "silla-soga.jpg", None),
+                           ("1121", "mesa-ratona-estante.jpg", None), ("1122", "banqueta-tapizada-ia.jpg", None),
+                           ("1123", "mesa-redonda-cruz-captura.jpg", "Buen lunes")):
         historia(foto, f"{dia}-historia.jpg", titulo=tit)
-    # Reel mixto (mesa, banqueta, sillón, silla)
-    reel([("mesa-ovalada-varillas-casa.jpg", None), ("banquetas-soga-cocina.jpg", None), ("sillon-soga-ia.jpg", None),
-          ("mesa-rectangular-varillas-casa.jpg", None), ("silla-curva-alfombra.jpg", None), ("banqueta-tapizada-ia.jpg", None)],
-         "1122-reel-mixto.mp4", seg=2.6)
+    reel_video(os.path.join(F, "video-1.mp4"), "1122-reel-banqueta.mp4")
 
 
 if __name__ == "__main__":

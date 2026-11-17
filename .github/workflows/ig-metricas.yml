@@ -37,10 +37,20 @@ jobs:
           pip install -q cryptography
           mkdir -p clientes/tallerfatima/metricas
           python3 quinta-ig/metricas/metricas.py | tee clientes/tallerfatima/metricas/ultima-corrida.txt || true
+      - name: Juntar metricas de El carpintero3
+        env:
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+          METRICAS_USUARIO: elcarpintero3f
+          METRICAS_IG: "17841431830396652"
+          METRICAS_OUT: clientes/carpintero/metricas/datos.json
+        run: |
+          pip install -q cryptography
+          mkdir -p clientes/carpintero/metricas
+          python3 quinta-ig/metricas/metricas.py | tee clientes/carpintero/metricas/ultima-corrida.txt || true
       - name: Guardar
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas
+          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas clientes/carpintero/metricas
           git commit -m "Metricas IG" || exit 0
           git pull --rebase -q && git push -q

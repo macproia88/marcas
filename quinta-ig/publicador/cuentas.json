@@ -24,7 +24,7 @@
   "llave": "llaves/escuelatallerfatima.enc"
  },
  {
-  "nombre": "carpintero",
+  "nombre": "El carpintero3",
   "usuario": "elcarpintero3f",
   "cola": "clientes/carpintero/cola.json",
   "activa": true,

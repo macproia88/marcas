@@ -18,7 +18,8 @@
    "clientes/carpintero/img/promos/r2-banquetas-x2.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1117-carrusel-mesas",
@@ -40,7 +41,8 @@
    "clientes/carpintero/img/promos/r2-ropero-120.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "r2-1118-combo",
@@ -50,7 +52,8 @@
    "clientes/carpintero/img/promos/r2-combo-120.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1118-historia",
@@ -71,7 +74,8 @@
    "clientes/carpintero/img/promos/r2-alacena-120.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1118-carrusel-pino",
@@ -94,7 +98,8 @@
    "clientes/carpintero/img/promos/r2-mesa-varillada.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1119-historia",
@@ -115,7 +120,8 @@
    "clientes/carpintero/img/promos/r2-banqueta-tapizada.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1119-carrusel-sillones",
@@ -138,7 +144,8 @@
    "clientes/carpintero/img/promos/promo-4-bano-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
   "id": "v2-1120-historia",

@@ -99,7 +99,7 @@ elif modo == "enviar":
         if clave in env: continue
         # Último control justo antes de mandar: si Juan ya contestó a mano, no mandamos nada.
         try:
-            if x["tipo"] == "dm":
+            if x["tipo"] == "dm" and not x.get("seguimiento"):
                 ms = mensajes_de(x["para_id"])
                 ult = next((m for m in ms if not ((m.get("from") or {}).get("username") == YO and es_auto(m.get("message") or ""))), None)
                 if ult and (ult.get("from") or {}).get("username") == YO:

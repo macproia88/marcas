@@ -15,6 +15,17 @@
   "aprobado": "2026-11-16 22:11 (Juan)"
  },
  {
+  "id": "1116-historia",
+  "tipo": "STORY",
+  "fecha": "2026-11-16 22:48",
+  "media": [
+   "clientes/carpintero/img/1116-historia.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 22:48 (Juan)"
+ },
+ {
   "id": "1117-historia",
   "tipo": "STORY",
   "fecha": "2026-11-17 13:00",

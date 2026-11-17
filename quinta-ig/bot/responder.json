@@ -1,20 +1,26 @@
 [
  {
   "tipo": "dm",
+  "para_id": "1147856561551895",
+  "texto": "¡Hola! 👋 Gracias por escribir a Quinta El Florido 🌳 El audio no lo pudimos escuchar por acá, perdón 🙏 Tenemos dos quintas en General Rodríguez: ☀️ la de día (hasta 15-20 personas, 10 a 19 h, pileta, quincho y parrilla) desde $150.000, y 🛏️ la casa para dormir (5 personas) desde $160.000. ¿Para qué fecha y cuántos serían?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "4555267224687105",
+  "texto": "¡Gracias! 💚",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1158800726700164",
+  "texto": "¡Hola! ☀️ Febrero en principio lo tenemos libre en las dos quintas, incluido el finde largo de Carnaval (5 al 9). Quinta de día (hasta 15-20, de 10 a 19 h, pileta y parrilla): $150.000 de lunes a jueves y $160.000 viernes, finde o feriado. Casa para dormir (5 personas): $160.000 entre semana y $200.000 finde/feriado; con noche se cobran 2 días. ¿Qué fecha y cuántos son? 😊",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
   "para_id": "2220089978936566",
-  "texto": "¡Hola, buenas noches! 🥂 El 31/12 y el 1/1 nuestras dos quintas ya están tomadas, pero tenemos otra quinta disponible para esas fechas: hasta 20 personas, duermen cómodas 8, a $950.000 los 2 días 🎆 ¿Cuántos serían?",
+  "texto": "¡Uh, qué lástima! 🙏 El máximo que aceptamos es de 20 personas, así que para más no podemos. Si en algún momento arman algo de hasta 20, ¡acá estamos! Seguinos en @quintaelflorido 💚",
   "estado": "pendiente"
- },
- {
-  "tipo": "dm",
-  "para_id": "1124252516886558",
-  "texto": "¡Gracias! 💚 Seguinos en @quintaelflorido 🔥",
-  "estado": "pendiente"
- },
- {
-  "tipo": "dm",
-  "para_id": "1486834950011731",
-  "estado": "pendiente",
-  "texto": "¡Gracias a vos, Nashy! 💗 Fue un placer tenerlos en la quinta. Te pido una mano: ¿podrás compartir en tu historia la que subimos nosotros, o etiquetarnos @quintaelflorido cuando salga el videoclip? Para nosotros suma un montón 🙏 ¡Muchos éxitos con el estreno! 🔥"
  }
 ]

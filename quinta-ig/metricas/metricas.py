@@ -188,17 +188,17 @@ def main():
             datos["horas_conectados"] = [horas[(h - corrimiento) % 24] for h in range(24)]
 
     # Publicaciones de los últimos 60 días
-    media = intentar("media", lambda: get(f"{IG}/media", fields="id,caption,media_type,media_product_type,timestamp,permalink,thumbnail_url,media_url,like_count,comments_count", limit=40))
+    media = intentar("media", lambda: get(f"{IG}/media", fields="id,caption,media_type,media_product_type,timestamp,permalink,thumbnail_url,media_url,like_count,comments_count", limit=int(os.environ.get("METRICAS_MAX_PUBS", "40"))))
     if media:
         pubs = {p["id"]: p for p in datos.get("publicaciones", [])}
-        limite = (ahora - datetime.timedelta(days=60)).isoformat()
+        limite = (ahora - datetime.timedelta(days=int(os.environ.get("METRICAS_DIAS_PUBS", "60")))).isoformat()
         for m in media.get("data", []):
             if m.get("timestamp", "") < limite[:19]:
                 continue
             m["metricas"] = insights_media(m["id"], m.get("media_type"), m.get("media_product_type"))
             m["caption"] = (m.get("caption") or "")[:300]
             pubs[m["id"]] = m
-        datos["publicaciones"] = sorted(pubs.values(), key=lambda p: p.get("timestamp", ""), reverse=True)[:60]
+        datos["publicaciones"] = sorted(pubs.values(), key=lambda p: p.get("timestamp", ""), reverse=True)[:int(os.environ.get("METRICAS_MAX_PUBS", "60"))]
 
     # Historias activas: se guarda la última foto de sus números
     st = intentar("stories", lambda: get(f"{IG}/stories", fields="id,media_type,media_product_type,timestamp,permalink,thumbnail_url,media_url"))

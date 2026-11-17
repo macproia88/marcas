@@ -43,6 +43,8 @@ jobs:
           METRICAS_USUARIO: elcarpintero3f
           METRICAS_IG: "17841431830396652"
           METRICAS_OUT: clientes/carpintero/metricas/datos.json
+          METRICAS_DIAS_PUBS: "2000"
+          METRICAS_MAX_PUBS: "100"
         run: |
           pip install -q cryptography
           mkdir -p clientes/carpintero/metricas

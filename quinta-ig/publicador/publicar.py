@@ -215,5 +215,19 @@ def probar():
                     print(f"PRUEBA ERROR {item['id']}: {e}")
 
 
+def respuestas_clientes():
+    """Respuestas automáticas por cliente (cada script controla su propia frecuencia). Hoy: El carpintero3."""
+    import glob, subprocess
+    for script in sorted(glob.glob(os.path.join(REPO, "clientes", "*", "herramientas", "responder.py"))):
+        try:
+            subprocess.run([sys.executable, script], timeout=240)
+        except Exception as e:
+            print(f"  Respuestas {script}: {e.__class__.__name__}")
+
+
 if __name__ == "__main__":
-    probar() if "--probar" in sys.argv else main()
+    if "--probar" in sys.argv:
+        probar()
+    else:
+        main()
+        respuestas_clientes()

@@ -141,6 +141,24 @@ def main():
         return {"desde": ini_d.isoformat(), "hasta": fin_d.isoformat(), **(total(r) if r else {})}
     datos["semana"] = {"actual": rango(1), "anterior": rango(8)}
 
+    # Toques en los botones de contacto del perfil (WhatsApp, llamar, cómo llegar...) por tipo de botón.
+    # Se guarda por semana y también "desde hoy a las 0 h" para seguir el día en curso.
+    def botones(ini_d, fin_d):
+        ini = int(datetime.datetime(ini_d.year, ini_d.month, ini_d.day, tzinfo=ART).timestamp())
+        fin = min(int(datetime.datetime(fin_d.year, fin_d.month, fin_d.day, tzinfo=ART).timestamp()) + 86400, int(ahora.timestamp()))
+        r = intentar(f"botones {ini_d}", lambda: get(f"{IG}/insights", metric="profile_links_taps", period="day",
+                     metric_type="total_value", breakdown="contact_button_type", since=ini, until=fin))
+        t = total(r).get("profile_links_taps") if r else None
+        if isinstance(t, dict):
+            return {"total": t.get("total"), **(t.get("desglose") or {})}
+        return {"total": t} if t is not None else {}
+    hoy_d = ahora.date()
+    datos["botones"] = {
+        "hoy": botones(hoy_d, hoy_d),
+        "semana_actual": botones(hoy_d - datetime.timedelta(days=6), hoy_d),
+        "semana_anterior": botones(hoy_d - datetime.timedelta(days=13), hoy_d - datetime.timedelta(days=7)),
+    }
+
     # Audiencia (una vez por día alcanza)
     if datos.get("audiencia_fecha") != hoy_txt or not any(datos.get("horas_conectados") or []):
         aud = {}

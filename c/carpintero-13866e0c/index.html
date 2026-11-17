@@ -94,6 +94,22 @@ footer { border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; 
     </div>
   </section>
 
+  <section class="card res" aria-labelledby="wa-h">
+    <h2 id="wa-h">Clics al WhatsApp y botones del perfil</h2>
+    <p class="sub">Veces que alguien tocó WhatsApp, Llamar, Cómo llegar o el link del perfil de Instagram.</p>
+    <div class="grid" style="margin-top:12px">
+      <div><div class="lbl">Hoy</div><div class="big" id="w0">—</div></div>
+      <div><div class="lbl">Últimos 7 días</div><div class="big" id="w1">—</div><div class="sub" id="w1s">&nbsp;</div></div>
+      <div><div class="lbl">Punto de partida (semana al 16/11)</div><div class="big">0</div><div class="sub">antes de empezar a gestionar la cuenta</div></div>
+    </div>
+    <p class="sub" id="wdet" style="margin-top:8px">&nbsp;</p>
+  </section>
+
+  <section class="card" aria-labelledby="pp-h">
+    <h2 id="pp-h">Cómo estaba la cuenta al empezar (16/11/2026)</h2>
+    <p class="sub">19 días sin publicar · 79 personas alcanzadas en la semana · 1.047 vistas · 0 clics al WhatsApp · 1.991 seguidores. Cada semana se compara contra este punto.</p>
+  </section>
+
   <section class="card" aria-labelledby="vd-h">
     <h2 id="vd-h">Vistas por día</h2>
     <p class="sub">Últimos 30 días. Los picos suelen coincidir con reels y promociones.</p>
@@ -204,6 +220,13 @@ fetch(CFG.metricas + nocache).then((r) => r.json()).then((d) => {
   $("k3").textContent = n(s(u, "profile_views")); cambio("k3s", s(u, "profile_views"), s(a, "profile_views"));
   const nn = neto(u); $("k4").textContent = nn == null ? "—" : (nn >= 0 ? "+" : "") + nn;
   $("k4s").textContent = `${n(s(u, "seguidos_nuevos"))} nuevos, ${n(s(u, "dejaron_de_seguir"))} se fueron`;
+
+  const bt = d.botones || {}, B = { WHATSAPP: "WhatsApp", CALL: "Llamar", DIRECTIONS: "Cómo llegar", TEXT: "Mensaje", EMAIL: "Email", BOOK_NOW: "Reservar", UNDEFINED: "Link del perfil" };
+  const tot = (o) => o && o.total != null ? o.total : null;
+  $("w0").textContent = n(tot(bt.hoy) ?? 0);
+  $("w1").textContent = n(tot(bt.semana_actual) ?? 0); cambio("w1s", tot(bt.semana_actual), tot(bt.semana_anterior));
+  const det = Object.entries(bt.semana_actual || {}).filter(([k, v]) => k !== "total" && v).map(([k, v]) => `${B[k] || k}: ${n(v)}`);
+  $("wdet").textContent = det.length ? "En la semana: " + det.join(" · ") : "Todavía no hay toques registrados esta semana.";
 
   const seg = d.cuenta && d.cuenta.followers_count;
   const pv = s(u, "views"), pa = s(a, "views");

@@ -27,11 +27,34 @@ def foto(nombre):
     return os.path.join(F, nombre)
 
 
-def recortar(ruta, w, h, centro=(0.5, 0.5), caja=None):
+def mejorar(im):
+    """Retoque de foto de celular: niveles, balance de blanco, color cálido de madera, contraste y nitidez."""
+    from PIL import ImageEnhance, ImageStat
+    im = ImageOps.autocontrast(im, cutoff=(1, 0.6))
+    r, g, b = ImageStat.Stat(im).mean
+    gris = (r + g + b) / 3
+    fac = [min(max(gris / max(v, 1), 0.9), 1.1) for v in (r, g, b)]   # balance de blanco suave (gray world)
+    fac[0] *= 1.03; fac[2] *= 0.96                                      # un toque cálido para la madera
+    canales = [c.point(lambda x, f=f: min(255, int(x * f))) for c, f in zip(im.split(), fac)]
+    im = Image.merge("RGB", canales)
+    # levantar sombras sin quemar luces
+    im = im.point(lambda x: int(255 * ((x / 255) ** 0.9)))
+    im = ImageEnhance.Color(im).enhance(1.15)
+    im = ImageEnhance.Contrast(im).enhance(1.06)
+    im = im.filter(ImageFilter.UnsharpMask(radius=2, percent=70, threshold=3))
+    return im
+
+
+def recortar(ruta, w, h, centro=(0.5, 0.5), caja=None, zoom=1.0):
     im = ImageOps.exif_transpose(Image.open(ruta)).convert("RGB")
     if caja:
         im = im.crop(caja)
-    return ImageOps.fit(im, (w, h), Image.LANCZOS, centering=centro)
+    if zoom > 1:
+        W0, H0 = im.size
+        cw, ch = W0 / zoom, H0 / zoom
+        x0 = (W0 - cw) * centro[0]; y0 = (H0 - ch) * centro[1]
+        im = im.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch)))
+    return mejorar(ImageOps.fit(im, (w, h), Image.LANCZOS, centering=centro))
 
 
 def partir(d, texto, fnt, ancho):
@@ -235,6 +258,14 @@ if __name__ == "__main__":
     interna("mesa-ratona-estante.jpg", "Mesa ratona con estante abajo", "1121-soga-3.jpg", 3, (0.5, 0.5))
     interna("mesa-redonda-cruz-captura.jpg", "Mesa redonda con patas en cruz", "1121-soga-4.jpg", 4, (0.5, 0.5), CAPTURA)
     cierre("Armá tu rincón", "Combiná sillón, mesita y mesa ratona. Consultanos por WhatsApp.", "1121-soga-5.jpg")
+    # Sábado 21: carrusel "Elegí tu sillón"
+    portada("sillon-2c-azul.jpg", "Sillones", "Elegí tu sillón", "De 1 o 2 cuerpos, con el tapizado y el color que quieras.", "1121-sillones-1.jpg", centro=(0.5, 0.6))
+    interna("sillon-1c-gris.jpg", "Sillón de 1 cuerpo en gris", "1121-sillones-2.jpg", 2, (0.5, 0.55))
+    interna("sillon-beige-mesita.jpg", "En crudo, con mesita bicolor", "1121-sillones-3.jpg", 3, (0.3, 0.5))
+    interna("sillones-colores.jpg", "Naranja, mostaza, gris... ¿cuál va con tu casa?", "1121-sillones-4.jpg", 4, (0.5, 0.5))
+    cierre("Pedí el tuyo", "Contanos qué color y qué medida necesitás y te pasamos el precio.", "1121-sillones-5.jpg")
+    # Domingo 22: posteo del comedor
+    portada("comedor-varillas-6-sillas.jpg", "Domingo en familia", "La mesa donde entran todos", "Mesa redonda con 6 sillones tapizados. Hecha en nuestro taller.", "1122-comedor.jpg", centro=(0.5, 0.6))
     # Historias de las 13:00
     historia("frente-local.jpg", "Martes", "Volvimos con todo", "Lun a Vie 11 a 18:30 · Sáb 11 a 16", "1117-historia.jpg", (0.55, 0.5))
     historia("sillon-2c-azul.jpg", "Miércoles", "¿Qué color elegís?", "Sillones con tapizado a elección", "1118-historia.jpg", (0.5, 0.55))

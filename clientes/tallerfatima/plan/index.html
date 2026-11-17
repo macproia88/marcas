@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Plan de publicaciones · Escuela Taller Fátima</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* Identidad del manual de marca 2023: verde #00894C, crema #F5FBF6, marrón #52453B, amarillo #FFCB33 */
+:root{--verde:#00894C;--crema:#F5FBF6;--marron:#52453B;--amarillo:#FFCB33;--agua:#17919C;--linea:#d9e7dd;--gris:#6b6259;
+  --tit:"League Spartan",system-ui,sans-serif;--txt:Lato,system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--crema);color:var(--marron);font-family:var(--txt);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px 60px}
+header{background:var(--verde);color:#fff;margin:0 -16px;padding:22px 16px 26px}
+header .in{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+header img{height:46px}
+header .tag{font-family:var(--tit);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:14px;opacity:.9}
+.intro{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin:30px 0 10px}
+h1{font-family:var(--tit);font-weight:700;font-size:clamp(34px,6vw,60px);line-height:1;margin:0;color:var(--verde);text-wrap:balance}
+.intro p{max-width:62ch;margin:14px 0 0}
+.upd{font-size:13px;color:var(--gris);margin-top:10px}
+.how{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:18px 20px;align-self:start}
+.how h2{font-family:var(--tit);font-size:18px;margin:0 0 8px;color:var(--verde)}
+.how ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.todo{display:inline-block;margin-top:14px;background:var(--verde);color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:999px}
+section.dia{margin-top:42px}
+.dh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--verde);padding-bottom:8px;margin-bottom:16px}
+.dh h2{font-family:var(--tit);font-size:clamp(24px,3.5vw,34px);margin:0;color:var(--verde)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.media{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#1d1a17}
+.media img,.media video{flex:0 0 100%;width:100%;height:auto;display:block;scroll-snap-align:start;object-fit:contain;max-height:520px}
+.hint{font-size:12px;color:var(--gris);padding:6px 16px 0}
+.meta{padding:12px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-weight:700;font-size:12px;letter-spacing:.04em;padding:4px 10px;border-radius:999px;border:1px solid var(--linea)}
+.cuando{background:var(--verde);color:#fff;border-color:var(--verde)}
+.esp{background:var(--amarillo);border-color:var(--amarillo)}
+.ok{background:#e3f4ea;color:var(--verde);border-color:#bfe3cd}
+.pub{background:var(--agua);color:#fff;border-color:var(--agua)}
+.cap{font-size:14px;white-space:pre-line;border-left:3px solid var(--linea);padding-left:10px;margin:0;color:#4a3f36}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btns a{font-size:14px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:999px}
+.si{background:var(--verde);color:#fff}
+.no{background:#fff;color:var(--marron);border:1px solid var(--marron)}
+.cargando{padding:30px 0;color:var(--gris)}
+footer{margin-top:50px;border-top:2px solid var(--verde);padding-top:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--gris)}
+footer a{color:var(--agua)}
+@media (max-width:760px){.intro{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div class="in">
+    <img src="../marca/logo-blanco.png" alt="Escuela Taller Fátima">
+    <span class="tag">Plan de publicaciones · Instagram</span>
+  </div></header>
+
+  <div class="intro">
+    <div>
+      <h1>Publicaciones para aprobar</h1>
+      <p>Estas son las piezas preparadas para <strong>@escuelatallerfatima</strong>, con día, hora y texto. Están hechas con fotos y videos del banco de la escuela y con los colores y tipografías del manual de marca. <strong>Nada se publica sin aprobación.</strong> Lo que aprueben sale solo a la hora indicada.</p>
+      <div class="upd" id="upd">Última actualización: lunes 16/11/2026 · 21:25 h</div>
+    </div>
+    <aside class="how">
+      <h2>Cómo aprobar</h2>
+      <ol>
+        <li>Mirá cada pieza. En los carruseles deslizá para ver todas las imágenes.</li>
+        <li>Tocá <b>Aprobar</b> o <b>Pedir cambios</b>. Se abre WhatsApp con el mensaje listo.</li>
+        <li>Lo aprobado queda programado. Lo que tenga cambios se corrige y se vuelve a mostrar acá.</li>
+      </ol>
+      <a class="todo" id="todo" href="#" target="_blank" rel="noopener">Aprobar toda la semana</a>
+    </aside>
+  </div>
+
+  <div id="plan"><p class="cargando">Cargando publicaciones…</p></div>
+
+  <footer>
+    <span>Servicio de gestión de Instagram · Juan · WhatsApp <a href="https://wa.me/5491138777015" target="_blank" rel="noopener">011 3877-7015</a></span>
+    <span><a href="https://macproia88.github.io/marcas/c/tallerfatima-6a5edf0a/">Ver el informe de la cuenta</a> · <a href="https://www.instagram.com/escuelatallerfatima/" target="_blank" rel="noopener">@escuelatallerfatima</a></span>
+  </footer>
+</div>
+<script>
+const RAIZ = "../../../";            // la cola guarda rutas desde la raíz del repo
+const WA = "5491138777015";
+const DIAS = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const TIPO = {POST:"Posteo", CARRUSEL:"Carrusel", REEL:"Reel", STORY:"Historia"};
+const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+const wa = (txt) => "https://wa.me/" + WA + "?text=" + encodeURIComponent(txt);
+const fechaTxt = (f) => { const d = new Date(f.slice(0,10) + "T12:00:00"); return DIAS[d.getDay()] + " " + f.slice(8,10) + "/" + f.slice(5,7); };
+
+fetch("../cola.json?v=" + Date.now()).then(r => r.json()).then(cola => {
+  const plan = document.getElementById("plan"); plan.innerHTML = "";
+  const porDia = {};
+  cola.forEach(i => (porDia[i.fecha.slice(0,10)] ||= []).push(i));
+  const pendientes = cola.filter(i => i.estado === "borrador").map(i => i.id);
+  document.getElementById("todo").href = wa("Apruebo toda la semana de Escuela Taller Fátima (" + pendientes.length + " publicaciones).");
+  if (!pendientes.length) document.getElementById("todo").style.display = "none";
+  Object.keys(porDia).sort().forEach(dia => {
+    const s = el("section", "dia"), h = el("div", "dh");
+    h.append(el("h2", null, fechaTxt(dia))); s.append(h);
+    const g = el("div", "grid");
+    porDia[dia].forEach(i => {
+      const c = el("article", "card"), m = el("div", "media");
+      i.media.forEach(src => {
+        let x;
+        if (/\.mp4$/i.test(src)) { x = document.createElement("video"); x.controls = true; x.preload = "metadata"; x.playsInline = true; }
+        else { x = document.createElement("img"); x.loading = "lazy"; x.alt = TIPO[i.tipo] + " " + i.id; }
+        x.src = RAIZ + src; m.append(x);
+      });
+      c.append(m);
+      if (i.media.length > 1) c.append(el("div", "hint", "Deslizá para ver las " + i.media.length + " imágenes →"));
+      const meta = el("div", "meta"), row = el("div", "row");
+      row.append(el("span", "chip cuando", fechaTxt(i.fecha) + " · " + i.fecha.slice(11) + " h"), el("span", "chip", TIPO[i.tipo] || i.tipo));
+      const est = i.estado === "publicado" ? ["pub", "Publicado"] : i.estado === "pendiente" ? ["ok", "Aprobado · programado"] : i.estado === "error" ? ["esp", "Revisando"] : ["esp", "Esperando aprobación"];
+      row.append(el("span", "chip " + est[0], est[1])); meta.append(row);
+      meta.append(el("p", "cap", i.texto ? i.texto : "Historia: la imagen lleva todo el texto."));
+      if (i.estado === "borrador") {
+        const b = el("div", "btns");
+        const a1 = el("a", "si", "Aprobar"); a1.href = wa("Apruebo la publicación " + i.id + " (" + fechaTxt(i.fecha) + " " + i.fecha.slice(11) + " h)."); a1.target = "_blank"; a1.rel = "noopener";
+        const a2 = el("a", "no", "Pedir cambios"); a2.href = wa("Cambios para " + i.id + ": "); a2.target = "_blank"; a2.rel = "noopener";
+        b.append(a1, a2); meta.append(b);
+      }
+      c.append(meta); g.append(c);
+    });
+    s.append(g); plan.append(s);
+  });
+}).catch(() => { document.getElementById("plan").innerHTML = '<p class="cargando">No se pudo cargar el plan. Probá recargar la página.</p>'; });
+</script>
+</body>
+</html>

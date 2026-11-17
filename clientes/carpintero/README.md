@@ -1,7 +1,7 @@
 # El carpintero3 (@elcarpintero3f)
 
 Cliente de manejo de Instagram. Mueblería con showroom en **Román Gómez 1893, José Ingenieros**.
-Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 horas.
+Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 horas: **11 4194-3328** (agregado a la bio el 16/11).
 
 - Cuenta conectada al robot publicador el 16/11/2026 (`quinta-ig/publicador/cuentas.json`, ig_id `17841431830396652`, llave cifrada en `quinta-ig/publicador/llaves/elcarpintero3f.enc`).
 - Métricas cada 3 horas en `metricas/datos.json` (paso "El carpintero3" de `ig-metricas.yml`).
@@ -32,7 +32,7 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - Producto real, sacado en el showroom con luz de día y fondo limpio, no en la vereda.
 - Si se usa una imagen de ambiente hecha con IA, siempre al lado de la foto real del mismo mueble.
 - Una sola estética de marca, con los colores del logo (verde del casco, amarillo y madera clara). Nada de flyers con colores sueltos.
-- En cada texto: medidas, tipo de madera, si se hace a medida, el showroom y "consultá por WhatsApp 24 hs".
+- En cada texto: medidas, tipo de madera, si se hace a medida, el showroom y "consultá por WhatsApp 24 hs al 11 4194-3328".
 
 ## Reglas de publicación
 - Feed: 3 posteos y 2 reels por semana, a las **20:30**. Máximo un posteo de feed por día.
@@ -64,5 +64,4 @@ Horario: lunes a viernes de 11 a 18:30 y sábados de 11 a 16. WhatsApp las 24 ho
 - 8 a 10 fotos y 3 o 4 videos cortos (vertical) del **taller trabajando** y del **showroom**.
 - Fotos de los muebles que tiene hoy en el showroom, con medidas y madera de cada uno.
 - Logo en buena calidad.
-- Número de WhatsApp para poner en los textos y en el perfil.
 - Si quiere mostrar precios o prefiere "consultá por WhatsApp".

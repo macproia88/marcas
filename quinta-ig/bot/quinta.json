@@ -1,480 +1,485 @@
 {
- "actualizado": "2026-11-15 09:50",
- "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
- "calendario": [
-  {
-   "fecha": "2026-11-14",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-11-15",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-11-21",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-11-22",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-11-23",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-24",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-24",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-25",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-25",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-26",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-26",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-27",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-27",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-31",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2026-12-31",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-01",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-01",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-02",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-02",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-03",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-03",
-   "quinta": "dia",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-09",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-10",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-11",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-12",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-13",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-14",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-15",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-16",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-17",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-18",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-19",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-20",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-21",
-   "quinta": "casa",
-   "estado": "alquilado"
-  },
-  {
-   "fecha": "2027-01-22",
-   "quinta": "casa",
-   "estado": "alquilado"
-  }
- ],
- "quintas": {
-  "dia": {
-   "nombre": "Quinta de día",
-   "capacidad": "hasta 15-20 personas",
-   "duerme": false,
-   "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta",
-   "solo_por_dia": true
-  },
-  "casa": {
-   "nombre": "Quinta con casa",
-   "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
-   "duerme": true,
-   "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)"
-  },
-  "otra_ano_nuevo": {
-   "nombre": "Otra quinta (solo Año Nuevo)",
-   "capacidad": "hasta 20 personas; duermen cómodas 8",
-   "fechas": "31/12 y 1/1 libres",
-   "nota": "No es de las nuestras: se ofrece solo si piden 31/12 o 1/1. Precio en precios cifrados."
-  }
- },
- "comodidades": [
-  {
-   "que": "Pileta",
-   "dia": "Sí, 7 x 3 m, con duchita al lado",
-   "casa": "Sí, su propia pileta de 7 x 3 m"
-  },
-  {
-   "que": "Quinchos",
-   "dia": "Quincho frente a la pileta, mesa rústica para 10, y galería de 7x5",
-   "casa": "Sí, frente a la pileta, con mesa rústica para 10 personas"
-  },
-  {
-   "que": "Parrilla",
-   "dia": "Sí",
-   "casa": "Sí"
-  },
-  {
-   "que": "Juegos para chicos",
-   "dia": "Sí, juegos rústicos",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "Sombra y árboles",
-   "dia": "Sí",
-   "casa": "Sí"
-  },
-  {
-   "que": "Estacionamiento adentro",
-   "dia": "Sí, autos y motos",
-   "casa": "Sí"
-  },
-  {
-   "que": "Baños / ducha",
-   "dia": "Bañito en la galería + duchita junto a la pileta",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "Camas / habitaciones",
-   "dia": "No",
-   "casa": "2 camas de dos plazas + 1 de una plaza (5 personas)"
-  },
-  {
-   "que": "Ropa de cama y toallas",
-   "dia": "No",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "Cocina / heladera / vajilla",
-   "dia": "[COMPLETAR]",
-   "casa": "Cocina: Sí · heladera y vajilla [COMPLETAR]"
-  },
-  {
-   "que": "Aire / ventilador",
-   "dia": "No",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "WiFi",
-   "dia": "[COMPLETAR]",
-   "casa": "Sí"
-  },
-  {
-   "que": "Música",
-   "dia": "[COMPLETAR horario/volumen]",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "Mascotas",
-   "dia": "[COMPLETAR]",
-   "casa": "[COMPLETAR]"
-  },
-  {
-   "que": "Leña / carbón",
-   "dia": "[COMPLETAR]",
-   "casa": "[COMPLETAR]"
-  }
- ],
- "reglas": [
-  {
-   "tema": "Capacidad",
-   "regla": "Quinta de día hasta 15-20. Casa 5. Más de 20 no se acepta."
-  },
-  {
-   "tema": "Horario quinta de día",
-   "regla": "De 10 a 19 h. Se alquila solo por día: no tiene casa, camas ni lugar cerrado, así que no se ofrece para dormir ni por varios días."
-  },
-  {
-   "tema": "Horario casa",
-   "regla": "Por día: de 10 a 19 h. Si se quedan una noche son 2 días: entran el primer día a las 10 h y se van el segundo día a las 19 h."
-  },
-  {
-   "tema": "Seña",
-   "regla": "50% para reservar el día y el otro 50% cuando ingresan."
-  },
-  {
-   "tema": "Forma de pago",
-   "regla": "[COMPLETAR]"
-  },
-  {
-   "tema": "Límite de edad",
-   "regla": "[COMPLETAR]"
-  },
-  {
-   "tema": "Eventos / cumpleaños",
-   "regla": "[COMPLETAR]"
-  },
-  {
-   "tema": "Cancelación",
-   "regla": "[COMPLETAR]"
-  },
-  {
-   "tema": "Ubicación",
-   "regla": "General Rodríguez, a 600 m de la autopista del Oeste. La exacta se pasa por WhatsApp."
-  },
-  {
-   "tema": "Contacto",
-   "regla": "WhatsApp 11 3877-7015 · Instagram @quintaelflorido"
-  }
- ],
- "fotos": [
-  {
-   "n": 1,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-caminito.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 2,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-casa.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 3,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-01.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 4,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-02.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 5,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-03.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 6,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-04.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 7,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-05.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 8,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-06.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 9,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-07.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 10,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-08.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 11,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-09.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 12,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-10.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 13,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-13.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 14,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-14.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 15,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-15.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 16,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-16.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 17,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-17.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 18,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-18.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 19,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-19.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 20,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-20.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 21,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-21.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 22,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-22.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 23,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-23.jpg",
-   "quinta": "casa"
-  },
-  {
-   "n": 24,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-24.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 25,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-25.jpg",
-   "quinta": "dia"
-  },
-  {
-   "n": 26,
-   "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-26.jpg",
-   "quinta": "dia"
-  }
- ],
- "ubicacion": {
-  "zona": "General Rodríguez",
-  "autopista": "a 600 m de la autopista del Oeste",
-  "extra_guardado": "a 15 minutos de Luján (Juan lo dejó aparte por las dudas: usarlo solo si preguntan por Luján)",
-  "nota": "Las dos quintas están una pegada al lado de la otra."
- },
- "estrategia": {
-  "calor": "Clave del negocio: cuando hace calor la gente sale desesperada a reservar y las publicaciones se viralizan. Ante pronóstico de calor: publicar fuerte (reel + historias con precio y fechas libres) y el bot debe mencionar disponibilidad para esos días."
- },
- "precios_privados": "Cifrados en precios.enc.json (clave del informe). El bot los lee con: CLAVE=... python3 quinta-ig/bot/bot.py precios",
- "feriados": {
-  "nota": "Feriados y días no laborables: se cobran como sábado/domingo.",
-  "fechas": [
-   "2026-11-23",
-   "2026-12-07",
-   "2026-12-08",
-   "2026-12-25",
-   "2027-01-01",
-   "2027-02-08",
-   "2027-02-09"
+  "actualizado": "2026-11-15 09:50",
+  "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
+  "calendario": [
+    {
+      "fecha": "2026-11-14",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-11-15",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-11-21",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-11-22",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-11-22",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-11-23",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-24",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-24",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-25",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-25",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-26",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-26",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-27",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-27",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-31",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2026-12-31",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-01",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-01",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-02",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-02",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-03",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-03",
+      "quinta": "dia",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-09",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-10",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-11",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-12",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-13",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-14",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-15",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-16",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-17",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-18",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-19",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-20",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-21",
+      "quinta": "casa",
+      "estado": "alquilado"
+    },
+    {
+      "fecha": "2027-01-22",
+      "quinta": "casa",
+      "estado": "alquilado"
+    }
   ],
-  "viernes_finde_largo": [
-   "2026-11-20",
-   "2026-12-04",
-   "2027-02-05"
-  ]
- }
+  "quintas": {
+    "dia": {
+      "nombre": "Quinta de día",
+      "capacidad": "hasta 15-20 personas",
+      "duerme": false,
+      "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta",
+      "solo_por_dia": true
+    },
+    "casa": {
+      "nombre": "Quinta con casa",
+      "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
+      "duerme": true,
+      "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)"
+    },
+    "otra_ano_nuevo": {
+      "nombre": "Otra quinta (solo Año Nuevo)",
+      "capacidad": "hasta 20 personas; duermen cómodas 8",
+      "fechas": "31/12 y 1/1 libres",
+      "nota": "No es de las nuestras: se ofrece solo si piden 31/12 o 1/1. Precio en precios cifrados."
+    }
+  },
+  "comodidades": [
+    {
+      "que": "Pileta",
+      "dia": "Sí, 7 x 3 m, con duchita al lado",
+      "casa": "Sí, su propia pileta de 7 x 3 m"
+    },
+    {
+      "que": "Quinchos",
+      "dia": "Quincho frente a la pileta, mesa rústica para 10, y galería de 7x5",
+      "casa": "Sí, frente a la pileta, con mesa rústica para 10 personas"
+    },
+    {
+      "que": "Parrilla",
+      "dia": "Sí",
+      "casa": "Sí"
+    },
+    {
+      "que": "Juegos para chicos",
+      "dia": "Sí, juegos rústicos",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "Sombra y árboles",
+      "dia": "Sí",
+      "casa": "Sí"
+    },
+    {
+      "que": "Estacionamiento adentro",
+      "dia": "Sí, autos y motos",
+      "casa": "Sí"
+    },
+    {
+      "que": "Baños / ducha",
+      "dia": "Bañito en la galería + duchita junto a la pileta",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "Camas / habitaciones",
+      "dia": "No",
+      "casa": "2 camas de dos plazas + 1 de una plaza (5 personas)"
+    },
+    {
+      "que": "Ropa de cama y toallas",
+      "dia": "No",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "Cocina / heladera / vajilla",
+      "dia": "[COMPLETAR]",
+      "casa": "Cocina: Sí · heladera y vajilla [COMPLETAR]"
+    },
+    {
+      "que": "Aire / ventilador",
+      "dia": "No",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "WiFi",
+      "dia": "[COMPLETAR]",
+      "casa": "Sí"
+    },
+    {
+      "que": "Música",
+      "dia": "[COMPLETAR horario/volumen]",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "Mascotas",
+      "dia": "[COMPLETAR]",
+      "casa": "[COMPLETAR]"
+    },
+    {
+      "que": "Leña / carbón",
+      "dia": "[COMPLETAR]",
+      "casa": "[COMPLETAR]"
+    }
+  ],
+  "reglas": [
+    {
+      "tema": "Capacidad",
+      "regla": "Quinta de día hasta 15-20. Casa 5. Más de 20 no se acepta."
+    },
+    {
+      "tema": "Horario quinta de día",
+      "regla": "De 10 a 19 h. Se alquila solo por día: no tiene casa, camas ni lugar cerrado, así que no se ofrece para dormir ni por varios días."
+    },
+    {
+      "tema": "Horario casa",
+      "regla": "Por día: de 10 a 19 h. Si se quedan una noche son 2 días: entran el primer día a las 10 h y se van el segundo día a las 19 h."
+    },
+    {
+      "tema": "Seña",
+      "regla": "50% para reservar el día y el otro 50% cuando ingresan."
+    },
+    {
+      "tema": "Forma de pago",
+      "regla": "[COMPLETAR]"
+    },
+    {
+      "tema": "Límite de edad",
+      "regla": "[COMPLETAR]"
+    },
+    {
+      "tema": "Eventos / cumpleaños",
+      "regla": "[COMPLETAR]"
+    },
+    {
+      "tema": "Cancelación",
+      "regla": "[COMPLETAR]"
+    },
+    {
+      "tema": "Ubicación",
+      "regla": "General Rodríguez, a 600 m de la autopista del Oeste. La exacta se pasa por WhatsApp."
+    },
+    {
+      "tema": "Contacto",
+      "regla": "WhatsApp 11 3877-7015 · Instagram @quintaelflorido"
+    }
+  ],
+  "fotos": [
+    {
+      "n": 1,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-caminito.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 2,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/hoy-casa.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 3,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-01.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 4,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-02.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 5,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-03.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 6,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-04.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 7,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-05.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 8,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-06.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 9,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-07.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 10,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-08.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 11,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-09.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 12,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/limpia-10.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 13,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-13.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 14,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-14.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 15,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-15.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 16,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-16.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 17,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-17.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 18,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-18.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 19,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-19.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 20,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-20.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 21,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-21.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 22,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-22.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 23,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-23.jpg",
+      "quinta": "casa"
+    },
+    {
+      "n": 24,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-24.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 25,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-25.jpg",
+      "quinta": "dia"
+    },
+    {
+      "n": 26,
+      "archivo": "https://macproia88.github.io/marcas/quinta-ig/fotos-marca/nueva-26.jpg",
+      "quinta": "dia"
+    }
+  ],
+  "ubicacion": {
+    "zona": "General Rodríguez",
+    "autopista": "a 600 m de la autopista del Oeste",
+    "extra_guardado": "a 15 minutos de Luján (Juan lo dejó aparte por las dudas: usarlo solo si preguntan por Luján)",
+    "nota": "Las dos quintas están una pegada al lado de la otra."
+  },
+  "estrategia": {
+    "calor": "Clave del negocio: cuando hace calor la gente sale desesperada a reservar y las publicaciones se viralizan. Ante pronóstico de calor: publicar fuerte (reel + historias con precio y fechas libres) y el bot debe mencionar disponibilidad para esos días."
+  },
+  "precios_privados": "Cifrados en precios.enc.json (clave del informe). El bot los lee con: CLAVE=... python3 quinta-ig/bot/bot.py precios",
+  "feriados": {
+    "nota": "Feriados y días no laborables: se cobran como sábado/domingo.",
+    "fechas": [
+      "2026-11-23",
+      "2026-12-07",
+      "2026-12-08",
+      "2026-12-25",
+      "2027-01-01",
+      "2027-02-08",
+      "2027-02-09"
+    ],
+    "viernes_finde_largo": [
+      "2026-11-20",
+      "2026-12-04",
+      "2027-02-05"
+    ]
+  }
 }

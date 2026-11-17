@@ -1,0 +1,18 @@
+name: Carpintero - fotos del catálogo
+on:
+  workflow_dispatch:
+  push:
+    paths: ['clientes/carpintero/herramientas/fotos_catalogo.py']
+permissions:
+  contents: write
+jobs:
+  fotos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q pillow
+      - run: python3 clientes/carpintero/herramientas/fotos_catalogo.py
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add clientes/carpintero/catalogo; git commit -m "Carpintero: fotos del catálogo guardadas en el repo" || exit 0
+          git pull --rebase -X theirs -q && git push -q

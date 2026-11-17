@@ -140,11 +140,11 @@ function card(d){
  const msg=encodeURIComponent('Hola! Quiero consultar por: '+d.n+(d.pl?' ('+fm(d.pl)+' en el local)':''));
  const pr=d.pl?`<div class="pl">${fm(d.pl)}</div><div class="plt">${RECARGO_TRANSF?'Efectivo en el local · Transferencia '+fm(Math.round(d.pl*(1+RECARGO_TRANSF/100))):'Efectivo o transferencia en el local'}</div><div class="pml">Mercado Libre <s>${fm(d.p)}</s></div>`
    :`<div class="pl">${fm(d.p)}</div><div class="cons">Precio Mercado Libre · consultá el del local</div>`;
- return `<div class="card"><div class="ph">${d.top?'<span class="badge">MÁS VENDIDO</span>':''}${ah>=5?`<span class="ahorro">-${ah}%</span>`:''}<img referrerpolicy="no-referrer" loading="lazy" src="${d.img}" alt="${d.n}"></div><h3>${d.n}</h3><p>${d.d||''}</p><div class="precio">${pr}</div><a class="bt" target="_blank" onclick="clicWA(this)" data-n="${d.n.replace(/"/g,'')}" href="https://wa.me/5491141943328?text=${msg}">${WA} Consultar</a></div>`}
+ return `<div class="card"><div class="ph">${d.top?'<span class="badge">MÁS VENDIDO</span>':''}${ah>=5?`<span class="ahorro">-${ah}%</span>`:''}<img loading="lazy" src="${d.img}" alt="" onerror="this.style.opacity=0"></div><h3>${d.n}</h3><p>${d.d||''}</p><div class="precio">${pr}</div><a class="bt" target="_blank" onclick="clicWA(this)" data-n="${d.n.replace(/"/g,'')}" href="https://wa.me/5491141943328?text=${msg}">${WA} Consultar</a></div>`}
 const orden=(a,b)=>(!!b.pl)-(!!a.pl)||b.top-a.top||a.p-b.p;
 document.getElementById('cats').innerHTML=cats.map(c=>`<a href="#${slug(c)}">${c}</a>`).join('');
 document.getElementById('total').textContent=D.length+' productos';
-document.getElementById('tiles').innerHTML=cats.map(c=>`<a class="tile" href="#${slug(c)}"><img loading="lazy" referrerpolicy="no-referrer" src="${imgCat(c)}" alt="${c}"><b>${c}</b><small>${D.filter(d=>d.c===c).length} productos</small></a>`).join('');
+document.getElementById('tiles').innerHTML=cats.map(c=>`<a class="tile" href="#${slug(c)}"><img loading="lazy" src="${imgCat(c)}" alt="" onerror="this.style.opacity=0"><b>${c}</b><small>${D.filter(d=>d.c===c).length} productos</small></a>`).join('');
 document.getElementById('top').innerHTML=D.filter(d=>d.top&&d.pl).concat(D.filter(d=>d.top&&!d.pl)).slice(0,12).map(card).join('');
 function secciones(){document.getElementById('secciones').innerHTML=cats.map(c=>{const L=D.filter(d=>d.c===c).sort(orden);return `<section id="${slug(c)}"><div class="tt"><h2>${c}</h2><span>${L.length} productos</span></div><div class="grid">${L.map(card).join('')}</div></section>`}).join('')}
 secciones();

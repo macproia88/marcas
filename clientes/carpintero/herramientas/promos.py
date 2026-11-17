@@ -69,5 +69,6 @@ if __name__ == "__main__":
           "EL MÁS VENDIDO", "Combo de cocina\nen pino macizo", "Bajo mesada + alacena · 1,20 m a 2 m", "$179.900", desde=True)
     pieza(ypf, "promo-2-sillon-ypf.jpg", "OFERTA", "Sillón YPF\nen paraíso", "Tapizado en pana, chenille o ecocuero", "$160.550", previo="$169.000")
     pieza("wa-1117/foto-4.jpg", "promo-3-banquetas.jpg", "COMBO X2", "Banquetas de\npetiribí tejidas", "Para barra o desayunador · el par", "$369.550", previo="$389.000", caja=(0, 70, 1206, 1558))
+    pieza("wa-1117/foto-13.jpg", "promo-4-bano-historia.jpg", "PARA TU BAÑO", "Botiquín\ncon espejo", "Laqueado blanco, con luz · mini tolva $189.000", "$149.000", desde=True)
     pieza("wa-1117/foto-13.jpg", "promo-4-bano.jpg", "PARA TU BAÑO", "Botiquín con espejo", "Laqueado blanco, con luz · mini tolva $189.000", "$149.000", desde=True, alto=1350)
     print("ok")

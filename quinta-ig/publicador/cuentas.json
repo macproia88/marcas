@@ -22,5 +22,13 @@
   "activa": true,
   "ig_id": "17841403882435617",
   "llave": "llaves/escuelatallerfatima.enc"
+ },
+ {
+  "nombre": "carpintero",
+  "usuario": "elcarpintero3f",
+  "cola": "clientes/carpintero/cola.json",
+  "activa": true,
+  "ig_id": "17841431830396652",
+  "llave": "llaves/elcarpintero3f.enc"
  }
 ]

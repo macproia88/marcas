@@ -58,7 +58,7 @@ Subido hasta ahora (16/11):
 |---|---|---|
 | Mar 17 | Carrusel "Aprender un oficio con las manos" (carpintería) | 21:15, avisa del carrusel |
 | Mié 18 | — | 13:00 "En Fátima también se aprende soldadura" |
-| Jue 19 | **Reel "Así se aprende un oficio en Fátima"** (videos de alumnos) | 13:00 manicuría |
+| Jue 19 | **Reel "Intercambio de oficios"** (jóvenes de carpintería, gastronomía, manicuría y costura intercambian oficios; propuesta del equipo social). Sin sonido ambiente, con música original de `herramientas/musica.py` | 13:00 manicuría |
 | Vie 20 | — | 13:00 agradecimiento a los profes |
 | Sáb 21 | Carrusel "Del molde a la prenda" (costura) | 21:15, avisa del carrusel |
 | Dom 22 | Reel con el testimonio de Corina, ex alumna | 21:15 comunidad Fátima |

@@ -1,2 +1,1 @@
-ok 31 días, 6 publicaciones, 0 historias, 1 avisos
-AVISO audiencia city: 'utf-8' codec can't decode byte 0xc3 in position 880: invalid continuation byte
+ok 31 días, 6 publicaciones, 0 historias, 0 avisos

@@ -96,7 +96,7 @@ footer { border-top: 1px solid var(--line); padding-top: 14px; font-size: 13px; 
 
   <section class="card res" aria-labelledby="wa-h">
     <h2 id="wa-h">Clics al WhatsApp y botones del perfil</h2>
-    <p class="sub">Veces que alguien tocó WhatsApp, Llamar, Cómo llegar o el link del perfil de Instagram.</p>
+    <p class="sub">Veces que alguien tocó el link de WhatsApp de la bio (wa.me) o un botón de contacto del perfil (WhatsApp, Llamar, Cómo llegar). Lo cuenta Instagram.</p>
     <div class="grid" style="margin-top:12px">
       <div><div class="lbl">Hoy</div><div class="big" id="w0">—</div></div>
       <div><div class="lbl">Últimos 7 días</div><div class="big" id="w1">—</div><div class="sub" id="w1s">&nbsp;</div></div>
@@ -221,12 +221,16 @@ fetch(CFG.metricas + nocache).then((r) => r.json()).then((d) => {
   const nn = neto(u); $("k4").textContent = nn == null ? "—" : (nn >= 0 ? "+" : "") + nn;
   $("k4s").textContent = `${n(s(u, "seguidos_nuevos"))} nuevos, ${n(s(u, "dejaron_de_seguir"))} se fueron`;
 
-  const bt = d.botones || {}, B = { WHATSAPP: "WhatsApp", CALL: "Llamar", DIRECTIONS: "Cómo llegar", TEXT: "Mensaje", EMAIL: "Email", BOOK_NOW: "Reservar", UNDEFINED: "Link del perfil" };
-  const tot = (o) => o && o.total != null ? o.total : null;
-  $("w0").textContent = n(tot(bt.hoy) ?? 0);
-  $("w1").textContent = n(tot(bt.semana_actual) ?? 0); cambio("w1s", tot(bt.semana_actual), tot(bt.semana_anterior));
-  const det = Object.entries(bt.semana_actual || {}).filter(([k, v]) => k !== "total" && v).map(([k, v]) => `${B[k] || k}: ${n(v)}`);
-  $("wdet").textContent = det.length ? "En la semana: " + det.join(" · ") : "Todavía no hay toques registrados esta semana.";
+  const bt = d.botones || {}, B = { WHATSAPP: "Botón WhatsApp", CALL: "Llamar", DIRECTIONS: "Cómo llegar", TEXT: "Mensaje", EMAIL: "Email", BOOK_NOW: "Reservar", UNDEFINED: "Otros botones" };
+  const tot = (o) => o && o.total != null ? Number(o.total) : 0;
+  const hoyK = new Date().toLocaleDateString("en-CA", TZ);
+  const linkHoy = Number(((d.dias || {})[hoyK] || {}).website_clicks) || 0;
+  const link7 = s(u, "website_clicks") || 0, linkA = s(a, "website_clicks") || 0;
+  const w7 = link7 + tot(bt.semana_actual), wA = linkA + tot(bt.semana_anterior);
+  $("w0").textContent = n(linkHoy + tot(bt.hoy));
+  $("w1").textContent = n(w7); cambio("w1s", w7, wA);
+  const det = [`Link de WhatsApp de la bio: ${n(link7)}`].concat(Object.entries(bt.semana_actual || {}).filter(([k, v]) => k !== "total" && v).map(([k, v]) => `${B[k] || k}: ${n(v)}`));
+  $("wdet").textContent = "En los últimos 7 días: " + det.join(" · ");
 
   const seg = d.cuenta && d.cuenta.followers_count;
   const pv = s(u, "views"), pa = s(a, "views");

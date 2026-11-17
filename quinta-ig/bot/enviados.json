@@ -289,5 +289,29 @@
   "estado": "salteado",
   "motivo": "ya respondió Juan",
   "hora": "16/11 22:19"
+ },
+ "4c65a2db94d3f177": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"AtZWl0UvOyvA-3zDmG8DuLh\"}}"
+ },
+ "51be6a59623a206f": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"A5pp9nhnyA089b5qeHC0Vh7\"}}"
+ },
+ "b9d60e32c12cbf02": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"AaKbtaITZH9ZAHtvHQlwcvV\"}}"
+ },
+ "9936970dd1d43085": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"A0lS2W-uz9YsR1H4QU4NDum\"}}"
+ },
+ "5f166aac0f56af19": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"A8RdM3xTFNXVjeCXpwKXvwB\"}}"
+ },
+ "f964414679c70807": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#10) Este mensaje se envi\\u00f3 fuera del per\\u00edodo permitido.\",\"type\":\"OAuthException\",\"code\":10,\"error_subcode\":2534022,\"fbtrace_id\":\"AkHzIxSJk1nupfPJ3qq0xLp\"}}"
  }
 }

@@ -138,7 +138,7 @@ def semana():
     # Historias (mueble entero)
     for dia, foto, caja in (("1117", "mesa-ovalada-varillas-casa.jpg", None), ("1118", "silla-curva-alfombra.jpg", S),
                             ("1119", "banquetas-soga-cocina.jpg", None), ("1120", "sillon-soga-mesita-showroom-ia.jpg", None),
-                            ("1121", "banqueta-tapizada-ia.jpg", None), ("1122", "comedor-varillas-ia.jpg", None),
+                            ("1121", "banqueta-tapizada-ia.jpg", None), ("1122", "sillon-soga-ia.jpg", None),
                             ("1123", "mesa-rectangular-varillas-casa.jpg", None)):
         historia(foto, f"{dia}-historia.jpg", caja)
     # Reels

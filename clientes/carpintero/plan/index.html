@@ -31,7 +31,7 @@ section.dia{margin-top:42px}
 .dh h2{font-family:var(--tit);font-size:clamp(24px,3.5vw,34px);margin:0;color:var(--verde)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
 .card{background:#fff;border:1px solid var(--linea);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.media{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#1d1a17}
+.media{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#fff}
 .media img,.media video{flex:0 0 100%;width:100%;height:auto;display:block;scroll-snap-align:start;object-fit:contain;max-height:520px}
 .hint{font-size:12px;color:var(--gris);padding:6px 16px 0}
 .meta{padding:12px 16px 16px;display:flex;flex-direction:column;gap:10px}
@@ -62,7 +62,7 @@ footer a{color:var(--agua)}
   <div class="intro">
     <div>
       <h1>Publicaciones para aprobar</h1>
-      <p>Estas son las publicaciones de esta semana para <strong>@elcarpintero3f</strong>, con día, hora y texto. Están hechas con las fotos y videos de sus muebles y con los colores del cartel del local. Todas llevan el WhatsApp <strong>11 4194-3328</strong> para que los interesados escriban directo. Si quieren cambiar algo, avisen <strong>antes de la hora indicada</strong> y lo corregimos.</p>
+      <p>Estas son las publicaciones de esta semana para <strong>@elcarpintero3f</strong>, con día, hora y texto. Están hechas con fotos de sus muebles, con un estilo limpio y premium: el mueble entero, sin recuadros ni textos encima. Todas llevan el WhatsApp <strong>11 4194-3328</strong> para que los interesados escriban directo. Si quieren cambiar algo, avisen <strong>antes de la hora indicada</strong> y lo corregimos.</p>
       <div class="upd" id="upd">Última actualización: martes 17/11/2026 · 09:05 h · estilo premium, sin amarillo</div>
     </div>
     <aside class="how">
@@ -118,7 +118,7 @@ Promise.all([fetch("../cola.json?v=" + Date.now()).then(r => r.json()), fetch(".
       row.append(el("span", "chip cuando", fechaTxt(i.fecha) + " · " + i.fecha.slice(11) + " h"), el("span", "chip", TIPO[i.tipo] || i.tipo));
       const est = i.estado === "publicado" ? ["pub", "Publicado"] : i.estado === "pendiente" ? ["ok", "Programado"] : i.estado === "error" ? ["esp", "Revisando"] : ["esp", "Esperando aprobación"];
       row.append(el("span", "chip " + est[0], est[1])); meta.append(row);
-      meta.append(el("p", "cap", i.texto ? i.texto : "Historia: la imagen lleva todo el texto."));
+      meta.append(el("p", "cap", i.texto ? i.texto : "Historia: solo la foto, sin texto encima."));
       if (i.estado === "borrador" || i.estado === "pendiente") {
         const b = el("div", "btns");
         const a1 = el("a", "si", "Aprobar"); a1.href = wa("Apruebo la publicación " + i.id + " (" + fechaTxt(i.fecha) + " " + i.fecha.slice(11) + " h)."); a1.target = "_blank"; a1.rel = "noopener";

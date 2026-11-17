@@ -1,31 +1,5 @@
 [
  {
-  "id": "1116-carrusel-fabricantes",
-  "tipo": "CARRUSEL",
-  "fecha": "2026-11-16 22:30",
-  "media": [
-   "clientes/carpintero/img/1117-fabricantes-1.jpg",
-   "clientes/carpintero/img/1117-fabricantes-2.jpg",
-   "clientes/carpintero/img/1117-fabricantes-3.jpg",
-   "clientes/carpintero/img/1117-fabricantes-4.jpg",
-   "clientes/carpintero/img/1117-fabricantes-5.jpg"
-  ],
-  "texto": "Somos fabricantes 🔨\n\nEn El Carpintero3 hacemos los muebles nosotros: juegos de living, comedores con mesa redonda y sillones en varios colores de tapizado. Están todos en exhibición en el showroom.\n\n¿Qué mueble estás buscando? Contanos en los comentarios 👇\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\n🕚 Lun a Vie 11 a 18:30 · Sáb 11 a 16\n\n#ElCarpintero3 #MueblesAMedida #MueblesDeMadera #JoséIngenieros #Showroom",
-  "estado": "pendiente",
-  "aprobado": "2026-11-16 22:11 (Juan)"
- },
- {
-  "id": "1116-historia",
-  "tipo": "STORY",
-  "fecha": "2026-11-16 22:48",
-  "media": [
-   "clientes/carpintero/img/1116-historia.jpg"
-  ],
-  "texto": "",
-  "estado": "pendiente",
-  "aprobado": "2026-11-16 22:48 (Juan)"
- },
- {
   "id": "v2-1117-historia",
   "tipo": "STORY",
   "fecha": "2026-11-17 13:00",
@@ -33,7 +7,8 @@
    "clientes/carpintero/img/v2/1117-historia.jpg"
   ],
   "texto": "",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 08:52 (Juan)"
  },
  {
   "id": "v2-1117-carrusel-mesas",
@@ -44,7 +19,8 @@
    "clientes/carpintero/img/v2/1117-mesas-2.jpg"
   ],
   "texto": "Mesas con base de varillas.\n\nOvaladas o rectangulares, fabricadas a la medida de cada comedor. Así lucen hoy en casa de nuestros clientes.\n\nConsultas por WhatsApp: 11 4194-3328\nShowroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-17 08:52 (Juan)"
  },
  {
   "id": "v2-1118-historia",

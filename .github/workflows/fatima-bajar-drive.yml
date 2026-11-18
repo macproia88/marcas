@@ -1,0 +1,26 @@
+name: Fátima - bajar videos de Drive
+on:
+  workflow_dispatch:
+  push:
+    paths: ['clientes/tallerfatima/herramientas/bajar_drive.txt']
+concurrency:
+  group: fatima-bajar-drive
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar ffmpeg
+        run: sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+      - name: Bajar y achicar
+        run: bash clientes/tallerfatima/herramientas/bajar_drive.sh
+      - name: Guardar
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add clientes/tallerfatima/fotos/expo-2026
+          git commit -m "Fátima: videos de la Expo 2026 bajados de Drive" || exit 0
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

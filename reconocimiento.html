@@ -35,9 +35,7 @@
   };
   document.addEventListener('DOMContentLoaded', () => Object.keys(DRAW).forEach(run));
 })();</script>
-</head><body>
-<div id="lp-upd" style="font:12px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:#6b6b6b;text-align:right;padding:6px 16px">Última actualización: 05/11/2026 a las 13:23 (hora Argentina)</div>
-<div class="wrap"><div id="dash-root">
+</head><body><div class="wrap"><p class="note" style="text-align:right">Actualizado: 18/11/2026 12:47</p><div id="dash-root">
 
 <style>
 #dash-root .rc { font-family: var(--font-anthropic-sans); display: flex; flex-direction: column; gap: var(--cds-gap-xl); }
@@ -166,7 +164,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende (hay chicas que están más en producción y menos en caja). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas cada 100 clientes 30%, % de sus productos que son sugestivos 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera): sugestivas cada 100 clientes (sugestivas que vendió del 1 al 31/10 ÷ sus tickets del mes × 100), altas al club cada 100 tickets (1 al 22/10), % de sus productos que son sugestivos (sugestivas ÷ todas las unidades que vendió, 1 al 31/10, venta por artículo por vendedora de Maxi Rest), y unidades y kilos por ticket (unidades y kilos del 1 al 31/10 de esa misma venta por artículo ÷ tickets del mes, estimados con sus tickets del 1 al 22/10 y su venta del mes, porque los tickets por vendedora llegan hasta el 22/10). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Los tickets se muestran pero no suman puntos. Solo personas con 200 tickets o más, para que pocos clientes no distorsionen el promedio. Las encargadas (Miriam en Florida, Pamela en Paz) figuran en la tabla para ver dónde quedan, pero no compiten: gana la primera que no es encargada. Su puntaje cuenta como referencia del mejor valor del local.</p>
+    <p class="note">Ranking parejo, una ganadora por local. Índice: <b>unidades sugestivas que vendió ÷ clientes que atendió</b> (cuántas unidades sugestivas le vende a cada cliente: salsas, quesos, postres, Freddo, bebidas). Se muestra como sugestivas cada 100 clientes. Puntaje de 0 a 100: la mejor de su local saca 100. Las otras columnas (altas al club, % sugestivo, unidades y kilos por ticket) se muestran como referencia pero no suman puntos. Solo personas con 200 clientes o más, para que pocos clientes no distorsionen el índice. Las encargadas (Miriam en Florida, Pamela en Paz) no compiten.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -230,10 +228,10 @@ dash.calc('puntos', {
 
 dash.calc('ranking', {
   title: 'Ranking de vendedoras',
-  description: 'Cada indicador dividido por el mejor valor de todas, por 100; el puntaje es el promedio de los tres.',
+  description: 'Unidades sugestivas ÷ clientes atendidos, comparado contra la mejor de su local (la mejor saca 100).',
   inputs: ['vendedoras'],
   fn: (vendedoras) => {
-    const W = { sug_100: 0.30, sug_u100: 0.30, u_tk: 0.15, kg_tk: 0.10, altas_club_100: 0.15 };  // el club pesa menos: el alta la puede haber hecho la cajera
+    const W = { sug_100: 1 };  // índice único: unidades sugestivas ÷ clientes atendidos (18/11/2026)
     const cols = Object.keys(W);
     const LOCS = ['Florida', 'Beccar', 'Paz'];
     return LOCS.flatMap((L) => {

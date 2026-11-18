@@ -39,7 +39,7 @@ def main():
 <script>{d3}</script>
 <script>window.__REC__={json.dumps(D, ensure_ascii=False, separators=(',', ':'))};</script>
 <script>{SHIM}</script>
-</head><body><div class="wrap"><div id="dash-root">
+</head><body><div class="wrap"><p class="note" style="text-align:right">Actualizado: {dt.datetime.now(AR).strftime("%d/%m/%Y %H:%M")}</p><div id="dash-root">
 {page}
 </div></div></body></html>"""
     SALIDA.write_text(out, encoding='utf-8')

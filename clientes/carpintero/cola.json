@@ -89,6 +89,17 @@
   "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
+  "id": "r3-1118-reel-banquetas",
+  "tipo": "REEL",
+  "fecha": "2026-11-18 19:00",
+  "media": [
+   "clientes/carpintero/videos/v2/1118-reel-banquetas.mp4"
+  ],
+  "texto": "Banquetas para tu cocina 🪵\n\nDe petiribí tejidas en hilo kraft o de paraíso tapizadas. Para barra o desayunador, directo de fábrica.\n\nConsultá stock y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #MueblesDeMadera #JoséIngenieros #TresDeFebrero #DecoHogar",
+  "estado": "pendiente",
+  "aprobado": "2026-11-18 17:13 (Juan)"
+ },
+ {
   "id": "v2-1118-carrusel-pino",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-18 20:30",
@@ -135,6 +146,17 @@
   "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
+  "id": "r3-1119-reel-living",
+  "tipo": "REEL",
+  "fecha": "2026-11-19 19:00",
+  "media": [
+   "clientes/carpintero/videos/v2/1119-reel-living.mp4"
+  ],
+  "texto": "Armá tu living 🛋️\n\nSillones de petiribí tejido, butacas, mesas ratonas y racks varillados. Somos fabricantes.\n\nConsultá stock y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #MueblesDeMadera #JoséIngenieros #TresDeFebrero #DecoHogar",
+  "estado": "pendiente",
+  "aprobado": "2026-11-18 17:13 (Juan)"
+ },
+ {
   "id": "v2-1119-carrusel-sillones",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-19 20:30",
@@ -170,6 +192,17 @@
   "aprobado": "2026-11-17 12:17 (Juan)"
  },
  {
+  "id": "r3-1120-reel-cocina",
+  "tipo": "REEL",
+  "fecha": "2026-11-20 19:00",
+  "media": [
+   "clientes/carpintero/videos/v2/1120-reel-cocina.mp4"
+  ],
+  "texto": "Cocinas en pino macizo 🍽️\n\nBajo mesada, alacenas y combos en distintas medidas. También hacemos a medida.\n\nConsultá stock y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #MueblesDeMadera #JoséIngenieros #TresDeFebrero #DecoHogar",
+  "estado": "pendiente",
+  "aprobado": "2026-11-18 17:13 (Juan)"
+ },
+ {
   "id": "v2-1120-carrusel-bano",
   "tipo": "CARRUSEL",
   "fecha": "2026-11-20 20:30",
@@ -192,6 +225,17 @@
   "texto": "",
   "estado": "pendiente",
   "aprobado": "2026-11-17 12:17 (Juan)"
+ },
+ {
+  "id": "r3-1121-reel-comedor",
+  "tipo": "REEL",
+  "fecha": "2026-11-21 19:00",
+  "media": [
+   "clientes/carpintero/videos/v2/1121-reel-comedor.mp4"
+  ],
+  "texto": "Comedores con base de varillas ✨\n\nMesas redondas, ovaladas y rectangulares, y sillas tapizadas. Medidas a elección.\n\nConsultá stock y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #MueblesDeMadera #JoséIngenieros #TresDeFebrero #DecoHogar",
+  "estado": "pendiente",
+  "aprobado": "2026-11-18 17:13 (Juan)"
  },
  {
   "id": "v2-1121-carrusel-living",

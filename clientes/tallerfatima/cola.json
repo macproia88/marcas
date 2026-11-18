@@ -120,12 +120,17 @@
   "estado": "borrador"
  },
  {
-  "id": "1123-post-gracias-expo",
-  "tipo": "POST",
+  "id": "1123-carrusel-gracias-expo",
+  "tipo": "CARRUSEL",
   "media": [
-   "clientes/tallerfatima/img/expo-gracias-1.jpg"
+   "clientes/tallerfatima/img/expo-gracias-1.jpg",
+   "clientes/tallerfatima/img/expo-gracias-2.jpg",
+   "clientes/tallerfatima/img/expo-gracias-3.jpg",
+   "clientes/tallerfatima/img/expo-gracias-4.jpg",
+   "clientes/tallerfatima/img/expo-gracias-5.jpg",
+   "clientes/tallerfatima/img/expo-gracias-6.mp4"
   ],
-  "texto": "¡Gracias! 💚\n\nCerramos una semana recordando nuestra Expo Fátima 2026.\n\nGracias a todos los que trabajaron y colaboraron para que este día sea posible: alumnos, familias, profes, equipo y vecinos. ¡Nos vemos en la próxima!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
+  "texto": "¡Gracias! 💚\n\nCerramos una semana recordando nuestra Expo Fátima 2026.\n\nGracias a todos los que trabajaron y colaboraron para que este día sea posible: al equipo de cocina, a cada emprendimiento, a las familias y vecinos que nos visitaron y a todo el equipo de la escuela. ¡A vivir la vida y aceptar el reto!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
   "fecha": "2026-11-23 21:00",
   "estado": "borrador"
  },

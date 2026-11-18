@@ -64,7 +64,7 @@ Música: cada pieza lleva un sonido distinto según el contenido (`herramientas/
 | Vie 20 | 21:00 Carrusel "Lo que hicieron nuestros alumnos" | 21:15 taller, sonido de taller |
 | Sáb 21 | 21:00 Carrusel "Una Expo para toda la comunidad" | 21:15 nenas bailando, festiva |
 | Dom 22 | 21:00 Reel "Y la Expo también fue fiesta", sonido en vivo de la banda | 21:15 banda en vivo |
-| Lun 23 | 21:00 Posteo "¡Gracias!" con la foto grupal | 21:15 escenario al atardecer, piano emotivo |
+| Lun 23 | 21:00 Carrusel "¡Gracias!" con las fotos "Gracias 1 a 5" del Drive y cierre con el video "Gracias-cierre" (pedido de la clienta) | 21:15 escenario al atardecer, piano emotivo |
 
 ## Semana 2 (24 al 30/11): lo que estaba planeado antes, corrido una semana
 | Día | Feed 21:00 | Historia |

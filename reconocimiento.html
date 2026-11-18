@@ -35,7 +35,7 @@
   };
   document.addEventListener('DOMContentLoaded', () => Object.keys(DRAW).forEach(run));
 })();</script>
-</head><body><div class="wrap"><p class="note" style="text-align:right">Actualizado: 18/11/2026 12:48</p><div id="dash-root">
+</head><body><div class="wrap"><p class="note" style="text-align:right">Actualizado: 18/11/2026 12:50</p><div id="dash-root">
 
 <style>
 #dash-root .rc { font-family: var(--font-anthropic-sans); display: flex; flex-direction: column; gap: var(--cds-gap-xl); }
@@ -164,7 +164,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende. Índice principal: <b>unidades sugestivas que vendió ÷ clientes que atendió</b> (cuántas sugestivas le vende a cada cliente; se muestra cada 100 clientes). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas por cliente 30%, % de sus productos que son sugestivos 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Solo personas con 200 tickets o más. Las encargadas (Miriam en Florida, Pamela en Paz) figuran en la tabla pero no compiten: gana la primera que no es encargada.</p>
+    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende. Índice principal: <b>unidades sugestivas que vendió ÷ clientes que atendió</b> (cuántas sugestivas le vende a cada cliente; se muestra cada 100 clientes). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas por cliente 30%, sugestivas cada 100 unidades que vende 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Solo personas con 200 tickets o más. Las encargadas (Miriam en Florida, Pamela en Paz) figuran en la tabla pero no compiten: gana la primera que no es encargada.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -179,7 +179,7 @@
           <th data-field="local">Local</th>
           <th data-field="sug_100">Sugestivas por cliente (cada 100)</th>
           <th data-field="altas_club_100">Altas al club cada 100 clientes</th>
-          <th data-field="sug_u100">% de sus productos que son sugestivos</th>
+          <th data-field="sug_u100">Sugestivas cada 100 unidades vendidas</th>
           <th data-field="u_tk">Unidades por ticket</th>
           <th data-field="kg_tk">Kilos por ticket</th>
           <th data-field="puntaje">Puntaje (en su local)</th>
@@ -349,7 +349,7 @@ dash.calc('premios', {
       const tr = document.createElement('tr');
       if (r.posicion === 1) tr.className = 'top';
       if (r.rol === 'encargada') { tr.className = 'enc'; r = { ...r, vendedora: r.vendedora + ' (encargada, fuera de concurso)' }; }
-      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : d3.format('.0f')(Number(r.sug_u100)) + '%', d3.format('.2f')(Number(r.u_tk)).replace('.', ','), d3.format('.2f')(Number(r.kg_tk)).replace('.', ',')];
+      const cells = [String(r.posicion), r.vendedora, r.local, one(Number(r.sug_100)), one(Number(r.altas_club_100)), r.sug_u100 == null ? '—' : d3.format('.0f')(Number(r.sug_u100)), d3.format('.2f')(Number(r.u_tk)).replace('.', ','), d3.format('.2f')(Number(r.kg_tk)).replace('.', ',')];
       cells.forEach((t) => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
       const td = document.createElement('td');
       const bar = document.createElement('span'); bar.className = 'bar'; bar.style.width = (r.puntaje * 0.6) + 'px';

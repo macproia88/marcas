@@ -1,5 +1,5 @@
 """Junta las métricas de Instagram de @quintaelflorido con la API oficial y las guarda en datos.json.
-# (corrida a pedido: 2026-11-18 20:08)
+# (corrida a pedido: 2026-11-18 22:38)
 Corre en GitHub Actions (secret IG_TOKEN). Nunca imprime la llave.
 Guarda: cuenta, métricas por día, audiencia, horas en que los seguidores están conectados,
 publicaciones (con sus métricas) e historias (se guardan antes de que desaparezcan a las 24 h).

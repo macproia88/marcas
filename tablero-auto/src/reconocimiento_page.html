@@ -88,7 +88,7 @@
           <th data-field="local">Local</th>
           <th data-field="crec_venta">Venta vs 2025</th>
           <th data-field="crec_tickets">Tickets vs 2025</th>
-          <th data-field="sug_100">Sugestivas cada 100 clientes</th>
+          <th data-field="sug_100">Sugestivas por cliente (cada 100)</th>
           <th data-field="sug_pct">% de la plata que es sugestiva</th>
           <th data-field="sugestivas">Unidades sugestivas vendidas</th>
           <th data-field="unidades_100">Unidades por ticket</th>
@@ -126,7 +126,7 @@
 
   <section class="card" id="vendedoras">
     <h2>Ranking de vendedoras</h2>
-    <p class="note">Ranking parejo, una ganadora por local. Índice: <b>unidades sugestivas que vendió ÷ clientes que atendió</b> (cuántas unidades sugestivas le vende a cada cliente: salsas, quesos, postres, Freddo, bebidas). Se muestra como sugestivas cada 100 clientes. Puntaje de 0 a 100: la mejor de su local saca 100. Las otras columnas (altas al club, % sugestivo, unidades y kilos por ticket) se muestran como referencia pero no suman puntos. Solo personas con 200 clientes o más, para que pocos clientes no distorsionen el índice. Las encargadas (Miriam en Florida, Pamela en Paz) no compiten.</p>
+    <p class="note">Ranking parejo, una ganadora por local: todos los indicadores están en proporción a lo que atendió cada una, así no gana la que más clientes atiende. Índice principal: <b>unidades sugestivas que vendió ÷ clientes que atendió</b> (cuántas sugestivas le vende a cada cliente; se muestra cada 100 clientes). Puntaje de 0 a 100: en cada indicador se compara contra la mejor de SU local (la mejor saca 100) y se suman con estos pesos: sugestivas por cliente 30%, % de sus productos que son sugestivos 30%, unidades por ticket 15%, kilos por ticket 10% y altas al club 15% (el club pesa menos porque el alta la puede haber impulsado la cajera). Unidades = productos por unidad; kilos = productos por peso; no se suman entre sí. Solo personas con 200 tickets o más. Las encargadas (Miriam en Florida, Pamela en Paz) figuran en la tabla pero no compiten: gana la primera que no es encargada.</p>
     <div class="filters" role="group" aria-label="Filtrar por local">
       <button type="button" data-loc="" aria-pressed="true">Los 3 locales</button>
       <button type="button" data-loc="Florida" aria-pressed="false">Florida</button>
@@ -139,7 +139,7 @@
           <th data-field="posicion">#</th>
           <th data-field="vendedora">Vendedora</th>
           <th data-field="local">Local</th>
-          <th data-field="sug_100">Sugestivas cada 100 clientes</th>
+          <th data-field="sug_100">Sugestivas por cliente (cada 100)</th>
           <th data-field="altas_club_100">Altas al club cada 100 clientes</th>
           <th data-field="sug_u100">% de sus productos que son sugestivos</th>
           <th data-field="u_tk">Unidades por ticket</th>
@@ -190,10 +190,10 @@ dash.calc('puntos', {
 
 dash.calc('ranking', {
   title: 'Ranking de vendedoras',
-  description: 'Unidades sugestivas ÷ clientes atendidos, comparado contra la mejor de su local (la mejor saca 100).',
+  description: 'Cada indicador dividido por el mejor valor de todas, por 100; el puntaje es el promedio de los tres.',
   inputs: ['vendedoras'],
   fn: (vendedoras) => {
-    const W = { sug_100: 1 };  // índice único: unidades sugestivas ÷ clientes atendidos (18/11/2026)
+    const W = { sug_100: 0.30, sug_u100: 0.30, u_tk: 0.15, kg_tk: 0.10, altas_club_100: 0.15 };  // el club pesa menos: el alta la puede haber hecho la cajera
     const cols = Object.keys(W);
     const LOCS = ['Florida', 'Beccar', 'Paz'];
     return LOCS.flatMap((L) => {

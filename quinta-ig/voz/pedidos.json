@@ -1,4 +1,13 @@
 [
- {"video": "quinta-ig/hd-recorrida.mp4", "salida": "quinta-ig/videos/reel-recorrida-voz.mp4",
-  "texto": "Esta es Quinta El Florido, en General Rodríguez, a seiscientos metros de la autopista. Pileta, dos quinchos, parrilla y juegos para los chicos, solo para tu grupo. Reservá tu fecha por WhatsApp."}
+ {
+  "video": "quinta-ig/hd-recorrida.mp4",
+  "salida": "quinta-ig/videos/reel-recorrida-voz.mp4",
+  "texto": "Esta es Quinta El Florido, en General Rodríguez, a seiscientos metros de la autopista. Pileta, dos quinchos, parrilla y juegos para los chicos, solo para tu grupo. Reservá tu fecha por WhatsApp."
+ },
+ {
+  "video": "quinta-ig/reel-viral-110k.mp4",
+  "salida": "quinta-ig/videos/reel-chicas-voz.mp4",
+  "velocidad": 0.82,
+  "texto": "Bueno, chicas, encontré el lugar para este verano. Mirá esta pileta. Quincho, parrilla, un montón de verde... y es solo para tu grupo, eh. Hasta quince personas, a cuarenta minutos de Capital. Posta, no lo dejes pasar. Escribile ya."
+ }
 ]

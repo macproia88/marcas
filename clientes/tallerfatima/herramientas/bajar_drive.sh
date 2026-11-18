@@ -11,7 +11,7 @@ pip install -q gdown
 while read -r ID NOMBRE; do
   [ -z "${ID:-}" ] && continue; case "$ID" in \#*) continue;; esac
   echo "== $NOMBRE"
-  gdown -q --fuzzy "https://drive.google.com/file/d/$ID/view" -O "/tmp/drv/$NOMBRE.orig.mp4" || { echo "$NOMBRE: no se pudo bajar" >> "$OUT/info-videos.txt"; continue; }
+  gdown -q "$ID" -O "/tmp/drv/$NOMBRE.orig.mp4" || { echo "$NOMBRE: no se pudo bajar" >> "$OUT/info-videos.txt"; continue; }
   DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "/tmp/drv/$NOMBRE.orig.mp4" | cut -d. -f1)
   VF="scale='if(gt(iw,ih),1280,-2)':'if(gt(iw,ih),-2,1280)',fps=30"
   if [ "${DUR:-0}" -gt 240 ]; then

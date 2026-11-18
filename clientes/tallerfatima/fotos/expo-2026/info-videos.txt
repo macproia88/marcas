@@ -4,3 +4,8 @@ video-wa1108-0008: original 186s, acelerado x1.55 a 120s
 video-wa1108-0007: 143s
 video-wa1108-0009: original 227s, acelerado x1.892 a 120s
 video-wa1108-0005: 94s
+sonido-wa1117-0006: 480s, velocidad normal con sonido
+sonido-wa1108-0008: 186s, velocidad normal con sonido
+sonido-wa1108-0007: 143s, velocidad normal con sonido
+sonido-wa1108-0009: 227s, velocidad normal con sonido
+sonido-wa1108-0005: 94s, velocidad normal con sonido

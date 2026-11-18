@@ -2737,43 +2737,80 @@
     "pubs": 371,
     "likes": 585
    }
+  },
+  "2026-11-18 08:42": {
+   "ca7riel": {
+    "seg": 1371918,
+    "pubs": 37,
+    "likes": 82668
+   },
+   "pacoamoroso": {
+    "seg": 1244072,
+    "pubs": 22,
+    "likes": 127229
+   },
+   "ca7rielypacoamoroso": {
+    "seg": 1411132,
+    "pubs": 45,
+    "likes": 98467
+   },
+   "ca7rielypacoamorosoarg": {
+    "seg": 53740,
+    "pubs": 2100,
+    "likes": 1510
+   },
+   "ca7rielypaco_usa": {
+    "seg": 56459,
+    "pubs": 2502,
+    "likes": 894
+   },
+   "ca7rielxpacochile": {
+    "seg": 33101,
+    "pubs": 1232,
+    "likes": 649
+   },
+   "pacoxamoroso": {
+    "seg": 5333,
+    "pubs": 371,
+    "likes": 585
+   }
   }
  },
- "actualizado": "2026-11-17 19:53",
+ "actualizado": "2026-11-18 08:42",
  "cuentas": {
   "ca7riel": {
    "nombre": null,
-   "seguidores": 1371668,
+   "seguidores": 1371918,
    "publicaciones": 37,
-   "ultimas12_likes_prom": 82342,
+   "ultimas12_likes_prom": 82668,
    "ultima_pub": "2026-11-13T19:58:48+0000"
   },
   "pacoamoroso": {
    "nombre": null,
-   "seguidores": 1243909,
+   "seguidores": 1244072,
    "publicaciones": 22,
-   "ultimas12_likes_prom": 127120,
+   "ultimas12_likes_prom": 127229,
    "ultima_pub": "2026-11-13T20:03:26+0000"
   },
   "ca7rielypacoamoroso": {
    "nombre": "CA7RIEL & Paco Amoroso",
-   "seguidores": 1410949,
+   "seguidores": 1411132,
    "publicaciones": 45,
-   "ultimas12_likes_prom": 98304,
+   "ultimas12_likes_prom": 98467,
    "ultima_pub": "2026-11-14T22:32:58+0000"
   },
   "ca7rielypacoamorosoarg": {
    "nombre": "CA7RIEL & Paco Argentina",
-   "seguidores": 53746,
+   "seguidores": 53740,
    "publicaciones": 2100,
-   "ultimas12_likes_prom": 1495,
+   "ultimas12_likes_prom": 1510,
    "ultima_pub": "2026-11-17T15:31:35+0000"
   },
   "ca7rielypaco_usa": {
    "nombre": "CA7RIEL & Paco Amoroso: Official USA Fans",
-   "seguidores": 56457,
+   "seguidores": 56459,
    "publicaciones": 2502,
-   "ultimas12_likes_prom": 892,
+   "ultimas12_likes_prom": 894,
    "ultima_pub": "2026-11-16T17:06:21+0000"
   },
   "pacoyca7o": {
@@ -2781,7 +2818,7 @@
   },
   "ca7rielxpacochile": {
    "nombre": "Ca7riel & Paco Amoroso",
-   "seguidores": 33032,
+   "seguidores": 33101,
    "publicaciones": 1232,
    "ultimas12_likes_prom": 649,
    "ultima_pub": "2026-11-16T20:51:07+0000"

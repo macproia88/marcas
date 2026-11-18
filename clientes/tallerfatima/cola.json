@@ -1,39 +1,5 @@
 [
  {
-  "id": "1117-carrusel-carpinteria",
-  "tipo": "CARRUSEL",
-  "media": [
-   "clientes/tallerfatima/img/1117-carpinteria-1.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-2.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-3.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-4.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-5.jpg"
-  ],
-  "texto": "Aprender un oficio con las manos 🪚💚\n\nAsí se vivió la capacitación de carpintería para adultos: herramientas reales, profes con mucha experiencia y un grupo que se anima a aprender haciendo.\n\nCada estudiante que aprende un oficio está abriendo una puerta hacia su autonomía laboral.\n\n👉 ¿Querés saber más sobre nuestros talleres? Escribinos por mensaje.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #carpintería",
-  "fecha": "2026-11-17 21:00",
-  "estado": "borrador"
- },
- {
-  "id": "1117-historia",
-  "tipo": "STORY",
-  "media": [
-   "clientes/tallerfatima/img/1117-historia.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-17 21:15",
-  "estado": "borrador"
- },
- {
-  "id": "1118-historia",
-  "tipo": "STORY",
-  "media": [
-   "clientes/tallerfatima/img/1118-historia.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-18 13:00",
-  "estado": "borrador"
- },
- {
   "id": "1118-carrusel-expo-2026",
   "tipo": "CARRUSEL",
   "media": [
@@ -60,13 +26,47 @@
   "estado": "borrador"
  },
  {
+  "id": "1117-carrusel-carpinteria",
+  "tipo": "CARRUSEL",
+  "media": [
+   "clientes/tallerfatima/img/1117-carpinteria-1.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-2.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-3.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-4.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-5.jpg"
+  ],
+  "texto": "Aprender un oficio con las manos 🪚💚\n\nAsí se vivió la capacitación de carpintería para adultos: herramientas reales, profes con mucha experiencia y un grupo que se anima a aprender haciendo.\n\nCada estudiante que aprende un oficio está abriendo una puerta hacia su autonomía laboral.\n\n👉 ¿Querés saber más sobre nuestros talleres? Escribinos por mensaje.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #carpintería",
+  "fecha": "2026-11-24 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1117-historia",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1117-historia.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-24 21:15",
+  "estado": "borrador"
+ },
+ {
+  "id": "1118-historia",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1118-historia.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-25 13:00",
+  "estado": "borrador"
+ },
+ {
   "id": "1119-historia",
   "tipo": "STORY",
   "media": [
    "clientes/tallerfatima/img/1119-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-19 13:00",
+  "fecha": "2026-11-26 13:00",
   "estado": "borrador"
  },
  {
@@ -76,7 +76,7 @@
    "clientes/tallerfatima/videos/1119-reel-oficios.mp4"
   ],
   "texto": "Intercambio de oficios 🔄💚\n\nLas y los jóvenes de los talleres de carpintería, gastronomía, manicuría y costura (corte y confección) intercambiaron sus oficios: cada grupo enseñó lo suyo y aprendió del otro.\n\nAsí descubrieron que todos los oficios se necesitan entre sí. 🤝\n\nUna propuesta del equipo social de la Escuela Taller Fátima.\n\n💬 ¿Qué oficio te gustaría aprender? Contanos en los comentarios.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #intercambiodeoficios #formaciónprofesional",
-  "fecha": "2026-11-19 21:00",
+  "fecha": "2026-11-26 21:00",
   "estado": "borrador"
  },
  {
@@ -86,7 +86,7 @@
    "clientes/tallerfatima/img/1120-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-20 13:00",
+  "fecha": "2026-11-27 13:00",
   "estado": "borrador"
  },
  {
@@ -100,7 +100,7 @@
    "clientes/tallerfatima/img/1121-costura-5.jpg"
   ],
   "texto": "Del molde a la prenda 🧵💚\n\nEn el taller de costura se aprende moldería, se toman medidas, se traza y se corta paso a paso, siempre en equipo.\n\nCoser también es emprender: con un oficio en las manos se abren nuevas oportunidades.\n\n👉 Escribinos por mensaje para conocer los talleres.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #costura #moldería",
-  "fecha": "2026-11-21 21:00",
+  "fecha": "2026-11-28 21:00",
   "estado": "borrador"
  },
  {
@@ -110,7 +110,7 @@
    "clientes/tallerfatima/img/1121-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-21 21:15",
+  "fecha": "2026-11-28 21:15",
   "estado": "borrador"
  },
  {
@@ -120,7 +120,7 @@
    "clientes/tallerfatima/videos/1122-reel-testimonio-corina.mp4"
   ],
   "texto": "Corina es ex alumna de Fátima y nos cuenta su experiencia 💚\n\nHistorias como la suya son la razón de cada taller: aprender un oficio para abrir nuevas puertas.\n\nGracias, Corina, por compartirla con nosotros 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #testimonio",
-  "fecha": "2026-11-22 21:00",
+  "fecha": "2026-11-29 21:00",
   "estado": "borrador"
  },
  {
@@ -130,7 +130,7 @@
    "clientes/tallerfatima/img/1122-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-22 21:15",
+  "fecha": "2026-11-29 21:15",
   "estado": "borrador"
  },
  {
@@ -140,7 +140,7 @@
    "clientes/tallerfatima/img/1123-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-23 13:00",
+  "fecha": "2026-11-30 13:00",
   "estado": "borrador"
  }
 ]

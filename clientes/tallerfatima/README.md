@@ -53,13 +53,24 @@ Subido hasta ahora (16/11):
 - Caption con llamado a escribir por mensaje y los hashtags #EscuelaTallerFatima #ComunidadFátima.
 - No inventar fechas de inscripción, precios ni datos de contacto que la escuela no haya pasado.
 
-## Plan semana 1 (17 al 23/11)
+## Semana Expo (18 al 23/11): toda la semana se habla de la Expo Fátima 2026
+Material: carpeta "Expo 2026" del Drive de la escuela, bajada a `fotos/expo-2026/`.
+| Día | Feed 21:00 | Historias |
+|---|---|---|
+| Mié 18 | Carrusel "Así se vivió nuestra Expo 2026" (listo) | 21:15 historia con flashes y sonido de taller (lista) |
+| Jue 19 | Reel "Spoiler de lo que fue la Expo Fátima 2026", 30 s en cámara rápida | Expo |
+| Vie 20 | Carrusel con los trabajos de los alumnos (muebles y piezas de cada taller) | Expo |
+| Sáb 21 | Reel o carrusel de los stands, emprendimientos y familias | Expo |
+| Dom 22 | Video del show y la música de la Expo | Expo |
+| Lun 23 | Cierre con agradecimiento a todos los que hicieron posible la Expo | Expo |
+
+## Semana 2 (24 al 30/11): lo que estaba planeado antes, corrido una semana
 | Día | Feed 21:00 | Historia |
 |---|---|---|
-| Mar 17 | Carrusel "Aprender un oficio con las manos" (carpintería) | 21:15, avisa del carrusel |
-| Mié 18 | Carrusel "Así se vivió nuestra Expo 2026" (7 imágenes, fotos de la carpeta "Expo 2026" del Drive) | 13:00 "En Fátima también se aprende soldadura" |
-| Jue 19 | **Reel "Intercambio de oficios"** (jóvenes de carpintería, gastronomía, manicuría y costura intercambian oficios; propuesta del equipo social). Sin sonido ambiente, con música original de `herramientas/musica.py` | 13:00 manicuría |
-| Vie 20 | — | 13:00 agradecimiento a los profes |
-| Sáb 21 | Carrusel "Del molde a la prenda" (costura) | 21:15, avisa del carrusel |
-| Dom 22 | Reel con el testimonio de Corina, ex alumna | 21:15 comunidad Fátima |
-| Lun 23 | — | 13:00 "¿Querés sumarte? Escribinos" |
+| Mar 24 | Carrusel "Aprender un oficio con las manos" (carpintería) | 21:15 |
+| Mié 25 | — | 13:00 soldadura |
+| Jue 26 | Reel "Intercambio de oficios" (con música original) | 13:00 manicuría |
+| Vie 27 | — | 13:00 profes |
+| Sáb 28 | Carrusel "Del molde a la prenda" (costura) | 21:15 |
+| Dom 29 | Reel testimonio de Corina | 21:15 |
+| Lun 30 | — | 13:00 "¿Querés sumarte?" |

@@ -12,7 +12,7 @@
    "clientes/tallerfatima/img/expo-7.jpg"
   ],
   "texto": "El sábado 7 de noviembre fue nuestra tan esperada Expo 2026 💚\n¿Querés ver un poco de lo que pasó ese día? Deslizá 👉\n\nMuebles hechos por nuestros alumnos, stands llenos de creatividad, familias y vecinos recorriendo cada taller y música para celebrar todo lo aprendido en el año.\n\n¡Gracias a todos los que trabajaron y colaboraron para que este día sea posible! 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-18 21:00",
+  "fecha": "2026-11-18 10:00",
   "estado": "borrador"
  },
  {
@@ -22,7 +22,17 @@
    "clientes/tallerfatima/videos/1118-historia-expo-flashes.mp4"
   ],
   "texto": "",
-  "fecha": "2026-11-18 21:15",
+  "fecha": "2026-11-18 10:15",
+  "estado": "borrador"
+ },
+ {
+  "id": "1119-historia-expo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1119-historia-expo.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 13:00",
   "estado": "borrador"
  },
  {
@@ -33,6 +43,98 @@
   ],
   "texto": "Spoiler de lo que fue la Expo Fátima 2026 ⚡💚\n\nUn poquito de todo lo que se vivió: los stands, los trabajos de nuestros alumnos, los talleres abiertos, la comunidad recorriendo cada rincón y la música para cerrar la noche.\n\n¡Gracias a todos los que trabajaron y colaboraron para que este día sea posible! 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
   "fecha": "2026-11-19 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1120-carrusel-expo-trabajos",
+  "tipo": "CARRUSEL",
+  "media": [
+   "clientes/tallerfatima/img/expo-trabajos-1.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-2.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-3.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-4.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-5.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-6.jpg",
+   "clientes/tallerfatima/img/expo-trabajos-7.jpg"
+  ],
+  "texto": "Lo que hicieron nuestros alumnos 🪚💚\n\nEn la Expo Fátima 2026 los talleres abrieron sus puertas: muebles terminados, lámparas, macetas, estantes y las máquinas del taller en manos de los alumnos.\n\nDetrás de cada pieza hay horas de trabajo, aprendizaje y superación. ¡Orgullo de Fátima!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
+  "fecha": "2026-11-20 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1120-historia-expo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1120-historia-expo.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-20 21:15",
+  "estado": "borrador"
+ },
+ {
+  "id": "1121-carrusel-expo-comunidad",
+  "tipo": "CARRUSEL",
+  "media": [
+   "clientes/tallerfatima/img/expo-comunidad-1.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-2.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-3.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-4.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-5.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-6.jpg",
+   "clientes/tallerfatima/img/expo-comunidad-7.jpg"
+  ],
+  "texto": "Una Expo para toda la comunidad 💚\n\nStands llenos de creatividad, emprendimientos, vestidos de época, nuestra historia en fotos y familias recorriendo cada rincón de la escuela.\n\nLa Expo es de todos los que hacen Fátima día a día. 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
+  "fecha": "2026-11-21 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1121-historia-expo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1121-historia-expo.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-21 21:15",
+  "estado": "borrador"
+ },
+ {
+  "id": "1122-reel-show-expo",
+  "tipo": "REEL",
+  "media": [
+   "clientes/tallerfatima/videos/1122-reel-show-expo.mp4"
+  ],
+  "texto": "Y la Expo también fue fiesta 🎶💃\n\nMúsica en vivo, baile y una comunidad que no paró de celebrar todo lo aprendido en el año.\n\n¡Gracias por bailar con nosotros!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
+  "fecha": "2026-11-22 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1122-historia-expo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1122-historia-expo.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-22 21:15",
+  "estado": "borrador"
+ },
+ {
+  "id": "1123-post-gracias-expo",
+  "tipo": "POST",
+  "media": [
+   "clientes/tallerfatima/img/expo-gracias-1.jpg"
+  ],
+  "texto": "¡Gracias! 💚\n\nCerramos una semana recordando nuestra Expo Fátima 2026.\n\nGracias a todos los que trabajaron y colaboraron para que este día sea posible: alumnos, familias, profes, equipo y vecinos. ¡Nos vemos en la próxima!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
+  "fecha": "2026-11-23 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1123-historia-expo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1123-historia-expo.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-23 21:15",
   "estado": "borrador"
  },
  {

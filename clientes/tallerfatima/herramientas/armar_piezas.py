@@ -46,7 +46,7 @@ def partir(d, texto, fnt, ancho):
     if act: lineas.append(act)
     return lineas
 
-def portada(foto, etiqueta, titulo, sub, salida):
+def portada(foto, etiqueta, titulo, sub, salida, deslizar=True):
     W, H = 1080, 1350
     c = Image.new("RGB", (W, H), CREMA)
     c.paste(recortar(foto, W, 830), (0, 0))
@@ -57,6 +57,8 @@ def portada(foto, etiqueta, titulo, sub, salida):
     y = texto_lineas(d, partir(d, titulo, SP(92), W - 140), SP(92), 70, 905, "white", 1.02)
     texto_lineas(d, partir(d, sub, LATO(40), W - 140), LATO(40), 70, y + 18, CREMA, 1.3)
     logo(c, LOGO_B, 330, 70, H - 120)
+    if not deslizar:
+        c.save(salida, quality=92); return
     tx = W - 120 - d.textlength("Deslizá", font=LATOB(36))
     d.text((tx, H - 100), "Deslizá", font=LATOB(36), fill=AMARILLO)
     d.polygon([(W - 105, H - 95), (W - 70, H - 78), (W - 105, H - 61)], fill=AMARILLO)

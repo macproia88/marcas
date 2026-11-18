@@ -54,15 +54,17 @@ Subido hasta ahora (16/11):
 - No inventar fechas de inscripción, precios ni datos de contacto que la escuela no haya pasado.
 
 ## Semana Expo (18 al 23/11): toda la semana se habla de la Expo Fátima 2026
-Material: carpeta "Expo 2026" del Drive de la escuela, bajada a `fotos/expo-2026/`.
-| Día | Feed 21:00 | Historias |
+Material: carpeta "Expo 2026" del Drive de la escuela, bajada a `fotos/expo-2026/`: fotos, 19 tomas de 4 s (`tomas/`), fotos fijas (`cuadros/`) y videos del show con sonido (`sonido-*.mp4`).
+El video largo original es de 432x768, así que sus fotos fijas van enmarcadas tipo foto instantánea, no a pantalla completa.
+Música: cada pieza lleva un sonido distinto según el contenido (`herramientas/musica_estilos.py`: festiva, emotiva, acústica; `musica_taller.py`: sonidos de taller; o el sonido en vivo).
+| Día | Feed | Historia |
 |---|---|---|
-| Mié 18 | Carrusel "Así se vivió nuestra Expo 2026" (listo) | 21:15 historia con flashes y sonido de taller (lista) |
-| Jue 19 | Reel "Spoiler de lo que fue la Expo Fátima 2026" (listo: 11 tomas de 2,5 s a velocidad normal del video largo, sonido de taller) | Expo |
-| Vie 20 | Carrusel con los trabajos de los alumnos (muebles y piezas de cada taller) | Expo |
-| Sáb 21 | Reel o carrusel de los stands, emprendimientos y familias | Expo |
-| Dom 22 | Video del show y la música de la Expo | Expo |
-| Lun 23 | Cierre con agradecimiento a todos los que hicieron posible la Expo | Expo |
+| Mié 18 | 10:00 Carrusel "Así se vivió nuestra Expo 2026" (pedido de la clienta: a las 10) | 10:15 flashes, sonido de taller |
+| Jue 19 | 21:00 Reel spoiler, 11 tomas a velocidad normal, música festiva | 13:00 "Hoy 21 h el spoiler", acústica |
+| Vie 20 | 21:00 Carrusel "Lo que hicieron nuestros alumnos" | 21:15 taller, sonido de taller |
+| Sáb 21 | 21:00 Carrusel "Una Expo para toda la comunidad" | 21:15 nenas bailando, festiva |
+| Dom 22 | 21:00 Reel "Y la Expo también fue fiesta", sonido en vivo de la banda | 21:15 banda en vivo |
+| Lun 23 | 21:00 Posteo "¡Gracias!" con la foto grupal | 21:15 escenario al atardecer, piano emotivo |
 
 ## Semana 2 (24 al 30/11): lo que estaba planeado antes, corrido una semana
 | Día | Feed 21:00 | Historia |

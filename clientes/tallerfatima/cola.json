@@ -50,6 +50,16 @@
   "estado": "borrador"
  },
  {
+  "id": "1118-historia-expo-flashes",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/videos/1118-historia-expo-flashes.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-18 21:15",
+  "estado": "borrador"
+ },
+ {
   "id": "1119-historia",
   "tipo": "STORY",
   "media": [

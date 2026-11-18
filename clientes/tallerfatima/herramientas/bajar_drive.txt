@@ -1,7 +1,7 @@
-# ID de Drive (copia temporal con enlace)   nombre de salida
-1OHApchnNjWvHOewSbJC5URi2BKPxy7lV  video-largo-1117
-1BKFzmi_7jWVe12z0kF7BJvXi5r9eMK9W  video-wa1117-0006
-1K_YUAmaY_SL6jAsHnp95KdLztCxauTUJ  video-wa1108-0008
-1VY_W_7UtLF0r9W86ttdVqX0_ajwLim7L  video-wa1108-0007
-17Vx65Od84FLnXKK0V-vL8vUBobV3zJR_  video-wa1108-0009
-1_O5RKgQI5vWsVIDDLlWUARVcUcnu4wGu  video-wa1108-0005
+# ID de Drive (copia temporal con enlace)   nombre de salida   modo (vacío=achicar/acelerar, normal=velocidad normal con sonido, fotos=fotos fijas)
+1KGpi93bcqexQyViPVTivKhk9YUcBHFJI  video-largo-1117  fotos
+1ZTemt9PqmeeVrspNrcvqKMmqf0y6h0IY  sonido-wa1117-0006  normal
+1xmgF_jyy_3s-mDWXEWjQyxZWXolU01_h  sonido-wa1108-0008  normal
+1-7-6xqftchzS4ROfKINbfDiGkc48Oj0-  sonido-wa1108-0007  normal
+1t3yJ5bYKzsgpdPAynue0ATlqEnjLyKWo  sonido-wa1108-0009  normal
+1EJr6n8kjqjIwn-ygnAutfiN6Y1FsBomg  sonido-wa1108-0005  normal

@@ -56,6 +56,11 @@ nav.links a:hover:after{transform:none}
 .btn-borde{background:transparent;border:1px solid var(--marca);color:var(--marca)}
 .btn-claro{background:#fff;color:var(--marca)}
 .btn.full{width:100%}.btn[disabled]{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.waloc{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.waloc a{display:flex;align-items:center;gap:10px;text-decoration:none;background:#fff;border:1px solid var(--linea);border-radius:14px;padding:10px 14px;box-shadow:var(--sombra)}
+.waloc a .ico{color:var(--wa);width:22px;height:22px}
+.waloc small{display:block;color:var(--suave);font-size:12px;line-height:1.2}.waloc b{font-size:15px}
+.wa-num{color:var(--wa2)!important;font-weight:700;text-decoration:none}
 .datos-hero{display:flex;gap:28px;margin-top:34px;padding-top:24px;border-top:1px solid var(--linea);flex-wrap:wrap}
 .datos-hero div{font-size:13px;color:var(--suave)}.datos-hero b{display:block;font-family:var(--display);font-size:30px;color:var(--marca);font-weight:600;line-height:1}
 .foto{position:relative;aspect-ratio:4/5;max-height:600px;justify-self:end;width:100%}
@@ -212,6 +217,7 @@ footer a{color:#fff;opacity:.9}
       <a class="btn" href="#carta">Ver la carta y pedir</a>
       <a class="btn wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Escribinos</a>
     </div>
+    <div class="waloc" id="waloc"></div>
     <div class="datos-hero"><div><b>25</b>años en Olivos</div><div><b>100+</b>productos caseros</div><div><b>7</b>días a la semana</div></div>
   </div>
   <div class="foto">
@@ -224,6 +230,7 @@ footer a{color:#fff;opacity:.9}
   <div class="seg" role="group" aria-label="Cómo recibís tu pedido"><button data-m="retiro">Retiro en el local</button><button data-m="delivery">Delivery</button></div>
   <label class="campo">Local <select id="sel-local"></select></label>
   <span class="campo" id="dir-local"></span>
+  <a class="campo wa-num js-wa" id="wa-num" href="#" target="_blank" rel="noopener"></a>
 </div></div>
 
 <section id="carta" style="padding-top:56px"><div class="wrap">
@@ -269,7 +276,7 @@ footer a{color:#fff;opacity:.9}
     <div><span class="eyebrow">Locales</span><div id="ft-locs"></div></div>
     <div><span class="eyebrow">Contacto</span><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><br><a href="https://www.instagram.com/pastaspaz/" target="_blank" rel="noopener">Instagram @pastaspaz</a></div>
   </div>
-  <div class="act">Precios actualizados el 18/11/2026 07:33. Pueden cambiar sin aviso; el total final es el del local.</div>
+  <div class="act">Precios actualizados el 18/11/2026 07:51. Pueden cambiar sin aviso; el total final es el del local.</div>
 </div></footer>
 
 <div class="barmovil" id="barmovil"><button id="abrir2"><span>Ver mi pedido · <span id="cnt2">0</span></span><span id="tot2">$0</span></button></div>
@@ -321,7 +328,7 @@ function pintarLocal(){const l=local();$('#sel-local').value=$('#f-local').value
   const e=estado(l);$('#sello').classList.toggle('cerr',!e.ab);
   $('#sello-t').textContent=(e.ab?'Abierto ahora':'Ahora cerrado')+(D.locales.length>1?' · '+l.nombre:'');
   $('#sello-s').textContent=e.ab?`Hoy hasta las ${e.cierra} hs. Pedí y pasá a retirar.`:`Abrimos a las ${e.abre} hs. Dejá tu pedido y lo preparamos.`;
-  $('#dir-local').textContent=l.dir;$('#llamar').href='tel:'+l.telraw;guardar();pintarPedido();}
+  $('#dir-local').textContent=l.dir;$('#wa-num').textContent='WhatsApp '+l.watxt;$('#llamar').href='tel:'+l.telraw;guardar();pintarPedido();}
 $('#sel-local').onchange=e=>{st.local=e.target.value;pintarLocal()};
 $('#f-local').onchange=e=>{st.local=e.target.value;pintarLocal()};
 $('#locs').innerHTML=D.locales.map(l=>`<article class="loc">
@@ -331,6 +338,7 @@ $('#locs').innerHTML=D.locales.map(l=>`<article class="loc">
  <div class="acc"><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/${l.wa}?text=${encodeURIComponent('Hola '+D.marca+' '+l.nombre+'! Quería hacer una consulta.')}"><svg class="ico"><use href="#i-wa"/></svg>WhatsApp</a>
  <a class="btn btn-borde" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(l.mapa)}">Cómo llegar</a>
  <a class="btn btn-borde" href="tel:${l.telraw}">Llamar</a></div></div></article>`).join('');
+$('#waloc').innerHTML=D.locales.map(l=>`<a target="_blank" rel="noopener" href="https://wa.me/${l.wa}?text=${encodeURIComponent('Hola '+D.marca+' '+l.nombre+'! Quería hacer una consulta.')}"><svg class="ico"><use href="#i-wa"/></svg><span><small>WhatsApp ${D.locales.length>1?l.nombre:D.marca}</small><b>${l.watxt}</b></span></a>`).join('');
 $('#ft-locs').innerHTML=D.locales.map(l=>`<b>${l.nombre}</b> · ${l.dir}<br>Tel. ${l.tel} · WhatsApp ${l.watxt}`).join('<br><br>');
 
 $('#chips').insertAdjacentHTML('beforeend',D.cats.map((c,i)=>`<button data-c="${i}">${c}</button>`).join(''));

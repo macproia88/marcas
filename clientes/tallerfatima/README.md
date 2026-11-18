@@ -57,7 +57,7 @@ Subido hasta ahora (16/11):
 | Día | Feed 21:00 | Historia |
 |---|---|---|
 | Mar 17 | Carrusel "Aprender un oficio con las manos" (carpintería) | 21:15, avisa del carrusel |
-| Mié 18 | — | 13:00 "En Fátima también se aprende soldadura" |
+| Mié 18 | Carrusel "Así se vivió nuestra Expo 2026" (7 imágenes, fotos de la carpeta "Expo 2026" del Drive) | 13:00 "En Fátima también se aprende soldadura" |
 | Jue 19 | **Reel "Intercambio de oficios"** (jóvenes de carpintería, gastronomía, manicuría y costura intercambian oficios; propuesta del equipo social). Sin sonido ambiente, con música original de `herramientas/musica.py` | 13:00 manicuría |
 | Vie 20 | — | 13:00 agradecimiento a los profes |
 | Sáb 21 | Carrusel "Del molde a la prenda" (costura) | 21:15, avisa del carrusel |

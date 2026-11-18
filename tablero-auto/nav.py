@@ -18,6 +18,7 @@ PAGINAS = [
     ('ranking-anual.html', 'Ranking del año'),
     ('ranking-mostrador.html', 'Ranking de mostrador'),
     ('produccion.html', 'Producción por datos'),
+    ('competencia.html', 'Competencia zona norte'),
     ('https://macproia88.github.io/sel-oct26-presumida/', 'Selección de personal (CVs)'),
     ('https://macproia88.github.io/marcas/arca.html', 'Tablero ARCA (con clave)'),
 ]

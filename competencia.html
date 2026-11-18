@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Competencia zona norte</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+<style>
+:root{--rojo:#B5473A;--oscuro:#3B2E2A;--crema:#F7F2EE;--linea:#eadfd9;--verde:#2F6B2F;--verdef:#D4E6D0;--rojof:#F2D4CE;--gris:#7a6a64;--bg:#fff;--txt:#3B2E2A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1816;--txt:#f1e9e4;--crema:#2a2320;--linea:#3d332f;--gris:#b9aaa3;--verdef:#24402a;--rojof:#4a2722;--verde:#8fd19a}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.45 Lato,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{background:var(--rojo);color:#fff;padding:26px 20px 20px}header .in{max-width:1180px;margin:0 auto}
+h1{margin:0;font-family:Georgia,serif;font-size:clamp(26px,4vw,36px)}header p{margin:6px 0 0;font-style:italic;opacity:.95}
+.upd{font-size:13px;opacity:.9;margin-top:8px}
+main{max-width:1180px;margin:0 auto;padding:18px 16px 8px}
+h2{font-family:Georgia,serif;color:var(--rojo);font-size:24px;margin:28px 0 8px}
+.note{color:var(--gris);font-size:14px;margin:6px 0 12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:6px}
+.k{background:var(--crema);border-left:5px solid var(--rojo);padding:12px 14px}.k b{display:block;font-size:22px;color:var(--rojo)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:640px}
+th{background:var(--oscuro);color:#fff;padding:9px 10px;text-align:left;font-weight:600;white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+td.n{text-align:right;white-space:nowrap}th.n{text-align:right}
+td.ok{background:var(--verdef);color:var(--verde);font-weight:700}td.mal{background:var(--rojof)}
+.u{display:block;font-size:12px;color:var(--gris);font-weight:400}
+.tag{display:inline-block;font-size:12px;padding:1px 7px;border-radius:10px;background:var(--crema);margin:0 4px 2px 0;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.c{border:1px solid var(--linea);border-top:4px solid var(--rojo);padding:12px 14px;background:var(--bg)}
+.c h3{margin:0 0 2px;font-size:17px}.c .d{font-size:14px;color:var(--gris)}
+.c a{color:var(--rojo);font-weight:600;text-decoration:none;font-size:14px;margin-right:10px;white-space:nowrap}
+.c .p{font-size:13px;margin-top:6px}
+#mapa{height:520px;border:1px solid var(--linea);margin-top:6px}@media(max-width:600px){#mapa{height:420px}}
+.ley{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;margin:8px 0}.ley i{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:5px;vertical-align:-2px;border:2px solid #fff;box-shadow:0 0 0 1px #999}
+.loc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}
+.filt{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px}.filt button{border:1px solid var(--rojo);background:transparent;color:var(--rojo);padding:5px 12px;border-radius:16px;font:inherit;font-size:14px;cursor:pointer}
+.filt button.on{background:var(--rojo);color:#fff}
+</style></head><body>
+<header><div class="in"><h1>Competencia: fábricas de pastas de zona norte</h1>
+<p>Precios y catálogos de las fábricas cerca de Florida, Olivos y Beccar, contra los nuestros</p>
+<div class="upd">Última actualización: miércoles 18/11/2026 a las 07:15</div></div></header>
+<main>
+
+<div class="kpis">
+<div class="k">Fábricas relevadas cerca de nuestros locales<b>18</b></div>
+<div class="k">Publican precios online<b>3</b>Gelay, Qué Ravioles e Imperial (lista en Excel)</div>
+<div class="k">Contra Gelay<b>11% más baratos</b>promedio de 11 productos iguales</div>
+<div class="k">Contra Qué Ravioles<b>6% más caros</b>por salsas y fideos; en ravioles y canelones ganamos</div>
+</div>
+
+<h2>Mapa de la competencia</h2>
+<p class="note">La mancha muestra dónde se concentran las fábricas de pastas: cuanto más roja, más competencia junta. Cada punto es una fábrica, con el color según cómo estamos de precio contra ella. Los círculos punteados marcan 1,5 km alrededor de cada local nuestro. Tocá cualquier punto para ver el detalle.</p>
+<div class="ley"><span><i style="background:#B5473A;border-radius:3px"></i>Nuestros locales</span><span><i style="background:#2F8F3A"></i>Somos más baratos</span><span><i style="background:#E08A1E"></i>Somos más caros</span><span><i style="background:#9a9a9a"></i>Sin precios públicos todavía</span></div>
+<div id="mapa"></div>
+<div class="loc" id="loc"></div>
+
+<h2>Precios comparados</h2>
+<p class="note">Solo las fábricas que muestran precios. Nosotros: precio de lista aproximado, sacado de lo cobrado en los cierres de Maxi Rest del 1 al 16/11 (sin descuentos del club). Gelay: menú del 12/11/2026. Qué Ravioles: tienda online, precios del 18/11/2026. En verde, el más barato de la fila. Ojo: no todos venden en la misma unidad; está aclarada debajo de cada precio.</p>
+<div class="tw"><table>
+<thead><tr><th>Producto</th><th class="n">La Presumida / Paz</th><th class="n">Gelay (Acassuso)</th><th class="n">Qué Ravioles (V. Ballester)</th></tr></thead>
+<tbody>
+<tr><td>Ravioles ricota</td><td class="n ok">6.500<span class="u">caja</span></td><td class="n">7.700<span class="u">caja</span></td><td class="n">6.600<span class="u">plancha 48 u</span></td></tr>
+<tr><td>Ravioles especiales (pollo, jamón, nuez)</td><td class="n ok">6.500<span class="u">caja</span></td><td class="n">8.000<span class="u">caja</span></td><td class="n">6.800<span class="u">plancha 48 u</span></td></tr>
+<tr><td>Raviolones</td><td class="n ok">7.600<span class="u">caja</span></td><td class="n">9.200<span class="u">caja</span></td><td class="n">–<span class="u">no tiene</span></td></tr>
+<tr><td>Sorrentinos jamón y queso</td><td class="n">31.000<span class="u">kilo</span></td><td class="n">16.000<span class="u">caja (sin peso)</span></td><td class="n ok">30.000<span class="u">kilo (15.000 x 1/2 kg)</span></td></tr>
+<tr><td>Ñoquis de papa</td><td class="n ok">13.000<span class="u">kilo</span></td><td class="n">16.600<span class="u">kilo</span></td><td class="n ok">13.000<span class="u">kilo (6.500 x 500 g)</span></td></tr>
+<tr><td>Tallarines / fideos al huevo</td><td class="n">13.000<span class="u">kilo</span></td><td class="n">16.600<span class="u">kilo</span></td><td class="n ok">12.000<span class="u">kilo (6.000 x 500 g)</span></td></tr>
+<tr><td>Canelones</td><td class="n ok">3.000<span class="u">unidad</span></td><td class="n">3.200<span class="u">unidad</span></td><td class="n">3.200<span class="u">unidad sin salsa</span></td></tr>
+<tr><td>Salsa fileto chica</td><td class="n">4.200<span class="u">chica</span></td><td class="n">5.000<span class="u">1/4 kg</span></td><td class="n ok">3.300<span class="u">chica</span></td></tr>
+<tr><td>Salsa fileto mediana</td><td class="n">5.800<span class="u">mediana</span></td><td class="n">–</td><td class="n ok">4.300<span class="u">390 cc</span></td></tr>
+<tr><td>Salsa boloñesa chica</td><td class="n ok">5.000<span class="u">chica</span></td><td class="n">5.500<span class="u">1/4 kg</span></td><td class="n">–</td></tr>
+<tr><td>Pesto</td><td class="n">8.200<span class="u">pote</span></td><td class="n ok">7.500<span class="u">1/4 kg</span></td><td class="n">7.800<span class="u">250 cc</span></td></tr>
+<tr><td>Empanada</td><td class="n">2.800<span class="u">unidad cocida</span></td><td class="n">3.000<span class="u">unidad</span></td><td class="n ok">1.917<span class="u">congelada (6 x 11.500)</span></td></tr>
+<tr><td>Tarta individual</td><td class="n ok">9.000<span class="u">unidad</span></td><td class="n ok">9.000<span class="u">unidad</span></td><td class="n">10.000<span class="u">unidad</span></td></tr>
+</tbody></table></div>
+<p class="note"><b>Lectura:</b> en pasta rellena (ravioles, raviolones, canelones) somos los más baratos de los tres. En kilo (ñoquis, tallarines, sorrentinos) estamos iguales o un poco arriba de Qué Ravioles, y bastante abajo de Gelay. Donde Qué Ravioles nos gana claro es en salsas (fileto chica 3.300 contra 4.200) y en empanadas, pero las de ellos son congeladas para hornear. La unidad de "caja" de Gelay y la nuestra puede no tener la misma cantidad de ravioles: hay que confirmarlo.</p>
+
+<h2>Catálogos de cada fábrica</h2>
+<p class="note">Fábricas cerca de nuestros locales con dirección, teléfono y dónde ver su catálogo o pedir. "Ver en el mapa" abre Google Maps con fotos, horarios y, en muchas, la carta. Las que están en PedidosYa o Rappi tienen el catálogo completo con precios en la app.</p>
+<div class="filt" id="filt"><button class="on" data-z="">Todas</button><button data-z="fl">Florida y Vicente López</button><button data-z="ol">Olivos y La Lucila</button><button data-z="si">Martínez, San Isidro y Beccar</button><button data-z="ot">Otras zonas</button></div>
+<div class="cards" id="cards"></div>
+
+<h2>Cómo se armó y qué falta</h2>
+<p class="note">Se buscaron fábricas de pastas de Vicente López, Olivos, La Lucila, Martínez, San Isidro, Acassuso, Boulogne y Beccar en buscadores, guías (Punto Click, La Artesanal) y en las webs de cada una. La mayoría no publica precios en internet: los tiene solo en PedidosYa, Rappi o por teléfono. Desde acá no se pudieron leer las cartas de PedidosYa y Rappi (bloquean la lectura automática); con la compu prendida y Chrome abierto se pueden sumar las de El Huevo de Oro, Rochino, Pastas Luisito y La Estrella del Norte. Tío Due (Ituzaingó), Siete Pastas (Villa Luzuriaga), Santa Teresita (La Plata) y La Genovesa (Pilar) tienen tienda con precios pero quedan fuera de zona norte, por eso no se compararon.</p>
+</main>
+<script>
+const NOS=[
+{n:"La Presumida Florida",d:"San Martín 2200, Florida",la:-34.5281739,lo:-58.4925591},
+{n:"La Presumida Beccar",d:"Juan B. Justo 201, Beccar",la:-34.4610187,lo:-58.5296929},
+{n:"Pastas Frescas Paz",d:"Ricardo Gutiérrez 1186, Olivos",la:-34.5099468,lo:-58.4871288}];
+// precios comparables: [nuestro, de ellos] misma unidad
+const PR={
+"Gelay Pastas Artesanales":[[6500,7700],[6500,8000],[7600,9200],[13000,16600],[13000,16600],[3000,3200],[4200,5000],[5000,5500],[8200,7500],[2800,3000],[9000,9000]],
+"Qué Ravioles":[[6500,6600],[6500,6800],[31000,30000],[13000,13000],[13000,12000],[3000,3200],[4200,3300],[5800,4300],[8200,7800],[9000,10000]]};
+const F=[
+{n:"El Huevo de Oro",z:"fl",d:"Av. Maipú 388, Vicente López",t:"4718-3345",la:-34.5346258,lo:-58.4782266,c:["PedidosYa"],l:[["PedidosYa","https://www.pedidosya.com.ar/restaurantes/vicente-lopez/el-huevo-de-oro-fabrica-de-pastas-5ea3e568-5522-4ac5-a367-efb0e44cd7de-menu"]]},
+{n:"La Praderita",z:"fl",d:"Av. Maipú 1302, Florida",t:"4796-0707",la:-34.5259713,lo:-58.4829101,c:["Teléfono"],l:[]},
+{n:"El Coliseo Pastas",z:"fl",d:"Arenales 1513, Florida",t:"4796-0618",la:-34.5230849,lo:-58.484776,c:["Teléfono"],l:[]},
+{n:"La Giralda",z:"fl",d:"Gral. San Martín 3820, Florida Oeste",t:"4760-1222",la:-34.5376568,lo:-58.511666,c:["Teléfono"],l:[]},
+{n:"El Águila Pastas",z:"fl",d:"Estanislao del Campo 1480, Florida Oeste",t:"4761-4567",c:["Teléfono","Sin ubicar en el mapa"],l:[]},
+{n:"Los Caserta",z:"fl",d:"Laprida 2611, Vicente López",t:"5195-4306",la:-34.541744,lo:-58.491168,c:["Teléfono"],l:[]},
+{n:"La Quinta",z:"fl",d:"Av. Maipú 2030, Vicente López",t:"4796-3146",la:-34.5179962,lo:-58.4871988,c:["Teléfono"],l:[]},
+{n:"Pasta Factory La Sarita",z:"fl",d:"Julio A. Roca 775, Vicente López",t:"4791-5224",la:-34.5227984,lo:-58.4743616,c:["Teléfono"],l:[]},
+{n:"La de Olivos",z:"ol",d:"Av. Maipú 2450, Olivos",t:"4790-9469",la:-34.5127962,lo:-58.4898982,c:["Teléfono"],l:[]},
+{n:"La Primera de España",z:"ol",d:"España 3062, Olivos",t:"4711-1207",la:-34.513817,lo:-58.5032675,c:["Teléfono"],l:[]},
+{n:"Rochino Olivos",z:"ol",d:"Gdor. Ugarte 1632, Olivos",t:"2677-3714",la:-34.5139937,lo:-58.4909748,c:["PedidosYa"],l:[["PedidosYa","https://www.pedidosya.com.ar/restaurantes/vicente-lopez/fabrica-de-pastas-rochino-olivos-e88cb764-8629-4caa-b84b-b897f36b64a7-menu"]]},
+{n:"Casa Super",z:"ol",d:"Caseros 3600, Olivos",t:"4790-7886",la:-34.5066373,lo:-58.5017416,c:["Teléfono"],l:[]},
+{n:"Imperial Pastas & Food",z:"ol",d:"Rawson 3678, La Lucila",t:"4790-8556",la:-34.4982546,lo:-58.4891644,c:["Lista de precios en Excel","Sin delivery"],l:[["Web","https://www.imperialpastas.com.ar/"],["Lista de precios","https://www.imperialpastas.com.ar/listadeprecios.xls"]]},
+{n:"Gelay Pastas Artesanales",z:"si",d:"Manzone 827, Acassuso (8 locales en la zona)",t:"",la:-34.4796555,lo:-58.5048271,c:["Precios: menú del 12/11","PedidosYa"],l:[["Web","https://www.gelaypastas.com"],["Instagram","https://www.instagram.com/gelaypastas1972/"]]},
+{n:"Caramel",z:"si",d:"Av. Andrés Rolón 412, San Isidro (y Tigre)",t:"4723-5518",la:-34.4782271,lo:-58.5296911,c:["Catálogo sin precios","Pedidos por teléfono"],l:[["Catálogo","https://www.pastascaramel.com.ar/productos.html"]]},
+{n:"Pastas Luisito",z:"si",d:"Paraná 3189, Martínez",t:"2140-7389",la:-34.5057228,lo:-58.5154308,c:["Rappi"],l:[["Rappi","https://www.rappi.com.ar/restaurantes/229872-pastas-luisito"]]},
+{n:"La Estrella del Norte",z:"si",d:"Antonio Sáenz 2043, Boulogne",t:"3011-4985",la:-34.5090901,lo:-58.5664213,c:["Rappi"],l:[["Rappi","https://www.rappi.com.ar/restaurantes/229677-fabrica-de-pastas-la-estrella-del-n"]]},
+{n:"Qué Ravioles",z:"ot",d:"Alvear 2125, Villa Ballester",t:"4738-3570",la:-34.5453392,lo:-58.5492192,c:["Tienda online con precios","WhatsApp"],l:[["Tienda","https://www.pxw.com.ar/queravioles"]]},
+{n:"Guías de fábricas de la zona",z:"ot",d:"Listados con más fábricas de Vicente López y Olivos",t:"",c:["Guía"],l:[["Punto Click","https://puntoclick.com.ar/pastas-caseras-fabrica-de-pastas-en-gba-zona-norte-vicente-lopez"],["La Artesanal","https://laartesanal.com.ar/ubicacion/provincia-de-buenos-aires/vicente-lopez/olivos/"]]}
+];
+function idx(n){const r=PR[n];if(!r)return null;return r.reduce((a,x)=>a+x[0]/x[1],0)/r.length}
+function difTxt(v){const p=Math.round((v-1)*100);return p<0?`Somos ${-p}% más baratos`:p>0?`Somos ${p}% más caros`:'Mismo precio'}
+F.forEach(f=>{const v=idx(f.n);if(v!=null){f.i=v;f.c.unshift(difTxt(v))}});
+function km(a,b){const R=6371,r=Math.PI/180,dl=(b.la-a.la)*r,dn=(b.lo-a.lo)*r;const h=Math.sin(dl/2)**2+Math.cos(a.la*r)*Math.cos(b.la*r)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
+const box=document.getElementById('cards');
+function draw(z){box.innerHTML=F.filter(f=>!z||f.z===z).map(f=>{
+ const m='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('fábrica de pastas '+f.n+' '+f.d);
+ const links=f.l.map(x=>`<a href="${x[1]}" target="_blank" rel="noopener">${x[0]}</a>`).join('')+(f.n.startsWith('Guías')?'':`<a href="${m}" target="_blank" rel="noopener">Ver en el mapa</a>`);
+ return `<div class="c"><h3>${f.n}</h3><div class="d">${f.d}${f.t?' · Tel. '+f.t:''}</div><div class="p">${f.c.map(x=>'<span class="tag">'+x+'</span>').join('')}</div><div class="p">${links}</div></div>`}).join('')}
+draw('');
+const col=f=>f.i==null?'#9a9a9a':f.i<1?'#2F8F3A':'#E08A1E';
+if(window.L){
+const m=L.map('mapa',{scrollWheelZoom:false}).setView([-34.512,-58.51],13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(m);
+const G=F.filter(f=>f.la);
+if(L.heatLayer)L.heatLayer(G.map(f=>[f.la,f.lo,1]),{radius:45,blur:35,minOpacity:.25,gradient:{.3:'#ffe9a8',.6:'#f39a5b',1:'#c0392b'}}).addTo(m);
+NOS.forEach(n=>{L.circle([n.la,n.lo],{radius:1500,color:'#B5473A',weight:2,dashArray:'6 6',fill:false}).addTo(m);
+ L.marker([n.la,n.lo],{icon:L.divIcon({className:'',html:'<div style="background:#B5473A;color:#fff;font:700 12px system-ui;padding:3px 7px;border-radius:4px;white-space:nowrap;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)">'+n.n.replace('La Presumida ','LP ').replace('Pastas Frescas ','')+'</div>',iconAnchor:[30,12]})}).addTo(m).bindPopup('<b>'+n.n+'</b><br>'+n.d)});
+G.forEach(f=>L.circleMarker([f.la,f.lo],{radius:f.i!=null?10:7,color:'#fff',weight:2,fillColor:col(f),fillOpacity:1}).addTo(m).bindPopup('<b>'+f.n+'</b><br>'+f.d+(f.t?'<br>Tel. '+f.t:'')+'<br>'+(f.i!=null?difTxt(f.i):'Sin precios públicos')));
+m.fitBounds(L.latLngBounds(G.map(f=>[f.la,f.lo]).concat(NOS.map(n=>[n.la,n.lo]))).pad(.05));
+}else{document.getElementById('mapa').innerHTML='<p class="note" style="padding:12px">No se pudo cargar el mapa.</p>'}
+document.getElementById('loc').innerHTML=NOS.map(n=>{const c=F.filter(f=>f.la&&km(n,f)<=1.5).sort((a,b)=>km(n,a)-km(n,b));
+ return '<div class="k">'+n.n+'<b>'+c.length+' fábricas a menos de 1,5 km</b>'+(c.length?c.map(f=>f.n+' ('+km(n,f).toFixed(1).replace('.',',')+' km)').join(', '):'Ninguna')+'</div>'}).join('');
+document.getElementById('filt').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#filt button').forEach(x=>x.classList.toggle('on',x===b));draw(b.dataset.z)});
+</script>
+<nav id="lp-nav" style="font:13px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;max-width:1180px;margin:24px auto 16px;padding:12px 16px;border-top:1px solid rgba(128,128,128,.35);color:#6b6b6b"><div style="font-weight:600;margin-bottom:4px">Páginas del negocio</div><a href="tablero-presumida-v2.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Tablero La Presumida</a> · <a href="mostrador.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Tablero de mostrador</a> · <a href="apps.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Tablero de apps</a> · <a href="tablero-club.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Tablero del club</a> · <a href="reconocimiento.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Agenda de reconocimiento</a> · <a href="ranking-anual.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Ranking del año</a> · <a href="ranking-mostrador.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Ranking de mostrador</a> · <a href="produccion.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Producción por datos</a> · <b style="color:inherit">Competencia zona norte</b> · <a href="https://macproia88.github.io/sel-oct26-presumida/" style="color:#b85042;text-decoration:none;white-space:nowrap">Selección de personal (CVs)</a> · <a href="https://macproia88.github.io/marcas/arca.html" style="color:#b85042;text-decoration:none;white-space:nowrap">Tablero ARCA (con clave)</a></nav>
+</body></html>

@@ -2,7 +2,7 @@ name: Voz en off para reels
 on:
   workflow_dispatch:
   push:
-    paths: ['clientes/*/voz/pedidos.json', 'herramientas-voz/voz_en_off.py']
+    paths: ['clientes/*/voz/pedidos.json', 'quinta-ig/voz/pedidos.json', 'herramientas-voz/voz_en_off.py']
 permissions:
   contents: write
 jobs:
@@ -16,8 +16,8 @@ jobs:
           mkdir -p voces
           curl -sL -o voces/es_AR-daniela-high.onnx "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high.onnx"
           curl -sL -o voces/es_AR-daniela-high.onnx.json "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_AR/daniela/high/es_AR-daniela-high.onnx.json"
-      - run: for f in clientes/*/voz/pedidos.json; do python3 herramientas-voz/voz_en_off.py "$f"; done
+      - run: for f in clientes/*/voz/pedidos.json quinta-ig/voz/pedidos.json; do python3 herramientas-voz/voz_en_off.py "$f"; done
       - run: |
           git config user.name "github-actions"; git config user.email "actions@github.com"
-          git add clientes/*/videos; git commit -m "Voz en off agregada a reels [skip ci]" || exit 0
+          git add clientes/*/videos quinta-ig/videos; git commit -m "Voz en off agregada a reels [skip ci]" || exit 0
           git pull --rebase -X theirs -q && git push -q

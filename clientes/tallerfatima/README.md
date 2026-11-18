@@ -58,7 +58,7 @@ Material: carpeta "Expo 2026" del Drive de la escuela, bajada a `fotos/expo-2026
 | Día | Feed 21:00 | Historias |
 |---|---|---|
 | Mié 18 | Carrusel "Así se vivió nuestra Expo 2026" (listo) | 21:15 historia con flashes y sonido de taller (lista) |
-| Jue 19 | Reel "Spoiler de lo que fue la Expo Fátima 2026" (listo: recorrido del video largo en cámara rápida, sonido de taller) | Expo |
+| Jue 19 | Reel "Spoiler de lo que fue la Expo Fátima 2026" (listo: 11 tomas de 2,5 s a velocidad normal del video largo, sonido de taller) | Expo |
 | Vie 20 | Carrusel con los trabajos de los alumnos (muebles y piezas de cada taller) | Expo |
 | Sáb 21 | Reel o carrusel de los stands, emprendimientos y familias | Expo |
 | Dom 22 | Video del show y la música de la Expo | Expo |

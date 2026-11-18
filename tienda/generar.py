@@ -1,7 +1,7 @@
 """Genera las tiendas online de La Presumida (Florida + Beccar) y Pastas Paz (Olivos).
 Uso: python3 tienda/generar.py
-Precios: mediana del precio cobrado por artículo en los cierres de Maxi Rest (tablero-auto/data/cierres.json)
-de los últimos 10 días; si un artículo no se vendió, queda el precio fijo de la lista de abajo.
+Precios: lista de precios de Maxi Rest (tienda/lista_precios.json, archivo precios_articulos que pasó Juan el 18/11/2026).
+Si un código no está en la lista, se usa la mediana de lo cobrado en los cierres o el precio fijo de abajo.
 """
 import json, pathlib, statistics, datetime, collections, html
 
@@ -25,8 +25,8 @@ CAT_LP = [
  ('Raviolones', 19, 'Raviolones de salmón', 'Rellenos generosos', 'caja', 15200),
  ('Sorrentinos y rellenas', 29, 'Sorrentinos de jamón y queso', 'Se venden por peso', 'kg', 30400),
  ('Sorrentinos y rellenas', 32, 'Panzottis de espinaca y port salut', '', 'caja', 8400),
- ('Sorrentinos y rellenas', 1163, 'Capelettinis cuatro quesos', '', '', 18900),
- ('Sorrentinos y rellenas', 1164, 'Capelettinis de pollo', '', '', 17800),
+ ('Sorrentinos y rellenas', 1163, 'Capelettinis cuatro quesos', '', 'kg', 18900),
+ ('Sorrentinos y rellenas', 1164, 'Capelettinis de pollo', '', 'kg', 17800),
  ('Sorrentinos y rellenas', 30, 'Tortelettis', '', '', 18700),
  ('Ñoquis', 23, 'Ñoquis de papa', 'Se venden por peso', 'kg', 13000),
  ('Ñoquis', 2403, 'Ñoquis de espinaca', 'Se venden por peso', 'kg', 13000),
@@ -49,10 +49,10 @@ CAT_LP = [
  ('Canelones y lasagna', 286, 'Canelones de pollo', 'Para hornear', 'u', 3000),
  ('Canelones y lasagna', 287, 'Canelones de espinaca', 'Para hornear', 'u', 3000),
  ('Canelones y lasagna', 288, 'Canelones de pavita', 'Para hornear', 'u', 3000),
- ('Canelones y lasagna', 2324, 'Canelones con salsa', 'Bandeja lista para el horno', '', 23300),
+ ('Canelones y lasagna', 2324, 'Canelones con salsa', 'Bandeja lista para el horno', 'kg', 23300),
  ('Canelones y lasagna', 26, 'Lasagna de ricota', 'Para hornear', 'u', 9200),
  ('Canelones y lasagna', 275, 'Lasagna de muzzarella', 'Para hornear', 'u', 9200),
- ('Canelones y lasagna', 2319, 'Lasagna con salsa', 'Bandeja lista para el horno', '', 24900),
+ ('Canelones y lasagna', 2319, 'Lasagna con salsa', 'Bandeja lista para el horno', 'kg', 24900),
  ('Canelones y lasagna', 20, 'Panqueques', 'Para canelones', 'docena', 6800),
  ('Salsas', 50, 'Fileto', 'Hecha por nosotros', 'chica', 4200),
  ('Salsas', 255, 'Fileto', 'Hecha por nosotros', 'mediana', 5800),
@@ -106,9 +106,9 @@ CAT_LP = [
  ('Tartas y empanadas', 135, 'Tarta de zapallito', 'Individual', 'u', 9000),
  ('Tartas y empanadas', 121, 'Tarta de berenjena', 'Individual', 'u', 9000),
  ('Tartas y empanadas', 422, 'Tarta de queso y cebolla', 'Individual', 'u', 9000),
- ('Tartas y empanadas', 396, 'Tarta grande de verdura', 'Grande', 'u', 26400),
- ('Tartas y empanadas', 140, 'Tarta grande de jamón y queso', 'Grande', 'u', 29700),
- ('Tartas y empanadas', 470, 'Tarta grande de pollo', 'Grande', 'u', 31100),
+ ('Tartas y empanadas', 396, 'Tarta grande de verdura', 'Grande', 'kg', 26400),
+ ('Tartas y empanadas', 140, 'Tarta grande de jamón y queso', 'Grande', 'kg', 29700),
+ ('Tartas y empanadas', 470, 'Tarta grande de pollo', 'Grande', 'kg', 31100),
  ('Tartas y empanadas', 124, 'Empanada de carne', '', 'u', 2800),
  ('Tartas y empanadas', 125, 'Empanada de pollo', '', 'u', 2800),
  ('Tartas y empanadas', 126, 'Empanada de jamón y queso', '', 'u', 2800),
@@ -145,8 +145,8 @@ CAT_PZ = [
  ('Sorrentinos y rellenas', 2309, 'Sorrentinos de espinaca', 'Se venden por peso', 'kg', 28400),
  ('Sorrentinos y rellenas', 28, 'Sorrentinos light', 'Se venden por peso', 'kg', 24100),
  ('Sorrentinos y rellenas', 4012, 'Panzottis de calabaza', '', 'caja', 8400),
- ('Sorrentinos y rellenas', 1163, 'Capelettinis cuatro quesos', '', '', 18300),
- ('Sorrentinos y rellenas', 1164, 'Capelettinis de pollo', '', '', 17700),
+ ('Sorrentinos y rellenas', 1163, 'Capelettinis cuatro quesos', '', 'kg', 18300),
+ ('Sorrentinos y rellenas', 1164, 'Capelettinis de pollo', '', 'kg', 17700),
  ('Sorrentinos y rellenas', 30, 'Tortelettis', '', '', 19000),
  ('Ñoquis', 23, 'Ñoquis de papa', 'Se venden por peso', 'kg', 13000),
  ('Ñoquis', 2403, 'Ñoquis de espinaca', 'Se venden por peso', 'kg', 13000),
@@ -170,8 +170,8 @@ CAT_PZ = [
  ('Canelones y lasagna', 21, 'Canelones de ricota y verdura', 'Para hornear', 'u', 3000),
  ('Canelones y lasagna', 286, 'Canelones de pollo', 'Para hornear', 'u', 3000),
  ('Canelones y lasagna', 287, 'Canelones de espinaca', 'Para hornear', 'u', 3000),
- ('Canelones y lasagna', 2324, 'Canelones con salsa', 'Bandeja lista para el horno', '', 24000),
- ('Canelones y lasagna', 2318, 'Lasagna con salsa', 'Bandeja lista para el horno', '', 21800),
+ ('Canelones y lasagna', 2324, 'Canelones con salsa', 'Bandeja lista para el horno', 'kg', 24000),
+ ('Canelones y lasagna', 2318, 'Lasagna con salsa', 'Bandeja lista para el horno', 'kg', 21800),
  ('Salsas', 50, 'Fileto', 'Hecha por nosotros', 'chica', 4200),
  ('Salsas', 255, 'Fileto', 'Hecha por nosotros', 'mediana', 5800),
  ('Salsas', 51, 'Bolognesa', 'Hecha por nosotros', 'chica', 5000),
@@ -215,8 +215,8 @@ CAT_PZ = [
  ('Tartas y empanadas', 2654, 'Tarta caprese', 'Individual', 'u', 8700),
  ('Tartas y empanadas', 2651, 'Tarta de brócoli', 'Individual', 'u', 8900),
  ('Tartas y empanadas', 2652, 'Tarta de champignon', 'Individual', 'u', 8800),
- ('Tartas y empanadas', 396, 'Tarta grande de verdura', 'Grande', 'u', 26000),
- ('Tartas y empanadas', 470, 'Tarta grande de pollo', 'Grande', 'u', 31200),
+ ('Tartas y empanadas', 396, 'Tarta grande de verdura', 'Grande', 'kg', 26000),
+ ('Tartas y empanadas', 470, 'Tarta grande de pollo', 'Grande', 'kg', 31200),
  ('Tartas y empanadas', 124, 'Empanada de carne', '', 'u', 2800),
  ('Tartas y empanadas', 125, 'Empanada de pollo', '', 'u', 2800),
  ('Tartas y empanadas', 126, 'Empanada de jamón y queso', '', 'u', 2800),
@@ -303,9 +303,10 @@ def precios_reales(grupo):
 def armar(clave):
     m = MARCAS[clave]
     reales, ult = precios_reales(m['grupo'])
+    lista = {int(k): v for k, v in json.loads((RAIZ / 'tienda' / 'lista_precios.json').read_text()).items()}
     prods = []
     for i, (cat, cod, nom, desc, uni, pr) in enumerate(m['catalogo']):
-        prods.append(dict(id=i, cat=cat, n=nom, d=desc, u=uni, p=reales.get(cod, pr), img=IMG.get(cat, '')))
+        prods.append(dict(id=i, cat=cat, n=nom, d=desc, u=uni, p=round(lista.get(cod) or reales.get(cod, pr)), img=IMG.get(cat, '')))
     cats = list(dict.fromkeys(p['cat'] for p in prods))
     ahora = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
     datos = dict(marca=m['nombre'], locales=m['locales'], prods=prods, cats=cats, clave=clave)
@@ -330,7 +331,7 @@ def armar(clave):
         tpl = tpl.replace(k, v)
     (RAIZ / m['archivo']).write_text(tpl)
     print(m['archivo'], len(prods), 'productos;', sum(1 for i, x in enumerate(m['catalogo']) if x[1] in reales),
-          'con precio real de los cierres hasta', ult)
+          'con precio de la lista de Maxi Rest:', sum(1 for x in m['catalogo'] if x[1] in lista))
 
 
 if __name__ == '__main__':

@@ -20,6 +20,15 @@ while read -r ID NOMBRE MODO; do
     python3 clientes/tallerfatima/herramientas/fotogramas.py "/tmp/drv/$NOMBRE.orig.mp4" "$OUT/cuadros" "$(python3 -c "print($DUR/120)")" $FOTOS
     rm -f "/tmp/drv/$NOMBRE.orig.mp4"; continue
   fi
+  if [ "${MODO:-}" = "tomas" ]; then
+    mkdir -p "$OUT/tomas"; FAC=$(python3 -c "print($DUR/120)")
+    for T in $(cat clientes/tallerfatima/herramientas/tomas_momentos.txt); do
+      INI=$(python3 -c "print(max(0,$T*$FAC-1))")
+      ffmpeg -nostdin -v error -y -ss "$INI" -t 4 -i "/tmp/drv/$NOMBRE.orig.mp4" -vf "scale='if(gt(iw,ih),1920,-2)':'if(gt(iw,ih),-2,1920)',fps=30" -an -c:v libx264 -preset veryfast -crf 24 -movflags +faststart "$OUT/tomas/toma-$T.mp4"
+      ls -la "$OUT/tomas/toma-$T.mp4"
+    done
+    rm -f "/tmp/drv/$NOMBRE.orig.mp4"; continue
+  fi
   AUDIO="-an"
   if [ "${MODO:-}" = "normal" ]; then
     AUDIO="-c:a aac -b:a 128k"

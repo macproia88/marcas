@@ -59,7 +59,7 @@ El video largo original es de 432x768, así que sus fotos fijas van enmarcadas t
 Música: cada pieza lleva un sonido distinto según el contenido (`herramientas/musica_estilos.py`: festiva, emotiva, acústica; `musica_taller.py`: sonidos de taller; o el sonido en vivo).
 | Día | Feed | Historia |
 |---|---|---|
-| Mié 18 | 10:00 Carrusel "Así se vivió nuestra Expo 2026" (pedido de la clienta: a las 10) | 10:15 flashes, sonido de taller |
+| Mié 18 | 10:00 Carrusel "Así se vivió nuestra Expo 2026" (pedido de la clienta: a las 10) | 16:00 flashes, sonido de taller (pedido de la clienta) |
 | Jue 19 | 21:00 Reel spoiler, 11 tomas a velocidad normal, música festiva | 13:00 "Hoy 21 h el spoiler", acústica |
 | Vie 20 | 21:00 Carrusel "Lo que hicieron nuestros alumnos" | 21:15 taller, sonido de taller |
 | Sáb 21 | 21:00 Carrusel "Una Expo para toda la comunidad" | 21:15 nenas bailando, festiva |

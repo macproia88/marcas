@@ -1,20 +1,26 @@
 [
  {
   "tipo": "dm",
+  "para_id": "1079283865130362",
+  "texto": "¡Hola! 😊 Del 12 al 15 de diciembre en principio tenemos libre la quinta con casa (duermen cómodas 5, con pileta propia). Entrando el 12 a las 10 h y saliendo el 15 a las 19 h serían 4 días: sáb y dom $200.000 c/u + lun y mar $160.000 c/u = $720.000 🌳 ¿Cuántos serían?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
   "para_id": "1597894105480432",
-  "texto": "¡Dale! 🌳 Para 15-20 personas: el 30/12 en principio tenemos libre la quinta de día (10 a 19 h, $150.000). El 31/12 y 1/1 nuestras quintas ya están alquiladas, pero tenemos otra quinta para hasta 20 donde duermen 8: $950.000 los 2 días 🥂 ¿Te sirve esa combinación? ¿Cuántos se quedarían a dormir?",
+  "texto": "¡Dale! 🙌 Queda en General Rodríguez, a 600 m de la autopista del Oeste. Escribinos por WhatsApp y te pasamos la ubicación exacta para coordinar la visita 👉 wa.me/5491138777015",
   "estado": "pendiente"
  },
  {
   "tipo": "dm",
   "para_id": "1905947233900184",
-  "texto": "¡Gracias por escribir! 😊 Uf, para 40 no vamos a poder: recibimos hasta 20 personas como máximo, por comodidad y seguridad de todos 🙏 Si en algún momento se arma algo de hasta 20, el 6/12 en principio lo tenemos libre. ¡Seguinos en @quintaelflorido! 🌳",
+  "texto": "El domingo 6/12 la quinta de día (10 a 19 h, pileta, quincho y parrilla) sale $160.000 ☀️ Eso sí, es para hasta 20 personas como máximo 🙏 ¿Cuántos serían si se arma algo más chico?",
   "estado": "pendiente"
  },
  {
-  "tipo": "comentario",
-  "comment_id": "18124730962944193",
-  "texto": "¡Hola! 🌳 Estamos en General Rodríguez, a 600 m de la autopista del Oeste. El domingo 29/11 en principio lo tenemos libre: quinta de día de 10 a 19 h, $160.000 ☀️ Te pasamos la ubicación exacta por WhatsApp 👉 wa.me/5491138777015 ¿Cuántos serían?",
+  "tipo": "dm",
+  "para_id": "891951739936763",
+  "texto": "¡Gracias! 💚 Seguinos en @quintaelflorido 🌳",
   "estado": "pendiente"
  }
 ]

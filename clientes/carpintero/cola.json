@@ -157,6 +157,17 @@
   "aprobado": "2026-11-19 18:33 (Juan)"
  },
  {
+  "id": "r4-1119-reel-600-camas",
+  "tipo": "REEL",
+  "fecha": "2026-11-19 18:30",
+  "media": [
+   "clientes/carpintero/videos/v2/1120-reel-600-camas-voz.mp4"
+  ],
+  "texto": "Otro cliente contento 🙌\n\n600 camas de pino, hechas en nuestra fábrica y cargadas para entregar.\n\nHacemos pedidos grandes para negocios y revendedores. Escribinos y te pasamos presupuesto.\n\n📲 WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeFabrica #CamasDePino #Fabricantes #JoséIngenieros #TresDeFebrero",
+  "estado": "pendiente",
+  "aprobado": "2026-11-19 18:29 (Juan)"
+ },
+ {
   "id": "r3-1119-reel-living",
   "tipo": "REEL",
   "fecha": "2026-11-19 19:00",

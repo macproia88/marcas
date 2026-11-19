@@ -960,5 +960,25 @@
   "texto": "",
   "fecha": "2026-11-19 20:00",
   "estado": "pendiente"
+ },
+ {
+  "id": "h-promo-viernes20-a",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-promo-viernes20.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 15:40",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-promo-viernes20-b",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-promo-viernes20.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 21:30",
+  "estado": "pendiente"
  }
 ]

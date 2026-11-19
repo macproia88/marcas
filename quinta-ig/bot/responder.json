@@ -1,8 +1,32 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1169654955569078",
-  "texto": "¡Hola! 😊 Del 24 al 26/12 ya tenemos la casa alquilada, pero del lunes 21 al miércoles 23/12 en principio la tenemos libre 🌳 La casa es ideal para 4: duermen 5, con pileta propia. Lunes a viernes sale $160.000 por día (con noche se cobran los días de estadía: del 21 a las 10 h al 23 a las 19 h serían $480.000). ¿Les sirve esa fecha? Seguinos en @quintaelflorido 💚",
+  "para_id": "1825893321697742",
+  "texto": "¡Hola! 😊 Precio por día (de 10 a 19 h): ☀️ Quinta de día: $150.000 de lunes a jueves y $160.000 viernes, sábado, domingo o feriado. 🛏️ Quinta con casa: $160.000 de lunes a viernes y $200.000 fines de semana y feriados. ¿Para qué fecha la buscás y cuántos son?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1151287503957723",
+  "texto": "¡Hola! 🌳 El día (de 10 a 19 h) en la quinta de día sale $150.000 de lunes a jueves y $160.000 viernes, sábado, domingo o feriado. Tiene pileta, quincho, parrilla y juegos para chicos, hasta 15-20 personas ☀️ ¿Qué fecha tenés en mente y cuántos serían?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "1129028010123392",
+  "texto": "¡Hola! 🎄 Del 24 al 27/12 la casa ya está alquilada, una lástima. En principio tenemos libre del 20 al 23/12 o del 28 al 30/12 (entre semana sale $160.000 por día; con noche se cobran los días que se quedan). Lo de la mascota te lo confirmamos por WhatsApp 🐶 ¿Te sirve alguna de esas fechas?",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18160548274508642",
+  "texto": "¡Gracias a vos! Fue un placer tenerte 🌸💚",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18092486168253897",
+  "texto": "¡Gracias! 💚",
   "estado": "pendiente"
  }
 ]

@@ -1,20 +1,32 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1151287503957723",
-  "texto": "¡Buenísimo! 😊 La quinta de día recibe hasta 20 personas como máximo; más de eso no podemos, por comodidad y seguridad de todos 🙏 Si son 20 o menos, ¡te esperamos! ¿Qué fecha te vendría bien y cuántos serían más o menos? ☀️",
+  "para_id": "1597894105480432",
+  "texto": "¡Hola! 🌳 El 31/12 nuestras dos quintas ya están alquiladas, pero el 30/12 en principio lo tenemos libre (casa $160.000 el día, o quinta de día $150.000, de 10 a 19 h). Para el 31/12 y 1/1 tenemos otra quinta para hasta 20 personas donde duermen 8: $950.000 los 2 días 🥂 ¿Cuántos serían?",
   "estado": "pendiente"
  },
  {
   "tipo": "dm",
-  "para_id": "1935433061203026",
+  "para_id": "1498522115525284",
   "texto": "¡Gracias! Te escribimos al WhatsApp a la brevedad 😊",
   "estado": "pendiente"
  },
  {
   "tipo": "comentario",
-  "comment_id": "18126043471938292",
+  "comment_id": "18075875156760147",
+  "texto": "¡Gracias! 💚🔥",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "17974137120193911",
   "texto": "¡Gracias! 💚",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "17916498261502313",
+  "texto": "¡Qué lindo que te guste! 💚 Seguinos en @quintaelflorido",
   "estado": "pendiente"
  }
 ]

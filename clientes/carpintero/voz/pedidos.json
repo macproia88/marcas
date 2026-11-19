@@ -24,5 +24,11 @@
   "salida": "clientes/carpintero/videos/v2/1118-reel-banquetas-turra.mp4",
   "velocidad": 0.85,
   "texto": "Eh, amiga, ¿todo bien? Escuchame una cosa: tengo alta banqueta pa' venderte, eh. Mirá qué facha, de petiribí tejida, re cheta para tu cocina. Ni lo pienses, amiga, mandame un wasap y te la llevás. Posta te digo."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1120-reel-600-camas.mp4",
+  "salida": "clientes/carpintero/videos/v2/1120-reel-600-camas-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Otro cliente contento. Seiscientas camas de pino, hechas en nuestra fábrica y cargadas para entregar. En El Carpintero 3 hacemos pedidos grandes, para negocios y revendedores. Escribinos por WhatsApp y te pasamos presupuesto."
  }
 ]

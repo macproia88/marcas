@@ -28,13 +28,23 @@
   "aprobado": "2026-11-17 23:21 (Juan, confirmado por la clienta)"
  },
  {
+  "id": "1119-historia-mujeres2000",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1119-historia-mujeres2000.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 13:00",
+  "estado": "borrador"
+ },
+ {
   "id": "1119-historia-expo",
   "tipo": "STORY",
   "media": [
    "clientes/tallerfatima/videos/1119-historia-expo.mp4"
   ],
   "texto": "",
-  "fecha": "2026-11-19 13:00",
+  "fecha": "2026-11-20 13:00",
   "estado": "borrador"
  },
  {
@@ -44,7 +54,7 @@
    "clientes/tallerfatima/videos/1119-reel-spoiler-expo.mp4"
   ],
   "texto": "El sábado 7 de noviembre fue nuestra tan esperada Expo 2026 💚\nQuerés ver un poco de lo que pasó ese día? Mirá 👇\n\nMuebles hechos por alumnos, stands creativos, clases abiertas, sabores, familias y vecinos recorriendo cada taller y música para celebrar todo lo aprendido en el año.\n\n¡Gracias a todos los que trabajaron y colaboraron para que este día sea posible! 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-19 21:00",
+  "fecha": "2026-11-20 21:00",
   "estado": "borrador"
  },
  {
@@ -60,7 +70,7 @@
    "clientes/tallerfatima/img/expo-trabajos-7.jpg"
   ],
   "texto": "Lo que hicieron nuestros alumnos 🪚💚\n\nEn la Expo Fátima 2026 los talleres abrieron sus puertas: muebles terminados, lámparas, macetas, estantes y las máquinas del taller en manos de los alumnos.\n\nDetrás de cada pieza hay horas de trabajo, aprendizaje y superación. ¡Orgullo de Fátima!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-20 21:00",
+  "fecha": "2026-11-21 21:00",
   "estado": "borrador"
  },
  {
@@ -70,7 +80,7 @@
    "clientes/tallerfatima/videos/1120-historia-expo.mp4"
   ],
   "texto": "",
-  "fecha": "2026-11-20 21:15",
+  "fecha": "2026-11-21 21:15",
   "estado": "borrador"
  },
  {
@@ -86,7 +96,7 @@
    "clientes/tallerfatima/img/expo-comunidad-7.jpg"
   ],
   "texto": "Una Expo para toda la comunidad 💚\n\nStands llenos de creatividad, emprendimientos, vestidos de época, nuestra historia en fotos y familias recorriendo cada rincón de la escuela.\n\nLa Expo es de todos los que hacen Fátima día a día. 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-21 21:00",
+  "fecha": "2026-11-22 21:00",
   "estado": "borrador"
  },
  {
@@ -96,7 +106,7 @@
    "clientes/tallerfatima/videos/1121-historia-expo.mp4"
   ],
   "texto": "",
-  "fecha": "2026-11-21 21:15",
+  "fecha": "2026-11-22 21:15",
   "estado": "borrador"
  },
  {
@@ -106,7 +116,7 @@
    "clientes/tallerfatima/videos/1122-reel-show-expo.mp4"
   ],
   "texto": "Y la Expo también fue fiesta 🎶💃\n\nMúsica en vivo, baile y una comunidad que no paró de celebrar todo lo aprendido en el año.\n\n¡Gracias por bailar con nosotros!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-22 21:00",
+  "fecha": "2026-11-23 21:00",
   "estado": "borrador"
  },
  {
@@ -116,7 +126,7 @@
    "clientes/tallerfatima/videos/1122-historia-expo.mp4"
   ],
   "texto": "",
-  "fecha": "2026-11-22 21:15",
+  "fecha": "2026-11-23 21:15",
   "estado": "borrador"
  },
  {
@@ -131,7 +141,7 @@
    "clientes/tallerfatima/img/expo-gracias-6.mp4"
   ],
   "texto": "¡Gracias! 💚\n\nCerramos una semana recordando nuestra Expo Fátima 2026.\n\nGracias a todos los que trabajaron y colaboraron para que este día sea posible: al equipo de cocina, a cada emprendimiento, a las familias y vecinos que nos visitaron y a todo el equipo de la escuela. ¡A vivir la vida y aceptar el reto!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-23 21:00",
+  "fecha": "2026-11-24 21:00",
   "estado": "borrador"
  },
  {
@@ -139,30 +149,6 @@
   "tipo": "STORY",
   "media": [
    "clientes/tallerfatima/videos/1123-historia-expo.mp4"
-  ],
-  "texto": "",
-  "fecha": "2026-11-23 21:15",
-  "estado": "borrador"
- },
- {
-  "id": "1117-carrusel-carpinteria",
-  "tipo": "CARRUSEL",
-  "media": [
-   "clientes/tallerfatima/img/1117-carpinteria-1.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-2.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-3.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-4.jpg",
-   "clientes/tallerfatima/img/1117-carpinteria-5.jpg"
-  ],
-  "texto": "Aprender un oficio con las manos 🪚💚\n\nAsí se vivió la capacitación de carpintería para adultos: herramientas reales, profes con mucha experiencia y un grupo que se anima a aprender haciendo.\n\nCada estudiante que aprende un oficio está abriendo una puerta hacia su autonomía laboral.\n\n👉 ¿Querés saber más sobre nuestros talleres? Escribinos por mensaje.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #carpintería",
-  "fecha": "2026-11-24 21:00",
-  "estado": "borrador"
- },
- {
-  "id": "1117-historia",
-  "tipo": "STORY",
-  "media": [
-   "clientes/tallerfatima/img/1117-historia.jpg"
   ],
   "texto": "",
   "fecha": "2026-11-24 21:15",
@@ -176,6 +162,30 @@
   ],
   "texto": "",
   "fecha": "2026-11-25 13:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1117-carrusel-carpinteria",
+  "tipo": "CARRUSEL",
+  "media": [
+   "clientes/tallerfatima/img/1117-carpinteria-1.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-2.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-3.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-4.jpg",
+   "clientes/tallerfatima/img/1117-carpinteria-5.jpg"
+  ],
+  "texto": "Aprender un oficio con las manos 🪚💚\n\nAsí se vivió la capacitación de carpintería para adultos: herramientas reales, profes con mucha experiencia y un grupo que se anima a aprender haciendo.\n\nCada estudiante que aprende un oficio está abriendo una puerta hacia su autonomía laboral.\n\n👉 ¿Querés saber más sobre nuestros talleres? Escribinos por mensaje.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #carpintería",
+  "fecha": "2026-11-25 21:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1117-historia",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1117-historia.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-25 21:15",
   "estado": "borrador"
  },
  {

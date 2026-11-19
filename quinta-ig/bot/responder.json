@@ -1,31 +1,19 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1825893321697742",
-  "texto": "¡Hola! 😊 Precio por día (de 10 a 19 h): ☀️ Quinta de día: $150.000 de lunes a jueves y $160.000 viernes, sábado, domingo o feriado. 🛏️ Quinta con casa: $160.000 de lunes a viernes y $200.000 fines de semana y feriados. ¿Para qué fecha la buscás y cuántos son?",
-  "estado": "pendiente"
- },
- {
-  "tipo": "dm",
   "para_id": "1151287503957723",
-  "texto": "¡Hola! 🌳 El día (de 10 a 19 h) en la quinta de día sale $150.000 de lunes a jueves y $160.000 viernes, sábado, domingo o feriado. Tiene pileta, quincho, parrilla y juegos para chicos, hasta 15-20 personas ☀️ ¿Qué fecha tenés en mente y cuántos serían?",
+  "texto": "¡Buenísimo! 😊 La quinta de día recibe hasta 20 personas como máximo; más de eso no podemos, por comodidad y seguridad de todos 🙏 Si son 20 o menos, ¡te esperamos! ¿Qué fecha te vendría bien y cuántos serían más o menos? ☀️",
   "estado": "pendiente"
  },
  {
   "tipo": "dm",
-  "para_id": "1129028010123392",
-  "texto": "¡Hola! 🎄 Del 24 al 27/12 la casa ya está alquilada, una lástima. En principio tenemos libre del 20 al 23/12 o del 28 al 30/12 (entre semana sale $160.000 por día; con noche se cobran los días que se quedan). Lo de la mascota te lo confirmamos por WhatsApp 🐶 ¿Te sirve alguna de esas fechas?",
+  "para_id": "1935433061203026",
+  "texto": "¡Gracias! Te escribimos al WhatsApp a la brevedad 😊",
   "estado": "pendiente"
  },
  {
   "tipo": "comentario",
-  "comment_id": "18160548274508642",
-  "texto": "¡Gracias a vos! Fue un placer tenerte 🌸💚",
-  "estado": "pendiente"
- },
- {
-  "tipo": "comentario",
-  "comment_id": "18092486168253897",
+  "comment_id": "18126043471938292",
   "texto": "¡Gracias! 💚",
   "estado": "pendiente"
  }

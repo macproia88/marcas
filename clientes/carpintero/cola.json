@@ -146,6 +146,17 @@
   "aprobado": "2026-11-17 15:56 (Juan)"
  },
  {
+  "id": "r4-1119-historia-600-camas",
+  "tipo": "STORY",
+  "fecha": "2026-11-19 18:30",
+  "media": [
+   "clientes/carpintero/videos/v2/1120-reel-600-camas-voz.mp4"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-19 18:33 (Juan)"
+ },
+ {
   "id": "r3-1119-reel-living",
   "tipo": "REEL",
   "fecha": "2026-11-19 19:00",

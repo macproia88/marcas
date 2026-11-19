@@ -35,7 +35,8 @@
   ],
   "texto": "",
   "fecha": "2026-11-19 13:00",
-  "estado": "borrador"
+  "estado": "pendiente",
+  "aprobado": "2026-11-19 13:00 (Juan)"
  },
  {
   "id": "1119-historia-expo",

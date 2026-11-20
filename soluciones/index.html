@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Automatización e inteligencia artificial para pymes y emprendedores: tableros, compras e IVA, club de clientes, redes y agentes de IA.">
+<meta property="og:title" content="Juan Ponce · Automatización e IA para pymes">
+<meta property="og:description" content="Tu negocio en piloto automático: agentes de IA que hacen el trabajo repetitivo por vos.">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Juan Ponce Soluciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: estética oscura de producto tech. Hero con red de datos animada + consola de un agente IA, bento de servicios, flujos IA tipo pipeline */
+:root{
+  --bg:#07070C; --bg2:#0E0D16; --card:rgba(255,255,255,.035); --card-b:rgba(255,255,255,.09);
+  --ink:#F4F2F7; --muted:#A19DB0; --dim:#6D6880;
+  --red:#FF3B47; --coral:#FF7A59; --violet:#8B5CF6; --cyan:#3DD9EB; --ok:#3EE08F;
+  --grad:linear-gradient(100deg,#FF3B47 0%,#FF7A59 40%,#8B5CF6 100%);
+  --display:'Sora','Segoe UI',system-ui,sans-serif;
+  --body:'Inter','Segoe UI',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;overflow-x:hidden}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4.4vw,52px);font-weight:700;letter-spacing:-.035em}
+h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--card-b);border-radius:999px;padding:6px 12px;background:var(--card)}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+section{padding-block:96px;position:relative}
+.lead{color:var(--muted);max-width:60ch;font-size:18px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:1px solid var(--card-b);background:var(--card);transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+.btn.primary{background:var(--grad);border:0;color:#fff;box-shadow:0 10px 40px -10px rgba(255,59,71,.7)}
+.btn.primary:hover{box-shadow:0 14px 50px -8px rgba(255,59,71,.9)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(7,7,12,.6);border-bottom:1px solid var(--card-b)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:#07070C}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:17px;text-decoration:none}
+.logo b{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;font-size:14px;color:#fff}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--muted)}
+.nav ul a{text-decoration:none}.nav ul a:hover{color:var(--ink)}
+
+/* HERO */
+.hero{position:relative;padding-block:72px 90px;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.85}
+.glow{position:absolute;width:620px;height:620px;border-radius:50%;filter:blur(110px);opacity:.35;z-index:0;pointer-events:none}
+.g1{background:#FF3B47;top:-260px;left:-160px}.g2{background:#8B5CF6;top:40px;right:-240px;opacity:.28}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(42px,6.6vw,84px);font-weight:800;letter-spacing:-.045em;margin-top:22px}
+.hero .lead{font-size:19px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.trust{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;font-family:var(--mono);font-size:13px;color:var(--dim)}
+.trust b{display:block;font-family:var(--display);font-size:26px;color:var(--ink);font-weight:700}
+
+/* consola agente */
+.console{background:linear-gradient(180deg,rgba(20,18,30,.92),rgba(12,11,20,.92));border:1px solid var(--card-b);border-radius:18px;box-shadow:0 40px 90px -30px rgba(139,92,246,.45),0 0 0 1px rgba(255,255,255,.02) inset;overflow:hidden;min-width:0}
+.console .bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--card-b);font-family:var(--mono);font-size:12px;color:var(--dim)}
+.console .bar s{width:10px;height:10px;border-radius:50%;background:#2B2838;text-decoration:none}
+.console .bar span{margin-left:8px}
+.console .bar em{margin-left:auto;font-style:normal;color:var(--ok)}
+.log{font-family:var(--mono);font-size:13px;line-height:1.75;padding:16px 18px 6px;min-height:270px;color:var(--muted)}
+.log div{white-space:pre-wrap;word-break:break-word}
+.log .k{color:var(--cyan)}.log .o{color:var(--ok)}.log .w{color:#FFC857}.log .r{color:var(--coral)}
+.cursor{display:inline-block;width:8px;height:15px;background:var(--cyan);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.result{margin:6px 14px 14px;border:1px solid rgba(62,224,143,.3);background:rgba(62,224,143,.06);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:4px 10px;font-size:13px}
+.result[hidden]{display:none}
+.result b{font-family:var(--display);font-size:15px}
+.result span{color:var(--muted);font-family:var(--mono);font-size:12px}
+.result strong{grid-row:span 2;align-self:center;font-family:var(--display);font-size:22px;color:var(--ok)}
+
+/* DEMO TABS */
+.demo{background:linear-gradient(180deg,rgba(20,18,30,.94),rgba(12,11,20,.94));border:1px solid var(--card-b);border-radius:18px;box-shadow:0 40px 90px -30px rgba(139,92,246,.45);overflow:hidden;min-width:0}
+.demo .bar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--card-b)}
+.dtab{font:inherit;font-family:var(--mono);font-size:12px;color:var(--muted);background:transparent;border:1px solid transparent;border-radius:8px;padding:6px 10px;cursor:pointer}
+.dtab[aria-selected="true"]{color:var(--ink);border-color:var(--card-b);background:rgba(255,255,255,.05)}
+.demo .bar em{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:11px;color:var(--ok)}
+.pane{padding:14px;min-height:340px}
+.map{position:relative;border-radius:12px;overflow:hidden;background:#0B0A13;border:1px solid var(--card-b);height:210px}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--mono);font-size:10px;color:var(--ink);opacity:0;animation:drop .5s forwards}
+.pin i{width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--coral);box-shadow:0 0 12px currentColor}
+.pin.me i{background:var(--ok);width:16px;height:16px}
+.pin.hi i{background:var(--red)}.pin.lo i{background:#FFC857}
+.pin span{background:rgba(7,7,12,.8);border:1px solid var(--card-b);border-radius:5px;padding:1px 5px;white-space:nowrap}
+@keyframes drop{from{opacity:0;transform:translate(-50%,-140%)}to{opacity:1;transform:translate(-50%,-100%)}}
+.mrows{display:grid;gap:6px;margin-top:10px;font-size:13px}
+.mrow{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;border:1px solid var(--card-b);border-radius:9px;padding:7px 10px;font-variant-numeric:tabular-nums}
+.mrow b{font-family:var(--mono);font-weight:500;font-size:12px}
+.pill{font-family:var(--mono);font-size:11px;border-radius:99px;padding:2px 8px}
+.pill.g{background:rgba(62,224,143,.12);color:var(--ok)}.pill.r{background:rgba(255,59,71,.14);color:#FF6B74}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+.legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--c)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px}
+.cal div{border:1px solid var(--card-b);border-radius:8px;padding:6px 4px;min-height:58px;font-family:var(--mono);font-size:10px;color:var(--dim);display:flex;flex-direction:column;gap:4px;min-width:0}
+.cal b{font-weight:500;color:var(--muted)}
+.post{border-radius:5px;padding:2px 4px;font-size:9.5px;color:#fff;opacity:0;animation:pop .4s forwards;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post.reel{background:linear-gradient(90deg,#FF3B47,#8B5CF6)}.post.foto{background:#2A6CF0}.post.hist{background:#B4469A}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.stats div{border:1px solid var(--card-b);border-radius:10px;padding:8px 10px}
+.stats b{display:block;font-family:var(--display);font-size:20px}
+.stats span{font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.minilog{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:10px;line-height:1.7}
+.minilog .o{color:var(--ok)}.minilog .k{color:var(--cyan)}
+.ex{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:8px}
+
+/* VIDEO CV */
+.player{margin-top:40px;border:1px solid var(--card-b);border-radius:22px;overflow:hidden;background:#0B0A13;box-shadow:0 40px 100px -40px rgba(255,59,71,.45)}
+.stage{position:relative;aspect-ratio:16/9;max-width:100%;overflow:hidden;background:radial-gradient(700px 300px at 50% 0%,rgba(139,92,246,.18),transparent 70%),#0B0A13}
+.lane{position:absolute;top:16%;bottom:14%;display:flex;flex-direction:column;gap:2.2%;}
+.lane h4{margin:0 0 4px;font-family:var(--mono);font-weight:500;font-size:clamp(9px,1.1vw,13px);color:var(--dim);letter-spacing:.06em}
+.inbox{left:3%;width:26%}.ok{left:70%;width:27%}
+.cvc{position:absolute;z-index:2;width:24%;height:9.5%;border-radius:10px;background:#16141F;border:1px solid var(--card-b);display:flex;align-items:center;gap:6%;padding:0 4%;font-size:clamp(9px,1.15vw,14px);transition:all .7s cubic-bezier(.2,.8,.2,1);opacity:0}
+.cvc .av{width:clamp(16px,2.6vw,34px);height:clamp(16px,2.6vw,34px);border-radius:50%;background:var(--c);flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#0B0A13;font-size:.85em}
+.cvc .t{min-width:0;line-height:1.2}.cvc .t b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cvc .t span{color:var(--dim);font-family:var(--mono);font-size:.8em}
+.cvc .sc{margin-left:auto;font-family:var(--mono);font-weight:500;color:var(--ok);opacity:0;transition:opacity .4s}
+.cvc.bad{opacity:.35!important;filter:grayscale(1)}
+.cvc.good{border-color:rgba(62,224,143,.55);box-shadow:0 0 22px rgba(62,224,143,.18)}
+.brain{position:absolute;z-index:1;left:39%;top:30%;width:22%;aspect-ratio:1;border-radius:24%;background:var(--grad);display:grid;place-items:center;text-align:center;color:#fff;font-family:var(--display);font-weight:800;font-size:clamp(14px,2.4vw,30px);box-shadow:0 0 60px rgba(255,59,71,.45)}
+.brain small{display:block;font-family:var(--mono);font-weight:400;font-size:.36em;opacity:.9;margin-top:4px}
+.brain.on{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 90px rgba(255,59,71,.8);transform:scale(1.04)}}
+.criteria{position:absolute;left:33%;top:72%;width:34%;display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.criteria span{font-family:var(--mono);font-size:clamp(8px,1vw,12px);border:1px solid var(--card-b);border-radius:6px;padding:2px 6px;color:var(--muted);opacity:0;transition:opacity .4s}
+.criteria span.on{opacity:1;border-color:rgba(61,217,235,.5);color:var(--cyan)}
+.caption{position:absolute;left:0;right:0;top:4%;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(12px,1.9vw,22px);padding:0 4%}
+.ctrl{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--card-b)}
+.ctrl button{font:inherit;width:40px;height:40px;border-radius:50%;border:0;background:var(--grad);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none}
+.prog{flex:1;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--grad)}
+.ctrl span{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
+.bigplay{position:absolute;inset:0;display:grid;place-items:center;background:rgba(7,7,12,.55);border:0;cursor:pointer;color:#fff;font:inherit}
+.bigplay[hidden]{display:none}
+.bigplay b{width:86px;height:86px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-size:30px;box-shadow:0 0 50px rgba(255,59,71,.6)}
+
+/* MARQUEE */
+.marquee{border-block:1px solid var(--card-b);padding-block:18px;overflow:hidden;background:var(--bg2)}
+.track{display:flex;gap:46px;width:max-content;animation:scroll 32s linear infinite;font-family:var(--mono);font-size:14px;color:var(--dim)}
+.track span{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.track span::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--coral)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* PAINS */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.pain{border:1px solid var(--card-b);background:var(--card);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.pain .t{font-family:var(--mono);font-size:12px;color:var(--red)}
+.pain q{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.3;quotes:"“" "”"}
+.pain p{color:var(--muted);font-size:15px}
+.pain .fix{margin-top:auto;font-family:var(--mono);font-size:12px;color:var(--ok)}
+
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:44px}
+.b{position:relative;border:1px solid var(--card-b);background:var(--card);border-radius:20px;padding:26px;overflow:hidden;min-width:0;transition:border-color .25s,transform .25s}
+.b:hover{border-color:rgba(255,122,89,.45);transform:translateY(-3px)}
+.b::after{content:"";position:absolute;inset:auto -40% -60% auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,59,71,.18),transparent 70%);pointer-events:none}
+.b.w4{grid-column:span 4}.b.w3{grid-column:span 3}.b.w2{grid-column:span 2}
+.b .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,59,71,.12);color:var(--coral);margin-bottom:18px}
+.b .ic svg{width:22px;height:22px}
+.b p{color:var(--muted);margin-top:8px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px solid var(--card-b);border-radius:8px;padding:4px 9px}
+/* mini chart en bento */
+.spark{margin-top:18px;height:90px;display:flex;align-items:flex-end;gap:6px}
+.spark i{flex:1;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#FF7A59,rgba(139,92,246,.35))}
+.spark i:last-child{background:var(--grad);box-shadow:0 0 18px rgba(255,59,71,.6)}
+
+/* IA PIPELINES */
+.ia{background:radial-gradient(1000px 500px at 80% 0%,rgba(139,92,246,.14),transparent 60%),radial-gradient(800px 400px at 0% 100%,rgba(255,59,71,.12),transparent 60%),var(--bg2);border-block:1px solid var(--card-b)}
+.pipes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
+.pipe{border:1px solid var(--card-b);background:rgba(7,7,12,.55);border-radius:18px;padding:22px;min-width:0}
+.flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;font-family:var(--mono);font-size:12px}
+.flow span{border:1px solid var(--card-b);border-radius:10px;padding:8px 10px;color:var(--muted);text-align:center;min-width:0}
+.flow span.out{border-color:rgba(61,217,235,.45);color:var(--cyan);background:rgba(61,217,235,.06)}
+.flow .ai-node{position:relative;width:46px;height:46px;border-radius:14px;background:var(--grad);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:13px;color:#fff;box-shadow:0 0 26px rgba(255,59,71,.45)}
+.flow .ai-node::before,.flow .ai-node::after{content:"";position:absolute;top:50%;width:10px;height:2px;background:var(--coral)}
+.flow .ai-node::before{right:100%}.flow .ai-node::after{left:100%}
+.pipe h3{margin-top:18px}
+.pipe p{color:var(--muted);font-size:15px;margin-top:6px}
+.human{margin-top:26px;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:15px}
+.human b{color:var(--ink)}
+
+/* FINDER */
+.finder{border:1px solid var(--card-b);background:var(--card);border-radius:20px;padding:28px;margin-top:40px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{font:inherit;font-size:15px;padding:10px 16px;border-radius:10px;border:1px solid var(--card-b);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.opt:hover{color:var(--ink)}
+.opt[aria-pressed="true"]{border-color:transparent;background:var(--grad);color:#fff}
+.answer{margin-top:22px;font-family:var(--mono);font-size:14px;color:var(--muted);border-top:1px solid var(--card-b);padding-top:18px;min-height:84px}
+.answer b{display:block;font-family:var(--display);font-size:22px;color:var(--ink);margin-bottom:6px;font-weight:600}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px;position:relative}
+.step{border:1px solid var(--card-b);border-radius:18px;padding:22px;background:var(--card)}
+.step .n{font-family:var(--mono);font-size:12px;color:var(--coral)}
+.step h3{margin-top:10px}
+.step p{color:var(--muted);font-size:15px;margin-top:8px}
+.step .d{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:14px}
+
+/* EXP */
+.exp{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:44px}
+.exp ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.exp li{border:1px solid var(--card-b);border-radius:14px;padding:14px 16px;background:var(--card);font-size:15.5px;display:flex;gap:12px}
+.exp li::before{content:"✓";color:var(--ok);font-family:var(--mono)}
+.big{border-radius:22px;padding:34px;background:var(--grad);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.big p{font-family:var(--display);font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.02em}
+.big small{font-size:14px;opacity:.9}
+
+/* CONTACT */
+.cta-box{position:relative;border-radius:28px;padding:56px 40px;overflow:hidden;border:1px solid var(--card-b);background:radial-gradient(600px 300px at 20% 0%,rgba(255,59,71,.35),transparent 70%),radial-gradient(600px 300px at 90% 100%,rgba(139,92,246,.35),transparent 70%),#0E0D16;text-align:center}
+.cta-box h2{font-size:clamp(32px,5vw,58px)}
+.cta-box .lead{margin-inline:auto}
+.cta-box .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.handle{margin-top:18px;font-family:var(--mono);font-size:13px;color:var(--dim)}
+footer{padding-block:30px;color:var(--dim);font-size:13px;font-family:var(--mono)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:920px){
+  .hero .wrap,.exp{grid-template-columns:1fr}
+  .nav ul{display:none}
+  .pains,.pipes{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .b.w4,.b.w3,.b.w2{grid-column:auto}
+  .steps{grid-template-columns:1fr 1fr}
+  section{padding-block:68px}
+}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.flow{grid-template-columns:1fr;justify-items:stretch}.flow .ai-node{justify-self:center}.flow .ai-node::before,.flow .ai-node::after{display:none}.cta-box{padding:40px 20px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>JP</b>Juan Ponce</a>
+    <ul><li><a href="#servicios">Servicios</a></li><li><a href="#ia">Automatizaciones IA</a></li><li><a href="#video-cv">Demo</a></li><li><a href="#proceso">Cómo trabajo</a></li></ul>
+    <a class="btn primary" href="#contacto" style="padding:10px 16px;font-size:14px">Agendar diagnóstico</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="wrap">
+    <div>
+      <span class="tag"><i></i>Automatización + IA para pymes</span>
+      <h1>Tu negocio en <span class="grad">piloto automático.</span></h1>
+      <p class="lead">Conecto tu sistema de caja, tus planillas, WhatsApp y tus redes con agentes de inteligencia artificial que hacen el trabajo repetitivo por vos. Vos mirás los números y tomás decisiones.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contacto">Quiero automatizar mi negocio →</a>
+        <a class="btn" href="#video-cv">▶ Ver demo</a>
+      </div>
+      <div class="trust">
+        <div><b>24/7</b>agentes trabajando</div>
+        <div><b>0</b>sistemas nuevos para aprender</div>
+        <div><b>1ª</b>charla sin cargo</div>
+      </div>
+    </div>
+    <div class="demo" aria-label="Demostraciones de agentes de IA">
+      <div class="bar" role="tablist"><button class="dtab" id="t-map" role="tab" aria-selected="true" type="button">Mapa de competencia</button><button class="dtab" id="t-red" role="tab" aria-selected="false" type="button">Redes sociales</button><em>● agente en línea</em></div>
+      <div class="pane" id="p-map" role="tabpanel">
+        <div class="map" id="map"><svg viewBox="0 0 400 210" preserveAspectRatio="none" aria-hidden="true"><g stroke="rgba(255,255,255,.07)" stroke-width="1" fill="none"><path d="M0 40H400M0 95H400M0 150H400M60 0V210M150 0V210M240 0V210M330 0V210"/><path d="M0 200L400 10" stroke="rgba(61,217,235,.18)" stroke-width="3"/><path d="M20 0Q120 110 400 120" stroke="rgba(255,255,255,.12)" stroke-width="2"/></g><circle cx="180" cy="108" r="70" fill="rgba(62,224,143,.06)" stroke="rgba(62,224,143,.3)" stroke-dasharray="4 4"/></svg></div>
+        <div class="legend"><span style="--c:#3EE08F">tu local</span><span style="--c:#FF3B47">más caro que vos</span><span style="--c:#FFC857">más barato</span><span>radio 2 km</span></div>
+        <div class="mrows" id="mrows"></div>
+        <p class="ex">Ejemplo con datos ficticios. El agente releva webs, redes y pizarras de la zona.</p>
+      </div>
+      <div class="pane" id="p-red" role="tabpanel" hidden>
+        <div class="cal" id="cal"></div>
+        <div class="stats"><div><b id="s1">0</b><span>posteos programados</span></div><div><b id="s2">0</b><span>consultas respondidas</span></div><div><b id="s3">+0%</b><span>alcance del mes</span></div></div>
+        <div class="minilog" id="rlog"></div>
+        <p class="ex">Ejemplo con datos ficticios.</p>
+      </div>
+    </div></div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>WhatsApp</span><span>Excel</span><span>Google Sheets</span><span>Google Drive</span><span>Instagram</span><span>Gmail</span><span>ARCA</span><span>PedidosYa</span><span>Rappi</span><span>Sistemas de caja</span><span>Mercado Pago</span><span>Agentes de IA</span>
+    <span>WhatsApp</span><span>Excel</span><span>Google Sheets</span><span>Google Drive</span><span>Instagram</span><span>Gmail</span><span>ARCA</span><span>PedidosYa</span><span>Rappi</span><span>Sistemas de caja</span><span>Mercado Pago</span><span>Agentes de IA</span>
+  </div>
+</div>
+
+<main>
+  <section>
+    <div class="wrap">
+      <span class="tag">El problema</span>
+      <h2 style="margin-top:18px">Tiempo que se va en tareas que <span class="grad">una máquina hace mejor</span></h2>
+      <div class="pains">
+        <div class="pain"><span class="t">// datos</span><q>Me entero de cómo me fue recién a fin de mes.</q><p>La info está en la caja, el banco y planillas sueltas.</p><span class="fix">→ tablero en tiempo real</span></div>
+        <div class="pain"><span class="t">// compras</span><q>Paso horas copiando facturas a un Excel.</q><p>Carga manual, errores y crédito fiscal perdido.</p><span class="fix">→ IA que lee la factura</span></div>
+        <div class="pain"><span class="t">// precios</span><q>No sé qué producto me deja plata.</q><p>Sin costo por receta, los precios se suben a ojo.</p><span class="fix">→ margen por producto</span></div>
+        <div class="pain"><span class="t">// clientes</span><q>Contesto los mismos mensajes todo el día.</q><p>Precios, horarios y pedidos por WhatsApp e Instagram.</p><span class="fix">→ asistente 24/7</span></div>
+        <div class="pain"><span class="t">// equipo</span><q>El equipo no sabe qué se espera de cada uno.</q><p>Sin objetivos ni forma de reconocer al que vende más.</p><span class="fix">→ rankings automáticos</span></div>
+        <div class="pain"><span class="t">// papeles</span><q>Llega una inspección y no encuentro nada.</q><p>Personal, ART y habilitaciones por todos lados.</p><span class="fix">→ checklist con vencimientos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" style="padding-top:0">
+    <div class="wrap">
+      <span class="tag">Servicios</span>
+      <h2 style="margin-top:18px">Todo lo que tu operación necesita, <span class="grad">conectado</span></h2>
+      <p class="lead">Trabajo con lo que ya usás. No hace falta cambiar de sistema.</p>
+      <div class="bento">
+        <article class="b w4"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 20h18M6 16v-5M11 16V8M16 16v-9M21 16V5"/></svg></div>
+          <h3>Tableros de ventas y KPI en vivo</h3><p>Venta del día, ticket promedio, plan del mes y comparación con el año anterior. Se actualiza solo y lo ves desde el celular.</p>
+          <div class="spark" aria-hidden="true"><i style="height:38%"></i><i style="height:52%"></i><i style="height:45%"></i><i style="height:63%"></i><i style="height:58%"></i><i style="height:72%"></i><i style="height:66%"></i><i style="height:81%"></i><i style="height:94%"></i></div></article>
+        <article class="b w2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></div>
+          <h3>Compras e IVA</h3><p>Facturas desglosadas y cruzadas con ARCA. Carpeta lista para el contador.</p>
+          <div class="chips"><span>ARCA</span><span>IVA</span><span>proveedores</span></div></article>
+        <article class="b w2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v10M9.5 10c0-1 1-1.5 2.5-1.5s2.5.7 2.5 1.6c0 2.4-5 1.4-5 3.8 0 1 1 1.6 2.5 1.6s2.5-.5 2.5-1.5"/></svg></div>
+          <h3>Costos y márgenes</h3><p>Costo por receta, CMV y estado de resultados mensual.</p>
+          <div class="chips"><span>CMV</span><span>EERR</span><span>competencia</span></div></article>
+        <article class="b w2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></div>
+          <h3>Club de clientes</h3><p>Registro por QR, cupones y mails a los que dejaron de venir.</p>
+          <div class="chips"><span>QR</span><span>cupones</span><span>fidelización</span></div></article>
+        <article class="b w2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 11a4 4 0 1 0-8 0M4 20c1.5-3.5 4.5-5 8-5s6.5 1.5 8 5"/></svg></div>
+          <h3>Equipo y reconocimiento</h3><p>Rankings de vendedores, checklists y horarios según el movimiento por hora.</p>
+          <div class="chips"><span>ranking</span><span>checklists</span></div></article>
+        <article class="b w3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h4l3-7 4 14 3-7h2"/></svg></div>
+          <h3>Apps de delivery y cierres de caja</h3><p>PedidosYa y Rappi analizados: productos por hora, reclamos y facturas. Los cierres de caja se cargan solos en la planilla.</p>
+          <div class="chips"><span>PedidosYa</span><span>Rappi</span><span>planilla Z</span></div></article>
+        <article class="b w3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6"/></svg></div>
+          <h3>Documentación e inspecciones</h3><p>Personal, ART y seguridad e higiene ordenados, con lo que falta, quién lo resuelve y cuándo vence.</p>
+          <div class="chips"><span>Drive</span><span>vencimientos</span><span>actas</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="ia" class="ia">
+    <div class="wrap">
+      <span class="tag"><i></i>Automatizaciones con IA</span>
+      <h2 style="margin-top:18px">Agentes de IA que <span class="grad">trabajan mientras vos atendés</span></h2>
+      <p class="lead">Cada agente toma algo que hoy hace una persona a mano y lo convierte en un resultado listo para usar.</p>
+      <div class="pipes">
+        <div class="pipe"><div class="flow"><span>Foto de factura</span><div class="ai-node">IA</div><span class="out">Planilla de compras</span></div><h3>Lectura de facturas</h3><p>Lee la factura, la desglosa por producto, cantidad y precio y avisa si un proveedor aumentó.</p></div>
+        <div class="pipe"><div class="flow"><span>Mensaje de cliente</span><div class="ai-node">IA</div><span class="out">Respuesta al instante</span></div><h3>Asistente WhatsApp e Instagram</h3><p>Responde precios, horarios y pedidos las 24 horas con tu forma de hablar, y te pasa la charla cuando hace falta.</p></div>
+        <div class="pipe"><div class="flow"><span>Caja + mails</span><div class="ai-node">IA</div><span class="out">Resumen 8:00 am</span></div><h3>Parte diario automático</h3><p>Cada mañana te llega un resumen corto con la venta, los cierres y las alertas del día anterior.</p></div>
+        <div class="pipe"><div class="flow"><span>"¿Cuánto vendí?"</span><div class="ai-node">IA</div><span class="out">Dato + gráfico</span></div><h3>Preguntale a tus números</h3><p>Le preguntás como a una persona y te contesta con el dato exacto de tus planillas.</p></div>
+        <div class="pipe"><div class="flow"><span>CVs por mail</span><div class="ai-node">IA</div><span class="out">Lista corta</span></div><h3>Filtro de candidatos</h3><p>Lee los CV, los ordena según el puesto y te deja los que conviene entrevistar.</p></div>
+        <div class="pipe"><div class="flow"><span>Fotos del local</span><div class="ai-node">IA</div><span class="out">Reels y posteos</span></div><h3>Contenido para redes</h3><p>Textos, reels con voz en off y calendario de publicaciones a partir de tus fotos.</p></div>
+        <div class="pipe"><div class="flow"><span>Webs, redes y pizarras</span><div class="ai-node">IA</div><span class="out">Mapa de precios</span></div><h3>Mapa de competencia</h3><p>Releva los precios de los competidores de tu zona, los ubica en un mapa y te dice dónde estás más caro o más barato.</p></div>
+        <div class="pipe"><div class="flow"><span>Portales y apps</span><div class="ai-node">IA</div><span class="out">Reportes descargados</span></div><h3>Agentes que navegan por vos</h3><p>Entran a las plataformas que usás y bajan los reportes siempre el mismo día, sin que nadie se acuerde.</p></div>
+        <div class="pipe"><div class="flow"><span>Datos del mes</span><div class="ai-node">IA</div><span class="out">Mensajes y carteles</span></div><h3>Comunicación con el equipo</h3><p>Rankings, reconocimientos y carteles de precios y promos listos para imprimir.</p></div>
+      </div>
+      <p class="human"><span class="tag" style="padding:4px 10px">control humano</span><span><b>La IA prepara, vos decidís.</b> No se envía nada a clientes ni proveedores sin tu aprobación.</span></p>
+    </div>
+  </section>
+
+  <section id="video-cv">
+    <div class="wrap">
+      <span class="tag"><i></i>Demo en video</span>
+      <h2 style="margin-top:18px">Así funciona el <span class="grad">filtro de CV con IA</span></h2>
+      <p class="lead">Llegan decenas de CV por mail. La IA los lee, los compara con lo que pide el puesto y te deja la lista corta para entrevistar. Dale play.</p>
+      <div class="player">
+        <div class="stage" id="stage">
+          <div class="caption" id="cap">Búsqueda: vendedora de mostrador · turno tarde</div>
+          <div class="lane inbox"><h4>BANDEJA DE ENTRADA</h4></div>
+          <div class="lane ok"><h4>PARA ENTREVISTAR</h4></div>
+          <div class="brain" id="brain">IA<small>analizando</small></div>
+          <div class="criteria" id="crit"><span>experiencia en atención</span><span>vive cerca</span><span>disponibilidad tarde</span><span>manejo de caja</span></div>
+          <button class="bigplay" id="bigplay" type="button" aria-label="Reproducir demo"><b>▶</b></button>
+        </div>
+        <div class="ctrl"><button id="pp" type="button" aria-label="Reproducir">▶</button><div class="prog"><i id="bar"></i></div><span id="tm">0:00 / 0:22</span></div>
+      </div>
+      <p class="human" style="margin-top:14px"><span class="tag" style="padding:4px 10px">ejemplo</span><span>Nombres y datos ficticios. Vos definís los criterios y la decisión final es siempre tuya.</span></p>
+      <p style="margin-top:12px"><a class="btn" href="filtro-cv-demo.mp4" target="_blank" rel="noopener">Ver el video en MP4 →</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tag">Diagnóstico rápido</span>
+      <h2 style="margin-top:18px">¿Qué te lleva más tiempo hoy?</h2>
+      <div class="finder">
+        <div class="opts" role="group" aria-label="Elegí una opción">
+          <button class="opt" id="o1" type="button" data-k="numeros" aria-pressed="true">Saber cómo vengo</button>
+          <button class="opt" id="o2" type="button" data-k="compras">Cargar facturas</button>
+          <button class="opt" id="o3" type="button" data-k="mensajes">Responder mensajes</button>
+          <button class="opt" id="o4" type="button" data-k="precios">Poner precios</button>
+          <button class="opt" id="o5" type="button" data-k="equipo">Manejar al equipo</button>
+          <button class="opt" id="o6" type="button" data-k="clientes">Que vuelvan los clientes</button>
+          <button class="opt" id="o7" type="button" data-k="redes">Las redes</button>
+        </div>
+        <div class="answer" id="answer" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" style="padding-top:0">
+    <div class="wrap">
+      <span class="tag">Cómo trabajo</span>
+      <h2 style="margin-top:18px">De la charla a <span class="grad">funcionando</span></h2>
+      <div class="steps">
+        <div class="step"><span class="n">01 · DIAGNÓSTICO</span><h3>Vemos tu operación</h3><p>Dónde se pierde tiempo y plata, y qué conviene automatizar primero.</p><div class="d">1 reunión</div></div>
+        <div class="step"><span class="n">02 · PILOTO</span><h3>Primera versión</h3><p>Armada con tus datos reales para que la veas funcionando.</p><div class="d">pocos días</div></div>
+        <div class="step"><span class="n">03 · PUESTA EN MARCHA</span><h3>Funcionando</h3><p>La dejamos andando y le explico al equipo cómo usarla.</p><div class="d">con tu equipo</div></div>
+        <div class="step"><span class="n">04 · SEGUIMIENTO</span><h3>Mejora continua</h3><p>Medimos resultados, ajustamos y sumamos automatizaciones.</p><div class="d">mes a mes</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <span class="tag">Experiencia</span>
+      <h2 style="margin-top:18px">Probado en una operación real</h2>
+      <div class="exp">
+        <ul>
+          <li>Gerencia de administración y operaciones en una empresa de pastas frescas con tres locales en zona norte.</li>
+          <li>Tableros de venta, plan diario por local y ranking de vendedores que se actualizan solos.</li>
+          <li>Compras con cada factura desglosada y control de IVA contra ARCA.</li>
+          <li>Club de clientes con QR, cupones y cartelería para el mostrador.</li>
+          <li>Instagram de varios negocios manejado con IA: publicaciones, reels y métricas.</li>
+        </ul>
+        <div class="big"><p>No vendo un sistema nuevo. Hago que lo que ya tenés trabaje por vos.</p><small>Juan Ponce · Lic. en Administración de Empresas (UTN, en curso)</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-box">
+        <span class="tag"><i></i>Agenda abierta</span>
+        <h2 style="margin-top:18px">Automatizá tu negocio <span class="grad">este mes</span></h2>
+        <p class="lead">La primera charla es sin cargo. Me contás cómo trabajás y te digo qué se puede automatizar y cuánto tiempo te ahorra.</p>
+        <div class="ctas"><a class="btn primary" href="https://www.linkedin.com/in/juan-poncee" target="_blank" rel="noopener">Escribime por LinkedIn →</a></div>
+        <p class="handle">linkedin.com/in/juan-poncee · Zona norte, Buenos Aires · también a distancia</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Juan Ponce · Automatización e IA para pymes</span><span>Última actualización: 19/11/2026 22:15</span></div></footer>
+
+<script>
+/* recomendador */
+const A={
+ numeros:['Tablero de ventas en vivo + parte diario','Un tablero que se actualiza solo y un resumen cada mañana en tu celular con la venta y las alertas.'],
+ compras:['Lectura de facturas con IA','Le sacás una foto a la factura y queda cargada en la planilla, con el IVA controlado contra ARCA.'],
+ mensajes:['Asistente de WhatsApp e Instagram','Un agente que responde precios, horarios y pedidos las 24 horas y te deriva lo que necesita una persona.'],
+ precios:['Costos, CMV y márgenes','Costo real de cada producto, margen y comparación con los precios de la competencia de tu zona.'],
+ equipo:['Equipo y reconocimiento','Objetivos por persona, rankings automáticos y mensajes de reconocimiento listos para el grupo.'],
+ clientes:['Club de clientes','Registro por QR, cupones de bienvenida y recompra, y mails a los clientes que dejaron de venir.'],
+ redes:['Contenido para redes con IA','Calendario, textos y reels con voz en off a partir de tus fotos, con métricas cada mes.']
+};
+const out=document.getElementById('answer');
+function show(k){out.innerHTML='<b>→ '+A[k][0]+'</b>'+A[k][1];document.querySelectorAll('.opt').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===k?'true':'false'))}
+document.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>show(b.dataset.k)));show('numeros');
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* demo tabs */
+const tabs={map:[document.getElementById('t-map'),document.getElementById('p-map')],red:[document.getElementById('t-red'),document.getElementById('p-red')]};
+let cur='map',auto=!reduce,timer;
+function sel(k,user){if(user)auto=false;cur=k;for(const [n,[t,p]] of Object.entries(tabs)){t.setAttribute('aria-selected',n===k);p.hidden=n!==k}k==='map'?runMap():runRed();clearTimeout(timer);if(auto)timer=setTimeout(()=>sel(k==='map'?'red':'map'),9000)}
+tabs.map[0].onclick=()=>sel('map',true);tabs.red[0].onclick=()=>sel('red',true);
+const PINS=[['me',45,52,'Tu local'],['hi',20,30,'Pastas A'],['lo',70,24,'Pastas B'],['hi',62,78,'Pastas C'],['hi',30,80,'Pastas D'],['lo',84,62,'Pastas E']];
+const ROWS=[['Pastas A','caja ravioles $8.000','-19%','g'],['Pastas B','caja ravioles $5.900','+10%','r'],['Pastas C','ñoquis kg $14.000','-7%','g']];
+function runMap(){const m=document.getElementById('map');m.querySelectorAll('.pin').forEach(e=>e.remove());
+ PINS.forEach(([c,x,y,n],i)=>{const d=document.createElement('div');d.className='pin '+c;d.style.left=x+'%';d.style.top=y+'%';d.style.animationDelay=(reduce?0:i*.35)+'s';d.innerHTML='<i></i><span>'+n+'</span>';m.appendChild(d)});
+ const r=document.getElementById('mrows');r.innerHTML='';ROWS.forEach((w,i)=>setTimeout(()=>{r.insertAdjacentHTML('beforeend','<div class="mrow"><span>vs '+w[0]+'</span><b>'+w[1]+'</b><span class="pill '+w[3]+'">'+(w[3]==='g'?'vos más barato '+w[2].slice(1):'vos más caro '+w[2].slice(1))+'</span></div>')},reduce?0:2200+i*450))}
+const DAYS=['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];const POSTS=[[0,'reel','Reel ravioles'],[1,'foto','Promo socios'],[2,'hist','Encuesta'],[3,'reel','Detrás de escena'],[4,'foto','Menú del finde'],[5,'reel','Voz en off'],[5,'hist','Sorteo'],[6,'foto','Domingo de pastas']];
+const RL=[['k','$ agente redes --semana'],['','8 posteos armados desde 12 fotos del local'],['o','✓ reel con voz en off generado'],['o','✓ 23 consultas respondidas por DM'],['','2 consultas derivadas a WhatsApp']];
+function count(el,to,fmt){if(reduce){el.textContent=fmt(to);return}let v=0;const st=to/30;const it=setInterval(()=>{v=Math.min(to,v+st);el.textContent=fmt(Math.round(v));if(v>=to)clearInterval(it)},40)}
+function runRed(){const c=document.getElementById('cal');c.innerHTML=DAYS.map(d=>'<div><b>'+d+'</b></div>').join('');
+ POSTS.forEach(([d,t,n],i)=>{const e=document.createElement('span');e.className='post '+t;e.textContent=n;e.style.animationDelay=(reduce?0:.3+i*.3)+'s';c.children[d].appendChild(e)});
+ count(document.getElementById('s1'),8,v=>v);count(document.getElementById('s2'),23,v=>v);count(document.getElementById('s3'),34,v=>'+'+v+'%');
+ const l=document.getElementById('rlog');l.innerHTML='';RL.forEach(([k,t],i)=>setTimeout(()=>l.insertAdjacentHTML('beforeend','<div class="'+k+'">'+t+'</div>'),reduce?0:600+i*700))}
+sel('map');
+
+/* video filtro de CV */
+const CVS=[['Lucía M.','4 años atención','#FF7A59',1,92],['Martín R.','sin experiencia','#8B5CF6',0,41],['Sofía G.','cajera 2 años','#3DD9EB',1,88],['Diego P.','solo turno mañana','#FFC857',0,55],['Valentina L.','vive a 6 km','#FF3B47',0,49],['Camila S.','3 años mostrador','#3EE08F',1,85],['Tomás B.','sin manejo de caja','#A78BFA',0,38]];
+const stage=document.getElementById('stage');const cards=CVS.map(([n,d,c],i)=>{const e=document.createElement('div');e.className='cvc';e.style.setProperty('--c',c);e.innerHTML='<div class="av">'+n[0]+'</div><div class="t"><b>'+n+'</b><span>'+d+'</span></div><div class="sc"></div>';stage.insertBefore(e,document.getElementById('bigplay'));return e});
+const cap=document.getElementById('cap'),brain=document.getElementById('brain'),crit=[...document.querySelectorAll('#crit span')];
+const DUR=22000;let t0=0,el=0,playing=false,raf;
+function place(e,x,y,o){e.style.left=x+'%';e.style.top=y+'%';e.style.opacity=o}
+function frame(t){
+ cards.forEach((e,i)=>{const [,,,ok,sc]=CVS[i];
+  if(t<1200+i*450){place(e,-30,22+i*10.5,0);e.classList.remove('good','bad');e.querySelector('.sc').style.opacity=0}
+  else if(t<7000){place(e,3,22+i*10.5,1)}
+  else if(t<7000+(i+1)*1300){ if(t<7000+i*1300){place(e,3,22+i*10.5,1)} else {place(e,38,42,1);e.querySelector('.sc').textContent=sc+'%';e.querySelector('.sc').style.opacity=1;e.classList.toggle('good',!!ok);e.classList.toggle('bad',!ok)} }
+  else { if(ok){const k=CVS.slice(0,i).filter(c=>c[3]).length;place(e,72,24+k*13,1)} else {const k=CVS.slice(0,i).filter(c=>!c[3]).length;place(e,3,22+k*10.5,1)} e.querySelector('.sc').style.opacity=1;e.classList.toggle('good',!!ok);e.classList.toggle('bad',!ok)}
+ });
+ crit.forEach((c,i)=>c.classList.toggle('on',t>4200+i*500));
+ brain.classList.toggle('on',t>6500&&t<16300);
+ brain.querySelector('small').textContent=t<4200?'esperando':t<6500?'leyendo criterios':t<16300?'analizando CV':'listo';
+ cap.textContent=t<4200?'Búsqueda: vendedora de mostrador · turno tarde':t<6500?'Le decís qué buscás':t<16300?'La IA lee cada CV y le pone un puntaje':t<19500?'Los mejores pasan a entrevista':'3 de 7 para entrevistar · 2 minutos en vez de 2 horas';
+ document.getElementById('bar').style.width=(t/DUR*100)+'%';
+ const s=Math.floor(t/1000);document.getElementById('tm').textContent='0:'+String(s).padStart(2,'0')+' / 0:22';
+}
+function loop(now){el=Math.min(DUR,now-t0);frame(el);if(el<DUR&&playing)raf=requestAnimationFrame(loop);else if(el>=DUR){playing=false;pp.textContent='↻'}}
+const pp=document.getElementById('pp'),big=document.getElementById('bigplay');
+function play(){if(el>=DUR)el=0;playing=true;big.hidden=true;pp.textContent='❚❚';pp.setAttribute('aria-label','Pausar');t0=performance.now()-el;raf=requestAnimationFrame(loop)}
+function pause(){playing=false;cancelAnimationFrame(raf);pp.textContent='▶';pp.setAttribute('aria-label','Reproducir')}
+pp.onclick=()=>playing?pause():play();big.onclick=play;
+frame(reduce?DUR:6900);el=reduce?DUR:0;if(!reduce){frame(0);frame(6900)}
+
+/* red de datos */
+const cv=document.getElementById('net'),cx=cv.getContext('2d');let W,H,P=[];
+function size(){const r=cv.parentElement.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);const n=Math.round(Math.min(70,W*H/16000));P=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,p:Math.random()}))}
+function draw(){cx.clearRect(0,0,W,H);for(let i=0;i<P.length;i++){const a=P[i];for(let j=i+1;j<P.length;j++){const b=P[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<140){cx.strokeStyle='rgba(255,122,89,'+(0.16*(1-d/140))+')';cx.lineWidth=1;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}}
+ for(const a of P){cx.fillStyle=a.p>.85?'rgba(61,217,235,.9)':'rgba(255,255,255,.35)';cx.beginPath();cx.arc(a.x,a.y,a.p>.85?2.2:1.3,0,7);cx.fill()}}
+function tick(){for(const a of P){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1}draw();if(!reduce)requestAnimationFrame(tick)}
+size();addEventListener('resize',size);tick();
+</script>
+
+</body>
+</html>

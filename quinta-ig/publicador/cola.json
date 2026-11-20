@@ -980,5 +980,25 @@
   "texto": "",
   "fecha": "2026-11-19 21:30",
   "estado": "pendiente"
+ },
+ {
+  "id": "calor-2026-11-20-h",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/calor-2026-11-20-h.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-20 20:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "calor-2026-11-20",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/calor-2026-11-20.jpg"
+  ],
+  "texto": "🔥 El lunes feriado pinta 28° en zona oeste… ¿lo vas a pasar encerrado o en la pileta? 🏊‍♀️\n\nCerrá el finde largo como se debe: pileta, quincho, parrilla y sombra para pasar el día con tu gente, a minutos de la ciudad.\n\n🏡 Quinta de día para hasta 15 personas, o quinta con casa para 5 si te querés quedar.\n💰 Desde $140.000 el día\n\n👇 Etiquetá con quién te tirarías a la pileta\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste #FindeLargo",
+  "fecha": "2026-11-20 21:00",
+  "estado": "pendiente"
  }
 ]

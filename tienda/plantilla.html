@@ -25,6 +25,7 @@ h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
 .anuncio{background:var(--marca2);color:#fff;font-size:13px;text-align:center;padding:7px 12px;letter-spacing:.02em}
 .sub2{display:flex;justify-content:space-between;font-size:14px;color:var(--suave);margin-top:6px}.sub2.dto span:last-child{color:#2E7D4F;font-weight:600}.pr s.ant{font-size:.62em;color:var(--suave);margin-right:6px;font-weight:400}
 .pagos{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pagos button{text-align:left;border:1.5px solid var(--linea);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--tinta)}.pagos button b{display:block;font-size:15px}.pagos button small{display:block;font-size:12px;color:var(--suave);margin-top:2px;line-height:1.3}.pagos button.on{border-color:var(--marca);box-shadow:0 0 0 2px var(--marca) inset}.pagos .mp{color:#009EE3}
+.mpbox{margin-top:12px;border:1.5px solid #009EE3;border-radius:14px;padding:14px;background:#F2FAFE}.mpbox[hidden]{display:none}.mpt{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}.mpt b{font-size:20px;color:#0B3B5C}.mpcopy{margin-left:auto;border:1px solid #009EE3;background:#fff;color:#007BB5;border-radius:999px;padding:5px 10px;font:600 12px inherit;cursor:pointer}.mpbtn{display:block;text-align:center;margin-top:10px;background:#009EE3 !important;color:#fff !important;border-color:#009EE3 !important}.mpqr{display:none;justify-content:center;margin-top:12px}.mpqr img,.mpqr canvas{width:170px;height:170px}@media(hover:hover) and (pointer:fine){.mpqr{display:flex}}
 .anuncio b{color:var(--acento);font-weight:600}
 header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linea)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:14px}
@@ -298,6 +299,12 @@ footer a{color:#fff;opacity:.9}
     <label>¿Cómo pagás?</label>
     <div class="pagos" id="pagos"><button type="button" data-p="En el local, al retirar" class="on"><b>En el local</b><small>Efectivo, débito o crédito al retirar</small></button><button type="button" data-p="Mercado Pago (link de pago por WhatsApp)"><b class="mp">Mercado Pago</b><small>Te mandamos el link de pago por WhatsApp</small></button></div>
     <input type="hidden" id="f-pago" value="En el local, al retirar">
+    <div class="mpbox" id="mpbox" hidden>
+      <div class="mpt">Total a pagar <b id="mp-total">$0</b> <button type="button" class="mpcopy" id="mp-copy">Copiar monto</button></div>
+      <a class="btn mpbtn" id="mp-link" href="#" target="_blank" rel="noopener">Pagar con Mercado Pago</a>
+      <div class="mpqr" id="mp-qr"></div>
+      <p class="nota">1. Pagá el total en Mercado Pago. 2. Volvé y mandá el pedido por WhatsApp con la captura del pago.</p>
+    </div>
     <label for="f-dni">DNI (si sos socio del club)</label><input id="f-dni" inputmode="numeric" placeholder="Para sumar tus beneficios">
     <label for="f-nota">Aclaraciones</label><textarea id="f-nota" rows="2" placeholder="Ej.: los ñoquis bien sueltos"></textarea>
   </div>
@@ -381,7 +388,7 @@ function texto(){const l=local();
  return `Hola ${D.marca} ${l.nombre}! Hago un PEDIDO WEB para RETIRAR EN EL LOCAL:\n`+
  lineas().map(x=>`- ${nq(x.q)}${x.p.u==='kg'?' kg':' x'} ${x.p.n}${extra(x.p)}: ${plata(pw(x.p.p)*x.q)}`).join('\n')+
  `\n\nPrecio de mostrador: ${plata(lista())}\nDescuento web 10%: -${plata(lista()-total())}\nTOTAL ESTIMADO: ${plata(total())}`+
- `\n\nRetiro: ${$('#f-hora').value||'lo antes posible'}\nPago: ${$('#f-pago').value}\nNombre: ${$('#f-nombre').value||'-'}\nTeléfono: ${$('#f-tel').value||'-'}`+
+ `\n\nRetiro: ${$('#f-hora').value||'lo antes posible'}\nPago: ${$('#f-pago').value.startsWith('Mercado')&&local().mp?'Mercado Pago (ya pagué, te mando el comprobante)':$('#f-pago').value}\nNombre: ${$('#f-nombre').value||'-'}\nTeléfono: ${$('#f-tel').value||'-'}`+
  ($('#f-dni').value?`\nDNI socio: ${$('#f-dni').value}`:'')+($('#f-nota').value?`\nAclaraciones: ${$('#f-nota').value}`:'');}
 function msgWa(){const l=local();return lineas().length?texto():`Hola ${D.marca} ${l.nombre}! Quería hacer una consulta.`}
 function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
@@ -390,12 +397,19 @@ function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
  $('#cnt').textContent=$('#cnt2').textContent=n;$('#tot1').textContent=$('#tot2').textContent=$('#tot3').textContent=plata(t);
  $('#fin1').disabled=!ls.length;$('#barmovil').classList.toggle('si',ls.length>0);
  $$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.m===st.modo));
- ['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
+ pintarMP();['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
  $('#enviar').href=wa(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){delete st.c[r.dataset.rm];guardar();pintarCatalogo();pintarPedido();}});
 ['#f-nombre','#f-tel','#f-hora','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
 $$('.seg button').forEach(b=>b.onclick=()=>{st.modo=b.dataset.m;guardar();pintarPedido()});
 $$('#pagos button').forEach(b=>b.onclick=()=>{$$('#pagos button').forEach(x=>x.classList.toggle('on',x===b));$('#f-pago').value=b.dataset.p;pintarPedido()});
+
+function pintarMP(){const l=local(),mp=$('#f-pago').value.startsWith('Mercado'),box=$('#mpbox');
+ const link=l.mp||'';box.hidden=!(mp&&link);
+ $$('#pagos small')[1].textContent=link?'Pagás ahora desde la app y mandás el comprobante':'Te mandamos el link de pago por WhatsApp';
+ if(!mp||!link)return;$('#mp-total').textContent=plata(total());$('#mp-link').href=link;
+ const q=$('#mp-qr');if(q.dataset.l!==link&&window.QRCode){q.innerHTML='';new QRCode(q,{text:link,width:170,height:170});q.dataset.l=link}}
+$('#mp-copy').onclick=async()=>{try{await navigator.clipboard.writeText(String(Math.round(total())));aviso('Monto copiado')}catch(e){aviso(plata(total()))}};
 const abrir=()=>{$('#drawer').classList.add('si');$('#velo').classList.add('si');ocultarBurb()},cerrar=()=>{$('#drawer').classList.remove('si');$('#velo').classList.remove('si')};
 ['#abrir1','#abrir2','#fin1'].forEach(s=>$(s).onclick=abrir);$('#cerrar').onclick=cerrar;$('#velo').onclick=cerrar;
 $('#copiar').onclick=async()=>{try{await navigator.clipboard.writeText(texto());aviso('Pedido copiado')}catch(e){aviso('No se pudo copiar')}};
@@ -423,5 +437,6 @@ $('#promos-lista').onclick=e=>{const b=e.target.closest('[data-add]');if(!b)retu
 
 pintarCatalogo();pintarLocal();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>
 </html>

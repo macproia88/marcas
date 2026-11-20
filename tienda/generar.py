@@ -239,6 +239,9 @@ CAT_PZ = [
  ('Bebidas', 1046, 'Sprite 500 ml', '', 'u', 2900),
 ]
 
+# Link de cobro de Mercado Pago por local (link.mercadopago.com.ar/... o mpago.la/...). Vacío = el local manda el link por WhatsApp.
+MP_LINK = {'florida': '', 'beccar': '', 'olivos': ''}
+
 DESC_WEB = 0.10  # descuento pidiendo por la web (retiro en el local)
 
 IMG = {'Ravioles': 'ravioles', 'Raviolones': 'raviolones', 'Sorrentinos y rellenas': 'sorrentinos',
@@ -311,7 +314,7 @@ def armar(clave):
         prods.append(dict(id=i, cat=cat, n=nom, d=desc, u=uni, p=round(lista.get(cod) or reales.get(cod, pr)), img=IMG.get(cat, '')))
     cats = list(dict.fromkeys(p['cat'] for p in prods))
     ahora = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
-    datos = dict(marca=m['nombre'], locales=m['locales'], prods=prods, cats=cats, clave=clave, desc=DESC_WEB)
+    datos = dict(marca=m['nombre'], locales=[dict(l, mp=MP_LINK.get(l['id'], '')) for l in m['locales']], prods=prods, cats=cats, clave=clave, desc=DESC_WEB)
     c = m['colores']
     tpl = (RAIZ / 'tienda' / 'plantilla.html').read_text()
     reemplazos = {

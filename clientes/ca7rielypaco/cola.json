@@ -1,749 +1,749 @@
 [
-  {
-    "id": "1111-cuenta-regresiva",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/00-post-manana.jpg"
-    ],
-    "texto": "MAÑANA ES LA NOCHE 🏆\nCA7RIEL & Paco Amoroso llegan a los Latin Grammy 2026 con 7 nominaciones por Free Spirits.\n¿Cuántos gramófonos se traen? Dejá tu número del 0 al 7 👇\n📺 Jueves 12/11 · 22 h (ARG) · TNT y HBO Max\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-11 21:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 20:51 (cliente)",
-    "ig_media_id": "18110265161206347",
-    "publicado_el": "2026-11-11 21:06"
-  },
-  {
-    "id": "1111-historia-cuenta-regresiva",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/00-historia-manana.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-11 21:15",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 21:09 (Juan)",
-    "ig_media_id": "18119443631027782",
-    "publicado_el": "2026-11-11 21:18"
-  },
-  {
-    "id": "1112-historia-horarios",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/01-historia-horarios.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 11:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 20:51 (cliente)",
-    "forzado": "2026-11-12 11:15",
-    "ig_media_id": "18203137762347932",
-    "publicado_el": "2026-11-12 11:15"
-  },
-  {
-    "id": "1112-post-gran-noche",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/02-post-hoy.jpg"
-    ],
-    "texto": "Hoy son los Latin Grammy 2026. CA7RIEL & Paco Amoroso llegan a la 27.ª edición con siete nominaciones: Álbum del Año y Mejor Álbum de Música Alternativa por Free Spirits, Grabación del Año por “Ha Ha”, Canción del Año y Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día” junto a Sting, Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix) y Mejor Video Musical Versión Larga por FREE SPIRITS (The Film).\n\nLa ceremonia es en el MGM Grand Garden Arena de Las Vegas y se transmite desde las 22 h (Argentina) por TNT y HBO Max. Varias categorías se entregan antes, en la Premiere. Seguimos la noche en historias.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 19:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 20:51 (cliente)",
-    "forzado": "19:02",
-    "ig_media_id": "18119505416020557",
-    "publicado_el": "2026-11-12 19:02"
-  },
-  {
-    "id": "ganador-1",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-1.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Grabación del Año por “Ha Ha”. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 12:00",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-11 21:35 (cliente)",
-    "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\"",
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso",
-      "latingrammys"
-    ]
-  },
-  {
-    "id": "ganador-2",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-2.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Álbum del Año por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 12:00",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-11 21:35 (cliente)",
-    "nota": "No ganó: Álbum del Año: ganó Rosalía LUX",
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso",
-      "latingrammys"
-    ]
-  },
-  {
-    "id": "ganador-3",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-3.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Canción del Año por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 12:00",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-11 21:35 (cliente)",
-    "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\"",
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso",
-      "latingrammys"
-    ]
-  },
-  {
-    "id": "ganador-4",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-4.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 17:44",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-12 17:43 (Juan; la clienta vio el anuncio en vivo)",
-    "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
-    "ig_media_id": "18116405126137702",
-    "publicado_el": "2026-11-12 17:44"
-  },
-  {
-    "id": "ganador-5",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-5.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 19:52",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-12 19:53 (Juan)",
-    "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso",
-      "latingrammys"
-    ],
-    "ig_media_id": "18255456889309356",
-    "publicado_el": "2026-11-12 19:54"
-  },
-  {
-    "id": "ganador-6",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-6.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Álbum de Música Alternativa por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 12:00",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-11 21:35 (cliente)",
-    "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador.",
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso",
-      "latingrammys"
-    ]
-  },
-  {
-    "id": "ganador-7",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/03-ganador-7.jpg"
-    ],
-    "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
-    "fecha": "2026-11-12 18:42",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "aprobado": "2026-11-12 18:43 (Juan; la clienta vio el anuncio en vivo)",
-    "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
-    "ig_media_id": "18079644677738511",
-    "publicado_el": "2026-11-12 18:44"
-  },
-  {
-    "id": "1115-reel-gira",
-    "tipo": "REEL",
-    "media": [
-      "clientes/ca7rielypaco/videos/reel-gira.mp4"
-    ],
-    "texto": "Osaka, Milán y una gira que dio la vuelta al mundo. El FREE SPIRITS World Tour entra en su recta final con cuatro fechas en Sudamérica: São Paulo (18/11, Espaço Unimed), Río de Janeiro (19/11, Vivo Rio, nueva fecha), Santiago (23/11, Movistar Arena) y Lima (27/11, Multiespacio Costa 21), donde termina la gira.\n\n¿A cuál vas? Contanos en los comentarios.\n\n🇧🇷 Vem aí: São Paulo 18/11 · Rio 19/11.\n\n#CA7RIEL #PacoAmoroso #FreeSpiritsWorldTour #FreeSpirits",
-    "fecha": "2026-11-15 20:30",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan)"
-  },
-  {
-    "id": "1115-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1115-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-15 20:31",
-    "estado": "pendiente",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
-  },
-  {
-    "id": "1112-h-hoy",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1500-hoy.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 13:42",
-    "estado": "publicado",
-    "aprobado": "2026-11-12 13:42 (Juan)",
-    "ig_media_id": "18155337316498641",
-    "publicado_el": "2026-11-12 13:43"
-  },
-  {
-    "id": "1112-h-hace-un-ano",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1500-hace-un-ano.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 15:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-12 13:42 (Juan)",
-    "forzado": "2026-11-12 15:06",
-    "ig_media_id": "18120354299096552",
-    "publicado_el": "2026-11-12 15:06"
-  },
-  {
-    "id": "1112-h-faltan4",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1800-faltan4.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 18:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-12 13:42 (Juan)",
-    "forzado": "18:06",
-    "ig_media_id": "18172483186460880",
-    "publicado_el": "2026-11-12 18:06"
-  },
-  {
-    "id": "1112-h-arranca",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-2145-arranca.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 21:45",
-    "estado": "publicado",
-    "aprobado": "2026-11-12 13:42 (Juan)",
-    "forzado": "21:47",
-    "ig_media_id": "18120499327973749",
-    "publicado_el": "2026-11-12 21:47"
-  },
-  {
-    "id": "ganador-1-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-1.jpg"
-    ],
-    "texto": "",
-    "fecha": "",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\""
-  },
-  {
-    "id": "ganador-2-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-2.jpg"
-    ],
-    "texto": "",
-    "fecha": "",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "nota": "No ganó: Álbum del Año: ganó Rosalía LUX"
-  },
-  {
-    "id": "ganador-3-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-3.jpg"
-    ],
-    "texto": "",
-    "fecha": "",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\""
-  },
-  {
-    "id": "ganador-4-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-4.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 17:45",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "nota": "Historia del ganador; sale junto con ganador-4 si se confirma el premio",
-    "aprobado": "2026-11-12 17:43 (Juan)",
-    "forzado": "17:49",
-    "ig_media_id": "18133636211511224",
-    "publicado_el": "2026-11-12 17:51"
-  },
-  {
-    "id": "ganador-5-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-5.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 19:52",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "nota": "Historia del ganador; sale junto con ganador-5 si se confirma el premio",
-    "aprobado": "2026-11-12 19:53 (Juan)",
-    "ig_media_id": "18045136970832867",
-    "publicado_el": "2026-11-12 19:54"
-  },
-  {
-    "id": "ganador-6-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-6.jpg"
-    ],
-    "texto": "",
-    "fecha": "",
-    "estado": "borrador",
-    "solo_si_ganan": true,
-    "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador."
-  },
-  {
-    "id": "ganador-7-h",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-ganador-7.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-12 18:42",
-    "estado": "publicado",
-    "solo_si_ganan": true,
-    "nota": "Historia del ganador; sale junto con ganador-7 si se confirma el premio",
-    "aprobado": "2026-11-12 18:43 (Juan)",
-    "ig_media_id": "18186977296425279",
-    "publicado_el": "2026-11-12 18:44"
-  },
-  {
-    "id": "1113-carrusel-resumen",
-    "tipo": "CARRUSEL",
-    "fecha": "2026-11-13 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1113-c1.jpg",
-      "clientes/ca7rielypaco/img/1113-c2.jpg",
-      "clientes/ca7rielypaco/img/1113-c3.jpg",
-      "clientes/ca7rielypaco/img/1113-c4.jpg"
-    ],
-    "texto": "Tres Latin Grammy para CA7RIEL & Paco Amoroso.\n\nEn la 27.ª edición, en Las Vegas, el dúo se llevó Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix), Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting, y Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). Llegaban con siete nominaciones.\n\nFelicitaciones a todos los que hicieron posible esta noche: a Fred again.. y a Sting; a Rafa Arcaute, Federico Vindver, Martin Kierszenbaum, Renee Barri, Vicente Jimenez y John Ryan, coautores de “Hasta Jesús Tuvo un Mal Día”; a Ferran Echegaray y Ferina, directores de FREE SPIRITS (The Film), y a Jean-Baptiste Fusil, Ellie Loarca y Francisco Wechsler, sus productores; y a todo el equipo de 5020 Records que acompaña a los chicos. 🏆\n\nLa gira sigue: São Paulo (18/11, Espaço Unimed) y Río de Janeiro (19/11, Vivo Rio).\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #LatinGRAMMY",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "nota": "Portada y fotos de la noche enviadas por la clienta 13/11 15:29; descripción con felicitaciones a todos los involucrados (pedido de la clienta). Créditos: grammy.com.",
-    "forzado": "2026-11-13 20:34",
-    "ig_media_id": "18130003975908462",
-    "publicado_el": "2026-11-13 20:35"
-  },
-  {
-    "id": "1113-h-video-gramofonos",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/videos/h-1113-gramofonos.mp4"
-    ],
-    "texto": "",
-    "fecha": "2026-11-13 20:31",
-    "estado": "publicado",
-    "aprobado": "2026-11-13 15:42 (Juan)",
-    "nota": "Video de la clienta: los dos con los tres gramófonos. Sale justo después del carrusel.",
-    "forzado": "2026-11-13 20:34",
-    "ig_media_id": "18453179929120207",
-    "publicado_el": "2026-11-13 20:36"
-  },
-  {
-    "id": "1113-h-tres",
-    "tipo": "STORY",
-    "fecha": "2026-11-13 15:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1113-tres.jpg"
-    ],
-    "texto": "",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "forzado": "2026-11-13 15:04",
-    "ig_media_id": "17913558501307562",
-    "publicado_el": "2026-11-13 15:05"
-  },
-  {
-    "id": "1113-h-faltan5",
-    "tipo": "STORY",
-    "fecha": "2026-11-13 18:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1113-faltan5.jpg"
-    ],
-    "texto": "",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "forzado": "2026-11-13 18:04",
-    "ig_media_id": "18068103941518807",
-    "publicado_el": "2026-11-13 18:04"
-  },
-  {
-    "id": "1113-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1113-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-13 20:32",
-    "estado": "publicado",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
-    "forzado": "2026-11-13 20:34",
-    "ig_media_id": "18097618730659718",
-    "publicado_el": "2026-11-13 20:36"
-  },
-  {
-    "id": "1114-carrusel-efemeride",
-    "tipo": "CARRUSEL",
-    "fecha": "2026-11-14 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1114-c1.jpg",
-      "clientes/ca7rielypaco/img/1114-c2.jpg",
-      "clientes/ca7rielypaco/img/1114-c3.jpg",
-      "clientes/ca7rielypaco/img/1114-c4.jpg"
-    ],
-    "texto": "Un año después: 5 + 3.\n\nEl 13 de noviembre de 2025, CA7RIEL & Paco Amoroso ganaron cinco Latin Grammy: Mejor Canción Pop (“El Día del Amigo”), Mejor Álbum de Música Alternativa (Papota), Mejor Canción Alternativa y Mejor Video Musical Versión Corta (“#Tetas”) y Mejor Video Musical Versión Larga (Papota).\n\nEl 12 de noviembre de 2026 sumaron tres más con Free Spirits: Electrónica, Pop/Rock y Video Versión Larga. Ocho Latin Grammy en dos ediciones seguidas.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour #LatinGRAMMY",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "nota": "Fotos reales de los Latin Grammy 2025 enviadas por la clienta 14/11 18:32.",
-    "forzado": "2026-11-14 20:34",
-    "ig_media_id": "18101416331413532",
-    "publicado_el": "2026-11-14 20:35"
-  },
-  {
-    "id": "1114-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1114-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-14 20:31",
-    "estado": "publicado",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
-    "forzado": "2026-11-14 20:34",
-    "ig_media_id": "18181620163443716",
-    "publicado_el": "2026-11-14 20:35"
-  },
-  {
-    "id": "1114-h-faltan4",
-    "tipo": "STORY",
-    "fecha": "2026-11-14 13:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1114-faltan4.jpg"
-    ],
-    "texto": "",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "forzado": "2026-11-14 13:04",
-    "ig_media_id": "17953914291307690",
-    "publicado_el": "2026-11-14 13:04"
-  },
-  {
-    "id": "1114-h-hace-un-ano",
-    "tipo": "STORY",
-    "fecha": "2026-11-14 18:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1114-hace-un-ano.jpg"
-    ],
-    "texto": "",
-    "estado": "publicado",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "forzado": "2026-11-14 18:04",
-    "ig_media_id": "18074176868752593",
-    "publicado_el": "2026-11-14 18:04"
-  },
-  {
-    "id": "1115-h-faltan3",
-    "tipo": "STORY",
-    "fecha": "2026-11-15 13:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1115-faltan3.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "forzado": "2026-11-15 13:04"
-  },
-  {
-    "id": "1116-post-rio",
-    "tipo": "POST",
-    "fecha": "2026-11-17 12:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1116-rio.jpg"
-    ],
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso"
-    ],
-    "texto": "Cambio de fecha en Brasil: el show de CA7RIEL & Paco Amoroso en Río de Janeiro se adelanta al jueves 19 de noviembre (estaba previsto para el viernes 20).\n\n⚠️ Ojo: todavía circulan publicaciones con la fecha anterior. La fecha correcta es el JUEVES 19, no el viernes 20.\n\nSigue en Vivo Rio, con puertas a las 18 h y show a las 21 h. Las entradas compradas valen para la nueva fecha, en el mismo sector. Quien no pueda ir puede pedir el reembolso del total, tasas incluidas, hasta hoy, martes 17/11, a las 23:59, en Ticketmaster Brasil.\n\nUn día antes, el miércoles 18, tocan en São Paulo, en el Espaço Unimed.\n\n🇧🇷 Atenção, Rio: o show foi antecipado para quinta, 19/11, no Vivo Rio. Os ingressos continuam válidos. Atenção: a data certa é quinta 19, não sexta 20.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
-    "nota": " | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
-  },
-  {
-    "id": "1116-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1116-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-17 12:31",
-    "estado": "pendiente",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
-    "nota": " | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
-  },
-  {
-    "id": "1116-h-semana",
-    "tipo": "STORY",
-    "fecha": "2026-11-16 12:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1116-semana.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1117-h-manana-sp",
-    "tipo": "STORY",
-    "fecha": "2026-11-17 13:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1117-manana-sp.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1117-h-reembolso",
-    "tipo": "STORY",
-    "fecha": "2026-11-17 18:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1117-reembolso.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1118-h-hoy-sp",
-    "tipo": "STORY",
-    "fecha": "2026-11-18 12:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1118-hoy-sp.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1118-post-sp",
-    "tipo": "POST",
-    "fecha": "2026-11-18 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1118-sp.jpg"
-    ],
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso"
-    ],
-    "texto": "Hoy, São Paulo. El Free Spirits World Tour llega al Espaço Unimed: puertas a las 18 h y show a las 21 h (mismo horario que en Argentina).\n\nEs la primera de las dos fechas en Brasil; mañana, jueves 19, sigue Río de Janeiro en Vivo Rio.\n\n🇧🇷 Hoje é dia: São Paulo, Espaço Unimed. Portas 18h, show 21h.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1118-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1118-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-18 20:31",
-    "estado": "pendiente",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
-  },
-  {
-    "id": "1118-h-manana-rio",
-    "tipo": "STORY",
-    "fecha": "2026-11-18 18:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1118-manana-rio.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1119-h-hoy-rio",
-    "tipo": "STORY",
-    "fecha": "2026-11-19 12:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1119-hoy-rio.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1119-post-rio",
-    "tipo": "POST",
-    "fecha": "2026-11-19 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1119-rio.jpg"
-    ],
-    "etiquetas": [
-      "ca7rielypacoamoroso",
-      "ca7riel",
-      "pacoamoroso"
-    ],
-    "texto": "Hoy, Río de Janeiro. CA7RIEL & Paco Amoroso tocan en Vivo Rio, en el Parque do Flamengo: puertas a las 18 h y show a las 21 h.\n\nLa fecha se adelantó del viernes 20 al jueves 19; las entradas compradas siguen valiendo, en el mismo sector.\n\n🇧🇷 Hoje é dia: Rio de Janeiro, Vivo Rio. Portas 18h, show 21h.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
-    "estado": "pendiente",
-    "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
-  },
-  {
-    "id": "1119-h-nuevo",
-    "tipo": "STORY",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1119-nuevo.jpg"
-    ],
-    "texto": "",
-    "fecha": "2026-11-19 20:31",
-    "estado": "pendiente",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
-  },
-  {
-    "id": "1113-reel-noche",
-    "tipo": "REEL",
-    "media": [
-      "clientes/ca7rielypaco/videos/reel-noche-latin-grammy.mp4"
-    ],
-    "fecha": "2026-11-13 22:00",
-    "estado": "publicado",
-    "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
-    "texto": "Tres gramófonos, una noche en Las Vegas.\n\nCA7RIEL & Paco Amoroso volvieron de la 27.ª edición de los Latin Grammy con Mejor Interpretación de Música Electrónica (“Beto’s Horns”, con Fred again..), Mejor Canción Pop/Rock (“Hasta Jesús Tuvo un Mal Día”, con Sting) y Mejor Video Musical Versión Larga (FREE SPIRITS (The Film)).\n\nLo que sigue: São Paulo (18/11) y Río de Janeiro (19/11).\nVem aí: São Paulo 18/11 · Rio 19/11 🇧🇷\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #LatinGRAMMY",
-    "forzado": "2026-11-13 22:04",
-    "ig_media_id": "18109505495343771",
-    "publicado_el": "2026-11-13 22:06"
-  },
-  {
-    "id": "1116-h-grammy",
-    "tipo": "STORY",
-    "fecha": "2026-11-16 12:30",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1116-grammy.jpg"
-    ],
-    "texto": "",
-    "estado": "pendiente",
-    "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)",
-    "nota": " | 16/11 11:40: rediseño formato \"Revista\"; portada con la foto que eligió la clienta (17-alfombra-grammy-gris). | 11:40: la clienta prefirió el diseño editorial anterior; se mantiene, con su foto de portada."
-  },
-  {
-    "id": "1116-carrusel-grammy",
-    "tipo": "CARRUSEL",
-    "fecha": "2026-11-16 12:50",
-    "media": [
-      "clientes/ca7rielypaco/img/1116-g1.jpg",
-      "clientes/ca7rielypaco/img/1116-g2.jpg",
-      "clientes/ca7rielypaco/img/1116-g3.jpg",
-      "clientes/ca7rielypaco/img/1116-g4.jpg"
-    ],
-    "estado": "pendiente",
-    "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)",
-    "etiquetas": [],
-    "texto": "Tres nominaciones a los Grammy para CA7RIEL & Paco Amoroso.\n\nLa Academia de la Grabación anunció hoy los nominados a la 69.ª entrega de los Grammy, y el dúo aparece en tres categorías:\n\n• Mejor Álbum de Rock o Alternativo Latino, por FREE SPIRITS (compiten con Jorge Drexler, Milo J, Juanes y Fito Páez)\n• Mejor Canción Latina, por “Hasta Jesús Tuvo un Mal Día”, junto a Sting\n• Mejor Grabación Remezclada, por “Beto’s Horns” (Fred Remix), con Fred again..\n\nLa ceremonia es el domingo 7 de febrero de 2027 en el Crypto.com Arena de Los Ángeles. Cuatro días después de ganar tres Latin Grammy, Free Spirits sigue sumando.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @recordingacademy\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #GRAMMYs",
-    "nota": " | 16/11 11:40: rediseño formato \"Revista\"; portada con la foto que eligió la clienta (17-alfombra-grammy-gris). | 11:40: la clienta prefirió el diseño editorial anterior; se mantiene, con su foto de portada. | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
-  },
-  {
-    "id": "1117-carrusel-costarica",
-    "tipo": "CARRUSEL",
-    "fecha": "2026-11-16 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/1117-cr1.jpg",
-      "clientes/ca7rielypaco/img/1117-cr2.jpg",
-      "clientes/ca7rielypaco/img/1117-cr3.jpg",
-      "clientes/ca7rielypaco/img/1117-cr4.jpg",
-      "clientes/ca7rielypaco/img/1117-cr5.jpg"
-    ],
-    "texto": "Pura vida. 🇨🇷\n\nCA7RIEL & Paco Amoroso tocaron el domingo 15 de noviembre en Parque Viva, en La Guácima de Alajuela, con el Free Spirits World Tour.\n\nLo que sigue es Brasil: el miércoles 18 en São Paulo (Espaço Unimed) y el jueves 19 en Río de Janeiro (Vivo Rio).\n\n📸 @mari0madz vía @sonymusicca\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpiritsWorldTour #CostaRica",
-    "estado": "pendiente",
-    "aprobado": "2026-11-16 11:49 (clienta vía Juan: mandó las fotos del show, «si quiere subirlo»)",
-    "nota": "Fotos de @mari0madz publicadas por @sonymusicca; recortadas sin la interfaz de IG. Mañana no hay otro posteo en el feed. | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana).",
-    "etiquetas": [
-      "sonymusicca",
-      "mari0madz"
-    ]
-  },
-  {
-    "id": "1118-post-gta-festival",
-    "tipo": "POST",
-    "media": [
-      "clientes/ca7rielypaco/img/1118-gta-festival.jpg"
-    ],
-    "texto": "De Brasil a Miami. 🌴\n\nCA7RIEL & Paco Amoroso son parte de GTA VI: The Festival, el show que arman Rockstar Games y PlayStation este sábado 21 de noviembre en Mana Wynwood, Miami.\n\nLes toca abrir el Stage One: de 6 a 7 PM de Miami, o sea de 20 a 21 h en Argentina. Las puertas abren a las 4 PM, y en la grilla los acompañan Cardi B, Justice, Metro Boomin y Travis Scott, entre otros.\n\nY hay un detalle lindo: todo lo que se recaude con las entradas va a organizaciones benéficas de Miami.\n\n¿Quién se prende a seguirlo desde acá? 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @rockstargames\n\n#CA7RIEL #PacoAmoroso #GTAVI #FreeSpirits",
-    "fecha": "2026-11-18 17:45",
-    "estado": "pendiente",
-    "aprobado": "2026-11-18 17:40 (clienta vía Juan: «quiere que subas la foto que hiciste con esa información», «con nuestras palabras»)",
-    "etiquetas": [],
-    "nota": "Flyer estilo plantilla, v2 con los dos nombres al mismo tamaño. Datos del afiche oficial de @rockstargames."
-  },
-  {
-    "id": "1120-h-manana-miami",
-    "tipo": "STORY",
-    "fecha": "2026-11-20 20:30",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1120-manana-miami.jpg"
-    ],
-    "texto": "",
-    "estado": "borrador",
-    "aprobado": null,
-    "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
-  },
-  {
-    "id": "1121-h-hoy-miami",
-    "tipo": "STORY",
-    "fecha": "2026-11-21 12:00",
-    "media": [
-      "clientes/ca7rielypaco/img/h-1121-hoy-miami.jpg"
-    ],
-    "texto": "",
-    "estado": "borrador",
-    "aprobado": null,
-    "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
-  }
+ {
+  "id": "1111-cuenta-regresiva",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/00-post-manana.jpg"
+  ],
+  "texto": "MAÑANA ES LA NOCHE 🏆\nCA7RIEL & Paco Amoroso llegan a los Latin Grammy 2026 con 7 nominaciones por Free Spirits.\n¿Cuántos gramófonos se traen? Dejá tu número del 0 al 7 👇\n📺 Jueves 12/11 · 22 h (ARG) · TNT y HBO Max\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-11 21:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "ig_media_id": "18110265161206347",
+  "publicado_el": "2026-11-11 21:06"
+ },
+ {
+  "id": "1111-historia-cuenta-regresiva",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/00-historia-manana.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-11 21:15",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 21:09 (Juan)",
+  "ig_media_id": "18119443631027782",
+  "publicado_el": "2026-11-11 21:18"
+ },
+ {
+  "id": "1112-historia-horarios",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/01-historia-horarios.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 11:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "forzado": "2026-11-12 11:15",
+  "ig_media_id": "18203137762347932",
+  "publicado_el": "2026-11-12 11:15"
+ },
+ {
+  "id": "1112-post-gran-noche",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/02-post-hoy.jpg"
+  ],
+  "texto": "Hoy son los Latin Grammy 2026. CA7RIEL & Paco Amoroso llegan a la 27.ª edición con siete nominaciones: Álbum del Año y Mejor Álbum de Música Alternativa por Free Spirits, Grabación del Año por “Ha Ha”, Canción del Año y Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día” junto a Sting, Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix) y Mejor Video Musical Versión Larga por FREE SPIRITS (The Film).\n\nLa ceremonia es en el MGM Grand Garden Arena de Las Vegas y se transmite desde las 22 h (Argentina) por TNT y HBO Max. Varias categorías se entregan antes, en la Premiere. Seguimos la noche en historias.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 19:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 20:51 (cliente)",
+  "forzado": "19:02",
+  "ig_media_id": "18119505416020557",
+  "publicado_el": "2026-11-12 19:02"
+ },
+ {
+  "id": "ganador-1",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-1.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Grabación del Año por “Ha Ha”. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\"",
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso",
+   "latingrammys"
+  ]
+ },
+ {
+  "id": "ganador-2",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-2.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Álbum del Año por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "No ganó: Álbum del Año: ganó Rosalía LUX",
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso",
+   "latingrammys"
+  ]
+ },
+ {
+  "id": "ganador-3",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-3.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Canción del Año por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\"",
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso",
+   "latingrammys"
+  ]
+ },
+ {
+  "id": "ganador-4",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-4.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 17:44",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-12 17:43 (Juan; la clienta vio el anuncio en vivo)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "ig_media_id": "18116405126137702",
+  "publicado_el": "2026-11-12 17:44"
+ },
+ {
+  "id": "ganador-5",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-5.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 19:52",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-12 19:53 (Juan)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso",
+   "latingrammys"
+  ],
+  "ig_media_id": "18255456889309356",
+  "publicado_el": "2026-11-12 19:54"
+ },
+ {
+  "id": "ganador-6",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-6.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Álbum de Música Alternativa por Free Spirits. El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 12:00",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-11 21:35 (cliente)",
+  "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador.",
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso",
+   "latingrammys"
+  ]
+ },
+ {
+  "id": "ganador-7",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/03-ganador-7.jpg"
+  ],
+  "texto": "CA7RIEL & Paco Amoroso ganan el Latin Grammy a Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). El premio se entregó en la 27.ª edición de los Latin Grammy, en Las Vegas, donde el dúo llegó con siete nominaciones.\n\n#CA7RIEL #PacoAmoroso #LatinGRAMMY #FreeSpirits",
+  "fecha": "2026-11-12 18:42",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "aprobado": "2026-11-12 18:43 (Juan; la clienta vio el anuncio en vivo)",
+  "nota": "Automático: queda en borrador; cuando se confirma que ganan se pasa a pendiente con la hora del momento y el robot lo publica solo.",
+  "ig_media_id": "18079644677738511",
+  "publicado_el": "2026-11-12 18:44"
+ },
+ {
+  "id": "1115-reel-gira",
+  "tipo": "REEL",
+  "media": [
+   "clientes/ca7rielypaco/videos/reel-gira.mp4"
+  ],
+  "texto": "Osaka, Milán y una gira que dio la vuelta al mundo. El FREE SPIRITS World Tour entra en su recta final con cuatro fechas en Sudamérica: São Paulo (18/11, Espaço Unimed), Río de Janeiro (19/11, Vivo Rio, nueva fecha), Santiago (23/11, Movistar Arena) y Lima (27/11, Multiespacio Costa 21), donde termina la gira.\n\n¿A cuál vas? Contanos en los comentarios.\n\n🇧🇷 Vem aí: São Paulo 18/11 · Rio 19/11.\n\n#CA7RIEL #PacoAmoroso #FreeSpiritsWorldTour #FreeSpirits",
+  "fecha": "2026-11-15 20:30",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan)"
+ },
+ {
+  "id": "1115-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1115-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-15 20:31",
+  "estado": "pendiente",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
+ },
+ {
+  "id": "1112-h-hoy",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1500-hoy.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 13:42",
+  "estado": "publicado",
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "ig_media_id": "18155337316498641",
+  "publicado_el": "2026-11-12 13:43"
+ },
+ {
+  "id": "1112-h-hace-un-ano",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1500-hace-un-ano.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 15:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "forzado": "2026-11-12 15:06",
+  "ig_media_id": "18120354299096552",
+  "publicado_el": "2026-11-12 15:06"
+ },
+ {
+  "id": "1112-h-faltan4",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1800-faltan4.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 18:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "forzado": "18:06",
+  "ig_media_id": "18172483186460880",
+  "publicado_el": "2026-11-12 18:06"
+ },
+ {
+  "id": "1112-h-arranca",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-2145-arranca.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 21:45",
+  "estado": "publicado",
+  "aprobado": "2026-11-12 13:42 (Juan)",
+  "forzado": "21:47",
+  "ig_media_id": "18120499327973749",
+  "publicado_el": "2026-11-12 21:47"
+ },
+ {
+  "id": "ganador-1-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-1.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "No ganó: Grabación del Año: ganó Milo J \"Niño\""
+ },
+ {
+  "id": "ganador-2-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-2.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "No ganó: Álbum del Año: ganó Rosalía LUX"
+ },
+ {
+  "id": "ganador-3-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-3.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "No ganó: Canción del Año: ganó Rosalía \"La Perla\""
+ },
+ {
+  "id": "ganador-4-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-4.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 17:45",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-4 si se confirma el premio",
+  "aprobado": "2026-11-12 17:43 (Juan)",
+  "forzado": "17:49",
+  "ig_media_id": "18133636211511224",
+  "publicado_el": "2026-11-12 17:51"
+ },
+ {
+  "id": "ganador-5-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-5.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 19:52",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-5 si se confirma el premio",
+  "aprobado": "2026-11-12 19:53 (Juan)",
+  "ig_media_id": "18045136970832867",
+  "publicado_el": "2026-11-12 19:54"
+ },
+ {
+  "id": "ganador-6-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-6.jpg"
+  ],
+  "texto": "",
+  "fecha": "",
+  "estado": "borrador",
+  "solo_si_ganan": true,
+  "nota": "No ganó: Mejor Álbum de Música Alternativa fue para LUX (Complete Works) de Rosalía (hola.com, 12/11 22:55). Queda en borrador."
+ },
+ {
+  "id": "ganador-7-h",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-ganador-7.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-12 18:42",
+  "estado": "publicado",
+  "solo_si_ganan": true,
+  "nota": "Historia del ganador; sale junto con ganador-7 si se confirma el premio",
+  "aprobado": "2026-11-12 18:43 (Juan)",
+  "ig_media_id": "18186977296425279",
+  "publicado_el": "2026-11-12 18:44"
+ },
+ {
+  "id": "1113-carrusel-resumen",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-13 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1113-c1.jpg",
+   "clientes/ca7rielypaco/img/1113-c2.jpg",
+   "clientes/ca7rielypaco/img/1113-c3.jpg",
+   "clientes/ca7rielypaco/img/1113-c4.jpg"
+  ],
+  "texto": "Tres Latin Grammy para CA7RIEL & Paco Amoroso.\n\nEn la 27.ª edición, en Las Vegas, el dúo se llevó Mejor Interpretación de Música Electrónica por “Beto’s Horns” (Fred again.. Remix), Mejor Canción Pop/Rock por “Hasta Jesús Tuvo un Mal Día”, junto a Sting, y Mejor Video Musical Versión Larga por FREE SPIRITS (The Film). Llegaban con siete nominaciones.\n\nFelicitaciones a todos los que hicieron posible esta noche: a Fred again.. y a Sting; a Rafa Arcaute, Federico Vindver, Martin Kierszenbaum, Renee Barri, Vicente Jimenez y John Ryan, coautores de “Hasta Jesús Tuvo un Mal Día”; a Ferran Echegaray y Ferina, directores de FREE SPIRITS (The Film), y a Jean-Baptiste Fusil, Ellie Loarca y Francisco Wechsler, sus productores; y a todo el equipo de 5020 Records que acompaña a los chicos. 🏆\n\nLa gira sigue: São Paulo (18/11, Espaço Unimed) y Río de Janeiro (19/11, Vivo Rio).\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #LatinGRAMMY",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "nota": "Portada y fotos de la noche enviadas por la clienta 13/11 15:29; descripción con felicitaciones a todos los involucrados (pedido de la clienta). Créditos: grammy.com.",
+  "forzado": "2026-11-13 20:34",
+  "ig_media_id": "18130003975908462",
+  "publicado_el": "2026-11-13 20:35"
+ },
+ {
+  "id": "1113-h-video-gramofonos",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/videos/h-1113-gramofonos.mp4"
+  ],
+  "texto": "",
+  "fecha": "2026-11-13 20:31",
+  "estado": "publicado",
+  "aprobado": "2026-11-13 15:42 (Juan)",
+  "nota": "Video de la clienta: los dos con los tres gramófonos. Sale justo después del carrusel.",
+  "forzado": "2026-11-13 20:34",
+  "ig_media_id": "18453179929120207",
+  "publicado_el": "2026-11-13 20:36"
+ },
+ {
+  "id": "1113-h-tres",
+  "tipo": "STORY",
+  "fecha": "2026-11-13 15:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1113-tres.jpg"
+  ],
+  "texto": "",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-13 15:04",
+  "ig_media_id": "17913558501307562",
+  "publicado_el": "2026-11-13 15:05"
+ },
+ {
+  "id": "1113-h-faltan5",
+  "tipo": "STORY",
+  "fecha": "2026-11-13 18:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1113-faltan5.jpg"
+  ],
+  "texto": "",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-13 18:04",
+  "ig_media_id": "18068103941518807",
+  "publicado_el": "2026-11-13 18:04"
+ },
+ {
+  "id": "1113-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1113-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-13 20:32",
+  "estado": "publicado",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
+  "forzado": "2026-11-13 20:34",
+  "ig_media_id": "18097618730659718",
+  "publicado_el": "2026-11-13 20:36"
+ },
+ {
+  "id": "1114-carrusel-efemeride",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-14 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1114-c1.jpg",
+   "clientes/ca7rielypaco/img/1114-c2.jpg",
+   "clientes/ca7rielypaco/img/1114-c3.jpg",
+   "clientes/ca7rielypaco/img/1114-c4.jpg"
+  ],
+  "texto": "Un año después: 5 + 3.\n\nEl 13 de noviembre de 2025, CA7RIEL & Paco Amoroso ganaron cinco Latin Grammy: Mejor Canción Pop (“El Día del Amigo”), Mejor Álbum de Música Alternativa (Papota), Mejor Canción Alternativa y Mejor Video Musical Versión Corta (“#Tetas”) y Mejor Video Musical Versión Larga (Papota).\n\nEl 12 de noviembre de 2026 sumaron tres más con Free Spirits: Electrónica, Pop/Rock y Video Versión Larga. Ocho Latin Grammy en dos ediciones seguidas.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour #LatinGRAMMY",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "nota": "Fotos reales de los Latin Grammy 2025 enviadas por la clienta 14/11 18:32.",
+  "forzado": "2026-11-14 20:34",
+  "ig_media_id": "18101416331413532",
+  "publicado_el": "2026-11-14 20:35"
+ },
+ {
+  "id": "1114-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1114-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-14 20:31",
+  "estado": "publicado",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
+  "forzado": "2026-11-14 20:34",
+  "ig_media_id": "18181620163443716",
+  "publicado_el": "2026-11-14 20:35"
+ },
+ {
+  "id": "1114-h-faltan4",
+  "tipo": "STORY",
+  "fecha": "2026-11-14 13:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1114-faltan4.jpg"
+  ],
+  "texto": "",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-14 13:04",
+  "ig_media_id": "17953914291307690",
+  "publicado_el": "2026-11-14 13:04"
+ },
+ {
+  "id": "1114-h-hace-un-ano",
+  "tipo": "STORY",
+  "fecha": "2026-11-14 18:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1114-hace-un-ano.jpg"
+  ],
+  "texto": "",
+  "estado": "publicado",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-14 18:04",
+  "ig_media_id": "18074176868752593",
+  "publicado_el": "2026-11-14 18:04"
+ },
+ {
+  "id": "1115-h-faltan3",
+  "tipo": "STORY",
+  "fecha": "2026-11-15 13:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1115-faltan3.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "forzado": "2026-11-15 13:04"
+ },
+ {
+  "id": "1116-post-rio",
+  "tipo": "POST",
+  "fecha": "2026-11-17 12:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1116-rio.jpg"
+  ],
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso"
+  ],
+  "texto": "Cambio de fecha en Brasil: el show de CA7RIEL & Paco Amoroso en Río de Janeiro se adelanta al jueves 19 de noviembre (estaba previsto para el viernes 20).\n\n⚠️ Ojo: todavía circulan publicaciones con la fecha anterior. La fecha correcta es el JUEVES 19, no el viernes 20.\n\nSigue en Vivo Rio, con puertas a las 18 h y show a las 21 h. Las entradas compradas valen para la nueva fecha, en el mismo sector. Quien no pueda ir puede pedir el reembolso del total, tasas incluidas, hasta hoy, martes 17/11, a las 23:59, en Ticketmaster Brasil.\n\nUn día antes, el miércoles 18, tocan en São Paulo, en el Espaço Unimed.\n\n🇧🇷 Atenção, Rio: o show foi antecipado para quinta, 19/11, no Vivo Rio. Os ingressos continuam válidos. Atenção: a data certa é quinta 19, não sexta 20.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)",
+  "nota": " | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
+ },
+ {
+  "id": "1116-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1116-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-17 12:31",
+  "estado": "pendiente",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
+  "nota": " | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
+ },
+ {
+  "id": "1116-h-semana",
+  "tipo": "STORY",
+  "fecha": "2026-11-16 12:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1116-semana.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1117-h-manana-sp",
+  "tipo": "STORY",
+  "fecha": "2026-11-17 13:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1117-manana-sp.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1117-h-reembolso",
+  "tipo": "STORY",
+  "fecha": "2026-11-17 18:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1117-reembolso.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1118-h-hoy-sp",
+  "tipo": "STORY",
+  "fecha": "2026-11-18 12:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1118-hoy-sp.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1118-post-sp",
+  "tipo": "POST",
+  "fecha": "2026-11-18 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1118-sp.jpg"
+  ],
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso"
+  ],
+  "texto": "Hoy, São Paulo. El Free Spirits World Tour llega al Espaço Unimed: puertas a las 18 h y show a las 21 h (mismo horario que en Argentina).\n\nEs la primera de las dos fechas en Brasil; mañana, jueves 19, sigue Río de Janeiro en Vivo Rio.\n\n🇧🇷 Hoje é dia: São Paulo, Espaço Unimed. Portas 18h, show 21h.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1118-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1118-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-18 20:31",
+  "estado": "pendiente",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
+ },
+ {
+  "id": "1118-h-manana-rio",
+  "tipo": "STORY",
+  "fecha": "2026-11-18 18:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1118-manana-rio.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1119-h-hoy-rio",
+  "tipo": "STORY",
+  "fecha": "2026-11-19 12:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1119-hoy-rio.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1119-post-rio",
+  "tipo": "POST",
+  "fecha": "2026-11-19 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1119-rio.jpg"
+  ],
+  "etiquetas": [
+   "ca7rielypacoamoroso",
+   "ca7riel",
+   "pacoamoroso"
+  ],
+  "texto": "Hoy, Río de Janeiro. CA7RIEL & Paco Amoroso tocan en Vivo Rio, en el Parque do Flamengo: puertas a las 18 h y show a las 21 h.\n\nLa fecha se adelantó del viernes 20 al jueves 19; las entradas compradas siguen valiendo, en el mismo sector.\n\n🇧🇷 Hoje é dia: Rio de Janeiro, Vivo Rio. Portas 18h, show 21h.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #FreeSpiritsWorldTour",
+  "estado": "pendiente",
+  "aprobado": "2026-11-11 22:01 (Juan, plan de la semana)"
+ },
+ {
+  "id": "1119-h-nuevo",
+  "tipo": "STORY",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1119-nuevo.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 20:31",
+  "estado": "pendiente",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)"
+ },
+ {
+  "id": "1113-reel-noche",
+  "tipo": "REEL",
+  "media": [
+   "clientes/ca7rielypaco/videos/reel-noche-latin-grammy.mp4"
+  ],
+  "fecha": "2026-11-13 22:00",
+  "estado": "publicado",
+  "aprobado": "2026-11-13 18:39 (Juan: reel, línea en portugués e historia 20:35 al post del día)",
+  "texto": "Tres gramófonos, una noche en Las Vegas.\n\nCA7RIEL & Paco Amoroso volvieron de la 27.ª edición de los Latin Grammy con Mejor Interpretación de Música Electrónica (“Beto’s Horns”, con Fred again..), Mejor Canción Pop/Rock (“Hasta Jesús Tuvo un Mal Día”, con Sting) y Mejor Video Musical Versión Larga (FREE SPIRITS (The Film)).\n\nLo que sigue: São Paulo (18/11) y Río de Janeiro (19/11).\nVem aí: São Paulo 18/11 · Rio 19/11 🇧🇷\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @latingrammys\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #LatinGRAMMY",
+  "forzado": "2026-11-13 22:04",
+  "ig_media_id": "18109505495343771",
+  "publicado_el": "2026-11-13 22:06"
+ },
+ {
+  "id": "1116-h-grammy",
+  "tipo": "STORY",
+  "fecha": "2026-11-16 12:30",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1116-grammy.jpg"
+  ],
+  "texto": "",
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)",
+  "nota": " | 16/11 11:40: rediseño formato \"Revista\"; portada con la foto que eligió la clienta (17-alfombra-grammy-gris). | 11:40: la clienta prefirió el diseño editorial anterior; se mantiene, con su foto de portada."
+ },
+ {
+  "id": "1116-carrusel-grammy",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-16 12:50",
+  "media": [
+   "clientes/ca7rielypaco/img/1116-g1.jpg",
+   "clientes/ca7rielypaco/img/1116-g2.jpg",
+   "clientes/ca7rielypaco/img/1116-g3.jpg",
+   "clientes/ca7rielypaco/img/1116-g4.jpg"
+  ],
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 11:22 (clienta vía Juan: «que haga y que suba»)",
+  "etiquetas": [],
+  "texto": "Tres nominaciones a los Grammy para CA7RIEL & Paco Amoroso.\n\nLa Academia de la Grabación anunció hoy los nominados a la 69.ª entrega de los Grammy, y el dúo aparece en tres categorías:\n\n• Mejor Álbum de Rock o Alternativo Latino, por FREE SPIRITS (compiten con Jorge Drexler, Milo J, Juanes y Fito Páez)\n• Mejor Canción Latina, por “Hasta Jesús Tuvo un Mal Día”, junto a Sting\n• Mejor Grabación Remezclada, por “Beto’s Horns” (Fred Remix), con Fred again..\n\nLa ceremonia es el domingo 7 de febrero de 2027 en el Crypto.com Arena de Los Ángeles. Cuatro días después de ganar tres Latin Grammy, Free Spirits sigue sumando.\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @recordingacademy\n\n#CA7RIEL #PacoAmoroso #FreeSpirits #GRAMMYs",
+  "nota": " | 16/11 11:40: rediseño formato \"Revista\"; portada con la foto que eligió la clienta (17-alfombra-grammy-gris). | 11:40: la clienta prefirió el diseño editorial anterior; se mantiene, con su foto de portada. | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana)."
+ },
+ {
+  "id": "1117-carrusel-costarica",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-16 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1117-cr1.jpg",
+   "clientes/ca7rielypaco/img/1117-cr2.jpg",
+   "clientes/ca7rielypaco/img/1117-cr3.jpg",
+   "clientes/ca7rielypaco/img/1117-cr4.jpg",
+   "clientes/ca7rielypaco/img/1117-cr5.jpg"
+  ],
+  "texto": "Pura vida. 🇨🇷\n\nCA7RIEL & Paco Amoroso tocaron el domingo 15 de noviembre en Parque Viva, en La Guácima de Alajuela, con el Free Spirits World Tour.\n\nLo que sigue es Brasil: el miércoles 18 en São Paulo (Espaço Unimed) y el jueves 19 en Río de Janeiro (Vivo Rio).\n\n📸 @mari0madz vía @sonymusicca\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n\n#CA7RIEL #PacoAmoroso #FreeSpiritsWorldTour #CostaRica",
+  "estado": "pendiente",
+  "aprobado": "2026-11-16 11:49 (clienta vía Juan: mandó las fotos del show, «si quiere subirlo»)",
+  "nota": "Fotos de @mari0madz publicadas por @sonymusicca; recortadas sin la interfaz de IG. Mañana no hay otro posteo en el feed. | 16/11 12:44: reordenado por pedido de la clienta (Grammy ahora, Costa Rica hoy, Brasil mañana).",
+  "etiquetas": [
+   "sonymusicca",
+   "mari0madz"
+  ]
+ },
+ {
+  "id": "1118-post-gta-festival",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/1118-gta-festival.jpg"
+  ],
+  "texto": "De Brasil a Miami. 🌴\n\nCA7RIEL & Paco Amoroso son parte de GTA VI: The Festival, el show que arman Rockstar Games y PlayStation este sábado 21 de noviembre en Mana Wynwood, Miami.\n\nLes toca abrir el Stage One: de 6 a 7 PM de Miami, o sea de 20 a 21 h en Argentina. Las puertas abren a las 4 PM, y en la grilla los acompañan Cardi B, Justice, Metro Boomin y Travis Scott, entre otros.\n\nY hay un detalle lindo: todo lo que se recaude con las entradas va a organizaciones benéficas de Miami.\n\n¿Quién se prende a seguirlo desde acá? 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso @rockstargames\n\n#CA7RIEL #PacoAmoroso #GTAVI #FreeSpirits",
+  "fecha": "2026-11-18 17:45",
+  "estado": "pendiente",
+  "aprobado": "2026-11-18 17:40 (clienta vía Juan: «quiere que subas la foto que hiciste con esa información», «con nuestras palabras»)",
+  "etiquetas": [],
+  "nota": "Flyer estilo plantilla, v2 con los dos nombres al mismo tamaño. Datos del afiche oficial de @rockstargames."
+ },
+ {
+  "id": "1120-h-manana-miami",
+  "tipo": "STORY",
+  "fecha": "2026-11-20 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1120-manana-miami.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
+ },
+ {
+  "id": "1121-h-hoy-miami",
+  "tipo": "STORY",
+  "fecha": "2026-11-21 12:00",
+  "media": [
+   "clientes/ca7rielypaco/img/h-1121-hoy-miami.jpg"
+  ],
+  "texto": "",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
+ }
 ]

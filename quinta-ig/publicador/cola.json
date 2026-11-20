@@ -1120,5 +1120,25 @@
   "texto": "",
   "fecha": "2026-11-20 22:50",
   "estado": "pendiente"
+ },
+ {
+  "id": "h-promo-sabado21-a",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-promo-sabado21.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-20 16:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-promo-sabado21-b",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-promo-sabado21.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-20 21:15",
+  "estado": "pendiente"
  }
 ]

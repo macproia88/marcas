@@ -481,5 +481,10 @@
       "2026-12-04",
       "2027-02-05"
     ]
+  },
+  "links_fotos": {
+    "dia": "[COMPLETAR: link de la destacada de la quinta de día]",
+    "casa": "[COMPLETAR: link de la destacada de la casa]",
+    "perfil": "https://www.instagram.com/quintaelflorido/"
   }
 }

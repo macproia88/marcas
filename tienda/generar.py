@@ -317,7 +317,7 @@ def armar(clave):
         prods.append(dict(id=i, cat=cat, n=nom, d=desc, u=uni, p=round(lista.get(cod) or reales.get(cod, pr)), img=IMG.get(cat, '')))
     cats = list(dict.fromkeys(p['cat'] for p in prods))
     ahora = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
-    datos = dict(marca=m['nombre'], locales=[dict(l, mp=MP_LINK.get(l['id'], '')) for l in m['locales']], prods=prods, cats=cats, clave=clave, desc=DESC_WEB, waPedidos=WA_PEDIDOS.get(clave, ''))
+    datos = dict(marca=m['nombre'], locales=[dict(l, mp=MP_LINK.get(l['id'], ''), **({'wa': WA_PEDIDOS[clave], 'watxt': '11 3877-7015'} if WA_PEDIDOS.get(clave) else {})) for l in m['locales']], prods=prods, cats=cats, clave=clave, desc=DESC_WEB, waPedidos=WA_PEDIDOS.get(clave, ''))
     c = m['colores']
     tpl = (RAIZ / 'tienda' / 'plantilla.html').read_text()
     reemplazos = {

@@ -30,5 +30,17 @@
   "salida": "clientes/carpintero/videos/v2/1120-reel-600-camas-voz.mp4",
   "velocidad": 1.0,
   "texto": "Otro cliente contento. Seiscientas camas de pino, hechas en nuestra fábrica y cargadas para entregar. En El Carpintero 3 hacemos pedidos grandes, para negocios y revendedores. Escribinos por WhatsApp y te pasamos presupuesto."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1120-reel-estante.mp4",
+  "salida": "clientes/carpintero/videos/v2/1120-reel-estante-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Estante organizador de pino macizo. Queda bien en el baño, en la cocina o en el living. Directo de fábrica. Consultá por WhatsApp."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1121-reel-comedor2.mp4",
+  "salida": "clientes/carpintero/videos/v2/1121-reel-comedor2-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Comedores de madera para toda la familia: mesas redondas y rectangulares, con sillas a juego. Hechos en nuestra fábrica. Escribinos por WhatsApp."
  }
 ]

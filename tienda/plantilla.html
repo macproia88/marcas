@@ -331,6 +331,7 @@ const uni=u=>u==='kg'?'x kg':u==='caja'?'x caja':u==='u'?'c/u':u==='docena'?'x d
 const extra=p=>p.u&&!['kg','u','caja','docena'].includes(p.u)?' ('+p.u+')':'';
 const local=()=>D.locales.find(l=>l.id===st.local)||D.locales[0];
 const wa=t=>'https://wa.me/'+local().wa+'?text='+encodeURIComponent(t);
+const waPedido=t=>'https://wa.me/'+(D.waPedidos||local().wa)+'?text='+encodeURIComponent(t);
 
 $('#sel-local').innerHTML=$('#f-local').innerHTML=D.locales.map(l=>`<option value="${l.id}">${l.nombre}</option>`).join('');
 if(D.locales.length===1){$('#sel-local').closest('.campo').style.display='none'}
@@ -398,7 +399,7 @@ function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
  $('#fin1').disabled=!ls.length;$('#barmovil').classList.toggle('si',ls.length>0);
  $$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.m===st.modo));
  pintarMP();['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
- $('#enviar').href=wa(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
+ $('#enviar').href=waPedido(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){delete st.c[r.dataset.rm];guardar();pintarCatalogo();pintarPedido();}});
 ['#f-nombre','#f-tel','#f-hora','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
 $$('.seg button').forEach(b=>b.onclick=()=>{st.modo=b.dataset.m;guardar();pintarPedido()});

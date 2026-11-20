@@ -730,9 +730,9 @@
    "clientes/ca7rielypaco/img/h-1120-manana-miami.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "aprobado": null,
-  "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
+  "estado": "pendiente",
+  "aprobado": "2026-11-20 19:21 (clienta vía Juan: «si estamos ok»)",
+  "nota": "Paleta noche/neón (Miami)."
  },
  {
   "id": "1121-h-hoy-miami",
@@ -742,8 +742,8 @@
    "clientes/ca7rielypaco/img/h-1121-hoy-miami.jpg"
   ],
   "texto": "",
-  "estado": "borrador",
-  "aprobado": null,
-  "nota": "Paleta noche/neón (Miami). Espera OK de la clienta."
+  "estado": "pendiente",
+  "aprobado": "2026-11-20 19:21 (clienta vía Juan: «si estamos ok»)",
+  "nota": "Paleta noche/neón (Miami)."
  }
 ]

@@ -243,7 +243,7 @@ CAT_PZ = [
 # WhatsApp donde llegan los pedidos web (prueba: el celular de Juan). Vacío = el WhatsApp de cada local.
 WA_PEDIDOS = {'presumida': '5491138777015', 'paz': ''}
 
-MP_LINK = {'florida': '', 'beccar': '', 'olivos': ''}
+MP_LINK = {'florida': 'https://link.mercadopago.com.ar/juanponc', 'beccar': 'https://link.mercadopago.com.ar/juanponc', 'olivos': ''}
 
 DESC_WEB = 0.10  # descuento pidiendo por la web (retiro en el local)
 

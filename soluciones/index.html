@@ -148,6 +148,22 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .wa-float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;background:#25D366;color:#06210F;font-weight:700;text-decoration:none;box-shadow:0 12px 30px -8px rgba(37,211,102,.6)}
 .wa-float svg{width:22px;height:22px}
 @media (max-width:520px){.wa-float span{display:none}.wa-float{padding:14px}}
+/* PLANES */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;align-items:stretch}
+.plan{position:relative;border:1px solid var(--card-b);background:var(--card);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.plan.star{border:1px solid transparent;background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px -30px rgba(255,59,71,.55)}
+.plan .badge{position:absolute;top:-12px;left:28px;background:var(--grad);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;border-radius:99px;padding:4px 10px}
+.plan .kind{font-family:var(--mono);font-size:12px;color:var(--coral);letter-spacing:.06em}
+.plan h3{font-size:26px}
+.plan .desc{color:var(--muted);font-size:15px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.plan li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.plan li::before{content:"✓";color:var(--ok);font-family:var(--mono)}
+.plan .how{margin-top:auto;font-family:var(--mono);font-size:12px;color:var(--dim);border-top:1px solid var(--card-b);padding-top:12px}
+.plan .btn{justify-content:center}
+.combo{margin-top:14px;border:1px dashed var(--card-b);border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;color:var(--muted)}
+.combo b{color:var(--ink)}
+@media (max-width:920px){.plans{grid-template-columns:1fr}}
 /* MARQUEE */
 .marquee{border-block:1px solid var(--card-b);padding-block:18px;overflow:hidden;background:var(--bg2)}
 .track{display:flex;gap:46px;width:max-content;animation:scroll 32s linear infinite;font-family:var(--mono);font-size:14px;color:var(--dim)}
@@ -248,7 +264,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <nav class="nav" aria-label="Principal">
   <div class="wrap">
     <a class="logo" href="#top"><b>JP</b>Juan Ponce</a>
-    <ul><li><a href="#servicios">Servicios</a></li><li><a href="#ia">Automatizaciones IA</a></li><li><a href="#video-cv">Demo</a></li><li><a href="#proceso">Cómo trabajo</a></li></ul>
+    <ul><li><a href="#servicios">Servicios</a></li><li><a href="#ia">Automatizaciones IA</a></li><li><a href="#video-cv">Demo</a></li><li><a href="#planes">Planes</a></li><li><a href="#proceso">Cómo trabajo</a></li></ul>
     <a class="btn primary" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vi%20tu%20web%20y%20quiero%20automatizar%20mi%20negocio" target="_blank" rel="noopener" style="padding:10px 16px;font-size:14px">Agendar diagnóstico</a>
   </div>
 </nav>
@@ -384,6 +400,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
   </section>
 
+  <section id="planes" style="padding-top:0">
+    <div class="wrap">
+      <span class="tag">Planes</span>
+      <h2 style="margin-top:18px">Tres planes, <span class="grad">abono mensual</span> y sin sorpresas</h2>
+      <p class="lead">Pensados para gastronomía y comercios. Una instalación inicial y después un abono fijo que incluye mantenimiento y ajustes.</p>
+      <div class="plans">
+        <article class="plan star"><span class="badge">EL MÁS PEDIDO</span><span class="kind">// REDES CON IA</span><h3>Instagram en piloto automático</h3>
+          <p class="desc">Tu cuenta con movimiento todas las semanas, sin que tengas que estar encima.</p>
+          <ul><li>Calendario mensual de publicaciones</li><li>Posteos e historias armados desde tus fotos</li><li>Reels con voz en off</li><li>Respuestas a consultas por DM y derivación a WhatsApp</li><li>Informe de métricas cada mes</li></ul>
+          <p class="how">Arranque: 1 semana · abono mensual</p>
+          <a class="btn primary" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20me%20interesa%20el%20plan%20de%20Instagram%20con%20IA" target="_blank" rel="noopener">Quiero este plan</a></article>
+        <article class="plan"><span class="kind">// DATOS</span><h3>Tablero + parte diario</h3>
+          <p class="desc">Sabé cómo viene tu negocio todos los días, desde el celular.</p>
+          <ul><li>Tablero web de ventas que se actualiza solo</li><li>Plan del mes vs real, por local y por vendedor</li><li>Resumen cada mañana por WhatsApp o mail</li><li>Ranking de vendedores</li></ul>
+          <p class="how">Instalación + abono mensual</p>
+          <a class="btn" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20me%20interesa%20el%20plan%20Tablero%20%2B%20parte%20diario" target="_blank" rel="noopener">Consultar</a></article>
+        <article class="plan"><span class="kind">// ADMINISTRACIÓN</span><h3>Compras e IVA en orden</h3>
+          <p class="desc">Facturas cargadas solas y el IVA controlado antes de que llegue el contador.</p>
+          <ul><li>Carga de facturas desde una foto</li><li>Control de compras contra ARCA</li><li>Aviso cuando un proveedor aumenta</li><li>Carpeta mensual lista para el contador</li></ul>
+          <p class="how">Instalación + abono mensual</p>
+          <a class="btn" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20me%20interesa%20el%20plan%20Compras%20e%20IVA" target="_blank" rel="noopener">Consultar</a></article>
+      </div>
+      <div class="combo"><span><b>Combo de los 3 planes</b> con 15% de descuento en el abono.</span><a class="btn" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20me%20interesa%20el%20combo%20de%20los%203%20planes" target="_blank" rel="noopener">Pedir el combo</a></div>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <span class="tag">Diagnóstico rápido</span>
@@ -426,7 +468,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <li>Tableros de venta, plan diario por local y ranking de vendedores que se actualizan solos.</li>
           <li>Compras con cada factura desglosada y control de IVA contra ARCA.</li>
           <li>Club de clientes con QR, cupones y cartelería para el mostrador.</li>
-          <li>Instagram de varios negocios manejado con IA: publicaciones, reels y métricas.</li>
+          <li>Instagram de cuatro negocios manejado con IA (mueblería, escuela taller, quinta de eventos y un fan club): publicaciones, reels y métricas.</li>
         </ul>
         <div class="big"><p>No vendo un sistema nuevo. Hago que lo que ya tenés trabaje por vos.</p><small>Juan Ponce · Lic. en Administración de Empresas (UTN, en curso)</small></div>
       </div>
@@ -447,7 +489,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </main>
 
 <a class="wa-float" href="https://wa.me/5491138777015?text=Hola%20Juan%2C%20vi%20tu%20web%20y%20quiero%20automatizar%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp al 11 3877-7015"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c1.6.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>WhatsApp</span></a>
-<footer><div class="wrap"><span>© 2026 Juan Ponce · Automatización e IA para pymes</span><span>Última actualización: 19/11/2026 22:12</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Juan Ponce · Automatización e IA para pymes</span><span>Última actualización: 19/11/2026 22:30</span></div></footer>
 
 <script>
 /* recomendador */

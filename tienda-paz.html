@@ -24,6 +24,7 @@ a{color:inherit}img{max-width:100%;display:block}button{font:inherit;cursor:poin
 h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
 .anuncio{background:var(--marca2);color:#fff;font-size:13px;text-align:center;padding:7px 12px;letter-spacing:.02em}
 .sub2{display:flex;justify-content:space-between;font-size:14px;color:var(--suave);margin-top:6px}.sub2.dto span:last-child{color:#2E7D4F;font-weight:600}.pr s.ant{font-size:.62em;color:var(--suave);margin-right:6px;font-weight:400}
+.pagos{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pagos button{text-align:left;border:1.5px solid var(--linea);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--tinta)}.pagos button b{display:block;font-size:15px}.pagos button small{display:block;font-size:12px;color:var(--suave);margin-top:2px;line-height:1.3}.pagos button.on{border-color:var(--marca);box-shadow:0 0 0 2px var(--marca) inset}.pagos .mp{color:#009EE3}
 .anuncio b{color:var(--acento);font-weight:600}
 header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linea)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:14px}
@@ -213,7 +214,7 @@ footer a{color:#fff;opacity:.9}
   <div>
     <div class="eyebrow rule">Pastas frescas en Olivos</div>
     <h1>Pasta fresca,<br><em>hecha cada día</em></h1>
-    <p class="sub">El clásico de Olivos hace 25 años: pastas frescas, salsas y comidas caseras. Armá tu pedido acá, con <b>10% de descuento</b>, y pasá a retirarlo listo por el local.</p>
+    <p class="sub">El clásico de Olivos hace 25 años: pastas frescas, salsas y comidas caseras. Armá tu pedido acá, con <b>10% de descuento</b>, y pasá a retirarlo listo por el local. Pagás en el local o con <b>Mercado Pago</b>.</p>
     <div class="ctas">
       <a class="btn" href="#carta">Ver la carta y pedir</a>
       <a class="btn wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Escribinos</a>
@@ -244,7 +245,7 @@ footer a{color:#fff;opacity:.9}
       <div class="hd">Mi pedido</div>
       <div class="bd"><div class="items" id="items1"></div>
         <div class="sub2"><span>Precio de mostrador</span><s id="lista1">$0</s></div><div class="sub2 dto"><span>Descuento web 10%</span><span id="dto1">-$0</span></div><div class="tot"><span>Total estimado</span><span id="tot1">$0</span></div>
-        <p class="nota">El precio final es el del local al armar el pedido.</p>
+        <p class="nota">Retirás en el local. Pagás ahí o con <b style="color:#009EE3">Mercado Pago</b>. El precio final es el del local al armar el pedido.</p>
         <button class="btn wa full" id="fin1" style="margin-top:16px" disabled><svg class="ico"><use href="#i-wa"/></svg>Pedir por WhatsApp</button>
       </div>
     </aside>
@@ -277,7 +278,7 @@ footer a{color:#fff;opacity:.9}
     <div><span class="eyebrow">Locales</span><div id="ft-locs"></div></div>
     <div><span class="eyebrow">Contacto</span><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a><br><a href="https://www.instagram.com/pastaspaz/" target="_blank" rel="noopener">Instagram @pastaspaz</a></div>
   </div>
-  <div class="act">Precios actualizados el 20/11/2026 19:00. Pueden cambiar sin aviso; el total final es el del local.</div>
+  <div class="act">Precios actualizados el 20/11/2026 20:34. Pueden cambiar sin aviso; el total final es el del local.</div>
 </div></footer>
 
 <div class="barmovil" id="barmovil"><button id="abrir2"><span>Ver mi pedido · <span id="cnt2">0</span></span><span id="tot2">$0</span></button></div>
@@ -294,7 +295,9 @@ footer a{color:#fff;opacity:.9}
     <label for="f-nombre">Tu nombre</label><input id="f-nombre" autocomplete="name">
     <label for="f-tel">Tu teléfono</label><input id="f-tel" type="tel" autocomplete="tel" placeholder="Para avisarte cuando esté listo">
     <label for="f-hora">¿Cuándo pasás a retirar?</label><select id="f-hora"></select>
-    <label for="f-pago">¿Cómo pagás?</label><select id="f-pago"><option>En el local, al retirar</option><option>Mercado Pago (te mandamos el link por WhatsApp)</option></select>
+    <label>¿Cómo pagás?</label>
+    <div class="pagos" id="pagos"><button type="button" data-p="En el local, al retirar" class="on"><b>En el local</b><small>Efectivo, débito o crédito al retirar</small></button><button type="button" data-p="Mercado Pago (link de pago por WhatsApp)"><b class="mp">Mercado Pago</b><small>Te mandamos el link de pago por WhatsApp</small></button></div>
+    <input type="hidden" id="f-pago" value="En el local, al retirar">
     <label for="f-dni">DNI (si sos socio del club)</label><input id="f-dni" inputmode="numeric" placeholder="Para sumar tus beneficios">
     <label for="f-nota">Aclaraciones</label><textarea id="f-nota" rows="2" placeholder="Ej.: los ñoquis bien sueltos"></textarea>
   </div>
@@ -390,8 +393,9 @@ function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
  ['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
  $('#enviar').href=wa(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){delete st.c[r.dataset.rm];guardar();pintarCatalogo();pintarPedido();}});
-['#f-nombre','#f-tel','#f-hora','#f-pago','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
+['#f-nombre','#f-tel','#f-hora','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
 $$('.seg button').forEach(b=>b.onclick=()=>{st.modo=b.dataset.m;guardar();pintarPedido()});
+$$('#pagos button').forEach(b=>b.onclick=()=>{$$('#pagos button').forEach(x=>x.classList.toggle('on',x===b));$('#f-pago').value=b.dataset.p;pintarPedido()});
 const abrir=()=>{$('#drawer').classList.add('si');$('#velo').classList.add('si');ocultarBurb()},cerrar=()=>{$('#drawer').classList.remove('si');$('#velo').classList.remove('si')};
 ['#abrir1','#abrir2','#fin1'].forEach(s=>$(s).onclick=abrir);$('#cerrar').onclick=cerrar;$('#velo').onclick=cerrar;
 $('#copiar').onclick=async()=>{try{await navigator.clipboard.writeText(texto());aviso('Pedido copiado')}catch(e){aviso('No se pudo copiar')}};

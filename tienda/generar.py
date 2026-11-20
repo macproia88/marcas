@@ -239,6 +239,8 @@ CAT_PZ = [
  ('Bebidas', 1046, 'Sprite 500 ml', '', 'u', 2900),
 ]
 
+DESC_WEB = 0.10  # descuento pidiendo por la web (retiro en el local)
+
 IMG = {'Ravioles': 'ravioles', 'Raviolones': 'raviolones', 'Sorrentinos y rellenas': 'sorrentinos',
        'Ñoquis': 'noquis', 'Fideos': 'fideos', 'Listas para comer': 'cocidas', 'Canelones y lasagna': 'cocidas'}
 
@@ -247,7 +249,7 @@ MARCAS = {
    archivo='tienda-presumida.html', grupo='LP', catalogo=CAT_LP,
    nombre='La Presumida', titulo='La Presumida · Pedí online', slogan='Rica, fresca y casera',
    sub='Pastas frescas de elaboración diaria en Florida y Beccar',
-   anuncio='Pedí por WhatsApp y retirá sin esperar · <b>Socios del club</b>: 1 kg de fideos de regalo en tu primera compra',
+   anuncio='<b>10% OFF pidiendo por la web</b> · Retirás en el local sin esperar · Socios del club: 1 kg de fideos de regalo en tu primera compra',
    hero=[('2','locales en zona norte'),('100+','productos caseros'),('7','días a la semana')],
    colores=dict(fondo='#FBF5EE', fondo2='#F3E6DC', marca='#7A2735', marca2='#5E1C28', acento='#C9A04E',
                 rosa='#E9C9C3', tinta='#3A2A26', suave='#7C6A62'),
@@ -268,7 +270,7 @@ MARCAS = {
    archivo='tienda-paz.html', grupo='PZ', catalogo=CAT_PZ,
    nombre='Pastas Paz', titulo='Pastas Paz · Pedí online', slogan='Pastas frescas en Olivos',
    sub='El clásico de Olivos hace 25 años: pastas frescas, salsas y comidas caseras',
-   anuncio='Pedí por WhatsApp y retirá sin esperar · <b>Socios del Paz Club</b>: regalo en tu primera compra',
+   anuncio='<b>10% OFF pidiendo por la web</b> · Retirás en el local sin esperar · Socios del Paz Club: regalo en tu primera compra',
    hero=[('25','años en Olivos'),('100+','productos caseros'),('7','días a la semana')],
    colores=dict(fondo='#F6F7FA', fondo2='#E6EAF2', marca='#1B2A4A', marca2='#121D35', acento='#D2322D',
                 rosa='#F4D5D3', tinta='#1E2533', suave='#5D6679'),
@@ -309,7 +311,7 @@ def armar(clave):
         prods.append(dict(id=i, cat=cat, n=nom, d=desc, u=uni, p=round(lista.get(cod) or reales.get(cod, pr)), img=IMG.get(cat, '')))
     cats = list(dict.fromkeys(p['cat'] for p in prods))
     ahora = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3)))
-    datos = dict(marca=m['nombre'], locales=m['locales'], prods=prods, cats=cats, clave=clave)
+    datos = dict(marca=m['nombre'], locales=m['locales'], prods=prods, cats=cats, clave=clave, desc=DESC_WEB)
     c = m['colores']
     tpl = (RAIZ / 'tienda' / 'plantilla.html').read_text()
     reemplazos = {

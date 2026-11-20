@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{TITULO}}</title>
-<meta name="description" content="{{NOMBRE}}: {{SUB}}. Elegí tus pastas, salsas y comidas y pedí por WhatsApp para retirar o con delivery.">
+<meta name="description" content="{{NOMBRE}}: {{SUB}}. Elegí tus pastas, salsas y comidas, pedí por la web con 10% de descuento y retirá en el local.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600;700&display=swap">
@@ -23,6 +23,7 @@ a{color:inherit}img{max-width:100%;display:block}button{font:inherit;cursor:poin
 .rule{display:flex;align-items:center;gap:12px;color:var(--acento)}.rule:before,.rule:after{content:"";height:1px;background:currentColor;opacity:.5;flex:0 0 36px}
 h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.01em}
 .anuncio{background:var(--marca2);color:#fff;font-size:13px;text-align:center;padding:7px 12px;letter-spacing:.02em}
+.sub2{display:flex;justify-content:space-between;font-size:14px;color:var(--suave);margin-top:6px}.sub2.dto span:last-child{color:#2E7D4F;font-weight:600}.pr s.ant{font-size:.62em;color:var(--suave);margin-right:6px;font-weight:400}
 .anuncio b{color:var(--acento);font-weight:600}
 header.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--fondo) 92%,transparent);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linea)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:14px}
@@ -212,7 +213,7 @@ footer a{color:#fff;opacity:.9}
   <div>
     <div class="eyebrow rule">{{SLOGAN}}</div>
     <h1>Pasta fresca,<br><em>hecha cada día</em></h1>
-    <p class="sub">{{SUB}}. Elegí de la carta y mandanos el pedido por WhatsApp: lo dejamos listo para retirar o te lo llevamos.</p>
+    <p class="sub">{{SUB}}. Armá tu pedido acá, con <b>10% de descuento</b>, y pasá a retirarlo listo por el local.</p>
     <div class="ctas">
       <a class="btn" href="#carta">Ver la carta y pedir</a>
       <a class="btn wa js-wa" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Escribinos</a>
@@ -227,7 +228,7 @@ footer a{color:#fff;opacity:.9}
 </div></section>
 
 <div class="panelbar"><div class="wrap">
-  <div class="seg" role="group" aria-label="Cómo recibís tu pedido"><button data-m="retiro">Retiro en el local</button><button data-m="delivery">Delivery</button></div>
+  <span class="campo" style="font-weight:600">Retiro en el local · 10% OFF web</span>
   <label class="campo">Local <select id="sel-local"></select></label>
   <span class="campo" id="dir-local"></span>
   <a class="campo wa-num js-wa" id="wa-num" href="#" target="_blank" rel="noopener"></a>
@@ -235,14 +236,14 @@ footer a{color:#fff;opacity:.9}
 
 <section id="carta" style="padding-top:56px"><div class="wrap">
   <div class="titulo"><div class="eyebrow rule">La carta</div><h2>Elegí lo que vas a llevar</h2>
-  <p class="lead">Lo que se vende por peso lo pesamos al armar tu pedido; el total puede variar un poco.</p></div>
+  <p class="lead">Todos los precios tienen <b>10% de descuento</b> pidiendo por la web. Lo que se vende por peso lo pesamos al armar tu pedido; el total puede variar un poco.</p></div>
   <div class="chips"><div class="in" id="chips"><input class="buscar" id="buscar" type="search" placeholder="Buscar en la carta" aria-label="Buscar en la carta"></div></div>
   <div class="layout">
     <div id="catalogo"></div>
     <aside class="panel" aria-label="Mi pedido">
       <div class="hd">Mi pedido</div>
       <div class="bd"><div class="items" id="items1"></div>
-        <div class="tot"><span>Total estimado</span><span id="tot1">$0</span></div>
+        <div class="sub2"><span>Precio de mostrador</span><s id="lista1">$0</s></div><div class="sub2 dto"><span>Descuento web 10%</span><span id="dto1">-$0</span></div><div class="tot"><span>Total estimado</span><span id="tot1">$0</span></div>
         <p class="nota">El precio final es el del local al armar el pedido.</p>
         <button class="btn wa full" id="fin1" style="margin-top:16px" disabled><svg class="ico"><use href="#i-wa"/></svg>Pedir por WhatsApp</button>
       </div>
@@ -287,15 +288,15 @@ footer a{color:#fff;opacity:.9}
   <div class="hd"><b>Tu pedido</b><button class="x" id="cerrar" aria-label="Cerrar">&times;</button></div>
   <div class="bd">
     <div id="items2"></div>
-    <div class="tot"><span>Total estimado</span><span id="tot3">$0</span></div>
+    <div class="sub2"><span>Precio de mostrador</span><s id="lista3">$0</s></div><div class="sub2 dto"><span>Descuento web 10%</span><span id="dto3">-$0</span></div><div class="tot"><span>Total estimado</span><span id="tot3">$0</span></div>
     <p class="nota">Lo que se vende por peso puede variar un poco al pesarlo.</p>
-    <label>¿Cómo lo recibís?</label>
-    <div class="seg" role="group"><button data-m="retiro">Retiro en el local</button><button data-m="delivery">Delivery</button></div>
-    <label for="f-local">Local</label><select id="f-local"></select>
+    <label for="f-local">Local donde retirás</label><select id="f-local"></select>
     <label for="f-nombre">Tu nombre</label><input id="f-nombre" autocomplete="name">
-    <div id="f-dir-box"><label for="f-dir">Dirección de entrega</label><input id="f-dir" autocomplete="street-address" placeholder="Calle, número, piso, localidad"></div>
-    <label for="f-hora">¿Para qué hora?</label><input id="f-hora" placeholder="Ej.: hoy a las 12:30">
-    <label for="f-nota">Aclaraciones</label><textarea id="f-nota" rows="2" placeholder="Ej.: soy socio del club, DNI..."></textarea>
+    <label for="f-tel">Tu teléfono</label><input id="f-tel" type="tel" autocomplete="tel" placeholder="Para avisarte cuando esté listo">
+    <label for="f-hora">¿Cuándo pasás a retirar?</label><select id="f-hora"></select>
+    <label for="f-pago">¿Cómo pagás?</label><select id="f-pago"><option>En el local, al retirar</option><option>Mercado Pago (te mandamos el link por WhatsApp)</option></select>
+    <label for="f-dni">DNI (si sos socio del club)</label><input id="f-dni" inputmode="numeric" placeholder="Para sumar tus beneficios">
+    <label for="f-nota">Aclaraciones</label><textarea id="f-nota" rows="2" placeholder="Ej.: los ñoquis bien sueltos"></textarea>
   </div>
   <div class="ft">
     <a class="btn wa full" id="enviar" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg>Enviar pedido por WhatsApp</a>
@@ -310,7 +311,9 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const plata=n=>'$'+Math.round(n).toLocaleString('es-AR');
 const KEY='tienda-'+D.clave;
 let st={c:{},modo:'retiro',local:D.locales[0].id};
+const DESC=D.desc||0;const pw=p=>Math.round(p*(1-DESC)/10)*10;
 try{const g=JSON.parse(localStorage.getItem(KEY)||'null');if(g&&g.c)st=Object.assign(st,g);}catch(e){}
+st.modo='retiro';
 const guardar=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
 const P=Object.fromEntries(D.prods.map(p=>[p.id,p]));
 const nq=q=>String(q).replace('.',',');
@@ -324,11 +327,20 @@ if(D.locales.length===1){$('#sel-local').closest('.campo').style.display='none'}
 function estado(l){const ar=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Argentina/Buenos_Aires'}));
   const dom=ar.getDay()===0,h=ar.getHours()+ar.getMinutes()/60;const txt=(dom?l.horario[1]:l.horario[0])[1];
   const m=txt.match(/(\d+)\s*a\s*(\d+)/);return {ab:!!(m&&h>=+m[1]&&h<+m[2]),abre:m?m[1]:'9',cierra:m?m[2]:''};}
+
+function horarios(){const l=local();const ar=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Argentina/Buenos_Aires'}));
+ const rango=d=>{const txt=(d.getDay()===0?l.horario[1]:l.horario[0])[1];const m=txt.match(/(\d+)\s*a\s*(\d+)/);return m?[+m[1],+m[2]]:[9,20]};
+ const op=[];const fmt=h=>String(Math.floor(h)).padStart(2,'0')+':'+(h%1?'30':'00');
+ const hoy=rango(ar);let desde=Math.max(hoy[0]+1,Math.ceil((ar.getHours()+ar.getMinutes()/60+1)*2)/2);
+ for(let h=desde;h<=hoy[1]-0.5;h+=0.5)op.push('Hoy '+fmt(h));
+ const man=new Date(ar);man.setDate(ar.getDate()+1);const r2=rango(man);const dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+ for(let h=r2[0]+1;h<=r2[1]-0.5;h+=0.5)op.push('Mañana '+dias[man.getDay()]+' '+fmt(h));
+ const prev=$('#f-hora').value;$('#f-hora').innerHTML=op.map(o=>`<option>${o}</option>`).join('');if(op.includes(prev))$('#f-hora').value=prev;}
 function pintarLocal(){const l=local();$('#sel-local').value=$('#f-local').value=l.id;
   const e=estado(l);$('#sello').classList.toggle('cerr',!e.ab);
   $('#sello-t').textContent=(e.ab?'Abierto ahora':'Ahora cerrado')+(D.locales.length>1?' · '+l.nombre:'');
   $('#sello-s').textContent=e.ab?`Hoy hasta las ${e.cierra} hs. Pedí y pasá a retirar.`:`Abrimos a las ${e.abre} hs. Dejá tu pedido y lo preparamos.`;
-  $('#dir-local').textContent=l.dir;$('#wa-num').textContent='WhatsApp '+l.watxt;$('#llamar').href='tel:'+l.telraw;guardar();pintarPedido();}
+  horarios();$('#dir-local').textContent=l.dir;$('#wa-num').textContent='WhatsApp '+l.watxt;$('#llamar').href='tel:'+l.telraw;guardar();pintarPedido();}
 $('#sel-local').onchange=e=>{st.local=e.target.value;pintarLocal()};
 $('#f-local').onchange=e=>{st.local=e.target.value;pintarLocal()};
 $('#locs').innerHTML=D.locales.map(l=>`<article class="loc">
@@ -345,7 +357,7 @@ $('#chips').insertAdjacentHTML('beforeend',D.cats.map((c,i)=>`<button data-c="${
 $$('#chips button').forEach(b=>b.onclick=()=>{const h=document.getElementById('cat'+b.dataset.c);if(h)h.scrollIntoView({behavior:'smooth'})});
 function tarjeta(p){const q=st.c[p.id]||0;
  return `<div class="prod${q?' sel':''}" data-id="${p.id}"><div><div class="nm">${p.n}${extra(p)}</div>${p.d?`<div class="ds">${p.d}</div>`:''}</div>
- <div class="pie"><div class="pr">${plata(p.p)}<small>${uni(p.u)}</small></div>
+ <div class="pie"><div class="pr">${DESC?`<s class="ant">${plata(p.p)}</s>`:''}${plata(pw(p.p))}<small>${uni(p.u)}</small></div>
  ${q?`<div class="cant"><button aria-label="Quitar" data-a="-">&minus;</button><span>${nq(q)}${p.u==='kg'?' kg':''}</span><button class="mas" aria-label="Agregar" data-a="+">+</button></div>`:`<button class="agregar" data-a="+" aria-label="Agregar ${p.n}">+</button>`}</div></div>`}
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=e.target.id.slice(3);$$('#chips button').forEach(b=>b.classList.toggle('on',b.dataset.c===i))}}),{rootMargin:'-160px 0px -70% 0px'});
 function observar(){obs.disconnect();$$('.cat-hd').forEach(h=>obs.observe(h))}
@@ -360,23 +372,25 @@ $('#catalogo').onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;con
  if(b.dataset.a==='+'){aviso(P[id].n+' al pedido');burbuja('pedido')}guardar();pintarCatalogo();pintarPedido();};
 
 function lineas(){return Object.entries(st.c).map(([id,q])=>({p:P[id],q})).filter(x=>x.p)}
-function total(){return lineas().reduce((a,x)=>a+x.p.p*x.q,0)}
+function lista(){return lineas().reduce((a,x)=>a+x.p.p*x.q,0)}
+function total(){return lineas().reduce((a,x)=>a+pw(x.p.p)*x.q,0)}
 function texto(){const l=local();
- return `Hola ${D.marca} ${l.nombre}! Quiero hacer un pedido para ${st.modo==='delivery'?'DELIVERY':'RETIRAR EN EL LOCAL'}:\n`+
- lineas().map(x=>`- ${nq(x.q)}${x.p.u==='kg'?' kg':' x'} ${x.p.n}${extra(x.p)}`).join('\n')+
- `\nTotal estimado: ${plata(total())}\nNombre: ${$('#f-nombre').value||'-'}`+(st.modo==='delivery'?`\nDirección: ${$('#f-dir').value||'-'}`:'')+
- `\nHora: ${$('#f-hora').value||'lo antes posible'}`+($('#f-nota').value?`\nAclaraciones: ${$('#f-nota').value}`:'');}
+ return `Hola ${D.marca} ${l.nombre}! Hago un PEDIDO WEB para RETIRAR EN EL LOCAL:\n`+
+ lineas().map(x=>`- ${nq(x.q)}${x.p.u==='kg'?' kg':' x'} ${x.p.n}${extra(x.p)}: ${plata(pw(x.p.p)*x.q)}`).join('\n')+
+ `\n\nPrecio de mostrador: ${plata(lista())}\nDescuento web 10%: -${plata(lista()-total())}\nTOTAL ESTIMADO: ${plata(total())}`+
+ `\n\nRetiro: ${$('#f-hora').value||'lo antes posible'}\nPago: ${$('#f-pago').value}\nNombre: ${$('#f-nombre').value||'-'}\nTeléfono: ${$('#f-tel').value||'-'}`+
+ ($('#f-dni').value?`\nDNI socio: ${$('#f-dni').value}`:'')+($('#f-nota').value?`\nAclaraciones: ${$('#f-nota').value}`:'');}
 function msgWa(){const l=local();return lineas().length?texto():`Hola ${D.marca} ${l.nombre}! Quería hacer una consulta.`}
 function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
- const html=ls.length?ls.map(x=>`<div class="it"><span><span class="q">${nq(x.q)}${x.p.u==='kg'?' kg':'×'}</span> ${x.p.n}${extra(x.p)}<br><button class="rm" data-rm="${x.p.id}">quitar</button></span><span>${plata(x.p.p*x.q)}</span></div>`).join(''):'<div class="vacio">Todavía no agregaste productos.</div>';
+ const html=ls.length?ls.map(x=>`<div class="it"><span><span class="q">${nq(x.q)}${x.p.u==='kg'?' kg':'×'}</span> ${x.p.n}${extra(x.p)}<br><button class="rm" data-rm="${x.p.id}">quitar</button></span><span>${plata(pw(x.p.p)*x.q)}</span></div>`).join(''):'<div class="vacio">Todavía no agregaste productos.</div>';
  $('#items1').innerHTML=$('#items2').innerHTML=html;
  $('#cnt').textContent=$('#cnt2').textContent=n;$('#tot1').textContent=$('#tot2').textContent=$('#tot3').textContent=plata(t);
  $('#fin1').disabled=!ls.length;$('#barmovil').classList.toggle('si',ls.length>0);
  $$('.seg button').forEach(b=>b.classList.toggle('on',b.dataset.m===st.modo));
- $('#f-dir-box').style.display=st.modo==='delivery'?'':'none';
+ ['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
  $('#enviar').href=wa(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){delete st.c[r.dataset.rm];guardar();pintarCatalogo();pintarPedido();}});
-['#f-nombre','#f-dir','#f-hora','#f-nota'].forEach(s=>$(s).oninput=pintarPedido);
+['#f-nombre','#f-tel','#f-hora','#f-pago','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
 $$('.seg button').forEach(b=>b.onclick=()=>{st.modo=b.dataset.m;guardar();pintarPedido()});
 const abrir=()=>{$('#drawer').classList.add('si');$('#velo').classList.add('si');ocultarBurb()},cerrar=()=>{$('#drawer').classList.remove('si');$('#velo').classList.remove('si')};
 ['#abrir1','#abrir2','#fin1'].forEach(s=>$(s).onclick=abrir);$('#cerrar').onclick=cerrar;$('#velo').onclick=cerrar;
@@ -400,7 +414,7 @@ let ultimaSec='';const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.i
 ['inicio','carta','club','locales'].forEach(id=>secObs.observe(document.getElementById(id)));
 
 const menus=D.prods.filter(p=>/^Menú/.test(p.n)).slice(0,4);
-$('#promos-lista').innerHTML=menus.map(p=>`<div class="promo"><span class="eyebrow">Menú del día</span><b>${p.n}</b><div class="pr">${plata(p.p)}</div><button class="btn btn-borde" data-add="${p.id}">Agregar al pedido</button></div>`).join('');
+$('#promos-lista').innerHTML=menus.map(p=>`<div class="promo"><span class="eyebrow">Menú del día</span><b>${p.n}</b><div class="pr">${plata(pw(p.p))}</div><button class="btn btn-borde" data-add="${p.id}">Agregar al pedido</button></div>`).join('');
 $('#promos-lista').onclick=e=>{const b=e.target.closest('[data-add]');if(!b)return;st.c[b.dataset.add]=(st.c[b.dataset.add]||0)+1;guardar();pintarCatalogo();pintarPedido();aviso('Agregado al pedido')};
 
 pintarCatalogo();pintarLocal();

@@ -3,6 +3,8 @@ Estilos:
   festiva  -> ritmo de cumbia: güira, bajo saltado, acordes tipo acordeón. Para la feria, los stands y la alegría.
   emotiva  -> piano lento con eco. Para agradecimientos y cierres.
   acustica -> guitarra pulsada suave y alegre. Para recorridos y trabajos de los alumnos.
+  marimba  -> marimba liviana con shaker. Para trabajos y talleres, tono simpático.
+  pop      -> ritmo bailable (bombo en negras, palmas, bajo sintetizado). Para chicos bailando.
 Uso: python3 musica_estilos.py estilo salida.wav segundos
 """
 import sys, wave
@@ -73,6 +75,34 @@ elif ESTILO == "emotiva":
     eco = int(0.32 * SR)                                              # eco suave
     for _ in range(3):
         L[eco:] += L[:-eco] * 0.28; R[eco:] += R[:-eco] * 0.28
+elif ESTILO == "marimba":
+    BPM = 104; B = 60 / BPM
+    ACS = [[60, 64, 67, 72], [57, 60, 64, 69], [53, 57, 60, 65], [55, 59, 62, 67]]   # Do Lam Fa Sol
+    def mar(f, dur=0.6):
+        t = np.arange(int(dur * SR)) / SR
+        return (np.sin(2 * np.pi * f * t) + 0.35 * np.sin(2 * np.pi * f * 3.9 * t) * np.exp(-t * 30)) * np.exp(-t * 7) * 0.6
+    for c in range(int(DUR / (4 * B)) + 1):
+        t0 = c * 4 * B; ac = ACS[c % 4]
+        for k, i in enumerate([0, 2, 1, 3, 2, 3, 1, 2]): poner(mar(hz(ac[i] + 12)), t0 + k * B / 2, 0.3 if k % 2 else -0.3, 0.5)
+        for k in range(8): poner(ruido(0.05, 80), t0 + k * B / 2 + B / 4, 0.4, 0.22)
+        t = np.arange(int(B * SR)) / SR
+        for k in (0, 2): poner(np.sin(2 * np.pi * hz(ac[0] - 24) * t) * np.exp(-t * 4) * 0.7, t0 + k * B)
+elif ESTILO == "pop":
+    BPM = 120; B = 60 / BPM
+    ACS = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]   # Lam Fa Do Sol
+    for c in range(int(DUR / (4 * B)) + 1):
+        t0 = c * 4 * B; ac = ACS[c % 4]
+        for k in range(4): poner(bombo(), t0 + k * B, 0, 0.9)
+        for k in (1, 3): poner(ruido(0.12, 25), t0 + k * B, 0.1, 0.55); poner(ruido(0.12, 25), t0 + k * B + 0.012, -0.1, 0.4)
+        for k in range(8): poner(ruido(0.03, 120), t0 + k * B / 2 + B / 4, 0.3, 0.25)
+        t = np.arange(int(B / 2 * SR)) / SR
+        for k in range(8):
+            f = hz(ac[0] - 24 + (12 if k % 2 else 0)); w = 2 * ((f * t) % 1) - 1
+            poner(w * np.exp(-t * 6) * 0.35, t0 + k * B / 2)
+        tt = np.arange(int(0.18 * SR)) / SR
+        for k in (0.5, 1.5, 2.5, 3.5):
+            st = sum(np.sign(np.sin(2 * np.pi * hz(n) * tt)) for n in ac) * np.exp(-tt * 12) * 0.12
+            poner(st, t0 + k * B, -0.3, 1)
 else:  # acustica
     BPM = 112; B = 60 / BPM
     ACS = [[50, 62, 66, 69], [45, 61, 64, 69], [47, 62, 66, 71], [43, 59, 62, 67]]   # Re La Sim Sol

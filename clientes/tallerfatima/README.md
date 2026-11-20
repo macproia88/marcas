@@ -56,14 +56,14 @@ Subido hasta ahora (16/11):
 ## Semana Expo (18 al 23/11): toda la semana se habla de la Expo Fátima 2026
 Material: carpeta "Expo 2026" del Drive de la escuela, bajada a `fotos/expo-2026/`: fotos, 19 tomas de 4 s (`tomas/`), fotos fijas (`cuadros/`) y videos del show con sonido (`sonido-*.mp4`).
 El video largo original es de 432x768, así que sus fotos fijas van enmarcadas tipo foto instantánea, no a pantalla completa.
-Música: cada pieza lleva un sonido distinto según el contenido (`herramientas/musica_estilos.py`: festiva, emotiva, acústica; `musica_taller.py`: sonidos de taller; o el sonido en vivo).
+Música: cada pieza lleva un sonido distinto según el contenido (`herramientas/musica_estilos.py`: festiva, emotiva, acústica, marimba, pop; `musica_taller.py`: sonidos de taller; o el sonido en vivo). Regla: ningún video repite la música de otro.
 | Día | Feed | Historia |
 |---|---|---|
 | Mié 18 | 10:00 Carrusel "Así se vivió nuestra Expo 2026" (pedido de la clienta: a las 10) | 16:00 flashes, sonido de taller (pedido de la clienta) |
 | Jue 19 | 21:00 Reel spoiler, 11 tomas a velocidad normal, música festiva | 13:00 "Hoy 21 h el spoiler", acústica |
-| Vie 20 | 21:00 Carrusel "Lo que hicieron nuestros alumnos" | 21:15 taller, sonido de taller |
-| Sáb 21 | 21:00 Carrusel "Una Expo para toda la comunidad" | 21:15 nenas bailando, festiva |
-| Dom 22 | 21:00 Reel "Y la Expo también fue fiesta", sonido en vivo de la banda | 21:15 banda en vivo |
+| Vie 20 | 21:00 Carrusel "Lo que hicieron nuestros alumnos" | 21:15 taller, marimba |
+| Sáb 21 | 21:00 Carrusel "Una Expo para toda la comunidad" | 21:15 nenas bailando, ritmo pop |
+| Dom 22 | 21:00 Reel "Y la Expo también fue fiesta", sonido en vivo de la banda | 21:15 banda en vivo (otro tema que el del reel) |
 | Lun 23 | 21:00 Carrusel "¡Gracias!" con las fotos "Gracias 1 a 5" del Drive y cierre con el video "Gracias-cierre" (pedido de la clienta) | 21:15 escenario al atardecer, piano emotivo |
 
 ## Semana 2 (24 al 30/11): lo que estaba planeado antes, corrido una semana

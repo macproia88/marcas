@@ -93,12 +93,13 @@ def tapa_collage(fotos, chico, titulo, salida):
     flecha(d, W - 110, H - 85, "white")
     c.save(salida, quality=92)
 
-tapa_resaltada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron nuestros alumnos", f"{O}/expo-trabajos-1.jpg", (0.5, 0.5))
-tapa_tarjeta(f"{E}/stand-grupo-sonriendo.jpg", "EXPO FÁTIMA 2026", "Una Expo para toda la comunidad",
+if __name__ == "__main__":
+  tapa_resaltada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron nuestros alumnos", f"{O}/expo-trabajos-1.jpg", (0.5, 0.5))
+  tapa_tarjeta(f"{E}/stand-grupo-sonriendo.jpg", "EXPO FÁTIMA 2026", "Una Expo para toda la comunidad",
              "Stands, emprendimientos, historia y mucha gente compartiendo el día.", f"{O}/expo-comunidad-1.jpg", (0.5, 0.4))
-tapa_bn(f"{E}/foto-grupal-carpinteria.jpg", "¡Gracias!",
+  tapa_bn(f"{E}/foto-grupal-carpinteria.jpg", "¡Gracias!",
         "A todos los que trabajaron y colaboraron para que este día sea posible.", f"{O}/expo-gracias-1.jpg", (0.5, 0.4))
-tapa_etiqueta(f"{a.F}/carpinteria/grupo-1.jpg", "TALLER DE CARPINTERÍA PARA ADULTOS", "Aprender un oficio con las manos", f"{O}/1117-carpinteria-1.jpg", (0.5, 0.35))
-tapa_collage([f"{a.F}/costura/grupo-sonriendo.jpg", f"{a.F}/costura/regla-fatima.jpg", f"{a.F}/costura/moldes-1.jpg"],
+  tapa_etiqueta(f"{a.F}/carpinteria/grupo-1.jpg", "TALLER DE CARPINTERÍA PARA ADULTOS", "Aprender un oficio con las manos", f"{O}/1117-carpinteria-1.jpg", (0.5, 0.35))
+  tapa_collage([f"{a.F}/costura/grupo-sonriendo.jpg", f"{a.F}/costura/regla-fatima.jpg", f"{a.F}/costura/moldes-1.jpg"],
              "TALLER DE COSTURA", "Del molde a la prenda", f"{O}/1121-costura-1.jpg")
-print("listo")
+  print("listo")

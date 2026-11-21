@@ -1,0 +1,15 @@
+name: Verificar URL de video
+on:
+  push:
+    paths: ['.github/workflows/verificar-url.yml']
+permissions: { contents: write }
+jobs:
+  v:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          for u in https://macproia88.github.io/marcas/quinta-ig/videos/historia-kling-lunes23.mp4 https://macproia88.github.io/marcas/quinta-ig/videos/reel-chicas-voz.mp4; do
+            echo "$u $(curl -s -o /dev/null -w '%{http_code} %{content_type} %{size_download}' $u)" >> quinta-ig/publicador/verificar-url.txt; done
+          git config user.name github-actions; git config user.email actions@github.com
+          git add quinta-ig/publicador/verificar-url.txt && git commit -m "verificar url [skip ci]" && (git push || (git pull --rebase && git push))

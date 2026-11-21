@@ -301,9 +301,9 @@ footer a{color:#fff;opacity:.9}
     <input type="hidden" id="f-pago" value="En el local, al retirar">
     <div class="mpbox" id="mpbox" hidden>
       <div class="mpt">Total a pagar <b id="mp-total">$0</b> <button type="button" class="mpcopy" id="mp-copy">Copiar monto</button></div>
-      <a class="btn mpbtn" id="mp-link" href="#" target="_blank" rel="noopener">Pagar con Mercado Pago</a>
+      <a class="btn mpbtn" id="mp-link" href="#" target="_blank" rel="noopener">Pagar con Mercado Pago (se abre aparte)</a>
       <div class="mpqr" id="mp-qr"></div>
-      <p class="nota">1. Pagá el total en Mercado Pago. 2. Volvé y mandá el pedido por WhatsApp con la captura del pago.</p>
+      <p class="nota"><b>Paso 1:</b> tocá el botón verde "Enviar pedido por WhatsApp". <b>Paso 2:</b> pagá con el link que va en el mismo mensaje (o con este botón) y mandá la captura en ese chat. Tu pedido no se pierde.</p>
     </div>
     <label for="f-dni">DNI (si sos socio del club)</label><input id="f-dni" inputmode="numeric" placeholder="Para sumar tus beneficios">
     <label for="f-nota">Aclaraciones</label><textarea id="f-nota" rows="2" placeholder="Ej.: los ñoquis bien sueltos"></textarea>
@@ -323,8 +323,9 @@ const KEY='tienda-'+D.clave;
 let st={c:{},modo:'retiro',local:D.locales[0].id};
 const DESC=D.desc||0;const pw=p=>Math.round(p*(1-DESC)/10)*10;
 try{const g=JSON.parse(localStorage.getItem(KEY)||'null');if(g&&g.c)st=Object.assign(st,g);}catch(e){}
-st.modo='retiro';
-const guardar=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+st.modo='retiro';const F0=Object.assign({},st.f||{});
+const CAMPOS=['#f-nombre','#f-tel','#f-dni','#f-nota','#f-pago'];
+const guardar=()=>{try{if(typeof F1!=='undefined'&&F1)return;st.f={};CAMPOS.forEach(s=>{const e=document.querySelector(s);if(e)st.f[s]=e.value});localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
 const P=Object.fromEntries(D.prods.map(p=>[p.id,p]));
 const nq=q=>String(q).replace('.',',');
 const uni=u=>u==='kg'?'x kg':u==='caja'?'x caja':u==='u'?'c/u':u==='docena'?'x docena':'';
@@ -389,7 +390,7 @@ function texto(){const l=local();
  return `Hola ${D.marca} ${l.nombre}! Hago un PEDIDO WEB para RETIRAR EN EL LOCAL:\n`+
  lineas().map(x=>`- ${nq(x.q)}${x.p.u==='kg'?' kg':' x'} ${x.p.n}${extra(x.p)}: ${plata(pw(x.p.p)*x.q)}`).join('\n')+
  `\n\nPrecio de mostrador: ${plata(lista())}\nDescuento web 10%: -${plata(lista()-total())}\nTOTAL ESTIMADO: ${plata(total())}`+
- `\n\nRetiro: ${$('#f-hora').value||'lo antes posible'}\nPago: ${$('#f-pago').value.startsWith('Mercado')&&local().mp?'Mercado Pago (ya pagué, te mando el comprobante)':$('#f-pago').value}\nNombre: ${$('#f-nombre').value||'-'}\nTeléfono: ${$('#f-tel').value||'-'}`+
+ `\n\nRetiro: ${$('#f-hora').value||'lo antes posible'}\nPago: ${$('#f-pago').value.startsWith('Mercado')&&local().mp?'Mercado Pago. Pago '+plata(total())+' con este link y te mando la captura acá: '+local().mp:$('#f-pago').value}\nNombre: ${$('#f-nombre').value||'-'}\nTeléfono: ${$('#f-tel').value||'-'}`+
  ($('#f-dni').value?`\nDNI socio: ${$('#f-dni').value}`:'')+($('#f-nota').value?`\nAclaraciones: ${$('#f-nota').value}`:'');}
 function msgWa(){const l=local();return lineas().length?texto():`Hola ${D.marca} ${l.nombre}! Quería hacer una consulta.`}
 function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
@@ -401,9 +402,9 @@ function pintarPedido(){const ls=lineas(),n=ls.length,t=total();
  pintarMP();['1','3'].forEach(k=>{$('#lista'+k).textContent=plata(lista());$('#dto'+k).textContent='-'+plata(lista()-t)});
  $('#enviar').href=waPedido(texto());$$('.js-wa').forEach(a=>a.href=wa(msgWa()));}
 document.addEventListener('click',e=>{const r=e.target.closest('[data-rm]');if(r){delete st.c[r.dataset.rm];guardar();pintarCatalogo();pintarPedido();}});
-['#f-nombre','#f-tel','#f-hora','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=pintarPedido;$(s).onchange=pintarPedido});
+['#f-nombre','#f-tel','#f-hora','#f-dni','#f-nota'].forEach(s=>{$(s).oninput=()=>{pintarPedido();guardar()};$(s).onchange=$(s).oninput});
 $$('.seg button').forEach(b=>b.onclick=()=>{st.modo=b.dataset.m;guardar();pintarPedido()});
-$$('#pagos button').forEach(b=>b.onclick=()=>{$$('#pagos button').forEach(x=>x.classList.toggle('on',x===b));$('#f-pago').value=b.dataset.p;pintarPedido()});
+$$('#pagos button').forEach(b=>b.onclick=()=>{$$('#pagos button').forEach(x=>x.classList.toggle('on',x===b));$('#f-pago').value=b.dataset.p;pintarPedido();guardar()});
 
 function pintarMP(){const l=local(),mp=$('#f-pago').value.startsWith('Mercado'),box=$('#mpbox');
  const link=l.mp||'';box.hidden=!(mp&&link);
@@ -411,7 +412,7 @@ function pintarMP(){const l=local(),mp=$('#f-pago').value.startsWith('Mercado'),
  if(!mp||!link)return;$('#mp-total').textContent=plata(total());$('#mp-link').href=link;
  const q=$('#mp-qr');if(q.dataset.l!==link&&window.QRCode){q.innerHTML='';new QRCode(q,{text:link,width:170,height:170});q.dataset.l=link}}
 $('#mp-copy').onclick=async()=>{try{await navigator.clipboard.writeText(String(Math.round(total())));aviso('Monto copiado')}catch(e){aviso(plata(total()))}};
-const abrir=()=>{$('#drawer').classList.add('si');$('#velo').classList.add('si');ocultarBurb()},cerrar=()=>{$('#drawer').classList.remove('si');$('#velo').classList.remove('si')};
+const abrir=()=>{$('#drawer').classList.add('si');$('#velo').classList.add('si');ocultarBurb();st.ab=1;guardar()},cerrar=()=>{$('#drawer').classList.remove('si');$('#velo').classList.remove('si');st.ab=0;guardar()};
 ['#abrir1','#abrir2','#fin1'].forEach(s=>$(s).onclick=abrir);$('#cerrar').onclick=cerrar;$('#velo').onclick=cerrar;
 $('#copiar').onclick=async()=>{try{await navigator.clipboard.writeText(texto());aviso('Pedido copiado')}catch(e){aviso('No se pudo copiar')}};
 let tt;function aviso(t){const x=$('#toast');x.textContent=t;x.classList.add('si');clearTimeout(tt);tt=setTimeout(()=>x.classList.remove('si'),1600)}
@@ -437,6 +438,12 @@ $('#promos-lista').innerHTML=menus.map(p=>`<div class="promo"><span class="eyebr
 $('#promos-lista').onclick=e=>{const b=e.target.closest('[data-add]');if(!b)return;st.c[b.dataset.add]=(st.c[b.dataset.add]||0)+1;guardar();pintarCatalogo();pintarPedido();aviso('Agregado al pedido')};
 
 pintarCatalogo();pintarLocal();
+
+let F1=F0;function restaurar(){try{const f=F1;F1=null;if(!f)return;CAMPOS.forEach(s=>{const e=document.querySelector(s);if(e&&f[s]!=null&&f[s]!=='')e.value=f[s]});
+ const v=$('#f-pago').value;$$('#pagos button').forEach(b=>b.classList.toggle('on',b.dataset.p===v));}catch(e){}}
+restaurar();pintarPedido();if(st.ab&&lineas().length)abrir();
+window.addEventListener('pageshow',e=>{if(e.persisted){pintarPedido()}});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')guardar()});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>

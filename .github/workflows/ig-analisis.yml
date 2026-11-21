@@ -1,0 +1,17 @@
+name: IG - análisis de horarios de mensajes (sin contenido)
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/ig-analisis.yml', 'quinta-ig/bot/analisis_tiempos.py']
+permissions: { contents: write }
+jobs:
+  analisis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q cryptography
+      - env: { IG_TOKEN: "${{ secrets.IG_TOKEN }}" }
+        run: |
+          python quinta-ig/bot/analisis_tiempos.py
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add quinta-ig/bot/analisis_tiempos.json && git commit -m "Análisis horarios [skip ci]" && (git push || (git pull --rebase && git push))

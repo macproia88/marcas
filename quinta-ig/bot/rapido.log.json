@@ -23,10 +23,10 @@
  "actualizado": "2026-11-21 14:49",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key",
  "motivos": {
-  "ya_procesada": 4,
-  "ya_respondida": 21
+  "ya_respondida": 21,
+  "ya_procesada": 4
  },
- "revisado": "2026-11-21 15:15",
+ "revisado": "2026-11-21 15:16",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

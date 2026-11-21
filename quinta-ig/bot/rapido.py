@@ -26,7 +26,9 @@ AUTO = ("¡Hola! 👋 Gracias por escribir", "¡Hola! 🌙", "¡Hola! 🎄 Graci
         "¡Hola! 👋 Gracias por tu comentario", "Estamos en General Rodríguez, a solo", "☀️ Quinta de día", "☀ Quinta de día",
         "¡Pasanos la fecha", "💰 Hasta diciembre", "¡Hola! Gracias por ponerte en contacto")
 
-def es_auto(t): return (not t.strip()) or t.startswith(AUTO)
+# Desde 21/11 las automáticas de Meta que quedan (preguntas frecuentes y respuesta a comentarios) contestan bien,
+# así que cuentan como respuesta. Solo se ignoran los mensajes sin texto (fotos, vista previa de links).
+def es_auto(t): return not t.strip()
 def fecha(s): return datetime.datetime.strptime(s[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=datetime.timezone.utc).astimezone(AR)
 def leer(nombre, defecto):
     f = os.path.join(AQUI, nombre)

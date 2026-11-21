@@ -51,7 +51,9 @@ def mensajes_de(para_id):
         if any(p.get("id") == para_id for p in (c.get("participants") or {}).get("data", [])):
             return (c.get("messages") or {}).get("data", [])
     raise Exception("charla no encontrada")
-def es_auto(t): return (not t.strip()) or t.startswith(AUTO)
+# Desde 21/11 las automáticas de Meta que quedan (preguntas frecuentes y respuesta a comentarios) contestan bien,
+# así que cuentan como respuesta. Solo se ignoran los mensajes sin texto (fotos, vista previa de links).
+def es_auto(t): return not t.strip()
 def fecha(s): return datetime.datetime.strptime(s[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=datetime.timezone.utc).astimezone(AR)
 
 modo = sys.argv[1] if len(sys.argv) > 1 else "leer"

@@ -123,8 +123,12 @@ def main():
         try:
             sistema = sistema or instrucciones()
             resp = claude(sistema, charla)
+        except urllib.error.HTTPError as e:
+            try: det = json.loads(e.read().decode()).get("error", {}); det = f"{det.get('type')} {det.get('message','')[:120]}"
+            except Exception: det = ""
+            errores += 1; print("error claude:", e.code, det); break
         except Exception as e:
-            errores += 1; print("error claude:", type(e).__name__); continue
+            errores += 1; print("error claude:", type(e).__name__); break
         clave = hashlib.sha256(pid.encode()).hexdigest()[:12]
         log["ultimo"][clave] = h
         if not resp or resp.strip().upper().startswith("NADA"):

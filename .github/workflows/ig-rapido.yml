@@ -32,7 +32,8 @@ jobs:
             if [ -f quinta-ig/bot/rapido.pausa ]; then sleep 60; continue; fi
             python3 quinta-ig/bot/rapido.py || true
             git add quinta-ig/bot/rapido.log.json 2>/dev/null
-            if ! git diff --cached --quiet; then
+            # Solo guardar si cambió algo real (no solo la hora de revisión): cada push cancela el despliegue de la web
+            if git diff --cached -U0 | grep '^[-+] ' | grep -vqE '"(revisado|actualizado)"'; then
               git commit -qm "Rápido: DMs [skip ci]"
               for i in 1 2 3; do git pull --rebase -X theirs -q && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
             fi

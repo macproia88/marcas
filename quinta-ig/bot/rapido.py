@@ -5,7 +5,7 @@ Corre en GitHub Actions cada ~1 minuto (workflow ig-rapido.yml).
 - La manda por la API de Instagram.
 El repo y los logs de Actions son públicos: acá nunca se imprimen mensajes, nombres ni precios.
 Los comentarios de publicaciones los sigue contestando el bot de cada 3 horas."""
-import os, json, base64, datetime, hashlib, urllib.request, urllib.parse, urllib.error
+import re, os, json, base64, datetime, hashlib, urllib.request, urllib.parse, urllib.error
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -70,6 +70,18 @@ Además:
 - Si no corresponde responder (charla cerrada con "gracias"/"ok", spam, insultos, otra quinta ofreciendo servicios, publicidad), respondé exactamente: NADA
 - Escribí solo el texto del mensaje, sin comillas ni explicaciones.
 
+FOTOS: si piden fotos (o preguntan "cómo es", "qué tiene", "tenés fotos"), además de tu texto agregá al final, en una línea sola, una de estas marcas: FOTOS:dia (pasar el día), FOTOS:casa (casa / dormir) o FOTOS:ambas (si no queda claro). El sistema manda 4 fotos reales de esa quinta. En el texto decí algo como "te paso unas fotos" y sumá el link de las destacadas para ver más. No uses la marca si no piden o no sirve.
+
+TONO (que se sienta una charla con una persona, pero profesional):
+- Mensajes cortos: 2 a 4 líneas. Voseo rioplatense, natural, cálido. Nada de "estimado cliente" ni frases de folleto.
+- Si en la charla ya saludamos, no vuelvas a saludar. Si el cliente dijo su nombre, usalo una vez.
+- Contestá primero exactamente lo que preguntó; después agregá un solo dato que ayude (ej: la pileta, la parrilla, que la fecha en principio está libre).
+- Como mucho 1 emoji, y solo si el cliente usa emojis.
+- Cerrá con UNA pregunta que acerque a reservar (qué fecha, cuántos son), no con varias.
+- No repitas información que ya le pasamos en la charla.
+- Si preguntan si sos un bot o una persona, no mientas: decí que respondemos rápido por acá y que Juan lo sigue personalmente por WhatsApp.
+- Si el cliente está molesto o hay un problema, disculpate corto y derivá a WhatsApp con Juan.
+
 DATOS DE LAS QUINTAS:
 {json.dumps(datos, ensure_ascii=False)}
 
@@ -81,6 +93,9 @@ PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
 """
 
 DIAG = {}
+BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
+FOTOS = {"dia": ["portada-dia.jpg", "dia-1.jpg", "dia-4.jpg", "dia-8.jpg"],
+         "casa": ["portada-casa.jpg", "casa-1.jpg", "casa-3.jpg", "casa-6.jpg"]}
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -139,8 +154,20 @@ def main():
         if not resp or resp.strip().upper().startswith("NADA"):
             nadas += 1; log["diag_nada"] = DIAG; continue
         try:
+            m = re.search(r"\n?\s*FOTOS:\s*(dia|casa|ambas)\s*$", resp, re.I)
+            cuales = []
+            if m:
+                k = m.group(1).lower(); resp = resp[:m.start()].rstrip()
+                cuales = FOTOS["dia"][:3] + FOTOS["casa"][:3] if k == "ambas" else FOTOS[k]
             post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": resp[:950]}))
             enviados += 1
+            for f in cuales:
+                try:
+                    post(f"{IG}/messages", recipient=json.dumps({"id": pid}),
+                         message=json.dumps({"attachment": {"type": "image", "payload": {"url": BASE_FOTOS + f}}}))
+                    log.setdefault("fotos", {}); log["fotos"][hoy] = log["fotos"].get(hoy, 0) + 1
+                except urllib.error.HTTPError as e:
+                    print("error foto:", e.code); log["ultimo_error"] = f"foto {e.code}"; break
         except urllib.error.HTTPError as e:
             errores += 1; print("error instagram:", e.code); log["ultimo_error"] = f"instagram {e.code}"
         if usados + enviados >= TOPE_DIA: break

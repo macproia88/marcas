@@ -94,7 +94,7 @@ def tapa_collage(fotos, chico, titulo, salida):
     c.save(salida, quality=92)
 
 if __name__ == "__main__":
-  tapa_resaltada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron nuestros alumnos", f"{O}/expo-trabajos-1.jpg", (0.5, 0.5))
+  tapa_resaltada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron los alumnos", f"{O}/expo-trabajos-1.jpg", (0.5, 0.5))
   tapa_tarjeta(f"{E}/stand-grupo-sonriendo.jpg", "EXPO FÁTIMA 2026", "Una Expo para toda la comunidad",
              "Stands, emprendimientos, historia y mucha gente compartiendo el día.", f"{O}/expo-comunidad-1.jpg", (0.5, 0.4))
   tapa_bn(f"{E}/foto-grupal-carpinteria.jpg", "¡Gracias!",

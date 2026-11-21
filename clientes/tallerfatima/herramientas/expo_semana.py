@@ -32,14 +32,14 @@ def placa_polaroid(foto, frase, salida, n=None, ang=-3, centro=(0.5, 0.45)):
     c.save(salida, quality=92)
 
 # Viernes 20: trabajos de los alumnos
-a.portada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron nuestros alumnos",
+a.portada(f"{E}/muebles-alumnos.jpg", "EXPO FÁTIMA 2026", "Lo que hicieron los alumnos",
           "Muebles, piezas y proyectos hechos en los talleres durante todo el año.", f"{O}/expo-trabajos-1.jpg")
 placa_polaroid(f"{C}/cuadro-040.0.jpg", "El taller de carpintería, abierto para todos.", f"{O}/expo-trabajos-2.jpg", "2/7", -3)
 placa_polaroid(f"{C}/cuadro-042.0.jpg", "Muebles terminados, listos para mostrar.", f"{O}/expo-trabajos-3.jpg", "3/7", 3)
 a.foto_con_texto(f"{E}/muestra-carpinteria-mesa.jpg", "Lámparas, macetas y estantes hechos a mano.", f"{O}/expo-trabajos-4.jpg", "4/7", (0.4, 0.4))
 placa_polaroid(f"{C}/cuadro-051.0.jpg", "Las máquinas del taller, en manos de los alumnos.", f"{O}/expo-trabajos-5.jpg", "5/7", -2)
 placa_polaroid(f"{C}/cuadro-053.0.jpg", "Profes y alumnos contando cómo se trabaja.", f"{O}/expo-trabajos-6.jpg", "6/7", 3)
-a.cierre("Orgullo de Fátima", "Detrás de cada pieza hay horas de trabajo, aprendizaje y superación.", f"{O}/expo-trabajos-7.jpg")
+a.cierre("Cada pieza, una historia", "Detrás de cada pieza hay horas de trabajo, aprendizaje y superación.", f"{O}/expo-trabajos-7.jpg")
 
 # Sábado 21: comunidad, stands e historia
 a.portada(f"{E}/stand-grupo-sonriendo.jpg", "EXPO FÁTIMA 2026", "Una Expo para toda la comunidad",

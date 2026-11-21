@@ -10,6 +10,9 @@
    - Comentario: `{"tipo":"comentario","comment_id":"<id>","texto":"...","estado":"pendiente"}`
 5. `git add quinta-ig/bot/responder.json && git commit && git pull --rebase && git push` → GitHub Actions las envía.
 
+## Respondedor rápido
+Desde el 21/11/2026 los mensajes directos los contesta al toque `rapido.py` (workflow ig-rapido.yml, Claude Haiku, cada ~1 min) con estas mismas reglas. Este bot de 3 h queda de respaldo para DMs y sigue con los comentarios: si la charla ya tiene respuesta nuestra, no se toca. Pausar el rápido: crear quinta-ig/bot/rapido.pausa.
+
 ## Reglas de respuesta
 - Español rioplatense, cálido, corto (2-4 líneas), con 1-2 emojis. Sin nombres propios del cliente (el archivo es público).
 - Capacidad y comodidades: solo lo que está en quinta.json. Si dice [COMPLETAR] o bot_lo_dice es false, no dar el dato: "te lo pasamos por WhatsApp".

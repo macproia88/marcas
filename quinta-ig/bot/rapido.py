@@ -102,21 +102,22 @@ def main():
     pendientes_bot = {x.get("para_id") for x in leer("responder.json", []) if x.get("estado") == "pendiente"}
     convs = get(f"{IG}/conversations", platform="instagram", limit=25,
                 fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time}").get("data", [])
-    sistema = None; enviados = nadas = errores = 0
+    sistema = None; enviados = nadas = errores = 0; motivos = {}
+    def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:
-        if (ahora - fecha(c["updated_time"])).total_seconds() > VENTANA_HS * 3600: continue
+        if (ahora - fecha(c["updated_time"])).total_seconds() > VENTANA_HS * 3600: salto("vieja"); continue
         msgs = (c.get("messages") or {}).get("data", [])   # el primero es el más nuevo
         if not msgs: continue
         ult = next((m for m in msgs if not ((m.get("from") or {}).get("username") == YO and es_auto(m.get("message") or ""))), None)
-        if not ult or (ult.get("from") or {}).get("username") == YO: continue        # ya respondimos
+        if not ult or (ult.get("from") or {}).get("username") == YO: salto("ya_respondida"); continue        # ya respondimos
         edad = (ahora - fecha(ult["created_time"])).total_seconds()
-        if edad < ESPERA_SEG or edad > VENTANA_HS * 3600: continue
-        if any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE): continue   # prospección, no cliente
+        if edad < ESPERA_SEG or edad > VENTANA_HS * 3600: salto("espera"); continue
+        if any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE): salto("prospeccion"); continue   # prospección, no cliente
         cliente = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
         pid = cliente.get("id")
-        if not pid or pid in pendientes_bot: continue                                   # el bot de 3 h ya tiene algo preparado
+        if not pid or pid in pendientes_bot: salto("bot3h"); continue                                   # el bot de 3 h ya tiene algo preparado
         h = hashlib.sha256(f"{pid}|{ult['id']}".encode()).hexdigest()[:16]
-        if h in log["ultimo"].values(): continue                                        # ese mensaje ya lo procesamos
+        if h in log["ultimo"].values(): salto("ya_procesada"); continue                                        # ese mensaje ya lo procesamos
         charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
                    "texto": m.get("message") or "[adjunto/audio/foto]",
                    "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
@@ -144,7 +145,9 @@ def main():
     if enviados or nadas or errores:
         log["actualizado"] = ahora.strftime("%Y-%m-%d %H:%M")
         json.dump(log, open(LOG, "w"), ensure_ascii=False, indent=1)
-    print(f"enviados {enviados} nada {nadas} errores {errores}")
+    log["motivos"] = motivos; log["revisado"] = ahora.strftime("%Y-%m-%d %H:%M")
+    json.dump(log, open(LOG, "w"), ensure_ascii=False, indent=1)
+    print(f"enviados {enviados} nada {nadas} errores {errores}", motivos)
 
 if __name__ == "__main__":
     main()

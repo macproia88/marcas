@@ -84,7 +84,7 @@ DIAG = {}
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
-    body = json.dumps({"model": MODELO, "max_tokens": 400, "system": sistema,
+    body = json.dumps({"model": MODELO, "max_tokens": 3000, "system": sistema,
                        "messages": [{"role": "user", "content": texto}]}).encode()
     r = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST", headers={
         "x-api-key": KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"})

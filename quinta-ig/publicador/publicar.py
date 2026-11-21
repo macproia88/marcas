@@ -163,6 +163,8 @@ def main():
         procesar_cuenta()
 
 
+NO_USAR = ["110k", "120k", "110.000", "120.000", "reel-chicas-voz"]
+
 def procesar_cuenta():
     # El reloj NO toca cola.json (lo editamos nosotros): anota lo hecho en <cola>.hechos.json.
     # Así nunca hay choques de git y nunca se publica dos veces.
@@ -173,6 +175,10 @@ def procesar_cuenta():
     cambios = False
     for item in cola:
         if item.get("estado") != "pendiente" or item.get("id") in hechos:
+            continue
+        # Material con precios viejos ($110.000 / $120.000): no se publica nunca más (pedido de Juan 21/11)
+        if any(t in json.dumps(item, ensure_ascii=False) for t in NO_USAR):
+            print(f"Salteado {item['id']}: tiene material con precios viejos")
             continue
         cuando = datetime.datetime.strptime(item["fecha"], "%Y-%m-%d %H:%M").replace(tzinfo=ART)
         if cuando > ahora:

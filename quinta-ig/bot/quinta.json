@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-11-15 09:50",
+  "actualizado": "2026-11-21 08:50",
   "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
   "calendario": [
     {
@@ -188,14 +188,15 @@
       "nombre": "Quinta de día",
       "capacidad": "hasta 15-20 personas",
       "duerme": false,
-      "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta",
+      "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta, parrilla, freezer de pozo grande, jarra eléctrica",
       "solo_por_dia": true
     },
     "casa": {
       "nombre": "Quinta con casa",
       "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
       "duerme": true,
-      "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)"
+      "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)",
+      "incluye": "2 camas de dos plazas y 1 de una plaza, cocina, heladera, pileta propia de 7x3, quincho con mesa rústica para 10, parrilla, WiFi"
     },
     "otra_ano_nuevo": {
       "nombre": "Otra quinta (solo Año Nuevo)",
@@ -243,7 +244,7 @@
     {
       "que": "Camas / habitaciones",
       "dia": "No",
-      "casa": "2 camas de dos plazas + 1 de una plaza (5 personas)"
+      "casa": "2 camas de dos plazas + 1 cama de una plaza (duermen 5)"
     },
     {
       "que": "Ropa de cama y toallas",
@@ -251,9 +252,9 @@
       "casa": "[COMPLETAR]"
     },
     {
-      "que": "Cocina / heladera / vajilla",
-      "dia": "[COMPLETAR]",
-      "casa": "Cocina: Sí · heladera y vajilla [COMPLETAR]"
+      "que": "Cocina / heladera / freezer",
+      "dia": "Freezer de pozo grande y jarra eléctrica (cocina y vajilla [COMPLETAR])",
+      "casa": "Cocina y heladera (vajilla [COMPLETAR])"
     },
     {
       "que": "Aire / ventilador",

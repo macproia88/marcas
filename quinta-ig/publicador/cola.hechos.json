@@ -313,5 +313,10 @@
   "estado": "publicado",
   "ig_media_id": "18031337642858741",
   "publicado_el": "2026-11-21 17:32"
+ },
+ "h-kling-lunes23-0": {
+  "estado": "error",
+  "error": "Instagram no pudo procesar el archivo: Error: Media upload has failed with error code 2207076",
+  "intento": "2026-11-21 19:14"
  }
 }

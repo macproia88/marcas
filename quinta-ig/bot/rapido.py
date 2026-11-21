@@ -96,8 +96,8 @@ PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
 
 DIAG = {}
 BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
-FOTOS = {"dia": ["portada-dia.jpg", "dia-1.jpg", "dia-4.jpg", "dia-8.jpg"],
-         "casa": ["portada-casa.jpg", "casa-1.jpg", "casa-3.jpg", "casa-6.jpg"]}
+FOTOS = {"dia": ["dia-11.jpg", "dia-4.jpg", "dia-8.jpg", "dia-6.jpg"],      # quincho+pileta, pileta, juegos, pileta cerca
+         "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"]}
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)

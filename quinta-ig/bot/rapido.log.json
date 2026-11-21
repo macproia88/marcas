@@ -17,5 +17,10 @@
   "b991e0bf3b49": "f42d5b346b0d4f47"
  },
  "actualizado": "2026-11-21 09:06",
- "ultimo_error": "claude 401 authentication_error invalid x-api-key"
+ "ultimo_error": "claude 401 authentication_error invalid x-api-key",
+ "motivos": {
+  "ya_procesada": 8,
+  "ya_respondida": 17
+ },
+ "revisado": "2026-11-21 09:07"
 }

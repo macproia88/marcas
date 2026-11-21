@@ -80,6 +80,7 @@ PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
 {json.dumps(pr, ensure_ascii=False) if pr else "No disponibles: decir que el precio se lo pasamos por WhatsApp."}
 """
 
+DIAG = {}
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -88,6 +89,9 @@ def claude(sistema, charla):
     r = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST", headers={
         "x-api-key": KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"})
     d = json.load(urllib.request.urlopen(r, timeout=60))
+    global DIAG
+    DIAG = {"stop": d.get("stop_reason"), "tipos": [b.get("type") for b in d.get("content", [])],
+            "largo": sum(len(b.get("text", "")) for b in d.get("content", []))}
     return "".join(b.get("text", "") for b in d.get("content", []) if b.get("type") == "text").strip()
 
 def main():
@@ -133,7 +137,7 @@ def main():
         clave = hashlib.sha256(pid.encode()).hexdigest()[:12]
         log["ultimo"][clave] = h
         if not resp or resp.strip().upper().startswith("NADA"):
-            nadas += 1; continue
+            nadas += 1; log["diag_nada"] = DIAG; continue
         try:
             post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": resp[:950]}))
             enviados += 1

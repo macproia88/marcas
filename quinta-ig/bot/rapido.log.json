@@ -3,10 +3,10 @@
   "2026-11-21": {
    "enviados": 0,
    "nada": 0,
-   "errores": 29
+   "errores": 30
   }
  },
  "ultimo": {},
- "actualizado": "2026-11-21 08:59",
+ "actualizado": "2026-11-21 09:00",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key"
 }

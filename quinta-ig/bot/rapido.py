@@ -126,7 +126,7 @@ def main():
         except urllib.error.HTTPError as e:
             try: det = json.loads(e.read().decode()).get("error", {}); det = f"{det.get('type')} {det.get('message','')[:120]}"
             except Exception: det = ""
-            errores += 1; print("error claude:", e.code, det); break
+            errores += 1; print("error claude:", e.code, det); log["ultimo_error"] = f"claude {e.code} {det}"[:200]; break
         except Exception as e:
             errores += 1; print("error claude:", type(e).__name__); break
         clave = hashlib.sha256(pid.encode()).hexdigest()[:12]
@@ -137,7 +137,7 @@ def main():
             post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": resp[:950]}))
             enviados += 1
         except urllib.error.HTTPError as e:
-            errores += 1; print("error instagram:", e.code)
+            errores += 1; print("error instagram:", e.code); log["ultimo_error"] = f"instagram {e.code}"
         if usados + enviados >= TOPE_DIA: break
     d = log["dias"].setdefault(hoy, {"enviados": 0, "nada": 0, "errores": 0})
     d["enviados"] += enviados; d["nada"] += nadas; d["errores"] += errores

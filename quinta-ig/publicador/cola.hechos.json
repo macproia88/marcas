@@ -318,5 +318,10 @@
   "estado": "error",
   "error": "Instagram no pudo procesar el archivo: Error: Media upload has failed with error code 2207076",
   "intento": "2026-11-21 19:14"
+ },
+ "h-kling-lunes23-1": {
+  "estado": "error",
+  "error": "Instagram no pudo procesar el archivo: Error: Media upload has failed with error code 2207076",
+  "intento": "2026-11-21 19:20"
  }
 }

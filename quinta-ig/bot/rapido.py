@@ -100,7 +100,8 @@ PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
 DIAG = {}
 BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
 FOTOS = {"dia": ["dia-11.jpg", "dia-12.jpg", "dia-8.jpg", "dia-6.jpg"],     # quincho+pileta, parque, juegos, pileta cerca
-         "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"]}
+         "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"],
+         "juanita": ["../juanita/juanita-7.jpg", "../juanita/juanita-8.jpg", "../juanita/juanita-2.jpg", "../juanita/juanita-4.jpg"]}  # La Juanita (vecino), solo 23/11
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -159,7 +160,7 @@ def main():
         if not resp or resp.strip().upper().startswith("NADA"):
             nadas += 1; log["diag_nada"] = DIAG; continue
         try:
-            m = re.search(r"\n?\s*FOTOS:\s*(dia|casa|ambas)\s*$", resp, re.I)
+            m = re.search(r"\n?\s*FOTOS:\s*(dia|casa|ambas|juanita)\s*$", resp, re.I)
             cuales = []
             if m:
                 k = m.group(1).lower(); resp = resp[:m.start()].rstrip()

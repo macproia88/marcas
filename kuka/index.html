@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuka · Instalación de Aire Acondicionado</title>
+<meta name="description" content="Instalación, service y reparación de aires acondicionados split. Pedí tu presupuesto por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06142e; --navy2:#0b2350; --blue:#0a6cff; --cyan:#19c3ff; --ice:#e8f6ff;
+  --text:#0f1b2d; --muted:#5a6b82; --wa:#25d366; --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.55}
+h1,h2,h3,.brand{font-family:Montserrat,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1150px;margin:0 auto;padding:0 20px}
+svg{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s;padding:14px 0}
+nav.solid{background:rgba(6,20,46,.92);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{color:#fff;font-weight:900;font-size:1.25rem;display:flex;align-items:center;gap:10px;letter-spacing:-.5px}
+.brand .logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;box-shadow:0 0 20px rgba(25,195,255,.5)}
+.brand small{display:block;font-size:.62rem;font-weight:600;letter-spacing:2px;color:var(--cyan);text-transform:uppercase}
+.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks a{color:#cfe3ff;font-weight:500;font-size:.95rem}
+.navlinks a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:50px;font-weight:700;font-family:Montserrat,sans-serif;font-size:.95rem;transition:.25s;cursor:pointer;border:0}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 25px rgba(37,211,102,.4)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(37,211,102,.55)}
+.btn-ghost{border:2px solid rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--navy)}
+.nav-cta{padding:10px 18px;font-size:.85rem}
+@media(max-width:820px){.navlinks a:not(.btn){display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;
+  background:radial-gradient(ellipse at 75% 30%,#1563d6 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,#0a3f8f 0%,transparent 50%),var(--navy)}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,20,46,.97) 0%,rgba(6,20,46,.75) 45%,rgba(6,20,46,.25) 100%)}
+.kuka-bg{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Montserrat,sans-serif;font-weight:900;font-size:clamp(9rem,34vw,30rem);letter-spacing:-.04em;line-height:1;white-space:nowrap;color:transparent;-webkit-text-stroke:2px rgba(25,195,255,.22);background:linear-gradient(180deg,rgba(25,195,255,.16),rgba(10,108,255,.03));-webkit-background-clip:text;background-clip:text;pointer-events:none;user-select:none;animation:kk 9s ease-in-out infinite}
+@keyframes kk{50%{transform:translate(-50%,-52%)}}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:110px;padding-bottom:70px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(25,195,255,.14);border:1px solid rgba(25,195,255,.4);color:var(--cyan);padding:7px 16px;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:22px}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--wa);box-shadow:0 0 0 0 rgba(37,211,102,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px}
+.hero h1 span{background:linear-gradient(90deg,var(--cyan),#8be3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.15rem;color:#c3d6f2;max-width:540px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-checks{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;color:#cfe3ff;font-size:.92rem}
+.hero-checks div{display:flex;align-items:center;gap:7px}
+.hero-checks svg{color:var(--cyan)}
+/* thermostat card */
+.thermo{justify-self:center;width:300px;height:300px;border-radius:50%;position:relative;display:grid;place-items:center;
+  background:radial-gradient(circle,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);box-shadow:0 0 80px rgba(25,195,255,.25), inset 0 0 40px rgba(25,195,255,.1)}
+.thermo::before{content:"";position:absolute;inset:18px;border-radius:50%;border:6px solid transparent;border-top-color:var(--cyan);border-right-color:var(--blue);animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.thermo .t{font-family:Montserrat;font-weight:900;font-size:5rem;line-height:1}
+.thermo .t sup{font-size:2rem;color:var(--cyan)}
+.thermo .lbl{text-align:center;color:#a9c6ee;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-top:6px}
+.snow{position:absolute;color:rgba(160,225,255,.7);animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px) rotate(20deg)}}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.thermo{width:220px;height:220px}.thermo .t{font-size:3.6rem}}
+
+/* SECTIONS */
+section{padding:90px 0}
+.kicker{color:var(--blue);font-weight:700;font-size:.8rem;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:10px}
+.title{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:14px}
+.sub{color:var(--muted);max-width:620px;font-size:1.05rem}
+.center{text-align:center}.center .sub{margin:0 auto}
+
+/* strip */
+.strip{background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;padding:22px 0}
+.strip .wrap{display:flex;justify-content:space-around;flex-wrap:wrap;gap:18px;font-family:Montserrat;font-weight:700}
+.strip div{display:flex;align-items:center;gap:10px}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:50px}
+.card{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 10px 35px rgba(10,40,90,.09);transition:.3s;border:1px solid #eef3fa}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(10,60,150,.18)}
+.card .ph{height:190px;background-size:cover;background-position:center;position:relative}
+.card .ph .ic{position:absolute;bottom:-24px;left:22px;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px rgba(10,108,255,.4)}
+.card .body{padding:36px 22px 24px}
+.card h3{font-size:1.2rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.card a.more{color:var(--blue);font-weight:700;font-size:.9rem;display:inline-flex;gap:6px;align-items:center}
+.f1{background-image:url("https://images.unsplash.com/photo-1759772238012-9d5ad59ae637?auto=format&fit=crop&w=800&q=75"),linear-gradient(135deg,#0b2350,#1b74e4)}
+.f2{background-image:url("https://images.unsplash.com/photo-1700124113583-81aa99ea2aa2?auto=format&fit=crop&w=800&q=75"),linear-gradient(135deg,#06142e,#0a6cff)}
+.f3{background-image:url("https://images.unsplash.com/photo-1762341123870-d706f257a12e?auto=format&fit=crop&w=800&q=75"),linear-gradient(135deg,#0a3f8f,#19c3ff)}
+.f4{background-image:url("https://images.unsplash.com/photo-1776860150250-757406c52438?auto=format&fit=crop&w=800&q=75"),linear-gradient(135deg,#0b2350,#19c3ff)}
+
+/* why */
+.why{background:var(--ice)}
+.why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-img{border-radius:24px;min-height:460px;background:url("https://images.unsplash.com/photo-1761330440311-16e160cad236?auto=format&fit=crop&w=1000&q=75") center/cover,linear-gradient(135deg,#0b2350,#0a6cff);position:relative;box-shadow:0 25px 60px rgba(10,40,90,.25)}
+.why-badge{position:absolute;bottom:24px;right:-20px;background:#fff;border-radius:16px;padding:16px 20px;box-shadow:0 15px 40px rgba(0,0,0,.18);display:flex;gap:12px;align-items:center;font-weight:600}
+.why-badge .big{font-family:Montserrat;font-weight:900;font-size:1.8rem;color:var(--blue)}
+.feat{display:flex;gap:16px;margin-top:26px}
+.feat .ic{flex:0 0 48px;height:48px;border-radius:13px;background:#fff;color:var(--blue);display:grid;place-items:center;box-shadow:0 6px 18px rgba(10,108,255,.15)}
+.feat h4{font-family:Montserrat;font-size:1.05rem;margin-bottom:3px}
+.feat p{color:var(--muted);font-size:.94rem}
+@media(max-width:860px){.why .wrap{grid-template-columns:1fr}.why-img{min-height:300px}.why-badge{right:12px}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;margin-top:50px;counter-reset:s}
+.step{padding:30px 24px;border-radius:var(--radius);background:#fff;border:1px solid #e6eef9;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:Montserrat;font-weight:900;font-size:3rem;color:transparent;-webkit-text-stroke:1.5px var(--cyan);position:absolute;top:14px;right:20px;opacity:.7}
+.step h4{font-family:Montserrat;margin:14px 0 6px}
+.step p{color:var(--muted);font-size:.93rem}
+.step .ic{color:var(--blue)}
+
+/* calc */
+.calc{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.calc::before{content:"";position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(10,108,255,.35),transparent 70%);top:-200px;right:-150px}
+.calc .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.calc .sub{color:#a9c6ee}
+.calc .kicker{color:var(--cyan)}
+.calc-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:30px;backdrop-filter:blur(8px)}
+.calc-box label{display:block;font-weight:600;margin:16px 0 8px;font-size:.92rem;color:#cfe3ff}
+.calc-box input[type=range]{width:100%;accent-color:var(--cyan)}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{flex:1;min-width:90px;padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-weight:600;cursor:pointer;font-family:Inter}
+.opts button.on{background:linear-gradient(135deg,var(--cyan),var(--blue));border-color:transparent}
+.result{margin-top:24px;padding:20px;border-radius:16px;background:linear-gradient(135deg,rgba(25,195,255,.18),rgba(10,108,255,.18));text-align:center}
+.result .num{font-family:Montserrat;font-weight:900;font-size:2.6rem}
+.result small{color:#a9c6ee;display:block}
+@media(max-width:860px){.calc .wrap{grid-template-columns:1fr}}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:14px;margin-top:46px}
+.gal div{border-radius:16px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.gal div:first-child{grid-row:span 2}
+.gal div span{position:absolute;left:12px;bottom:12px;background:rgba(6,20,46,.8);color:#fff;padding:6px 12px;border-radius:30px;font-size:.8rem;font-weight:600}
+.g1{background-image:url("https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=1000&q=75"),linear-gradient(135deg,#0b2350,#1b74e4)}
+.g2{background-image:url("https://images.unsplash.com/photo-1718203862467-c33159fdc504?auto=format&fit=crop&w=600&q=75"),linear-gradient(135deg,#0a3f8f,#19c3ff)}
+.g3{background-image:url("https://images.unsplash.com/photo-1698479603408-1a66a6d9e80f?auto=format&fit=crop&w=600&q=75"),linear-gradient(135deg,#06142e,#0a6cff)}
+.g4{background-image:url("https://images.unsplash.com/photo-1726614846573-c1ac2e6161d1?auto=format&fit=crop&w=600&q=75"),linear-gradient(135deg,#0b2350,#19c3ff)}
+.g5{background-image:url("https://images.unsplash.com/photo-1667983453881-4992fe86ab1b?auto=format&fit=crop&w=600&q=75"),linear-gradient(135deg,#0a6cff,#19c3ff)}
+@media(max-width:760px){.gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 150px 150px}.gal div:first-child{grid-column:span 2;grid-row:auto}}
+
+/* faq */
+.faq{max-width:780px;margin:44px auto 0}
+details{border:1px solid #e3ecf8;border-radius:14px;margin-bottom:12px;background:#fff;overflow:hidden}
+summary{padding:18px 22px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-family:Montserrat;font-size:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--blue);transition:.2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 22px 18px;color:var(--muted)}
+
+/* cta */
+.cta{background:linear-gradient(120deg,var(--blue),var(--cyan));color:#fff;text-align:center;border-radius:28px;padding:60px 26px;margin:0 20px;position:relative;overflow:hidden}
+.cta h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.cta p{opacity:.92;margin-bottom:28px;font-size:1.08rem}
+.cta .btn-wa{background:#fff;color:#0a8a3e;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+
+/* footer */
+footer{background:var(--navy);color:#a9c6ee;padding:60px 0 28px;margin-top:90px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h5{color:#fff;font-family:Montserrat;font-size:1rem;margin-bottom:14px}
+footer a:hover{color:#fff}
+footer .row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.social{display:flex;gap:12px;margin-top:18px}
+.social a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;transition:.25s}
+.social a:hover{transform:translateY(-3px)}
+.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.wa{background:var(--wa)}
+.bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.84rem}
+@media(max-width:760px){footer .cols{grid-template-columns:1fr}}
+
+/* floating */
+.float-wa{position:fixed;right:20px;bottom:20px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.5);animation:bob 2.5s ease-in-out infinite}
+.float-ig{position:fixed;right:27px;bottom:94px;z-index:60;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 8px 22px rgba(214,36,159,.45)}
+@keyframes bob{50%{transform:translateY(-6px)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:.8s ease}
+.reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ICONOS -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.35-.2-3.56.93.95-3.47-.23-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0m0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32M12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8m6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9M9 3l3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12 5 5L20 7"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 2.7 6.3 8.4a8 8 0 1 0 11.4 0z"/></symbol>
+  <symbol id="i-fan" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10.8 12A3 3 0 0 1 9 7.5C9 4 14 3 16 4c1 .5 1 2-1 3l-2.7 1.4M13.2 12a3 3 0 0 1 1.8 4.5c0 3.5-5 4.5-7 3.5-1-.5-1-2 1-3l2.7-1.4M12 10.8a3 3 0 0 1 4.5-1.8C20 9 21 14 20 16c-.5 1-2 1-3-1l-1.4-2.7M12 13.2A3 3 0 0 1 7.5 15C4 15 3 10 4 8c.5-1 2-1 3 1l1.4 2.7"/></symbol>
+  <symbol id="i-build" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1M9 17h1M14 17h1"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3l1.9 5.8L20 10l-5 3.6L16.8 20 12 16.5 7.2 20 9 13.6 4 10l6.1-1.2z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#inicio" class="brand"><span class="logo"><svg width="22" height="22" style="color:#fff"><use href="#i-snow"/></svg></span><span>KUKA<small>Cristian · Climatización</small></span></a>
+    <div class="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">Por qué elegirme</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-wa nav-cta" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-wa"/></svg>Presupuesto</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1761330440311-16e160cad236?auto=format&fit=crop&w=1800&q=75')"></div>
+  <div class="kuka-bg" aria-hidden="true">KUKA</div>
+  <svg class="snow" width="34" height="34" style="top:18%;left:52%"><use href="#i-snow"/></svg>
+  <svg class="snow" width="22" height="22" style="top:70%;left:46%;animation-delay:2s"><use href="#i-snow"/></svg>
+  <svg class="snow" width="28" height="28" style="top:30%;right:6%;animation-delay:4s"><use href="#i-snow"/></svg>
+  <div class="wrap">
+    <div>
+      <div class="pill"><span class="dot"></span>Kuka · Atendiendo consultas por WhatsApp</div>
+      <h1>Este verano,<br>tu casa a <span>24°C</span>.</h1>
+      <p class="lead">Instalación, service y reparación de aires acondicionados split. Trabajo prolijo, puntual y explicado, para que tu equipo rinda y dure.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Pedí tu presupuesto</a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-checks">
+        <div><svg width="16" height="16"><use href="#i-check"/></svg>Instalación completa</div>
+        <div><svg width="16" height="16"><use href="#i-check"/></svg>Service y limpieza</div>
+        <div><svg width="16" height="16"><use href="#i-check"/></svg>Carga de gas</div>
+      </div>
+    </div>
+    <div class="thermo">
+      <div><div class="t">24<sup>°C</sup></div><div class="lbl">Modo frío · Auto</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><svg width="22" height="22"><use href="#i-clock"/></svg>Puntualidad</div>
+    <div><svg width="22" height="22"><use href="#i-shield"/></svg>Trabajo prolijo</div>
+    <div><svg width="22" height="22"><use href="#i-chat"/></svg>Respuesta rápida</div>
+    <div><svg width="22" height="22"><use href="#i-spark"/></svg>Todas las marcas</div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Servicios</div>
+      <h2 class="title">Todo lo que tu aire necesita</h2>
+      <p class="sub">Desde la instalación del equipo nuevo hasta el service antes de la temporada. Contame qué necesitás y te paso el presupuesto.</p>
+    </div>
+    <div class="grid">
+      <div class="card reveal"><div class="ph f1"><span class="ic"><svg width="26" height="26"><use href="#i-snow"/></svg></span></div>
+        <div class="body"><h3>Instalación de split</h3><p>Colocación de unidad interior y exterior, cañería, vacío y puesta en marcha. Te dejo el equipo funcionando y te explico cómo usarlo.</p><a class="more" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20necesito%20instalar%20un%20split" target="_blank" rel="noopener">Consultar <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div></div>
+      <div class="card reveal"><div class="ph f2"><span class="ic"><svg width="26" height="26"><use href="#i-fan"/></svg></span></div>
+        <div class="body"><h3>Service y limpieza</h3><p>Limpieza de filtros, serpentinas y bandeja. Un equipo limpio enfría mejor, gasta menos luz y no larga olor.</p><a class="more" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20quiero%20hacer%20el%20service%20del%20aire" target="_blank" rel="noopener">Consultar <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div></div>
+      <div class="card reveal"><div class="ph f3"><span class="ic"><svg width="26" height="26"><use href="#i-tool"/></svg></span></div>
+        <div class="body"><h3>Reparación y carga de gas</h3><p>¿No enfría, gotea o hace ruido? Diagnóstico, búsqueda de pérdidas y carga de gas refrigerante.</p><a class="more" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20mi%20aire%20tiene%20un%20problema" target="_blank" rel="noopener">Consultar <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div></div>
+      <div class="card reveal"><div class="ph f4"><span class="ic"><svg width="26" height="26"><use href="#i-build"/></svg></span></div>
+        <div class="body"><h3>Comercios y oficinas</h3><p>Instalación y mantenimiento de varios equipos para locales, oficinas y negocios. Coordinamos horarios para no cortarte el trabajo.</p><a class="more" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20consulto%20por%20equipos%20para%20un%20comercio" target="_blank" rel="noopener">Consultar <svg width="16" height="16"><use href="#i-arrow"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="por-que">
+  <div class="wrap">
+    <div class="why-img reveal">
+      <div class="why-badge"><span class="big">✓</span><span>Equipo funcionando<br>y explicado</span></div>
+    </div>
+    <div class="reveal">
+      <div class="kicker">Por qué elegirme</div>
+      <h2 class="title">Una instalación bien hecha se nota todo el verano</h2>
+      <p class="sub">Un split mal instalado enfría menos, gasta más y dura menos. Por eso cada trabajo lo hago con tiempo y cuidado.</p>
+      <div class="feat"><div class="ic"><svg width="24" height="24"><use href="#i-shield"/></svg></div><div><h4>Prolijidad</h4><p>Cañerías ordenadas, perforaciones limpias y todo el lugar ordenado al terminar.</p></div></div>
+      <div class="feat"><div class="ic"><svg width="24" height="24"><use href="#i-clock"/></svg></div><div><h4>Puntualidad</h4><p>Llego en el horario acordado y te aviso por WhatsApp cuando estoy en camino.</p></div></div>
+      <div class="feat"><div class="ic"><svg width="24" height="24"><use href="#i-chat"/></svg></div><div><h4>Trato directo</h4><p>Hablás conmigo, sin intermediarios. Presupuesto claro antes de empezar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="como-trabajo">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Cómo trabajo</div>
+      <h2 class="title">Simple, en 4 pasos</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><svg class="ic" width="32" height="32"><use href="#i-wa"/></svg><h4>Me escribís</h4><p>Mandame por WhatsApp qué equipo tenés y una foto del lugar.</p></div>
+      <div class="step reveal"><svg class="ic" width="32" height="32"><use href="#i-chat"/></svg><h4>Presupuesto</h4><p>Te paso el precio claro, sin sorpresas.</p></div>
+      <div class="step reveal"><svg class="ic" width="32" height="32"><use href="#i-cal"/></svg><h4>Coordinamos</h4><p>Elegimos juntos el día y el horario que te quede cómodo.</p></div>
+      <div class="step reveal"><svg class="ic" width="32" height="32"><use href="#i-snow"/></svg><h4>A disfrutar</h4><p>Instalo, pruebo y te dejo el ambiente fresquito.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calculadora">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Calculadora</div>
+      <h2 class="title">¿Cuántas frigorías necesitás?</h2>
+      <p class="sub">Mové los controles y te doy una estimación del equipo que conviene para tu ambiente. Después te confirmo el número exacto cuando veo el lugar.</p>
+      <div style="margin-top:28px"><a class="btn btn-wa" id="calcWa" href="https://wa.me/5491162712328" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Consultar con este cálculo</a></div>
+    </div>
+    <div class="calc-box reveal">
+      <label>Superficie del ambiente: <b id="m2v">20</b> m²</label>
+      <input type="range" id="m2" min="8" max="80" value="20">
+      <label>¿Cuánto sol le da?</label>
+      <div class="opts" id="sol"><button data-f="45">Poco</button><button data-f="50" class="on">Normal</button><button data-f="60">Mucho</button></div>
+      <label>Tipo de ambiente</label>
+      <div class="opts" id="amb"><button data-f="1" class="on">Dormitorio</button><button data-f="1.1">Living</button><button data-f="1.2">Comercio</button></div>
+      <div class="result"><small>Te conviene un equipo de aprox.</small><div class="num" id="res">3.000</div><small id="res2">frigorías</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="trabajos">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Trabajos</div>
+      <h2 class="title">Casas, departamentos y comercios</h2>
+      <p class="sub">Mirá más trabajos y novedades en mi Instagram.</p>
+    </div>
+    <div class="gal reveal">
+      <div class="g1"><span>Casas</span></div>
+      <div class="g2"><span>Unidad exterior</span></div>
+      <div class="g3"><span>Edificios</span></div>
+      <div class="g4"><span>Split en pared</span></div>
+      <div class="g5"><span>Comercios</span></div>
+    </div>
+    <div class="center" style="margin-top:30px">
+      <a class="btn ig" style="color:#fff" href="https://www.instagram.com/crisev89" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-ig"/></svg>Seguime en Instagram · @crisev89</a>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas" style="padding-top:20px">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="kicker">Preguntas frecuentes</div>
+      <h2 class="title">Lo que más me consultan</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Cuánto tarda una instalación?</summary><p>Una instalación estándar suele hacerse en el día. Depende de los metros de cañería, la altura y si hay que hacer línea eléctrica nueva. Te lo confirmo cuando me pasás fotos del lugar.</p></details>
+      <details><summary>¿Cada cuánto conviene hacer el service?</summary><p>Lo ideal es una vez por año, antes del verano. Los filtros los podés limpiar vos cada pocas semanas cuando lo usás seguido.</p></details>
+      <details><summary>Mi aire enfría poco, ¿qué puede ser?</summary><p>Puede ser filtros sucios, falta de gas o algún problema en la unidad exterior. Escribime con el modelo del equipo y lo vemos.</p></details>
+      <details><summary>¿Trabajás con todas las marcas?</summary><p>Sí, instalo y hago service de equipos split de las marcas más comunes del mercado.</p></details>
+      <details><summary>¿Cómo pido presupuesto?</summary><p>Mandame un WhatsApp al +54 9 11 6271-2328 con qué necesitás, el equipo y una foto de dónde va. Te respondo a la brevedad.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="cta reveal">
+  <h2>¿Hace calor? Escribime hoy.</h2>
+  <p>Contame qué necesitás y te paso el presupuesto por WhatsApp.</p>
+  <a class="btn btn-wa" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>+54 9 11 6271-2328</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand"><span class="logo"><svg width="22" height="22" style="color:#fff"><use href="#i-snow"/></svg></span><span>KUKA<small>Cristian · Climatización</small></span></div>
+        <p style="margin-top:14px;max-width:320px">Instalación, service y reparación de aires acondicionados split.</p>
+        <div class="social">
+          <a class="ig" href="https://www.instagram.com/crisev89" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22"><use href="#i-ig"/></svg></a>
+          <a class="wa" href="https://wa.me/5491162712328" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="22" height="22"><use href="#i-wa"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Secciones</h5>
+        <div class="row"><a href="#servicios">Servicios</a></div>
+        <div class="row"><a href="#calculadora">Calculadora de frigorías</a></div>
+        <div class="row"><a href="#trabajos">Trabajos</a></div>
+        <div class="row"><a href="#preguntas">Preguntas frecuentes</a></div>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <div class="row"><svg width="18" height="18" style="color:var(--wa)"><use href="#i-wa"/></svg><a href="https://wa.me/5491162712328" target="_blank" rel="noopener">+54 9 11 6271-2328</a></div>
+        <div class="row"><svg width="18" height="18" style="color:#fd5949"><use href="#i-ig"/></svg><a href="https://www.instagram.com/crisev89" target="_blank" rel="noopener">@crisev89</a></div>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Kuka · Cristian · Climatización</span>
+      <span>Última actualización: 21/11/2026 23:53</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-ig ig" href="https://www.instagram.com/crisev89" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+<a class="float-wa" href="https://wa.me/5491162712328?text=Hola%20Cristian%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="32" height="32"><use href="#i-wa"/></svg></a>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// calculadora (estimación: m² x 45-60 frigorías según sol)
+const m2=document.getElementById('m2'),m2v=document.getElementById('m2v'),res=document.getElementById('res'),res2=document.getElementById('res2'),wa=document.getElementById('calcWa');
+const sizes=[2250,2600,3000,3500,4500,5500,6000,7500,9000,15000];
+function pick(g){const el=document.querySelector('#'+g+' .on');return parseFloat(el.dataset.f)}
+function calc(){
+  const m=+m2.value;m2v.textContent=m;
+  const need=m*pick('sol')*pick('amb');
+  const eq=sizes.find(s=>s>=need)||sizes[sizes.length-1];
+  res.textContent=eq.toLocaleString('es-AR');
+  res2.textContent='frigorías (necesitás ~'+Math.round(need).toLocaleString('es-AR')+')';
+  const t='Hola Cristian, tengo un ambiente de '+m+' m². La calculadora de tu web me dio un equipo de '+eq.toLocaleString('es-AR')+' frigorías. ¿Me pasás presupuesto?';
+  wa.href='https://wa.me/5491162712328?text='+encodeURIComponent(t);
+}
+['sol','amb'].forEach(g=>document.querySelectorAll('#'+g+' button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#'+g+' button').forEach(x=>x.classList.remove('on'));b.classList.add('on');calc()}));
+m2.oninput=calc;calc();
+</script>
+</body>
+</html>

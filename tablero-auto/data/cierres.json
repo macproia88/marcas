@@ -272983,5 +272983,1614 @@
   "thread": "1a200cbc7d54b67d",
   "subject": "MaxiREST - Fin de turno - 2026-11-21 Intermedio",
   "sender": "deliverylapresumida@gmail.com"
+ },
+ {
+  "sucursal": "Beccar",
+  "fecha": "2026-11-22",
+  "turno": "Mañana",
+  "total": 3953299.32,
+  "tickets": 131,
+  "neto21": 3267189.52,
+  "iva21": 686109.8,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    913142.75,
+    39
+   ],
+   "VISA DEBITO": [
+    1367124.5,
+    56
+   ],
+   "RAPPI TARJETA": [
+    70472.07,
+    1
+   ],
+   "PEDIDOS YA TARJ": [
+    573700.0,
+    1
+   ],
+   "Mercado Pago": [
+    959360.0,
+    33
+   ],
+   "MP delivery": [
+    69500.0,
+    1
+   ]
+  },
+  "cod202_unid": 3.0,
+  "cod202_importe": 713672.07,
+  "articulos": [
+   [
+    4000,
+    "Descuento Alax",
+    "",
+    29.0,
+    -319450.0
+   ],
+   [
+    181,
+    "COCA COLA 1.75 l",
+    "Bebidas",
+    3.0,
+    19500.0
+   ],
+   [
+    1048,
+    "SPRITE ZERO 1,75",
+    "Bebidas",
+    2.0,
+    13000.0
+   ],
+   [
+    213,
+    "El Aljibe Alfajor",
+    "El Aljibe - La Fontana",
+    2.0,
+    6200.0
+   ],
+   [
+    21,
+    "Canelones de Rico",
+    "Canelones",
+    5.0,
+    15000.0
+   ],
+   [
+    286,
+    "Canelones de Poll",
+    "Canelones",
+    22.0,
+    63900.0
+   ],
+   [
+    287,
+    "Canelones de Espi",
+    "Canelones",
+    4.0,
+    12000.0
+   ],
+   [
+    289,
+    "Canelones de Rico",
+    "Canelones",
+    11.0,
+    33000.0
+   ],
+   [
+    291,
+    "Canelones Ricota",
+    "Canelones",
+    3.0,
+    9000.0
+   ],
+   [
+    2704,
+    "Sin TACC Sorrent",
+    "SIN TACC",
+    1.0,
+    13950.0
+   ],
+   [
+    106,
+    "Matambre Relleno",
+    "Carnes",
+    0.1,
+    9660.0
+   ],
+   [
+    110,
+    "Arrollado Primave",
+    "Comida",
+    0.4,
+    13860.0
+   ],
+   [
+    113,
+    "Pastel De Papas",
+    "Comida",
+    1.9,
+    52490.0
+   ],
+   [
+    233,
+    "Milanesa De Beren",
+    "Comida",
+    0.9,
+    15760.0
+   ],
+   [
+    1188,
+    "Chips masa madre",
+    "Dankon",
+    1.0,
+    3400.0
+   ],
+   [
+    1189,
+    "Chips masa madre",
+    "Dankon",
+    1.0,
+    3400.0
+   ],
+   [
+    2,
+    "Fideos Caseros al",
+    "Fideos",
+    1.5,
+    19500.0
+   ],
+   [
+    4,
+    "Fuciles al Huevo",
+    "Fideos",
+    3.0,
+    39000.0
+   ],
+   [
+    5,
+    "Macarrones",
+    "Fideos",
+    1.3,
+    16900.0
+   ],
+   [
+    6,
+    "Mostacholes",
+    "Fideos",
+    1.0,
+    11583.0
+   ],
+   [
+    2202,
+    "Fideos Finitos al",
+    "Fideos",
+    21.0,
+    271700.0
+   ],
+   [
+    2203,
+    "Fideos Cordon al",
+    "Fideos",
+    1.8,
+    22750.0
+   ],
+   [
+    2204,
+    "Fideos Media Cint",
+    "Fideos",
+    3.0,
+    39000.0
+   ],
+   [
+    2205,
+    "Fideos Cinta Anch",
+    "Fideos",
+    1.4,
+    18200.0
+   ],
+   [
+    2213,
+    "Fideos Finitos es",
+    "Fideos",
+    0.3,
+    3250.0
+   ],
+   [
+    2215,
+    "Fideos Media Cint",
+    "Fideos",
+    0.6,
+    7800.0
+   ],
+   [
+    2217,
+    "Fuciles tricolor",
+    "Fideos",
+    3.0,
+    38480.0
+   ],
+   [
+    4007,
+    "Fideos Caseros Al",
+    "Fideos",
+    0.6,
+    7800.0
+   ],
+   [
+    666,
+    "Freddo Tableta x",
+    "Freddo",
+    3.0,
+    12600.0
+   ],
+   [
+    1167,
+    "Crema de Leche do",
+    "Lacteo",
+    3.0,
+    8700.0
+   ],
+   [
+    1184,
+    "Crema de Leche do",
+    "Lacteo",
+    2.0,
+    8930.0
+   ],
+   [
+    23,
+    "Ñoquis de Papa",
+    "Ñoquis",
+    4.0,
+    49400.0
+   ],
+   [
+    2414,
+    "Ñoquis tricolor",
+    "Ñoquis",
+    1.0,
+    12350.0
+   ],
+   [
+    60,
+    "Pan",
+    "Pan F",
+    2.3,
+    12244.5
+   ],
+   [
+    83,
+    "Pan Multicereal",
+    "Pan F",
+    2.0,
+    10450.0
+   ],
+   [
+    215,
+    "Rosquitas Espanol",
+    "Pan F",
+    1.0,
+    5800.0
+   ],
+   [
+    426,
+    "Budines Manzana",
+    "Pan F",
+    2.0,
+    15900.0
+   ],
+   [
+    1195,
+    "Pan Fresh Alfajor",
+    "Pan F",
+    1.0,
+    8700.0
+   ],
+   [
+    69,
+    "Galletas de Queso",
+    "Panaderia",
+    1.0,
+    8600.0
+   ],
+   [
+    27,
+    "Lasagna con Salsa",
+    "Pasta Cocida",
+    2.0,
+    40000.0
+   ],
+   [
+    34,
+    "Porcion Ravioles",
+    "Pasta Cocida",
+    1.0,
+    15000.0
+   ],
+   [
+    35,
+    "Porcion Raviolon",
+    "Pasta Cocida",
+    2.0,
+    30000.0
+   ],
+   [
+    36,
+    "Porcion Canelones",
+    "Pasta Cocida",
+    1.0,
+    16700.0
+   ],
+   [
+    476,
+    "Strudel",
+    "Pasteleria",
+    1.0,
+    6000.0
+   ],
+   [
+    94,
+    "Pizza Muzzarella",
+    "Pizzas",
+    1.0,
+    14500.0
+   ],
+   [
+    124,
+    "Empanada de Carne",
+    "Pizzas",
+    15.0,
+    40320.0
+   ],
+   [
+    125,
+    "Empanada de Pollo",
+    "Pizzas",
+    8.0,
+    22400.0
+   ],
+   [
+    126,
+    "Empanada Jamon y",
+    "Pizzas",
+    16.0,
+    43120.0
+   ],
+   [
+    129,
+    "Empanada de Espin",
+    "Pizzas",
+    4.0,
+    11200.0
+   ],
+   [
+    105,
+    "Suprema x Kilo",
+    "Pollo",
+    0.4,
+    12600.0
+   ],
+   [
+    107,
+    "Pollo Al Horno",
+    "Pollo",
+    1.0,
+    23000.0
+   ],
+   [
+    217,
+    "Cuarto de Pollo",
+    "Pollo",
+    1.0,
+    7500.0
+   ],
+   [
+    302,
+    "Wrap de Pollo",
+    "Pollo",
+    1.0,
+    10500.0
+   ],
+   [
+    350,
+    "Bastones de Pollo",
+    "Pollo",
+    0.7,
+    18070.0
+   ],
+   [
+    98,
+    "Queso rallado Chi",
+    "Quesos",
+    17.0,
+    84500.0
+   ],
+   [
+    99,
+    "Queso Rallado Gra",
+    "Quesos",
+    12.0,
+    111150.0
+   ],
+   [
+    4020,
+    "Queso rallado 50g",
+    "Quesos",
+    5.0,
+    13500.0
+   ],
+   [
+    7,
+    "Ravioles Ricota",
+    "Ravioles",
+    11.0,
+    71500.0
+   ],
+   [
+    8,
+    "Ravioles Ricota y",
+    "Ravioles",
+    6.0,
+    38350.0
+   ],
+   [
+    9,
+    "Ravioles Ricota J",
+    "Ravioles",
+    24.0,
+    156000.0
+   ],
+   [
+    10,
+    "Ravioles Pollo y",
+    "Ravioles",
+    21.0,
+    129350.0
+   ],
+   [
+    11,
+    "Ravioles Pavita J",
+    "Ravioles",
+    12.0,
+    78000.0
+   ],
+   [
+    14,
+    "Ravioles de Masa",
+    "Ravioles",
+    28.0,
+    178750.0
+   ],
+   [
+    15,
+    "Raviolon Cuatro Q",
+    "Raviolones",
+    10.0,
+    76000.0
+   ],
+   [
+    16,
+    "Raviolon Pollo y",
+    "Raviolones",
+    9.0,
+    63840.0
+   ],
+   [
+    17,
+    "Raviolon Calabaza",
+    "Raviolones",
+    4.0,
+    30400.0
+   ],
+   [
+    18,
+    "Raviolon Ricota y",
+    "Raviolones",
+    5.0,
+    35720.0
+   ],
+   [
+    380,
+    "Raviolon de Corde",
+    "Raviolones",
+    3.0,
+    22800.0
+   ],
+   [
+    81,
+    "Pastelitos",
+    "Reventa",
+    4.0,
+    9200.0
+   ],
+   [
+    202,
+    "Generico",
+    "Reventa",
+    3.0,
+    713672.07
+   ],
+   [
+    50,
+    "Salsa Fileto Chic",
+    "Salsas",
+    4.0,
+    16800.0
+   ],
+   [
+    51,
+    "Salsa Bolognesa C",
+    "Salsas",
+    7.0,
+    35000.0
+   ],
+   [
+    56,
+    "Salsa Pesto",
+    "Salsas",
+    2.0,
+    16400.0
+   ],
+   [
+    254,
+    "Salsa Blanca Medi",
+    "Salsas",
+    1.0,
+    5800.0
+   ],
+   [
+    255,
+    "Salsa Fileto Medi",
+    "Salsas",
+    18.0,
+    104400.0
+   ],
+   [
+    258,
+    "Estofado de Pollo",
+    "Salsas",
+    7.0,
+    42240.0
+   ],
+   [
+    259,
+    "Salsa de Champino",
+    "Salsas",
+    1.0,
+    6400.0
+   ],
+   [
+    263,
+    "Salsa Rosa Median",
+    "Salsas",
+    1.0,
+    5800.0
+   ],
+   [
+    276,
+    "Salsa Blanca Chic",
+    "Salsas",
+    1.0,
+    3780.0
+   ],
+   [
+    277,
+    "Estofado de Carne",
+    "Salsas",
+    1.0,
+    5000.0
+   ],
+   [
+    279,
+    "Salsa Chamipgnon",
+    "Salsas",
+    2.0,
+    10000.0
+   ],
+   [
+    280,
+    "Salsa 4 Quesos Ch",
+    "Salsas",
+    1.0,
+    5000.0
+   ],
+   [
+    363,
+    "Salsa Bolognesa M",
+    "Salsas",
+    16.0,
+    101760.0
+   ],
+   [
+    270,
+    "Cubanitos",
+    "Santa",
+    1.0,
+    4900.0
+   ],
+   [
+    580,
+    "Santa Clara Galle",
+    "Santa",
+    1.0,
+    2610.0
+   ],
+   [
+    1001,
+    "Barquillos",
+    "Santa",
+    4.0,
+    20000.0
+   ],
+   [
+    3106,
+    "Toscanitos bañado",
+    "Santa",
+    2.0,
+    10800.0
+   ],
+   [
+    29,
+    "Sorrentinos Jamon",
+    "Sorrentinos",
+    11.9,
+    367400.25
+   ],
+   [
+    30,
+    "Tortelletis",
+    "Sorrentinos",
+    1.5,
+    28500.0
+   ],
+   [
+    32,
+    "Panzotis Espinaca",
+    "Sorrentinos",
+    4.0,
+    33600.0
+   ],
+   [
+    1163,
+    "Capeletinis 4 Que",
+    "Sorrentinos",
+    1.2,
+    21640.5
+   ],
+   [
+    1164,
+    "Capeletinis Pollo",
+    "Sorrentinos",
+    1.0,
+    18900.0
+   ],
+   [
+    100,
+    "Tortilla de Acelg",
+    "Tartas",
+    0.5,
+    11845.0
+   ],
+   [
+    101,
+    "Tortilla de Papa",
+    "Tartas",
+    0.5,
+    10695.0
+   ],
+   [
+    123,
+    "Tapas Empanadas",
+    "Tartas",
+    2.0,
+    7600.0
+   ],
+   [
+    130,
+    "Tarta de Calabaza",
+    "Tartas",
+    2.0,
+    17100.0
+   ],
+   [
+    131,
+    "Tarta de Verdura",
+    "Tartas",
+    2.0,
+    17100.0
+   ],
+   [
+    132,
+    "Tarta Mixta",
+    "Tartas",
+    1.0,
+    8100.0
+   ],
+   [
+    138,
+    "Tortilla de Zapal",
+    "Tartas",
+    0.3,
+    7015.0
+   ],
+   [
+    140,
+    "Tarta Grande Jamo",
+    "Tartas",
+    0.5,
+    16275.0
+   ],
+   [
+    396,
+    "Tarta Grande de V",
+    "Tartas",
+    0.4,
+    11745.0
+   ],
+   [
+    187,
+    "Papas y Batatas a",
+    "Verduras",
+    0.5,
+    8544.0
+   ],
+   [
+    334,
+    "Ensalada Caesar",
+    "Verduras",
+    4.0,
+    52000.0
+   ],
+   [
+    393,
+    "Ensalada Verdura",
+    "Verduras",
+    1.0,
+    7500.0
+   ],
+   [
+    1028,
+    "Dibble Pepas",
+    "DIBBLE",
+    1.0,
+    6700.0
+   ],
+   [
+    337,
+    "Menu Economico",
+    "Menu",
+    17.0,
+    102000.0
+   ],
+   [
+    376,
+    "Menu Mix de Ravio",
+    "Menu",
+    7.0,
+    42000.0
+   ],
+   [
+    203,
+    "Flan",
+    "Postre",
+    5.0,
+    19200.0
+   ]
+  ],
+  "thread": "1a20440e1d551243",
+  "subject": "MaxiREST - Fin de turno - 22/11/2026 Mañana",
+  "sender": "lapresumidapastas@gmail.com"
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-11-22",
+  "turno": "Mañana",
+  "total": 4805347.0,
+  "tickets": 135,
+  "neto21": 3971361.16,
+  "iva21": 833985.84,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    719911.0,
+    30
+   ],
+   "CABAL": [
+    58920.0,
+    2
+   ],
+   "VISA DEBITO": [
+    1229352.0,
+    53
+   ],
+   "MASTER": [
+    74900.0,
+    3
+   ],
+   "RAPPI TARJETA": [
+    80110.0,
+    1
+   ],
+   "VISA": [
+    223675.0,
+    7
+   ],
+   "PEDIDOS YA ONLINE": [
+    1512750.0,
+    1
+   ],
+   "Mercado Pago": [
+    627971.0,
+    28
+   ],
+   "MODO": [
+    230690.0,
+    9
+   ],
+   "MP DELIVERY": [
+    47068.0,
+    1
+   ]
+  },
+  "cod202_unid": 4.0,
+  "cod202_importe": 1639928.0,
+  "articulos": [
+   [
+    4000,
+    "Descuento Alax",
+    "",
+    26.0,
+    -182000.0
+   ],
+   [
+    182,
+    "Aquarius 600",
+    "Bebidas",
+    1.0,
+    2900.0
+   ],
+   [
+    286,
+    "Canelones de Poll",
+    "Canelones",
+    3.0,
+    9000.0
+   ],
+   [
+    97,
+    "Lengua",
+    "Carnes",
+    0.9,
+    26617.5
+   ],
+   [
+    106,
+    "Matambre Relleno",
+    "Carnes",
+    0.1,
+    8280.0
+   ],
+   [
+    128,
+    "Vitel Tone",
+    "Carnes",
+    1.3,
+    70395.0
+   ],
+   [
+    394,
+    "Matambre a La Piz",
+    "Carnes",
+    0.6,
+    36087.0
+   ],
+   [
+    96,
+    "Arrollado De Atun",
+    "Comida",
+    0.3,
+    13120.0
+   ],
+   [
+    110,
+    "Arrollado Primave",
+    "Comida",
+    0.7,
+    22995.0
+   ],
+   [
+    113,
+    "Pastel De Papas",
+    "Comida",
+    0.6,
+    18560.0
+   ],
+   [
+    115,
+    "Bomba de Papa",
+    "Comida",
+    0.3,
+    7590.0
+   ],
+   [
+    211,
+    "Bunuelo De Acelga",
+    "Comida",
+    1.6,
+    43011.0
+   ],
+   [
+    295,
+    "Muzzarellitas Mil",
+    "Comida",
+    0.2,
+    4320.0
+   ],
+   [
+    339,
+    "Hamburguesa De Le",
+    "Comida",
+    0.3,
+    4984.0
+   ],
+   [
+    2,
+    "Fideos Caseros al",
+    "Fideos",
+    2.6,
+    33800.0
+   ],
+   [
+    4,
+    "Fuciles al Huevo",
+    "Fideos",
+    5.5,
+    71760.0
+   ],
+   [
+    2202,
+    "Fideos Finitos al",
+    "Fideos",
+    0.2,
+    1950.0
+   ],
+   [
+    2203,
+    "Fideos Cordon al",
+    "Fideos",
+    2.5,
+    32500.0
+   ],
+   [
+    2204,
+    "Fideos Media Cint",
+    "Fideos",
+    0.5,
+    6500.0
+   ],
+   [
+    2215,
+    "Fideos Media Cint",
+    "Fideos",
+    0.6,
+    7800.0
+   ],
+   [
+    2217,
+    "Fuciles tricolor",
+    "Fideos",
+    1.5,
+    19500.0
+   ],
+   [
+    2218,
+    "Fuciles morron",
+    "Fideos",
+    0.5,
+    6500.0
+   ],
+   [
+    650,
+    "Freddo Pinta Dulc",
+    "Freddo",
+    1.0,
+    12600.0
+   ],
+   [
+    666,
+    "Freddo Tableta x",
+    "Freddo",
+    9.0,
+    37800.0
+   ],
+   [
+    57,
+    "Crema Sancor 200",
+    "Lacteo",
+    1.0,
+    2900.0
+   ],
+   [
+    1167,
+    "Crema de Leche do",
+    "Lacteo",
+    1.0,
+    2900.0
+   ],
+   [
+    111,
+    "Sandwich Triple C",
+    "Lunch",
+    24.0,
+    67200.0
+   ],
+   [
+    23,
+    "Ñoquis de Papa",
+    "Ñoquis",
+    0.5,
+    6500.0
+   ],
+   [
+    2414,
+    "Ñoquis tricolor",
+    "Ñoquis",
+    3.6,
+    46800.0
+   ],
+   [
+    60,
+    "Pan",
+    "Pan F",
+    3.8,
+    20628.0
+   ],
+   [
+    83,
+    "Pan Multicereal",
+    "Pan F",
+    1.0,
+    5500.0
+   ],
+   [
+    90,
+    "Prepizza de Tomat",
+    "Pan F",
+    3.0,
+    9600.0
+   ],
+   [
+    215,
+    "Rosquitas Espanol",
+    "Pan F",
+    1.0,
+    5800.0
+   ],
+   [
+    426,
+    "Budines Manzana",
+    "Pan F",
+    1.0,
+    7950.0
+   ],
+   [
+    158,
+    "Porcion Balcarce/",
+    "Panaderia",
+    1.0,
+    12150.0
+   ],
+   [
+    27,
+    "Lasagna con Salsa",
+    "Pasta Cocida",
+    1.0,
+    20000.0
+   ],
+   [
+    34,
+    "Porcion Ravioles",
+    "Pasta Cocida",
+    1.0,
+    15000.0
+   ],
+   [
+    35,
+    "Porcion Raviolon",
+    "Pasta Cocida",
+    1.0,
+    15000.0
+   ],
+   [
+    36,
+    "Porcion Canelones",
+    "Pasta Cocida",
+    1.0,
+    16700.0
+   ],
+   [
+    191,
+    "Porcion Panzottis",
+    "Pasta Cocida",
+    1.0,
+    15000.0
+   ],
+   [
+    370,
+    "Mousses Postres M",
+    "Pasteleria",
+    1.0,
+    3870.0
+   ],
+   [
+    95,
+    "Pizza Jamon y Mor",
+    "Pizzas",
+    1.0,
+    17800.0
+   ],
+   [
+    124,
+    "Empanada de Carne",
+    "Pizzas",
+    37.0,
+    103600.0
+   ],
+   [
+    125,
+    "Empanada de Pollo",
+    "Pizzas",
+    3.0,
+    8400.0
+   ],
+   [
+    126,
+    "Empanada Jamon y",
+    "Pizzas",
+    25.0,
+    70000.0
+   ],
+   [
+    127,
+    "Empanada Cebolla",
+    "Pizzas",
+    2.0,
+    5600.0
+   ],
+   [
+    129,
+    "Empanada de Espin",
+    "Pizzas",
+    5.0,
+    14000.0
+   ],
+   [
+    222,
+    "Empanada de Humit",
+    "Pizzas",
+    3.0,
+    8400.0
+   ],
+   [
+    105,
+    "Suprema x Kilo",
+    "Pollo",
+    0.7,
+    22081.5
+   ],
+   [
+    107,
+    "Pollo Al Horno",
+    "Pollo",
+    1.0,
+    23000.0
+   ],
+   [
+    217,
+    "Cuarto de Pollo",
+    "Pollo",
+    8.0,
+    57000.0
+   ],
+   [
+    302,
+    "Wrap de Pollo",
+    "Pollo",
+    1.0,
+    10500.0
+   ],
+   [
+    395,
+    "Arrollado de Poll",
+    "Pollo",
+    0.2,
+    6300.0
+   ],
+   [
+    419,
+    "Tostaditas Sabori",
+    "Presumida",
+    0.5,
+    2990.0
+   ],
+   [
+    98,
+    "Queso rallado Chi",
+    "Quesos",
+    14.0,
+    69000.0
+   ],
+   [
+    99,
+    "Queso Rallado Gra",
+    "Quesos",
+    3.0,
+    27550.0
+   ],
+   [
+    7,
+    "Ravioles Ricota",
+    "Ravioles",
+    11.0,
+    71500.0
+   ],
+   [
+    8,
+    "Ravioles Ricota y",
+    "Ravioles",
+    10.0,
+    65000.0
+   ],
+   [
+    9,
+    "Ravioles Ricota J",
+    "Ravioles",
+    13.0,
+    83200.0
+   ],
+   [
+    10,
+    "Ravioles Pollo y",
+    "Ravioles",
+    35.0,
+    227500.0
+   ],
+   [
+    11,
+    "Ravioles Pavita J",
+    "Ravioles",
+    38.0,
+    247000.0
+   ],
+   [
+    14,
+    "Ravioles de Masa",
+    "Ravioles",
+    13.0,
+    84500.0
+   ],
+   [
+    15,
+    "Raviolon Cuatro Q",
+    "Raviolones",
+    8.0,
+    60040.0
+   ],
+   [
+    16,
+    "Raviolon Pollo y",
+    "Raviolones",
+    10.0,
+    71440.0
+   ],
+   [
+    17,
+    "Raviolon Calabaza",
+    "Raviolones",
+    13.0,
+    95760.0
+   ],
+   [
+    18,
+    "Raviolon Ricota y",
+    "Raviolones",
+    10.0,
+    75240.0
+   ],
+   [
+    202,
+    "Generico",
+    "Reventa",
+    4.0,
+    1639928.0
+   ],
+   [
+    50,
+    "Salsa Fileto Chic",
+    "Salsas",
+    5.0,
+    21000.0
+   ],
+   [
+    51,
+    "Salsa Bolognesa C",
+    "Salsas",
+    4.0,
+    20000.0
+   ],
+   [
+    56,
+    "Salsa Pesto",
+    "Salsas",
+    2.0,
+    16400.0
+   ],
+   [
+    254,
+    "Salsa Blanca Medi",
+    "Salsas",
+    1.0,
+    5800.0
+   ],
+   [
+    255,
+    "Salsa Fileto Medi",
+    "Salsas",
+    5.0,
+    28420.0
+   ],
+   [
+    258,
+    "Estofado de Pollo",
+    "Salsas",
+    1.0,
+    6400.0
+   ],
+   [
+    262,
+    "Salsa 4 Quesos Me",
+    "Salsas",
+    1.0,
+    6400.0
+   ],
+   [
+    263,
+    "Salsa Rosa Median",
+    "Salsas",
+    2.0,
+    10440.0
+   ],
+   [
+    264,
+    "Salsa Pomarola Me",
+    "Salsas",
+    3.0,
+    19200.0
+   ],
+   [
+    276,
+    "Salsa Blanca Chic",
+    "Salsas",
+    2.0,
+    7980.0
+   ],
+   [
+    277,
+    "Estofado de Carne",
+    "Salsas",
+    1.0,
+    5000.0
+   ],
+   [
+    279,
+    "Salsa Chamipgnon",
+    "Salsas",
+    1.0,
+    5000.0
+   ],
+   [
+    280,
+    "Salsa 4 Quesos Ch",
+    "Salsas",
+    2.0,
+    10000.0
+   ],
+   [
+    363,
+    "Salsa Bolognesa M",
+    "Salsas",
+    7.0,
+    44800.0
+   ],
+   [
+    29,
+    "Sorrentinos Jamon",
+    "Sorrentinos",
+    3.8,
+    120960.0
+   ],
+   [
+    30,
+    "Tortelletis",
+    "Sorrentinos",
+    3.3,
+    59850.0
+   ],
+   [
+    1164,
+    "Capeletinis Pollo",
+    "Sorrentinos",
+    1.0,
+    18900.0
+   ],
+   [
+    101,
+    "Tortilla de Papa",
+    "Tartas",
+    1.2,
+    28290.0
+   ],
+   [
+    102,
+    "Tortilla de zanah",
+    "Tartas",
+    0.6,
+    12420.0
+   ],
+   [
+    130,
+    "Tarta de Calabaza",
+    "Tartas",
+    1.0,
+    9000.0
+   ],
+   [
+    132,
+    "Tarta Mixta",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    133,
+    "Tarta de Puerro",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    135,
+    "Tarta de Zapallit",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    136,
+    "Tarta de Pollo",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    138,
+    "Tortilla de Zapal",
+    "Tartas",
+    1.0,
+    20079.0
+   ],
+   [
+    140,
+    "Tarta Grande Jamo",
+    "Tartas",
+    0.8,
+    23746.0
+   ],
+   [
+    396,
+    "Tarta Grande de V",
+    "Tartas",
+    0.4,
+    10260.0
+   ],
+   [
+    470,
+    "Tarta Grande de P",
+    "Tartas",
+    0.3,
+    10395.0
+   ],
+   [
+    137,
+    "Ensalada Rusa",
+    "Verduras",
+    3.2,
+    73600.0
+   ],
+   [
+    178,
+    "Verduras al Peso",
+    "Verduras",
+    1.9,
+    43240.0
+   ],
+   [
+    299,
+    "Ensalada de Fucil",
+    "Verduras",
+    1.0,
+    8400.0
+   ],
+   [
+    334,
+    "Ensalada Caesar",
+    "Verduras",
+    6.0,
+    78000.0
+   ],
+   [
+    335,
+    "Ensalada Choclo C",
+    "Verduras",
+    1.0,
+    7500.0
+   ],
+   [
+    336,
+    "Ensalada Completa",
+    "Verduras",
+    3.0,
+    39000.0
+   ],
+   [
+    1031,
+    "Dibble Lenguitas",
+    "DIBBLE",
+    3.0,
+    20100.0
+   ],
+   [
+    193,
+    "Menu Bond/escal/b",
+    "Menu",
+    5.0,
+    50000.0
+   ],
+   [
+    337,
+    "Menu Economico",
+    "Menu",
+    2.0,
+    12000.0
+   ],
+   [
+    376,
+    "Menu Mix de Ravio",
+    "Menu",
+    4.0,
+    24000.0
+   ],
+   [
+    203,
+    "Flan",
+    "Postre",
+    21.0,
+    82000.0
+   ],
+   [
+    229,
+    "Budin de pan",
+    "Postre",
+    1.1,
+    14170.0
+   ]
+  ],
+  "thread": "1a20445ce3f074c7",
+  "subject": "MaxiREST - Fin de turno - 22/11/2026 Mañana",
+  "sender": "deliverylapresumida@gmail.com"
  }
 ]

@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-11-22 11:05",
+  "actualizado": "2026-11-22 11:08",
   "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
   "calendario": [
     {
@@ -254,7 +254,7 @@
     {
       "que": "Ropa de cama y toallas",
       "dia": "No",
-      "casa": "[COMPLETAR]"
+      "casa": "No incluye ropa blanca: sábanas, frazadas ni almohadas (las traen ellos). Aclararlo solo si el cliente pregunta."
     },
     {
       "que": "Cocina / heladera / freezer",
@@ -278,8 +278,8 @@
     },
     {
       "que": "Mascotas",
-      "dia": "[COMPLETAR]",
-      "casa": "[COMPLETAR]"
+      "dia": "Sí, se aceptan mascotas",
+      "casa": "Sí, se aceptan mascotas"
     },
     {
       "que": "Leña / carbón",
@@ -302,11 +302,11 @@
     },
     {
       "tema": "Seña",
-      "regla": "50% para reservar el día y el otro 50% cuando ingresan."
+      "regla": "50% para reservar y el otro 50% cuando ingresan. El día queda apartado recién cuando se paga la seña del 50%."
     },
     {
       "tema": "Forma de pago",
-      "regla": "[COMPLETAR]"
+      "regla": "50% de seña al reservar (con eso se aparta el día) y el 50% restante al ingresar. Los datos de pago se pasan por WhatsApp, nunca por Instagram."
     },
     {
       "tema": "Límite de edad",

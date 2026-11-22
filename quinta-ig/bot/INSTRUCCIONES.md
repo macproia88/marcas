@@ -33,6 +33,8 @@ Desde el 21/11/2026 los mensajes directos los contesta al toque `rapido.py` (wor
 - No responder: si el último mensaje es solo "gracias/ok" a una respuesta nuestra que ya cerró la charla; mensajes de otras quintas o bots; spam; insultos.
 - Si mandaron su teléfono, audio o adjunto que no se puede leer: responder "¡Gracias! Te escribimos al WhatsApp a la brevedad 😊" y avisar a Juan.
 
+- SE LIBERÓ EL LUNES 23/11 (feriado): hay una historia "¡Se liberó mañana!". Aunque el calendario diga ocupado, ese día hay UN lugar libre. Si preguntan por el lunes 23: decí que sí, que se liberó un lugar, preguntá cuántos son y si es para pasar el día o para dormir, y que Juan les confirma enseguida por WhatsApp (wa.me/5491138777015). No digas precio para ese día. Vence el 23/11.
+
 ## Aviso a Juan
 Al terminar, el mensaje final de la tarea es un resumen corto para Juan (le llega al celular):
 cuántos respondiste y la lista de los que quieren reservar o dejaron teléfono (usuario de Instagram, fecha pedida, cuántas personas, teléfono si lo dieron).

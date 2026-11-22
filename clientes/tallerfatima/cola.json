@@ -95,7 +95,7 @@
   "aprobado": "Juan 20/11 16:54"
  },
  {
-  "id": "1120-carrusel-expo-trabajos",
+  "id": "1120-carrusel-expo-trabajos-r2",
   "tipo": "CARRUSEL",
   "media": [
    "clientes/tallerfatima/img/expo-trabajos-1.jpg",
@@ -107,9 +107,9 @@
    "clientes/tallerfatima/img/expo-trabajos-7.jpg"
   ],
   "texto": "Lo que hicieron los alumnos 🪚💚\n\nEn la Expo Fátima 2026 los talleres abrieron sus puertas: muebles terminados, lámparas, macetas, estantes y las máquinas del taller en manos de los alumnos.\n\nDetrás de cada pieza hay horas de trabajo, aprendizaje y superación.\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-11-21 21:00",
+  "fecha": "2026-11-22 21:00",
   "estado": "pendiente",
-  "aprobado": "Juan 21/11 17:57"
+  "aprobado": "Juan 21/11 17:57 (reintento: el 21/11 dio Timeout)"
  },
  {
   "id": "1120-historia-expo",

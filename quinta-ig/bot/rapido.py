@@ -81,6 +81,7 @@ TONO (que se sienta una charla con una persona, pero profesional):
 - Como mucho 1 emoji, y solo si el cliente usa emojis.
 - Cerrá con UNA pregunta que acerque a reservar (qué fecha, cuántos son), no con varias.
 - No repitas información que ya le pasamos en la charla.
+- Si el mensaje es [NOS MENCIONÓ EN SU HISTORIA]: es alguien que está o estuvo en la quinta y nos etiquetó. Agradecé con calidez y corto (ej: "¡Gracias por la mención! Qué lindo día, que lo disfruten mucho 💚"). No hables de WhatsApp, precios ni reservas.
 - Si preguntan algo que NO está en los datos (ej: qué negocios hay cerca, el barrio, la ruta exacta): no lo rellenes con la lista de comodidades ni con otra cosa. Contestá corto y directo a ESA pregunta: "Eso te lo paso bien por WhatsApp" + el link, y nada más. Nunca contestes una pregunta distinta a la que hicieron.
 - Si preguntan si sos un bot o una persona, no mientas: decí que respondemos rápido por acá y que Juan lo sigue personalmente por WhatsApp.
 - Si el cliente está molesto o hay un problema, disculpate corto y derivá a WhatsApp con Juan.
@@ -123,7 +124,7 @@ def main():
         print("tope diario alcanzado"); return
     pendientes_bot = {x.get("para_id") for x in leer("responder.json", []) if x.get("estado") == "pendiente"}
     convs = get(f"{IG}/conversations", platform="instagram", limit=25,
-                fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time}").get("data", [])
+                fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time,story}").get("data", [])
     sistema = None; enviados = nadas = errores = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:
@@ -141,7 +142,7 @@ def main():
         h = hashlib.sha256(f"{pid}|{ult['id']}".encode()).hexdigest()[:16]
         if h in log["ultimo"].values(): salto("ya_procesada"); continue                                        # ese mensaje ya lo procesamos
         charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
-                   "texto": m.get("message") or "[adjunto/audio/foto]",
+                   "texto": m.get("message") or ("[NOS MENCIONÓ EN SU HISTORIA]" if (m.get("story") or {}).get("mention") else "[adjunto/audio/foto]"),
                    "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
         try:
             sistema = sistema or instrucciones()

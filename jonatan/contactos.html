@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactivar contactos · Jonatan</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c1a33;--navy:#0f2a55;--blue:#1d5fae;--sky:#23a8e0;--soft:#eef6fc;--muted:#5b6b82;--line:#e3ebf5;--wa:#25d366}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#f5f8fc;line-height:1.5}
+h1,h2,h3{font-family:Sora,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:28px 0 60px}
+header h1{font-size:1.6rem;letter-spacing:-.5px}
+header p{color:#c9d9ee;font-size:.95rem;margin-top:6px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px;box-shadow:0 6px 20px rgba(15,42,85,.06)}
+.top{margin-top:-40px}
+.step{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sky);color:#fff;font-weight:700;font-size:.85rem;margin-right:8px}
+h2{font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center}
+textarea,input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:.92rem;resize:vertical}
+textarea:focus,input:focus{outline:none;border-color:var(--sky)}
+.hint{color:var(--muted);font-size:.83rem;margin-top:6px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 18px;border-radius:11px;font-weight:600;font-size:.9rem;border:0;cursor:pointer;font-family:inherit;transition:.2s}
+.b1{background:var(--blue);color:#fff}.b1:hover{background:var(--navy)}
+.b2{background:var(--soft);color:var(--navy)}.b2:hover{background:#dcecf9}
+.bwa{background:var(--wa);color:#fff;text-decoration:none}.bwa:hover{filter:brightness(.95)}
+.tpls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.tpls button{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:7px 14px;font:inherit;font-size:.84rem;cursor:pointer;font-weight:600;color:var(--navy)}
+.tpls button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.prog{display:flex;gap:12px;flex-wrap:wrap}
+.pbox{flex:1;min-width:120px;background:var(--soft);border-radius:12px;padding:12px 14px}
+.pbox b{font-family:Sora;font-size:1.5rem;color:var(--blue);display:block}
+.pbox span{font-size:.8rem;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:8px;margin-top:14px;overflow:hidden}
+.bar div{height:100%;background:linear-gradient(90deg,var(--sky),var(--wa));width:0;transition:.4s}
+.filters{display:flex;gap:6px;margin:4px 0 12px}
+.filters button{border:0;background:transparent;font:inherit;font-weight:600;color:var(--muted);padding:6px 12px;border-radius:20px;cursor:pointer;font-size:.86rem}
+.filters button.on{background:var(--soft);color:var(--navy)}
+.ct{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:#fff}
+.ct.sent{opacity:.6;background:#f6fbf8}
+.ct .h{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.ct .n{font-weight:700}
+.ct .c{color:var(--blue);font-size:.86rem;font-weight:600}
+.ct .ph{color:var(--muted);font-size:.82rem}
+.ct .ph.bad{color:#c0392b;font-weight:600}
+.ct .msg{background:#e7f8ee;border-radius:10px 10px 10px 2px;padding:10px 12px;margin:10px 0;font-size:.88rem;white-space:pre-wrap}
+.ct .act{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tag{font-size:.74rem;font-weight:700;padding:3px 9px;border-radius:20px}
+.t-ok{background:#e2f6ec;color:#11804a}.t-pen{background:#fff4dc;color:#a46a00}
+.empty{text-align:center;color:var(--muted);padding:26px}
+.tip{background:#fff8e6;border:1px solid #f5dfa3;border-radius:12px;padding:12px 14px;font-size:.86rem;color:#6b5000}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:26px 0 40px}
+.link{color:var(--blue);background:none;border:0;font:inherit;font-size:.82rem;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <h1>Reactivar contactos por WhatsApp</h1>
+ <p>Pegás tu lista, elegís el mensaje y mandás uno por uno, personalizado, con un toque. Los datos quedan solo en tu celular o PC.</p>
+</div></header>
+
+<div class="wrap top">
+ <div class="card">
+  <h2><span class="step">1</span>Pegá tus contactos</h2>
+  <textarea id="raw" rows="6" placeholder="Un contacto por línea: Nombre, Empresa, Teléfono&#10;Ej:&#10;Martín Gómez, Logística Sur, 11 5555-1234&#10;Laura Pérez, AgroCampo SA, +54 9 341 555 6677"></textarea>
+  <p class="hint">Formato: <b>Nombre, Empresa, Teléfono</b> (separado por coma o tabulación — podés copiar columnas de Excel). La empresa es opcional. También podés subir un .csv.</p>
+  <div class="row">
+   <button class="btn b1" id="load">Cargar contactos</button>
+   <label class="btn b2" style="cursor:pointer">Subir .csv<input type="file" id="file" accept=".csv,.txt" hidden></label>
+   <button class="link" id="demo">Ver ejemplo</button>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2><span class="step">2</span>Elegí el mensaje</h2>
+  <div class="tpls" id="tpls"></div>
+  <textarea id="tpl" rows="5"></textarea>
+  <p class="hint">Usá <b>{nombre}</b> y <b>{empresa}</b>: se reemplazan solos. El saludo cambia un poco en cada contacto para que no sean todos iguales.</p>
+ </div>
+
+ <div class="card">
+  <h2><span class="step">3</span>Mandá de a poco</h2>
+  <div class="prog">
+   <div class="pbox"><b id="sTot">0</b><span>contactos</span></div>
+   <div class="pbox"><b id="sSent">0</b><span>enviados</span></div>
+   <div class="pbox"><b id="sToday">0</b><span>hoy (ideal: hasta 25)</span></div>
+  </div>
+  <div class="bar"><div id="bar"></div></div>
+  <div class="tip" style="margin-top:14px">💡 Mandá <b>20 a 25 por día</b> como máximo y esperá unos minutos entre mensajes. Así WhatsApp no te marca como spam y podés responder bien a los que contestan.</div>
+  <div class="filters" style="margin-top:14px"><button data-f="pen" class="on">Pendientes</button><button data-f="sent">Enviados</button><button data-f="all">Todos</button></div>
+  <div id="list"></div>
+  <div class="row"><button class="btn b2" id="exp">Copiar lista con estado</button><button class="link" id="reset">Borrar todo</button></div>
+ </div>
+</div>
+<footer>Herramienta de Jonatan Ermantraut · Última actualización: 22/11/2026 00:45</footer>
+
+<script>
+const TPLS={
+ 'Reencuentro':'{saludo} {nombre}! ¿Cómo andás? Soy Jonatan Ermantraut, de Énfasis Logística. Hace un tiempo que no hablamos y me acordé de vos. ¿Cómo viene todo en {empresa}? Me gustaría ponernos al día cuando tengas un rato.',
+ 'Énfasis 30 años':'{saludo} {nombre}! Soy Jonatan, de Énfasis Logística. Este año cumplimos 30 años en el medio y estamos armando propuestas para que las empresas del sector lleguen a su público (digital, revista y eventos). Pensé en {empresa}. ¿Te puedo contar en 5 minutos?',
+ 'Eventos':'{saludo} {nombre}! ¿Todo bien? Soy Jonatan Ermantraut. Estoy en el área comercial de Management Logístico y del Congreso de Distribuidores del Agro. Se vienen espacios muy buenos para que {empresa} tenga presencia. ¿Te interesa que te pase la info?',
+ 'Corto':'{saludo} {nombre}! Tanto tiempo. Soy Jonatan Ermantraut. ¿Cómo estás? ¿Seguís en {empresa}?'
+};
+const SAL=['Hola','Buenas','¡Hola','Qué tal'];
+let S={contacts:[],tpl:TPLS['Reencuentro'],tplName:'Reencuentro',filter:'pen'};
+const store={get(){try{return JSON.parse(localStorage.getItem('reactivar_jonatan')||'null')}catch(e){return null}},set(v){try{localStorage.setItem('reactivar_jonatan',JSON.stringify(v))}catch(e){}}};
+const saved=store.get(); if(saved) S=Object.assign(S,saved,{filter:'pen'});
+const $=id=>document.getElementById(id);
+const today=()=>new Date().toLocaleDateString('es-AR');
+
+function normPhone(p){
+ let d=(p||'').replace(/\D/g,''); if(!d) return '';
+ if(d.startsWith('00')) d=d.slice(2);
+ if(d.startsWith('54')){let r=d.slice(2); if(r.startsWith('0')) r=r.slice(1); if(!r.startsWith('9')) r='9'+r; d='54'+r}
+ else{ if(d.startsWith('0')) d=d.slice(1);
+  // quitar "15" después del código de área (ej 11 15 5555 1234)
+  if(d.length===12 && d.slice(2,4)==='15') d=d.slice(0,2)+d.slice(4);
+  else if(d.length===12 && d.slice(3,5)==='15') d=d.slice(0,3)+d.slice(5);
+  else if(d.length===12 && d.slice(4,6)==='15') d=d.slice(0,4)+d.slice(6);
+  if(d.length===10 && d.startsWith('15')) d='11'+d.slice(2);
+  if(d.length===8) d='11'+d;
+  d='549'+d }
+ return d;
+}
+function valid(d){return /^549\d{10}$/.test(d)}
+function parse(text){
+ const out=[];
+ text.split(/\r?\n/).forEach(l=>{
+  l=l.trim(); if(!l) return;
+  let parts=l.split(/\t|;|,/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length<2) return;
+  let phoneIdx=parts.findIndex(p=>(p.replace(/\D/g,'').length>=8));
+  if(phoneIdx<0) return;
+  const phone=parts[phoneIdx]; parts.splice(phoneIdx,1);
+  if(/^nombre$/i.test(parts[0]||'')) return;
+  out.push({id:Math.random().toString(36).slice(2,9),nombre:parts[0]||'',empresa:parts[1]||'',tel:normPhone(phone),raw:phone,sent:null});
+ });
+ return out;
+}
+function first(n){return (n||'').split(' ')[0]}
+function msgFor(c){
+ const sal=SAL[c.id.charCodeAt(0)%SAL.length];
+ let m=S.tpl.replace(/\{saludo\}/g,sal).replace(/\{nombre\}/g,first(c.nombre)).replace(/\{empresa\}/g,c.empresa||'tu empresa');
+ return m.replace(/¡Hola (.*?)!/,'¡Hola $1!');
+}
+function render(){
+ $('tpls').innerHTML=Object.keys(TPLS).map(k=>`<button class="${k===S.tplName?'on':''}" data-k="${k}">${k}</button>`).join('');
+ if(document.activeElement!==$('tpl')) $('tpl').value=S.tpl;
+ const tot=S.contacts.length, sent=S.contacts.filter(c=>c.sent).length, td=S.contacts.filter(c=>c.sent&&c.sent===today()).length;
+ $('sTot').textContent=tot;$('sSent').textContent=sent;$('sToday').textContent=td;
+ $('bar').style.width=tot?(sent/tot*100)+'%':'0';
+ document.querySelectorAll('.filters button').forEach(b=>b.classList.toggle('on',b.dataset.f===S.filter));
+ let L=S.contacts.filter(c=>S.filter==='all'||(S.filter==='sent'?c.sent:!c.sent));
+ if(!L.length){$('list').innerHTML=`<div class="empty">${tot?'No hay contactos en esta vista.':'Cargá tus contactos en el paso 1.'}</div>`;return}
+ $('list').innerHTML=L.map(c=>{const m=msgFor(c),ok=valid(c.tel);return `<div class="ct ${c.sent?'sent':''}">
+  <div class="h"><div><div class="n">${esc(c.nombre)}</div>${c.empresa?`<div class="c">${esc(c.empresa)}</div>`:''}<div class="ph ${ok?'':'bad'}">${ok?'+'+c.tel:'Revisar número: '+esc(c.raw)}</div></div>
+  ${c.sent?`<span class="tag t-ok">Enviado ${c.sent}</span>`:`<span class="tag t-pen">Pendiente</span>`}</div>
+  <div class="msg">${esc(m)}</div>
+  <div class="act">${ok?`<a class="btn bwa" href="https://wa.me/${c.tel}?text=${encodeURIComponent(m)}" target="_blank" rel="noopener" data-send="${c.id}">Enviar por WhatsApp</a>`:''}
+  ${c.sent?`<button class="link" data-undo="${c.id}">Marcar como pendiente</button>`:`<button class="link" data-mark="${c.id}">Ya lo mandé</button>`}</div></div>`}).join('');
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]))}
+function save(){store.set({contacts:S.contacts,tpl:S.tpl,tplName:S.tplName})}
+function mark(id,v){const c=S.contacts.find(x=>x.id===id);if(c){c.sent=v;save();render()}}
+
+$('load').onclick=()=>{const n=parse($('raw').value);if(!n.length){$('raw').focus();return}
+ const have=new Set(S.contacts.map(c=>c.tel));S.contacts=S.contacts.concat(n.filter(c=>!have.has(c.tel)));$('raw').value='';S.filter='pen';save();render()};
+$('file').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('raw').value=r.result;$('load').click()};r.readAsText(f)};
+$('demo').onclick=()=>{$('raw').value='Martín Gómez, Logística Sur, 11 5555-1234\nLaura Pérez, AgroCampo SA, +54 9 341 555 6677\nDiego Ruiz, Transportes DR, 011 15 4444 2222'};
+$('tpls').onclick=e=>{const k=e.target.dataset.k;if(!k)return;S.tplName=k;S.tpl=TPLS[k];save();render()};
+$('tpl').oninput=()=>{S.tpl=$('tpl').value;S.tplName='';save();render()};
+document.querySelector('.filters').onclick=e=>{if(e.target.dataset.f){S.filter=e.target.dataset.f;render()}};
+$('list').onclick=e=>{const t=e.target.closest('[data-send],[data-mark],[data-undo]');if(!t)return;
+ if(t.dataset.send) setTimeout(()=>mark(t.dataset.send,today()),400);
+ if(t.dataset.mark) mark(t.dataset.mark,today());
+ if(t.dataset.undo) mark(t.dataset.undo,null)};
+$('exp').onclick=async()=>{const txt='Nombre\tEmpresa\tTeléfono\tEstado\n'+S.contacts.map(c=>[c.nombre,c.empresa,'+'+c.tel,c.sent?'Enviado '+c.sent:'Pendiente'].join('\t')).join('\n');
+ try{await navigator.clipboard.writeText(txt);$('exp').textContent='¡Copiado! Pegalo en Excel'}catch(e){$('raw').value=txt;$('exp').textContent='Quedó en el cuadro del paso 1'}setTimeout(()=>$('exp').textContent='Copiar lista con estado',2500)};
+let rs=0;$('reset').onclick=()=>{if(!rs){rs=1;$('reset').textContent='¿Seguro? Tocá de nuevo para borrar';setTimeout(()=>{rs=0;$('reset').textContent='Borrar todo'},3000);return}
+ S.contacts=[];save();render();rs=0;$('reset').textContent='Borrar todo'};
+render();
+</script>
+</body>
+</html>

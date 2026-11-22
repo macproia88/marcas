@@ -465,7 +465,8 @@
     "zona": "General Rodríguez",
     "autopista": "a 600 m de la autopista del Oeste",
     "extra_guardado": "a 15 minutos de Luján (Juan lo dejó aparte por las dudas: usarlo solo si preguntan por Luján)",
-    "nota": "Las dos quintas están una pegada al lado de la otra."
+    "nota": "Las dos quintas están una pegada al lado de la otra.",
+    "comercios_cerca": "[COMPLETAR] (súper, almacén, carnicería, farmacia: qué hay y a cuántas cuadras)"
   },
   "estrategia": {
     "calor": "Clave del negocio: cuando hace calor la gente sale desesperada a reservar y las publicaciones se viralizan. Ante pronóstico de calor: publicar fuerte (reel + historias con precio y fechas libres) y el bot debe mencionar disponibilidad para esos días."

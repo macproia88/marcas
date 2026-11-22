@@ -38,5 +38,10 @@
   "estado": "error",
   "error": "Timeout",
   "intento": "2026-11-21 21:02"
+ },
+ "1120-historia-expo": {
+  "estado": "publicado",
+  "ig_media_id": "18075388361788684",
+  "publicado_el": "2026-11-21 21:20"
  }
 }

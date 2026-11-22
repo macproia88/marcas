@@ -103,12 +103,15 @@ section{padding:90px 0}
 footer{padding:50px 0 30px;color:var(--muted);font-size:.9rem}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
 .li{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:#0a66c2;color:#fff}
+.btn-wa{background:#25d366;color:#fff;box-shadow:0 8px 22px rgba(37,211,102,.35)}.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(37,211,102,.5)}
+.fwa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 28px rgba(37,211,102,.5)}
 .reveal{opacity:0;transform:translateY(26px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
  <symbol id="li" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+ <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.35-.2-3.56.93.95-3.47-.23-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
  <symbol id="ev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></symbol>
  <symbol id="mk" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 11l18-8-8 18-2-8-8-2z"/></symbol>
  <symbol id="ct" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v12H5.17L4 17.17V4zM8 9h8M8 12h5"/></symbol>
@@ -118,7 +121,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
  <a class="logo" href="#inicio">Jonatan<span>.</span>Ermantraut</a>
  <div class="links">
   <a href="#perfil">Perfil</a><a href="#servicios">Servicios</a><a href="#experiencia">Experiencia</a><a href="#formacion">Formación</a>
-  <a class="btn btn-p btn-s" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#li"/></svg>Contactar</a>
+  <a class="btn btn-wa btn-s" href="https://wa.me/5491149455164?text=Hola%20Jonatan%2C%20vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" target="_blank" rel="noopener"><svg width="16" height="16"><use href="#wa"/></svg>WhatsApp</a>
  </div>
 </div></nav>
 
@@ -129,8 +132,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   <div class="role">Asesor Comercial · Énfasis Logística</div>
   <p>Conecto a las empresas con su público objetivo a través de medios digitales, impresos y eventos del sector logístico y del agro. Más de 20 años trabajando cerca del comercio exterior y la logística.</p>
   <div class="ctas">
-   <a class="btn btn-p" style="background:var(--sky)" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#li"/></svg>Solicitar servicios</a>
-   <a class="btn btn-o" href="#servicios">Ver servicios</a>
+   <a class="btn btn-wa" href="https://wa.me/5491149455164?text=Hola%20Jonatan%2C%20vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#wa"/></svg>Escribime por WhatsApp</a>
+   <a class="btn btn-o" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#li"/></svg>LinkedIn</a>
   </div>
  </div>
  <div class="photo">
@@ -189,15 +192,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
 
 <div class="cta reveal">
  <h2>¿Querés que tu empresa llegue a más clientes?</h2>
- <p>Escribime por LinkedIn y armamos una propuesta a medida.</p>
- <a class="btn" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener"><svg width="18" height="18" style="color:#0a66c2"><use href="#li"/></svg>Contactar por LinkedIn</a>
+ <p>Escribime y armamos una propuesta a medida.</p>
+ <div class="ctas" style="justify-content:center"><a class="btn" href="https://wa.me/5491149455164?text=Hola%20Jonatan%2C%20vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" target="_blank" rel="noopener"><svg width="18" height="18" style="color:#25d366"><use href="#wa"/></svg>+54 9 11 4945-5164</a><a class="btn" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener"><svg width="18" height="18" style="color:#0a66c2"><use href="#li"/></svg>LinkedIn</a></div>
 </div>
 
 <footer><div class="wrap">
- <div style="display:flex;align-items:center;gap:12px"><a class="li" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20"><use href="#li"/></svg></a><span>© 2026 Jonatan Ermantraut · Asesor Comercial</span></div>
- <span>Última actualización: 22/11/2026 00:35</span>
+ <div style="display:flex;align-items:center;gap:12px"><a class="li" href="https://www.linkedin.com/in/jonatan-ermantraut-928253258/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20"><use href="#li"/></svg></a><a class="li" style="background:#25d366" href="https://wa.me/5491149455164?text=Hola%20Jonatan%2C%20vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20"><use href="#wa"/></svg></a><span>© 2026 Jonatan Ermantraut · Asesor Comercial</span></div>
+ <span>Última actualización: 22/11/2026 00:30</span>
 </div></footer>
 
+<a class="fwa" href="https://wa.me/5491149455164?text=Hola%20Jonatan%2C%20vi%20tu%20web%20y%20quiero%20consultar%20por%20tus%20servicios" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="30" height="30"><use href="#wa"/></svg></a>
 <script>
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));

@@ -101,7 +101,7 @@ DIAG = {}
 BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
 FOTOS = {"dia": ["dia-11.jpg", "dia-12.jpg", "dia-8.jpg", "dia-6.jpg"],     # quincho+pileta, parque, juegos, pileta cerca
          "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"],
-         "juanita": ["../juanita/juanita-7.jpg", "../juanita/juanita-8.jpg", "../juanita/juanita-2.jpg", "../juanita/juanita-4.jpg"]}  # La Juanita (vecino), solo 23/11
+         "juanita": ["https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-7.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-8.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-2.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-4.jpg"]}  # La Juanita (vecino), solo 23/11
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -170,7 +170,7 @@ def main():
             for f in cuales:
                 try:
                     post(f"{IG}/messages", recipient=json.dumps({"id": pid}),
-                         message=json.dumps({"attachment": {"type": "image", "payload": {"url": BASE_FOTOS + f}}}))
+                         message=json.dumps({"attachment": {"type": "image", "payload": {"url": f if f.startswith("http") else BASE_FOTOS + f}}}))
                     log.setdefault("fotos", {}); log["fotos"][hoy] = log["fotos"].get(hoy, 0) + 1
                 except urllib.error.HTTPError as e:
                     print("error foto:", e.code); log["ultimo_error"] = f"foto {e.code}"; break

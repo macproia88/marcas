@@ -285,7 +285,7 @@
  {
   "id": "v2-1122-reel-banqueta",
   "tipo": "REEL",
-  "fecha": "2026-11-22 20:30",
+  "fecha": "2026-11-26 19:00",
   "media": [
    "clientes/carpintero/videos/v2/1122-reel-banqueta.mp4"
   ],
@@ -315,5 +315,16 @@
   "texto": "Comedores completos.\n\nMesa redonda con base de varillas o rectangular con sillas de soga tejida. Medidas a elección.\n\nConsultá stock disponible, medidas y precio por WhatsApp: 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\n#ElCarpintero3 #MueblesDeAutor #MueblesAMedida #DiseñoEnMadera #JoséIngenieros",
   "estado": "pendiente",
   "aprobado": "2026-11-17 12:17 (Juan)"
+ },
+ {
+  "id": "vir-1122-reel-adivina-precio",
+  "tipo": "REEL",
+  "fecha": "2026-11-22 19:10",
+  "media": [
+   "clientes/carpintero/videos/v2/1123-reel-adivina-precio.mp4"
+  ],
+  "texto": "ADIVINÁ EL PRECIO 🤔💰\n\n4 muebles de fábrica. ¿Cuántos acertaste? Comentá tu número del 0 al 4 👇\n\nEl último no lo vas a creer: mesa de quincho de 3 metros + 14 sillas a casi la mitad de lo que sale en Mercado Libre 😮\n\nPrecio de fábrica, sin intermediarios. Efectivo o transferencia.\n📲 WhatsApp 11 4194-3328\n📍 Showroom: Román Gómez 1893, José Ingenieros\nLunes a viernes de 11 a 18:30 · Sábados de 11 a 16\n\nEtiquetá a quien necesita amueblar la casa 👀\n\n#AdivinaElPrecio #MueblesDeFabrica #MueblesDePino #MueblesAMedida #Quincho #Deco #HogarArgentino #JoséIngenieros #ZonaOeste #ElCarpintero3",
+  "estado": "pendiente",
+  "aprobado": "2026-11-22 19:05 (Juan)"
  }
 ]

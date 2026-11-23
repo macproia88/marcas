@@ -13,3 +13,15 @@
 2026-11-28 | repo | fotos-limpias/limpia-10 | quinta con casa | historia
 2026-11-29 | repo | fotos-limpias/limpia-07 + limpia-08 | ambas | post collage autopista
 2026-11-29 | repo | fotos-limpias/hoy-caminito | quinta con casa | historia
+2026-11-30 | repo | fotos-marca/nueva-25 | quinta de día | post finde XXL
+2026-11-30 | repo | fotos-limpias/limpia-06 | quinta de día | historia
+2026-12-01 | repo | fotos-marca/nueva-24,20,13,22 | ambas | reel despedida del año
+2026-12-01 | repo | fotos-marca/nueva-14 | quinta con casa | historia
+2026-12-02 | repo | fotos-marca/nueva-24 + limpia-04 + nueva-13,19 | ambas | carrusel 2 opciones
+2026-12-02 | repo | fotos-marca/nueva-17 | quinta con casa | historia
+2026-12-03 | repo | fotos-marca/nueva-15 | quinta con casa | post finde largo con casa
+2026-12-03 | repo | fotos-marca/nueva-21 | quinta con casa | historia
+2026-12-04 | repo | fotos-limpias/limpia-01 | quinta de día | historia
+2026-12-05 | repo | fotos-marca/nueva-18 | quinta con casa | historia
+2026-12-06 | repo | fotos-limpias/limpia-02 | quinta de día | post feriado
+2026-12-06 | repo | fotos-marca/nueva-25 | quinta de día | historia

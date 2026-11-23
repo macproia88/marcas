@@ -606,6 +606,36 @@
   "estado": "pendiente"
  },
  {
+  "id": "destacada-dia-10",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-10.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 10:45",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-11",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-11.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 10:46",
+  "estado": "pendiente"
+ },
+ {
+  "id": "destacada-dia-12",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/destacadas/dia-12.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-16 10:47",
+  "estado": "pendiente"
+ },
+ {
   "id": "carrusel-limpio-16-11",
   "tipo": "CARRUSEL",
   "media": [
@@ -654,240 +684,6 @@
   "estado": "pendiente"
  },
  {
-  "id": "post-casa-escapada",
-  "tipo": "POST",
-  "media": [
-   "https://static.metricool.com/planner/202610/7783745-file-13434394709255531336.jpeg"
-  ],
-  "texto": "🛏️ ¿Escapada de fin de semana? Tenemos casa.\n\nNuestra quinta con casa es para 5 personas, con pileta propia y parrilla. Llegás el sábado, prendés el fuego y el domingo te despertás con la pileta a dos pasos.\n\n👇 ¿Con quién te escaparías? Etiquetalo\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConCasa #QuintaEnAlquiler #Escapada #Pernoctar #QuintaConPileta",
-  "fecha": "2026-11-17 21:00",
-  "estado": "reemplazado"
- },
- {
-  "id": "reel-escapada-casa",
-  "tipo": "REEL",
-  "media": [
-   "quinta-ig/reel-escapada-casa.mp4"
-  ],
-  "texto": "🛏️ Escapada de finde sin manejar 5 horas.\n\nQuinta con casa para 5 personas, con pileta propia y parrilla, a 1 hora de Capital. Llegás el sábado, prendés el fuego y el domingo te despertás con la pileta a dos pasos ☀️\n\n👇 Etiquetá con quién te escaparías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp 11 3877-7015 · link directo en la bio 👆\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConCasa #Escapada #Pernoctar #QuintaConPileta #FinDeSemana",
-  "fecha": "2026-11-17 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "post-brasil-costa-18-11",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/brasil-costa-escapada.jpg"
-  ],
-  "texto": "¿Brasil? ¿La Costa? 🤔 Este verano la movida son las escapadas cortas ☀️\n\nSin aeropuerto, sin 5 horas de ruta, sin hotel. Juntás a tu grupo y en 40 minutos están en la pileta 💦\n\n📍 Quinta El Florido · General Rodríguez, a 600 m de la autopista\n☀️ Quinta para pasar el día: hasta 15-20 personas, de 10 a 19 h. Desde $150.000 el día (por todo el grupo, no por persona)\n🏡 Quinta con casa: duermen 5. Desde $160.000\n\n🔁 Mandáselo a ese grupo que siempre dice \"tenemos que hacer algo\"\n📲 WhatsApp 11 3877-7015 · link en la bio\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #AlquilerDeQuintas #EscapadaDeFinde #Escapada #Brasil #CostaAtlantica #Verano2027 #VacacionesDeVerano #ZonaOeste #QuintasZonaOeste #Pileta #DiaDePileta #PlanConAmigos #Asado #Quincho #BuenosAires #ProvinciaDeBuenosAires #Lujan #Moreno #Merlo #Ituzaingo #Pilar #Calor #FinDeSemana #VeranoArgentino #Vacaciones #DiaDeCampo",
-  "fecha": "2026-11-18 12:30",
-  "estado": "pendiente"
- },
- {
-  "id": "h-sorteo-recordatorio-18",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/sorteo-rec-18.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-18 22:00",
-  "estado": "pausado"
- },
- {
-  "id": "h-escapada-finde-2",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-02.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-19 20:00",
-  "estado": "pendiente"
- },
- {
-  "id": "post-brindis-fiestas",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/2026-11-brindis-pileta.jpg"
-  ],
-  "texto": "🥂 Pileta, atardecer y brindis.\n\nNavidad y Año Nuevo ya están completos 🙌 pero quedan fines de semana de diciembre y enero. Con el calor se reservan rápido 🔥\n\n🏡 Quinta El Florido — casa para 5 personas con pileta y parrilla, para quedarte a dormir y desconectar.\n\n👇 Etiquetá con quién brindarías acá\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp 11 3877-7015 · link directo en la bio 👆\n\n#QuintaElFlorido #GeneralRodriguez #QuintaEnAlquiler #FiestasDeFinDeAño #Escapada #QuintaConPileta #Pernoctar",
-  "fecha": "2026-11-19 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "h-sorteo-recordatorio-21",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/sorteo-rec-21.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-21 22:00",
-  "estado": "pausado"
- },
- {
-  "id": "h-2026-11-23",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-23.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-23 19:30",
-  "estado": "pendiente"
- },
- {
-  "id": "carrusel-2-opciones-23-11",
-  "tipo": "CARRUSEL",
-  "media": [
-   "quinta-ig/2026-11-23-carrusel-1.jpg",
-   "quinta-ig/2026-11-23-carrusel-2.jpg",
-   "quinta-ig/2026-11-23-carrusel-3.jpg",
-   "quinta-ig/2026-11-23-carrusel-4.jpg",
-   "quinta-ig/2026-11-23-carrusel-5.jpg"
-  ],
-  "texto": "¿Juntada con amigas, cumple o fin de año? Contamos con 2 opciones 👉\n\n☀️ Quinta de día: pileta, 2 quinchos de paja, galería, parrilla y juegos para los chicos. Hasta 15 personas (no se duerme).\n🏡 Quinta con casa: pileta propia, parrilla y duermen 5 (desde $160.000). Ideal para una escapada en familia.\n\nUn fernet a la sombra, los chicos en la pileta y cero apuro 🧉\nDesde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #PlanConAmigas #CumpleEnQuinta",
-  "fecha": "2026-11-23 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-24",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-24.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-24 19:30",
-  "estado": "pendiente"
- },
- {
-  "id": "reel-juntada-24-11",
-  "tipo": "REEL",
-  "media": [
-   "quinta-ig/reel-2026-11-24-juntada.mp4"
-  ],
-  "texto": "¿Juntada con amigas? Así te espera la quinta 💦🌳\n\nPileta, quincho, parrilla y verde para todo el grupo, sin compartir con nadie. Quinta de día (hasta 15) o quinta con casa (duermen 5).\nDesde $150.000 el día · a 1 hora de Capital.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #JuntadaConAmigas #DiaDePileta",
-  "fecha": "2026-11-24 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-25",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-25.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-25 19:30",
-  "estado": "pendiente"
- },
- {
-  "id": "post-pernoctar-25-11",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/2026-11-25-pernoctar.jpg"
-  ],
-  "texto": "Quinta para pernoctar 🏡🌙\n\nNuestra quinta con casa: pileta propia, parrilla y duermen 5. Llegás, te quedás a dormir y te olvidás de todo.\nDesde $160.000.\n\n💾 Guardalo para tu próxima escapada\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #EscapadaDeFinde #QuintaConCasa",
-  "fecha": "2026-11-25 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-26",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-26.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-26 19:30",
-  "estado": "pendiente"
- },
- {
-  "id": "post-diciembre-26-11",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/2026-11-26-diciembre.jpg"
-  ],
-  "texto": "Diciembre se está llenando 📅 Navidad y Año Nuevo ya están reservados.\n\n¿La despedida del año con amigas, el cumple de los chicos o la juntada de la familia? Reservá hoy tu fecha antes de que se vaya.\nQuinta de día (hasta 15) o quinta con casa (duermen 5). Desde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #FiestasDeFinDeAño #DespedidaDeAño",
-  "fecha": "2026-11-26 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-27",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-27.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-27 19:30",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-28",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-28.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-28 10:30",
-  "estado": "pendiente"
- },
- {
-  "id": "h-2026-11-29",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-2026-11-29.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-29 10:30",
-  "estado": "pendiente"
- },
- {
-  "id": "post-collage-autopista-29-11",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/2026-11-29-collage.jpg"
-  ],
-  "texto": "A 1 hora de Capital y a 600 m de la autopista 🚗💨\n\nDos quintas para elegir: la de día (pileta, quinchos, juegos, hasta 15) o la que tiene casa (duermen 5). Llegás fácil desde oeste, norte, sur y Capital.\nDesde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #CercaDeCapital #EscapadaDeFinde",
-  "fecha": "2026-11-29 21:00",
-  "estado": "pendiente"
- },
- {
-  "id": "destacada-dia-10",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/destacadas/dia-10.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-16 10:45",
-  "estado": "pendiente"
- },
- {
-  "id": "destacada-dia-11",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/destacadas/dia-11.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-16 10:46",
-  "estado": "pendiente"
- },
- {
-  "id": "destacada-dia-12",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/destacadas/dia-12.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-16 10:47",
-  "estado": "pendiente"
- },
- {
-  "id": "reel-se-grabo-nashy",
-  "tipo": "REEL",
-  "media": [
-   "quinta-ig/reel-se-grabo.mp4"
-  ],
-  "fecha": "2026-11-18 21:30",
-  "estado": "pendiente",
-  "texto": "🎬 ¡Se grabó en Quinta El Florido! Así fue el rodaje del nuevo videoclip de @nashy_nashai junto a @eltorodema 🔥\n\nPileta, quincho y sol: un set natural a 40 minutos de Capital ☀️💦\n\n📍 General Rodríguez, a 600 m de la autopista\n🎥 Locación para producciones, cumples, días de pileta y eventos\n📲 Reservas por WhatsApp: 11 3877-7015\n\n🎬 Videoclip completo en YouTube: youtu.be/8552s-Yck80\n\n#QuintaElFlorido #Videoclip #LocacionParaFilmar #Rodaje #DetrasDeEscena #QuintaConPileta #GeneralRodriguez #DiaDePileta #Verano2027 #ZonaOeste #Pileta #MusicaArgentina #LaFirma"
- },
- {
   "id": "h-nashy-faltan2",
   "tipo": "STORY",
   "media": [
@@ -932,6 +728,56 @@
   "estado": "pendiente"
  },
  {
+  "id": "post-casa-escapada",
+  "tipo": "POST",
+  "media": [
+   "https://static.metricool.com/planner/202610/7783745-file-13434394709255531336.jpeg"
+  ],
+  "texto": "🛏️ ¿Escapada de fin de semana? Tenemos casa.\n\nNuestra quinta con casa es para 5 personas, con pileta propia y parrilla. Llegás el sábado, prendés el fuego y el domingo te despertás con la pileta a dos pasos.\n\n👇 ¿Con quién te escaparías? Etiquetalo\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConCasa #QuintaEnAlquiler #Escapada #Pernoctar #QuintaConPileta",
+  "fecha": "2026-11-17 21:00",
+  "estado": "reemplazado"
+ },
+ {
+  "id": "reel-escapada-casa",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/reel-escapada-casa.mp4"
+  ],
+  "texto": "🛏️ Escapada de finde sin manejar 5 horas.\n\nQuinta con casa para 5 personas, con pileta propia y parrilla, a 1 hora de Capital. Llegás el sábado, prendés el fuego y el domingo te despertás con la pileta a dos pasos ☀️\n\n👇 Etiquetá con quién te escaparías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp 11 3877-7015 · link directo en la bio 👆\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConCasa #Escapada #Pernoctar #QuintaConPileta #FinDeSemana",
+  "fecha": "2026-11-17 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-brasil-costa-18-11",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/brasil-costa-escapada.jpg"
+  ],
+  "texto": "¿Brasil? ¿La Costa? 🤔 Este verano la movida son las escapadas cortas ☀️\n\nSin aeropuerto, sin 5 horas de ruta, sin hotel. Juntás a tu grupo y en 40 minutos están en la pileta 💦\n\n📍 Quinta El Florido · General Rodríguez, a 600 m de la autopista\n☀️ Quinta para pasar el día: hasta 15-20 personas, de 10 a 19 h. Desde $150.000 el día (por todo el grupo, no por persona)\n🏡 Quinta con casa: duermen 5. Desde $160.000\n\n🔁 Mandáselo a ese grupo que siempre dice \"tenemos que hacer algo\"\n📲 WhatsApp 11 3877-7015 · link en la bio\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #AlquilerDeQuintas #EscapadaDeFinde #Escapada #Brasil #CostaAtlantica #Verano2027 #VacacionesDeVerano #ZonaOeste #QuintasZonaOeste #Pileta #DiaDePileta #PlanConAmigos #Asado #Quincho #BuenosAires #ProvinciaDeBuenosAires #Lujan #Moreno #Merlo #Ituzaingo #Pilar #Calor #FinDeSemana #VeranoArgentino #Vacaciones #DiaDeCampo",
+  "fecha": "2026-11-18 12:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "reel-se-grabo-nashy",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/reel-se-grabo.mp4"
+  ],
+  "fecha": "2026-11-18 21:30",
+  "estado": "pendiente",
+  "texto": "🎬 ¡Se grabó en Quinta El Florido! Así fue el rodaje del nuevo videoclip de @nashy_nashai junto a @eltorodema 🔥\n\nPileta, quincho y sol: un set natural a 40 minutos de Capital ☀️💦\n\n📍 General Rodríguez, a 600 m de la autopista\n🎥 Locación para producciones, cumples, días de pileta y eventos\n📲 Reservas por WhatsApp: 11 3877-7015\n\n🎬 Videoclip completo en YouTube: youtu.be/8552s-Yck80\n\n#QuintaElFlorido #Videoclip #LocacionParaFilmar #Rodaje #DetrasDeEscena #QuintaConPileta #GeneralRodriguez #DiaDePileta #Verano2027 #ZonaOeste #Pileta #MusicaArgentina #LaFirma"
+ },
+ {
+  "id": "h-sorteo-recordatorio-18",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/sorteo-rec-18.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-18 22:00",
+  "estado": "pausado"
+ },
+ {
   "id": "h-finde-libres-am",
   "tipo": "STORY",
   "media": [
@@ -952,6 +798,26 @@
   "estado": "pendiente"
  },
  {
+  "id": "h-promo-viernes20-a",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-promo-viernes20.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 15:40",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-escapada-finde-2",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-02.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-19 20:00",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-finde-libres-pm",
   "tipo": "STORY",
   "media": [
@@ -962,13 +828,13 @@
   "estado": "pendiente"
  },
  {
-  "id": "h-promo-viernes20-a",
-  "tipo": "STORY",
+  "id": "post-brindis-fiestas",
+  "tipo": "POST",
   "media": [
-   "quinta-ig/h-promo-viernes20.jpg"
+   "quinta-ig/2026-11-brindis-pileta.jpg"
   ],
-  "texto": "",
-  "fecha": "2026-11-19 15:40",
+  "texto": "🥂 Pileta, atardecer y brindis.\n\nNavidad y Año Nuevo ya están completos 🙌 pero quedan fines de semana de diciembre y enero. Con el calor se reservan rápido 🔥\n\n🏡 Quinta El Florido — casa para 5 personas con pileta y parrilla, para quedarte a dormir y desconectar.\n\n👇 Etiquetá con quién brindarías acá\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp 11 3877-7015 · link directo en la bio 👆\n\n#QuintaElFlorido #GeneralRodriguez #QuintaEnAlquiler #FiestasDeFinDeAño #Escapada #QuintaConPileta #Pernoctar",
+  "fecha": "2026-11-19 21:00",
   "estado": "pendiente"
  },
  {
@@ -982,23 +848,13 @@
   "estado": "pendiente"
  },
  {
-  "id": "calor-2026-11-20-h",
+  "id": "h-promo-sabado21-a",
   "tipo": "STORY",
   "media": [
-   "quinta-ig/calor-2026-11-20-h.jpg"
+   "quinta-ig/h-promo-sabado21.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-20 20:00",
-  "estado": "pendiente"
- },
- {
-  "id": "calor-2026-11-20",
-  "tipo": "POST",
-  "media": [
-   "quinta-ig/calor-2026-11-20.jpg"
-  ],
-  "texto": "🔥 El lunes feriado pinta 28° en zona oeste… ¿lo vas a pasar encerrado o en la pileta? 🏊‍♀️\n\nCerrá el finde largo como se debe: pileta, quincho, parrilla y sombra para pasar el día con tu gente, a minutos de la ciudad.\n\n🏡 Quinta de día para hasta 15 personas, o quinta con casa para 5 si te querés quedar.\n💰 Desde $140.000 el día\n\n👇 Etiquetá con quién te tirarías a la pileta\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste #FindeLargo",
-  "fecha": "2026-11-20 21:00",
+  "fecha": "2026-11-20 16:45",
   "estado": "pendiente"
  },
  {
@@ -1122,13 +978,23 @@
   "estado": "pendiente"
  },
  {
-  "id": "h-promo-sabado21-a",
+  "id": "calor-2026-11-20-h",
   "tipo": "STORY",
   "media": [
-   "quinta-ig/h-promo-sabado21.jpg"
+   "quinta-ig/calor-2026-11-20-h.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-20 16:45",
+  "fecha": "2026-11-20 20:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "calor-2026-11-20",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/calor-2026-11-20.jpg"
+  ],
+  "texto": "🔥 El lunes feriado pinta 28° en zona oeste… ¿lo vas a pasar encerrado o en la pileta? 🏊‍♀️\n\nCerrá el finde largo como se debe: pileta, quincho, parrilla y sombra para pasar el día con tu gente, a minutos de la ciudad.\n\n🏡 Quinta de día para hasta 15 personas, o quinta con casa para 5 si te querés quedar.\n💰 Desde $140.000 el día\n\n👇 Etiquetá con quién te tirarías a la pileta\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #Calor #Verano #ZonaOeste #FindeLargo",
+  "fecha": "2026-11-20 21:00",
   "estado": "pendiente"
  },
  {
@@ -1172,16 +1038,6 @@
   "estado": "pendiente"
  },
  {
-  "id": "h-sabado-alquilada-1",
-  "tipo": "STORY",
-  "media": [
-   "quinta-ig/h-sabado-alquilada.jpg"
-  ],
-  "texto": "",
-  "fecha": "2026-11-21 17:30",
-  "estado": "pendiente"
- },
- {
   "id": "reel-chicas-voz-1",
   "tipo": "REEL",
   "media": [
@@ -1190,6 +1046,16 @@
   "texto": "Chicas, encontré EL lugar para este verano ☀️🏊‍♀️\n\nPileta, quincho, parrilla y un parque enorme… solo para tu grupo. A 40 min de Capital.\n\n📅 Este LUNES 23 (feriado) queda libre la quinta para pasar el día. Pronóstico: 28° y sol.\n\nEtiquetá a la amiga que tiene que ver esto 👇\nEscribinos por DM o al WhatsApp 11 3877-7015\n\n#quinta #quintaconpileta #generalrodriguez #feriado #verano2027 #planconamigas #diadepileta #zonaoeste",
   "fecha": "2026-11-21 16:55",
   "estado": "retirado"
+ },
+ {
+  "id": "h-sabado-alquilada-1",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-sabado-alquilada.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-21 17:30",
+  "estado": "pendiente"
  },
  {
   "id": "h-kling-lunes23-0",
@@ -1242,6 +1108,16 @@
   "estado": "pendiente"
  },
  {
+  "id": "h-sorteo-recordatorio-21",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/sorteo-rec-21.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-21 22:00",
+  "estado": "pausado"
+ },
+ {
   "id": "h-promo-lunes23-1",
   "tipo": "STORY",
   "media": [
@@ -1249,16 +1125,6 @@
   ],
   "texto": "",
   "fecha": "2026-11-22 10:00",
-  "estado": "pendiente"
- },
- {
-  "id": "reel-chicas-v2-1",
-  "tipo": "REEL",
-  "media": [
-   "quinta-ig/videos/reel-chicas-v2.mp4"
-  ],
-  "texto": "Chicas, encontré EL lugar para este verano ☀️🏊‍♀️\n\nPileta, quincho, parrilla, juegos y un parque enorme… solo para tu grupo. Hasta 15 personas, a 40 min de Capital.\n\n💸 Lunes a jueves desde $150.000 (sale $10.000 por persona)\n📅 Quedan fechas libres en diciembre, también fines de semana antes de las fiestas.\n\nEtiquetá a la amiga que tiene que ver esto 👇\nEscribinos por DM o al WhatsApp 11 3877-7015\n\n#quinta #quintaconpileta #generalrodriguez #verano2027 #planconamigas #diadepileta #zonaoeste #findeaño",
-  "fecha": "2026-11-24 20:00",
   "estado": "pendiente"
  },
  {
@@ -1289,6 +1155,263 @@
   ],
   "texto": "",
   "fecha": "2026-11-22 19:38",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-23",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-23.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-23 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "carrusel-2-opciones-23-11",
+  "tipo": "CARRUSEL",
+  "media": [
+   "quinta-ig/2026-11-23-carrusel-1.jpg",
+   "quinta-ig/2026-11-23-carrusel-2.jpg",
+   "quinta-ig/2026-11-23-carrusel-3.jpg",
+   "quinta-ig/2026-11-23-carrusel-4.jpg",
+   "quinta-ig/2026-11-23-carrusel-5.jpg"
+  ],
+  "texto": "¿Juntada con amigas, cumple o fin de año? Contamos con 2 opciones 👉\n\n☀️ Quinta de día: pileta, 2 quinchos de paja, galería, parrilla y juegos para los chicos. Hasta 15 personas (no se duerme).\n🏡 Quinta con casa: pileta propia, parrilla y duermen 5 (desde $160.000). Ideal para una escapada en familia.\n\nUn fernet a la sombra, los chicos en la pileta y cero apuro 🧉\nDesde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #PlanConAmigas #CumpleEnQuinta",
+  "fecha": "2026-11-23 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-24",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-24.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-24 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "reel-chicas-v2-1",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/videos/reel-chicas-v2.mp4"
+  ],
+  "texto": "Chicas, encontré EL lugar para este verano ☀️🏊‍♀️\n\nPileta, quincho, parrilla, juegos y un parque enorme… solo para tu grupo. Hasta 15 personas, a 40 min de Capital.\n\n💸 Lunes a jueves desde $150.000 (sale $10.000 por persona)\n📅 Quedan fechas libres en diciembre, también fines de semana antes de las fiestas.\n\nEtiquetá a la amiga que tiene que ver esto 👇\nEscribinos por DM o al WhatsApp 11 3877-7015\n\n#quinta #quintaconpileta #generalrodriguez #verano2027 #planconamigas #diadepileta #zonaoeste #findeaño",
+  "fecha": "2026-11-24 20:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "reel-juntada-24-11",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/reel-2026-11-24-juntada.mp4"
+  ],
+  "texto": "¿Juntada con amigas? Así te espera la quinta 💦🌳\n\nPileta, quincho, parrilla y verde para todo el grupo, sin compartir con nadie. Quinta de día (hasta 15) o quinta con casa (duermen 5).\nDesde $150.000 el día · a 1 hora de Capital.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #JuntadaConAmigas #DiaDePileta",
+  "fecha": "2026-11-24 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-25",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-25.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-25 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-pernoctar-25-11",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/2026-11-25-pernoctar.jpg"
+  ],
+  "texto": "Quinta para pernoctar 🏡🌙\n\nNuestra quinta con casa: pileta propia, parrilla y duermen 5. Llegás, te quedás a dormir y te olvidás de todo.\nDesde $160.000.\n\n💾 Guardalo para tu próxima escapada\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #EscapadaDeFinde #QuintaConCasa",
+  "fecha": "2026-11-25 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-26",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-26.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-26 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-diciembre-26-11",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/2026-11-26-diciembre.jpg"
+  ],
+  "texto": "Diciembre se está llenando 📅 Navidad y Año Nuevo ya están reservados.\n\n¿La despedida del año con amigas, el cumple de los chicos o la juntada de la familia? Reservá hoy tu fecha antes de que se vaya.\nQuinta de día (hasta 15) o quinta con casa (duermen 5). Desde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #FiestasDeFinDeAño #DespedidaDeAño",
+  "fecha": "2026-11-26 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-27",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-27.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-27 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-28",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-28.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-28 10:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-29",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/h-2026-11-29.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-29 10:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-collage-autopista-29-11",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/2026-11-29-collage.jpg"
+  ],
+  "texto": "A 1 hora de Capital y a 600 m de la autopista 🚗💨\n\nDos quintas para elegir: la de día (pileta, quinchos, juegos, hasta 15) o la que tiene casa (duermen 5). Llegás fácil desde oeste, norte, sur y Capital.\nDesde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#QuintaElFlorido #GeneralRodriguez #QuintaConPileta #QuintaEnAlquiler #ZonaOeste #AlquilerDeQuintas #CercaDeCapital #EscapadaDeFinde",
+  "fecha": "2026-11-29 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-11-30",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-30.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-30 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-finde-xxl-30-11",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/semana-2026-11-30/post-30-finde-xxl.jpg"
+  ],
+  "texto": "🗓️ Finde XXL de diciembre: del sábado 5 al martes 8 (lunes y martes feriado)\n\n☀️ Quinta de día: pileta con escalones, 2 quinchos de paja, galería, parrilla y juegos para los chicos. Hasta 15 personas, solo para tu grupo (no se duerme).\nDesde $150.000 el día. Las fechas del finde largo vuelan: reservá hoy la tuya.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#quintaelflorido #generalrodriguez #quintaconpileta #alquilerdequinta #zonaoeste #quintasbsas #findelargo #pileta",
+  "fecha": "2026-11-30 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-01",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-01.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-01 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "reel-despedida-01-12",
+  "tipo": "REEL",
+  "media": [
+   "quinta-ig/semana-2026-11-30/reel-01-despedida.mp4"
+  ],
+  "texto": "¿Despedida del año con amigas? 🥂💦\n\nPileta, quincho, parrilla y verde para todo el grupo. Quinta de día (hasta 15, no se duerme) o quinta con casa (duermen 5). A 1 hora de Capital.\nDesde $150.000 el día.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#quintaelflorido #generalrodriguez #quintaconpileta #alquilerdequinta #zonaoeste #juntadaconamigas #fiestasdefindeaño",
+  "fecha": "2026-12-01 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-02",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-02.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-02 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "carrusel-2-opciones-02-12",
+  "tipo": "CARRUSEL",
+  "media": [
+   "quinta-ig/semana-2026-11-30/car-02-1.jpg",
+   "quinta-ig/semana-2026-11-30/car-02-2.jpg",
+   "quinta-ig/semana-2026-11-30/car-02-3.jpg",
+   "quinta-ig/semana-2026-11-30/car-02-4.jpg"
+  ],
+  "texto": "¿Despedida del año con amigas, cumple o juntada familiar? Contamos con 2 opciones 👉\n\n☀️ Quinta de día: pileta, 2 quinchos de paja, galería, parrilla y juegos. Hasta 15 personas (no se duerme). Desde $150.000 el día.\n🏡 Quinta con casa: pileta propia, parrilla y duermen 5. Desde $160.000.\n\nDiciembre se está llenando: Navidad y Año Nuevo ya están reservados.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#quintaelflorido #generalrodriguez #quintaconpileta #alquilerdequinta #zonaoeste #juntadaconamigas #fiestasdefindeaño",
+  "fecha": "2026-12-02 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-03",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-03.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-03 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-casa-finde-largo-03-12",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/semana-2026-11-30/post-03-casa-finde-largo.jpg"
+  ],
+  "texto": "🏡 Finde largo con casa: llegás, te tirás a la pileta y te quedás a dormir\n\nNuestra quinta con casa: pileta propia, parrilla, cocina y duermen 5. Ideal para la familia o una escapada con amigas en el finde del 5 al 8 de diciembre.\nDesde $160.000.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#quintaelflorido #generalrodriguez #quintaconpileta #alquilerdequinta #zonaoeste #quintasbsas #findelargo #pileta",
+  "fecha": "2026-12-03 21:00",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-04",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-04.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-04 19:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-05",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-05.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-05 10:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "h-2026-12-06",
+  "tipo": "STORY",
+  "media": [
+   "quinta-ig/semana-2026-11-30/h-06.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-06 10:30",
+  "estado": "pendiente"
+ },
+ {
+  "id": "post-feriado-06-12",
+  "tipo": "POST",
+  "media": [
+   "quinta-ig/semana-2026-11-30/post-06-feriado.jpg"
+  ],
+  "texto": "Lunes 7 y martes 8 son feriado 🙌 ¿Ya tenés plan?\n\n☀️ Quinta de día: pileta, quinchos de paja, parrilla y juegos para los chicos. Hasta 15 personas, solo para tu grupo. A 1 hora de Capital.\nDesde $150.000 el día. Escribinos hoy y te decimos qué fecha queda libre.\n\n👇 Etiquetá con quién vendrías\n💬 Comentá INFO y te pasamos fechas libres\n📍 General Rodríguez, a 600 m de la autopista\n📲 WhatsApp: 11 3877-7015\n\n#quintaelflorido #generalrodriguez #quintaconpileta #alquilerdequinta #zonaoeste #quintasbsas #findelargo #pileta",
+  "fecha": "2026-12-06 21:00",
   "estado": "pendiente"
  }
 ]

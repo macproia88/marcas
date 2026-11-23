@@ -1,5 +1,5 @@
 # Cómo responde el bot de Quinta El Florido (para la tarea programada de Claude)
-Última actualización: 20/11/2026
+Última actualización: 23/11/2026
 
 1. `git pull` en el repo macproia88/marcas.
 2. Leer pendientes: `BOT_PRIV="<clave privada>" python3 quinta-ig/bot/bot.py ver` (necesita `pip install cryptography`).
@@ -27,7 +27,7 @@ Desde el 21/11/2026 los mensajes directos los contesta al toque `rapido.py` (wor
 - Tono: amable y cálido, pasando la información que pide (precios, capacidad, qué tiene, fechas libres). Siempre cerrar preguntando fecha y cuántos son.
 - Fotos: si piden fotos, mandar el link de "links_fotos" en quinta.json según la quinta que consulta: "dia" si pregunta por pasar el día, "casa" si pregunta por la casa o por quedarse a dormir; si no queda claro, mandar los dos explicando cuál es cuál. Si el link todavía dice [COMPLETAR], mandar el de "perfil" y decir que en las destacadas están las fotos de cada quinta.
 - WhatsApp: NO mandarlo en la primera respuesta. Primero filtrar: solo cuando el cliente está decidido (quiere reservar/señar), pide fotos, ubicación exacta o más detalles, mandar el link directo wa.me/5491138777015 (nunca el número suelto).
-- Más de 20 personas: no se aceptan, decirlo amablemente.
+- Más de 20 personas: decir amablemente que la quinta es para grupos de hasta 20 personas y que para algo más grande no sería la indicada. NUNCA pedir ni sugerir que bajen la cantidad de invitados, ni preguntar "¿cuántos serían finalmente?". Cerrar con buena onda (ej.: "¡Gracias por escribirnos y que sea un lindo cumple!"). Si ellos solos dicen que pueden ser 20 o menos, ahí sí seguir normal.
 - Comentarios con solo emojis o elogios: responder breve ("¡Gracias! 💚").
 - Siempre que sume, invitar a seguir @quintaelflorido.
 - No responder: si el último mensaje es solo "gracias/ok" a una respuesta nuestra que ya cerró la charla; mensajes de otras quintas o bots; spam; insultos.

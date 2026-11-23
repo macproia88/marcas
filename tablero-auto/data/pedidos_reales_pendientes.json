@@ -1,0 +1,89 @@
+{
+ "nota": "16-22/11: PedidosYa real (entregados, portal). Rappi ESTIMADO con la proporción Rappi/PedidosYa del 1-9/11 (Florida 22,6%, Beccar 19,5%). Reemplazar cuando se baje el informe de Rappi.",
+ "detalle": {
+  "2026-11-16|Beccar": {
+   "pedidosya": 34,
+   "rappi_estimado": 7
+  },
+  "2026-11-16|Florida": {
+   "pedidosya": 54,
+   "rappi_estimado": 12
+  },
+  "2026-11-16|Paz": {
+   "pedidosya": 12,
+   "rappi_estimado": 0
+  },
+  "2026-11-17|Beccar": {
+   "pedidosya": 26,
+   "rappi_estimado": 5
+  },
+  "2026-11-17|Florida": {
+   "pedidosya": 67,
+   "rappi_estimado": 15
+  },
+  "2026-11-17|Paz": {
+   "pedidosya": 11,
+   "rappi_estimado": 0
+  },
+  "2026-11-18|Beccar": {
+   "pedidosya": 44,
+   "rappi_estimado": 9
+  },
+  "2026-11-18|Florida": {
+   "pedidosya": 64,
+   "rappi_estimado": 14
+  },
+  "2026-11-18|Paz": {
+   "pedidosya": 15,
+   "rappi_estimado": 0
+  },
+  "2026-11-19|Beccar": {
+   "pedidosya": 29,
+   "rappi_estimado": 6
+  },
+  "2026-11-19|Florida": {
+   "pedidosya": 49,
+   "rappi_estimado": 11
+  },
+  "2026-11-19|Paz": {
+   "pedidosya": 10,
+   "rappi_estimado": 0
+  },
+  "2026-11-20|Beccar": {
+   "pedidosya": 40,
+   "rappi_estimado": 8
+  },
+  "2026-11-20|Florida": {
+   "pedidosya": 55,
+   "rappi_estimado": 12
+  },
+  "2026-11-20|Paz": {
+   "pedidosya": 17,
+   "rappi_estimado": 0
+  },
+  "2026-11-21|Beccar": {
+   "pedidosya": 23,
+   "rappi_estimado": 4
+  },
+  "2026-11-21|Florida": {
+   "pedidosya": 56,
+   "rappi_estimado": 13
+  },
+  "2026-11-21|Paz": {
+   "pedidosya": 12,
+   "rappi_estimado": 0
+  },
+  "2026-11-22|Beccar": {
+   "pedidosya": 20,
+   "rappi_estimado": 4
+  },
+  "2026-11-22|Florida": {
+   "pedidosya": 43,
+   "rappi_estimado": 10
+  },
+  "2026-11-22|Paz": {
+   "pedidosya": 11,
+   "rappi_estimado": 0
+  }
+ }
+}

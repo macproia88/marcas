@@ -261,14 +261,14 @@
   "quintas": {
     "dia": {
       "nombre": "Quinta de día",
-      "capacidad": "hasta 15-20 personas",
+      "capacidad": "el precio incluye hasta 15 personas; de 16 a 20 se cobra un adicional por persona (ver lista de precios); más de 20 no",
       "duerme": false,
       "incluye": "galería de 7x5 con bañito, parrilla, pileta de 7x3, quincho enfrente con mesa rústica para 10, juegos rústicos para chicos, duchita al lado de la pileta, freezer de pozo grande, jarra eléctrica",
       "solo_por_dia": true
     },
     "casa": {
       "nombre": "Quinta con casa",
-      "capacidad": "duermen cómodas 5 personas; de día pueden ser hasta 15 en total",
+      "capacidad": "duermen cómodas 5 personas; de día el precio incluye hasta 15 en total; de 16 a 20 se cobra un adicional por persona (ver lista de precios)",
       "duerme": true,
       "camas": "2 camas de dos plazas y 1 de una plaza (duermen 5)",
       "incluye": "2 camas de dos plazas y 1 de una plaza, cocina, heladera, pileta propia de 7x3, quincho con mesa rústica para 10, parrilla, WiFi"
@@ -360,7 +360,7 @@
   "reglas": [
     {
       "tema": "Capacidad",
-      "regla": "Quinta de día hasta 15-20. Casa 5. Más de 20 no se acepta."
+      "regla": "Ambas quintas: el precio incluye hasta 15 personas. De 16 a 20, adicional por persona (ver lista de precios). Casa: duermen 5. Más de 20 no se acepta."
     },
     {
       "tema": "Horario quinta de día",

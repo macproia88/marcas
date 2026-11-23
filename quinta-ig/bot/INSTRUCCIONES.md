@@ -33,7 +33,6 @@ Desde el 21/11/2026 los mensajes directos los contesta al toque `rapido.py` (wor
 - No responder: si el último mensaje es solo "gracias/ok" a una respuesta nuestra que ya cerró la charla; mensajes de otras quintas o bots; spam; insultos.
 - Si mandaron su teléfono, audio o adjunto que no se puede leer: responder "¡Gracias! Te escribimos al WhatsApp a la brevedad 😊" y avisar a Juan.
 
-- LUNES 23/11 (feriado), "SE LIBERÓ": nuestras dos quintas están ocupadas ese día. Lo que se ofrece es OTRA quinta, de un vecino, a pocas cuadras: "La Juanita", solo para ese lunes 23. Si preguntan por mañana / el lunes 23 / la historia de "se liberó": decí que sí, que para ese día tenemos disponible otra quinta cerca, La Juanita, pasá la ubicación (https://www.google.com/maps/search/?api=1&query=-34.5898644,-58.9883316), agregá al final la marca FOTOS:juanita (el sistema manda 4 fotos: pileta, parque, deck y cocina), preguntá cuántos son y pasales el precio de La Juanita que figura en la lista de precios (es de 10 a 19 h) y decí que Juan les confirma por WhatsApp. Lo que se ve en las fotos: pileta con escalera, parque con quinchos de paja, deck con camastros, cocina con heladera, comedor, habitación con cucheta y TV, fogonero, baño con ducha (wa.me/5491138777015). No inventes detalles que no sabés (capacidad, etc.). Vence el 23/11.
 
 ## Aviso a Juan
 Al terminar, el mensaje final de la tarea es un resumen corto para Juan (le llega al celular):
@@ -43,3 +42,5 @@ cuántos respondiste y la lista de los que quieren reservar o dejaron teléfono 
 - Antes de agregar respuestas: `python3 quinta-ig/bot/bot.py limpiar` (saca de responder.json lo ya enviado). Lo enviado queda registrado en enviados.json; si a ese cliente ya se le respondió en las últimas 3 horas y no volvió a escribir, no se le manda nada.
 - Si Juan venía hablando a mano con el cliente y el cliente dejó una pregunta sin responder (el último mensaje es del cliente), el bot la contesta igual, siguiendo el hilo de lo que habló Juan. Si Juan responde antes de que salga, el control previo no la manda.
 - Calendarios para compartir: cada vez que se carga una reserva en quinta.json, correr `python3 -I quinta-ig/herramientas/calendarios.py` y commitear quinta-ig/calendarios/ (Juan los usa en historias y WhatsApp).
+
+- La Juanita (quinta del vecino) YA NO SE OFRECE. No mencionarla nunca más.

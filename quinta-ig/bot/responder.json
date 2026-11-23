@@ -1,8 +1,14 @@
 [
  {
-  "tipo": "comentario",
-  "comment_id": "18016371758997239",
-  "texto": "¡Hola! 😊 El 26 y 27 de diciembre ya están tomados en las dos quintas 🙈 Tenemos en principio libre el finde del 19 y 20/12, o del lunes 28 al miércoles 30/12. ¿Es para pasar el día o para quedarse a dormir, y cuántos son? Escribinos por privado y te pasamos todo 💚",
+  "tipo": "dm",
+  "para_id": "4408912262664622",
+  "texto": "¡Hola! Sí 😊 Domingos en principio tenemos libres el 29/11, el 13/12 y el 20/12, de 10 a 19 h. Te sostenemos el mismo precio que te pasamos, $170.000 hasta 15 personas. ¿Cuál les queda mejor? Los findes se llenan rápido ☀️",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "2320045545232321",
+  "texto": "¡Buenísimo! Esa quinta no es una de las nuestras, así que los detalles y fotos te los pasa Juan directo por WhatsApp 👉 wa.me/5491138777015 😊 Así lo ven juntos para el 31/12 y 1/1, para 6 personas.",
   "estado": "pendiente"
  }
 ]

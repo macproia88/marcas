@@ -626,5 +626,14 @@
  "788857aa36c050c8": {
   "estado": "enviado",
   "hora": "23/11 08:16"
+ },
+ "462925e5e6d26e29": {
+  "estado": "enviado",
+  "hora": "23/11 17:18"
+ },
+ "fb5ef9b894ada081": {
+  "estado": "salteado",
+  "motivo": "ya respondió Juan",
+  "hora": "23/11 17:18"
  }
 }

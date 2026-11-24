@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inscripción · Escuela Taller Fátima</title>
+<meta name="description" content="Inscribite a los talleres de oficios de la Escuela Taller Fátima.">
+<meta property="og:title" content="Inscripción · Escuela Taller Fátima">
+<meta property="og:description" content="Aprendé un oficio. Completá el formulario y te contactamos.">
+<meta property="og:image" content="hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#00894C; --verde-osc:#006B3B; --crema:#F5FBF6; --marron:#52453B;
+    --amarillo:#FFCB33; --turquesa:#17919C; --verde-claro:#78B02A; --error:#C0392B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Lato,system-ui,sans-serif;color:var(--marron);background:var(--crema);line-height:1.5}
+  h1,h2,h3{font-family:"League Spartan",sans-serif;line-height:1.05;margin:0}
+
+  /* Encabezado con foto */
+  .hero{position:relative;min-height:380px;color:#fff;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,60,30,.85) 85%),url(hero.jpg) center 35%/cover}
+  .hero .in{width:100%;max-width:760px;margin:0 auto;padding:28px 22px 34px}
+  .hero img.logo{height:48px;position:absolute;top:20px;left:22px}
+  .etiqueta{display:inline-block;background:var(--amarillo);color:var(--marron);font-weight:700;
+    font-size:14px;letter-spacing:.06em;padding:6px 12px;border-radius:4px;margin-bottom:14px}
+  .hero h1{font-size:clamp(38px,8vw,60px)}
+  .hero p{font-size:18px;margin:10px 0 0;max-width:520px}
+
+  main{max-width:760px;margin:-26px auto 0;padding:0 14px 40px;position:relative}
+  .card{background:#fff;border-radius:18px;box-shadow:0 6px 24px rgba(0,60,30,.10);padding:26px 22px;margin-bottom:18px}
+  .card h2{color:var(--verde);font-size:26px;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .card h2 .n{background:var(--verde);color:#fff;border-radius:50%;width:32px;height:32px;display:inline-flex;
+    align-items:center;justify-content:center;font-size:18px;flex:none}
+  .card .sub{margin:0 0 16px;font-size:15px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+  .full{grid-column:1/-1}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  label.campo{display:block;font-weight:700;font-size:15px}
+  label.campo span.opc{font-weight:400;color:#8a7d72;font-size:13px}
+  input[type=text],input[type=tel],input[type=email],input[type=date],input[type=number],select,textarea{
+    width:100%;margin-top:6px;padding:12px 14px;font:inherit;font-size:16px;color:var(--marron);
+    border:2px solid #dfe9e2;border-radius:10px;background:#fbfdfc;transition:border-color .15s}
+  textarea{min-height:96px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--verde);background:#fff}
+  .invalido input,.invalido select,.invalido textarea{border-color:var(--error)}
+  .msg-err{display:none;color:var(--error);font-size:13px;margin-top:4px;font-weight:400}
+  .invalido .msg-err{display:block}
+
+  /* Opciones tipo tarjeta */
+  .opciones{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px;margin-top:8px}
+  .op{position:relative}
+  .op input{position:absolute;opacity:0;pointer-events:none}
+  .op label{display:block;cursor:pointer;border:2px solid #dfe9e2;border-radius:12px;padding:12px 14px;
+    font-weight:700;background:#fbfdfc;transition:.15s;min-height:52px;display:flex;align-items:center}
+  .op input:checked+label{border-color:var(--verde);background:#E6F4EC;color:var(--verde-osc)}
+  .op input:focus-visible+label{outline:3px solid var(--amarillo)}
+  .op label:hover{border-color:#a9d4bb}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .chips .op label{min-height:0;padding:9px 14px;border-radius:999px;font-weight:700}
+
+  .menor{display:none;background:#FFF8E1;border-left:5px solid var(--amarillo);border-radius:10px;padding:16px;margin-top:4px}
+  .menor.visible{display:block}
+  .menor h3{font-size:19px;margin-bottom:8px}
+
+  .acepto{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .acepto input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--verde)}
+  .hp{position:absolute;left:-9999px}
+
+  button.enviar{width:100%;border:0;border-radius:14px;background:var(--verde);color:#fff;font-family:"League Spartan",sans-serif;
+    font-size:24px;padding:18px;cursor:pointer;box-shadow:0 6px 0 var(--verde-osc);transition:transform .1s}
+  button.enviar:hover{background:#00995a}
+  button.enviar:active{transform:translateY(3px);box-shadow:0 3px 0 var(--verde-osc)}
+  button.enviar[disabled]{opacity:.6;cursor:wait}
+  .aviso-error{display:none;background:#FDECEA;color:var(--error);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-weight:700}
+
+  .gracias{display:none;text-align:center;padding:40px 22px}
+  .gracias .check{width:84px;height:84px;border-radius:50%;background:var(--verde);color:#fff;font-size:48px;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .gracias h2{justify-content:center;font-size:34px}
+  .gracias p{font-size:17px;max-width:440px;margin:10px auto 0}
+
+  .demo{background:var(--amarillo);color:var(--marron);text-align:center;font-weight:700;padding:10px;font-size:14px}
+  footer{text-align:center;font-size:13px;color:#8a7d72;padding:10px 14px 30px}
+  footer a{color:var(--verde)}
+</style>
+</head>
+<body>
+
+<div class="demo" id="demo" hidden>Modo prueba: todavía no está conectada la planilla. Las inscripciones no se guardan.</div>
+
+<header class="hero">
+  <img class="logo" src="logo-blanco.png" alt="Escuela Taller Fátima">
+  <div class="in">
+    <span class="etiqueta">INSCRIPCIONES ABIERTAS</span>
+    <h1>Aprendé un oficio</h1>
+    <p>Completá tus datos y elegí el taller que te interesa. Te contactamos para contarte los próximos pasos.</p>
+  </div>
+</header>
+
+<main>
+<form id="form" novalidate>
+  <input class="hp" type="text" name="sitio_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <section class="card">
+    <h2><span class="n">1</span> Tus datos</h2>
+    <p class="sub">Así te podemos contactar.</p>
+    <div class="grid">
+      <label class="campo">Nombre
+        <input type="text" name="nombre" required autocomplete="given-name">
+        <span class="msg-err">Completá tu nombre</span></label>
+      <label class="campo">Apellido
+        <input type="text" name="apellido" required autocomplete="family-name">
+        <span class="msg-err">Completá tu apellido</span></label>
+      <label class="campo">DNI
+        <input type="text" name="dni" required inputmode="numeric" pattern="[0-9.]{7,10}" placeholder="Sin puntos">
+        <span class="msg-err">Revisá el DNI (solo números)</span></label>
+      <label class="campo">Fecha de nacimiento
+        <input type="date" name="nacimiento" id="nacimiento" required>
+        <span class="msg-err">Completá tu fecha de nacimiento</span></label>
+      <label class="campo">Celular / WhatsApp
+        <input type="tel" name="telefono" required inputmode="tel" placeholder="11 1234 5678" autocomplete="tel">
+        <span class="msg-err">Dejanos un número para contactarte</span></label>
+      <label class="campo">Email <span class="opc">(opcional)</span>
+        <input type="email" name="email" autocomplete="email">
+        <span class="msg-err">Revisá el email</span></label>
+      <label class="campo">Localidad / Barrio
+        <input type="text" name="localidad" required placeholder="Ej: Tigre, Benavídez…">
+        <span class="msg-err">Completá tu localidad</span></label>
+      <label class="campo">Dirección <span class="opc">(opcional)</span>
+        <input type="text" name="direccion" autocomplete="street-address"></label>
+    </div>
+
+    <div class="menor" id="menor">
+      <h3>Sos menor de 18: datos de un adulto responsable</h3>
+      <div class="grid">
+        <label class="campo">Nombre y apellido del adulto
+          <input type="text" name="adulto_nombre">
+          <span class="msg-err">Completá el nombre del adulto responsable</span></label>
+        <label class="campo">Celular del adulto
+          <input type="tel" name="adulto_telefono" inputmode="tel">
+          <span class="msg-err">Completá el celular del adulto responsable</span></label>
+        <label class="campo full">Vínculo <span class="opc">(mamá, papá, tutor/a…)</span>
+          <input type="text" name="adulto_vinculo"></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="n">2</span> ¿Qué querés aprender?</h2>
+    <p class="sub">Podés elegir más de un taller.</p>
+    <div id="g-talleres">
+      <div class="opciones" id="talleres"></div>
+      <span class="msg-err">Elegí al menos un taller</span>
+    </div>
+    <div class="grid" style="margin-top:18px">
+      <div class="full" id="g-turno">
+        <label class="campo">¿En qué horario podés venir?</label>
+        <div class="chips">
+          <div class="op"><input type="checkbox" id="t1" name="turno" value="Mañana"><label for="t1">Mañana</label></div>
+          <div class="op"><input type="checkbox" id="t2" name="turno" value="Tarde"><label for="t2">Tarde</label></div>
+          <div class="op"><input type="checkbox" id="t3" name="turno" value="Noche"><label for="t3">Noche</label></div>
+          <div class="op"><input type="checkbox" id="t4" name="turno" value="Sábados"><label for="t4">Sábados</label></div>
+        </div>
+        <span class="msg-err">Elegí al menos un horario</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="n">3</span> Contanos un poco más</h2>
+    <p class="sub">Nos ayuda a acompañarte mejor.</p>
+    <div class="grid">
+      <label class="campo">Estudios
+        <select name="estudios" required>
+          <option value="">Elegí una opción</option>
+          <option>Primaria incompleta</option><option>Primaria completa</option>
+          <option>Secundaria en curso</option><option>Secundaria incompleta</option>
+          <option>Secundaria completa</option><option>Terciario / universitario</option>
+        </select>
+        <span class="msg-err">Elegí una opción</span></label>
+      <label class="campo">¿Trabajás actualmente?
+        <select name="trabaja" required>
+          <option value="">Elegí una opción</option>
+          <option>Sí</option><option>No</option><option>Changas / a veces</option>
+        </select>
+        <span class="msg-err">Elegí una opción</span></label>
+      <label class="campo full">¿Ya sabés algo del oficio?
+        <select name="experiencia">
+          <option value="">Elegí una opción</option>
+          <option>Nada, arranco de cero</option><option>Un poco</option><option>Sí, quiero perfeccionarme</option>
+        </select></label>
+      <label class="campo full">¿Cómo nos conociste?
+        <select name="conociste">
+          <option value="">Elegí una opción</option>
+          <option>Instagram</option><option>Facebook</option><option>Un amigo/a o familiar</option>
+          <option>La Expo Fátima</option><option>Parroquia / escuela / municipio</option><option>Otro</option>
+        </select></label>
+      <label class="campo full">¿Querés contarnos algo más? <span class="opc">(opcional)</span>
+        <textarea name="comentarios" placeholder="Por qué te interesa, si tenés alguna necesidad especial, preguntas…"></textarea></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="acepto" id="g-acepto">
+      <input type="checkbox" name="acepto" value="Sí" required>
+      <span>Acepto que la Escuela Taller Fátima use estos datos solo para contactarme por la inscripción y las actividades de la escuela.
+      <span class="msg-err">Necesitamos tu conformidad para guardar los datos</span></span>
+    </label>
+  </section>
+
+  <div class="aviso-error" id="aviso">Faltan completar algunos datos. Revisá los campos marcados en rojo.</div>
+  <button class="enviar" id="btn" type="submit">Quiero inscribirme</button>
+</form>
+
+<section class="card gracias" id="gracias">
+  <div class="check">✓</div>
+  <h2>¡Listo, <span id="g-nombre"></span>!</h2>
+  <p>Recibimos tu inscripción. En los próximos días te escribimos por WhatsApp para contarte cómo seguimos.</p>
+  <p>Mientras tanto, seguinos en Instagram: <a href="https://www.instagram.com/escuelatallerfatima/" target="_blank" rel="noopener">@escuelatallerfatima</a></p>
+</section>
+</main>
+
+<footer>
+  Escuela Taller Fátima · <a href="https://www.instagram.com/escuelatallerfatima/" target="_blank" rel="noopener">@escuelatallerfatima</a><br>
+  Última actualización: martes 24/11/2026 · 17:10 h
+</footer>
+
+<script>
+/* ===== CONFIGURACIÓN =====
+   SCRIPT_URL: dirección de la planilla (Apps Script). Ver LEEME.md.
+   TALLERES: lista de talleres que se muestran. Se puede editar. */
+const SCRIPT_URL = "";
+const TALLERES = [
+  "Carpintería", "Corte y confección", "Soldadura", "Manicuría",
+  "Gastronomía", "Electricidad", "Albañilería", "Informática"
+];
+
+const $ = s => document.querySelector(s);
+const cont = $("#talleres");
+TALLERES.forEach((t, i) => {
+  cont.insertAdjacentHTML("beforeend",
+    `<div class="op"><input type="checkbox" id="tl${i}" name="taller" value="${t}"><label for="tl${i}">${t}</label></div>`);
+});
+if (!SCRIPT_URL) $("#demo").hidden = false;
+
+function edad(fecha) {
+  if (!fecha) return null;
+  const n = new Date(fecha + "T12:00"), h = new Date();
+  let e = h.getFullYear() - n.getFullYear();
+  if (h < new Date(h.getFullYear(), n.getMonth(), n.getDate())) e--;
+  return e;
+}
+const esMenor = () => { const e = edad($("#nacimiento").value); return e !== null && e < 18; };
+$("#nacimiento").addEventListener("change", () => $("#menor").classList.toggle("visible", esMenor()));
+
+function marcar(el, ok) { (el.closest("label.campo") || el).classList.toggle("invalido", !ok); return ok; }
+
+function validar(f) {
+  let ok = true;
+  f.querySelectorAll("input[required]:not([type=checkbox]), select[required]").forEach(el => {
+    ok = marcar(el, el.value.trim() !== "" && el.checkValidity()) && ok;
+  });
+  const em = f.email; if (em.value) ok = marcar(em, em.checkValidity()) && ok; else marcar(em, true);
+  const tel = f.telefono; ok = marcar(tel, tel.value.replace(/\D/g, "").length >= 8) && ok;
+  const menor = esMenor();
+  ["adulto_nombre", "adulto_telefono"].forEach(n => ok = marcar(f[n], !menor || f[n].value.trim() !== "") && ok);
+  const grupos = [["#g-talleres", "taller"], ["#g-turno", "turno"]];
+  grupos.forEach(([g, n]) => {
+    const v = f.querySelectorAll(`input[name=${n}]:checked`).length > 0;
+    $(g).classList.toggle("invalido", !v); ok = v && ok;
+  });
+  const ac = f.acepto.checked; $("#g-acepto").classList.toggle("invalido", !ac); ok = ac && ok;
+  return ok;
+}
+
+$("#form").addEventListener("input", e => {
+  const c = e.target.closest(".invalido"); if (c) c.classList.remove("invalido");
+});
+
+$("#form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target;
+  if (f.sitio_web.value) return;               // bots
+  if (!validar(f)) {
+    $("#aviso").style.display = "block";
+    const p = f.querySelector(".invalido"); if (p) p.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  $("#aviso").style.display = "none";
+  const btn = $("#btn"); btn.disabled = true; btn.textContent = "Enviando…";
+
+  const datos = new URLSearchParams();
+  ["nombre","apellido","dni","nacimiento","telefono","email","localidad","direccion",
+   "adulto_nombre","adulto_telefono","adulto_vinculo","estudios","trabaja","experiencia","conociste","comentarios"]
+    .forEach(k => datos.append(k, f[k].value.trim()));
+  datos.append("edad", edad(f.nacimiento.value) ?? "");
+  datos.append("talleres", [...f.querySelectorAll("input[name=taller]:checked")].map(x => x.value).join(", "));
+  datos.append("turnos", [...f.querySelectorAll("input[name=turno]:checked")].map(x => x.value).join(", "));
+
+  try {
+    if (SCRIPT_URL) await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", body: datos });
+    $("#g-nombre").textContent = f.nombre.value.trim().split(" ")[0];
+    f.style.display = "none"; $("#gracias").style.display = "block";
+    window.scrollTo({ top: $("#gracias").offsetTop - 20, behavior: "smooth" });
+  } catch (err) {
+    btn.disabled = false; btn.textContent = "Quiero inscribirme";
+    $("#aviso").textContent = "No pudimos enviar la inscripción. Revisá tu conexión y probá de nuevo.";
+    $("#aviso").style.display = "block";
+  }
+});
+</script>
+</body>
+</html>

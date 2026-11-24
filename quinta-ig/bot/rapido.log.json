@@ -14,6 +14,11 @@
    "enviados": 79,
    "nada": 9,
    "errores": 0
+  },
+  "2026-11-24": {
+   "enviados": 0,
+   "nada": 0,
+   "errores": 0
   }
  },
  "ultimo": {
@@ -128,7 +133,7 @@
   "ya_respondida": 21,
   "ya_procesada": 4
  },
- "revisado": "2026-11-23 23:51",
+ "revisado": "2026-11-24 00:00",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

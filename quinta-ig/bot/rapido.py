@@ -56,7 +56,8 @@ def instrucciones():
     pr = precios()
     if pr:  # solo lo que el bot puede decir
         pr = {"precio_por_dia": pr.get("precio_por_dia"),
-              "lista": [x for x in pr.get("lista", []) if x.get("bot_lo_dice") is not False]}
+              "lista": [x for x in pr.get("lista", []) if x.get("bot_lo_dice") is not False],
+              "sena": pr.get("sena")}
     reglas = open(os.path.join(AQUI, "INSTRUCCIONES.md"), encoding="utf-8").read()
     reglas = reglas.split("## Reglas de respuesta", 1)[-1].split("## Aviso a Juan", 1)[0]
     return f"""Sos quien atiende los mensajes directos de Instagram de Quinta El Florido (@quintaelflorido), dos quintas de alquiler en General Rodríguez, Buenos Aires.
@@ -66,7 +67,9 @@ REGLAS (las mismas que usa el equipo):
 {reglas}
 Además:
 - Respondé SOLO el último mensaje del cliente, teniendo en cuenta toda la charla (no repitas preguntas que ya contestó).
-- Si alguien quiere reservar: pedile fecha, cuántas personas y un teléfono, y derivalo al WhatsApp con el link wa.me/5491138777015. Nunca confirmes la reserva ni pases datos de pago.
+- Si alguien quiere reservar: primero asegurate de tener fecha, qué quinta y cuántas personas, y que la fecha esté libre. Cuando ya está decidido, decile que se reserva con una seña del 50% (calculá el monto con el precio de esa fecha y las personas) por transferencia al alias que figura en PRECIOS > sena (con el titular si figura), que el resto se paga al ingresar, y que mande el comprobante por acá. Pasá el alias solo en ese momento, nunca antes.
+- Nunca digas que la reserva está confirmada: la confirma Juan por WhatsApp cuando ve la transferencia.
+- COMPROBANTE: si en la charla ya le pasamos el alias y el cliente manda [adjunto/audio/foto] o dice que ya transfirió, es el comprobante. Respondé corto: "¡Recibido! 🙌 Juan lo verifica y te confirma por WhatsApp a la brevedad." Y al final, en una línea sola, agregá la marca SENA:quinta|fechas|monto|nombre  (quinta = dia o casa; fechas en formato AAAA-MM-DD separadas por coma; monto de la seña en números; nombre del cliente si lo dijo, si no "-"). Ej: SENA:casa|2026-12-12,2026-12-13|200000|Laura
 - Si un dato dice [COMPLETAR] o no está acá: "eso te lo pasamos por WhatsApp". No inventes nada.
 - La quinta de día NO es para dormir. Para quedarse, ofrecé la casa.
 - Si no corresponde responder (charla cerrada con "gracias"/"ok", spam, insultos, otra quinta ofreciendo servicios, publicidad), respondé exactamente: NADA
@@ -102,6 +105,49 @@ BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
 FOTOS = {"dia": ["dia-11.jpg", "dia-12.jpg", "dia-8.jpg", "dia-6.jpg"],     # quincho+pileta, parque, juegos, pileta cerca
          "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"],
          "juanita": ["https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-7.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-8.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-2.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-4.jpg"]}  # La Juanita (vecino), solo 23/11
+def cifrar_guardar(nombre, datos):
+    k = os.environ.get("PRECIOS_KEY", "").strip()
+    if not k: return
+    u = base64.b64decode; iv = os.urandom(12)
+    ct = AESGCM(u(k)).encrypt(iv, json.dumps(datos, ensure_ascii=False).encode(), None)
+    json.dump({"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(ct).decode()}, open(os.path.join(AQUI, nombre), "w"))
+def leer_cifrado(nombre):
+    k = os.environ.get("PRECIOS_KEY", "").strip(); f = os.path.join(AQUI, nombre)
+    if not k or not os.path.exists(f): return []
+    e = json.load(open(f)); u = base64.b64decode
+    return json.loads(AESGCM(u(k)).decrypt(u(e["iv"]), u(e["data"]), None))
+def aviso_whatsapp(texto):
+    """Aviso a Juan por WhatsApp con CallMeBot (secreto CALLMEBOT_KEY). Si no está, no hace nada."""
+    k = os.environ.get("CALLMEBOT_KEY", "").strip()
+    if not k: return False
+    try:
+        urllib.request.urlopen("https://api.callmebot.com/whatsapp.php?" + urllib.parse.urlencode(
+            {"phone": "+5491138777015", "text": texto, "apikey": k}), timeout=30); return True
+    except Exception as e:
+        print("aviso whatsapp falló:", type(e).__name__); return False
+def registrar_sena(marca, usuario, pid, msgs):
+    p = [x.strip() for x in marca.split("|")]
+    quinta = p[0].lower() if p else "?"; fechas = [f.strip() for f in (p[1] if len(p) > 1 else "").split(",") if re.match(r"\d{4}-\d{2}-\d{2}$", f.strip())]
+    monto = p[2] if len(p) > 2 else "?"; nombre = p[3] if len(p) > 3 else "-"
+    adj = []
+    for m in msgs[:3]:
+        try: atts = (get(m["id"], fields="attachments").get("attachments") or {}).get("data") or []
+        except Exception: atts = []
+        for a in atts:
+            u = (a.get("image_data") or {}).get("url") or (a.get("file_url")) or ""
+            if u: adj.append(u)
+    senas = leer_cifrado("senas.enc.json")
+    senas.append({"cuando": ahora.strftime("%Y-%m-%d %H:%M"), "usuario": usuario, "pid": pid, "quinta": quinta,
+                  "fechas": fechas, "monto": monto, "nombre": nombre, "comprobante": adj, "estado": "a confirmar"})
+    cifrar_guardar("senas.enc.json", senas)
+    q = leer("quinta.json", {}); cal = q.setdefault("calendario", [])
+    for f in fechas:
+        if not any(c["fecha"] == f and c["quinta"] == quinta for c in cal):
+            cal.append({"fecha": f, "quinta": quinta, "estado": "señado"})
+    cal.sort(key=lambda c: (c["fecha"], c["quinta"]))
+    json.dump(q, open(os.path.join(AQUI, "quinta.json"), "w"), ensure_ascii=False, indent=1)
+    aviso_whatsapp(f"💰 Seña recibida en Instagram\n@{usuario} ({nombre})\n{'Casa' if quinta == 'casa' else 'Quinta de día'}: {', '.join(fechas)}\nSeña: ${monto}\nRevisá la cuenta y avisale a Claude si llegó. El día quedó bloqueado como señado.")
+
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -160,7 +206,12 @@ def main():
         if not resp or resp.strip().upper().startswith("NADA"):
             nadas += 1; log["diag_nada"] = DIAG; continue
         try:
-            m = re.search(r"\n?\s*FOTOS:\s*(dia|casa|ambas|juanita)\s*$", resp, re.I)
+            ms = re.search(r"\n?\s*SENA:\s*(.+?)\s*$", resp)
+            if ms:
+                resp = resp[:ms.start()].rstrip()
+                try: registrar_sena(ms.group(1), cliente.get("username", "?"), pid, msgs); log.setdefault("senas", 0); log["senas"] += 1
+                except Exception as e: print("error seña:", type(e).__name__); log["ultimo_error"] = "seña " + type(e).__name__
+            m = re.search(r"\n?\s*FOTOS:\s*(dia|casa|ambas)\s*$", resp, re.I)
             cuales = []
             if m:
                 k = m.group(1).lower(); resp = resp[:m.start()].rstrip()

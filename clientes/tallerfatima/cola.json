@@ -314,5 +314,15 @@
   "texto": "",
   "fecha": "2026-12-01 13:00",
   "estado": "borrador"
+ },
+ {
+  "id": "1124-reel-cierre-jovenes",
+  "tipo": "REEL",
+  "media": [
+   "clientes/tallerfatima/videos/1124-reel-cierre-jovenes.mp4"
+  ],
+  "texto": "Hoy hicimos el cierre de año con los oficios de jóvenes: costura, gastronomía, manicuría, informática y carpintería 🎓\n\nY les preguntamos: ¿cómo llegaron al taller y cómo se van? 💚\n\nGracias por este año compartido.\n\n#EscuelaTallerFatima #ComunidadFátima",
+  "fecha": "2026-11-24 20:00",
+  "estado": "borrador"
  }
 ]

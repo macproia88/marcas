@@ -104,7 +104,7 @@ details p{margin:8px 0 0;max-width:80ch}
 </style></head><body>
 <div class="wrap">
   <div class="top"><div class="logo">C</div><h1>Tablero del Club</h1><div class="who">La Presumida y Paz · <span id="mes">—</span></div></div>
-  <p class="upd">Última actualización: <b>lunes 23/11/2026 a las 08:40</b> · Grupos semana a semana hasta el <b>domingo 22/11</b> · Meses y cupones con compras hasta el <b>22/11 13:59</b></p>
+  <p class="upd">Última actualización: <b>martes 24/11/2026 a las 10:05</b> · Grupos semana a semana hasta el <b>domingo 22/11</b> · Meses y cupones con compras hasta el <b>22/11 13:59</b></p>
   <div class="fil" role="group" aria-label="Local">
     <button type="button" data-l="Total" aria-pressed="true">Todos</button>
     <button type="button" data-l="Florida" aria-pressed="false">Florida</button>
@@ -115,6 +115,7 @@ details p{margin:8px 0 0;max-width:80ch}
 
   <div class="kpis" id="kpis"></div>
   <p class="nov" id="nov"></p>
+  <div class="card" style="margin:18px 0"><h4>Ticket del socio y del cliente sin DNI, por local</h4><p class="note" id="tk-sub"></p><div class="tbl" id="tk-tbl"></div></div>
 
   <section class="blk">
     <p class="eye">Ciclo de vida del socio</p>
@@ -138,8 +139,8 @@ details p{margin:8px 0 0;max-width:80ch}
     <h2 class="h">Grupos de socios hoy</h2>
     <p class="sub" id="crm-sub">—</p>
     <div class="grp" id="crm-grp"></div>
-    <div class="card"><h4>Frecuentes y recurrentes, semana a semana</h4><p class="note" id="trend-sub"></p><div id="trend" style="width:100%"></div>
-      <div class="leg"><span><i style="background:var(--red)"></i>Frecuentes (4 o más compras en 30 días)</span><span><i style="background:var(--rec)"></i>Recurrentes (2 o 3 compras en 30 días)</span></div>
+    <div class="card"><h4>Todos los grupos de socios, semana a semana</h4><p class="note" id="trend-sub"></p><div id="trend" style="width:100%"></div>
+      <div class="leg" id="trend-leg"></div><p class="note" style="text-align:center;margin:6px 0 0">Tocá un grupo para mostrarlo u ocultarlo.</p>
       <div class="tbl" id="trend-tbl"></div></div>
     <div class="two">
       <div class="card ok-card"><h4>Dónde estamos mejor</h4><ul class="lst" id="crm-ok"></ul></div>
@@ -217,6 +218,10 @@ function draw(){
  else if(np&&np.loc[L]&&SI===MBR.meses.length-1){const z=np.loc[L],dd=+np.hasta.slice(8,10);const al=L==='Total'&&MBR.altas?MBR.altas[np.m]:null;
   $('nov').innerHTML='<b>Noviembre en curso (1 al '+dd+'):</b> '+nf(z.compras)+' compras con DNI de '+nf(z.activos)+' socios, venta '+mf(z.venta)+(al?', '+nf(al)+' socios nuevos registrados':'')+'. Para verlo, elegí noviembre en el selector de mes.';}
  else $('nov').innerHTML='';
+{const TL=['Florida','Beccar','Paz','Total'];
+  $('tk-sub').innerHTML=esc(last.lab)+(last.parcial?' (en curso)':'')+'. Ticket del socio: compras con DNI en ALAX. Ticket sin DNI: venta de mostrador de Maxi Rest menos la venta con DNI, dividida por los tickets sin DNI.';
+  $('tk-tbl').innerHTML='<table><thead><tr><th>Local</th><th>Ticket del socio</th><th>Ticket sin DNI</th><th>Diferencia</th><th>Ticket promedio del local</th></tr></thead><tbody>'+TL.map(l=>{const z=last.loc[l]||{},d=(DATA.meses||[]).find(r=>r.local===l&&r.mes===last.m)||{},a=z.compras?z.venta/z.compras:null,b=d.ticket_no_socio;
+   return '<tr'+(l===L?' style="font-weight:700"':'')+'><td>'+(l==='Total'?'Los tres locales':l)+'</td><td>'+(a?mf(Math.round(a)):'—')+'</td><td>'+(b?mf(b):'—')+'</td><td class="'+(a&&b?(a>b?'up':'dn'):'')+'">'+(a&&b?sg(Math.round(a-b))+' ('+sg((a/b-1)*100)+'%)':'—')+'</td><td>'+(d.ticket_local?mf(d.ticket_local):'—')+'</td></tr>';}).join('')+'</tbody></table>';}
  $('kpis').innerHTML=k.map(a=>'<div class="kpi"><span>'+esc(a[0])+'</span><b>'+a[1]+'</b><i>'+esc(a[2])+'</i></div>').join('');
  // Ciclo
  const n=x.activos;
@@ -233,20 +238,20 @@ function draw(){
   $('crm-sub').innerHTML='Al '+fd(cur.hasta)+' hay <b>'+nf(tot)+' socios</b> que compraron alguna vez. <b class="r">'+nf(fr)+' son frecuentes o recurrentes</b> ('+pf(fr/tot*100)+'): son los que vienen seguido. El trabajo del CRM es que cada semana haya más arriba y menos en riesgo. Cambios contra el '+fd(pw.hasta)+'.';
   $('crm-grp').innerHTML=GR.map(g=>{const d=cur[g[0]]-pw[g[0]];const good=g[1]==='risk'?d<0:g[1]==='good'?d>0:null;const cl=d===0||good===null?'':(good?'up':'dn');
    return '<div class="g '+g[1]+'"><h5>'+g[0]+'</h5><div class="n">'+nf(cur[g[0]])+'</div><div class="d '+cl+'">'+(d===0?'igual':sg(d))+' en la semana</div><div class="w">'+g[2]+'</div></div>';}).join('');
-  (function(){const el=$('trend');const W=Math.max(300,el.clientWidth||600),H=W<500?230:280,pl=40,pr=W<500?44:60,pt=18,pb=36;const n=GS.length;
-  const S=[['Frecuentes','var(--red)'],['Recurrentes','var(--rec)']];const raw=Math.max(1,...GS.flatMap(r=>[r.Frecuentes,r.Recurrentes]))*1.1/4,mag=Math.pow(10,Math.floor(Math.log10(raw))),stp=[1,2,2.5,5,10].map(k=>k*mag).find(k=>k>=raw),mx=stp*4;
+  (function(){const el=$('trend');const W=Math.max(300,el.clientWidth||600),H=W<500?230:280,pl=40,pr=W<500?56:64,pt=18,pb=36;const n=GS.length;
+  const SA=[['Frecuentes','var(--red)'],['Recurrentes','var(--rec)'],['Nuevos','var(--new)'],['Ocasionales','#E0A800'],['En riesgo','var(--old)'],['Dormidos','#8C857D']];window.TRS=window.TRS||{};const S=SA.filter(s=>!window.TRS[s[0]]);$('trend-leg').innerHTML=SA.map(s=>'<span data-g="'+s[0]+'" role="button" tabindex="0" style="cursor:pointer;opacity:'+(window.TRS[s[0]]?.35:1)+'"><i style="background:'+s[1]+'"></i>'+s[0]+'</span>').join('');$('trend-leg').querySelectorAll('span').forEach(e=>e.onclick=()=>{const q=e.dataset.g;window.TRS[q]=!window.TRS[q];draw();});const raw=Math.max(1,...GS.flatMap(r=>S.map(s=>r[s[0]])))*1.1/4,mag=Math.pow(10,Math.floor(Math.log10(raw))),stp=[1,2,2.5,5,10].map(k=>k*mag).find(k=>k>=raw),mx=stp*4;
   const xx=i=>pl+i*(W-pl-pr)/Math.max(1,n-1),yy=v=>pt+(H-pt-pb)*(1-v/mx);let g='';
   for(let k=0;k<=4;k++){const v=mx*k/4,y=yy(v);g+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y+'" y2="'+y+'" stroke="var(--line)"/><text x="'+(pl-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="12" fill="var(--muted)">'+nf(v)+'</text>';}
   const MN={'08':'Ago','09':'Sep','10':'Oct','11':'Nov','12':'Dic'};let pm='';
   GS.forEach((r,i)=>{const mo=r.hasta.slice(5,7);if(mo!==pm){if(i>0)g+='<line x1="'+(xx(i)-((W-pl-pr)/Math.max(1,n-1))/2)+'" x2="'+(xx(i)-((W-pl-pr)/Math.max(1,n-1))/2)+'" y1="'+pt+'" y2="'+(H-pb)+'" stroke="var(--line)" stroke-dasharray="3 4"/>';g+='<text x="'+(i===0?xx(i):xx(i)-((W-pl-pr)/Math.max(1,n-1))/2+6)+'" y="'+(H-12)+'" font-size="12" font-weight="600" fill="var(--muted)">'+(MN[mo]||mo)+'</text>';pm=mo;}});
   S.forEach(s=>{const pts=GS.map((r,i)=>xx(i)+','+yy(r[s[0]])).join(' ');g+='<polyline points="'+pts+'" fill="none" stroke="'+s[1]+'" stroke-width="3" stroke-linejoin="round"/>';
    GS.forEach((r,i)=>{g+='<circle cx="'+xx(i)+'" cy="'+yy(r[s[0]])+'" r="'+(i===n-1?5:3)+'" fill="'+s[1]+'"><title>'+s[0]+' al '+r.hasta.slice(8,10)+'/'+r.hasta.slice(5,7)+': '+nf(r[s[0]])+'</title></circle>';});});
-  const ly=S.map(s=>yy(GS[n-1][s[0]]));if(Math.abs(ly[0]-ly[1])<18){const m=(ly[0]+ly[1])/2;ly[0]=ly[0]<ly[1]?m-10:m+10;ly[1]=ly[1]<=ly[0]?ly[0]-20:ly[0]+20;}
+  const ly=S.map(s=>yy(GS[n-1][s[0]]));const od=ly.map((v,q)=>q).sort((a,b)=>ly[a]-ly[b]);for(let q=1;q<od.length;q++){if(ly[od[q]]-ly[od[q-1]]<16)ly[od[q]]=ly[od[q-1]]+16;}
   S.forEach((s,k)=>{g+='<text x="'+(xx(n-1)+10)+'" y="'+(ly[k]+4)+'" font-size="13" font-weight="700" fill="'+s[1]+'">'+nf(GS[n-1][s[0]])+'</text>';});
-  el.innerHTML='<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Frecuentes y recurrentes por semana">'+g+'</svg>';
+  el.innerHTML='<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Grupos de socios por semana">'+g+'</svg>';
   const f0=GS[0];$('trend-sub').innerHTML='Cada punto es la foto al cierre de cada semana (domingo); el último es hoy, '+fd(cur.hasta)+'. Desde el '+fd(f0.hasta)+' los frecuentes pasaron de '+nf(f0.Frecuentes)+' a <b>'+nf(cur.Frecuentes)+'</b> y los recurrentes de '+nf(f0.Recurrentes)+' a <b>'+nf(cur.Recurrentes)+'</b>.';
   const ME=[];['08','09','10','11'].forEach(mo=>{const rr=GS.filter(r=>r.hasta.slice(5,7)===mo);if(rr.length)ME.push(rr[rr.length-1]);});
-  $('trend-tbl').innerHTML='<table><thead><tr><th>Cierre</th><th>Frecuentes</th><th>Recurrentes</th><th>Frec. + recurr.</th><th>Var. vs mes anterior</th></tr></thead><tbody>'+ME.map((r,i)=>{const s=r.Frecuentes+r.Recurrentes,pv=i?ME[i-1].Frecuentes+ME[i-1].Recurrentes:null,mo=r.hasta.slice(5,7);return '<tr><td>'+({'08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre'}[mo])+' <span style="color:var(--muted)">('+fd(r.hasta)+(mo==='11'?', en curso':'')+')</span></td><td>'+nf(r.Frecuentes)+'</td><td>'+nf(r.Recurrentes)+'</td><td><b>'+nf(s)+'</b></td><td class="'+(pv==null?'':s>pv?'up':s<pv?'dn':'')+'">'+(pv==null?'—':sg(s-pv)+' ('+sg((s/pv-1)*100)+'%)')+'</td></tr>';}).join('')+'</tbody></table>';
+  $('trend-tbl').innerHTML='<table><thead><tr><th>Cierre</th>'+SA.map(q=>'<th>'+q[0]+'</th>').join('')+'<th>Total socios</th></tr></thead><tbody>'+ME.map(r=>{const mo=r.hasta.slice(5,7);return '<tr><td>'+({'08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'}[mo])+' <span style="color:var(--muted)">('+fd(r.hasta)+(r===GS[n-1]?', en curso':'')+')</span></td>'+SA.map(q=>'<td>'+nf(r[q[0]])+'</td>').join('')+'<td><b>'+nf(SA.reduce((a,q)=>a+r[q[0]],0))+'</b></td></tr>';}).join('')+'</tbody></table>';
  })();
  const ok=[],bad=[];const dF=cur.Frecuentes-m4.Frecuentes,dR=cur.Recurrentes-m4.Recurrentes;
   if(dF>0)ok.push('<b>'+sg(dF)+' frecuentes en 4 semanas</b> (de '+nf(m4.Frecuentes)+' a '+nf(cur.Frecuentes)+'): más socios vienen 4 veces o más por mes.');

@@ -73,7 +73,9 @@ Además:
 - Si un dato dice [COMPLETAR] o no está acá: "Lo consulto y te respondo por acá 🙌". No inventes nada y no mandes al WhatsApp por eso.
 - WhatsApp (wa.me/5491138777015) SOLO en estos casos: (1) el cliente ya transfirió o manda el comprobante, (2) el cliente pide explícitamente hablar por WhatsApp o por teléfono, (3) ya señó y pide la dirección exacta. Todo lo demás (precios, fechas, fotos, ubicación aproximada, capacidad, visitas, dudas) se resuelve por acá, en Instagram.
 - Visitas para conocer la quinta: "¡Sí! Decime qué día y horario te queda bien y te confirmamos por acá".
-- Dirección exacta: se pasa una vez que se confirma la reserva. Antes, dar la zona (General Rodríguez, a 600 m de la autopista del Oeste).
+- Dirección exacta: dar la zona (General Rodríguez, a 600 m de la autopista del Oeste) y ofrecer venir a conocerla antes de señar. Si igual quiere la dirección exacta, pasale el WhatsApp para que Juan se la mande.
+- CONFIANZA: que nunca parezca una estafa. Si el cliente quiere hablar por WhatsApp o llamar, pasale el número enseguida y con buena onda (wa.me/5491138777015), sin vueltas. Si duda de pagar, decile que puede venir a conocer la quinta antes de señar. Nunca presiones ni apures.
+- FOTOS: si pide fotos, mandá las mejores de la quinta que pregunta (marca FOTOS:dia o FOTOS:casa); si no dice cuál o pregunta por las dos, FOTOS:ambas. Solo existen estas 2 quintas: no menciones ni ofrezcas ninguna otra.
 - La quinta de día NO es para dormir. Para quedarse, ofrecé la casa.
 - Si no corresponde responder (charla cerrada con "gracias"/"ok", spam, insultos, otra quinta ofreciendo servicios, publicidad), respondé exactamente: NADA
 - Escribí solo el texto del mensaje, sin comillas ni explicaciones.
@@ -106,8 +108,7 @@ PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
 DIAG = {}
 BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
 FOTOS = {"dia": ["dia-11.jpg", "dia-12.jpg", "dia-8.jpg", "dia-6.jpg"],     # quincho+pileta, parque, juegos, pileta cerca
-         "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"],
-         "juanita": ["https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-7.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-8.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-2.jpg", "https://macproia88.github.io/marcas/quinta-ig/juanita/juanita-4.jpg"]}  # La Juanita (vecino), solo 23/11
+         "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"]}
 def cifrar_guardar(nombre, datos):
     k = os.environ.get("PRECIOS_KEY", "").strip()
     if not k: return

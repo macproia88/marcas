@@ -43,6 +43,5 @@ cuántos respondiste y la lista de los que quieren reservar o dejaron teléfono 
 - Si Juan venía hablando a mano con el cliente y el cliente dejó una pregunta sin responder (el último mensaje es del cliente), el bot la contesta igual, siguiendo el hilo de lo que habló Juan. Si Juan responde antes de que salga, el control previo no la manda.
 - Calendarios para compartir: cada vez que se carga una reserva en quinta.json, correr `python3 -I quinta-ig/herramientas/calendarios.py` y commitear quinta-ig/calendarios/ (Juan los usa en historias y WhatsApp).
 
-- La Juanita (quinta del vecino) YA NO SE OFRECE. No mencionarla nunca más.
 
 - No apurar ni presionar al cliente: nada de "conviene reservar cuanto antes", "se llena rápido", "quedan pocas fechas" ni parecidos. Dar la info y dejar que el cliente decida.

@@ -218,6 +218,10 @@ def fechas_mencionadas(textos):
                 if txt not in out: out.append(txt)
     return out[:40]
 
+COMENTARIO = """
+
+AHORA NO ES UN DM: es un COMENTARIO público en una publicación nuestra. Respondé UNA línea corta (máximo 15 palabras), con humor y buena onda, en rioplatense, sin signos de apertura. Si el comentario es un chiste o etiqueta a alguien, seguile el juego. Si pregunta precio, fecha o info: "Te escribimos por privado 😉" (sin precios en público). Nunca precios ni alias en comentarios. Si es spam, ofensivo, de otra quinta o solo un emoji suelto que no amerita, respondé NADA."""
+
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
@@ -383,6 +387,26 @@ def main():
         except urllib.error.HTTPError as e:
             errores += 1; print("error instagram:", e.code); log["ultimo_error"] = f"instagram {e.code}"
         if usados + enviados >= TOPE_DIA: break
+    # Comentarios en publicaciones de las últimas 48 h: respuesta corta y con onda al toque (ayuda a viralizar).
+    try:
+        cr = log.setdefault("comentarios_resp", {}); hechos_c = 0
+        for md in get(f"{IG}/media", fields="id,timestamp,caption", limit=4).get("data", []):
+            if (ahora - fecha(md["timestamp"])).total_seconds() > 48 * 3600: continue
+            for cm in get(f"{md['id']}/comments", fields="id,text,username,timestamp,replies{username}", limit=50).get("data", []):
+                if hechos_c >= 8: break
+                if cm.get("username") == YO or cm["id"] in cr: continue
+                if any(r.get("username") == YO for r in (cm.get("replies") or {}).get("data", [])): cr[cm["id"]] = hoy; continue
+                if (ahora - fecha(cm["timestamp"])).total_seconds() < 60: continue
+                sistema = sistema or instrucciones()
+                nota = (COMENTARIO + "\nPUBLICACIÓN: " + (md.get("caption") or "")[:300])
+                resp = claude(sistema + nota, [{"de": "cliente", "texto": cm.get("text") or "", "hora": ""}])
+                cr[cm["id"]] = hoy
+                if resp and not resp.strip().upper().startswith("NADA"):
+                    post(f"{cm['id']}/replies", message=resp.strip()[:300]); hechos_c += 1; salto("comentario")
+        corte_c = (ahora - datetime.timedelta(days=7)).strftime("%Y-%m-%d")
+        log["comentarios_resp"] = {k: v for k, v in cr.items() if v >= corte_c}
+    except Exception as e:
+        print("error comentarios:", type(e).__name__)
     d = log["dias"].setdefault(hoy, {"enviados": 0, "nada": 0, "errores": 0})
     d["enviados"] += enviados; d["nada"] += nadas; d["errores"] += errores
     if enviados or nadas or errores:

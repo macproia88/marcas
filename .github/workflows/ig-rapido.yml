@@ -34,7 +34,7 @@ jobs:
             timeout 300 python3 quinta-ig/bot/rapido.py > /tmp/salida.txt 2>&1; echo "rc=$? $(date -u +%H:%M)" >> /tmp/salida.txt; tail -c 500 /tmp/salida.txt | grep -v -i token > quinta-ig/bot/rapido.salida.txt
             for f in quinta-ig/bot/rapido.log.json quinta-ig/bot/quinta.json quinta-ig/bot/senas.enc.json quinta-ig/bot/tibios.enc.json quinta-ig/bot/rapido.salida.txt; do [ -f "$f" ] && git add "$f"; done
             # Solo guardar si cambió algo real (no solo la hora de revisión): cada push cancela el despliegue de la web
-            if git diff --cached -U0 | grep '^[-+] ' | grep -vqE '"(revisado|actualizado)"|^[-+] *rc='; then
+            if git diff --cached -U0 | grep -E '^[-+][^-+]' | grep -vqE '"(revisado|actualizado)"|^[-+] *rc='; then
               git commit -qm "Rápido: DMs [skip ci]"
               for i in 1 2 3; do git pull --rebase -X theirs -q && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
             fi

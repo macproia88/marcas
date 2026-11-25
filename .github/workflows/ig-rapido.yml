@@ -29,7 +29,7 @@ jobs:
           git config user.name "github-actions"; git config user.email "actions@github.com"
           FIN=$(( $(date +%s) + 345*60 ))
           while [ $(date +%s) -lt $FIN ]; do
-            git checkout -q -- . 2>/dev/null; git pull --rebase -X theirs -q || { git rebase --abort; git pull --rebase -X theirs -q; }
+            git reset -q --hard HEAD 2>/dev/null; git pull --rebase -X theirs -q || { git rebase --abort; git pull --rebase -X theirs -q; }
             if [ -f quinta-ig/bot/rapido.pausa ]; then sleep 60; continue; fi
             timeout 300 python3 quinta-ig/bot/rapido.py > /tmp/salida.txt 2>&1; echo "rc=$? $(date -u +%H:%M)" >> /tmp/salida.txt; tail -c 500 /tmp/salida.txt | grep -v -i token > quinta-ig/bot/rapido.salida.txt
             for f in quinta-ig/bot/rapido.log.json quinta-ig/bot/quinta.json quinta-ig/bot/senas.enc.json quinta-ig/bot/tibios.enc.json quinta-ig/bot/rapido.salida.txt; do [ -f "$f" ] && git add "$f"; done

@@ -100,7 +100,7 @@ FECHAS YA ALQUILADAS (próximos 4 meses; si una fecha no figura, "en principio e
 {json.dumps(cal, ensure_ascii=False)}
 
 PRECIOS (privados, decirlos solo si preguntan o si suma para cerrar):
-{json.dumps(pr, ensure_ascii=False) if pr else "No disponibles: decir "lo consulto y te respondo por acá"."}
+{json.dumps(pr, ensure_ascii=False) if pr else 'No disponibles: decir "lo consulto y te respondo por acá".'}
 """
 
 DIAG = {}

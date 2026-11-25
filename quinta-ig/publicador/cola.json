@@ -1262,6 +1262,16 @@
   "estado": "pendiente"
  },
  {
+  "id": "h-sabado-alquilado-25-11",
+  "tipo": "STORY",
+  "media": [
+   "https://raw.githubusercontent.com/macproia88/marcas/main/quinta-ig/h-2026-11-25-sabado-alquilado.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-25 11:50",
+  "estado": "pendiente"
+ },
+ {
   "id": "h-2026-11-25",
   "tipo": "STORY",
   "media": [

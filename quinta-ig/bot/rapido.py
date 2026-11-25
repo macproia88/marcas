@@ -16,6 +16,8 @@ MODELO = "claude-haiku-5-5"
 TOPE_DIA = 150          # máximo de respuestas por día (por si algo se descontrola)
 ESPERA_SEG = 45         # espera a que el cliente termine de escribir
 VENTANA_HS = 23         # Instagram solo deja responder dentro de las 24 h del último mensaje del cliente
+RECORDAR_HS = (20, 23.3) # recordatorio único a los que quedaron cerca de reservar (dentro de la ventana de 24 h)
+RECORDAR_POR_VUELTA = 3
 AR = datetime.timezone(datetime.timedelta(hours=-3))
 ahora = datetime.datetime.now(AR)
 LOG = os.path.join(AQUI, "rapido.log.json")
@@ -154,6 +156,34 @@ def registrar_sena(marca, usuario, pid, msgs):
     json.dump(q, open(os.path.join(AQUI, "quinta.json"), "w"), ensure_ascii=False, indent=1)
     aviso_whatsapp(f"💰 Seña recibida en Instagram\n@{usuario} ({nombre})\n{'Casa' if quinta == 'casa' else 'Quinta de día'}: {', '.join(fechas)}\nSeña: ${monto}\nRevisá la cuenta y avisale a Claude si llegó. El día quedó bloqueado como señado.")
 
+RECORDATORIO = """
+TAREA ESPECIAL: esta charla quedó sin respuesta del cliente hace casi un día. Decidí si es un cliente TIBIO: alguien que mostró interés real
+(preguntó precio para una fecha, dijo cuántos son, pidió fotos o disponibilidad) pero no avanzó ni dijo que no.
+NO es tibio si: ya reservó o señó, dijo que no / que lo piensa con otro lugar y cerró, solo agradeció una mención, fue un saludo suelto,
+pidió algo que no tenemos (más de 20 personas, fecha ocupada sin alternativa), o ya le mandamos un recordatorio antes.
+Respondé SOLO un JSON en una línea, sin nada más:
+{"tibio": true/false, "quinta": "dia|casa|?", "fecha": "AAAA-MM-DD o texto corto o ?", "personas": "número o ?", "resumen": "máx 12 palabras de qué buscaba",
+ "mensaje": "recordatorio o null"}
+El "mensaje" (solo si es tibio Y la fecha que buscaba sigue libre según el calendario, o si no había dicho fecha): UN mensaje corto y amable,
+estilo chat como escribe Juan (sin ¡ ni ¿ de apertura), que retome lo que buscaba y deje la puerta abierta, sin presionar ni apurar.
+Ej: "Hola! Te quedó alguna duda con lo de la quinta? El sábado 12 sigue libre por ahora, cualquier cosa avisame". Si la fecha ya se ocupó, "mensaje": null.
+"""
+def json_de(texto):
+    m = re.search(r"\{.*\}", texto or "", re.S)
+    try: return json.loads(m.group(0)) if m else None
+    except Exception: return None
+_TIBIOS = None; _TIBIOS_CAMBIO = False
+def tibios():
+    global _TIBIOS
+    if _TIBIOS is None:
+        try: _TIBIOS = leer_cifrado("tibios.enc.json") or []
+        except Exception: _TIBIOS = []
+    return _TIBIOS
+def guardar_tibios():
+    if _TIBIOS is None or not _TIBIOS_CAMBIO: return
+    corte = (ahora - datetime.timedelta(days=21)).strftime("%Y-%m-%d")
+    cifrar_guardar("tibios.enc.json", [t for t in _TIBIOS if t.get("cuando", "") >= corte])
+
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
@@ -177,16 +207,55 @@ def main():
     if usados >= TOPE_DIA:
         print("tope diario alcanzado"); return
     pendientes_bot = {x.get("para_id") for x in leer("responder.json", []) if x.get("estado") == "pendiente"}
-    convs = get(f"{IG}/conversations", platform="instagram", limit=25,
+    convs = get(f"{IG}/conversations", platform="instagram", limit=50,
                 fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time,story}").get("data", [])
-    sistema = None; enviados = nadas = errores = 0; motivos = {}
+    sistema = None; enviados = nadas = errores = recordados = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:
         if (ahora - fecha(c["updated_time"])).total_seconds() > VENTANA_HS * 3600: salto("vieja"); continue
         msgs = (c.get("messages") or {}).get("data", [])   # el primero es el más nuevo
         if not msgs: continue
         ult = next((m for m in msgs if not ((m.get("from") or {}).get("username") == YO and es_auto(m.get("message") or ""))), None)
-        if not ult or (ult.get("from") or {}).get("username") == YO: salto("ya_respondida"); continue        # ya respondimos
+        if ult and (ult.get("from") or {}).get("username") == YO:
+            # ya respondimos: ¿toca recordatorio a un cliente tibio?
+            cli_msg = next((m for m in msgs if (m.get("from") or {}).get("username") != YO), None)
+            cliente = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
+            pid = cliente.get("id")
+            if (cli_msg and pid and recordados < RECORDAR_POR_VUELTA
+                    and RECORDAR_HS[0] * 3600 <= (ahora - fecha(cli_msg["created_time"])).total_seconds() <= RECORDAR_HS[1] * 3600
+                    and hashlib.sha256(pid.encode()).hexdigest()[:12] not in log.setdefault("recordados", {})
+                    and not any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE)):
+                clave_r = hashlib.sha256(pid.encode()).hexdigest()[:12]
+                log["recordados"][clave_r] = hoy; recordados += 1
+                charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
+                           "texto": m.get("message") or "[adjunto/audio/foto]",
+                           "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
+                try:
+                    sistema = sistema or instrucciones()
+                    j = json_de(claude(sistema + RECORDATORIO, charla)) or {}
+                except Exception as e:
+                    print("error recordatorio:", type(e).__name__); j = {}
+                if j.get("tibio"):
+                    global _TIBIOS_CAMBIO; _TIBIOS_CAMBIO = True
+                    usuario = cliente.get("username", "?")
+                    t = next((x for x in tibios() if x.get("usuario") == usuario), None)
+                    if not t:
+                        t = {"usuario": usuario}; tibios().append(t)
+                    t.update({"cuando": hoy, "quinta": j.get("quinta", "?"), "fecha": j.get("fecha", "?"), "personas": j.get("personas", "?"),
+                              "resumen": j.get("resumen", ""), "estado": "sin respuesta", "recordatorio": bool(j.get("mensaje"))})
+                    if j.get("mensaje"):
+                        try:
+                            post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": str(j["mensaje"])[:600]}))
+                            log.setdefault("recordatorios", {}); log["recordatorios"][hoy] = log["recordatorios"].get(hoy, 0) + 1
+                        except urllib.error.HTTPError as e:
+                            print("error recordatorio ig:", e.code); t["recordatorio"] = False
+                    salto("tibio")
+                else:
+                    salto("no_tibio")
+            else:
+                salto("ya_respondida")
+            continue
+        if not ult: salto("ya_respondida"); continue
         edad = (ahora - fecha(ult["created_time"])).total_seconds()
         if edad < ESPERA_SEG or edad > VENTANA_HS * 3600: salto("espera"); continue
         if any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE): salto("prospeccion"); continue   # prospección, no cliente
@@ -198,6 +267,9 @@ def main():
         charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
                    "texto": m.get("message") or ("[NOS MENCIONÓ EN SU HISTORIA]" if (m.get("story") or {}).get("mention") else "[adjunto/audio/foto]"),
                    "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
+        t_v = next((x for x in tibios() if x.get("usuario") == cliente.get("username")), None)
+        if t_v and t_v.get("estado") != "volvió":
+            t_v["estado"] = "volvió"; globals()["_TIBIOS_CAMBIO"] = True
         try:
             sistema = sistema or instrucciones()
             resp = claude(sistema, charla)
@@ -239,6 +311,9 @@ def main():
     if enviados or nadas or errores:
         log["actualizado"] = ahora.strftime("%Y-%m-%d %H:%M")
         json.dump(log, open(LOG, "w"), ensure_ascii=False, indent=1)
+    guardar_tibios()
+    corte_r = (ahora - datetime.timedelta(days=10)).strftime("%Y-%m-%d")
+    log["recordados"] = {k: v for k, v in log.get("recordados", {}).items() if v >= corte_r}
     log["motivos"] = motivos; log["revisado"] = ahora.strftime("%Y-%m-%d %H:%M")
     json.dump(log, open(LOG, "w"), ensure_ascii=False, indent=1)
     print(f"enviados {enviados} nada {nadas} errores {errores}", motivos)

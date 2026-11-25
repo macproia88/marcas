@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Clientes tibios · Quinta El Florido</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f4f7f2;color:#1f2a1c}
+header{background:#2E7D32;color:#fff;padding:18px 16px}h1{margin:0;font-size:20px}header p{margin:4px 0 0;font-size:13px;opacity:.9}
+main{padding:12px;max-width:760px;margin:auto}.card{background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 3px #0001}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}.u{font-weight:700}.est{font-size:12px;padding:3px 8px;border-radius:20px;background:#fff3e0;color:#e65100}
+.est.volvio{background:#e8f5e9;color:#2E7D32}.d{font-size:14px;margin:6px 0;color:#444}.btn{display:inline-block;margin-top:6px;padding:7px 12px;border-radius:8px;background:#2E7D32;color:#fff;text-decoration:none;font-size:14px}
+.vacio,.err{text-align:center;color:#666;padding:30px}footer{font-size:12px;color:#777;text-align:center;padding:20px}footer a{color:#2E7D32}
+</style></head><body>
+<header><h1>Clientes tibios</h1><p>Los que preguntaron y no siguieron. El bot les manda un solo recordatorio; después, si querés, les escribís vos.</p></header>
+<main id="m"><div class="vacio">Cargando…</div></main>
+<footer><div id="act"></div><p><a href="https://macproia88.github.io/marcas/quinta-ig/calendarios/">Calendarios</a> · <a href="https://macproia88.github.io/marcas/resultados/">Resultados</a> · <a href="https://www.instagram.com/quintaelflorido/">Instagram</a></p></footer>
+<script>
+const Q={dia:"Quinta de día",casa:"Casa"};
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+(async()=>{
+ const m=document.getElementById('m');
+ try{
+  const k=decodeURIComponent(location.hash.slice(1)); if(!k){m.innerHTML='<div class="err">Falta la clave en el link.</div>';return;}
+  const r=await fetch('https://raw.githubusercontent.com/macproia88/marcas/main/quinta-ig/bot/tibios.enc.json?t='+Date.now());
+  if(!r.ok){m.innerHTML='<div class="vacio">Todavía no hay clientes tibios.</div>';return;}
+  const e=await r.json();
+  const key=await crypto.subtle.importKey('raw',b64(k),'AES-GCM',false,['decrypt']);
+  const data=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.data))));
+  data.sort((a,b)=>(b.cuando||'').localeCompare(a.cuando||''));
+  const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  m.innerHTML=data.length?data.map(t=>`<div class="card"><div class="top"><span class="u">@${esc(t.usuario)}</span>
+   <span class="est ${t.estado==='volvió'?'volvio':''}">${t.estado==='volvió'?'Volvió a escribir':(t.recordatorio?'Recordatorio enviado':'Sin respuesta')}</span></div>
+   <div class="d">${esc(Q[t.quinta]||'Quinta ?')} · ${esc(t.fecha)} · ${esc(t.personas)} personas</div>
+   <div class="d">${esc(t.resumen)}</div><div class="d" style="font-size:12px;color:#888">Última vez: ${esc(t.cuando)}</div>
+   <a class="btn" href="https://ig.me/m/${encodeURIComponent(t.usuario)}">Escribirle</a></div>`).join(''):'<div class="vacio">Todavía no hay clientes tibios.</div>';
+  document.getElementById('act').textContent='Actualizado: '+new Date().toLocaleString('es-AR');
+ }catch(x){m.innerHTML='<div class="err">No se pudo abrir la lista (¿link incompleto?).</div>';}
+})();
+</script></body></html>

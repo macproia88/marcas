@@ -251,7 +251,9 @@ def main():
             foto.append({"usuario": cl.get("username"), "id": cl.get("id"), "charla": [
                 {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
                  "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:8])]})
-        cifrar_guardar("diag.enc.json", foto); os.remove(os.path.join(AQUI, "diag.trigger"))
+        kk = clave_de("diag"); iv = os.urandom(12)
+        log["diag_cifrado"] = {"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(
+            AESGCM(kk).encrypt(iv, json.dumps(foto, ensure_ascii=False).encode(), None)).decode(), "hora": ahora.strftime("%H:%M")}
     sistema = None; enviados = nadas = errores = recordados = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:

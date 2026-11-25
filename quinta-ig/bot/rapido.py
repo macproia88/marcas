@@ -255,6 +255,33 @@ def main():
             cli_msg = next((m for m in msgs if (m.get("from") or {}).get("username") != YO), None)
             cliente = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
             pid = cliente.get("id")
+            # Si le dijimos "lo consulto" y el precio se podía calcular, retomamos una sola vez con la respuesta.
+            nuestro = (ult.get("message") or "").lower()
+            clave_x = hashlib.sha256(f"{pid}|{ult.get('id')}".encode()).hexdigest()[:12] if pid else ""
+            if (pid and cli_msg and "consult" in nuestro and clave_x not in log.setdefault("rehechos", {})
+                    and (ahora - fecha(cli_msg["created_time"])).total_seconds() < 23 * 3600
+                    and not any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE)):
+                log["rehechos"][clave_x] = hoy
+                charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
+                           "texto": m.get("message") or "[adjunto/audio/foto]",
+                           "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
+                fm = fechas_mencionadas([x["texto"] for x in charla if x["de"] == "cliente"][-4:])
+                nota = ("Nuestro último mensaje dijo que lo consultábamos. Si el precio o el dato se puede sacar de la tabla y el calendario, "
+                        "escribí ahora el mensaje de seguimiento: arrancá natural (ej: 'Ya lo tengo:'), dá el total con el detalle en una línea, "
+                        "la capacidad si aplica y cerrá con 'Querés que te aparte esas fechas?'. Máximo 3 líneas, sin disculpas ni presión. "
+                        "Si de verdad falta un dato que no está, respondé NADA.")
+                if fm: nota += " FECHAS QUE MENCIONÓ EL CLIENTE (con día de la semana): " + ", ".join(fm)
+                charla.append({"de": "sistema", "texto": nota, "hora": ""})
+                try:
+                    sistema = sistema or instrucciones()
+                    resp = claude(sistema, charla)
+                    if resp and not resp.strip().upper().startswith("NADA"):
+                        post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": resp[:950]}))
+                        enviados += 1; salto("retomada")
+                    else: salto("retomada_nada")
+                except Exception as e:
+                    print("error retomar:", type(e).__name__); salto("retomada_error")
+                continue
             if (cli_msg and pid and recordados < RECORDAR_POR_VUELTA
                     and RECORDAR_HS[0] * 3600 <= (ahora - fecha(cli_msg["created_time"])).total_seconds() <= RECORDAR_HS[1] * 3600
                     and hashlib.sha256(pid.encode()).hexdigest()[:12] not in log.setdefault("recordados", {})

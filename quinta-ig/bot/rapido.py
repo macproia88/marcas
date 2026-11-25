@@ -71,6 +71,9 @@ Además:
 - Respondé SOLO el último mensaje del cliente, teniendo en cuenta toda la charla (no repitas preguntas que ya contestó).
 - LLEVAR A LA RESERVA (sin presionar): cada respuesta termina con un paso siguiente natural (preguntar fecha, cuántos son, o si quiere reservar). Cuando el cliente muestra interés ("me gusta", "me encanta", "quiero", "está buenísimo", "dale", "nos sirve", pregunta detalles de una fecha concreta) y la fecha está libre, cerrá con una pregunta directa y amable: "Querés que te la reserve para el sábado 12?" o "Te la dejo apartada?". Si dice que sí (o pregunta cómo reservar, cómo se paga, si hay que señar o el alias): pasale la seña del 50% (calculá el monto con el precio de esa fecha y las personas) por transferencia al alias que figura en PRECIOS > sena (a nombre del titular), aclarale que el resto se paga al ingresar y que cuando transfiera mande el comprobante al WhatsApp wa.me/5491138777015 para que Juan le confirme. Si todavía no dijo fecha o cuántos son, preguntalo antes de pasar el monto.
 - CIERRE DEL CLIENTE: si el último mensaje del cliente cierra la charla sin preguntar nada ("lo analizo y te aviso", "lo hablo con la gente", "te aviso", "gracias", "dale", "ok", "me imagino que sí", un emoji o un like), NO respondas: devolvé solo NADA. No mandes despedidas ni "quedo atento". Si además pregunta algo, respondé solo la pregunta, corto.
+- ESTADÍAS DE VARIOS DÍAS O CONSULTAS COMBINADAS: calculá vos el total y dalo en el mismo mensaje. Sumá el precio de cada día según el día de la semana y la tabla de precios de esa fecha (casa: se cobra cada día; si incluye sábado y domingo juntos, usá el precio de finde completo si existe) + adicional por persona si de día son más de 15. Mostrá el total y, si son varios días, el detalle en una línea corta ("lun a jue 4 x 180 mil + vie 200 mil + sáb y dom 450 mil = 1.370.000"). NUNCA digas "lo consulto con Juan" para un precio que se puede calcular con la tabla. "Lo consulto" solo si el dato de verdad no está.
+- Capacidad casa: duermen cómodas 5 (si son 5 o menos para dormir, decilo como algo bueno y seguí). Después del precio, cerrá: "Querés que te aparte esas fechas?".
+- MENSAJES CORTOS: máximo 3 líneas. No repitas lo que dijo el cliente ni expliques de más.
 - La pregunta de cierre es sutil: "Querés que te aparte la fecha?" o "Querés reservarla?". Nunca uses frases que enfríen ("tomátelo con calma", "sin apuro") ni que apuren ("se llenan rápido", "quedan pocas fechas").
 - No ofrezcas el alias en frío (si no mostró interés ni preguntó). Una sola pregunta de cierre por mensaje; si dice que lo piensa o que no, respetalo y dejá la puerta abierta ("Dale, cualquier cosa me escribís").
 - Nunca digas que la reserva está confirmada: la confirma Juan por WhatsApp cuando ve la transferencia.
@@ -193,9 +196,31 @@ def guardar_tibios():
     corte = (ahora - datetime.timedelta(days=21)).strftime("%Y-%m-%d")
     cifrar_guardar("tibios.enc.json", [t for t in _TIBIOS if t.get("cuando", "") >= corte])
 
+def fechas_mencionadas(textos):
+    """Pasa a fechas con día de la semana lo que el cliente escribió (ej "1/2 al 7/2"), para que el bot calcule bien."""
+    hoy = ahora.date(); out = []
+    def a_fecha(d, m):
+        try:
+            f = datetime.date(hoy.year, m, d)
+            return f if f >= hoy - datetime.timedelta(days=1) else datetime.date(hoy.year + 1, m, d)
+        except ValueError: return None
+    for t in textos:
+        for a, b in re.findall(r"(\d{1,2}\s*/\s*\d{1,2})(?:\s*(?:al|a|hasta el|-)\s*(\d{1,2}\s*/\s*\d{1,2}))?", t or ""):
+            d1, m1 = [int(x) for x in a.replace(" ", "").split("/")]
+            f1 = a_fecha(d1, m1)
+            if not f1: continue
+            f2 = None
+            if b:
+                d2, m2 = [int(x) for x in b.replace(" ", "").split("/")]; f2 = a_fecha(d2, m2)
+            dias = [f1] if not f2 or not (0 <= (f2 - f1).days <= 31) else [f1 + datetime.timedelta(days=i) for i in range((f2 - f1).days + 1)]
+            for f in dias:
+                txt = f"{f.strftime('%d/%m/%Y')} {DIAS[f.weekday()]}"
+                if txt not in out: out.append(txt)
+    return out[:40]
+
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
-        f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else 'CLIENTE'}: {m['texto']}" for m in charla)
+        f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
     body = json.dumps({"model": MODELO, "max_tokens": 3000, "system": sistema,
                        "messages": [{"role": "user", "content": texto}]}).encode()
     r = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST", headers={
@@ -276,6 +301,9 @@ def main():
         charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
                    "texto": m.get("message") or ("[NOS MENCIONÓ EN SU HISTORIA]" if (m.get("story") or {}).get("mention") else "[adjunto/audio/foto]"),
                    "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
+        fm = fechas_mencionadas([c["texto"] for c in charla if c["de"] == "cliente"][-4:])
+        if fm:
+            charla = charla + [{"de": "sistema", "texto": "FECHAS QUE MENCIONÓ EL CLIENTE (con día de la semana, usalas para calcular): " + ", ".join(fm), "hora": ""}]
         t_v = next((x for x in tibios() if x.get("usuario") == cliente.get("username")), None)
         if t_v and t_v.get("estado") != "volvió":
             t_v["estado"] = "volvió"; globals()["_TIBIOS_CAMBIO"] = True

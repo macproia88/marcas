@@ -1,0 +1,17 @@
+name: IG - reiniciar respondedor rápido
+on:
+  workflow_dispatch:
+  push:
+    paths: ['quinta-ig/bot/rapido.reiniciar']
+permissions:
+  actions: write
+jobs:
+  reiniciar:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in $(gh run list -R ${{ github.repository }} -w ig-rapido.yml -s in_progress --json databaseId -q '.[].databaseId'); do gh run cancel $id -R ${{ github.repository }}; done
+          sleep 20
+          gh workflow run ig-rapido.yml -R ${{ github.repository }} --ref main

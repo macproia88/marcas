@@ -254,6 +254,7 @@ def main():
         kk = clave_de("diag"); iv = os.urandom(12)
         log["diag_cifrado"] = {"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(
             AESGCM(kk).encrypt(iv, json.dumps(foto, ensure_ascii=False).encode(), None)).decode(), "hora": ahora.strftime("%H:%M")}
+        os.remove(os.path.join(AQUI, "diag.trigger"))
     sistema = None; enviados = nadas = errores = recordados = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:

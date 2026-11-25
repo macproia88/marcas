@@ -36,7 +36,7 @@ jobs:
             # Solo guardar si cambió algo real (no solo la hora de revisión): cada push cancela el despliegue de la web
             if git diff --cached -U0 | grep -E '^[-+][^-+]' | grep -vqE '"(revisado|actualizado)"|^[-+] *rc='; then
               git commit -qm "Rápido: DMs [skip ci]"
-              for i in 1 2 3; do git pull --rebase -X theirs -q && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
+              git reset -q --hard HEAD; for i in 1 2 3; do git pull --rebase -X theirs -q && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
             fi
             sleep 60
           done

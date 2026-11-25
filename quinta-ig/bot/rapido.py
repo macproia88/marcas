@@ -254,8 +254,7 @@ def main():
         kk = clave_de("diag"); iv = os.urandom(12)
         log["diag_cifrado"] = {"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(
             AESGCM(kk).encrypt(iv, json.dumps(foto, ensure_ascii=False).encode(), None)).decode(), "hora": ahora.strftime("%H:%M")}
-        os.remove(os.path.join(AQUI, "diag.trigger"))
-    sistema = None; enviados = nadas = errores = recordados = 0; motivos = {}
+    sistema = None; enviados = nadas = errores = recordados = retomadas = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:
         if (ahora - fecha(c["updated_time"])).total_seconds() > VENTANA_HS * 3600: salto("vieja"); continue
@@ -270,10 +269,12 @@ def main():
             # Si le dijimos "lo consulto" y el precio se podía calcular, retomamos una sola vez con la respuesta.
             nuestro = (ult.get("message") or "").lower()
             clave_x = hashlib.sha256(f"{pid}|{ult.get('id')}".encode()).hexdigest()[:12] if pid else ""
-            if (pid and cli_msg and "consult" in nuestro and clave_x not in log.setdefault("rehechos", {})
+            if (pid and cli_msg and retomadas < 2 and any(f in nuestro for f in ("lo consulto", "lo consultamos", "consultarlo", "lo veo con juan", "lo chequeo con juan"))
+                    and clave_x not in log.setdefault("rehechos", {})
+                    and (ahora - fecha(ult["created_time"])).total_seconds() < 6 * 3600
                     and (ahora - fecha(cli_msg["created_time"])).total_seconds() < 23 * 3600
                     and not any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE)):
-                log["rehechos"][clave_x] = hoy
+                log["rehechos"][clave_x] = hoy; retomadas += 1
                 charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",
                            "texto": m.get("message") or "[adjunto/audio/foto]",
                            "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]

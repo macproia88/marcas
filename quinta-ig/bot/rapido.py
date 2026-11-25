@@ -243,6 +243,15 @@ def main():
     pendientes_bot = {x.get("para_id") for x in leer("responder.json", []) if x.get("estado") == "pendiente"}
     convs = get(f"{IG}/conversations", platform="instagram", limit=50,
                 fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time,story}").get("data", [])
+    if os.path.exists(os.path.join(AQUI, "diag.trigger")):
+        # Foto cifrada de las últimas charlas para revisar a mano (repo público: va cifrado con la clave de precios).
+        foto = []
+        for c in convs[:12]:
+            cl = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
+            foto.append({"usuario": cl.get("username"), "id": cl.get("id"), "charla": [
+                {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
+                 "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:8])]})
+        cifrar_guardar("diag.enc.json", foto); os.remove(os.path.join(AQUI, "diag.trigger"))
     sistema = None; enviados = nadas = errores = recordados = 0; motivos = {}
     def salto(m): motivos[m] = motivos.get(m, 0) + 1
     for c in convs:

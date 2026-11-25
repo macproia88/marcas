@@ -1,4 +1,14 @@
 [
- {"tipo":"comentario","comment_id":"18122260367071952","texto":"¡Hola! 🌙 Horario nocturno no tenemos: las quintas son de 10 a 19 h. Si quieren quedarse a la noche, tenemos la casa, que se alquila con noche (entran a las 10 h y se van al otro día a las 19 h). Escribinos por DM con la fecha y cuántos son 😊 ¡Y seguinos en @quintaelflorido!","estado":"pendiente"},
- {"tipo":"comentario","comment_id":"17898168660614975","texto":"¡Gracias! 💚","estado":"pendiente"}
+ {
+  "tipo": "comentario",
+  "comment_id": "17919720606472184",
+  "texto": "¡Hola! 👋 Gracias por escribirnos 🌳 ¿Qué fecha tenés en mente y cuántos serían? Así te pasamos la info. ¡Seguinos en @quintaelflorido! 💚",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18292538815291547",
+  "texto": "¡Hola! 😊 Para Navidad (24 al 27/12) y Año Nuevo (31/12 al 3/1) ya estamos alquilados en las dos quintas. En principio tenemos libres el 23 y del 28 al 30 de diciembre 🌳 ¿Te sirve alguna de esas fechas? ¿Cuántos serían?",
+  "estado": "pendiente"
+ }
 ]

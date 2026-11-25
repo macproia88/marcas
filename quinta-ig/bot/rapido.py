@@ -395,4 +395,13 @@ def main():
     print(f"enviados {enviados} nada {nadas} errores {errores}", motivos)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        import traceback
+        tb = traceback.extract_tb(e.__traceback__)[-1]
+        try:
+            lg = leer("rapido.log.json", {}); lg["crash"] = f"{ahora.strftime('%d/%m %H:%M')} {type(e).__name__} línea {tb.lineno}: {tb.line}"[:300]
+            json.dump(lg, open(LOG, "w"), ensure_ascii=False, indent=1)
+        except Exception: pass
+        raise

@@ -113,17 +113,23 @@ DIAG = {}
 BASE_FOTOS = "https://macproia88.github.io/marcas/quinta-ig/destacadas/"
 FOTOS = {"dia": ["dia-11.jpg", "dia-12.jpg", "dia-8.jpg", "dia-6.jpg"],     # quincho+pileta, parque, juegos, pileta cerca
          "casa": ["casa-1.jpg", "casa-4.jpg", "casa-3.jpg", "casa-7.jpg"]}
-def cifrar_guardar(nombre, datos):
+def clave_de(nombre):
+    """La lista de tibios usa una clave derivada: el link para verla no revela la clave de precios."""
     k = os.environ.get("PRECIOS_KEY", "").strip()
-    if not k: return
-    u = base64.b64decode; iv = os.urandom(12)
-    ct = AESGCM(u(k)).encrypt(iv, json.dumps(datos, ensure_ascii=False).encode(), None)
+    if not k: return None
+    k = base64.b64decode(k)
+    return hashlib.sha256(k + b"tibios").digest() if nombre.startswith("tibios") else k
+def cifrar_guardar(nombre, datos):
+    kk = clave_de(nombre)
+    if not kk: return
+    iv = os.urandom(12)
+    ct = AESGCM(kk).encrypt(iv, json.dumps(datos, ensure_ascii=False).encode(), None)
     json.dump({"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(ct).decode()}, open(os.path.join(AQUI, nombre), "w"))
 def leer_cifrado(nombre):
-    k = os.environ.get("PRECIOS_KEY", "").strip(); f = os.path.join(AQUI, nombre)
-    if not k or not os.path.exists(f): return []
+    kk = clave_de(nombre); f = os.path.join(AQUI, nombre)
+    if not kk or not os.path.exists(f): return []
     e = json.load(open(f)); u = base64.b64decode
-    return json.loads(AESGCM(u(k)).decrypt(u(e["iv"]), u(e["data"]), None))
+    return json.loads(AESGCM(kk).decrypt(u(e["iv"]), u(e["data"]), None))
 def aviso_whatsapp(texto):
     """Aviso a Juan por WhatsApp con CallMeBot (secreto CALLMEBOT_KEY). Si no está, no hace nada."""
     k = os.environ.get("CALLMEBOT_KEY", "").strip()

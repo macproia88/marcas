@@ -146,10 +146,10 @@ def reel_adivina(salida="1123-reel-adivina-precio.mp4"):
                     "-movflags", "+faststart", out], check=True)
     # cuadros sueltos para revisar
     os.makedirs(os.path.join(pv.BASE, "img", "viral"), exist_ok=True)
-    cuadro_tapa().save(os.path.join(pv.BASE, "img", "viral", "adivina-tapa.jpg"), quality=90)
-    cuadro_pregunta(ADIVINA[3], 4, 3).save(os.path.join(pv.BASE, "img", "viral", "adivina-pregunta.jpg"), quality=90)
-    cuadro_respuesta(ADIVINA[3], 4).save(os.path.join(pv.BASE, "img", "viral", "adivina-respuesta.jpg"), quality=90)
-    cuadro_cierre().save(os.path.join(pv.BASE, "img", "viral", "adivina-cierre.jpg"), quality=90)
+    cuadro_tapa().save(os.path.join(pv.BASE, "img", "viral", salida[:4] + "-adivina-tapa.jpg"), quality=90)
+    cuadro_pregunta(ADIVINA[3], 4, 3).save(os.path.join(pv.BASE, "img", "viral", salida[:4] + "-adivina-pregunta.jpg"), quality=90)
+    cuadro_respuesta(ADIVINA[3], 4).save(os.path.join(pv.BASE, "img", "viral", salida[:4] + "-adivina-respuesta.jpg"), quality=90)
+    cuadro_cierre().save(os.path.join(pv.BASE, "img", "viral", salida[:4] + "-adivina-cierre.jpg"), quality=90)
     return out
 
 
@@ -195,6 +195,42 @@ def carrusel_quincho():
         p = os.path.join(out, f"quincho-{k}.jpg"); pv.sello(pv.firma(L)).save(p, quality=93); archivos.append(p)
     return archivos
 
+
+ADIVINA2 = [
+    ("18ac856e299b", "Mesa ratona Asia", "Pino macizo · 1,20 x 0,70", "$76.900", "$119.000"),
+    ("390c2e3a3fd8", "Bahiut de pino 1,20 m", "Cajones y puertas", "$99.900", "$139.500"),
+    ("0ebd6924f5f7", "Sillón nórdico matero", "Madera de paraíso", "$150.000", "$232.092"),
+    ("a877114c9ffa", "Ropero 2 m + alzada", "Pino macizo · placard vestidor", "$339.900", "$489.000"),
+]
+
+
+def historia_producto(foto, nombre, detalle, show, ml, arriba, abajo, salida):
+    L = pv.fondo_estudio(1080, 1920, piso=0.999).convert("RGB"); d = ImageDraw.Draw(L)
+    placa(arriba, 150, d, f("Inter-Bold.otf", 44), TERRA)
+    centrado(d, 295, nombre, f("Inter-SemiBold.otf", 62), TX)
+    centrado(d, 380, detalle, f("Inter-Regular.otf", 38), MU)
+    foto_tarjeta(L, foto, 450, 600)
+    yb = 1090
+    fm = f("Inter-Medium.otf", 44); t = "En Mercado Libre " + ml
+    w = d.textlength(t, font=fm); x0 = 540 - w / 2
+    d.text((x0, yb), t, font=fm, fill=MU)
+    xa = x0 + d.textlength("En Mercado Libre ", font=fm)
+    d.line((xa, yb + 28, x0 + w, yb + 28), fill=(190, 40, 40), width=6)
+    centrado(d, yb + 66, "En el showroom", f("Inter-SemiBold.otf", 44), VERDE)
+    centrado(d, yb + 116, show, f("InterDisplay-Black.otf", 130), TERRA)
+    placa(abajo, yb + 270, d, f("Inter-Bold.otf", 44), VERDE)
+    out = os.path.join(pv.BASE, "img", "viral", salida)
+    pv.sello(pv.firma(L), k=1.45).save(out, quality=92); return out
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "semana1126":
+    print(historia_producto("273c4058a4da", "Despensero porta microondas", "Pino macizo · 60 cm", "$95.900", "$159.900",
+                            "STOCK DISPONIBLE", "Efectivo o transferencia", "1126-historia-despensero.jpg"))
+    print(historia_producto("94a98b272182", "Cómoda chifonier 6 cajones", "Pino macizo", "$85.000", "$119.000",
+                            "HOY SÁBADO ABRIMOS DE 11 A 16", "Vení a verla al showroom", "1128-historia-sabado.jpg"))
+    ADIVINA[:] = ADIVINA2
+    print(reel_adivina("1129-reel-adivina-precio-2.mp4"))
+    sys.exit()
 
 if __name__ == "__main__":
     print(reel_adivina())

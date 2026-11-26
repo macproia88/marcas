@@ -26,7 +26,7 @@
    "errores": 0
   },
   "2026-11-26": {
-   "enviados": 170,
+   "enviados": 171,
    "nada": 38,
    "errores": 0
   }
@@ -277,17 +277,17 @@
   "ab654696771b": "2c9ae7c86a8e3f1a",
   "9b9b5d0540c1": "ec7ebc3ec6f22322",
   "c00c7b7f2b79": "372633a5281d6bc8",
-  "ce8ada22155f": "ab77b15efc3334d3"
+  "ce8ada22155f": "ab77b15efc3334d3",
+  "f92bb0b83489": "7e811b570d61f004"
  },
- "actualizado": "2026-11-26 19:33",
+ "actualizado": "2026-11-26 19:34",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key",
  "motivos": {
-  "espera": 1,
-  "ya_respondida": 36,
+  "ya_respondida": 37,
   "ya_procesada": 11,
   "bot3h": 1
  },
- "revisado": "2026-11-26 19:33",
+ "revisado": "2026-11-26 19:34",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -416,7 +416,8 @@
   "18082049246416406": "2026-11-26",
   "18487086223112757": "2026-11-26",
   "17942101995121754": "2026-11-26",
-  "18135417329495756": "2026-11-26"
+  "18135417329495756": "2026-11-26",
+  "18128387071934249": "2026-11-26"
  },
  "crash": "26/11 15:05 TimeoutError línea 1138: return self._sslobj.read(len, buffer)"
 }

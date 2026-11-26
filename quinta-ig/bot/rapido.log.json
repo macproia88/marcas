@@ -273,10 +273,11 @@
  "actualizado": "2026-11-26 17:12",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key",
  "motivos": {
-  "ya_respondida": 39,
+  "espera": 1,
+  "ya_respondida": 38,
   "ya_procesada": 11
  },
- "revisado": "2026-11-26 17:13",
+ "revisado": "2026-11-26 17:14",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -397,7 +398,8 @@
   "18252814048313033": "2026-11-26",
   "18110012624316220": "2026-11-26",
   "18103056152415000": "2026-11-26",
-  "18078369749755888": "2026-11-26"
+  "18078369749755888": "2026-11-26",
+  "17999212146071506": "2026-11-26"
  },
  "crash": "26/11 15:05 TimeoutError línea 1138: return self._sslobj.read(len, buffer)"
 }

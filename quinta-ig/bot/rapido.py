@@ -30,7 +30,10 @@ AUTO = ("¡Hola! 👋 Gracias por escribir", "¡Hola! 🌙", "¡Hola! 🎄 Graci
 
 # Desde 21/11 las automáticas de Meta que quedan (preguntas frecuentes y respuesta a comentarios) contestan bien,
 # así que cuentan como respuesta. Solo se ignoran los mensajes sin texto (fotos, vista previa de links).
-def es_auto(t): return not t.strip()
+AUTO_META = ("te respondemos enseguida", "Gracias por comentar", "Gracias por escribirnos")
+def es_auto(t):
+    """Mensajes vacíos o respuestas automáticas de Meta: no cuentan como respuesta nuestra."""
+    return not t.strip() or any(a.lower() in t.lower() for a in AUTO_META)
 def fecha(s): return datetime.datetime.strptime(s[:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=datetime.timezone.utc).astimezone(AR)
 def leer(nombre, defecto):
     f = os.path.join(AQUI, nombre)

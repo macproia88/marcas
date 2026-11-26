@@ -13,7 +13,7 @@ IG = "17841454960836233"; YO = "quintaelflorido"; API = "https://graph.facebook.
 T = os.environ.get("IG_TOKEN", "").strip().strip('"')
 KEY = os.environ.get("ANTHROPIC_API_KEY", "").strip()
 MODELO = "claude-haiku-5-5"
-TOPE_DIA = 150          # máximo de respuestas por día (por si algo se descontrola)
+TOPE_DIA = 400  # subido el 26/11: con los posteos virales se llegó a 150 a las 17 h
 ESPERA_SEG = 45         # espera a que el cliente termine de escribir
 VENTANA_HS = 23         # Instagram solo deja responder dentro de las 24 h del último mensaje del cliente
 RECORDAR_HS = (20, 23.3) # recordatorio único a los que quedaron cerca de reservar (dentro de la ventana de 24 h)

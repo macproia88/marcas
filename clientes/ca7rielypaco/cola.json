@@ -745,5 +745,48 @@
   "estado": "pendiente",
   "aprobado": "2026-11-20 19:21 (clienta vía Juan: «si estamos ok»)",
   "nota": "Paleta noche/neón (Miami)."
+ },
+ {
+  "id": "1126-carrusel-historia",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-26 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1126-historia-1.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-2.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-3.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-4.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-5.jpg"
+  ],
+  "texto": "Antes de los Grammy, antes de Coachella, antes de todo: dos pibes del mismo colegio. 🇦🇷\n\nSe conocieron a los 6 años, tuvieron una banda de rock (Astor) y en 2018 arrancaron como dúo. Lo que vino después ya lo saben: Tiny Desk, Coachella, Fallon, un Grammy y ocho Latin Grammy.\n\nDeslizá y contanos: ¿desde cuándo los seguís? 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#CA7RIELyPacoAmoroso #FreeSpirits #FanClubArgentina",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Replica lo que mejor rindió: carrusel de historia/efeméride y flyer de noticia."
+ },
+ {
+  "id": "1128-carrusel-eras",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-28 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1128-eras-1.jpg",
+   "clientes/ca7rielypaco/img/1128-eras-2.jpg",
+   "clientes/ca7rielypaco/img/1128-eras-3.jpg",
+   "clientes/ca7rielypaco/img/1128-eras-4.jpg"
+  ],
+  "texto": "Tres eras, un solo dúo. 💿\n\nBAÑO MARÍA, PAPOTA o FREE SPIRITS: ¿cuál es la tuya? Dejala en los comentarios y contanos por qué. 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#CA7RIELyPacoAmoroso #FreeSpirits #FanClubArgentina",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Replica lo que mejor rindió: carrusel de historia/efeméride y flyer de noticia."
+ },
+ {
+  "id": "1201-post-bicampeonato",
+  "tipo": "POST",
+  "fecha": "2026-12-01 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1201-bicampeonato.jpg"
+  ],
+  "texto": "Van por el bicampeonato. 🏆\n\nCA7RIEL & Paco Amoroso ganaron el Grammy a Mejor Álbum de Rock o Alternativo Latino con PAPOTA, y este año vuelven a competir en la misma categoría con FREE SPIRITS.\n\nLa ceremonia es el 7 de febrero de 2027. ¿Repiten? 👀\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#CA7RIELyPacoAmoroso #FreeSpirits #FanClubArgentina",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Replica lo que mejor rindió: carrusel de historia/efeméride y flyer de noticia."
  }
 ]

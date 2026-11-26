@@ -1,2 +1,2 @@
-enviados 1 nada 0 errores 0 {}
-rc=0 20:16
+tope diario alcanzado
+rc=0 20:17

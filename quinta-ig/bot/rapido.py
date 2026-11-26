@@ -75,6 +75,7 @@ Además:
 - LLEVAR A LA RESERVA (sin presionar): cada respuesta termina con un paso siguiente natural (preguntar fecha, cuántos son, o si quiere reservar). Cuando el cliente muestra interés ("me gusta", "me encanta", "quiero", "está buenísimo", "dale", "nos sirve", pregunta detalles de una fecha concreta) y la fecha está libre, cerrá con una pregunta directa y amable: "Querés que te la reserve para el sábado 12?" o "Te la dejo apartada?". Si dice que sí (o pregunta cómo reservar, cómo se paga, si hay que señar o el alias): pasale la seña (50%; si la estadía tiene días en febrero, 60% y el 40% al ingresar; calculá el monto con el precio de esa fecha y las personas) por transferencia al alias que figura en PRECIOS > sena (a nombre del titular), aclarale que el resto se paga al ingresar y que cuando transfiera mande el comprobante al WhatsApp wa.me/5491138777015 para que Juan le confirme. Si todavía no dijo fecha o cuántos son, preguntalo antes de pasar el monto.
 - CIERRE DEL CLIENTE: si el último mensaje del cliente cierra la charla sin preguntar nada ("lo analizo y te aviso", "lo hablo con la gente", "te aviso", "gracias", "dale", "ok", "me imagino que sí", un emoji o un like), NO respondas: devolvé solo NADA. No mandes despedidas ni "quedo atento". Si además pregunta algo, respondé solo la pregunta, corto.
 - ESTADÍAS DE VARIOS DÍAS O CONSULTAS COMBINADAS: calculá vos el total y dalo en el mismo mensaje. Sumá el precio de cada día según el día de la semana y la tabla de precios de esa fecha (casa: se cobra cada día; si incluye sábado y domingo juntos, usá el precio de finde completo si existe) + adicional por persona si de día son más de 15. Mostrá el total y, si son varios días, el detalle en una línea corta ("lun a jue 4 x 180 mil + vie 200 mil + sáb y dom 450 mil = 1.370.000"). NUNCA digas "lo consulto con Juan" para un precio que se puede calcular con la tabla. "Lo consulto" solo si el dato de verdad no está.
+- FINDE LARGO: si piden "el finde del X" o "finde largo", ofrecé TODOS los días de ese finde (los que te paso en FECHAS) que estén libres, nunca uno solo. Para la casa con noches: el total es la suma de cada día. Dales opciones claras (ej: "sáb 5 a lun 7: 3 días X; sáb 5 a mar 8: 4 días Y").
 - Capacidad casa: duermen cómodas 5 (si son 5 o menos para dormir, decilo como algo bueno y seguí). Después del precio, cerrá: "Querés que te aparte esas fechas?".
 - PRECIO FIJO: el precio es por el día completo (incluye hasta 15 personas) y no cambia por ser pocos. NUNCA bajes el precio ni digas "te la dejo en" ni inventes descuentos; si son pocos, decilo como algo bueno ("van re cómodos"). Si son más de 15, sumá el adicional por persona.
 - MENSAJES CORTOS: máximo 3 líneas. No repitas lo que dijo el cliente ni expliques de más.
@@ -208,6 +209,10 @@ def precio_de(f):
         if _PPD is None: _PPD = (precios() or {}).get("precio_por_dia") or {}
         if not _PPD: return ""
         wd = f.weekday()
+        fer = set(leer("quinta.json", {}).get("feriados", {}).get("fechas", []))
+        es_fer = f.isoformat() in fer
+        finde_largo = wd == 4 and ((f + datetime.timedelta(days=3)).isoformat() in fer)
+        if es_fer: wd = 5  # feriado = precio de finde
         if f.year >= 2027:
             t = _PPD["desde_enero_2027"]
             dia = t["dia"]["lunes a jueves"] if wd <= 3 else t["dia"]["viernes, sábado, domingo y feriado"]
@@ -215,8 +220,8 @@ def precio_de(f):
                     else t["casa"]["sábado o domingo (un solo día)"] + " (sáb+dom juntos con noche: " + t["casa"]["sábado + domingo juntos con noche"] + ")")
         else:
             dia = _PPD["dia"]["lunes a jueves"] if wd <= 3 else _PPD["dia"]["viernes, sábado, domingo y feriado"]
-            casa = _PPD["casa"]["lunes a viernes"] if wd <= 4 else _PPD["casa"]["sábado, domingo, feriado y viernes de finde largo"]
-        return f" [de día {dia} / casa {casa}]"
+            casa = _PPD["casa"]["lunes a viernes"] if wd <= 4 and not finde_largo else _PPD["casa"]["sábado, domingo, feriado y viernes de finde largo"]
+        return f" [{'FERIADO, ' if es_fer else ''}de día {dia} / casa {casa}]"
     except Exception:
         return ""
 
@@ -244,6 +249,15 @@ def fechas_mencionadas(textos):
             if b:
                 d2, m2 = [int(x) for x in b.replace(" ", "").split("/")]; f2 = a_fecha(d2, m2)
             dias = [f1] if not f2 or not (0 <= (f2 - f1).days <= 31) else [f1 + datetime.timedelta(days=i) for i in range((f2 - f1).days + 1)]
+            if not f2 and re.search(r"\bfinde|fin de semana|feriado", t):
+                # "el finde del 8": todo el finde largo (sábado, domingo y feriados pegados)
+                fer = set(leer("quinta.json", {}).get("feriados", {}).get("fechas", []))
+                libre = lambda x: x.weekday() >= 5 or x.isoformat() in fer
+                if libre(f1) or f1.weekday() == 4:
+                    a = b2 = f1
+                    while libre(a - datetime.timedelta(days=1)) or (a - datetime.timedelta(days=1)).weekday() == 4 and libre(a): a -= datetime.timedelta(days=1)
+                    while libre(b2 + datetime.timedelta(days=1)): b2 += datetime.timedelta(days=1)
+                    if (b2 - a).days <= 6: dias = [a + datetime.timedelta(days=i) for i in range((b2 - a).days + 1)]
             for f in dias:
                 txt = f"{f.strftime('%d/%m/%Y')} {DIAS[f.weekday()]}" + precio_de(f)
                 if txt not in out: out.append(txt)

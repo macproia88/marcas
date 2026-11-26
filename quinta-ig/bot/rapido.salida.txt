@@ -1,2 +1,2 @@
 enviados 0 nada 0 errores 0 {'ya_respondida': 33, 'ya_procesada': 17}
-rc=0 02:42
+rc=0 02:54

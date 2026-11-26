@@ -1,2 +1,2 @@
-tope diario alcanzado
-rc=0 20:17
+enviados 9 nada 1 errores 0 {'bot3h': 1, 'ya_respondida': 31, 'ya_procesada': 8}
+rc=0 21:39

@@ -1523,5 +1523,25 @@
   "texto": "",
   "fecha": "2026-11-25 20:50",
   "estado": "pendiente"
+ },
+ {
+  "id": "post-lunes30-calor",
+  "tipo": "IMAGE",
+  "media": [
+   "https://raw.githubusercontent.com/macproia88/marcas/main/quinta-ig/h-2026-11-26-lunes30-calor.jpg"
+  ],
+  "fecha": "2026-11-26 11:47",
+  "estado": "pendiente",
+  "texto": "🔥 LUNES 30 · 37° en General Rodríguez\n\n¿Y si lo pasás en la pileta? Quinta de día de 10 a 19, solo para tu grupo, desde $150.000.\n\n⏰ Reservá hoy, el lunes se va rápido\n💬 Comentá INFO y te pasamos todo por privado\n📤 Mandáselo a quien se muere de calor\n📍 A 600 m de la autopista\n\n#quintaconpileta #calor #verano #generalrodriguez #zonaoeste #pileta #alquilerdequintas #oladecalor"
+ },
+ {
+  "id": "h-lunes30-calor",
+  "tipo": "STORY",
+  "media": [
+   "https://raw.githubusercontent.com/macproia88/marcas/main/quinta-ig/h-2026-11-26-lunes30-calor.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-26 11:49",
+  "estado": "pendiente"
  }
 ]

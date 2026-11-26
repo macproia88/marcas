@@ -26,7 +26,7 @@
    "errores": 0
   },
   "2026-11-26": {
-   "enviados": 145,
+   "enviados": 146,
    "nada": 33,
    "errores": 0
   }
@@ -267,16 +267,17 @@
   "e25c84f39e14": "ed084f332a8a6b63",
   "b2c4373a2129": "5f8c00976f737556",
   "d9fea27e7a31": "898ba6d9a6d2b6f5",
-  "fcab769d86de": "70a2109e0b3cb5ce"
+  "fcab769d86de": "70a2109e0b3cb5ce",
+  "0934951a9120": "2757c115419a5417"
  },
- "actualizado": "2026-11-26 16:54",
+ "actualizado": "2026-11-26 16:56",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key",
  "motivos": {
   "espera": 1,
-  "ya_respondida": 39,
+  "ya_respondida": 38,
   "ya_procesada": 10
  },
- "revisado": "2026-11-26 16:55",
+ "revisado": "2026-11-26 16:56",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

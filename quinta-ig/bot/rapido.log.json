@@ -218,10 +218,10 @@
  "actualizado": "2026-11-26 09:58",
  "ultimo_error": "claude 401 authentication_error invalid x-api-key",
  "motivos": {
-  "ya_respondida": 36,
-  "ya_procesada": 14
+  "ya_respondida": 37,
+  "ya_procesada": 13
  },
- "revisado": "2026-11-26 09:59",
+ "revisado": "2026-11-26 10:04",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -293,7 +293,8 @@
   "17893610838620741": "2026-11-26",
   "18045400382838228": "2026-11-26",
   "17928634956432671": "2026-11-26",
-  "18120817574042942": "2026-11-26"
+  "18120817574042942": "2026-11-26",
+  "18345750862262489": "2026-11-26"
  },
  "crash": "26/11 07:00 HTTPError línea 611: raise HTTPError(req.full_url, code, msg, hdrs, fp)"
 }

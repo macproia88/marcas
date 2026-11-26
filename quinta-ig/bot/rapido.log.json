@@ -274,5 +274,5 @@
   "18154957762474813": "2026-11-26",
   "18475159246138267": "2026-11-26"
  },
- "crash": "26/11 05:29 HTTPError línea 611: raise HTTPError(req.full_url, code, msg, hdrs, fp)"
+ "crash": "26/11 07:00 HTTPError línea 611: raise HTTPError(req.full_url, code, msg, hdrs, fp)"
 }

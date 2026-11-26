@@ -377,5 +377,5 @@
   "17999757636108471": "2026-11-26",
   "18134406037684345": "2026-11-26"
  },
- "crash": "26/11 07:00 HTTPError línea 611: raise HTTPError(req.full_url, code, msg, hdrs, fp)"
+ "crash": "26/11 15:05 TimeoutError línea 1138: return self._sslobj.read(len, buffer)"
 }

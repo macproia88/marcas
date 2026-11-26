@@ -251,7 +251,7 @@ def fechas_mencionadas(textos):
 
 COMENTARIO = """
 
-AHORA NO ES UN DM: es un COMENTARIO público en una publicación nuestra. Respondé UNA línea corta (máximo 15 palabras), con humor y buena onda, en rioplatense, sin signos de apertura. Si el comentario es un chiste o etiqueta a alguien, seguile el juego. Si pregunta precio, fecha o info: "Te escribimos por privado 😉" (sin precios en público). Nunca precios ni alias en comentarios. Si es spam, ofensivo, de otra quinta o solo un emoji suelto que no amerita, respondé NADA."""
+AHORA NO ES UN DM: es un COMENTARIO público en una publicación nuestra. Respondé UNA línea corta (máximo 15 palabras), con humor y buena onda, en rioplatense, sin signos de apertura. Si el comentario es un chiste o etiqueta a alguien, seguile el juego. Si pregunta precio, fecha, info o promo: respondé algo atractivo que lo lleve a leer el privado, variando la frase, ej: "Te mandamos por privado precios y fechas libres 👀 fijate en tus mensajes 📩", "Te escribimos al privado con las promos de esta semana 🔥", "Ya te llega por privado, mirá que hay fechas lindas libres 😉". Nunca nombres el WhatsApp en público. Nunca precios ni alias en comentarios. Si es spam, ofensivo, de otra quinta o solo un emoji suelto que no amerita, respondé NADA."""
 
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(

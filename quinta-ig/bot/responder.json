@@ -2,7 +2,13 @@
  {
   "tipo": "dm",
   "para_id": "1944021440308872",
-  "texto": "¡Hola! No pude escuchar el audio 🙈 ¿Me lo escribís así te respondo bien? 🙌",
+  "texto": "Sí, el 24 y 25 de diciembre ya están alquilados en las dos quintas 😔 En principio tenemos libres el 22 y 23, o del 28 al 30 de diciembre. ¿Te sirve alguna? ¿Cuántos serían? 🌿",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "dm",
+  "para_id": "4727466747571171",
+  "texto": "¡Gracias! 💚 Si querés info de la quinta, contame qué fecha te interesa y cuántos serían 😊",
   "estado": "pendiente"
  }
 ]

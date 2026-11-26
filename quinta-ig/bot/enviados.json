@@ -663,5 +663,10 @@
  "081e58391bc892f9": {
   "estado": "enviado",
   "hora": "25/11 11:17"
+ },
+ "2590d049f2bd9d46": {
+  "estado": "salteado",
+  "motivo": "ya respondió Juan",
+  "hora": "26/11 11:19"
  }
 }

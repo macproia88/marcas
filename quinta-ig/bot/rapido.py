@@ -196,6 +196,26 @@ def guardar_tibios():
     corte = (ahora - datetime.timedelta(days=21)).strftime("%Y-%m-%d")
     cifrar_guardar("tibios.enc.json", [t for t in _TIBIOS if t.get("cuando", "") >= corte])
 
+_PPD = None
+def precio_de(f):
+    """Precio de lista de ese día según la tabla cifrada (sin feriados: si es feriado, vale el de finde)."""
+    global _PPD
+    try:
+        if _PPD is None: _PPD = (precios() or {}).get("precio_por_dia") or {}
+        if not _PPD: return ""
+        wd = f.weekday()
+        if f.year >= 2027:
+            t = _PPD["desde_enero_2027"]
+            dia = t["dia"]["lunes a jueves"] if wd <= 3 else t["dia"]["viernes, sábado, domingo y feriado"]
+            casa = (t["casa"]["lunes a jueves"] if wd <= 3 else t["casa"]["viernes y feriados"] if wd == 4
+                    else t["casa"]["sábado o domingo (un solo día)"] + " (sáb+dom juntos con noche: " + t["casa"]["sábado + domingo juntos con noche"] + ")")
+        else:
+            dia = _PPD["dia"]["lunes a jueves"] if wd <= 3 else _PPD["dia"]["viernes, sábado, domingo y feriado"]
+            casa = _PPD["casa"]["lunes a viernes"] if wd <= 4 else _PPD["casa"]["sábado, domingo, feriado y viernes de finde largo"]
+        return f" [de día {dia} / casa {casa}]"
+    except Exception:
+        return ""
+
 def fechas_mencionadas(textos):
     """Pasa a fechas con día de la semana lo que el cliente escribió (ej "1/2 al 7/2"), para que el bot calcule bien."""
     hoy = ahora.date(); out = []
@@ -204,7 +224,14 @@ def fechas_mencionadas(textos):
             f = datetime.date(hoy.year, m, d)
             return f if f >= hoy - datetime.timedelta(days=1) else datetime.date(hoy.year + 1, m, d)
         except ValueError: return None
+    MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    def palabras(t):
+        # "15 de enero" / "del 10 al 12 de febrero" -> formato 15/1, 10/2 al 12/2
+        t = re.sub(r"(\d{1,2})\s*(al|a|-)\s*(\d{1,2})\s+de\s+(" + "|".join(MESES) + r")",
+                   lambda m: f"{m[1]}/{MESES.index(m[4]) + 1} al {m[3]}/{MESES.index(m[4]) + 1}", t, flags=re.I)
+        return re.sub(r"(\d{1,2})\s+de\s+(" + "|".join(MESES) + r")", lambda m: f"{m[1]}/{MESES.index(m[2].lower()) + 1}", t, flags=re.I)
     for t in textos:
+        t = palabras((t or "").lower())
         for a, b in re.findall(r"(\d{1,2}\s*/\s*\d{1,2})(?:\s*(?:al|a|hasta el|-)\s*(\d{1,2}\s*/\s*\d{1,2}))?", t or ""):
             d1, m1 = [int(x) for x in a.replace(" ", "").split("/")]
             f1 = a_fecha(d1, m1)
@@ -214,7 +241,7 @@ def fechas_mencionadas(textos):
                 d2, m2 = [int(x) for x in b.replace(" ", "").split("/")]; f2 = a_fecha(d2, m2)
             dias = [f1] if not f2 or not (0 <= (f2 - f1).days <= 31) else [f1 + datetime.timedelta(days=i) for i in range((f2 - f1).days + 1)]
             for f in dias:
-                txt = f"{f.strftime('%d/%m/%Y')} {DIAS[f.weekday()]}"
+                txt = f"{f.strftime('%d/%m/%Y')} {DIAS[f.weekday()]}" + precio_de(f)
                 if txt not in out: out.append(txt)
     return out[:40]
 
@@ -347,7 +374,7 @@ def main():
                    "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
         fm = fechas_mencionadas([c["texto"] for c in charla if c["de"] == "cliente"][-4:])
         if fm:
-            charla = charla + [{"de": "sistema", "texto": "FECHAS QUE MENCIONÓ EL CLIENTE (con día de la semana, usalas para calcular): " + ", ".join(fm), "hora": ""}]
+            charla = charla + [{"de": "sistema", "texto": "FECHAS QUE MENCIONÓ EL CLIENTE con día de la semana y PRECIO DE LISTA de cada una (usá ESTOS precios, no otros, salvo que en esta charla ya le hayamos pasado otro precio para esa misma fecha): " + ", ".join(fm), "hora": ""}]
         t_v = next((x for x in tibios() if x.get("usuario") == cliente.get("username")), None)
         if t_v and t_v.get("estado") != "volvió":
             t_v["estado"] = "volvió"; globals()["_TIBIOS_CAMBIO"] = True

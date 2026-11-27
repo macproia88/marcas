@@ -24,6 +24,22 @@
    {
     "archivo": "alegre/1072.mp3",
     "url": "https://assets.mixkit.co/music/1072/1072.mp3"
+   },
+   {
+    "archivo": "alegre/9.mp3",
+    "url": "https://assets.mixkit.co/music/9/9.mp3"
+   },
+   {
+    "archivo": "alegre/3.mp3",
+    "url": "https://assets.mixkit.co/music/3/3.mp3"
+   },
+   {
+    "archivo": "alegre/621.mp3",
+    "url": "https://assets.mixkit.co/music/621/621.mp3"
+   },
+   {
+    "archivo": "alegre/1063.mp3",
+    "url": "https://assets.mixkit.co/music/1063/1063.mp3"
    }
   ],
   "urbano": [
@@ -50,6 +66,22 @@
    {
     "archivo": "urbano/369.mp3",
     "url": "https://assets.mixkit.co/music/369/369.mp3"
+   },
+   {
+    "archivo": "urbano/267.mp3",
+    "url": "https://assets.mixkit.co/music/267/267.mp3"
+   },
+   {
+    "archivo": "urbano/349.mp3",
+    "url": "https://assets.mixkit.co/music/349/349.mp3"
+   },
+   {
+    "archivo": "urbano/318.mp3",
+    "url": "https://assets.mixkit.co/music/318/318.mp3"
+   },
+   {
+    "archivo": "urbano/403.mp3",
+    "url": "https://assets.mixkit.co/music/403/403.mp3"
    }
   ],
   "latino": [
@@ -76,6 +108,22 @@
    {
     "archivo": "latino/991.mp3",
     "url": "https://assets.mixkit.co/music/991/991.mp3"
+   },
+   {
+    "archivo": "latino/1165.mp3",
+    "url": "https://assets.mixkit.co/music/1165/1165.mp3"
+   },
+   {
+    "archivo": "latino/435.mp3",
+    "url": "https://assets.mixkit.co/music/435/435.mp3"
+   },
+   {
+    "archivo": "latino/239.mp3",
+    "url": "https://assets.mixkit.co/music/239/239.mp3"
+   },
+   {
+    "archivo": "latino/12.mp3",
+    "url": "https://assets.mixkit.co/music/12/12.mp3"
    }
   ],
   "acustico": [
@@ -102,6 +150,22 @@
    {
     "archivo": "acustico/529.mp3",
     "url": "https://assets.mixkit.co/music/529/529.mp3"
+   },
+   {
+    "archivo": "acustico/797.mp3",
+    "url": "https://assets.mixkit.co/music/797/797.mp3"
+   },
+   {
+    "archivo": "acustico/52.mp3",
+    "url": "https://assets.mixkit.co/music/52/52.mp3"
+   },
+   {
+    "archivo": "acustico/91.mp3",
+    "url": "https://assets.mixkit.co/music/91/91.mp3"
+   },
+   {
+    "archivo": "acustico/815.mp3",
+    "url": "https://assets.mixkit.co/music/815/815.mp3"
    }
   ],
   "energico": [
@@ -128,6 +192,22 @@
    {
     "archivo": "energico/1077.mp3",
     "url": "https://assets.mixkit.co/music/1077/1077.mp3"
+   },
+   {
+    "archivo": "energico/80.mp3",
+    "url": "https://assets.mixkit.co/music/80/80.mp3"
+   },
+   {
+    "archivo": "energico/136.mp3",
+    "url": "https://assets.mixkit.co/music/136/136.mp3"
+   },
+   {
+    "archivo": "energico/78.mp3",
+    "url": "https://assets.mixkit.co/music/78/78.mp3"
+   },
+   {
+    "archivo": "energico/851.mp3",
+    "url": "https://assets.mixkit.co/music/851/851.mp3"
    }
   ],
   "pop": [
@@ -154,6 +234,22 @@
    {
     "archivo": "pop/1000.mp3",
     "url": "https://assets.mixkit.co/music/1000/1000.mp3"
+   },
+   {
+    "archivo": "pop/837.mp3",
+    "url": "https://assets.mixkit.co/music/837/837.mp3"
+   },
+   {
+    "archivo": "pop/935.mp3",
+    "url": "https://assets.mixkit.co/music/935/935.mp3"
+   },
+   {
+    "archivo": "pop/350.mp3",
+    "url": "https://assets.mixkit.co/music/350/350.mp3"
+   },
+   {
+    "archivo": "pop/821.mp3",
+    "url": "https://assets.mixkit.co/music/821/821.mp3"
    }
   ],
   "tranquilo": [
@@ -180,6 +276,22 @@
    {
     "archivo": "tranquilo/148.mp3",
     "url": "https://assets.mixkit.co/music/148/148.mp3"
+   },
+   {
+    "archivo": "tranquilo/657.mp3",
+    "url": "https://assets.mixkit.co/music/657/657.mp3"
+   },
+   {
+    "archivo": "tranquilo/135.mp3",
+    "url": "https://assets.mixkit.co/music/135/135.mp3"
+   },
+   {
+    "archivo": "tranquilo/292.mp3",
+    "url": "https://assets.mixkit.co/music/292/292.mp3"
+   },
+   {
+    "archivo": "tranquilo/588.mp3",
+    "url": "https://assets.mixkit.co/music/588/588.mp3"
    }
   ],
   "fiestas": [
@@ -206,6 +318,22 @@
    {
     "archivo": "fiestas/866.mp3",
     "url": "https://assets.mixkit.co/music/866/866.mp3"
+   },
+   {
+    "archivo": "fiestas/1073.mp3",
+    "url": "https://assets.mixkit.co/music/1073/1073.mp3"
+   },
+   {
+    "archivo": "fiestas/911.mp3",
+    "url": "https://assets.mixkit.co/music/911/911.mp3"
+   },
+   {
+    "archivo": "fiestas/505.mp3",
+    "url": "https://assets.mixkit.co/music/505/505.mp3"
+   },
+   {
+    "archivo": "fiestas/867.mp3",
+    "url": "https://assets.mixkit.co/music/867/867.mp3"
    }
   ]
  },
@@ -269,6 +397,66 @@
    "archivo": "efectos/wood-190-preview.mp3",
    "tipo": "wood",
    "url": "https://assets.mixkit.co/active_storage/sfx/190/190-preview.mp3"
+  },
+  {
+   "archivo": "efectos/whoosh-1486-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1486/1486-preview.mp3"
+  },
+  {
+   "archivo": "efectos/whoosh-3005-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/3005/3005-preview.mp3"
+  },
+  {
+   "archivo": "efectos/whoosh-2350-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2350/2350-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-2908-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2908/2908-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-2290-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2290/2290-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-2608-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2608/2608-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2357-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2357/2357-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2356-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2356/2356-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2925-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2925/2925-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-189-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/189/189-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-337-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/337/337-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-3141-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/3141/3141-preview.mp3"
   }
  ]
 }

@@ -346,10 +346,9 @@
  "motivos": {
   "ya_respondida": 35,
   "ya_procesada": 11,
-  "prospeccion": 4,
-  "comentario": 1
+  "prospeccion": 4
  },
- "revisado": "2026-11-27 15:58",
+ "revisado": "2026-11-27 16:00",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

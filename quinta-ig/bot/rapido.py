@@ -268,6 +268,9 @@ COMENTARIO = """
 
 AHORA NO ES UN DM: es un COMENTARIO público en una publicación nuestra. Respondé UNA línea corta (máximo 15 palabras), con humor y buena onda, en rioplatense, sin signos de apertura. Si el comentario es un chiste o etiqueta a alguien, seguile el juego. Si pregunta precio, fecha, info o promo: respondé algo atractivo que lo lleve a leer el privado, variando la frase, ej: "Te mandamos por privado precios y fechas libres 👀 fijate en tus mensajes 📩", "Te escribimos al privado con las promos de esta semana 🔥", "Ya te llega por privado, mirá que hay fechas lindas libres 😉". Nunca nombres el WhatsApp en público. Nunca precios ni alias en comentarios. Si es spam, ofensivo, de otra quinta o solo un emoji suelto que no amerita, respondé NADA."""
 
+USO = {"in": 0, "out": 0, "llamadas": 0}
+PRECIO_IN, PRECIO_OUT = 0.10, 0.50   # US$ por millón de tokens (Haiku 5.5, prompts < 100K)
+
 def claude(sistema, charla):
     texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
@@ -276,6 +279,9 @@ def claude(sistema, charla):
     r = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST", headers={
         "x-api-key": KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"})
     d = json.load(urllib.request.urlopen(r, timeout=60))
+    u = d.get("usage") or {}
+    USO["in"] += u.get("input_tokens", 0) + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+    USO["out"] += u.get("output_tokens", 0); USO["llamadas"] += 1
     global DIAG
     DIAG = {"stop": d.get("stop_reason"), "tipos": [b.get("type") for b in d.get("content", [])],
             "largo": sum(len(b.get("text", "")) for b in d.get("content", []))}
@@ -495,6 +501,12 @@ def main():
     guardar_tibios()
     corte_r = (ahora - datetime.timedelta(days=10)).strftime("%Y-%m-%d")
     log["recordados"] = {k: v for k, v in log.get("recordados", {}).items() if v >= corte_r}
+    if USO["llamadas"]:
+        c = log.setdefault("costo", {}).setdefault(hoy, {"in": 0, "out": 0, "llamadas": 0})
+        for k2 in ("in", "out", "llamadas"): c[k2] += USO[k2]
+        c["usd"] = round(c["in"] / 1e6 * PRECIO_IN + c["out"] / 1e6 * PRECIO_OUT, 4)
+        mes = hoy[:7]
+        log["costo_mes"] = {mes: round(sum(v.get("usd", 0) for k2, v in log["costo"].items() if k2.startswith(mes)), 3)}
     log["motivos"] = motivos; log["revisado"] = ahora.strftime("%Y-%m-%d %H:%M")
     json.dump(log, open(LOG, "w"), ensure_ascii=False, indent=1)
     print(f"enviados {enviados} nada {nadas} errores {errores}", motivos)

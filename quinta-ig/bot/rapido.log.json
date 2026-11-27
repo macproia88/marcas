@@ -353,11 +353,12 @@
  "actualizado": "2026-11-27 18:58",
  "ultimo_error": "instagram 403",
  "motivos": {
+  "espera": 1,
   "ya_respondida": 39,
-  "ya_procesada": 10,
+  "ya_procesada": 9,
   "prospeccion": 1
  },
- "revisado": "2026-11-27 19:09",
+ "revisado": "2026-11-27 19:14",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

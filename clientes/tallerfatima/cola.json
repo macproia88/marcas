@@ -325,5 +325,25 @@
   "fecha": "2026-11-24 20:00",
   "estado": "pendiente",
   "aprobado": "Juan 24/11 19:47"
+ },
+ {
+  "id": "1210-invitacion-certificados",
+  "tipo": "POST",
+  "media": [
+   "clientes/tallerfatima/img/1210-invitacion-certificados.jpg"
+  ],
+  "texto": "📣 ¡Te invitamos a la Entrega de Certificados 2026!\n\n🗓️ Jueves 10 de diciembre\n🕕 18 h\n\nCelebramos trayectorias, esfuerzos sostenidos y aprendizajes construidos día a día, juntos. Alumnas, alumnos, familias, profes y voluntarios: ¡los esperamos para festejar este año!\n\n#EscuelaTallerFatima #EntregaDeCertificados",
+  "fecha": "2026-11-30 20:00",
+  "estado": "borrador"
+ },
+ {
+  "id": "1210-invitacion-historia",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1210-invitacion-certificados-historia.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-11-30 20:15",
+  "estado": "borrador"
  }
 ]

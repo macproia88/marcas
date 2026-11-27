@@ -26,7 +26,7 @@
    "errores": 0
   },
   "2026-11-26": {
-   "enviados": 195,
+   "enviados": 200,
    "nada": 42,
    "errores": 5
   }
@@ -271,7 +271,6 @@
   "0934951a9120": "4a9f9e1af5b37866",
   "7b151743b95d": "a171b10ce9828029",
   "d1a174f0accf": "1d4e7f0a5a64b0f5",
-  "a8d7c040ec73": "644651fb6185e08d",
   "0675f26f7ffd": "9dd185e4dcb09c65",
   "0a0cc2a1706d": "35c90b04a86c012b",
   "ab654696771b": "2c9ae7c86a8e3f1a",
@@ -288,20 +287,20 @@
   "dcca8e574902": "16f8cbb6ca05d0df",
   "b01b072ea6e4": "57606a9a3d31a92c",
   "75fce17d7af3": "96ba54f71d2f3b76",
+  "8285affeecbb": "26ec60e513f46f72",
+  "805eb7de315e": "e90190bf2fcc8a0a",
+  "80d9b5af34b8": "f2e71e7a008066a2",
   "b5ddad4e433a": "0d17b032f897c672",
   "4a2c65da7ecb": "5526e4d99c6cad9e",
-  "80d9b5af34b8": "f2e71e7a008066a2",
-  "805eb7de315e": "e90190bf2fcc8a0a",
-  "8285affeecbb": "26ec60e513f46f72",
-  "1106145c7d66": "718ec8d76e905bdc"
+  "a8d7c040ec73": "644651fb6185e08d"
  },
- "actualizado": "2026-11-26 23:51",
+ "actualizado": "2026-11-26 23:55",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "ya_respondida": 35,
-  "ya_procesada": 14
+  "ya_respondida": 36,
+  "ya_procesada": 9
  },
- "revisado": "2026-11-26 23:51",
+ "revisado": "2026-11-26 23:55",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

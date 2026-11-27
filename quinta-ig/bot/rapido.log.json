@@ -31,7 +31,7 @@
    "errores": 5
   },
   "2026-11-27": {
-   "enviados": 39,
+   "enviados": 40,
    "nada": 8,
    "errores": 0
   }
@@ -316,17 +316,17 @@
   "50af73886f18": "290551daf0675ce9",
   "ee4e793cd3bd": "d3eddfc216218ad9",
   "6f5fb29624bc": "f449bbd9c4c8ff19",
-  "f85d253dc309": "3a728afc8892f40a"
+  "f85d253dc309": "12e0437046e2e8b2"
  },
- "actualizado": "2026-11-27 11:09",
+ "actualizado": "2026-11-27 11:14",
  "ultimo_error": "instagram 403",
  "motivos": {
   "espera": 1,
-  "ya_respondida": 40,
-  "prospeccion": 4,
-  "ya_procesada": 5
+  "ya_respondida": 39,
+  "prospeccion": 5,
+  "ya_procesada": 4
  },
- "revisado": "2026-11-27 11:13",
+ "revisado": "2026-11-27 11:14",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -478,15 +478,15 @@
  "crash": "27/11 10:03 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
  "costo": {
   "2026-11-27": {
-   "in": 28578,
-   "out": 38937,
-   "llamadas": 47,
-   "usd": 0.0612,
+   "in": 28807,
+   "out": 40515,
+   "llamadas": 48,
+   "usd": 0.0621,
    "cache_w": 294290,
-   "cache_r": 208126
+   "cache_r": 219152
   }
  },
  "costo_mes": {
-  "2026-11": 0.061
+  "2026-11": 0.062
  }
 }

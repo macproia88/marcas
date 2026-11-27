@@ -705,5 +705,13 @@
  "f4fc4492bb5ecbd5": {
   "estado": "error",
   "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"AxMGM5jz43p-D9Nt0_9BzEu\"}}"
+ },
+ "e1cd71631563c4e7": {
+  "estado": "enviado",
+  "hora": "27/11 11:17"
+ },
+ "6e431c2218961e6c": {
+  "estado": "enviado",
+  "hora": "27/11 11:17"
  }
 }

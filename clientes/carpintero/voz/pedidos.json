@@ -42,5 +42,23 @@
   "salida": "clientes/carpintero/videos/v2/1121-reel-comedor2-voz.mp4",
   "velocidad": 1.0,
   "texto": "Comedores de madera para toda la familia: mesas redondas y rectangulares, con sillas a juego. Hechos en nuestra fábrica. Escribinos por WhatsApp."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1128-reel-fabrica.mp4",
+  "salida": "clientes/carpintero/videos/v2/1128-reel-fabrica-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Así sale un pedido de El Carpintero 3. Bajo mesadas listos para entregar, banquetas embaladas una por una, roperos de pino macizo revisados puerta por puerta. Y a cargar el camión. Directo de fábrica a tu casa. Escribinos por WhatsApp."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1128-reel-silla-soga.mp4",
+  "salida": "clientes/carpintero/videos/v2/1128-reel-silla-soga-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Mirá esta silla de soga tejida a mano, con estructura de madera maciza. ¿Te gusta? Comentá soga y te pasamos el precio por mensaje."
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1128-reel-dormitorio.mp4",
+  "salida": "clientes/carpintero/videos/v2/1128-reel-dormitorio-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Cama de pino macizo, reforzada. Respaldos tapizados con botones para sommier, de una y de dos plazas. Y para la cocina, bajo mesada con alacena. Armá tu casa con madera maciza en El Carpintero 3."
  }
 ]

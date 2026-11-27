@@ -409,7 +409,7 @@ def main():
         if any(t in (m.get("message") or "") for m in msgs for t in NO_CLIENTE): salto("prospeccion"); continue   # prospección, no cliente
         cliente = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
         pid = cliente.get("id")
-        if not pid or pid in pendientes_bot: salto("bot3h"); continue                                   # el bot de 3 h ya tiene algo preparado
+        if not pid: salto("sin_id"); continue   # (antes se salteaba si el bot de 3 h tenía algo preparado; ese bot ya no manda si respondimos)
         h = hashlib.sha256(f"{pid}|{ult['id']}".encode()).hexdigest()[:16]
         if h in log["ultimo"].values(): salto("ya_procesada"); continue                                        # ese mensaje ya lo procesamos
         charla = [{"de": "nosotros" if (m.get("from") or {}).get("username") == YO else "cliente",

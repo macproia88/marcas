@@ -1,0 +1,274 @@
+{
+ "musica": {
+  "alegre": [
+   {
+    "archivo": "alegre/897.mp3",
+    "url": "https://assets.mixkit.co/music/897/897.mp3"
+   },
+   {
+    "archivo": "alegre/1076.mp3",
+    "url": "https://assets.mixkit.co/music/1076/1076.mp3"
+   },
+   {
+    "archivo": "alegre/5.mp3",
+    "url": "https://assets.mixkit.co/music/5/5.mp3"
+   },
+   {
+    "archivo": "alegre/801.mp3",
+    "url": "https://assets.mixkit.co/music/801/801.mp3"
+   },
+   {
+    "archivo": "alegre/2.mp3",
+    "url": "https://assets.mixkit.co/music/2/2.mp3"
+   },
+   {
+    "archivo": "alegre/1072.mp3",
+    "url": "https://assets.mixkit.co/music/1072/1072.mp3"
+   }
+  ],
+  "urbano": [
+   {
+    "archivo": "urbano/738.mp3",
+    "url": "https://assets.mixkit.co/music/738/738.mp3"
+   },
+   {
+    "archivo": "urbano/400.mp3",
+    "url": "https://assets.mixkit.co/music/400/400.mp3"
+   },
+   {
+    "archivo": "urbano/282.mp3",
+    "url": "https://assets.mixkit.co/music/282/282.mp3"
+   },
+   {
+    "archivo": "urbano/281.mp3",
+    "url": "https://assets.mixkit.co/music/281/281.mp3"
+   },
+   {
+    "archivo": "urbano/262.mp3",
+    "url": "https://assets.mixkit.co/music/262/262.mp3"
+   },
+   {
+    "archivo": "urbano/369.mp3",
+    "url": "https://assets.mixkit.co/music/369/369.mp3"
+   }
+  ],
+  "latino": [
+   {
+    "archivo": "latino/974.mp3",
+    "url": "https://assets.mixkit.co/music/974/974.mp3"
+   },
+   {
+    "archivo": "latino/339.mp3",
+    "url": "https://assets.mixkit.co/music/339/339.mp3"
+   },
+   {
+    "archivo": "latino/284.mp3",
+    "url": "https://assets.mixkit.co/music/284/284.mp3"
+   },
+   {
+    "archivo": "latino/274.mp3",
+    "url": "https://assets.mixkit.co/music/274/274.mp3"
+   },
+   {
+    "archivo": "latino/1086.mp3",
+    "url": "https://assets.mixkit.co/music/1086/1086.mp3"
+   },
+   {
+    "archivo": "latino/991.mp3",
+    "url": "https://assets.mixkit.co/music/991/991.mp3"
+   }
+  ],
+  "acustico": [
+   {
+    "archivo": "acustico/493.mp3",
+    "url": "https://assets.mixkit.co/music/493/493.mp3"
+   },
+   {
+    "archivo": "acustico/839.mp3",
+    "url": "https://assets.mixkit.co/music/839/839.mp3"
+   },
+   {
+    "archivo": "acustico/963.mp3",
+    "url": "https://assets.mixkit.co/music/963/963.mp3"
+   },
+   {
+    "archivo": "acustico/970.mp3",
+    "url": "https://assets.mixkit.co/music/970/970.mp3"
+   },
+   {
+    "archivo": "acustico/13.mp3",
+    "url": "https://assets.mixkit.co/music/13/13.mp3"
+   },
+   {
+    "archivo": "acustico/529.mp3",
+    "url": "https://assets.mixkit.co/music/529/529.mp3"
+   }
+  ],
+  "energico": [
+   {
+    "archivo": "energico/51.mp3",
+    "url": "https://assets.mixkit.co/music/51/51.mp3"
+   },
+   {
+    "archivo": "energico/989.mp3",
+    "url": "https://assets.mixkit.co/music/989/989.mp3"
+   },
+   {
+    "archivo": "energico/126.mp3",
+    "url": "https://assets.mixkit.co/music/126/126.mp3"
+   },
+   {
+    "archivo": "energico/1068.mp3",
+    "url": "https://assets.mixkit.co/music/1068/1068.mp3"
+   },
+   {
+    "archivo": "energico/706.mp3",
+    "url": "https://assets.mixkit.co/music/706/706.mp3"
+   },
+   {
+    "archivo": "energico/1077.mp3",
+    "url": "https://assets.mixkit.co/music/1077/1077.mp3"
+   }
+  ],
+  "pop": [
+   {
+    "archivo": "pop/288.mp3",
+    "url": "https://assets.mixkit.co/music/288/288.mp3"
+   },
+   {
+    "archivo": "pop/250.mp3",
+    "url": "https://assets.mixkit.co/music/250/250.mp3"
+   },
+   {
+    "archivo": "pop/158.mp3",
+    "url": "https://assets.mixkit.co/music/158/158.mp3"
+   },
+   {
+    "archivo": "pop/1147.mp3",
+    "url": "https://assets.mixkit.co/music/1147/1147.mp3"
+   },
+   {
+    "archivo": "pop/200.mp3",
+    "url": "https://assets.mixkit.co/music/200/200.mp3"
+   },
+   {
+    "archivo": "pop/1000.mp3",
+    "url": "https://assets.mixkit.co/music/1000/1000.mp3"
+   }
+  ],
+  "tranquilo": [
+   {
+    "archivo": "tranquilo/443.mp3",
+    "url": "https://assets.mixkit.co/music/443/443.mp3"
+   },
+   {
+    "archivo": "tranquilo/127.mp3",
+    "url": "https://assets.mixkit.co/music/127/127.mp3"
+   },
+   {
+    "archivo": "tranquilo/682.mp3",
+    "url": "https://assets.mixkit.co/music/682/682.mp3"
+   },
+   {
+    "archivo": "tranquilo/184.mp3",
+    "url": "https://assets.mixkit.co/music/184/184.mp3"
+   },
+   {
+    "archivo": "tranquilo/22.mp3",
+    "url": "https://assets.mixkit.co/music/22/22.mp3"
+   },
+   {
+    "archivo": "tranquilo/148.mp3",
+    "url": "https://assets.mixkit.co/music/148/148.mp3"
+   }
+  ],
+  "fiestas": [
+   {
+    "archivo": "fiestas/93.mp3",
+    "url": "https://assets.mixkit.co/music/93/93.mp3"
+   },
+   {
+    "archivo": "fiestas/862.mp3",
+    "url": "https://assets.mixkit.co/music/862/862.mp3"
+   },
+   {
+    "archivo": "fiestas/691.mp3",
+    "url": "https://assets.mixkit.co/music/691/691.mp3"
+   },
+   {
+    "archivo": "fiestas/510.mp3",
+    "url": "https://assets.mixkit.co/music/510/510.mp3"
+   },
+   {
+    "archivo": "fiestas/916.mp3",
+    "url": "https://assets.mixkit.co/music/916/916.mp3"
+   },
+   {
+    "archivo": "fiestas/866.mp3",
+    "url": "https://assets.mixkit.co/music/866/866.mp3"
+   }
+  ]
+ },
+ "efectos": [
+  {
+   "archivo": "efectos/whoosh-1489-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1489/1489-preview.mp3"
+  },
+  {
+   "archivo": "efectos/whoosh-1492-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1492/1492-preview.mp3"
+  },
+  {
+   "archivo": "efectos/whoosh-1491-preview.mp3",
+   "tipo": "whoosh",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1491/1491-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-166-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/166/166-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-1714-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1714/1714-preview.mp3"
+  },
+  {
+   "archivo": "efectos/transition-1490-preview.mp3",
+   "tipo": "transition",
+   "url": "https://assets.mixkit.co/active_storage/sfx/1490/1490-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2358-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2358/2358-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2354-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3"
+  },
+  {
+   "archivo": "efectos/pop-2364-preview.mp3",
+   "tipo": "pop",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2364/2364-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-2182-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/2182/2182-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-195-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/195/195-preview.mp3"
+  },
+  {
+   "archivo": "efectos/wood-190-preview.mp3",
+   "tipo": "wood",
+   "url": "https://assets.mixkit.co/active_storage/sfx/190/190-preview.mp3"
+  }
+ ]
+}

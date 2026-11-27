@@ -292950,5 +292950,423 @@
   "thread": "1a21df45b2f3e036",
   "subject": "MaxiREST - Fin de turno - 27/11/2026 Mañana",
   "sender": "deliverylapresumida@gmail.com"
+ },
+ {
+  "sucursal": "fpastas",
+  "fecha": "2026-11-27",
+  "turno": "Intermedio",
+  "total": 997428.0,
+  "tickets": 48,
+  "neto21": 824320.66,
+  "iva21": 173107.34,
+  "neto105": 0.0,
+  "iva105": 0.0,
+  "formas": {
+   "EFECTIVO": [
+    195664.0,
+    14
+   ],
+   "VISA DEBITO": [
+    199610.0,
+    9
+   ],
+   "VISA": [
+    266882.0,
+    4
+   ],
+   "Mercado Pago": [
+    301897.0,
+    19
+   ],
+   "MODO": [
+    33375.0,
+    2
+   ]
+  },
+  "cod202_unid": 0.0,
+  "cod202_importe": 0.0,
+  "articulos": [
+   [
+    4000,
+    "Descuento Alax",
+    "",
+    12.0,
+    -86485.0
+   ],
+   [
+    181,
+    "COCA COLA 1.75 l",
+    "Bebidas",
+    1.0,
+    6500.0
+   ],
+   [
+    2324,
+    "Canelones Con Sal",
+    "Canelones",
+    0.8,
+    19200.0
+   ],
+   [
+    97,
+    "Lengua",
+    "Carnes",
+    0.5,
+    14175.0
+   ],
+   [
+    103,
+    "Sandwich Milanesa",
+    "Carnes",
+    2.0,
+    26000.0
+   ],
+   [
+    106,
+    "Matambre Relleno",
+    "Carnes",
+    0.2,
+    15180.0
+   ],
+   [
+    128,
+    "Vitel Tone",
+    "Carnes",
+    0.4,
+    24510.0
+   ],
+   [
+    402,
+    "Milanesas De Pece",
+    "Carnes",
+    0.6,
+    32946.0
+   ],
+   [
+    4018,
+    "Sandwich Milanesa",
+    "Carnes",
+    1.0,
+    7000.0
+   ],
+   [
+    113,
+    "Pastel De Papas",
+    "Comida",
+    2.9,
+    82534.0
+   ],
+   [
+    115,
+    "Bomba de Papa",
+    "Comida",
+    0.2,
+    5060.0
+   ],
+   [
+    211,
+    "Bunuelo De Acelga",
+    "Comida",
+    0.8,
+    22140.0
+   ],
+   [
+    512,
+    "Alcauciles al Nat",
+    "Dankon",
+    1.0,
+    15500.0
+   ],
+   [
+    2202,
+    "Fideos Finitos al",
+    "Fideos",
+    1.0,
+    13000.0
+   ],
+   [
+    2204,
+    "Fideos Media Cint",
+    "Fideos",
+    1.0,
+    13000.0
+   ],
+   [
+    659,
+    "Freddo Cannoli Du",
+    "Freddo",
+    2.0,
+    13000.0
+   ],
+   [
+    665,
+    "Freddo Bombones A",
+    "Freddo",
+    1.0,
+    12100.0
+   ],
+   [
+    666,
+    "Freddo Tableta x",
+    "Freddo",
+    2.0,
+    8400.0
+   ],
+   [
+    111,
+    "Sandwich Triple C",
+    "Lunch",
+    16.0,
+    43680.0
+   ],
+   [
+    60,
+    "Pan",
+    "Pan F",
+    0.4,
+    1998.0
+   ],
+   [
+    4069,
+    "Alfajor Maicena g",
+    "Pan F",
+    1.0,
+    1700.0
+   ],
+   [
+    63,
+    "Figaza de Manteca",
+    "Panaderia",
+    0.7,
+    5590.0
+   ],
+   [
+    33,
+    "Porcion Fideos Ca",
+    "Pasta Cocida",
+    1.0,
+    13500.0
+   ],
+   [
+    36,
+    "Porcion Canelones",
+    "Pasta Cocida",
+    1.0,
+    16700.0
+   ],
+   [
+    95,
+    "Pizza Jamon y Mor",
+    "Pizzas",
+    1.0,
+    17800.0
+   ],
+   [
+    124,
+    "Empanada de Carne",
+    "Pizzas",
+    23.0,
+    64400.0
+   ],
+   [
+    125,
+    "Empanada de Pollo",
+    "Pizzas",
+    8.0,
+    22400.0
+   ],
+   [
+    126,
+    "Empanada Jamon y",
+    "Pizzas",
+    16.0,
+    44800.0
+   ],
+   [
+    127,
+    "Empanada Cebolla",
+    "Pizzas",
+    6.0,
+    16800.0
+   ],
+   [
+    129,
+    "Empanada de Espin",
+    "Pizzas",
+    6.0,
+    16800.0
+   ],
+   [
+    222,
+    "Empanada de Humit",
+    "Pizzas",
+    6.0,
+    16800.0
+   ],
+   [
+    217,
+    "Cuarto de Pollo",
+    "Pollo",
+    1.0,
+    7500.0
+   ],
+   [
+    302,
+    "Wrap de Pollo",
+    "Pollo",
+    1.0,
+    9450.0
+   ],
+   [
+    350,
+    "Bastones de Pollo",
+    "Pollo",
+    0.2,
+    4680.0
+   ],
+   [
+    419,
+    "Tostaditas Sabori",
+    "Presumida",
+    0.2,
+    1040.0
+   ],
+   [
+    10,
+    "Ravioles Pollo y",
+    "Ravioles",
+    1.0,
+    5850.0
+   ],
+   [
+    16,
+    "Raviolon Pollo y",
+    "Raviolones",
+    2.0,
+    15200.0
+   ],
+   [
+    102,
+    "Tortilla de zanah",
+    "Tartas",
+    0.3,
+    7360.0
+   ],
+   [
+    130,
+    "Tarta de Calabaza",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    132,
+    "Tarta Mixta",
+    "Tartas",
+    1.0,
+    9000.0
+   ],
+   [
+    134,
+    "Tarta D Jamon. Qu",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    138,
+    "Tortilla de Zapal",
+    "Tartas",
+    0.3,
+    6440.0
+   ],
+   [
+    422,
+    "Tarta Queso y Ceb",
+    "Tartas",
+    2.0,
+    18000.0
+   ],
+   [
+    137,
+    "Ensalada Rusa",
+    "Verduras",
+    0.4,
+    9430.0
+   ],
+   [
+    154,
+    "Ensalada Pollo y",
+    "Verduras",
+    1.0,
+    13000.0
+   ],
+   [
+    178,
+    "Verduras al Peso",
+    "Verduras",
+    0.2,
+    3450.0
+   ],
+   [
+    334,
+    "Ensalada Caesar",
+    "Verduras",
+    8.0,
+    104000.0
+   ],
+   [
+    335,
+    "Ensalada Choclo C",
+    "Verduras",
+    2.0,
+    15000.0
+   ],
+   [
+    336,
+    "Ensalada Completa",
+    "Verduras",
+    4.0,
+    52000.0
+   ],
+   [
+    193,
+    "Menu Bond/escal/b",
+    "Menu",
+    10.0,
+    100000.0
+   ],
+   [
+    337,
+    "Menu Economico",
+    "Menu",
+    1.0,
+    6000.0
+   ],
+   [
+    376,
+    "Menu Mix de Ravio",
+    "Menu",
+    1.0,
+    6000.0
+   ],
+   [
+    437,
+    "Menu Pastas",
+    "Menu",
+    3.0,
+    22500.0
+   ],
+   [
+    203,
+    "Flan",
+    "Postre",
+    5.0,
+    18800.0
+   ]
+  ],
+  "thread": "1a21f12555ac32ac",
+  "subject": "MaxiREST - Fin de turno - 27/11/2026 Intermedio",
+  "sender": "deliverylapresumida@gmail.com"
  }
 ]

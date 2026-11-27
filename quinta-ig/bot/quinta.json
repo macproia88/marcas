@@ -78,6 +78,11 @@
    "estado": "ocupado"
   },
   {
+   "fecha": "2026-11-27",
+   "quinta": "dia",
+   "estado": "alquilado"
+  },
+  {
    "fecha": "2026-11-28",
    "quinta": "casa",
    "estado": "alquilado"
@@ -95,6 +100,16 @@
   {
    "fecha": "2026-11-29",
    "quinta": "dia",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-11-30",
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-01",
+   "quinta": "casa",
    "estado": "alquilado"
   },
   {

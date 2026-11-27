@@ -1,2 +1,2 @@
-enviados 5 nada 0 errores 0 {'ya_respondida': 36, 'ya_procesada': 9}
-rc=0 02:56
+enviados 0 nada 0 errores 0 {'ya_respondida': 41, 'ya_procesada': 9}
+rc=0 02:57

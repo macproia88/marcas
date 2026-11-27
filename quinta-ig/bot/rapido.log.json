@@ -287,20 +287,15 @@
   "dcca8e574902": "16f8cbb6ca05d0df",
   "b01b072ea6e4": "57606a9a3d31a92c",
   "75fce17d7af3": "96ba54f71d2f3b76",
-  "8285affeecbb": "26ec60e513f46f72",
-  "805eb7de315e": "e90190bf2fcc8a0a",
-  "80d9b5af34b8": "f2e71e7a008066a2",
-  "b5ddad4e433a": "0d17b032f897c672",
-  "4a2c65da7ecb": "5526e4d99c6cad9e",
-  "a8d7c040ec73": "644651fb6185e08d"
+  "8285affeecbb": "26ec60e513f46f72"
  },
  "actualizado": "2026-11-26 23:55",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "ya_respondida": 36,
+  "ya_respondida": 41,
   "ya_procesada": 9
  },
- "revisado": "2026-11-26 23:55",
+ "revisado": "2026-11-26 23:57",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

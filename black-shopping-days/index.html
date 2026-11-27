@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora Black Shopping Days</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&family=Libre+Baskerville:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f6f3ee;color:#2b2522;font-family:Montserrat,system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 18px 32px;display:flex;flex-direction:column;gap:28px}
+.head{text-align:center;display:flex;flex-direction:column;gap:10px}
+.titulo{font-family:'Libre Baskerville',Georgia,serif;font-size:44px;line-height:1.1}
+.titulo b{font-weight:700}.titulo i{font-style:italic}
+.sub{font-size:14px;font-weight:600;letter-spacing:3px;text-transform:uppercase}
+.form{border-top:2px solid #2b2522;border-bottom:2px solid #2b2522;padding:22px 0;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:center}
+.campo{display:flex;flex-direction:column;gap:8px}
+.campo label{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.precio{flex:1 1 260px;max-width:440px}
+.caja{display:flex;align-items:center;background:#fff;border:2px solid #2b2522;border-radius:4px;padding:0 16px;height:70px;font-weight:900;font-size:36px}
+.caja input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:900 36px Montserrat,sans-serif;color:#2b2522;padding-left:8px}
+.pct input{width:110px;height:56px;border-radius:4px;border:2px solid #2b2522;background:#fff;color:#2b2522;font:800 24px Montserrat,sans-serif;text-align:center}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield}
+.cards{display:flex;flex-wrap:wrap;gap:18px}
+.card{flex:1 1 280px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;border:2px solid #2b2522;background:#fff}
+.card.c1{background:#f6f3ee;border-color:#cfc8c0}
+.card.c3{background:#2b2522;border-color:#2b2522;color:#f6f3ee}
+.grande{font-weight:900;font-size:54px;line-height:1;letter-spacing:-1px}
+.lleva{font-size:18px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.linea{width:70%;height:1px;background:currentColor;opacity:.35;margin:8px 0}
+.mini{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.unit{font-weight:900;font-size:44px;line-height:1}
+.antes{font-size:15px;text-decoration:line-through;opacity:.65;min-height:18px}
+.fila{width:100%;display:flex;justify-content:space-between;font-size:16px}
+.pie{text-align:center;font-size:13px;color:#5c5450;display:flex;flex-direction:column;gap:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="titulo"><b>Black</b> <i>shopping days</i></div>
+    <div class="sub">Prendas de nueva colección</div>
+  </div>
+
+  <div class="form">
+    <div class="campo precio">
+      <label for="precio">Precio de la prenda</label>
+      <div class="caja">$<input id="precio" type="number" inputmode="decimal" min="0" placeholder="Ej: 45000" value="45000"></div>
+    </div>
+    <div class="campo pct"><label for="d2">% llevando 2</label><input id="d2" type="number" min="0" max="100" value="20"></div>
+    <div class="campo pct"><label for="d3">% llevando 3</label><input id="d3" type="number" min="0" max="100" value="30"></div>
+  </div>
+
+  <div class="cards" id="cards"></div>
+
+  <div class="pie">
+    <div>No acumulable con otras promociones u ofertas puntuales.</div>
+    <div>Última actualización: 27/11/2026 09:55</div>
+  </div>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => '$' + Math.round(n).toLocaleString('es-AR');
+const clamp = (v) => Math.min(100, Math.max(0, parseFloat(v) || 0));
+function card(n, d, cls, p) {
+  const unit = p * (1 - d / 100);
+  return '<div class="card ' + cls + '">' +
+    '<div class="grande">' + (d > 0 ? d + '%OFF' : 'PRECIO') + '</div>' +
+    '<div class="lleva">Llevando ' + n + '</div>' +
+    '<div class="linea"></div>' +
+    '<div class="mini">Cada prenda te queda</div>' +
+    '<div class="unit">' + fmt(unit) + '</div>' +
+    '<div class="antes">' + (d > 0 ? 'Antes ' + fmt(p) + ' c/u' : '') + '</div>' +
+    '<div class="fila"><span>Total</span><strong>' + fmt(unit * n) + '</strong></div>' +
+    '<div class="fila"><span>Te ahorrás</span><strong>' + fmt((p - unit) * n) + '</strong></div>' +
+    '</div>';
+}
+function calc() {
+  const p = parseFloat($('precio').value) || 0;
+  $('cards').innerHTML = card(1, 0, 'c1', p) + card(2, clamp($('d2').value), 'c2', p) + card(3, clamp($('d3').value), 'c3', p);
+}
+['precio', 'd2', 'd3'].forEach((id) => $(id).addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>

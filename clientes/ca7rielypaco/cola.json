@@ -788,5 +788,21 @@
   "estado": "pendiente",
   "aprobado": "2026-11-26 22:33 (clienta vía Juan: «Si vamos»)",
   "nota": "Replica lo que mejor rindió: carrusel de historia/efeméride y flyer de noticia."
+ },
+ {
+  "id": "1127-carrusel-historia",
+  "tipo": "CARRUSEL",
+  "fecha": "2026-11-27 20:30",
+  "media": [
+   "clientes/ca7rielypaco/img/1126-historia-1.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-2.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-3.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-4.jpg",
+   "clientes/ca7rielypaco/img/1126-historia-5.jpg"
+  ],
+  "texto": "Antes de los Grammy, antes de Coachella, antes de todo: dos pibes del mismo colegio. 🇦🇷\n\nSe conocieron a los 6 años, tuvieron una banda de rock (Astor) y en 2018 arrancaron como dúo. Lo que vino después ya lo saben: Tiny Desk, Coachella, Fallon, un Grammy y ocho Latin Grammy.\n\nDeslizá y contanos: ¿desde cuándo los seguís? 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#CA7RIELyPacoAmoroso #FreeSpirits #FanClubArgentina",
+  "estado": "pendiente",
+  "aprobado": "2026-11-26 22:33 (clienta vía Juan: «Si vamos»)",
+  "nota": "Reintento: el 26/11 22:49 Meta respondió \"(#4) Application request limit reached\". Misma pieza aprobada."
  }
 ]

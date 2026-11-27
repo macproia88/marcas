@@ -290,6 +290,11 @@ def main():
     usados = log["dias"].get(hoy, {}).get("enviados", 0)
     if usados >= TOPE_DIA:
         print("tope diario alcanzado"); return
+    lib = os.path.join(AQUI, "liberar.json")
+    if os.path.exists(lib):
+        # pedido manual: volver a procesar estas charlas (quedaron marcadas sin respuesta)
+        for k in json.load(open(lib)): log["ultimo"].pop(k, None)
+        os.remove(lib)
     pendientes_bot = {x.get("para_id") for x in leer("responder.json", []) if x.get("estado") == "pendiente"}
     convs = get(f"{IG}/conversations", platform="instagram", limit=50,
                 fields="id,updated_time,participants,messages.limit(12){id,from,message,created_time,story}").get("data", [])

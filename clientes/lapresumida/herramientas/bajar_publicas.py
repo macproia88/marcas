@@ -15,6 +15,7 @@ for c in ids:
             try:
                 e = urllib.request.urlopen(urllib.request.Request(f"https://www.instagram.com/p/{c}/embed/captioned/", headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36"}), timeout=30).read().decode("utf-8", "ignore")
                 ss = re.search(r'class="EmbeddedMediaImage"[^>]*srcset="([^"]+)"', e) or re.search(r'srcset="([^"]+)"[^>]*class="EmbeddedMediaImage"', e)
+                print(c, "embed", len(e), "EmbeddedMediaImage" in e, bool(ss), e.count("srcset"))
                 if ss:
                     u = html.unescape(ss.group(1).split(",")[-1].strip().split(" ")[0])
             except Exception as ex:

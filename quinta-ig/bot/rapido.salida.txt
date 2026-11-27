@@ -1,3 +1,2 @@
-error instagram: 403
-enviados 0 nada 0 errores 1 {'ya_procesada': 14, 'ya_respondida': 35}
-rc=0 02:11
+enviados 0 nada 0 errores 0 {'ya_procesada': 15, 'ya_respondida': 35}
+rc=0 02:12

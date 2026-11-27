@@ -160,14 +160,15 @@ QUINCHO = [  # (foto, nombre, detalle, precio showroom)
 ]
 
 
-def carrusel_quincho():
+def carrusel_quincho(items=None, pref="quincho", t1="¿Cuál va en", t2="tu quincho?"):
+    items = items or QUINCHO
     out = os.path.join(pv.BASE, "img", "viral"); os.makedirs(out, exist_ok=True)
     W, H = 1080, 1350
     # Tapa
     L = pv.fondo_estudio(W, H, piso=0.999).convert("RGB"); d = ImageDraw.Draw(L)
-    d.text((540, 150), "¿Cuál va en", font=f("InterDisplay-Black.otf", 120), fill=TX, anchor="ma")
-    d.text((540, 290), "tu quincho?", font=f("InterDisplay-Black.otf", 120), fill=TERRA, anchor="ma")
-    for k, q in enumerate(QUINCHO):
+    d.text((540, 150), t1, font=f("InterDisplay-Black.otf", 120), fill=TX, anchor="ma")
+    d.text((540, 290), t2, font=f("InterDisplay-Black.otf", 120), fill=TERRA, anchor="ma")
+    for k, q in enumerate(items):
         im = pv.gradar(Image.open(os.path.join(P, q[0] + ".jpg")).convert("RGB").resize((300, 300), Image.LANCZOS))
         m = Image.new("L", im.size, 0); ImageDraw.Draw(m).rounded_rectangle((0, 0, 300, 300), 24, fill=255)
         x = 60 + k * 330; L.paste(im, (x, 500), m)
@@ -175,9 +176,9 @@ def carrusel_quincho():
         d.text((x + 150, 870), str(k + 1), font=f("Inter-Bold.otf", 48), fill="white", anchor="mm")
     d.text((540, 990), "Comentá 1, 2 o 3", font=f("Inter-Bold.otf", 64), fill=TX, anchor="ma")
     d.text((540, 1080), "Deslizá para ver cada uno →", font=f("Inter-Medium.otf", 40), fill=MU, anchor="ma")
-    pv.sello(pv.firma(L)).save(os.path.join(out, "quincho-0.jpg"), quality=93)
-    archivos = [os.path.join(out, "quincho-0.jpg")]
-    for k, q in enumerate(QUINCHO, 1):
+    pv.sello(pv.firma(L)).save(os.path.join(out,  pref + "-0.jpg"), quality=93)
+    archivos = [os.path.join(out,  pref + "-0.jpg")]
+    for k, q in enumerate(items, 1):
         L = pv.fondo_estudio(W, H, piso=0.999).convert("RGB"); d = ImageDraw.Draw(L)
         im = pv.gradar(Image.open(os.path.join(P, q[0] + ".jpg")).convert("RGB").resize((820, 820), Image.LANCZOS)
                        .filter(ImageFilter.UnsharpMask(radius=1.4, percent=60, threshold=2)))
@@ -192,7 +193,7 @@ def carrusel_quincho():
         d.text((90, 1010), q[3], font=f("InterDisplay-Black.otf", 80), fill=TERRA)
         pw = d.textlength(q[3], font=f("InterDisplay-Black.otf", 80))
         d.text((110 + pw, 1045), "en el showroom", font=f("Inter-Medium.otf", 32), fill=TX)
-        p = os.path.join(out, f"quincho-{k}.jpg"); pv.sello(pv.firma(L)).save(p, quality=93); archivos.append(p)
+        p = os.path.join(out, f"{pref}-{k}.jpg"); pv.sello(pv.firma(L)).save(p, quality=93); archivos.append(p)
     return archivos
 
 

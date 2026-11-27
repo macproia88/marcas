@@ -17,7 +17,7 @@ ESTILOS = {  # estilo -> páginas de Mixkit donde buscar
     "fiestas": ["free-stock-music/tag/christmas/"],
 }
 EFECTOS = ["free-sound-effects/whoosh/", "free-sound-effects/transition/", "free-sound-effects/pop/", "free-sound-effects/cash-register/", "free-sound-effects/wood/"]
-POR_ESTILO, POR_EFECTO = 6, 3
+POR_ESTILO, POR_EFECTO = 10, 3
 
 
 def html(p):

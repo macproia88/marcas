@@ -58,7 +58,7 @@ def placa_final(titulo, lineas, dst, seg=3.0):
                     "-frames:v", str(n), "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", dst], check=True)
 
 
-def armar(nombre, tramos, final):
+def armar(nombre, tramos, final, estilo="auto"):
     tmp = tempfile.mkdtemp(); partes = []
     for k, (v, ini, dur, t, s) in enumerate(tramos):
         q = f"{tmp}/{k}.mp4"; tramo(v, ini, dur, t, s, q, tmp); partes.append(q)
@@ -67,7 +67,22 @@ def armar(nombre, tramos, final):
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", f"{tmp}/l.txt", "-c", "copy", f"{tmp}/c.mp4"], check=True)
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f"{tmp}/c.mp4"]))
     musica = os.path.join(B, "..", "tallerfatima", "herramientas", "musica.py")
-    subprocess.run([sys.executable, musica, f"{tmp}/m.wav", str(dur + 0.5)], check=True)
+    subprocess.run([sys.executable, musica, f"{tmp}/m.wav", str(dur + 0.5), estilo], check=True)
+    # efectos de transición (whoosh) en cada corte, tomados de la biblioteca y rotando
+    import json, random
+    bib = os.path.join(B, "..", "..", "herramientas-musica", "biblioteca")
+    fx = [os.path.join(bib, e["archivo"]) for e in json.load(open(os.path.join(bib, "indice.json")))["efectos"] if e["tipo"] in ("whoosh", "transition")]
+    cortes, t = [], 0.0
+    for (_, _, dd, _, _) in tramos:
+        t += dd; cortes.append(t)
+    if fx:
+        ins = ["-i", f"{tmp}/m.wav"]; filt = "[0:a]volume=0.85[m0];"; mezcla = "[m0]"
+        for k, c in enumerate(cortes):
+            ins += ["-i", random.choice(fx)]
+            filt += f"[{k + 1}:a]volume=0.55,adelay={int(max(0, c - 0.35) * 1000)}|{int(max(0, c - 0.35) * 1000)}[f{k}];"; mezcla += f"[f{k}]"
+        filt += f"{mezcla}amix=inputs={len(cortes) + 1}:normalize=0:duration=first[a]"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", *ins, "-filter_complex", filt, "-map", "[a]", f"{tmp}/m2.wav"], check=True)
+        os.replace(f"{tmp}/m2.wav", f"{tmp}/m.wav")
     out = os.path.join(OUT, nombre)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{tmp}/c.mp4", "-i", f"{tmp}/m.wav", "-map", "0:v", "-map", "1:a", "-c:v", "copy",
                     "-c:a", "aac", "-b:a", "160k", "-af", f"afade=t=out:st={dur - 1.5}:d=1.5", "-shortest", "-movflags", "+faststart", out], check=True)
@@ -84,13 +99,13 @@ if __name__ == "__main__":
         ("v5.mp4", 1.0, 5.0, "Banquetas embaladas", "una por una"),
         ("v4.mp4", 1.0, 6.0, "Roperos de pino macizo", "revisados puerta por puerta"),
         ("v2.mp4", 0.0, 5.5, "Y a cargar el camión", "directo de fábrica"),
-    ], ("Directo de fábrica\na tu casa", DIR))
+    ], ("Directo de fábrica\na tu casa", DIR), "energico")
     armar("1128-reel-silla-soga.mp4", [
         ("v8.mp4", 0.0, 7.0, "SILLA DE SOGA\nTEJIDA A MANO", "Madera maciza"),
         ("v8.mp4", 7.0, 6.0, "¿La querés?", "Comentá SOGA y te pasamos el precio"),
-    ], ("Comentá SOGA", ["y te pasamos el precio por mensaje"] + DIR))
+    ], ("Comentá SOGA", ["y te pasamos el precio por mensaje"] + DIR), "latino")
     armar("1128-reel-dormitorio.mp4", [
         ("v7.mp4", 0.0, 6.0, "CAMA DE PINO MACIZO", "1 plaza · reforzada"),
         ("v3.mp4", 0.5, 6.5, "Respaldo tapizado\ncon botones", "Para sommier · 1 y 2 plazas"),
         ("v6.mp4", 0.5, 4.5, "Y para la cocina", "Bajo mesada + alacena con vidrio"),
-    ], ("Armá tu casa\ncon madera maciza", DIR))
+    ], ("Armá tu casa\ncon madera maciza", DIR), "acustico")

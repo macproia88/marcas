@@ -1,8 +1,37 @@
-"""Genera una pista instrumental original (sin derechos de terceros) para reels.
-Acordes Do - Sol - Lam - Fa a 100 BPM: colchón suave, arpegio tipo guitarra pulsada, bombo y shaker livianos.
-Uso: python3 musica.py salida.wav segundos
+"""Pista de música para reels.
+Primero usa la biblioteca de música libre (herramientas-musica/biblioteca, Mixkit, uso comercial permitido),
+rotando temas para que no se repita: toma el que hace más tiempo que no se usa del estilo pedido.
+Si la biblioteca está vacía, genera una pista instrumental original (abajo).
+Uso: python3 musica.py salida.wav segundos [estilo]   estilos: alegre urbano latino acustico energico pop tranquilo fiestas (o 'auto')
 """
-import sys, wave
+import sys, wave, os, json, random, subprocess, time
+
+def _desde_biblioteca(salida, dur, estilo):
+    raiz = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "herramientas-musica", "biblioteca")
+    ip = os.path.join(raiz, "indice.json")
+    if not os.path.exists(ip):
+        return False
+    idx = json.load(open(ip))["musica"]
+    up = os.path.join(raiz, "usados.json")
+    usados = json.load(open(up)) if os.path.exists(up) else {}
+    if estilo in (None, "", "auto") or estilo not in idx or not idx[estilo]:
+        estilos = [e for e, v in idx.items() if v and e != "fiestas"]
+        if not estilos:
+            return False
+        # el estilo usado hace más tiempo
+        estilo = min(estilos, key=lambda e: max([usados.get(t["archivo"], 0) for t in idx[e]] + [0]) + random.random())
+    temas = [t for t in idx[estilo] if os.path.exists(os.path.join(raiz, t["archivo"]))]
+    if not temas:
+        return False
+    tema = min(temas, key=lambda t: usados.get(t["archivo"], 0) + random.random() * 0.001)
+    usados[tema["archivo"]] = time.time(); json.dump(usados, open(up, "w"), indent=1)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-stream_loop", "-1", "-i", os.path.join(raiz, tema["archivo"]), "-t", str(dur),
+                    "-af", f"afade=t=in:d=0.4,afade=t=out:st={max(0, dur - 2)}:d=2", "-ar", "44100", "-ac", "2", salida], check=True)
+    print("ok", dur, "biblioteca", estilo, tema["archivo"])
+    return True
+
+if len(sys.argv) > 2 and _desde_biblioteca(sys.argv[1], float(sys.argv[2]), sys.argv[3] if len(sys.argv) > 3 else "auto"):
+    sys.exit(0)
 import numpy as np
 
 SR = 44100

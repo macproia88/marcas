@@ -11,10 +11,11 @@ def dur(p):
 for p in pedidos:
     if os.path.exists(p["salida"]) and not p.get("rehacer"):
         print("ya existe", p["salida"]); continue
+    print("procesando", p["salida"], flush=True)
     os.makedirs(os.path.dirname(p["salida"]) or ".", exist_ok=True)
     tiene_audio = bool(subprocess.check_output(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", p["video"]]).strip())
     subprocess.run(["piper", "--model", MODELO, "--output_file", "/tmp/voz.wav", "--length_scale", str(p.get("velocidad", 0.95))],
-                   input=p["texto"].encode(), check=True)
+                   input=p["texto"].encode(), check=True, timeout=300)
     dv, dvid = dur("/tmp/voz.wav"), dur(p["video"])
     total = max(dvid, dv + 1.0)
     extra = max(0, total - dvid)
@@ -24,5 +25,5 @@ for p in pedidos:
               f"[m][vo]amix=inputs=2:normalize=0,afade=t=out:st={total-1.2:.2f}:d=1.2[a]")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", p["video"], "-i", "/tmp/voz.wav"] + (["-i", p["musica"]] if p.get("musica") else []) + ["-filter_complex", filtro,
                     "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-c:a", "aac", "-b:a", "160k",
-                    "-t", f"{total:.2f}", "-movflags", "+faststart", p["salida"]], check=True)
+                    "-t", f"{total:.2f}", "-movflags", "+faststart", p["salida"]], check=True, stdin=subprocess.DEVNULL, timeout=600)
     print("ok", p["salida"], f"voz {dv:.1f}s video {dvid:.1f}s")

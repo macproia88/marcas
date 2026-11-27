@@ -292,7 +292,7 @@
    "clientes/tallerfatima/videos/1122-reel-testimonio-corina.mp4"
   ],
   "texto": "Corina es ex alumna de Fátima y nos cuenta su experiencia 💚\n\nHistorias como la suya son la razón de cada taller: aprender un oficio para abrir nuevas puertas.\n\nGracias, Corina, por compartirla con nosotros 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #testimonio",
-  "fecha": "2026-11-30 20:00",
+  "fecha": "2026-12-01 20:00",
   "estado": "borrador"
  },
  {
@@ -302,7 +302,7 @@
    "clientes/tallerfatima/img/1122-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-30 20:15",
+  "fecha": "2026-12-01 20:15",
   "estado": "borrador"
  },
  {
@@ -332,9 +332,10 @@
   "media": [
    "clientes/tallerfatima/img/1210-invitacion-certificados.jpg"
   ],
-  "texto": "📣 ¡Te invitamos a la Entrega de Certificados 2026!\n\n🗓️ Jueves 10 de diciembre\n🕕 18 h\n\nCelebramos trayectorias, esfuerzos sostenidos y aprendizajes construidos día a día, juntos. Alumnas, alumnos, familias, profes y voluntarios: ¡los esperamos para festejar este año!\n\n#EscuelaTallerFatima #EntregaDeCertificados",
-  "fecha": "2026-12-01 20:00",
-  "estado": "borrador"
+  "texto": "¡Llega uno de los momentos más significativos del año para el Taller Fátima! 🎓\n\nEl jueves 10 de diciembre te invitamos a ser parte de un día muy especial para todos nuestros alumnos. Es la muestra de que el esfuerzo y la voluntad valen la pena 💪\n\n✅ 190 alumnos recibirán su certificado de formación profesional\n✅ Más de 50 alumnos, su certificado de la UTN - Regional Pacheco\n🛠️ 9 oficios\n📚 14 cursos entre jóvenes y adultos\n\nCelebramos un logro que es de todos: alumnos, familias, instructores y el equipo social que los acompañó y formó.\n\n¡Te invitamos a ser parte! ¿Venís? 🙌\n\n🗓️ Jueves 10 de diciembre · 18 h\n📍 Mozart 550 - Taller Fátima\n\n#EscuelaTallerFatima #EntregaDeCertificados",
+  "fecha": "2026-11-30 20:00",
+  "estado": "pendiente",
+  "aprobado": "Juan 27/11 11:27"
  },
  {
   "id": "1210-invitacion-historia",
@@ -343,7 +344,30 @@
    "clientes/tallerfatima/img/1210-invitacion-certificados-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-12-01 20:15",
-  "estado": "borrador"
+  "fecha": "2026-11-30 20:15",
+  "estado": "pendiente",
+  "aprobado": "Juan 27/11 11:27"
+ },
+ {
+  "id": "1210-recordatorio-8dias",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1210-recordatorio-8dias.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-02 13:00",
+  "estado": "pendiente",
+  "aprobado": "Juan 27/11 11:27"
+ },
+ {
+  "id": "1210-recordatorio-4dias",
+  "tipo": "STORY",
+  "media": [
+   "clientes/tallerfatima/img/1210-recordatorio-4dias.jpg"
+  ],
+  "texto": "",
+  "fecha": "2026-12-06 13:00",
+  "estado": "pendiente",
+  "aprobado": "Juan 27/11 11:27"
  }
 ]

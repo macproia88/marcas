@@ -300,6 +300,23 @@ def main():
             foto.append({"usuario": cl.get("username"), "id": cl.get("id"), "charla": [
                 {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
                  "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:25])]})
+        # seguidores de quienes escribieron en los últimos 2 días (paginando las conversaciones)
+        segs = []; pag = get(f"{IG}/conversations", platform="instagram", limit=50, fields="updated_time,participants")
+        for _ in range(6):
+            for c in pag.get("data", []):
+                if (ahora - fecha(c["updated_time"])).total_seconds() > 2 * 86400: break
+                cl = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
+                try:
+                    pr = get(cl["id"], fields="username,name,follower_count,is_verified_user,is_user_follow_business")
+                    segs.append({k: pr.get(k) for k in ("username", "name", "follower_count", "is_verified_user", "is_user_follow_business")})
+                except Exception as e:
+                    segs.append({"username": cl.get("username"), "error": type(e).__name__})
+            else:
+                nxt = (pag.get("paging") or {}).get("next")
+                if not nxt: break
+                pag = json.load(urllib.request.urlopen(nxt, timeout=30)); continue
+            break
+        foto = {"charlas": foto, "seguidores": segs}
         kk = clave_de("diag"); iv = os.urandom(12)
         log["diag_cifrado"] = {"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(
             AESGCM(kk).encrypt(iv, json.dumps(foto, ensure_ascii=False).encode(), None)).decode(), "hora": ahora.strftime("%H:%M")}

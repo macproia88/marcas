@@ -63,5 +63,11 @@
   "velocidad": 1.0,
   "texto": "Cama de pino macizo, reforzada. Respaldos tapizados con botones para sommier, de una y de dos plazas. Y para la cocina, bajo mesada con alacena. Armá tu casa con madera maciza en El Carpintero 3.",
   "rehacer": true
+ },
+ {
+  "video": "clientes/carpintero/videos/v2/1130-reel-cocina-ropero.mp4",
+  "salida": "clientes/carpintero/videos/v2/1130-reel-cocina-ropero-voz.mp4",
+  "velocidad": 1.0,
+  "texto": "Cocina de pino macizo: bajo mesada con alacena y puertas de vidrio. Y para el dormitorio, ropero placard con alzada y cajonera. Muebles para toda la casa, directo de fábrica."
  }
 ]

@@ -1,0 +1,17 @@
+name: La Presumida - bajar fotos públicas
+on:
+  workflow_dispatch:
+  push:
+    paths: ['clientes/lapresumida/herramientas/ids.txt', 'clientes/lapresumida/herramientas/bajar_publicas.py']
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 clientes/lapresumida/herramientas/bajar_publicas.py
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add clientes/lapresumida/fotos; git commit -m "La Presumida: fotos públicas bajadas" || exit 0
+          git pull --rebase -X theirs -q && git push -q

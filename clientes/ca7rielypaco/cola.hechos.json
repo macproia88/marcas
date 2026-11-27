@@ -103,5 +103,10 @@
   "estado": "publicado",
   "ig_media_id": "17923211094242471",
   "publicado_el": "2026-11-21 12:03"
+ },
+ "1126-carrusel-historia": {
+  "estado": "error",
+  "error": "(#4) Application request limit reached",
+  "intento": "2026-11-26 22:49"
  }
 }

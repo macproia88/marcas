@@ -216,10 +216,10 @@ def precio_de(f):
         es_fer = f.isoformat() in fer
         finde_largo = wd == 4 and ((f + datetime.timedelta(days=3)).isoformat() in fer)
         if es_fer: wd = 5  # feriado = precio de finde
-        if f.year >= 2027:
+        if "desde_enero_2027" in _PPD:   # una sola lista para todas las fechas
             t = _PPD["desde_enero_2027"]
             dia = t["dia"]["lunes a jueves"] if wd <= 3 else t["dia"]["viernes, sábado, domingo y feriado"]
-            casa = (t["casa"]["lunes a jueves"] if wd <= 3 else t["casa"]["viernes y feriados"] if wd == 4
+            casa = (t["casa"]["viernes y feriados"] if (es_fer and f.weekday() <= 4) or wd == 4 else t["casa"]["lunes a jueves"] if wd <= 3
                     else t["casa"]["sábado o domingo (un solo día)"] + " (sáb+dom juntos con noche: " + t["casa"]["sábado + domingo juntos con noche"] + ")")
         else:
             dia = _PPD["dia"]["lunes a jueves"] if wd <= 3 else _PPD["dia"]["viernes, sábado, domingo y feriado"]

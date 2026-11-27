@@ -455,7 +455,12 @@ def main():
                 except urllib.error.HTTPError as e:
                     print("error foto:", e.code); log["ultimo_error"] = f"foto {e.code}"; break
         except urllib.error.HTTPError as e:
-            errores += 1; print("error instagram:", e.code); log["ultimo_error"] = f"instagram {e.code}"
+            try: det = json.loads(e.read().decode()).get("error", {}); det = f"{det.get('code')}/{det.get('error_subcode')} {det.get('message','')[:110]}"
+            except Exception: det = ""
+            errores += 1; print("error instagram:", e.code, det); log["ultimo_error"] = f"instagram {e.code} {det}"[:220]
+            log["ultimo"].pop(clave, None)   # que lo reintente en la próxima vuelta
+            log.setdefault("reintentos", {}); log["reintentos"][clave] = log["reintentos"].get(clave, 0) + 1
+            if log["reintentos"][clave] >= 4: log["ultimo"][clave] = h   # después de 4 intentos lo deja
         if usados + enviados >= TOPE_DIA: break
     # Comentarios en publicaciones de las últimas 48 h: respuesta corta y con onda al toque (ayuda a viralizar).
     try:

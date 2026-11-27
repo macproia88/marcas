@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pip install -q cryptography && sudo apt-get install -y -qq ffmpeg >/dev/null
+      - run: pip install -q cryptography
       - name: Bajar
         env:
           IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
@@ -21,8 +21,6 @@ jobs:
           METRICAS_IG: ${{ github.event.inputs.ig }}
         run: |
           cd quinta-ig/metricas && python3 bajar_post.py "${{ github.event.inputs.codigo }}" "$GITHUB_WORKSPACE/${{ github.event.inputs.destino }}"
-          cd "$GITHUB_WORKSPACE/${{ github.event.inputs.destino }}"
-          for v in *.mp4; do [ -f "$v" ] || continue; mkdir -p cuadros; ffmpeg -nostdin -loglevel error -i "$v" -vf "fps=1/2" -q:v 2 "cuadros/${v%.mp4}-%03d.jpg"; done
       - name: Guardar
         run: |
           git config user.name "robot" && git config user.email "robot@users.noreply.github.com"

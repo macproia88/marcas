@@ -339,11 +339,12 @@
  "actualizado": "2026-11-27 15:14",
  "ultimo_error": "instagram 403",
  "motivos": {
+  "espera": 1,
   "ya_procesada": 10,
-  "ya_respondida": 36,
+  "ya_respondida": 35,
   "prospeccion": 4
  },
- "revisado": "2026-11-27 15:15",
+ "revisado": "2026-11-27 15:20",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -503,7 +504,8 @@
   "18116491577149442": "2026-11-27",
   "18203060047352500": "2026-11-27",
   "18227391697342321": "2026-11-27",
-  "17872391601663059": "2026-11-27"
+  "17872391601663059": "2026-11-27",
+  "17897400465434616": "2026-11-27"
  },
  "crash": "27/11 10:03 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
  "costo": {

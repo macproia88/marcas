@@ -804,5 +804,17 @@
   "estado": "pendiente",
   "aprobado": "2026-11-26 22:33 (clienta vía Juan: «Si vamos»)",
   "nota": "Reintento: el 26/11 22:49 Meta respondió \"(#4) Application request limit reached\". Misma pieza aprobada."
+ },
+ {
+  "id": "1127-post-lima-ultima",
+  "tipo": "POST",
+  "media": [
+   "clientes/ca7rielypaco/img/1127-lima-ultima.jpg"
+  ],
+  "texto": "Hoy se termina el FREE SPIRITS WORLD TOUR. 🌎🇵🇪\n\nLa última fecha es en Lima: viernes 27/11 en el Multiespacio Costa 21 (San Miguel). Puertas a las 16 h y show a las 20:30 h de Lima, que son las 18 h y las 22:30 h en Argentina. Los horarios pueden cambiar.\n\nFueron meses de verlos girar por el mundo: de Red Rocks a Radio City, de Londres a Madrid, de Japón a Brasil. Cada noche llevaron lo que son a un escenario distinto, y cada noche los bancamos desde acá.\n\nGracias, CA7RIEL y Paco, por esta gira enorme. Gracias a todos los que viajaron, gritaron, compartieron y estuvieron. Lima, cerrala como se merece. 🧡\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#FreeSpiritsWorldTour #CA7RIELyPacoAmoroso #Lima #FanClubArgentina",
+  "fecha": "2026-11-27 18:00",
+  "estado": "borrador",
+  "aprobado": null,
+  "nota": "Última fecha del tour, Lima 27/11. Datos: Costa 21, puertas 16 h y show 20:30 h (hora de Lima), según la prensa peruana."
  }
 ]

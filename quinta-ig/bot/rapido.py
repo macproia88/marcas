@@ -271,9 +271,10 @@ COMENTARIO = """
 AHORA NO ES UN DM: es un COMENTARIO público en una publicación nuestra. Respondé UNA línea corta (máximo 15 palabras), con humor y buena onda, en rioplatense, sin signos de apertura. Si el comentario es un chiste o etiqueta a alguien, seguile el juego. Si pregunta precio, fecha, info o promo: respondé algo atractivo que lo lleve a leer el privado, variando la frase, ej: "Te mandamos por privado precios y fechas libres 👀 fijate en tus mensajes 📩", "Te escribimos al privado con las promos de esta semana 🔥", "Ya te llega por privado, mirá que hay fechas lindas libres 😉". Nunca nombres el WhatsApp en público. Nunca precios ni alias en comentarios. Si es spam, ofensivo, de otra quinta o solo un emoji suelto que no amerita, respondé NADA."""
 
 USO = {"in": 0, "out": 0, "cache_w": 0, "cache_r": 0, "llamadas": 0}
+USO_TIPO = {}   # gasto por tipo de tarea: dm, recordatorio, retomada, comentario
 PRECIO_IN, PRECIO_OUT, PRECIO_CW, PRECIO_CR = 0.10, 0.50, 0.125, 0.01   # US$ por millón (Haiku 5.5, prompts < 100K)
 
-def claude(sistema, charla):
+def claude(sistema, charla, tipo="dm"):
     texto = f"Hora actual: {datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%H:%M')}\nCharla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
     body = json.dumps({"model": MODELO, "max_tokens": 3000,
@@ -285,6 +286,9 @@ def claude(sistema, charla):
     u = d.get("usage") or {}
     USO["in"] += u.get("input_tokens", 0); USO["cache_w"] += u.get("cache_creation_input_tokens", 0)
     USO["cache_r"] += u.get("cache_read_input_tokens", 0); USO["out"] += u.get("output_tokens", 0); USO["llamadas"] += 1
+    usd = (u.get("input_tokens", 0) * PRECIO_IN + u.get("output_tokens", 0) * PRECIO_OUT
+           + u.get("cache_creation_input_tokens", 0) * PRECIO_CW + u.get("cache_read_input_tokens", 0) * PRECIO_CR) / 1e6
+    t = USO_TIPO.setdefault(tipo, {"llamadas": 0, "usd": 0.0}); t["llamadas"] += 1; t["usd"] += usd
     global DIAG
     DIAG = {"stop": d.get("stop_reason"), "tipos": [b.get("type") for b in d.get("content", [])],
             "largo": sum(len(b.get("text", "")) for b in d.get("content", []))}
@@ -375,7 +379,7 @@ def main():
                 charla.append({"de": "sistema", "texto": nota, "hora": ""})
                 try:
                     sistema = sistema or instrucciones()
-                    resp = claude(sistema, charla)
+                    resp = claude(sistema, charla, "retomada")
                     if resp and not resp.strip().upper().startswith("NADA"):
                         post(f"{IG}/messages", recipient=json.dumps({"id": pid}), message=json.dumps({"text": resp[:950]}))
                         enviados += 1; salto("retomada")
@@ -394,7 +398,7 @@ def main():
                            "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
                 try:
                     sistema = sistema or instrucciones()
-                    j = json_de(claude(sistema + RECORDATORIO, charla)) or {}
+                    j = json_de(claude(sistema + RECORDATORIO, charla, "recordatorio")) or {}
                 except Exception as e:
                     print("error recordatorio:", type(e).__name__); j = {}
                 if j.get("tibio"):
@@ -491,7 +495,7 @@ def main():
                 if (ahora - fecha(cm["timestamp"])).total_seconds() < 60: continue
                 sistema = sistema or instrucciones()
                 nota = (COMENTARIO + "\nPUBLICACIÓN: " + (md.get("caption") or "")[:300])
-                resp = claude(sistema + nota, [{"de": "cliente", "texto": cm.get("text") or "", "hora": ""}])
+                resp = claude(sistema + nota, [{"de": "cliente", "texto": cm.get("text") or "", "hora": ""}], "comentario")
                 cr[cm["id"]] = hoy
                 if resp and not resp.strip().upper().startswith("NADA"):
                     post(f"{cm['id']}/replies", message=resp.strip()[:300]); hechos_c += 1; salto("comentario")
@@ -512,6 +516,9 @@ def main():
         for k2 in ("in", "out", "cache_w", "cache_r", "llamadas"): c[k2] = c.get(k2, 0) + USO[k2]
         c["usd"] = round(c["in"] / 1e6 * PRECIO_IN + c["out"] / 1e6 * PRECIO_OUT
                          + c.get("cache_w", 0) / 1e6 * PRECIO_CW + c.get("cache_r", 0) / 1e6 * PRECIO_CR, 4)
+        pt = c.setdefault("por_tipo", {})
+        for tp, v in USO_TIPO.items():
+            x = pt.setdefault(tp, {"llamadas": 0, "usd": 0.0}); x["llamadas"] += v["llamadas"]; x["usd"] = round(x["usd"] + v["usd"], 4)
         mes = hoy[:7]
         log["costo_mes"] = {mes: round(sum(v.get("usd", 0) for k2, v in log["costo"].items() if k2.startswith(mes)), 3)}
     log["motivos"] = motivos; log["revisado"] = ahora.strftime("%Y-%m-%d %H:%M")

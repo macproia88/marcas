@@ -49,10 +49,22 @@ jobs:
           pip install -q cryptography
           mkdir -p clientes/carpintero/metricas
           python3 quinta-ig/metricas/metricas.py | tee clientes/carpintero/metricas/ultima-corrida.txt || true
+      - name: Juntar metricas de La Presumida
+        env:
+          IG_APP_SECRET: ${{ secrets.IG_APP_SECRET }}
+          METRICAS_USUARIO: lapresumidapastas
+          METRICAS_IG: "17841407674603036"
+          METRICAS_OUT: clientes/lapresumida/metricas/datos.json
+          METRICAS_DIAS_PUBS: "2000"
+          METRICAS_MAX_PUBS: "100"
+        run: |
+          pip install -q cryptography
+          mkdir -p clientes/lapresumida/metricas
+          python3 quinta-ig/metricas/metricas.py | tee clientes/lapresumida/metricas/ultima-corrida.txt || true
       - name: Guardar
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas clientes/carpintero/metricas
+          git add quinta-ig/metricas/datos.json quinta-ig/metricas/ultima-corrida.txt clientes/ca7rielypaco/metricas clientes/tallerfatima/metricas clientes/carpintero/metricas clientes/lapresumida/metricas
           git commit -m "Metricas IG" || exit 0
           git pull --rebase -q && git push -q

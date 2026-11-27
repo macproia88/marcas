@@ -62,8 +62,7 @@ def placa(foto, temp, titulo, W, H):
     centrado(d, W, top + int(455 * esc), "¿Ya tenés pileta?", ImageFont.truetype(SERIF, int(70 * esc)), (255, 255, 255))
     y = H - int((330 if H < 1600 else 420) * esc)
     y = pastilla(d, W, y, "Pileta · Quincho · Parrilla", ImageFont.truetype(SANS_R, int(40 * esc)), (0, 0, 0, 150), pad=(36, 16))
-    y = pastilla(d, W, y + int(22 * esc), "Desde $140.000 el día", ImageFont.truetype(SANS, int(54 * esc)), NARANJA)
-    pastilla(d, W, y + int(22 * esc), "WhatsApp 11 3877-7015", ImageFont.truetype(SANS, int(50 * esc)), VERDE)
+    y = pastilla(d, W, y + int(22 * esc), "Escribinos por mensaje", ImageFont.truetype(SANS, int(54 * esc)), NARANJA)
     return img.convert("RGB")
 
 

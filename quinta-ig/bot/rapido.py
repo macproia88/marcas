@@ -76,6 +76,7 @@ Además:
 - CIERRE DEL CLIENTE: si el último mensaje del cliente cierra la charla sin preguntar nada ("lo analizo y te aviso", "lo hablo con la gente", "te aviso", "gracias", "dale", "ok", "me imagino que sí", un emoji o un like), NO respondas: devolvé solo NADA. No mandes despedidas ni "quedo atento". Si además pregunta algo, respondé solo la pregunta, corto.
 - ESTADÍAS DE VARIOS DÍAS O CONSULTAS COMBINADAS: calculá vos el total y dalo en el mismo mensaje. Sumá el precio de cada día según el día de la semana y la tabla de precios de esa fecha (casa: se cobra cada día; si incluye sábado y domingo juntos, usá el precio de finde completo si existe) + adicional por persona si de día son más de 15. Mostrá el total y, si son varios días, el detalle en una línea corta ("lun a jue 4 x 180 mil + vie 200 mil + sáb y dom 450 mil = 1.370.000"). NUNCA digas "lo consulto con Juan" para un precio que se puede calcular con la tabla. "Lo consulto" solo si el dato de verdad no está.
 - FINDE LARGO: si piden "el finde del X" o "finde largo", ofrecé TODOS los días de ese finde (los que te paso en FECHAS) que estén libres, nunca uno solo. Para la casa con noches: el total es la suma de cada día. Dales opciones claras (ej: "sáb 5 a lun 7: 3 días X; sáb 5 a mar 8: 4 días Y").
+- Tenemos SOLO 2 quintas: la de pasar el día y la casa. Nunca ofrezcas otra quinta ni otra opción fuera de esas dos.
 - Capacidad casa: duermen cómodas 5 (si son 5 o menos para dormir, decilo como algo bueno y seguí). Después del precio, cerrá: "Querés que te aparte esas fechas?".
 - PRECIO FIJO: el precio es por el día completo (incluye hasta 15 personas) y no cambia por ser pocos. NUNCA bajes el precio ni digas "te la dejo en" ni inventes descuentos; si son pocos, decilo como algo bueno ("van re cómodos"). Si son más de 15, sumá el adicional por persona.
 - MENSAJES CORTOS: máximo 3 líneas. No repitas lo que dijo el cliente ni expliques de más.
@@ -301,11 +302,18 @@ def main():
                 {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
                  "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:25])]})
         # seguidores de quienes escribieron en los últimos 2 días (paginando las conversaciones)
-        segs = []; pag = get(f"{IG}/conversations", platform="instagram", limit=50, fields="updated_time,participants")
+        buscar = [u.strip() for u in open(os.path.join(AQUI, "diag.trigger")).read().split() if u.strip()]
+        segs = []; pag = get(f"{IG}/conversations", platform="instagram", limit=50, fields="updated_time,participants,messages.limit(20){from,message,created_time}")
         for _ in range(6):
             for c in pag.get("data", []):
-                if (ahora - fecha(c["updated_time"])).total_seconds() > 2 * 86400: break
+                if (ahora - fecha(c["updated_time"])).total_seconds() > (7 if buscar else 2) * 86400: break
                 cl = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
+                if cl.get("username") in buscar:
+                    foto.append({"usuario": cl.get("username"), "buscado": True, "charla": [
+                        {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
+                         "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", []))]})
+                if not buscar: pass
+                else: continue
                 try:
                     pr = get(cl["id"], fields="username,name,follower_count,is_verified_user,is_user_follow_business")
                     segs.append({k: pr.get(k) for k in ("username", "name", "follower_count", "is_verified_user", "is_user_follow_business")})

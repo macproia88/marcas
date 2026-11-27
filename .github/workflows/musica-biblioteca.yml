@@ -1,0 +1,18 @@
+name: Biblioteca de música para reels
+on:
+  workflow_dispatch:
+  push:
+    paths: ['herramientas-musica/bajar_biblioteca.py']
+permissions:
+  contents: write
+jobs:
+  bajar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq --fix-missing ffmpeg >/dev/null
+      - run: python3 herramientas-musica/bajar_biblioteca.py
+      - run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add herramientas-musica/biblioteca; git commit -m "Biblioteca de música actualizada [skip ci]" || exit 0
+          git pull --rebase -X theirs -q && git push -q

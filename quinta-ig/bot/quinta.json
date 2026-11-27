@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-22 16:20",
+ "actualizado": "2026-11-27 11:38",
  "como_se_usa": "Fuente única del bot. Juan avisa en el chat ('reserva: fecha, quinta, monto') y Claude actualiza este archivo. '[COMPLETAR]' = el bot no lo dice, responde 'te lo pasamos por WhatsApp'. Repo público: sin nombres ni montos de clientes.",
  "calendario": [
   {
@@ -109,6 +109,16 @@
   },
   {
    "fecha": "2026-12-01",
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-04",
+   "quinta": "casa",
+   "estado": "alquilado"
+  },
+  {
+   "fecha": "2026-12-05",
    "quinta": "casa",
    "estado": "alquilado"
   },

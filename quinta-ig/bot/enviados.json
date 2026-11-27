@@ -681,5 +681,29 @@
  "ef066f06ed73f0e3": {
   "estado": "enviado",
   "hora": "26/11 20:19"
+ },
+ "a4ae388043d31d7a": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"ALIs68iE-cTcsTKDYRBG0wZ\"}}"
+ },
+ "fd70ee80c0846509": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"A1-oerS3l9zYCN1J-jlxSbE\"}}"
+ },
+ "3eb2b98f608a161f": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"AMS1SzxPzVmEkMYcMvPuRpY\"}}"
+ },
+ "3b5630cb19ad4297": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"AddsUpscIbtSoDcuUn73row\"}}"
+ },
+ "a54037e50f607e8d": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"AkwPaQowueV2wh5dc57YsFT\"}}"
+ },
+ "f4fc4492bb5ecbd5": {
+  "estado": "error",
+  "error": "{\"error\":{\"message\":\"(#4) Application request limit reached\",\"type\":\"OAuthException\",\"is_transient\":true,\"code\":4,\"fbtrace_id\":\"AxMGM5jz43p-D9Nt0_9BzEu\"}}"
  }
 }

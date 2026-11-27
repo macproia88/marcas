@@ -19,7 +19,7 @@ for p in pedidos:
     dv, dvid = dur("/tmp/voz.wav"), dur(p["video"])
     total = max(dvid, dv + 1.0)
     extra = max(0, total - dvid)
-    filtro = (f"[0:v]tpad=stop_mode=clone:stop_duration={extra:.2f}[v];"
+    filtro = ((f"[0:v]tpad=stop_mode=clone:stop_duration={extra:.2f},trim=0:{total:.2f}[v];" if extra > 0.05 else f"[0:v]trim=0:{total:.2f},setpts=PTS-STARTPTS[v];")
               + (f"[2:a]apad,atrim=0:{total:.2f},volume={p.get('vol_musica',0.35)}[m];" if p.get("musica") else (f"[0:a]apad,atrim=0:{total:.2f},volume=0.22[m];" if tiene_audio else f"anullsrc=r=44100:cl=stereo,atrim=0:{total:.2f}[m];")) +
               f"[1:a]adelay=400|400,volume=1.6,apad,atrim=0:{total:.2f}[vo];"
               f"[m][vo]amix=inputs=2:normalize=0,afade=t=out:st={total-1.2:.2f}:d=1.2[a]")

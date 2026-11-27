@@ -66,7 +66,7 @@ def instrucciones():
     reglas = open(os.path.join(AQUI, "INSTRUCCIONES.md"), encoding="utf-8").read()
     reglas = reglas.split("## Reglas de respuesta", 1)[-1].split("## Aviso a Juan", 1)[0]
     return f"""Sos quien atiende los mensajes directos de Instagram de Quinta El Florido (@quintaelflorido), dos quintas de alquiler en General Rodríguez, Buenos Aires.
-Hoy es {DIAS[hoy.weekday()]} {hoy.strftime('%d/%m/%Y')}, hora {ahora.strftime('%H:%M')} (Argentina).
+Hoy es {DIAS[hoy.weekday()]} {hoy.strftime('%d/%m/%Y')} (Argentina; la hora exacta va al principio de la charla).
 
 REGLAS (las mismas que usa el equipo):
 {reglas}
@@ -273,7 +273,7 @@ USO = {"in": 0, "out": 0, "cache_w": 0, "cache_r": 0, "llamadas": 0}
 PRECIO_IN, PRECIO_OUT, PRECIO_CW, PRECIO_CR = 0.10, 0.50, 0.125, 0.01   # US$ por millón (Haiku 5.5, prompts < 100K)
 
 def claude(sistema, charla):
-    texto = "Charla con el cliente (de más vieja a más nueva):\n" + "\n".join(
+    texto = f"Hora actual: {datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%H:%M')}\nCharla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
     body = json.dumps({"model": MODELO, "max_tokens": 3000,
                        "system": [{"type": "text", "text": sistema, "cache_control": {"type": "ephemeral"}}],

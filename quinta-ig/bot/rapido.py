@@ -295,11 +295,11 @@ def main():
     if os.path.exists(os.path.join(AQUI, "diag.trigger")):
         # Foto cifrada de las últimas charlas para revisar a mano (repo público: va cifrado con la clave de precios).
         foto = []
-        for c in convs[:12]:
+        for c in convs[:50]:
             cl = next((p for p in (c.get("participants") or {}).get("data", []) if p.get("username") != YO), {})
             foto.append({"usuario": cl.get("username"), "id": cl.get("id"), "charla": [
                 {"de": "nos" if (m.get("from") or {}).get("username") == YO else "cli", "t": m.get("message") or "[adj]",
-                 "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:8])]})
+                 "h": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed((c.get("messages") or {}).get("data", [])[:25])]})
         kk = clave_de("diag"); iv = os.urandom(12)
         log["diag_cifrado"] = {"iv": base64.b64encode(iv).decode(), "data": base64.b64encode(
             AESGCM(kk).encrypt(iv, json.dumps(foto, ensure_ascii=False).encode(), None)).decode(), "hora": ahora.strftime("%H:%M")}

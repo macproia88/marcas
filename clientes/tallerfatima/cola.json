@@ -157,8 +157,10 @@
    "clientes/tallerfatima/videos/1122-reel-show-expo.mp4"
   ],
   "texto": "Y la Expo también fue fiesta 🎶💃\n\nMúsica en vivo, baile y una comunidad que no paró de celebrar todo lo aprendido en el año.\n\n¡Gracias por bailar con nosotros!\n\n#EscuelaTallerFatima #ComunidadFátima #ExpoFatima2026 #oficios #formaciónprofesional",
-  "fecha": "2026-12-02 20:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-12-02 20:00"
  },
  {
   "id": "1122-historia-expo",
@@ -167,8 +169,10 @@
    "clientes/tallerfatima/videos/1122-historia-expo.mp4"
   ],
   "texto": "",
-  "fecha": "2026-12-02 20:15",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-12-02 20:15"
  },
  {
   "id": "1123-carrusel-gracias-expo",
@@ -238,8 +242,10 @@
    "clientes/tallerfatima/img/1119-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-27 13:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-11-27 13:00"
  },
  {
   "id": "1119-reel-intercambio-oficios",
@@ -248,8 +254,10 @@
    "clientes/tallerfatima/videos/1119-reel-oficios.mp4"
   ],
   "texto": "Intercambio de oficios 🔄💚\n\nLas y los jóvenes de los talleres de carpintería, gastronomía, manicuría y costura (corte y confección) intercambiaron sus oficios: cada grupo enseñó lo suyo y aprendió del otro.\n\nAsí descubrieron que todos los oficios se necesitan entre sí. 🤝\n\nUna propuesta del equipo social de la Escuela Taller Fátima.\n\n💬 ¿Qué oficio te gustaría aprender? Contanos en los comentarios.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #intercambiodeoficios #formaciónprofesional",
-  "fecha": "2026-11-27 20:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-11-27 20:00"
  },
  {
   "id": "1120-historia",
@@ -258,8 +266,10 @@
    "clientes/tallerfatima/img/1120-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-28 13:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-11-28 13:00"
  },
  {
   "id": "1121-carrusel-costura",
@@ -272,8 +282,10 @@
    "clientes/tallerfatima/img/1121-costura-5.jpg"
   ],
   "texto": "Del molde a la prenda 🧵💚\n\nEn el taller de costura se aprende moldería, se toman medidas, se traza y se corta paso a paso, siempre en equipo.\n\nCoser también es emprender: con un oficio en las manos se abren nuevas oportunidades.\n\n👉 Escribinos por mensaje para conocer los talleres.\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #costura #moldería",
-  "fecha": "2026-11-29 20:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-11-29 20:00"
  },
  {
   "id": "1121-historia",
@@ -282,8 +294,10 @@
    "clientes/tallerfatima/img/1121-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-11-29 20:15",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-11-29 20:15"
  },
  {
   "id": "1122-reel-testimonio-corina",
@@ -292,8 +306,10 @@
    "clientes/tallerfatima/videos/1122-reel-testimonio-corina.mp4"
   ],
   "texto": "Corina es ex alumna de Fátima y nos cuenta su experiencia 💚\n\nHistorias como la suya son la razón de cada taller: aprender un oficio para abrir nuevas puertas.\n\nGracias, Corina, por compartirla con nosotros 🙌\n\n#EscuelaTallerFatima #ComunidadFátima #oficios #formaciónprofesional #testimonio",
-  "fecha": "2026-12-01 20:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-12-01 20:00"
  },
  {
   "id": "1122-historia",
@@ -302,8 +318,10 @@
    "clientes/tallerfatima/img/1122-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-12-01 20:15",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-12-01 20:15"
  },
  {
   "id": "1123-historia",
@@ -312,8 +330,10 @@
    "clientes/tallerfatima/img/1123-historia.jpg"
   ],
   "texto": "",
-  "fecha": "2026-12-01 13:00",
-  "estado": "borrador"
+  "fecha": "2027-01-15 20:00",
+  "estado": "borrador",
+  "reserva": true,
+  "fecha_original": "2026-12-01 13:00"
  },
  {
   "id": "1124-reel-cierre-jovenes",

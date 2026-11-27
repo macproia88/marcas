@@ -4,7 +4,7 @@ LB=lambda s:ImageFont.truetype('/tmp/ttf/lato-latin-700-normal.ttf',s)
 LR=lambda s:ImageFont.truetype('/tmp/ttf/lato-latin-400-normal.ttf',s)
 VERDE=(0,137,76); AMA=(255,203,51); MAR=(82,69,59); CREMA=(245,251,246); TURQ=(23,145,156); VCLARO=(120,176,42)
 LOGO='/home/claude/marcas/clientes/tallerfatima/marca/logo-blanco.png'
-def foto(path,w,h,cy=0.5,top_cut=0.17):
+def foto(path,w,h,cy=0.5,top_cut=0.0):
     im=Image.open(path).convert('RGB'); W0,H0=im.size
     im=im.crop((0,int(H0*top_cut),W0,H0))  # saca logos del video
     W0,H0=im.size; k=max(w/W0,h/H0); im=im.resize((int(W0*k)+1,int(H0*k)+1),Image.LANCZOS)
@@ -25,7 +25,7 @@ FALTAN=0
 def pieza(W,H,salida,story=False):
     c=Image.new('RGB',(W,H),VERDE)
     fh=int(H*(0.50 if story else 0.52))
-    c.paste(foto('festejo.jpg',W,fh,0.45),(0,0))
+    c.paste(foto('festejo.jpg',W,fh,0.62),(0,0))
     # degradé hacia el verde
     g=Image.new('L',(1,fh)); 
     for yy in range(fh): g.putpixel((0,yy),int(255*max(0,(yy-fh*0.55)/(fh*0.45))**1.3))

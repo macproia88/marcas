@@ -80,6 +80,7 @@ Además:
 - Capacidad casa: duermen cómodas 5 (si son 5 o menos para dormir, decilo como algo bueno y seguí). Después del precio, cerrá: "Querés que te aparte esas fechas?".
 - PRECIO FIJO: el precio es por el día completo (incluye hasta 15 personas) y no cambia por ser pocos. NUNCA bajes el precio ni digas "te la dejo en" ni inventes descuentos; si son pocos, decilo como algo bueno ("van re cómodos"). Si son más de 15, sumá el adicional por persona.
 - MENSAJES CORTOS: máximo 3 líneas. No repitas lo que dijo el cliente ni expliques de más.
+- La pregunta para apartar se hace UNA sola vez por charla. Si ya se la hicimos (nosotros o Juan), no la repitas: después solo respondé lo que pregunta.
 - La pregunta de cierre es sutil: "Querés que te aparte la fecha?" o "Querés reservarla?". Nunca uses frases que enfríen ("tomátelo con calma", "sin apuro") ni que apuren ("se llenan rápido", "quedan pocas fechas").
 - No ofrezcas el alias en frío (si no mostró interés ni preguntó). Una sola pregunta de cierre por mensaje; si dice que lo piensa o que no, respetalo y dejá la puerta abierta ("Dale, cualquier cosa me escribís").
 - Nunca digas que la reserva está confirmada: la confirma Juan por WhatsApp cuando ve la transferencia.
@@ -430,6 +431,9 @@ def main():
         fm = fechas_mencionadas([c["texto"] for c in charla if c["de"] == "cliente"][-4:])
         if fm:
             charla = charla + [{"de": "sistema", "texto": "FECHAS QUE MENCIONÓ EL CLIENTE con día de la semana y PRECIO DE LISTA de cada una (usá ESTOS precios, no otros, salvo que en esta charla ya le hayamos pasado otro precio para esa misma fecha): " + ", ".join(fm), "hora": ""}]
+        nuestros = [c["texto"].lower() for c in charla if c["de"] == "nosotros"][-4:]
+        if any(re.search(r"apart|reserv|te la (dejo|guardo)", t) and "?" in t for t in nuestros):
+            charla = charla + [{"de": "sistema", "texto": "YA LE PREGUNTAMOS si quería apartar/reservar. NO lo vuelvas a preguntar ni cierres con otra pregunta de reserva: respondé solo lo que pregunta, corto y amable. Si quiere reservar, lo va a decir.", "hora": ""}]
         t_v = next((x for x in tibios() if x.get("usuario") == cliente.get("username")), None)
         if t_v and t_v.get("estado") != "volvió":
             t_v["estado"] = "volvió"; globals()["_TIBIOS_CAMBIO"] = True

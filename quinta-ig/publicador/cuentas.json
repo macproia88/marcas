@@ -30,5 +30,13 @@
   "activa": true,
   "ig_id": "17841431830396652",
   "llave": "llaves/elcarpintero3f.enc"
+ },
+ {
+  "nombre": "lapresumida",
+  "usuario": "lapresumidapastas",
+  "cola": "clientes/lapresumida/cola.json",
+  "activa": true,
+  "ig_id": "17841407674603036",
+  "llave": "llaves/lapresumidapastas.enc"
  }
 ]

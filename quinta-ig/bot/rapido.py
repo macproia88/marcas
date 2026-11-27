@@ -274,11 +274,12 @@ USO = {"in": 0, "out": 0, "cache_w": 0, "cache_r": 0, "llamadas": 0}
 USO_TIPO = {}   # gasto por tipo de tarea: dm, recordatorio, retomada, comentario
 PRECIO_IN, PRECIO_OUT, PRECIO_CW, PRECIO_CR = 0.10, 0.50, 0.125, 0.01   # US$ por millón (Haiku 5.5, prompts < 100K)
 
-def claude(sistema, charla, tipo="dm"):
+def claude(sistema, charla, tipo="dm", extra=""):
     texto = f"Hora actual: {datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%H:%M')}\nCharla con el cliente (de más vieja a más nueva):\n" + "\n".join(
         f"[{m['hora']}] {'NOSOTROS' if m['de'] == 'nosotros' else ('DATO DEL SISTEMA' if m['de'] == 'sistema' else 'CLIENTE')}: {m['texto']}" for m in charla)
     body = json.dumps({"model": MODELO, "max_tokens": 3000,
-                       "system": [{"type": "text", "text": sistema, "cache_control": {"type": "ephemeral"}}],
+                       "system": [{"type": "text", "text": sistema, "cache_control": {"type": "ephemeral"}}]
+                                 + ([{"type": "text", "text": extra}] if extra else []),
                        "messages": [{"role": "user", "content": texto}]}).encode()
     r = urllib.request.Request("https://api.anthropic.com/v1/messages", data=body, method="POST", headers={
         "x-api-key": KEY, "anthropic-version": "2023-06-01", "content-type": "application/json"})
@@ -398,7 +399,7 @@ def main():
                            "hora": fecha(m["created_time"]).strftime("%d/%m %H:%M")} for m in reversed(msgs)]
                 try:
                     sistema = sistema or instrucciones()
-                    j = json_de(claude(sistema + RECORDATORIO, charla, "recordatorio")) or {}
+                    j = json_de(claude(sistema, charla, "recordatorio", RECORDATORIO)) or {}
                 except Exception as e:
                     print("error recordatorio:", type(e).__name__); j = {}
                 if j.get("tibio"):
@@ -495,7 +496,7 @@ def main():
                 if (ahora - fecha(cm["timestamp"])).total_seconds() < 60: continue
                 sistema = sistema or instrucciones()
                 nota = (COMENTARIO + "\nPUBLICACIÓN: " + (md.get("caption") or "")[:300])
-                resp = claude(sistema + nota, [{"de": "cliente", "texto": cm.get("text") or "", "hora": ""}], "comentario")
+                resp = claude(sistema, [{"de": "cliente", "texto": cm.get("text") or "", "hora": ""}], "comentario", nota)
                 cr[cm["id"]] = hoy
                 if resp and not resp.strip().upper().startswith("NADA"):
                     post(f"{cm['id']}/replies", message=resp.strip()[:300]); hechos_c += 1; salto("comentario")

@@ -792,7 +792,7 @@
  {
   "id": "1127-carrusel-historia",
   "tipo": "CARRUSEL",
-  "fecha": "2026-11-27 20:30",
+  "fecha": "2026-11-29 20:30",
   "media": [
    "clientes/ca7rielypaco/img/1126-historia-1.jpg",
    "clientes/ca7rielypaco/img/1126-historia-2.jpg",
@@ -803,7 +803,7 @@
   "texto": "Antes de los Grammy, antes de Coachella, antes de todo: dos pibes del mismo colegio. 🇦🇷\n\nSe conocieron a los 6 años, tuvieron una banda de rock (Astor) y en 2018 arrancaron como dúo. Lo que vino después ya lo saben: Tiny Desk, Coachella, Fallon, un Grammy y ocho Latin Grammy.\n\nDeslizá y contanos: ¿desde cuándo los seguís? 👇\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#CA7RIELyPacoAmoroso #FreeSpirits #FanClubArgentina",
   "estado": "pendiente",
   "aprobado": "2026-11-26 22:33 (clienta vía Juan: «Si vamos»)",
-  "nota": "Reintento: el 26/11 22:49 Meta respondió \"(#4) Application request limit reached\". Misma pieza aprobada."
+  "nota": "Reintento: el 26/11 22:49 Meta respondió \"(#4) Application request limit reached\". Misma pieza aprobada. Movido al domingo 29: el 27/11 solo sale Lima (pedido de Juan)."
  },
  {
   "id": "1127-post-lima-ultima",
@@ -813,8 +813,8 @@
   ],
   "texto": "Hoy se termina el FREE SPIRITS WORLD TOUR. 🌎🇵🇪\n\nLa última fecha es en Lima: viernes 27/11 en el Multiespacio Costa 21 (San Miguel). Puertas a las 16 h y show a las 20:30 h de Lima, que son las 18 h y las 22:30 h en Argentina. Los horarios pueden cambiar.\n\nFueron meses de verlos girar por el mundo: de Red Rocks a Radio City, de Londres a Madrid, de Japón a Brasil. Cada noche llevaron lo que son a un escenario distinto, y cada noche los bancamos desde acá.\n\nGracias, CA7RIEL y Paco, por esta gira enorme. Gracias a todos los que viajaron, gritaron, compartieron y estuvieron. Lima, cerrala como se merece. 🧡\n\n@ca7rielypacoamoroso @ca7riel @pacoamoroso\n#FreeSpiritsWorldTour #CA7RIELyPacoAmoroso #Lima #FanClubArgentina",
   "fecha": "2026-11-27 18:00",
-  "estado": "borrador",
-  "aprobado": null,
+  "estado": "pendiente",
+  "aprobado": "2026-11-27 17:16 (vía Juan: «Si… solo hoy suba lo de Lima»)",
   "nota": "Última fecha del tour, Lima 27/11. Datos: Costa 21, puertas 16 h y show 20:30 h (hora de Lima), según la prensa peruana."
  }
 ]

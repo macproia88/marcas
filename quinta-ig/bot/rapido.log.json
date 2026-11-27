@@ -31,7 +31,7 @@
    "errores": 5
   },
   "2026-11-27": {
-   "enviados": 73,
+   "enviados": 74,
    "nada": 18,
    "errores": 0
   }
@@ -326,19 +326,18 @@
   "c75b827631b2": "332b8af7168a5fc7",
   "8dd8a5e88bb5": "68b4d129c7e005b6",
   "5066a7db38d6": "21f91cf1348ee0bd",
-  "c09d87e3adf3": "d503be3e6d15d431",
+  "c09d87e3adf3": "0010690db3756f78",
   "46cbfa958023": "3fa763f6f680e9ea",
   "53d9a10541a7": "b7df6baa56345ca6"
  },
- "actualizado": "2026-11-27 13:57",
+ "actualizado": "2026-11-27 14:01",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "espera": 1,
-  "ya_respondida": 35,
-  "ya_procesada": 9,
+  "ya_respondida": 36,
+  "ya_procesada": 8,
   "prospeccion": 5
  },
- "revisado": "2026-11-27 13:59",
+ "revisado": "2026-11-27 14:01",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -495,21 +494,22 @@
   "18393069970228277": "2026-11-27",
   "18019995311752254": "2026-11-27",
   "18129726352910468": "2026-11-27",
-  "18116491577149442": "2026-11-27"
+  "18116491577149442": "2026-11-27",
+  "18203060047352500": "2026-11-27"
  },
  "crash": "27/11 10:03 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
  "costo": {
   "2026-11-27": {
-   "in": 52376,
-   "out": 69851,
-   "llamadas": 94,
-   "usd": 0.0971,
+   "in": 53152,
+   "out": 70982,
+   "llamadas": 95,
+   "usd": 0.0978,
    "cache_w": 405601,
-   "cache_r": 619203,
+   "cache_r": 630369,
    "por_tipo": {
     "dm": {
-     "llamadas": 28,
-     "usd": 0.0227
+     "llamadas": 29,
+     "usd": 0.0235
     },
     "retomada": {
      "llamadas": 2,
@@ -523,6 +523,6 @@
   }
  },
  "costo_mes": {
-  "2026-11": 0.097
+  "2026-11": 0.098
  }
 }

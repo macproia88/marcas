@@ -468,7 +468,7 @@
   "18124237952093489": "2026-11-27",
   "18409341289207105": "2026-11-27"
  },
- "crash": "26/11 20:40 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
+ "crash": "27/11 10:03 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
  "costo": {
   "2026-11-27": {
    "in": 24378,

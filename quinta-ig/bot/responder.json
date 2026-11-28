@@ -1,8 +1,14 @@
 [
  {
   "tipo": "dm",
-  "para_id": "1798636561361162",
-  "texto": "¡Ahí entendí, perdón la confusión! Para 10/12 personas van re cómodos 😊 Cuando lo charlen nos escribís por acá con la fecha y te confirmo si sigue libre 💚",
+  "para_id": "1761880678239472",
+  "texto": "¡Hola! 😊 Para las fiestas ya tenemos alquiladas las dos quintas en Navidad (24 al 27/12) y en Año Nuevo (31/12 al 3/1). En principio tenemos libres del 21 al 23 y del 28 al 30 de diciembre, tanto la casa (con noche) como la quinta de pasar el día. ¿Te sirve alguna de esas fechas? ¿Cuántos serían? 🎄",
+  "estado": "pendiente"
+ },
+ {
+  "tipo": "comentario",
+  "comment_id": "18121203932008605",
+  "texto": "¡Hola! 😊 Es nuestra casa en General Rodríguez: pileta propia, parrilla y duermen 5. Escribinos por DM con la fecha y cuántos son, y te pasamos precio y disponibilidad. ¡Seguinos en @quintaelflorido! 💚",
   "estado": "pendiente"
  }
 ]

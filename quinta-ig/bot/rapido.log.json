@@ -36,8 +36,8 @@
    "errores": 0
   },
   "2026-11-28": {
-   "enviados": 14,
-   "nada": 6,
+   "enviados": 15,
+   "nada": 7,
    "errores": 0
   }
  },
@@ -368,24 +368,24 @@
   "f58f7c83a966": "54f7c49298ca56c5",
   "55bf87b22111": "13c727858bbfaf2f",
   "70741dd7d80e": "3441223f9c7ece70",
-  "cb618df6ace0": "854a82c88aa3e878",
+  "cb618df6ace0": "44462ab4774701ed",
   "ed63d4ba56b7": "be607c2c8f698e6b",
   "4369ced78ac4": "915b60e509d5bc67",
   "5fe65ed1bbcb": "bf0c232d8c48725a",
   "78a5e3f3a458": "86acf0632cdd57b1",
   "a54f107fca5b": "a0b42a6e0eb2b0a5",
   "02100d783fcc": "b39236cbed2140c1",
-  "8ca16e111732": "62ca4eaa8ba1c786"
+  "8ca16e111732": "62ca4eaa8ba1c786",
+  "b75f7c69bd38": "9cf10d400d5132c9"
  },
- "actualizado": "2026-11-28 09:27",
+ "actualizado": "2026-11-28 09:32",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "espera": 2,
   "ya_respondida": 37,
   "ya_procesada": 10,
   "prospeccion": 1
  },
- "revisado": "2026-11-28 09:31",
+ "revisado": "2026-11-28 09:32",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -596,21 +596,21 @@
    }
   },
   "2026-11-28": {
-   "in": 7901,
-   "out": 12220,
-   "llamadas": 20,
+   "in": 9016,
+   "out": 13324,
+   "llamadas": 22,
    "cache_w": 86696,
-   "cache_r": 130044,
-   "usd": 0.019,
+   "cache_r": 151718,
+   "usd": 0.0199,
    "por_tipo": {
     "dm": {
-     "llamadas": 20,
-     "usd": 0.0191
+     "llamadas": 22,
+     "usd": 0.02
     }
    }
   }
  },
  "costo_mes": {
-  "2026-11": 0.208
+  "2026-11": 0.209
  }
 }

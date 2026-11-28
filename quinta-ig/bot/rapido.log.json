@@ -366,10 +366,10 @@
  "ultimo_error": "instagram 403",
  "motivos": {
   "ya_respondida": 41,
-  "ya_procesada": 7,
+  "ya_procesada": 8,
   "prospeccion": 1
  },
- "revisado": "2026-11-27 23:48",
+ "revisado": "2026-11-27 23:49",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

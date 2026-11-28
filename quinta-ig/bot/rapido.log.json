@@ -31,7 +31,7 @@
    "errores": 5
   },
   "2026-11-27": {
-   "enviados": 129,
+   "enviados": 130,
    "nada": 27,
    "errores": 0
   }
@@ -69,7 +69,7 @@
   "1ba2ea1bf3c3": "9b50ba06ef2f99ec",
   "22a55c45231e": "c5cb40ea9e0f7327",
   "d691a415abb6": "77010ef15cb319f4",
-  "66aa7c67fba6": "b434dfef3a5363d1",
+  "66aa7c67fba6": "c1ee2a88f88c0df0",
   "38f8d96cd634": "ed2b569f01a2757d",
   "c6d1af7ca7a9": "fb0d0c5c71cca145",
   "5234317b1996": "726013cc57c297f3",
@@ -358,14 +358,14 @@
   "fc8e9cd3cee8": "04519a4303c04aee",
   "1fcc9eca6896": "191dc9dcab5c52cb"
  },
- "actualizado": "2026-11-27 22:52",
+ "actualizado": "2026-11-27 22:54",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "ya_respondida": 42,
+  "ya_respondida": 41,
   "ya_procesada": 7,
   "prospeccion": 1
  },
- "revisado": "2026-11-27 22:53",
+ "revisado": "2026-11-27 22:54",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -551,16 +551,16 @@
  "crash": "27/11 10:03 TimeoutError línea 1138: return self._sslobj.read(len, buffer)",
  "costo": {
   "2026-11-27": {
-   "in": 82622,
-   "out": 132893,
-   "llamadas": 165,
-   "usd": 0.1801,
+   "in": 83486,
+   "out": 133159,
+   "llamadas": 166,
+   "usd": 0.1804,
    "cache_w": 758752,
-   "cache_r": 1049973,
+   "cache_r": 1060880,
    "por_tipo": {
     "dm": {
-     "llamadas": 92,
-     "usd": 0.0972
+     "llamadas": 93,
+     "usd": 0.0975
     },
     "retomada": {
      "llamadas": 5,

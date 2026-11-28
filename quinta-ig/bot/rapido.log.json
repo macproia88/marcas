@@ -377,10 +377,10 @@
  "actualizado": "2026-11-28 08:32",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "ya_respondida": 40,
+  "ya_respondida": 41,
   "ya_procesada": 9
  },
- "revisado": "2026-11-28 08:32",
+ "revisado": "2026-11-28 08:34",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

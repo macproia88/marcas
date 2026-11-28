@@ -34,6 +34,11 @@
    "enviados": 135,
    "nada": 29,
    "errores": 0
+  },
+  "2026-11-28": {
+   "enviados": 0,
+   "nada": 0,
+   "errores": 0
   }
  },
  "ultimo": {
@@ -369,7 +374,7 @@
   "ya_procesada": 8,
   "prospeccion": 1
  },
- "revisado": "2026-11-27 23:49",
+ "revisado": "2026-11-28 00:00",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [

@@ -37,7 +37,7 @@
   },
   "2026-11-28": {
    "enviados": 0,
-   "nada": 0,
+   "nada": 1,
    "errores": 0
   }
  },
@@ -365,17 +365,17 @@
   "129c802b0e75": "b0100fbc936db4d5",
   "886f70947b1f": "4bdd9541807038dd",
   "7dfb4b10316f": "56afb218dc06edf1",
-  "f58f7c83a966": "54f7c49298ca56c5"
+  "f58f7c83a966": "54f7c49298ca56c5",
+  "55bf87b22111": "df264c80467404b6"
  },
- "actualizado": "2026-11-27 23:48",
+ "actualizado": "2026-11-28 00:10",
  "ultimo_error": "instagram 403",
  "motivos": {
-  "espera": 1,
   "ya_respondida": 40,
   "ya_procesada": 8,
   "prospeccion": 1
  },
- "revisado": "2026-11-28 00:09",
+ "revisado": "2026-11-28 00:10",
  "diag_nada": {
   "stop": "end_turn",
   "tipos": [
@@ -583,9 +583,23 @@
      "usd": 0.0084
     }
    }
+  },
+  "2026-11-28": {
+   "in": 554,
+   "out": 194,
+   "llamadas": 1,
+   "cache_w": 10837,
+   "cache_r": 0,
+   "usd": 0.0015,
+   "por_tipo": {
+    "dm": {
+     "llamadas": 1,
+     "usd": 0.0015
+    }
+   }
   }
  },
  "costo_mes": {
-  "2026-11": 0.189
+  "2026-11": 0.19
  }
 }
